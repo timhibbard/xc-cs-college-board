@@ -78,7 +78,7 @@
       <option value="all">All three</option>
       <option value="greenville">Greenville SC (200 mi)</option>
       <option value="nyc">New York City (50 mi)</option>
-      <option value="chicago">Chicago (20 mi)</option>
+      <option value="chicago">Chicago (30 mi)</option>
     </select>
 
     <label for="f-div">Division</label>
@@ -126,9 +126,9 @@
       <div class="k-sub">Enormous school count; cost of living is the real variable.</div>
     </a>
     <a class="kpi linkcard" href="chicago.html">
-      <div class="k-label">Chicago · 20 mi</div>
+      <div class="k-label">Chicago · 30 mi</div>
       <div class="k-value" id="k-c">—</div>
-      <div class="k-sub">The radius, not the city, is the problem. Widen it to 30 miles.</div>
+      <div class="k-sub">Widened from 20 mi. It did not help — the metro is genuinely thin.</div>
     </a>
   </div>
 
@@ -151,19 +151,20 @@
     <p id="nw-why"></p>
   </div>
   <div class="callout">
-    <span class="c-title">The Chicago radius excludes the best fit</span>
+    <span class="c-title">Chicago is thin on its own merits, not because of the radius</span>
     <p>
-      Every strong distance program near Chicago sits just outside 20 miles. The most
-      consequential is <strong>Lewis University</strong> (D2, GLVC, ~30 mi) — a real distance
-      program, a CS degree, and D2 scholarship money. Widening the Chicago radius to 30 miles
-      changes the answer for that metro more than anything else on this page.
+      An earlier version of this page blamed the 20-mile radius and recommended widening it to 30
+      to reach <strong>Lewis University</strong> — "a real distance program, a CS degree, and D2
+      scholarship money." The radius has now been widened, and pulling Lewis's roster data
+      <strong>reversed that conclusion</strong>: their team best 5000 is 13:45, a 95 second gap,
+      which makes Lewis a walk-on program by the same rule that cut Furman and Wingate.
     </p>
-    <div class="table-scroll" style="margin-top:12px">
-      <table id="outside">
-        <thead><tr><th scope="col">School</th><th scope="col">Mi</th><th scope="col">Division</th><th scope="col">Note</th></tr></thead>
-        <tbody></tbody>
-      </table>
-    </div>
+    <p>
+      The extra ten miles added four schools and not one target-tier fit: Benedictine, Lake Forest,
+      and Purdue Northwest are all programs he would lead outright, and Wheaton is an open question.
+      <strong>DePaul and Loyola remain the only genuine fits in Chicago.</strong> That was the
+      original answer, and it is now better supported rather than weaker.
+    </p>
   </div>
 
   <h2>What to do next</h2>
@@ -204,12 +205,6 @@ document.querySelector('#removed tbody').innerHTML = REMOVED.map(r => `<tr>
   <td class="rownote" style="max-width:60ch">${r.why}</td></tr>`).join('');
 
 document.getElementById('nw-why').innerHTML = NO_PROGRAM[0].why;
-
-document.querySelector('#outside tbody').innerHTML = OUTSIDE_RADIUS.map(r => `<tr>
-  <td><span class="school">${r.name}</span></td>
-  <td class="num">${r.mi}</td>
-  <td>${r.div}</td>
-  <td class="rownote" style="max-width:50ch">${r.why}</td></tr>`).join('');
 
 initTable();
 initChart();

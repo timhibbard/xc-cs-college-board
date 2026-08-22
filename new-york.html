@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>New York City — 50 mile radius</title>
 <meta name="description" content="Colleges within 50 miles of New York City with men's cross country and a computer science degree.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -45,6 +46,28 @@
       off their #1. He likely would not travel as a freshman. It stayed on the list because D3 has
       no scholarship stakes, so the downside of aiming high is lower — but verify depth before
       investing.
+    </p>
+  </div>
+
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every school in this metro, plotted against the 50-mile radius</div>
+    <p class="chart-sub">
+      The densest map of the three — and the one where geography matters least, because almost
+      every pin is reachable by train. The useful pattern to read here is how many of them are
+      hollow on data: most of the D2 and D3 cluster on Long Island and in northern New Jersey has
+      no 5000m mark at all.
+    </p>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools cut on roster times</label>
+      <span class="count" id="map-count"></span>
+    </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 50-mile
+      radius from Midtown, while the table's "Mi" column is driving distance — so Sacred Heart, at
+      the boundary, plots just outside the line. Filters below the chart also drive this map.
     </p>
   </div>
 
@@ -119,6 +142,7 @@
 </main>
 <div id="tip" role="status" aria-live="polite"></div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
 <script>
@@ -131,10 +155,12 @@ document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target
 document.getElementById('k-d').textContent = mine.filter(s => s.b5000 == null).length;
 
 document.getElementById('legend-slot').innerHTML = tierLegend();
+document.getElementById('map-legend').innerHTML = mapLegend();
 document.querySelector('#removed tbody').innerHTML = REMOVED.filter(r => r.metro === 'nyc').map(r =>
   `<tr><td><span class="school">${r.name}</span></td><td>${r.div}</td>
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
 
+initMap('nyc');
 initTable();
 initChart();
 </script>

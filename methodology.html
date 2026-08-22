@@ -83,13 +83,38 @@
     </ol>
   </div>
   <div class="callout">
-    <span class="c-title">A claim that was withdrawn</span>
+    <span class="c-title">Claims that were withdrawn</span>
     <p>
-      An earlier version of this analysis concluded that Clemson's distance corps was soft for the
-      ACC, based on a 14:36 outdoor 5000. That was an artifact of a sparse table. Their 1500 best of
-      3:43 implies a runner around 14:15, and the conclusion has been retracted. Similar
+      <strong>Clemson.</strong> An earlier version concluded that Clemson's distance corps was soft
+      for the ACC, based on a 14:36 outdoor 5000. That was an artifact of a sparse table. Their 1500
+      best of 3:43 implies a runner around 14:15, and the conclusion has been retracted. Similar
       "only one distance runner" readings for Gardner-Webb and Guilford have been softened from
       established to suggestive for the same reason.
+    </p>
+    <p>
+      <strong>Lewis University.</strong> When the Chicago radius was 20 miles, this analysis
+      recommended widening it to 30 specifically to reach Lewis, calling it "probably the single
+      best fit in metro Chicago" — a claim made from general knowledge of the program, not from
+      roster data. Once the radius was widened and the data pulled, their team best 5000 came back
+      at <strong>13:45.06</strong>, alongside a 29:58 10K and a 3:51 1500. Because the 13:45 was run
+      at the Bryan Clay Invitational (a fast qualifying meet) and the 10K at a tactical conference
+      championship, the marks are consistent rather than contradictory. Lewis is a 95 second gap and
+      belongs in the cut list. <strong>The recommendation is withdrawn</strong>, and it is the most
+      consequential reversal on this site.
+    </p>
+    <p>
+      <strong>Wheaton College.</strong> Described in an earlier version as a "national-caliber D3
+      program," again from general knowledge. Its outdoor table — 1500 4:08.73, 3000 9:12.40,
+      5000 15:19.11, 10,000 31:52.17 — is internally consistent across all four events and modest,
+      so the sparse-table defence does not apply here. <strong>That characterization is withdrawn.</strong>
+      Wheaton is listed as <em>Verify</em> rather than reclassified, because a 15:19 team best is
+      still hard to reconcile with the program's CCIW cross country record; the likeliest reading is
+      that their distance men skipped outdoor track. Cross country results would settle it.
+    </p>
+    <p>
+      The pattern in all three is the same and worth naming: <strong>every one began as a confident
+      claim from general knowledge that the roster data then contradicted.</strong> Treat any
+      statement on this site not backed by a specific time as provisional.
     </p>
   </div>
 
@@ -155,13 +180,44 @@
       <li><strong>No 5th or 7th man times anywhere.</strong> The highest-value missing input by a wide margin. Source: 2025 conference cross country championship results, which show every team's top seven. This is what settles the boundary cases — App State, UNC Charlotte, UIC, and NYU.</li>
       <li><strong>CS degrees are unverified at most schools.</strong> Small-college websites were frequently unreachable, so those entries are marked <span class="cs-no">Confirm</span> rather than guessed at. Anderson (SC) is the specific case to watch: its site surfaces a BA in Applied AI and a cybersecurity center, but a traditional BS in Computer Science was not confirmed.</li>
       <li><strong>SAT and acceptance figures are approximate and unverified</strong>, drawn from general knowledge rather than this cycle's data. Check each school's Common Data Set before relying on them.</li>
-      <li><strong>Several TFRRS pages could not be resolved</strong>, leaving schools with no times at all. The University of Chicago is the costliest of these — potentially the best combined fit in its metro, and currently a blank.</li>
+      <li><strong>Several TFRRS pages could not be resolved</strong>, leaving schools with no times at all. The University of Chicago is the costliest of these — potentially the best combined fit in its metro, and still a blank after four attempts at its URL slug across two sessions.</li>
+      <li><strong>Wheaton College needs cross country results, not track results.</strong> Its outdoor table (15:19 team best) conflicts with its CCIW reputation, and that conflict is currently unresolved. It is the second-highest-value lookup after the 7th-man times.</li>
       <li><strong>Program existence needs confirming in two cases</strong> — whether NYIT still sponsors men's cross country, and whether each program carries full indoor and outdoor track rather than cross country alone.</li>
       <li><strong>Web search was not available</strong> while building this. The geographic candidate lists were assembled from general knowledge, then verified against live TFRRS, athletics, and Wikipedia pages. A school could plausibly have been missed; the substance of what is listed was checked.</li>
     </ol>
   </div>
 
-  <h2>7. A note on the colors</h2>
+  <h2>7. The maps, and what the two distance numbers mean</h2>
+  <p class="prose">
+    Each metro page plots its schools on a Leaflet map with OpenStreetMap data. Two distances are in
+    play and they are not the same measurement:
+  </p>
+  <div class="prose">
+    <ul>
+      <li>The <strong>"Mi" column</strong> in every table is approximate <em>driving</em> distance from the metro center — the number that matters for how often he gets home.</li>
+      <li>The <strong>dashed circle</strong> on each map is a <em>straight-line</em> radius, because that is the only thing a circle can be.</li>
+    </ul>
+  </div>
+  <p class="prose">
+    Driving distance is always the larger of the two, so a school sitting right on the line can plot
+    just outside the circle. Sacred Heart in Fairfield CT is the one visible case: recorded at 52
+    miles by road, it is about 50 straight-line miles from Midtown and plots a fraction outside the
+    50-mile ring. It was kept as a boundary case rather than silently dropped.
+  </p>
+  <p class="prose">
+    Campus coordinates are approximate main-campus points, accurate to roughly a kilometre — enough
+    to place a pin, not a routing engine. Every one was checked programmatically against its
+    recorded driving distance; a coordinate implying a straight-line distance <em>greater</em> than
+    the recorded road distance is impossible, and that check is what surfaced the Sacred Heart case.
+    Where two schools sit within about a mile of each other — Concordia and Dominican in River
+    Forest, Manhattanville and SUNY Purchase, NYU and Baruch, LIU and St. Joseph's in Brooklyn,
+    Manhattan College and Mount Saint Vincent in Riverdale — the pins are nudged roughly a mile
+    apart so both stay clickable, and each popup says so. On the 200-mile Greenville map a pin
+    covers several miles of ground at the default zoom, so schools there can still overlap without
+    being nudged; zoom in to separate them.
+  </p>
+
+  <h2>8. A note on the colors</h2>
   <p class="prose">
     The three fit tiers each carry a distinct shape and a text label, never color alone. That is
     deliberate: green and red are separated by an OKLab ΔE of about 4 under deuteranopia, which is

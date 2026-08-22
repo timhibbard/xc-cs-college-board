@@ -137,6 +137,55 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 44px 0; }
   :root:where(:not([data-theme="dark"])) .badge.verify { color: #8a6200; }
 }
 
+/* ---------- metro map ---------- */
+.map-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px; padding: 20px 22px 14px; margin: 20px 0; }
+/* overflow:hidden is also set by leaflet.css; repeated here so a failed CDN
+   stylesheet degrades to an empty box rather than tiles strewn down the page. */
+#map { height: 460px; overflow: hidden; border-radius: 6px; border: 1px solid var(--border); background: var(--neutral-mid); }
+@media (max-width: 780px) { #map { height: 340px; } }
+.map-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin: 0 0 12px; font-size: 13px; color: var(--text-secondary); }
+.map-bar label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+.map-note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+
+/* Pins: the glyph carries the tier, the fill only reinforces it. */
+.pin-wrap { background: none; border: 0; }
+.pin {
+  display: flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  font-size: 11px; line-height: 1; font-weight: 700;
+  border: 2px solid var(--surface-1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.pin-target  { background: var(--good);     color: #fff; }
+.pin-verify  { background: var(--warning);  color: #2a2000; }
+.pin-caution { background: var(--critical); color: #fff; }
+.pin-cut     { background: var(--muted);    color: #fff; width: 17px; height: 17px; font-size: 9px; }
+.pin-none    { background: var(--surface-1); color: var(--text-primary); border-color: var(--baseline); }
+.pin-center  { background: var(--div-blue); color: #fff; }
+.radius-ring { fill: var(--div-blue); fill-opacity: 0.06; stroke: var(--div-blue); stroke-opacity: 0.55; stroke-width: 1.5; stroke-dasharray: 6 5; }
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: var(--surface-1); color: var(--text-primary);
+  border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+}
+.leaflet-popup-content { margin: 12px 14px; font-family: var(--sans); }
+.leaflet-container { font-family: var(--sans); }
+.leaflet-control-attribution { font-size: 10px; }
+.mp-name { font-weight: 650; font-size: 14px; margin-bottom: 3px; }
+.mp-tier { font-size: 12px; font-weight: 650; margin-bottom: 7px; }
+.pin-target-txt  { color: var(--good); }
+.pin-verify-txt  { color: #8a6200; }
+.pin-caution-txt { color: var(--critical); }
+.pin-cut-txt, .pin-none-txt { color: var(--text-secondary); }
+:root[data-theme="dark"] .pin-verify-txt { color: var(--warning); }
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) .pin-verify-txt { color: var(--warning); }
+}
+.mp-meta { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+.mp-line { font-size: 12.5px; margin: 2px 0; }
+.mp-why { font-size: 12px; color: var(--text-secondary); margin-top: 7px; line-height: 1.45; }
+.mp-nudge { font-size: 11px; color: var(--muted); margin-top: 7px; font-style: italic; }
+
 .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 14px 0 6px; }
 .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); }
 .swatch { width: 11px; height: 11px; border-radius: 2px; display: inline-block; flex: none; }

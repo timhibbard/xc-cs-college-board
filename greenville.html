@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Greenville SC — 200 mile radius</title>
 <meta name="description" content="Colleges within 200 miles of Greenville SC with men's cross country and a computer science degree.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -54,6 +55,27 @@
       that he would beat the day he arrived. Being a team's #1 is workable <em>if</em> the coach is
       building a recruiting class around him. Ask directly who else they are signing. It is bad
       if he trains alone for four years.
+    </p>
+  </div>
+
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every school in this metro, plotted against the 200-mile radius</div>
+    <p class="chart-sub">
+      This is the widest of the three searches, and the map shows why it works: the target-tier
+      programs are spread across upstate South Carolina, western North Carolina, and the Triad
+      rather than clustered in one city.
+    </p>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools cut on roster times</label>
+      <span class="count" id="map-count"></span>
+    </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 200-mile
+      radius from Greenville, while the table's "Mi" column is driving distance — so a school right
+      on the line can plot just outside it. Filters below the chart also drive this map.
     </p>
   </div>
 
@@ -129,6 +151,7 @@
 </main>
 <div id="tip" role="status" aria-live="polite"></div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
 <script>
@@ -142,10 +165,12 @@ const cut = REMOVED.filter(r => r.metro === 'greenville');
 document.getElementById('k-r').textContent = cut.length;
 
 document.getElementById('legend-slot').innerHTML = tierLegend();
+document.getElementById('map-legend').innerHTML = mapLegend();
 document.querySelector('#removed tbody').innerHTML = cut.map(r =>
   `<tr><td><span class="school">${r.name}</span></td><td>${r.div}</td>
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
 
+initMap('greenville');
 initTable();
 initChart();
 </script>

@@ -24,16 +24,22 @@ An earlier version of this analysis had that backwards. The tiers reflect the co
 |---|---|---|
 | Greenville, SC | 200 mi | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
 | New York City | 50 mi | [`docs/new-york-city.md`](docs/new-york-city.md) |
-| Chicago | 20 mi | [`docs/chicago.md`](docs/chicago.md) |
+| Chicago | 30 mi | [`docs/chicago.md`](docs/chicago.md) |
 
 ## Two structural findings
 
 - **Northwestern sponsors no men's cross country or men's track and field at all.** Men's
   track is listed as defunct; only the women's programs exist. Worth stating plainly,
   because Northwestern is the obvious first thought for Chicago plus elite CS.
-- **The 20-mile Chicago radius excludes every strong distance program in the region.** The
-  most consequential exclusion is Lewis University (D2 GLVC, ~30 mi), which on the
-  available evidence is a better athletic-and-CS fit than anything inside 20 miles.
+- **Chicago is thin on its own merits, not because of the radius.** An earlier version of
+  this board blamed the original 20-mile radius and recommended widening it to 30 to reach
+  Lewis University (D2 GLVC), calling it the best fit in the metro. The radius was widened
+  and Lewis's roster data reversed that: a team best 5000 of **13:45** puts it in the same
+  band as Furman and Wingate, so it is a cut, not a target. The extra ten miles added four
+  schools and no target-tier fit. DePaul and Loyola were the answer at 20 miles and remain
+  the answer at 30. See the [methodology page](https://timhibbard.github.io/xc-cs-college-board/methodology.html)
+  for the full list of withdrawn claims — every one of them started as a confident statement
+  from general knowledge that the roster data then contradicted.
 
 ## Data caveats — read these
 
@@ -61,7 +67,7 @@ new-york.html
 chicago.html
 methodology.html    conversions, data caveats, NCAA rules, known gaps
 assets/data.js      the entire dataset — edit here, everything re-renders
-assets/app.js       table sort/filter, diverging gap chart, theme toggle
+assets/app.js       table sort/filter, diverging gap chart, Leaflet metro maps, theme toggle
 assets/styles.css   light/dark tokens, accessible status tiers
 docs/*.md           the original long-form research documents
 ```
@@ -85,13 +91,20 @@ python3 -m http.server 8000
 
 ```js
 { name: 'Davidson', city: 'Davidson NC', metro: 'greenville', mi: 115,
-  div: 'D1', conf: 'Atlantic 10', cs: 'verified', sat: '1360–1500',
-  accept: '~18%', b1500: '3:48.3', b5000: 856, tier: 'target' }
+  lat: 35.5010, lon: -80.8480, div: 'D1', conf: 'Atlantic 10',
+  cs: 'verified', sat: '1360–1500', accept: '~18%',
+  b1500: '3:48.3', b5000: 856, tier: 'target' }
 ```
 
 `b5000` is in **seconds** so it can be charted; `null` means no data was found. `tier` is
-`target`, `verify`, or `caution`. Changing a value updates the tables, the chart, and the
-KPI tiles with no other edits.
+`target`, `verify`, or `caution`. Changing a value updates the tables, the chart, the maps,
+and the KPI tiles with no other edits.
+
+`mi` is approximate **driving** distance from the metro center; `lat`/`lon` are approximate
+main-campus coordinates used only to place a map pin. The two are different measurements, so
+a school sitting on the radius line can plot just outside the map's circle — driving distance
+is always the larger number. Sacred Heart is the one visible instance and is kept
+deliberately as a boundary case.
 
 ## Note on scope
 

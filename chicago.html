@@ -3,27 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chicago — 20 mile radius</title>
-<meta name="description" content="Colleges within 20 miles of Chicago with men's cross country and a computer science degree, and why the radius is the problem.">
+<title>Chicago — 30 mile radius</title>
+<meta name="description" content="Colleges within 30 miles of Chicago with men's cross country and a computer science degree. Widening the radius from 20 to 30 miles did not find a better fit — it confirmed the metro is thin.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <main class="wrap">
 
-  <p class="eyebrow">Metro 3 of 3 · 20 mile radius</p>
+  <p class="eyebrow">Metro 3 of 3 · 30 mile radius</p>
   <h1>Chicago</h1>
   <p class="lede">
-    Two structural findings dominate this metro, and both need stating before any
-    school list makes sense: Northwestern has no men's program to join, and the
-    20-mile radius excludes essentially every distance program that would actually
-    develop him.
+    Two structural findings dominate this metro, and both need stating before any school
+    list makes sense: Northwestern has no men's program to join, and widening the radius
+    from 20 to 30 miles — which was supposed to rescue this list — instead confirmed that
+    metro Chicago is genuinely thin for him.
   </p>
 
   <div class="kpi-row">
-    <div class="kpi"><div class="k-label">Schools inside 20 mi</div><div class="k-value" id="k-n">—</div><div class="k-sub">Thinnest list of the three</div></div>
-    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">DePaul and Loyola only</div></div>
-    <div class="kpi"><div class="k-label">Caution tier</div><div class="k-value" id="k-c">—</div><div class="k-sub">He would be their #1 on day one</div></div>
-    <div class="kpi"><div class="k-label">Better fits just outside</div><div class="k-value" id="k-o">—</div><div class="k-sub">At 25–30 miles</div></div>
+    <div class="kpi"><div class="k-label">Schools inside 30 mi</div><div class="k-value" id="k-n">—</div><div class="k-sub">Still the thinnest of the three metros</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">DePaul and Loyola, unchanged</div></div>
+    <div class="kpi"><div class="k-label">Caution tier</div><div class="k-value" id="k-c">—</div><div class="k-sub">He would arrive at or near their #1</div></div>
+    <div class="kpi"><div class="k-label">Added by the wider radius</div><div class="k-value">4</div><div class="k-sub">None of them target tier</div></div>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">Correction: widening to 30 miles did not deliver what I predicted</span>
+    <p>
+      The earlier version of this page recommended widening the radius specifically to reach
+      <strong>Lewis University</strong>, calling it "probably the single best fit in metro Chicago."
+      With the radius widened, I pulled Lewis's actual roster data — and the recommendation does not
+      survive it. Their team best 5000 is <strong>13:45</strong> (Bryan Clay Invitational), with a
+      29:58 10K and a 3:51 1500. That is a <strong>95 second gap</strong>, the same band as Furman
+      and Wingate, and by the walk-on rule applied everywhere else on this site Lewis is a cut, not
+      a target. <strong>The claim is withdrawn.</strong>
+    </p>
+    <p>
+      What the extra ten miles actually added: three programs he would lead outright
+      (Benedictine by nearly two minutes, Lake Forest by fifty seconds, Purdue Northwest by a
+      stride) and one genuine open question (Wheaton). <strong>DePaul and Loyola remain the only
+      real fits in Chicago</strong> — that conclusion is now better supported, not weaker.
+    </p>
   </div>
 
   <div class="callout crit">
@@ -31,33 +51,54 @@
     <p id="nw-why"></p>
   </div>
 
-  <div class="callout">
-    <span class="c-title">The 20-mile radius is the binding constraint</span>
-    <p>
-      Inside the radius there are four D1 options, and most of the D3 list consists of programs
-      where he would be the #1 runner on day one — the bad outcome, not the good one. The programs
-      that would develop him sit at 25 to 30 miles.
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every school in this metro, plotted against the 30-mile radius</div>
+    <p class="chart-sub">
+      The geographic story is visible here: the two target-tier programs sit close to the lakefront
+      core, and the outer ring the radius change opened up is entirely caution tier.
     </p>
-    <p>
-      <strong>Recommendation: widen this to 30 miles.</strong> It costs about fifteen minutes of
-      driving and it adds <strong>Lewis University</strong>, which on the available evidence is a
-      better athletic-and-CS fit than anything inside 20 miles. If the radius is fixed for a reason,
-      the list below stands — but it is thin, and that is worth knowing going in.
-    </p>
-    <div class="table-scroll" style="margin-top:12px">
-      <table id="outside"><thead><tr><th scope="col">School</th><th scope="col">Mi</th><th scope="col">Division</th><th scope="col">Why it matters</th></tr></thead><tbody></tbody></table>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools cut on roster times</label>
+      <span class="count" id="map-count"></span>
     </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 30-mile
+      radius from the Loop, while the table's "Mi" column is driving distance — so a school right
+      on the line can plot just outside it. Filters below the chart also drive this map.
+    </p>
   </div>
 
   <h2>The ones worth real effort</h2>
   <div class="prose">
     <ol>
-      <li><strong>DePaul</strong> — 3 miles from the Loop, Big East D1, a genuinely strong CS program in its School of Computing, and a clean 55–65 second gap to their #1. An 8:23 3000 and a 29:52 10K confirm a functioning distance squad rather than one fast athlete. Best fit inside the radius, comfortably.</li>
-      <li><strong>Loyola Chicago</strong> — 8 miles, Atlantic 10, ~80% acceptance, the same 55–65 second gap, lakefront campus with real training access. Essentially co-equal with DePaul; choose on CS department fit and money.</li>
-      <li><strong>Lewis University (30 mi)</strong> — worth breaking the radius for. D2 means actual scholarship dollars, the distance program is strong, and it has a CS degree.</li>
+      <li><strong>DePaul</strong> — 3 miles from the Loop, Big East D1, a genuinely strong CS program in its School of Computing, and a clean 58 second gap to their #1. An 8:23 3000 and a 29:52 10K confirm a functioning distance squad rather than one fast athlete. Best fit in the metro, comfortably.</li>
+      <li><strong>Loyola Chicago</strong> — 8 miles, Atlantic 10, ~80% acceptance, a 57 second gap, lakefront campus with real training access. Essentially co-equal with DePaul; choose on CS department fit and money.</li>
       <li><strong>UIC</strong> — the cheapest strong option with a good CS department, but resolve the depth question first. Their 13:56 best and 28:56 10K are a strong top end; one fast senior is not depth.</li>
-      <li><strong>University of Chicago</strong> — only if his academic profile supports a ~5% admit rate. Elite CS, good conference (the same UAA as NYU and Emory). Currently a complete blank on times, and that is the first thing to fix.</li>
+      <li><strong>University of Chicago</strong> — only if his academic profile supports a ~5% admit rate. Elite CS, good conference (the same UAA as NYU and Emory). Still a complete blank on times after repeated attempts to resolve its TFRRS page, and that is the single highest-value lookup left in this metro.</li>
+      <li><strong>Wheaton College</strong> — the one item the wider radius genuinely opened up, and it is a question rather than an answer. See below.</li>
     </ol>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">Wheaton College is the open question, and I got it wrong once already</span>
+    <p>
+      I had Wheaton in the cut list described as a "national-caliber D3 program." Its outdoor
+      table does not support that: 1500 in 4:08.73, 3000 in 9:12.40, 5000 in <strong>15:19.11</strong>,
+      10,000 in 31:52.17. Those four marks are internally consistent with each other and modest —
+      this is not the sparse-table artifact that produced the Clemson error, because here every
+      event agrees. <strong>The "national-caliber" claim is withdrawn.</strong>
+    </p>
+    <p>
+      But 15:19 is one second off his own projection, which would make him their #1 as a freshman —
+      and that is hard to square with Wheaton's actual cross country reputation in the CCIW. The
+      most likely explanation is that their distance men skipped outdoor track. It sits in
+      <strong>Verify</strong> rather than either tier until 2025 cross country results settle it.
+      Worth the email either way: 25 miles, strong academics, and a real chance the running is
+      better than the table says.
+    </p>
   </div>
 
   <div class="callout crit">
@@ -74,7 +115,7 @@
   <h2>Gap to each team's #1</h2>
   <div class="chart-card">
     <div class="chart-title">Projected 15:20 5000m vs. each team's fastest 5000m runner</div>
-    <p class="chart-sub">The shape of this chart is the finding: two healthy gaps, then a run of programs he would lead outright.</p>
+    <p class="chart-sub">The shape of this chart is the finding: two healthy gaps, then a long run of programs he would lead outright.</p>
     <div class="legend">
       <span class="legend-item"><span class="swatch pos"></span><span>Their #1 is faster — healthy gap</span></span>
       <span class="legend-item"><span class="swatch neg"></span><span>He is faster than their #1 — thin squad</span></span>
@@ -87,7 +128,7 @@
   <div id="legend-slot"></div>
   <div class="controls">
     <label for="f-div">Division</label>
-    <select id="f-div"><option value="all">All</option><option value="D1">D1</option><option value="D3">D3</option><option value="NAIA">NAIA</option></select>
+    <select id="f-div"><option value="all">All</option><option value="D1">D1</option><option value="D2">D2</option><option value="D3">D3</option><option value="NAIA">NAIA</option></select>
     <label for="f-tier">Fit</label>
     <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
     <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
@@ -100,9 +141,12 @@
     </table>
   </div>
   <p class="prose" style="margin-top:14px">
-    NAIA allows 12 scholarships for men's cross country and track and has looser eligibility rules
-    than the NCAA. Worth a look if money is the priority, though the competition level generally
-    sits below D2.
+    The wider radius adds exactly one scholarship option: <strong>Purdue Northwest</strong> in
+    Hammond IN is the only D2 program in range, so money is genuinely available there — but their
+    team best 5000 of 15:21.78 puts him level with their #1 on arrival. NAIA (Saint Xavier, Trinity
+    Christian, Calumet College) allows 12 scholarships and has looser eligibility rules than the
+    NCAA; worth a look if money is the priority, though the competition level generally sits
+    below D2.
   </p>
 
   <h2>Cut as walk-on</h2>
@@ -135,6 +179,7 @@
 </main>
 <div id="tip" role="status" aria-live="polite"></div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
 <script>
@@ -145,19 +190,16 @@ const mine = SCHOOLS.filter(s => s.metro === 'chicago');
 document.getElementById('k-n').textContent = mine.length;
 document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
 document.getElementById('k-c').textContent = mine.filter(s => s.tier === 'caution').length;
-document.getElementById('k-o').textContent = OUTSIDE_RADIUS.length;
 
 document.getElementById('nw-why').innerHTML = NO_PROGRAM[0].why;
 document.getElementById('legend-slot').innerHTML = tierLegend();
-
-document.querySelector('#outside tbody').innerHTML = OUTSIDE_RADIUS.map(r =>
-  `<tr><td><span class="school">${r.name}</span></td><td class="num">${r.mi}</td><td>${r.div}</td>
-   <td class="rownote" style="max-width:52ch">${r.why}</td></tr>`).join('');
+document.getElementById('map-legend').innerHTML = mapLegend();
 
 document.querySelector('#removed tbody').innerHTML = REMOVED.filter(r => r.metro === 'chicago').map(r =>
   `<tr><td><span class="school">${r.name}</span></td><td>${r.div}</td>
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
 
+initMap('chicago');
 initTable();
 initChart();
 </script>
