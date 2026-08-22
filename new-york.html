@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New York City — 50 mile radius</title>
+<meta name="description" content="Colleges within 50 miles of New York City with men's cross country and a computer science degree.">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">Metro 2 of 3 · 50 mile radius</p>
+  <h1>New York City</h1>
+  <p class="lede">
+    A 50-mile circle around Midtown captures more colleges than the other two metros
+    combined, spanning three states. The athletic fits are good and several are
+    genuinely underrated. The variable that will actually decide this metro is not
+    running or admissions — it is cost of living.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="k-label">Schools on the list</div><div class="k-value" id="k-n">—</div><div class="k-sub">Most of any metro</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">All five are D1</div></div>
+    <div class="kpi"><div class="k-label">No roster data yet</div><div class="k-value" id="k-d">—</div><div class="k-sub">Nearly all of D2 and D3</div></div>
+    <div class="kpi"><div class="k-label">States in range</div><div class="k-value">3</div><div class="k-sub">NY, NJ, CT — three tuition regimes</div></div>
+  </div>
+
+  <h2>The ones worth real effort</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>Fordham</strong> — the best overall fit in the metro. Atlantic 10 D1, a real CS department, a clean 25–35 second gap to their #1, and they train at <strong>Van Cortlandt Park</strong>, the most historic cross country course in America, directly next to campus. It answers the "where do you actually run in New York" problem better than anyone else on the list.</li>
+      <li><strong>Hofstra</strong> — Coastal Athletic D1, roughly 40 seconds back, a Long Island campus with actual space to train, and ~70% acceptance. Clean on both axes.</li>
+      <li><strong>Wagner</strong> — Staten Island, ~40 second gap, easy admission, D1. Underrated.</li>
+      <li><strong>Seton Hall</strong> — Big East, 25–35 seconds back. Their distance squad is weaker than the conference name suggests, which works in his favor.</li>
+      <li><strong>Stevens Institute of Technology</strong> — if CS leads the decision. One of the strongest CS and engineering schools on the list, in Hoboken, D3, with no athletic-scholarship pressure. Get their roster times before investing time here.</li>
+      <li><strong>NJIT</strong> — D1 with a genuine tech-school CS program at ~65% acceptance. The best D1-plus-CS value in the metro if the running fits. Needs roster data.</li>
+    </ol>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">Borderline keep: NYU</span>
+    <p>
+      A 13:56 team best and a 29:45 10K make this a top-tier D3 program, leaving him 75–80 seconds
+      off their #1. He likely would not travel as a freshman. It stayed on the list because D3 has
+      no scholarship stakes, so the downside of aiming high is lower — but verify depth before
+      investing.
+    </p>
+  </div>
+
+  <h2>Gap to each team's #1</h2>
+  <div class="chart-card">
+    <div class="chart-title">Projected 15:20 5000m vs. each team's fastest 5000m runner</div>
+    <p class="chart-sub">Only ten schools in this metro have usable 5000m data. Most of D2 and D3 is still a blank — that is the work to do, not evidence of a weak program.</p>
+    <div class="legend">
+      <span class="legend-item"><span class="swatch pos"></span><span>Their #1 is faster — healthy gap</span></span>
+      <span class="legend-item"><span class="swatch neg"></span><span>He is faster than their #1 — thin squad</span></span>
+    </div>
+    <svg id="gapchart" role="img" aria-label="Gap between a projected 15:20 5000m and each New York-area team's fastest 5000m runner"></svg>
+    <p class="chart-sub" id="chart-count" style="margin-top:8px"></p>
+  </div>
+
+  <h2>Full list</h2>
+  <div id="legend-slot"></div>
+  <div class="controls">
+    <label for="f-div">Division</label>
+    <select id="f-div"><option value="all">All</option><option value="D1">D1</option><option value="D2">D2</option><option value="D3">D3</option></select>
+    <label for="f-tier">Fit</label>
+    <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
+    <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="table-scroll">
+    <table id="master">
+      <caption>Miles are approximate driving distance from Midtown Manhattan. Team best 5K = fastest single athlete, 2026 outdoor, TFRRS. Click a header to sort.</caption>
+      <thead></thead><tbody></tbody>
+    </table>
+  </div>
+
+  <h2>Cut as walk-on</h2>
+  <p class="prose">
+    This is a real loss on the CS side. Columbia and Princeton have two of the best computer
+    science departments in the country, and Iona is only 20 miles out. All three return
+    immediately if a walk-on path ever becomes acceptable.
+  </p>
+  <div class="table-scroll">
+    <table id="removed"><thead><tr><th scope="col">School</th><th scope="col">Division</th><th scope="col">Why it was cut</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2>Three things specific to New York</h2>
+  <div class="prose">
+    <p>
+      <strong>Cost of living is the dominant variable.</strong> Fordham, NYU, and Stevens are among
+      the most expensive schools in the country once housing is counted, and NYC-area housing will
+      swamp a partial athletic scholarship. The public options — Montclair State, Kean, William
+      Paterson, Ramapo, the CUNYs, Queens College — change the math entirely. Model total cost of
+      attendance including housing, not tuition.
+    </p>
+    <p>
+      <strong>Training terrain is a genuine question to raise with coaches.</strong> Ask specifically
+      where the team does long runs and workouts. Good answers: Van Cortlandt Park, Central Park,
+      the Rockefeller State Park carriage trails, Bear Mountain for hills, the Long Island parks.
+      A bad answer is a hesitation, or "we do a lot on the track."
+    </p>
+    <p>
+      <strong>Three states means three sets of in-state tuition.</strong> The New Jersey publics
+      (Montclair, Kean, Ramapo, William Paterson, NJIT) and the New York publics (the CUNYs, Queens
+      College, Purchase, Farmingdale) will all charge out-of-state rates to a South Carolina
+      applicant. Factor that in before ranking any of them on price.
+    </p>
+    <p>
+      <strong>Army West Point</strong> deserves a separate note: free tuition, excellent CS, and a
+      real distance program — but it requires a congressional nomination and carries a five-year
+      active-duty service obligation. That is a different life decision, not just a college choice.
+    </p>
+    <p><a href="https://github.com/timhibbard/xc-cs-college-board/blob/main/docs/new-york-city.md">Read the full source document →</a> &nbsp;·&nbsp; <a href="methodology.html">Methodology and caveats →</a></p>
+  </div>
+
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('nyc');
+filters.metro = 'nyc';
+
+const mine = SCHOOLS.filter(s => s.metro === 'nyc');
+document.getElementById('k-n').textContent = mine.length;
+document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
+document.getElementById('k-d').textContent = mine.filter(s => s.b5000 == null).length;
+
+document.getElementById('legend-slot').innerHTML = tierLegend();
+document.querySelector('#removed tbody').innerHTML = REMOVED.filter(r => r.metro === 'nyc').map(r =>
+  `<tr><td><span class="school">${r.name}</span></td><td>${r.div}</td>
+   <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
+
+initTable();
+initChart();
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greenville SC — 200 mile radius</title>
+<meta name="description" content="Colleges within 200 miles of Greenville SC with men's cross country and a computer science degree.">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">Metro 1 of 3 · 200 mile radius</p>
+  <h1>Greenville, South Carolina</h1>
+  <p class="lede">
+    The deepest and best list of the three metros. It contains the strongest
+    target-tier options anywhere on the board — and it lost the most to the
+    walk-on cut, because the two closest schools with the best CS departments
+    are both nationally elite distance programs.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="k-label">Schools on the list</div><div class="k-value" id="k-n">—</div><div class="k-sub">After the walk-on cut</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">Best ratio of any metro</div></div>
+    <div class="kpi"><div class="k-label">Cut as walk-on</div><div class="k-value" id="k-r">—</div><div class="k-sub">Including Furman at 0 miles</div></div>
+    <div class="kpi"><div class="k-label">Closest target-tier</div><div class="k-value">30<span style="font-size:16px"> mi</span></div><div class="k-sub">Anderson (SC), D2 South Atlantic</div></div>
+  </div>
+
+  <h2>The five that matter</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>UNC Asheville</strong> — 62 miles, Big South, mountain terrain, roughly 40–50s behind their #1, and an acceptance rate near 90%. The best combination of proximity, athletic fit, and admissions ease on the entire board.</li>
+      <li><strong>Davidson</strong> — his times land inside their top 8 <em>and</em> coach support is genuine admissions leverage at ~18% acceptance. This is the highest-value application on the list: running unlocks a school his transcript alone might not.</li>
+      <li><strong>ETSU</strong> — Southern Conference, real distance history, a clean 45–55 second gap. Straightforward fit.</li>
+      <li><strong>Emory</strong> — if academics lead the decision. Elite CS, D3 UAA, and he would be top-2 immediately. No athletic money at D3, but strong need-based aid.</li>
+      <li><strong>Catawba, Lenoir-Rhyne, Anderson (SC)</strong> — the D2 tier is where actual scholarship dollars live, and all three have a healthy gap to their #1.</li>
+    </ol>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">Two boundary cases the data cannot settle</span>
+    <p>
+      <strong>Appalachian State</strong> (team best 14:01) and <strong>UNC Charlotte</strong> (14:10)
+      leave him 70–85 seconds off their fastest runner. That gap is normal for a recruited
+      freshman measured against a senior, so both stayed on the list — but they sit right on the
+      line, and a 7th-man time would decide it either way.
+    </p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">The sharpest trade-off on the board: Wofford</span>
+    <p>
+      Strong academics, a verified CS degree, 32 miles from home — and a team best 5000 of 15:27
+      that he would beat the day he arrived. Being a team's #1 is workable <em>if</em> the coach is
+      building a recruiting class around him. Ask directly who else they are signing. It is bad
+      if he trains alone for four years.
+    </p>
+  </div>
+
+  <h2>Gap to each team's #1</h2>
+  <div class="chart-card">
+    <div class="chart-title">Projected 15:20 5000m vs. each team's fastest 5000m runner</div>
+    <p class="chart-sub">Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he would arrive faster than anyone on the roster.</p>
+    <div class="legend">
+      <span class="legend-item"><span class="swatch pos"></span><span>Their #1 is faster — healthy gap</span></span>
+      <span class="legend-item"><span class="swatch neg"></span><span>He is faster than their #1 — thin squad</span></span>
+    </div>
+    <svg id="gapchart" role="img" aria-label="Gap between a projected 15:20 5000m and each Greenville-area team's fastest 5000m runner"></svg>
+    <p class="chart-sub" id="chart-count" style="margin-top:8px"></p>
+  </div>
+
+  <h2>Full list</h2>
+  <div id="legend-slot"></div>
+  <div class="controls">
+    <label for="f-div">Division</label>
+    <select id="f-div"><option value="all">All</option><option value="D1">D1</option><option value="D2">D2</option><option value="D3">D3</option></select>
+    <label for="f-tier">Fit</label>
+    <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
+    <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="table-scroll">
+    <table id="master">
+      <caption>Miles are driving distance from Greenville. Team best 5K = fastest single athlete, 2026 outdoor, TFRRS. Click a header to sort.</caption>
+      <thead></thead><tbody></tbody>
+    </table>
+  </div>
+
+  <h2>Cut as walk-on</h2>
+  <p class="prose">
+    Worth naming the cost plainly: this removes <strong>Furman</strong> (0 miles) and
+    <strong>Clemson</strong> (32 miles) — the two closest schools with the strongest CS
+    departments in the region. If a walk-on or redshirt path ever becomes acceptable,
+    they return at the top of the list, not the bottom.
+  </p>
+  <div class="table-scroll">
+    <table id="removed"><thead><tr><th scope="col">School</th><th scope="col">Division</th><th scope="col">Why it was cut</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2>Money and admissions</h2>
+  <div class="prose">
+    <p>
+      <strong>Recruitment is an admissions lever at the selective schools.</strong> Coaches at
+      Davidson and Emory get supported slots and will run a pre-read: send transcript and scores,
+      and admissions tells the coach informally whether he would be admitted. Initiate this in the
+      spring of junior year.
+    </p>
+    <p>
+      <strong>Where academics are an asset rather than a constraint:</strong> UNC Asheville (~90%),
+      UNC Greensboro (~88%), ETSU (~85%), Western Carolina (~85%), and nearly the whole D2 list.
+      Admission is close to automatic, which shifts all the leverage to money.
+    </p>
+    <p>
+      <strong>Academic aid often beats athletic aid.</strong> D1 cross country and track is a
+      12.6-scholarship equivalency spread across a 35–45 man roster — quarter and half rides, not
+      full ones. A strong student stacking merit aid at UNC Asheville, ETSU, High Point, Berry, or
+      Catawba can land below the net cost of a bigger athletic offer somewhere else.
+    </p>
+    <p>
+      <strong>CS labs collide with practice.</strong> Large schools like Charlotte and App State run
+      multiple lab sections; small ones — Wofford, Presbyterian, Berry, Piedmont, North Greenville,
+      Catawba — may offer a required course in exactly one afternoon slot. Ask every coach how many
+      of their athletes major in CS or engineering and how they handle lab conflicts. This question
+      eliminates programs faster than times do.
+    </p>
+    <p><a href="https://github.com/timhibbard/xc-cs-college-board/blob/main/docs/greenville-sc.md">Read the full source document →</a> &nbsp;·&nbsp; <a href="methodology.html">Methodology and caveats →</a></p>
+  </div>
+
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('greenville');
+filters.metro = 'greenville';
+
+const mine = SCHOOLS.filter(s => s.metro === 'greenville');
+document.getElementById('k-n').textContent = mine.length;
+document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
+const cut = REMOVED.filter(r => r.metro === 'greenville');
+document.getElementById('k-r').textContent = cut.length;
+
+document.getElementById('legend-slot').innerHTML = tierLegend();
+document.querySelector('#removed tbody').innerHTML = cut.map(r =>
+  `<tr><td><span class="school">${r.name}</span></td><td>${r.div}</td>
+   <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
+
+initTable();
+initChart();
+</script>
+</body>
+</html>

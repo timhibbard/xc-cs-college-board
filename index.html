@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recruiting Board — XC/Track + Computer Science</title>
+<meta name="description" content="College cross country and track programs paired with computer science degrees across three metros, scored against a projected 15:20 5000m.">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<main class="wrap">
+
+  <p class="eyebrow">Distance running + computer science</p>
+  <h1>A recruiting board built around one number</h1>
+  <p class="lede">
+    Three metro areas, every college inside the radius that sponsors men's cross country,
+    ranked by the only question that predicts whether a distance runner develops:
+    <strong>how far back of this team's best runner would he be?</strong>
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="k-label">Projected 5000m</div>
+      <div class="k-value">15:20</div>
+      <div class="k-sub">From 3200 in 9:29 &middot; 8K XC ~26:00</div>
+    </div>
+    <div class="kpi">
+      <div class="k-label">Schools on the board</div>
+      <div class="k-value" id="k-total">—</div>
+      <div class="k-sub">Across three metros</div>
+    </div>
+    <div class="kpi">
+      <div class="k-label">In the target band</div>
+      <div class="k-value" id="k-target">—</div>
+      <div class="k-sub">He would slot in 5th to 9th man</div>
+    </div>
+    <div class="kpi">
+      <div class="k-label">Still unverified</div>
+      <div class="k-value" id="k-nodata">—</div>
+      <div class="k-sub">No roster times found yet</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">The rule this whole board is built on</span>
+    <p>
+      Being <strong>40 to 60 seconds behind a team's best 5000 runner is the good outcome.</strong>
+      That is a 5th-to-9th man as a freshman: he trains in a pack, gets pulled along, and improves.
+      Arriving as the team's fastest runner is not a sign he is a star — it means
+      the program is thin and there is nobody to train with. A first pass at this
+      analysis had that backwards; the tiers below reflect the corrected framing.
+    </p>
+  </div>
+
+  <h2>Gap to each team's #1</h2>
+  <div class="chart-card">
+    <div class="chart-title">Distance from a projected 15:20 5000m to each team's fastest 5000m runner</div>
+    <p class="chart-sub">
+      Bars to the right (blue) mean their best runner is faster than him — room to develop.
+      Bars to the left (red) mean he would arrive faster than anyone on the roster.
+      Zero is his own projection. Hover any row for detail. The chart follows the filters below.
+    </p>
+    <div class="legend">
+      <span class="legend-item"><span class="swatch pos"></span><span>Their #1 is faster — healthy gap</span></span>
+      <span class="legend-item"><span class="swatch neg"></span><span>He is faster than their #1 — thin squad</span></span>
+    </div>
+    <svg id="gapchart" role="img" aria-label="Diverging bar chart of the gap between a projected 15:20 5000m and each team's fastest 5000m runner"></svg>
+    <p class="chart-sub" id="chart-count" style="margin-top:8px"></p>
+  </div>
+
+  <h2>Every school on the board</h2>
+  <div id="legend-slot"></div>
+
+  <div class="controls">
+    <label for="f-metro">Metro</label>
+    <select id="f-metro">
+      <option value="all">All three</option>
+      <option value="greenville">Greenville SC (200 mi)</option>
+      <option value="nyc">New York City (50 mi)</option>
+      <option value="chicago">Chicago (20 mi)</option>
+    </select>
+
+    <label for="f-div">Division</label>
+    <select id="f-div">
+      <option value="all">All</option>
+      <option value="D1">D1</option>
+      <option value="D2">D2</option>
+      <option value="D3">D3</option>
+      <option value="NAIA">NAIA</option>
+    </select>
+
+    <label for="f-tier">Fit</label>
+    <select id="f-tier">
+      <option value="all">All</option>
+      <option value="target">Target</option>
+      <option value="verify">Verify</option>
+      <option value="caution">Caution</option>
+    </select>
+
+    <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="table-scroll">
+    <table id="master">
+      <caption>
+        Team best 5K = fastest single athlete, 2026 outdoor season, from TFRRS.
+        Gap = his 15:20 projection minus their best. Click any header to sort.
+      </caption>
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <h2>Read the metro write-ups</h2>
+  <div class="kpi-row">
+    <a class="kpi linkcard" href="greenville.html">
+      <div class="k-label">Greenville SC · 200 mi</div>
+      <div class="k-value" id="k-g">—</div>
+      <div class="k-sub">Deepest list. Best target-tier options anywhere on the board.</div>
+    </a>
+    <a class="kpi linkcard" href="new-york.html">
+      <div class="k-label">New York City · 50 mi</div>
+      <div class="k-value" id="k-n">—</div>
+      <div class="k-sub">Enormous school count; cost of living is the real variable.</div>
+    </a>
+    <a class="kpi linkcard" href="chicago.html">
+      <div class="k-label">Chicago · 20 mi</div>
+      <div class="k-value" id="k-c">—</div>
+      <div class="k-sub">The radius, not the city, is the problem. Widen it to 30 miles.</div>
+    </a>
+  </div>
+
+  <h2>Cut from consideration</h2>
+  <p class="prose">
+    These programs were removed because his projected marks put him well off the back
+    of the roster — no realistic scoring role or scholarship conversation as a freshman.
+    Several are painful cuts, and they are listed with the reason so the decision can be revisited.
+  </p>
+  <div class="table-scroll">
+    <table id="removed">
+      <thead><tr><th scope="col">School</th><th scope="col">Metro</th><th scope="col">Division</th><th scope="col">Why it was cut</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <h2>Two structural findings worth stating plainly</h2>
+  <div class="callout crit">
+    <span class="c-title">Northwestern has no men's program at all</span>
+    <p id="nw-why"></p>
+  </div>
+  <div class="callout">
+    <span class="c-title">The Chicago radius excludes the best fit</span>
+    <p>
+      Every strong distance program near Chicago sits just outside 20 miles. The most
+      consequential is <strong>Lewis University</strong> (D2, GLVC, ~30 mi) — a real distance
+      program, a CS degree, and D2 scholarship money. Widening the Chicago radius to 30 miles
+      changes the answer for that metro more than anything else on this page.
+    </p>
+    <div class="table-scroll" style="margin-top:12px">
+      <table id="outside">
+        <thead><tr><th scope="col">School</th><th scope="col">Mi</th><th scope="col">Division</th><th scope="col">Note</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>What to do next</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>Get 5th and 7th man times.</strong> Everything on this page rests on one athlete per team. Conference championship results give the actual scoring five. This is the single highest-value missing input.</li>
+      <li><strong>Confirm the CS degree</strong> at every school marked <span class="cs-no">Confirm</span> — a BA in applied AI is not a BS in computer science.</li>
+      <li><strong>Email coaches directly.</strong> He can contact any coach in any division at any time; the NCAA contact restrictions only limit when coaches may initiate.</li>
+      <li><strong>Ask about lab scheduling.</strong> Required CS labs collide with a 3:00–5:30 practice window. Big schools run multiple sections; small ones may run one.</li>
+      <li><strong>Model net cost, not scholarship.</strong> D1/D2 men's track shares 12.6 scholarship equivalencies across 35–45 athletes. Academic merit aid frequently beats athletic aid outright, and D3 offers no athletic aid at all.</li>
+    </ol>
+    <p><a href="methodology.html">Full methodology, time conversions, and data caveats →</a></p>
+  </div>
+
+</main>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('index');
+
+document.getElementById('legend-slot').innerHTML = tierLegend();
+
+const n = (f) => SCHOOLS.filter(f).length;
+document.getElementById('k-total').textContent  = SCHOOLS.length;
+document.getElementById('k-target').textContent = n(s => s.tier === 'target');
+document.getElementById('k-nodata').textContent = n(s => s.b5000 == null);
+document.getElementById('k-g').textContent = n(s => s.metro === 'greenville');
+document.getElementById('k-n').textContent = n(s => s.metro === 'nyc');
+document.getElementById('k-c').textContent = n(s => s.metro === 'chicago');
+
+document.querySelector('#removed tbody').innerHTML = REMOVED.map(r => `<tr>
+  <td><span class="school">${r.name}</span></td>
+  <td>${METROS[r.metro].label}</td>
+  <td>${r.div}</td>
+  <td class="rownote" style="max-width:60ch">${r.why}</td></tr>`).join('');
+
+document.getElementById('nw-why').innerHTML = NO_PROGRAM[0].why;
+
+document.querySelector('#outside tbody').innerHTML = OUTSIDE_RADIUS.map(r => `<tr>
+  <td><span class="school">${r.name}</span></td>
+  <td class="num">${r.mi}</td>
+  <td>${r.div}</td>
+  <td class="rownote" style="max-width:50ch">${r.why}</td></tr>`).join('');
+
+initTable();
+initChart();
+</script>
+</body>
+</html>
