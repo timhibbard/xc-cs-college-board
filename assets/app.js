@@ -356,7 +356,7 @@ function initMap(metro) {
   /* Fit the shape AND every pin, not just the shape: Long Island runs well past the circle,
      and several Greenville pins sit on estimated mileage that can land outside the ring. */
   const bounds = ring.getBounds();
-  [...SCHOOLS, ...REMOVED, ...NO_PROGRAM]
+  [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM]
     .filter(s => s.metro === metro && s.lat != null)
     .forEach(s => bounds.extend([s.lat, s.lon]));
   map.fitBounds(bounds, { padding: [12, 12] });
@@ -374,19 +374,25 @@ function initMap(metro) {
     if (showCut && showCut.checked) {
       extra = [
         ...REMOVED.filter(r => r.metro === metro).map(r => ({ ...r, kind: 'cut' })),
+        ...NO_TRACK.filter(r => r.metro === metro).map(r => ({ ...r, kind: 'notrack' })),
         ...NO_PROGRAM.filter(r => r.metro === metro).map(r => ({ ...r, kind: 'none' })),
       ];
     }
 
-    const GLYPH = { cut: '✕', none: '⊘' };
-    const KIND = { cut: 'Cut &mdash; he would be a walk-on', none: 'No men&rsquo;s program' };
+    const GLYPH = { cut: '✕', notrack: '⊗', none: '⊘' };
+    const KIND = {
+      cut: 'Cut &mdash; he would be a walk-on',
+      notrack: 'Cross country but no men&rsquo;s track',
+      none: 'No men&rsquo;s program',
+    };
+    const OFF = new Set(['cut', 'notrack', 'none']);
 
     declutter([...kept, ...extra]).forEach(s => {
       const glyph = GLYPH[s.kind] ?? TIERS[s.kind].glyph;
       const g = s.b5000 != null ? gapOf(s) : null;
 
-      const body = s.kind === 'cut' || s.kind === 'none'
-        ? `<div class="mp-meta">${s.div ?? ''}</div><div class="mp-why">${s.why}</div>`
+      const body = OFF.has(s.kind)
+        ? `<div class="mp-meta">${s.div ?? ''}${s.conf ? ' ' + s.conf : ''}${s.mi != null ? ' &middot; ' + s.mi + ' mi' : ''}</div><div class="mp-why">${s.why}</div>`
         : `<div class="mp-meta">${s.city} &middot; ${s.div} ${s.conf} &middot; ${s.mi} mi</div>
            ${s.xc
              ? `<div class="mp-line">In their scoring seven he is <b>#${s.xc.slot}</b>, ${s.xc.v7 <= 0 ? Math.abs(s.xc.v7).toFixed(0) + 's inside' : s.xc.v7.toFixed(0) + 's outside'} their 7th man</div>`
@@ -402,7 +408,7 @@ function initMap(metro) {
           iconSize: [22, 22], iconAnchor: [11, 11],
         }),
         title: s.name,
-        alt: `${s.name} — ${s.kind === 'cut' || s.kind === 'none' ? 'excluded' : TIERS[s.kind].label}`,
+        alt: `${s.name} — ${OFF.has(s.kind) ? 'excluded' : TIERS[s.kind].label}`,
       }).addTo(layer).bindPopup(
         `<div class="mp"><div class="mp-name">${s.name}</div>
          <div class="mp-tier pin-${s.kind}-txt">${glyph} ${KIND[s.kind] ?? TIERS[s.kind].label}</div>

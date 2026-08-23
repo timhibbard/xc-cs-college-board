@@ -2,27 +2,40 @@
 
 A research board for a high school distance runner who wants to run cross country and
 track in college while studying computer science. It covers three metro areas, lists the
-colleges inside each radius that sponsor men's cross country, and ranks them by
-the one question that predicts whether a distance runner actually develops:
+colleges inside each radius that sponsor **both** men's cross country and men's outdoor track, and
+ranks them by the one question that predicts whether a distance runner actually develops:
 
 > **Where would he finish inside this team's scoring seven?**
 
 **Live site:** https://timhibbard.github.io/xc-cs-college-board/
 
-**131 schools on the board, 12 cut as walk-on, 8 with no men's program to join.** All 151 carry
-federal cost and admissions data, a detail page, and **the name and contact details of the coach who
-would recruit him**; **129 of the 131 have real cross country depth data** — it was 37 — and eleven
-of those also have a map of every meet the program attended last season. Only Calumet College and
-Shorter still sit at *Verify*, which means **unmeasured, not borderline**.
+**116 schools on the board, 12 cut as walk-on, 15 with cross country but no men's track, 8 with no
+men's program to join.** All 143 that have a men's program carry federal cost and admissions data, a
+detail page, and **the name and contact details of the coach who would recruit him**; **115 of the 116 have real cross country
+depth data** — it was 37 — **all 116 have their 2026 conference-championship 1500 field** with his
+projected 4:01 dropped into it, and eleven also have a map of every meet the program attended last
+season. Only Shorter still sits at *Verify*, which means **unmeasured, not borderline**.
 
-Measuring all of them produced one finding that changed the method: **43 of the 129 measured
+**The board requires both sports.** He wants to run cross country *and* track, so a program that
+sponsors one without the other cannot give him both: **fifteen schools came off the board** for that
+reason alone, ten of them in New York, and one of them — **Mercer** — was sitting at *Target* tier
+with his 4th man 185 miles from home. Each was checked twice: the sport list the school publishes
+itself, and TFRRS for any 2026 men's outdoor mark at any distance. All fifteen keep their pages and
+their cross country numbers, because the numbers are true and it is the rule that removed them.
+
+Measuring all of them produced one finding that changed the method: **36 of the 115 measured
 programs never finished seven runners in any 2025 championship race**, so there is no 7th man to
 compare against. Those schools are compared to the team's *last* finisher instead and say so, and
-the five that could not finish the scoring five — Roosevelt, Benedict, John Jay, Mount Saint Vincent
-and York College (CUNY) — are held at *Caution* regardless of times.
+the three that could not finish the scoring five — Roosevelt, Benedict and York College (CUNY) — are
+held at *Caution* regardless of times.
+
+The 1500 data says the same thing a second way: at **57 of the 110 programs that raced a 1500 in
+2026** his projected 4:01 would be their fastest man in the event, and the median program's best 1500
+went 4:01.2. In the other direction he would have made the conference final at **104 of 116**
+championships and scored — top eight — at **64**.
 
 An earlier version of this file claimed the board listed *every* college inside each radius that
-sponsors men's cross country. **That was false**, and the correction is the largest single change
+sponsors men's cross country. **That was false**, and the correction is the second largest change
 in the project: rebuilding the candidate lists conference by conference from each conference's own
 men's-sponsored-sports tables added 72 schools, 40 of which had been inside the original Greenville
 radius the whole time — including one 25 driving miles from home. NAIA and NCCAA coverage is
@@ -63,6 +76,16 @@ data yet, so the tier is a placeholder), **Caution** (he arrives at or ahead of 
 now means **unmeasured and nothing else**; an earlier version also used it for measured schools with
 a borderline slot, which made the tier impossible to read.
 
+**The 1500 does not move a tier.** Tiers come from cross country and nothing else. Every school page
+also carries the full 1500 field from that program's 2026 outdoor conference championship — his
+projected 4:01 dropped in on time, ranked against every man who ran the event at the meet with prelims
+included, plus the program's own 1500 depth chart for the season and whether he would have made the
+final. It is a second independent read on the same question, and it disagrees with the cross country
+read often enough to be worth having: NJIT and Queens (Charlotte) are both *Target* on depth and would
+have missed their conference 1500 final. Championship finals are frequently tactical — the Atlantic 10
+final was won in 4:03.61 while a prelim went 3:47.69 — so the whole-field placing is the headline and a
+tactical final is flagged as one rather than read as a level.
+
 Cross country times are also **course-corrected** where at least three teams cross-check the
 same course against a calibrated one. The 212 races span roughly fifty courses and exactly two
 cleared that bar, so most schools rest on an uncorrected time — the largest remaining source of
@@ -71,11 +94,11 @@ target tier, which is documented rather than quietly fixed.
 
 ## Metros
 
-| Metro | Radius | Schools | Target tier | With XC data | No 7th man | Source document |
-|---|---|---|---|---|---|---|
-| Greenville, SC | 250 mi | 81 | 23 | 80 | 25 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
-| New York City | 20 mi + all of Long Island | 38 | 4 | 38 | 13 | [`docs/new-york-city.md`](docs/new-york-city.md) |
-| Chicago | 20 mi | 12 | 1 | 11 | 5 | [`docs/chicago.md`](docs/chicago.md) |
+| Metro | Radius | Schools | Target tier | With XC data | No 7th man | No men's track (off board) | Source document |
+|---|---|---|---|---|---|---|---|
+| Greenville, SC | 250 mi | 77 | 22 | 76 | 23 | 4 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
+| New York City | 20 mi + all of Long Island | 28 | 4 | 28 | 8 | 10 | [`docs/new-york-city.md`](docs/new-york-city.md) |
+| Chicago | 20 mi | 11 | 1 | 11 | 5 | 1 | [`docs/chicago.md`](docs/chicago.md) |
 
 The New York rule is a shape, not a circle: 20 driving miles from Midtown **plus all of Nassau and
 Suffolk County** regardless of distance, because Long Island is a commutable corridor while
@@ -105,7 +128,9 @@ rather than edited out, because the pattern is the useful part:
   radius was recommended specifically to reach it. Its roster then showed a 13:45 5000 and a 95-second
   gap. **Cut**, and now out of range as well.
 
-The fifth withdrawal is the completeness claim at the top of this file, and it is the biggest one.
+The fifth withdrawal is the completeness claim at the top of this file. The sixth is larger than any
+of them and is a rule rather than a school: the board now requires **both** cross country and outdoor
+track, which took fifteen schools off it including target-tier **Mercer**.
 
 **Two schools were also cut in error and are back on the board.** Clemson and Columbia were both
 removed on their track marks alone — a 14:36 and a 13:43 5000 read as out of reach. Their actual
@@ -114,7 +139,8 @@ championship results say otherwise: he would have been Clemson's 8th man at the 
 regional. Clemson returns at *Deep*, Columbia at *Target*. Cutting a school on one fast 5000 is the
 same mistake as recommending one on it.
 
-Also structural: **eight schools on these maps have no men's program to join.** Northwestern sponsors
+Also structural: **eight schools on these maps have no men's program to join at all** — a different
+finding from the fifteen that sponsor cross country without track. Northwestern sponsors
 no men's cross country or men's track and field at all — men's track is listed as defunct, only the
 women's programs exist, which is worth stating plainly because Northwestern is the obvious first
 thought for Chicago plus elite CS. Georgia State, NYIT, Montclair State, William Paterson and
@@ -171,8 +197,10 @@ coverage and about half. **This is the fastest-decaying data on the site** — s
 and these were read in August 2026, so the link matters more than the name.
 
 **Individual athletes are not named anywhere.** Race tables show times in finishing order as
-"Their #1 … Their #7". The times are what the comparison needs; the identities are not, and this
-is a public page. Every race names the meet and date so any of it can be checked at source. Coaches
+"Their #1 … Their #7", and the 1500 tables the same way. The times are what the comparison needs; the
+identities are not, and this is a public page. Names were used transiently to de-duplicate one man's
+several 1500 marks and then discarded. Every race names the meet and date and links its results page,
+so any of it can be checked at source. Coaches
 *are* named, which is not an inconsistency: a head coach is a public professional whose employer
 publishes their name and work email in order to be contacted.
 
@@ -195,7 +223,8 @@ docs/*.md           the long-form research documents, one per metro
 
 Every school name in every table and every map popup links to `school.html?s=<slug>`, which
 renders cost, admissions, CS, track marks, each cross country race with his projection dropped
-into finishing order, a season-colored map of every meet the program attended, a **Who to email**
+into finishing order, the 2026 conference-championship 1500 field with the same projection dropped
+into that, a season-colored map of every meet the program attended, a **Who to email**
 block with the coach's name, title, phone, address and the directory it was read from, and a closing
 table of what on that page is verified and what is not.
 
@@ -251,9 +280,16 @@ not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
 as raw seconds, in order — 212 races across 140 schools; a short race also carries `nfin` and
-`vlast`, the gap to their last finisher), `SCHED` (full season schedules for eleven schools), and
-`VENUES` (meet name → coordinates, with a flag for whether the location was read off the results page
-or inferred from the host).
+`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for all 116 schools: the
+program's season depth chart `d15`, its conference-championship field `cm`, and any postseason rounds
+`post`, read from 39 conference championship result pages plus four postseason pages), `SCHED` (full season schedules
+for eleven schools), and `VENUES` (meet name → coordinates, with a flag for whether the location was
+read off the results page or inferred from the host).
+
+`NO_TRACK` in `assets/data.js` holds the fifteen schools removed under the both-sports rule. They keep
+their complete records — tier, cross country, cost, coach — plus a `why` naming both signals that
+agreed, so the removal is reversible with one line of data if a cross-country-only program ever
+becomes acceptable.
 
 `mi` is approximate **driving** distance from the metro center; `lat`/`lon` are approximate
 main-campus coordinates used only to place a map pin. The two are different measurements, so a

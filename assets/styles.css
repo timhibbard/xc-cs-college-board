@@ -146,6 +146,8 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 44px 0; }
 .badge.verify  { color: #8a6200; }
 .badge.caution { color: var(--critical); }
 .badge.cut     { color: var(--text-secondary); }
+/* Off the board for a reason that is not about level: the sport does not exist there. */
+.badge.notrack { color: var(--text-secondary); }
 :root[data-theme="dark"] .badge.verify,
 :root:where(:not([data-theme="light"])) .badge.verify { color: var(--warning); }
 @media (prefers-color-scheme: light) {
@@ -176,6 +178,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 44px 0; }
 .pin-verify  { background: var(--warning);  color: #2a2000; }
 .pin-caution { background: var(--critical); color: #fff; }
 .pin-cut     { background: var(--muted);    color: #fff; width: 17px; height: 17px; font-size: 9px; }
+.pin-notrack { background: var(--surface-1); color: var(--text-secondary); border-color: var(--muted); width: 19px; height: 19px; font-size: 10px; }
 .pin-none    { background: var(--surface-1); color: var(--text-primary); border-color: var(--baseline); }
 .pin-center  { background: var(--div-blue); color: #fff; }
 .radius-ring { fill: var(--div-blue); fill-opacity: 0.06; stroke: var(--div-blue); stroke-opacity: 0.55; stroke-width: 1.5; stroke-dasharray: 6 5; }
@@ -193,7 +196,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 44px 0; }
 .pin-deep-txt    { color: var(--div-blue); }
 .pin-verify-txt  { color: #8a6200; }
 .pin-caution-txt { color: var(--critical); }
-.pin-cut-txt, .pin-none-txt { color: var(--text-secondary); }
+.pin-cut-txt, .pin-notrack-txt, .pin-none-txt { color: var(--text-secondary); }
 :root[data-theme="dark"] .pin-verify-txt { color: var(--warning); }
 @media (prefers-color-scheme: dark) {
   :root:where(:not([data-theme="light"])) .pin-verify-txt { color: var(--warning); }

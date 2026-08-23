@@ -1,20 +1,31 @@
 # College Search — New York City (20 mile radius + all of Long Island)
 
-XC/Track + Computer Science. Last updated 2026-08-23 (v4 — every school measured, coaches added)
+XC/Track + Computer Science. Last updated 2026-08-23 (v5 — both sports required, 1500 championship depth added)
 
-> **Every school in this metro now has a 2025 cross country result.** Thirty were sitting at
-> *Verify* — unmeasured — at the last revision, and all thirty have been measured. That did not
-> soften the picture, it hardened it: **twenty-seven of the thirty-eight schools here would have him
-> as their #1**, thirteen programs never finished seven runners, and three could not finish
-> five. Two schools moved the other way and both matter: **Columbia is back on the board** at
-> target tier after being cut on a track mark, and **Seton Hall's open question is closed** — he
-> would have been their 5th man at the Big East. Every school page now also carries the coach's
-> name, email, title and office phone. See §2.
+> **Ten schools have left this board because they field cross country and no men's track.** He wants
+> to run both seasons, so the board now requires both sports — and this metro takes by far the largest
+> cut of the three: **ten of the thirty-eight schools here sponsor men's cross country with no men's
+> indoor or outdoor track**, among them three CUNY colleges and seven of the nine Skyline Conference
+> programs. Net count: **28**. Not one of the ten was a target, so no running fit was lost; three of
+> them were among the cheapest schools on the entire board, so the money picture is worse than it was.
+> See §2h.
+>
+> **Every remaining school now carries its 2026 conference-championship 1500** — the full field, the
+> men that team entered, and where a **4:01** would have placed. He would be the **fastest 1500 man at
+> 18 of the 28**, would have made the conference final at **27 of 28**, and would have **scored** in
+> **21** of those finals. The median program's best 1500 here is **4:07.8**, nearly seven seconds
+> *slower* than his projection, which is the sharpest statement of this metro's problem yet available.
+> See §2i.
+>
+> Every school in this metro has a 2025 cross country result and a named coach. **Seventeen of the
+> twenty-eight would have him as their #1**, eight programs never finished seven runners, and one could
+> not finish five. Two schools still matter in the other direction: **Columbia is on the board** at
+> target tier after being cut on a track mark, and **Seton Hall's open question is closed** — he would
+> have been their 5th man at the Big East.
 >
 > The ring is unchanged: **20 driving miles from Midtown plus all of Nassau and Suffolk County**
 > regardless of distance — a shape, not a circle, because Long Island is a commutable corridor
-> while Westchester and central New Jersey at the same distance are a different decision. Net
-> count: **38**.
+> while Westchester and central New Jersey at the same distance are a different decision.
 
 Live version, with per-school pages, per-race results and meet maps:
 <https://timhibbard.github.io/xc-cs-college-board/new-york.html>
@@ -59,42 +70,51 @@ simply out of range.
 
 Honest accounting: the radius change cost **one Target, one Deep, and eight unknowns**.
 
-### 2b. The finding that changes this metro: ten CUNY colleges
+### 2b. The finding that changed this metro: ten CUNY colleges, seven of which survive
 
 Filling in the CUNY system added eight programs — **Hunter, Brooklyn, City College (CCNY), Lehman,
 John Jay, York, Medgar Evers** and, at Division 2, the **College of Staten Island**. With **Baruch**
 and **Queens College**, which were already here, that is **ten CUNY colleges in range, every one
 sponsoring men's cross country, every one granting a bachelor's in computer science, and every one
-under $6,000 in federal average net price.**
+under $6,000 in federal average net price.** Three of the ten — **Baruch, Brooklyn and John Jay** —
+turned out to sponsor no men's track at all and have since left the board (§2h). Seven remain, and the
+table below keeps all ten so the finding stays legible; the three that left are marked.
 
-| CUNY college | Div | Mi | CS share | Net cost/yr | Gap to their #1 | Finishers |
-|---|---|---|---|---|---|---|
-| Hunter College | D3 | 2 | 9.9% | **$2,984** | he is 121s faster | 7 |
-| Baruch College | D3 | 5 | 9.6% | $3,033 | 178s faster | 7 |
-| Brooklyn College | D3 | 10 | 10.1% | $3,103 | 195s faster | 7 |
-| Lehman College | D3 | 11 | 8.2% | $3,148 | **699s faster** | 7 |
-| John Jay | D3 | 2 | 7.4% | $3,203 | — | **3** |
-| CCNY | D3 | 6 | 4.9% | $3,776 | 479s faster | 6 |
-| Queens College | D2 | 10 | 10.7% | $4,195 | 138s faster | 7 |
-| York College | D3 | 12 | 6.3% | $4,456 | — | **4** |
-| College of Staten Island | D2 | 16 | 7.8% | $5,579 | 257s faster | 7 |
-| Medgar Evers | D3 | 7 | 4.8% | $5,718 | 719s faster | 5 |
+| CUNY college | Div | Mi | CS share | Net cost/yr | Gap to their #1 | Finishers | On the board |
+|---|---|---|---|---|---|---|---|
+| Hunter College | D3 | 2 | 9.9% | **$2,984** | he is 121s faster | 7 | yes |
+| Baruch College | D3 | 5 | 9.6% | $3,033 | 178s faster | 7 | **no — no men's track** |
+| Brooklyn College | D3 | 10 | 10.1% | $3,103 | 195s faster | 7 | **no — no men's track** |
+| Lehman College | D3 | 11 | 8.2% | $3,148 | **699s faster** | 7 | yes |
+| John Jay | D3 | 2 | 7.4% | $3,203 | — | **3** | **no — no men's track** |
+| CCNY | D3 | 6 | 4.9% | $3,776 | 479s faster | 6 | yes |
+| Queens College | D2 | 10 | 10.7% | $4,195 | 138s faster | 7 | yes |
+| York College | D3 | 12 | 6.3% | $4,456 | — | **4** | yes |
+| College of Staten Island | D2 | 16 | 7.8% | $5,579 | 257s faster | 7 | yes |
+| Medgar Evers | D3 | 7 | 4.8% | $5,718 | 719s faster | 5 | yes |
 
 Hunter and Brooklyn each award about **10% of their bachelor's degrees in computer science** — a
-higher share than Fordham, NYU or any D1 in this metro except NJIT.
+higher share than Fordham, NYU or any D1 in this metro except NJIT. Brooklyn is one of the three that
+left, which is what the both-sports rule costs here: it removes schools on a sport question, not on
+academics or price.
 
-**And all ten have now been measured, which settles the question the previous version of this
-document left open — in the wrong direction.** The bet was that at CUNYAC level he would land
-comfortably inside a scoring seven. In fact **he would be the #1 runner at all ten**, and not
-narrowly: two minutes clear at Hunter, three at Baruch and Brooklyn, and **eleven and a half minutes
-clear at Lehman**. Two of them — John Jay and York — could not finish the five runners a team needs
-to score, and Medgar Evers finished exactly five. Every one of the ten is *Caution*.
+**All ten were measured, which settles the question the previous version of this document left open —
+in the wrong direction.** The bet was that at CUNYAC level he would land comfortably inside a scoring
+seven. In fact **he would be the #1 runner at all ten**, and not narrowly: two minutes clear at Hunter,
+three at Baruch and Brooklyn, and **eleven and a half minutes clear at Lehman**. Of the seven still on
+the board, **York College could not finish the five runners a team needs to score** and Medgar Evers
+finished exactly five. Every one of the ten is *Caution*.
 
-That is a real loss, because on cost these were the ten best schools on the entire board. The honest
-reading is that CUNY men's cross country is a participation program rather than a development one,
-and the whole argument of this board is that a runner with nobody ahead of him does not improve. If
-the money is decisive anyway, Hunter is still the least bad of them — a 384-second seven is thin, but
-its #1 is only two minutes off, which is the closest any CUNY comes.
+The 1500 says the same thing in the other season, and more bluntly: **the CUNYAC 1500 championship was
+won in 4:28.4**, and Hunter's fastest man all year ran **4:31.6**. His projected 4:01 would have won
+that conference title by twenty-seven seconds (§2i).
+
+That is a real loss, because on cost these were the ten cheapest schools on the entire board and the
+seven that remain still are. The honest reading is that CUNY men's cross country is a participation
+program rather than a development one, and the whole argument of this board is that a runner with
+nobody ahead of him does not improve. If the money is decisive anyway, Hunter is still the least bad of
+them — a 384-second seven is thin, but its #1 is only two minutes off, which is the closest any CUNY
+comes.
 
 **Read that net price with care.** It is an average over a student body that is overwhelmingly
 in-state and living at home. A South Carolina applicant pays the out-of-state rate — about
@@ -159,38 +179,144 @@ Cutting a school on one fast 5000 is the same error as recommending one on it �
 produced the Hofstra and Loyola reversals, run in the opposite direction. It is the single largest
 correction in this revision.
 
-### 2f. Thirteen programs here never finished seven runners
+### 2f. Eight programs here never finished seven runners
 
 A cross country team scores five and travels seven, and the 7th man is the number this whole document
-ranks on. At thirteen of the thirty-eight schools here **there is no 7th man**: they never got seven
+ranks on. At eight of the twenty-eight schools here **there is no 7th man**: they never got seven
 men to the finish of a championship race in 2025. Those rows show a blank in the *vs their 7th*
 column and their pages compare him to the team's last finisher instead.
 
-**CCNY, Caldwell, John Jay, LIU, Manhattan, Medgar Evers, Molloy, Mount Saint Vincent, Sarah
-Lawrence, St. Joseph's Univ NY, SUNY Old Westbury, Wagner, York College (CUNY).**
+**CCNY, Caldwell, LIU, Manhattan, Medgar Evers, Molloy, Wagner, York College (CUNY).**
 
-Three of them could not finish the scoring five: **John Jay finished three, York College four, Mount
-Saint Vincent four.** That is a roster in trouble rather than a team to join, and all three are held
-at Caution no matter how the times read. Worth noting which schools are *not* on this list: Fordham,
+It was thirteen in v4. Five of the thirteen — John Jay, Mount Saint Vincent, Sarah Lawrence, St.
+Joseph's Univ NY and SUNY Old Westbury — have since left the board for having no men's track (§2h), so
+this number improved for a reason that has nothing to do with running.
+
+**One of the eight cannot finish the scoring five: York College finished four**, and Medgar Evers
+finished exactly five. That is a roster in trouble rather than a team to join, and both are held at
+Caution no matter how the times read. Worth noting which schools are *not* on this list: Fordham,
 Columbia, NJIT, Seton Hall, Stony Brook and NYU all fielded a full seven, which is part of what
 separates them.
 
 ### 2g. Net effect
 
-**Thirty-eight schools, four of them target tier** — Columbia, Fordham, NJIT and Seton Hall, and all
+**Twenty-eight schools, four of them target tier** — Columbia, Fordham, NJIT and Seton Hall, and all
 four now rest on cross country results rather than track marks. **Nothing is at Verify any more**:
 every school in this metro has been measured. That is the good news and it comes with the bad, which
-is that **thirty-two of the thirty-eight are Caution** and twenty-seven of those would have him as
+is that **twenty-two of the twenty-eight are Caution** and seventeen of those would have him as
 the team's #1. This metro is unambiguously the strongest of the three on cost and the weakest on
-running fit, and the measurement sweep widened that gap rather than closing it — the cheapest schools
-here are also the thinnest.
+running fit, and neither the measurement sweep nor the both-sports rule closed that gap — the cheapest
+schools here were also the thinnest, and three of them are no longer schools this board can recommend
+at all.
+
+### 2h. Both sports, or off the board
+
+He wants to run **cross country and track**, so a program that sponsors only one of them is not a fit
+regardless of how the times read. Applying that rule cost this metro **ten schools**, more than the
+other two boards combined.
+
+The test is two signals that have to agree: the school's **own rendered sport list** must contain a
+men's track and field page, and **TFRRS** must hold at least one 2026 men's outdoor mark for the
+program. Cross country only, on both signals, means off the board.
+
+| School | Div | Conf. | Mi | Tier it held | What the check found |
+|---|---|---|---|---|---|
+| **Baruch College** | D3 | CUNYAC | 5 | Caution | Men's and women's cross country in a 25-sport list, no track and field of any kind, no 2026 outdoor marks. |
+| **Brooklyn College** | D3 | CUNYAC | 10 | Caution | 20 sports, cross country for both sexes, no track and field, no 2026 outdoor marks. |
+| **John Jay** | D3 | CUNYAC | 2 | Caution | 26 sports, no track page for either sex. Two miles from Midtown, which is what makes it worth naming. |
+| **Mount Saint Vincent** | D3 | Skyline | 12 | Caution | Sponsors cross country — this board holds a 2025 result and a coach — and no track page for either sex. |
+| **Sarah Lawrence** | D3 | Skyline | 17 | Caution | 25 sports, cross country only, no 2026 outdoor marks. |
+| **St. Joseph's Long Island** | D3 | Skyline | 55 | Caution | One combined cross country page and no track and field anywhere in a 36-sport list. |
+| **St. Joseph's Univ NY** | D3 | Skyline | 10 | Caution | 21 sports, cross country only, no 2026 outdoor marks. |
+| **SUNY Maritime** | D3 | Skyline | 13 | Caution | The men's track URL redirects to the athletics homepage; the 27-sport list has no track and field. An older TFRRS season had supplied a 4:44 1500 and a 21:41 5000 here — both dropped, because there is no current men's program to attribute them to. |
+| **SUNY Old Westbury** | D3 | Skyline | 25 | Caution | 26 sports, cross country only, no 2026 outdoor marks. |
+| **Yeshiva University** | D3 | Skyline | 5 | Caution | 25 sports, cross country for both sexes, no track and field, no 2026 outdoor marks. |
+
+**All ten were at Caution**, so nothing that survived a measurement was lost — the running was already
+thin at every one of them. What was lost is cheap: **Baruch ($3,033), Brooklyn ($3,103) and John Jay
+($3,203)** were three of the five cheapest schools on the entire board, and their removal leaves the
+CUNY cost argument standing on seven colleges instead of ten (§2b).
+
+**Two patterns are worth naming.** The ten are all **D3**, and **seven of the nine Skyline Conference
+programs** in range are among them — Skyline sponsors cross country broadly and track narrowly, which
+is a conference-level fact rather than ten independent coincidences. Only Farmingdale State and the
+Merchant Marine Academy come out of that conference with both sports.
+
+**They keep their pages.** Each of the ten still has a detail page with its 2025 result, coach and
+cost, marked with what the check found, because a removal that disappears is a removal nobody can
+audit. Board-wide the rule moved **15 schools**, and **ten of them are here** — against four in the
+Greenville ring and one in Chicago.
+
+### 2i. The 1500 in May
+
+Cross country answers the autumn; the 1500 answers May. For **all 28 schools** the board now records
+that team's **2026 conference-championship 1500** — the whole field, the men that team actually
+entered, the winning time, and the time that cut into the final — which is **15 conference meets** in
+this metro, plus two postseason rounds: the **IC4A/ECAC Outdoor Championships** (Fordham, Wagner, LIU
+and Saint Peter's all sent someone) and the **ECAC Division 3 Outdoor Championships** (Kean and
+Rutgers–Newark).
+
+| For a 4:01 | Count |
+|---|---|
+| Schools that raced a 1500 in 2026 | **27 of 28** |
+| He would be their **fastest man** | **18 of 27** |
+| He would be their **#3 or better** | 21 of 27 |
+| Makes the conference final on time | **27 of 28** |
+| Would have **scored** in that final (top 8) | 21 of 28 |
+| The school **entered nobody** in its own conference 1500 | 5 of 28 |
+| No 1500 run anywhere in 2026 | 1 of 28 — York College (CUNY) |
+
+**The median program's best 1500 in this metro is 4:07.8.** Read against the Greenville ring's 4:00.7
+that is the whole difference between the two boards in one number: the median New York program's
+fastest miler is nearly seven seconds slower than a high-school junior's projection, where the median
+Greenville program's is three tenths faster.
+
+Where the schools worth an email sit. The "of N" figures include his projection dropped into the field,
+and they compare every man who ran the event at that meet on time, prelims included:
+
+| School | Their fastest | His slot on their chart | Conference field | Their final |
+|---|---|---|---|---|
+| Columbia | 3:39.8 | #9 of 12 | 24th of 26, Ivy | **in by 0.5s**, 11th of 12 |
+| Fordham | 3:49.4 | #5 of 15 | 32nd of 40, Atlantic 10 | in by 9.8s — tactical, see below |
+| NJIT | 3:49.9 | #5 of 5 | 26th of 35, America East | **misses by 5.2s** |
+| Seton Hall | 4:01.3 | **#1 of 8** | 21st of 21, Big East | in by 2.9s, 12th of 13 |
+| Stony Brook | 3:45.4 | #8 of 13 | 19th of 22, CAA | in by 6.7s, 11th of 13 |
+| NYU | 3:49.3 | #8 of 14 | 16th of 25, UAA | in by 24.0s, 16th of 25 |
+| Stevens Institute | 3:58.1 | **#2 of 21** | 5th of 18, MAC | in by 18.8s, 5th of 18 |
+
+**Seton Hall is the one to read twice.** It is a Big East target on cross country and **its fastest
+1500 all season was 4:01.3** — three tenths behind his projection — and it **entered nobody at all in
+the Big East 1500**. A 4:01 freshman would be their best miler on arrival. That is either an
+opportunity or the same warning the framing rule gives everywhere else, and the coach is the only
+person who can say which.
+
+**Columbia's margin is half a second.** He clears the Ivy final cut by 0.5 seconds and would be 11th
+of 12 in it, behind a 3:38.3 winner. Columbia is the best school on this board and its 1500 is a
+national-level event; both facts are true at once.
+
+**Fordham's final needs the same caveat as Davidson's.** The Atlantic 10 final was won in 4:03.6, slower
+than the 3:47.7 run in the rounds that fed it, so a placing inside it describes a tactical race rather
+than a level. The 32nd-of-40 figure on time is the honest read.
+
+**NJIT is the only school in this metro whose conference final is out of reach**, by 5.2 seconds — and
+it is the target with the best CS department on the entire board. It also entered only one man in the
+America East 1500, which is the roster question §7 already flags.
+
+Two schools' 1500 depth reads better than their cross country: **Stevens Institute** (#2 of 21 men,
+5th of 18 in the MAC) and **Wagner**, which took two men to IC4A. And five schools entered nobody in
+their own conference 1500 — **Seton Hall, Fairleigh Dickinson, Caldwell, St. Thomas Aquinas and York
+College (CUNY)** — one of them a target.
+
+The method — how a championship page is read, why prelim times count, and why the decathlon's 1500 is
+excluded — is in `../methodology.html` §7. Individual college athletes are not named anywhere in this
+project; the 1500 fields are recorded as times only.
 
 ## 3. How to read the numbers below
 
 | Column | What it means |
 |---|---|
 | **XC slot** | where his projection would have finished inside their top seven, averaged over every 2025 race on file. 1 = ahead of their #1. |
-| **vs their 7th** | seconds between his projection and their 7th man. `+35s` = 35 seconds *outside* the seven; `−12s` = 12 seconds *inside* it. **Blank at the thirteen programs that never finished seven** (§2f), whose pages compare him to the team's last finisher instead. |
+| **vs their 7th** | seconds between his projection and their 7th man. `+35s` = 35 seconds *outside* the seven; `−12s` = 12 seconds *inside* it. **Blank at the eight programs that never finished seven** (§2f), whose pages compare him to the team's last finisher instead. |
 | **1–7 spread** | seconds from their #1 to their #7 — the most course-independent number here, because it compares a team only to itself. Wide = a soft back end to slot into. Tight = no room (see Iona, at 0.8 seconds). On a short squad it is first-to-last, and blank where fewer than five finished, because that is not a team result. |
 | **Tier** | Target = clean 4th–9th man fit · Deep = just outside the travel squad · Verify = **unmeasured**, no cross country data yet · Caution = he arrives at or ahead of their #1. **No school in this metro is at Verify any more.** |
 | **Net cost/yr** | federal average net price after grant aid, from the College Scorecard — **not** sticker price. Out-of-state rates are used at public schools, since he is a South Carolina resident. |
@@ -252,47 +378,30 @@ in this division is real; the teams it would buy him into are not deep enough to
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **[NYU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nyu)** | Manhattan NY | 0 | UAA | ✅ 10.1% | 1480–1560 | 9% | $37,050 | 8 | +35s | 42s | Deep | [Nic Jacobsen](mailto:nnj219@nyu.edu) |
-| **[Baruch College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=baruch-college)** | Manhattan NY | 5 | CUNYAC | ✅ 9.6% | 1100–1400 | 48% | $3,033 | 1 | −559s | 381s | Caution | [Angeoline Piguave-Cowan](mailto:Angeoline.Piguave-Cowan@baruch.cuny.edu) |
-| **[Brooklyn College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=brooklyn-college)** | Brooklyn NY | 10 | CUNYAC | ✅ 10.1% | 950–1340 | 58% | $3,103 | 1 | −1269s | 1074s | Caution | [Eric Schrick](mailto:eric.schrick@brooklyn.cuny.edu) |
 | **[CCNY](https://timhibbard.github.io/xc-cs-college-board/school.html?s=ccny)** | Manhattan NY | 6 | CUNYAC | ✅ 4.9% | 1070–1430 | 60% | $3,776 | 1 | — | 895s | Caution | [Joseph Benson](mailto:jbenson@ccny.cuny.edu) |
 | **[Farmingdale State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=farmingdale-state)** | Farmingdale NY | 35 | Skyline | ✅ 9.4% | 1040–1240 | 63% | $10,867 | 1 | −353s | 279s | Caution | [Daniela Georgieva](mailto:georgid@farmingdale.edu) |
 | **[Hunter College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=hunter-college)** | Manhattan NY | 2 | CUNYAC | ✅ 9.9% | 1100–1420 | 54% | $2,984 | 1 | −543s | 384s | Caution | [Marvin Hawkins](mailto:marvin.hawkins@hunter.cuny.edu) |
-| **[John Jay](https://timhibbard.github.io/xc-cs-college-board/school.html?s=john-jay)** | Manhattan NY | 2 | CUNYAC | ✅ 7.4% | 930–1220 | 57% | $3,203 | 1 | — | — | Caution | [Juan Martes](mailto:jmartes@jjay.cuny.edu) |
 | **[Kean University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kean-university)** | Union NJ | 20 | NJAC | ✅ 5.6% | 930–1150 | 76% | $12,447 | 1 | −470s | 351s | Caution | [Danielle Todman](mailto:dtodman@kean.edu) |
 | **[Lehman College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lehman-college)** | Bronx NY | 11 | CUNYAC | ✅ 8.2% | 850–1150 | 57% | $3,148 | 1 | −1848s | 1150s | Caution | [Michael Francis](mailto:Michael.Francis@lehman.cuny.edu) |
 | **[Medgar Evers](https://timhibbard.github.io/xc-cs-college-board/school.html?s=medgar-evers)** | Brooklyn NY | 7 | CUNYAC | ✅ 4.8% | 850–1020 | 86% | $5,718 | 1 | — | 639s | Caution | [Hugh Reid](mailto:Hugh.Reid49@mec.cuny.edu) |
 | **[Merchant Marine Acad.](https://timhibbard.github.io/xc-cs-college-board/school.html?s=merchant-marine-acad)** | Kings Point NY | 20 | Skyline | ❌ none | 1110–1300 | 34% | $6,174 | 1.5 | −212s | 206s | Caution | [Kayla Koelbel](mailto:koelbelk@usmma.edu) |
-| **[Mount Saint Vincent](https://timhibbard.github.io/xc-cs-college-board/school.html?s=mount-saint-vincent)** | Bronx NY | 12 | Skyline | ❌ none | 1011–1178 | 85% | $21,696 | 1 | — | — | Caution | [Kevin Carbon](mailto:kevin.carbon@umsv.edu) |
 | **[Rutgers–Newark](https://timhibbard.github.io/xc-cs-college-board/school.html?s=rutgers-newark)** | Newark NJ | 13 | NJAC | ✅ 6.0% | not reported | 71% | $19,703 | 1 | −932s | 695s | Caution | [Joel Williams](mailto:Joel.williams@rutgers.edu) |
-| **[Sarah Lawrence](https://timhibbard.github.io/xc-cs-college-board/school.html?s=sarah-lawrence)** | Bronxville NY | 17 | Skyline | ❌ none | 1240–1430 | 62% | $41,437 | 1 | — | 198s | Caution | *vacant* — [athletics@sarahlawrence.edu](mailto:athletics@sarahlawrence.edu) |
-| **[St. Joseph's Long Island](https://timhibbard.github.io/xc-cs-college-board/school.html?s=st-joseph-s-long-island)** | Patchogue NY | 55 | Skyline | ✅ 4.9% | 1110–1270 | 72% | $19,035 | 1 | −359s | 231s | Caution | [Jim Crowley](mailto:jcrowley@sjny.edu) |
-| **[St. Joseph's Univ NY](https://timhibbard.github.io/xc-cs-college-board/school.html?s=st-joseph-s-univ-ny)** | Brooklyn NY | 10 | Skyline | ✅ 4.9% | 1110–1270 | 72% | $19,035 | 1 | — | 994s | Caution | [Tyler Bay](mailto:tbay@sjny.edu) |
 | **[Stevens Institute](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stevens-institute)** | Hoboken NJ | 3 | MAC | ✅ 21.2% | 1380–1505 | 48% | $41,346 | 2 | −99s | 86s | Caution | [John Kolibab](mailto:jkolibab@stevens.edu) |
-| **[SUNY Maritime](https://timhibbard.github.io/xc-cs-college-board/school.html?s=suny-maritime)** | Throggs Neck NY | 13 | Skyline | ❌ none | 1123–1288 | 72% | $22,367 | 1 | −954s | 469s | Caution | [AJ Batcher](mailto:abatcher@sunymaritime.edu) |
-| **[SUNY Old Westbury](https://timhibbard.github.io/xc-cs-college-board/school.html?s=suny-old-westbury)** | Old Westbury NY | 25 | Skyline | ✅ 2.7% | not reported | 84% | $11,282 | 1 | — | 695s | Caution | [Chris McCoy](mailto:mccoyc@oldwestbury.edu) |
-| **[Yeshiva University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=yeshiva-university)** | Manhattan NY | 5 | Skyline | ✅ 3.3% | 1340–1510 | 56% | $49,965 | 1 | −595s | 299s | Caution | [Miy Mahran](mailto:miy.mahran@yu.edu) |
 | **[York College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=york-college-cuny)** | Jamaica NY | 12 | CUNYAC | ✅ 6.3% | 790–960 | 64% | $4,456 | 1 | — | — | Caution | [Eamon Sheerin](mailto:esheerin901@york.cuny.edu) |
 
-> **The two St. Joseph's entries are separate athletic programs** — Brooklyn and Patchogue — sharing
-> one federal record, because the Long Island campus has no IPEDS entry of its own. The cost and
-> admissions figures are therefore identical by construction, not by coincidence, and they describe
-> the university as a whole.
+> **This table was 21 rows in v4 and is 11 now.** Ten D3 programs — three CUNYs and seven Skyline
+> schools, including both St. Joseph's campuses and Yeshiva — field cross country and no men's track,
+> and left the board under the both-sports rule. They are listed with what the check found in §2h.
 >
-> **Four `❌ none` readings.** Merchant Marine (five marine majors and a service obligation) and
-> Mount Saint Vincent look like genuine absences. SUNY Maritime and Sarah Lawrence are worth one
-> catalog check each before ruling them out, because a CS program housed inside a mathematics
-> department reads as zero in the federal completion file — which is exactly what happened at SUNY
-> Purchase before the radius change removed it.
-
-### Cross country without men's track
-
-**John Jay, Brooklyn College, SUNY Maritime, Sarah Lawrence** and **SUNY Old Westbury** field
-men's cross country with **no men's indoor or outdoor track and field**. For someone who wants both
-seasons that is close to disqualifying, and it appears nowhere in the federal data or in a tier —
-it is recorded in prose on each school's page. Confirm with the coach before any of them goes on a
-shortlist; conference sponsorship tables lag reality by a season. **SUNY Maritime** and the
-**Merchant Marine Academy** carry a second constraint: a regiment and summer sea terms, which is a
-different life, not a detail.
+> **One `❌ none` reading left**, the Merchant Marine Academy: five marine majors and a service
+> obligation, which looks like a genuine absence. The other three `❌ none` schools in v4 — Mount Saint
+> Vincent, SUNY Maritime and Sarah Lawrence — left the board for a different reason (§2h), so the
+> catalog check they needed is moot. The lesson still stands where it applies: a CS program housed
+> inside a mathematics department reads as zero in the federal completion file, which is exactly what
+> happened at SUNY Purchase before the radius change removed it.
+>
+> **The Merchant Marine Academy** carries a constraint that is not in any column: a regiment and summer
+> sea terms, which is a different life, not a detail.
 
 ## 5. Schools removed — he would be a walk-on
 
@@ -322,6 +431,10 @@ acceptable.
 men's cross country program to be removed from. St. John's in particular was carried here as a cut
 against a program that turns out to be the *women's* team. See §2c.
 
+**Nor are the ten schools in §2h.** They were measured, ranked and then removed for sponsoring no
+men's track. Nothing about their running was the reason, which is why they are not cuts — though all
+ten were at Caution, so none of them was a fit either.
+
 ## 6. Tiering
 
 **Target — concentrate effort here (4).** Columbia · Fordham · NJIT · Seton Hall
@@ -330,17 +443,18 @@ against a program that turns out to be the *women's* team. See §2c.
 
 **Verify — unmeasured (0).** Nothing. Every program in this metro has a 2025 cross country result.
 
-**Caution — he arrives at or ahead of their #1 (32).** Everything else: all seven D2 schools, twenty
-of the twenty-one D3 schools, and five of the ten D1s — Fairleigh Dickinson, LIU, Manhattan, Saint
+**Caution — he arrives at or ahead of their #1 (22).** Everything else: all seven D2 schools, ten of
+the eleven D3 schools, and five of the ten D1s — Fairleigh Dickinson, LIU, Manhattan, Saint
 Peter's, Wagner.
 
 **Cut on results (2).** Hofstra · Iona
 
-Thirty-eight schools, **four of them target tier**, none left at Verify. The measurement sweep moved
+Twenty-eight schools, **four of them target tier**, none left at Verify. The measurement sweep moved
 thirty schools out of Verify and only two of them landed above Caution — NJIT and Stony Brook — while
-Columbia came back from the cut list and Wagner went the other way. The honest summary is that this
-metro's board is now fully measured and the answer it gives is narrow: four schools where the running
-works, and a long tail of programs he would immediately lead. That is a better position than the last
+Columbia came back from the cut list and Wagner went the other way, and the both-sports rule then took
+ten more off the board entirely (§2h). The honest summary is that this metro's board is now fully
+measured and the answer it gives is narrow: four schools where the running works, and a shorter but
+still long tail of programs he would immediately lead. That is a better position than the last
 revision, when 81% of the board was a placeholder, but it is not a longer shortlist.
 
 ## 7. Ones worth real effort
@@ -361,7 +475,7 @@ revision, when 81% of the board was a placeholder, but it is not a longer shortl
    the second highest in this metro, and only 4.6% of degrees in CS.
    Email **[Aaron Gordon](mailto:agordon64@fordham.edu)**.
 3. **[NJIT](https://timhibbard.github.io/xc-cs-college-board/school.html?s=njit)** — **33.0% of its
-   bachelor's degrees are in computer science, the highest share on the entire 131-school board**,
+   bachelor's degrees are in computer science, the highest share on the entire 116-school board**,
    it is D1, and at **$16,504 net** it is a third the cost of Fordham. The running now checks out
    too: **their #4 at the America East championship, 84 seconds inside their 7th man**, on a 139
    second spread. That is the deepest slot-plus-margin combination of the four targets. One caveat —
@@ -399,9 +513,10 @@ to **[John Kolibab](mailto:jkolibab@stevens.edu)**.
 ## 8. NYC-specific considerations
 
 **Cost of living is the dominant variable and the spread is now enormous.** Average net price runs
-from **$2,984 at Hunter** to **$49,965 at Yeshiva** — Fordham $44,338, Sarah Lawrence $41,437,
-Stevens $41,346, Felician $40,045 and NYU $37,050 at the top; NJIT $16,504 in the middle; ten CUNY
-campuses under $6,000. That is a six-figure difference over four years and no partial athletic
+from **$2,984 at Hunter** to **$44,338 at Fordham** — then Stevens $41,346, Felician $40,045 and NYU
+$37,050 at the top; NJIT $16,504 in the middle; seven CUNY campuses under $6,000. The two most
+expensive schools in v4, Yeshiva ($49,965) and Sarah Lawrence ($41,437), are off the board under the
+both-sports rule (§2h), which is the one respect in which that rule made this page cheaper. That is a six-figure difference over four years and no partial athletic
 scholarship in men's distance running comes close to closing it. Two caveats that pull in opposite
 directions: every figure is an average across all students after grants, not a quote for one
 applicant; and **the cheapest figures belong to commuter campuses with no dormitories**, where an
@@ -418,7 +533,7 @@ shows how far and how often a program really travels.
 
 **Two states, two sets of in-state tuition, neither of them his.** With Connecticut out of range
 this metro is New York and New Jersey only. The New Jersey publics (Kean, NJIT, Rutgers–Newark) and
-the New York publics (the ten CUNYs, Farmingdale, Old Westbury, SUNY Maritime, Stony Brook) will
+the New York publics (the seven remaining CUNYs, Farmingdale and Stony Brook) will
 all charge out-of-state rates to a South Carolina applicant. The gap is small at CUNY — roughly
 $7,400 in-state against $15,300 out — and large at Stony Brook, where it is $10,931 against
 $32,741. Check it school by school before ranking any of them on price.
@@ -436,27 +551,27 @@ $32,741. Check it school by school before ranking any of them on price.
 3. **Get a second race for Wagner.** Still the weakest single-race reading in this metro: six
    finishers at the NEC championship and a 360 second first-to-last spread, which cannot be trusted
    in either direction. It is the one school here whose tier could move a full band.
-4. **Ask John Jay and York College (CUNY) whether they have a team.** Neither finished the scoring
-   five in 2025 — three and four men respectively — so neither has a team result on file at all, and
-   both are held at Caution on that basis rather than on times. One email each settles whether the
-   program is rebuilding or folding.
-5. **Confirm the five no-men's-track findings** with each coach — John Jay, Brooklyn College, SUNY
-   Maritime, Sarah Lawrence, SUNY Old Westbury. A conference sponsorship table can be a season out
-   of date in either direction.
-6. **Find out who is actually running Sarah Lawrence's program.** The staff directory lists TBA, so
-   the row here points at the department address. A vacancy in August is itself information about the
-   program's stability.
+4. **Ask Seton Hall about the 1500.** It is a target on cross country, its fastest man all season ran
+   **4:01.3**, and it entered nobody in the Big East 1500 (§2i). Whether that is a gap in the roster or
+   a coaching choice decides how the best-fitting D1 in the metro reads.
+5. **Ask York College (CUNY) whether it has a team.** It did not finish the scoring five in 2025 — four
+   men — and it ran no 1500 anywhere in 2026, so there is no team result on file at all and it is held
+   at Caution on that basis rather than on times. One email settles whether the program is rebuilding
+   or folding.
+6. **Confirm the ten no-men's-track findings** in §2h with each coach before treating any of them as
+   permanently off the board. A conference sponsorship table can be a season out of date in either
+   direction, and seven of the ten are one conference.
 7. **Calibrate the northeastern courses.** The NEC, UAA, Big East, MAAC and CAA courses in this
    dataset have no cross-checking team on a calibrated course, so their times cannot yet be put on
    a common scale. This is now the largest remaining source of error in the metro, since every school
    has a result but the results are not on one scale.
-8. Confirm the computer science situation at **SUNY Maritime and Sarah Lawrence**, where the federal
-   file shows no bachelor's CS program — the SUNY Purchase case says check the catalog before ruling
-   it out.
-9. Verify SAT figures for **Fairleigh Dickinson, Saint Peter's, Felician, Rutgers–Newark and SUNY
-   Old Westbury**, which report no SAT range in the federal file, and Felician's missing admit rate.
-10. Get real out-of-state cost estimates, not net-price averages, for the ten CUNYs — including
-    housing, since most have no dorms.
+8. Confirm the computer science situation at the **Merchant Marine Academy**, the only school left here
+   whose federal file shows no bachelor's CS program — the SUNY Purchase case says check the catalog
+   before ruling it out.
+9. Verify SAT figures for **Fairleigh Dickinson, Saint Peter's, Felician and Rutgers–Newark**, which
+   report no SAT range in the federal file, and Felician's missing admit rate.
+10. Get real out-of-state cost estimates, not net-price averages, for the seven remaining CUNYs —
+    including housing, since most have no dorms.
 11. Ask each coach the CS-lab-conflict question (see `greenville-sc.md` §9).
 
 **Resolved and off this list:** the CUNYAC championship result (pulled — it resolved eight CUNYs at
@@ -466,6 +581,8 @@ on track marks); the D2 and D3 conference sweep (ECC, NE10, CACC, NJAC, Skyline,
 America East are all in, which is why nothing is left at Verify); Columbia's cut, reversed on its
 championship depth (§2e); whether NYIT still sponsors men's cross country (§2c — it sponsors no sports
 at all); St. John's, Montclair State and William Paterson, none of which field men's cross country;
-Fairfield's disagreeing races (now out of range); and SUNY Purchase's CS reading (also out of range,
-but the lesson carries). **Every school in this metro also now has a named coach and contact details
+Fairfield's disagreeing races (now out of range); SUNY Purchase's CS reading (also out of range, but
+the lesson carries); **the both-sports check**, now done for every school on this board and responsible
+for ten removals (§2h); and Sarah Lawrence's vacant coaching job, which stopped mattering when the same
+check took the school off the board. **Every school in this metro also now has a named coach and contact details
 on its detail page**, read off the school's own staff directory in August 2026.

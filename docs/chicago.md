@@ -1,6 +1,6 @@
 # College Search — Chicago (20 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-08-23
+XC/Track + Computer Science. Last updated 2026-08-23 (v2 — both sports required, 1500 championship depth added)
 
 > **Radius changed from 30 miles back to 20.** That is not a cosmetic edit: it removes five
 > schools, including **North Central**, the best training environment on the Chicago list, and
@@ -8,6 +8,13 @@ XC/Track + Computer Science. Last updated 2026-08-23
 > in §5b rather than deleted. **Roosevelt University** entered as the replacement scholarship
 > option and has since been measured: **four finishers at GLIAC**, where five are needed to score.
 > §2 has the whole accounting.
+>
+> **Two changes since:** the board now requires **both cross country and men's track**, which took
+> **Calumet College** off this list — the metro's last unmeasured school, and what needed verifying
+> turned out to be the sport itself. Net count: **11**. And every remaining school now carries its
+> **2026 conference-championship 1500**: a projected **4:01** would be the fastest 1500 man at **six of
+> the eleven**, would make the conference final at **all eleven**, and would **score** in **eight** of
+> them. The median program's best 1500 here is **4:09.5**. Both are in §2.
 
 Live version, with per-school pages and meet maps:
 <https://timhibbard.github.io/xc-cs-college-board/chicago.html>
@@ -57,10 +64,54 @@ and the metro is left with **no scholarship program worth ranking**.
 
 **The sweep that measured Roosevelt also measured everything else here but one.** Saint Xavier
 (NAIA) turned out to be a tight 56-second seven that he would nonetheless lead outright, and
-Dominican finished six. Only **Calumet College** is still unmeasured. The whole-metro picture is
-worse than the partial one was: **five of the eleven measured programs never finished seven
-runners**, and outside DePaul, UIC and the University of Chicago every school in range puts him at
-their #1.
+Dominican finished six. The whole-metro picture is worse than the partial one was: **five of the
+eleven programs never finished seven runners**, and outside DePaul, UIC and the University of Chicago
+every school in range puts him at their #1.
+
+**Both sports, or off the board — and that closed the Calumet College question.** He wants to run cross
+country *and* track, so a program that sponsors only one of them is not a fit however the times read.
+The test is two signals that have to agree: the school's own rendered sport list must contain a men's
+track and field page, and TFRRS must hold at least one 2026 men's outdoor mark for the program.
+**Calumet College fails both** — fifteen sports including cross country, no track and field for anyone.
+It was the last school in this metro sitting at *Verify*, unmeasured rather than borderline, and what
+needed verifying turned out to be the sport itself. It keeps its detail page, marked with what the
+check found, because a removal that disappears is a removal nobody can audit. Board-wide the rule moved
+15 schools; **this metro lost one**, against four in the Greenville ring and ten in New York, where
+cross-country-only D3 programs are common. Net count here: **11**, and every one of the eleven is now
+measured.
+
+**The 1500 in May, and it is the least flattering season on this page.** For all eleven schools the
+board now records that team's **2026 conference-championship 1500** — the whole field, the men that
+team actually entered, the winning time and the time that cut into the final. That is **eight
+conference meets**; three CCIW schools share one race and two NACC schools share another.
+
+| For a 4:01 | Count |
+|---|---|
+| Schools that raced a 1500 in 2026 | **11 of 11** |
+| He would be their **fastest man** | **6 of 11** |
+| He would be their **#3 or better** | 8 of 11 |
+| Makes the conference final on time | **11 of 11** |
+| Would have **scored** in that final (top 8) | 8 of 11 |
+| The school **entered nobody** in its own conference 1500 | 1 of 11 — Concordia Chicago |
+| Programs that took a 1500 runner past their conference meet | **0 of 11** |
+
+The median program's best 1500 in this metro is **4:09.5** — eight and a half seconds *slower* than his
+projection, against 4:00.7 in the Greenville ring. The three schools where the running works are the
+three where the 1500 works too: **DePaul's #1 ran 3:43.8** and he would be their #4 of nine men,
+**UIC's 3:48.5** puts him #5 of nine, and the **University of Chicago** has seventeen men on file with
+him at #6. Everywhere else he would be their best miler on arrival, and at the bottom of that list
+Roosevelt's fastest man ran **4:30.6** and Illinois Tech's **4:25.1**.
+
+Two placings are worth keeping in proportion. In the **CCIW** he would have been 5th of 31 men and in
+the **NACC** 7th of 33 — both real conference-scoring placings, and both in fields where the winner ran
+3:59.2 and 3:54.3, which is what a D3 conference 1500 looks like when the depth is thin. At the other
+end, the **Big East** field puts him 21st of 21 and 12th of 13 in the final. **No Chicago program took a
+1500 runner past its conference meet in 2026**, which is the same story the cross country data tells: a
+metro with three good programs and no postseason depth behind them.
+
+The method — how a championship page is read, why prelim times count, and why the decathlon's 1500 is
+excluded — is in `../methodology.html` §7. Individual college athletes are not named anywhere in this
+project; the 1500 fields are recorded as times only.
 
 **Northwestern is out — they do not sponsor men's cross country or men's track and field at
 all.** ✅ Verified. Men's track & field is listed as defunct; only the women's programs exist.
@@ -89,7 +140,7 @@ lesson, not the school: the original error was reading one fast 5000 as a measur
 depth.** It happened here with Lewis and again with Loyola, and it is why this document now ranks on
 cross country results.
 
-**Net effect.** Twelve schools, **one of them target tier**, and DePaul is the answer in Chicago —
+**Net effect.** Eleven schools, **one of them target tier**, and DePaul is the answer in Chicago —
 which has now been true through three versions of this document, two radii and two ranking methods.
 The thinness is a property of the metro, not an artifact of the radius: at 30 miles the metro held
 four more schools and still exactly one target-tier fit. If the search can flex, the next thing
@@ -100,9 +151,9 @@ worth reaching for is not another ten miles of Chicagoland, it is the Greenville
 | Column | What it means |
 |---|---|
 | **XC slot** | where his projection would have finished inside their top seven, averaged over every 2025 race on file. 1 = ahead of their #1. |
-| **vs their 7th** | seconds between his projection and their 7th man. `+31s` = he is 31 seconds *outside* the seven. `−3s` = 3 seconds *inside* it. **Blank where that team never finished seven runners** — five of the eleven measured programs here, whose pages compare him to the team's last finisher instead. |
+| **vs their 7th** | seconds between his projection and their 7th man. `+31s` = he is 31 seconds *outside* the seven. `−3s` = 3 seconds *inside* it. **Blank where that team never finished seven runners** — five of the eleven programs here, whose pages compare him to the team's last finisher instead. |
 | **1–7 spread** | seconds from their #1 to their #7. This is the most course-independent number on the page, because it compares a team only to itself. A wide spread means a soft back end he can slot into; a tight one means there is no room. On a short squad it is first-to-last, and it is blank where fewer than five finished, because that is not a team result. |
-| **Tier** | Target = clean 4th–9th man fit · Deep = just outside the travel squad · Verify = **unmeasured**, no cross country data yet — a placeholder for a lookup nobody has done, not a judgement · Caution = he arrives at or ahead of their #1 |
+| **Tier** | Target = clean 4th–9th man fit · Deep = just outside the travel squad · Caution = he arrives at or ahead of their #1. **Nothing in this metro is at Verify any more** — the last unmeasured school, Calumet College, left the board for having no men's track (§2). |
 | **Coach** | the person who would actually recruit him, linked as a mailto, read off that school's own staff directory in August 2026. Title, office phone and the directory link are on each detail page. Staffs turn over yearly — if the name is stale, the linked directory is not. |
 | **Net cost/yr** | federal average net price after grant aid, from the College Scorecard — not sticker price. Out-of-state rates are used at public schools, since he is a South Carolina resident. |
 | **CS** | ✅ with a percentage = share of that school's bachelor's degrees awarded in computer science (federal data). A low share is not a bad program; a `0%` usually means CS is filed under mathematics. |
@@ -116,7 +167,7 @@ school's own staff directory in August 2026; the detail page carries the title, 
 link to the directory itself.
 
 A blank **vs their 7th** means that team never finished seven runners in 2025, so there is no 7th man
-to measure against — five of the eleven measured programs in this metro are in that position, and the
+to measure against — five of the eleven programs in this metro are in that position, and the
 comparison on those pages runs against their last finisher instead. On those rows the spread column
 is first-to-last rather than 1-to-7, and it is blank entirely where fewer than five finished, because
 that is not a team result.
@@ -155,14 +206,14 @@ result.
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Calumet College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=calumet-college)** | Whiting IN | 20 | CCAC | ⚠️ thin | not reported | not reported | $22,451 | — | — | — | Verify | [Brian Kim](mailto:bkim@ccsj.edu) |
 | **[Saint Xavier](https://timhibbard.github.io/xc-cs-college-board/school.html?s=saint-xavier)** | Southwest Side | 13 | CCAC | ✅ 5.4% | not reported | 84% | $10,970 | 1 | −92s | 56s | Caution | [Rick Torres](mailto:enriquetorres@sxu.edu) |
 
 NAIA allows 12 scholarships for men's XC/track and has looser eligibility rules than the NCAA.
 Saint Xavier is now measured and it is a caution rather than an opportunity: a tight 56-second seven
-at the CCAC championship, but he would arrive as their #1, 92 seconds inside their 7th man.
-Calumet College is the one school in this metro still unmeasured. Trinity Christian was the third
-NAIA option and is closing (§2).
+at the CCAC championship, but he would arrive as their #1, 92 seconds inside their 7th man — though its
+1500 reads better than its cross country, with a 3:58.8 man ahead of his projection and him at #2 of
+ten. **This table had two rows.** Calumet College was the other, and it is off the board for having no
+men's track (§2); Trinity Christian was the third NAIA option and is closing (§2).
 
 ## 5. Schools removed — he would be a walk-on
 
@@ -176,6 +227,9 @@ stay on the map so the corrections are visible.
 
 **Lewis University is no longer on this list either**, because at 20 miles it is out of range. It
 was cut on results at 30 miles and that cut still stands on the merits (§2).
+
+**Calumet College is not a cut.** It was never measured and never needed to be: it sponsors cross
+country and no men's track, so it left the board on the sport question rather than on results (§2).
 
 ## 5b. Dropped by the radius change, with their data preserved
 
@@ -206,18 +260,18 @@ nationals is one of the better development environments on the entire board.
 
 **Deep — just outside the travel squad, still a good environment.** UIC · University of Chicago
 
-**Verify — unmeasured, not borderline.** Calumet College
-
 **Caution — he arrives at or ahead of their #1, in some cases by minutes.** Chicago State ·
 Concordia Chicago · Dominican · Elmhurst · Illinois Tech · North Park · Roosevelt · Saint Xavier
 
 **Cut on results.** Loyola Chicago
 
-Twelve schools, **one of them target tier**. That ratio is the finding, and nothing has moved it:
-not the cross country data, not the radius change, and not the sweep that closed out the metro.
-Four schools were unmeasured at the last revision; three of them — **Roosevelt, Saint Xavier and
-Dominican** — now have results and all three landed in Caution, and the fourth, Calumet College, is
-still blank. **Five of the eleven measured programs here never finished seven runners.**
+Eleven schools, **one of them target tier**. That ratio is the finding, and nothing has moved it: not
+the cross country data, not the radius change, not the sweep that closed out the metro, and not the
+1500. Four schools were unmeasured at the last revision; three of them — **Roosevelt, Saint Xavier and
+Dominican** — now have results and all three landed in Caution, and the fourth, **Calumet College**, is
+off the board for having no men's track, so **nothing here is at Verify any more**. **Five of the eleven
+programs never finished seven runners**, and **six of the eleven would have him as their fastest 1500
+man** as well as their #1 in cross country.
 
 ## 7. Top picks
 
@@ -235,7 +289,8 @@ still blank. **Five of the eleven measured programs here never finished seven ru
    strong CS option in the metro, and 31 seconds is one good freshman year. Worth the email.
 3. **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)**
    — the roster times are finally resolved: seven runners inside **33 seconds**, the tightest
-   pack on the entire 131-school board, with him about 34 seconds outside. Elite CS, and the net
+   pack on the entire 116-school board, with him about 34 seconds outside. Their 1500 agrees: seventeen
+   men on file in 2026 and he would be their **#6**, 16th of 25 in the UAA field. Elite CS, and the net
    price of $14,860 is startlingly low for a $90k sticker. The obstacle is a **4% admit rate**,
    not the running.
 4. **[Roosevelt](https://timhibbard.github.io/xc-cs-college-board/school.html?s=roosevelt)** —
@@ -247,9 +302,6 @@ still blank. **Five of the eleven measured programs here never finished seven ru
    [Michael Moffitt](mailto:mmoffitt@roosevelt.edu) how many men are signed for the fall before
    spending any more thought on it. Note also the 97% admit rate and the modest 3.7% CS share: this
    is an access school, not a tech school.
-5. **[Calumet College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=calumet-college)**
-   — the one school in the metro still unmeasured, NAIA, 20 miles out, and its CS program is thin
-   rather than confirmed. Low priority, but it is the only lookup left here.
 
 **The hard truth about Illinois Tech:** **28.7% of its bachelor's degrees are in computer
 science** — by far the highest share on this list — and it is 4 miles from downtown. Its distance
@@ -261,7 +313,8 @@ and ask [Evan Balizado](mailto:ebalizado@illinoistech.edu) directly what they ar
 **And Illinois Tech is not unusual here.** With all eleven programs in range measured,
 **five never finished seven runners** — Illinois Tech, Elmhurst, Dominican, Chicago State and
 Roosevelt — and every school in the metro outside DePaul, UIC and the University of Chicago puts him
-at their #1. Chicago's problem was never the radius. It is that beyond three good programs there is
+at their #1. The 1500 repeats it: Illinois Tech's fastest man in the event ran **4:25.1**, 24 seconds
+slower than his projection, and only three men on that roster ran it at all. Chicago's problem was never the radius. It is that beyond three good programs there is
 very little men's distance running inside the city.
 
 ## 8. Chicago-specific considerations
@@ -285,7 +338,7 @@ Woods, all a drive away, and at 20 miles every school on this list is inside the
 Chicagoland. A program that never runs hills will limit him as a 5K/XC runner.
 
 **The 20-mile ring is genuinely urban, and that is the one gain.** Every school here is in the
-city or on its immediate edge; eleven of the twelve are inside 16 miles. The tradeoff is stated in §2
+city or on its immediate edge; every one of the eleven is inside 16 miles. The tradeoff is stated in §2
 and it is not a small one — the suburban campuses the 30-mile ring reached were where the D3
 national program and the only scholarship money were.
 
@@ -300,19 +353,22 @@ national program and the only scholarship money were.
 3. **Ask [Paul Zavala at UIC](mailto:pzavala@uic.edu) what their incoming class looks like.** They
    are about 31 seconds outside the scoring seven, which one freshman year can close — but only if
    they are not already bringing in four runners ahead of him.
-4. **Get a cross country result for Calumet College**, the last unmeasured school in the metro, and
-   confirm a **true BS in Computer Science** there at the same time — the federal data shows CS
-   degrees but the count is too small to confirm a standalone major, and their site was unreachable.
+4. **Ask [Chris Dvorak at Concordia Chicago](mailto:Christopher.Dvorak@cuchicago.edu) about the 1500.**
+   It is the only school here that entered nobody in its own conference 1500, and its fastest man in the
+   event ran 4:12.0 across eleven men — one email settles whether that is a roster gap or a coaching
+   choice.
 5. **Calibrate the Big East, Missouri Valley, UAA and NEC courses.** Those four meets are the
    only 2025 races on file for DePaul, UIC, University of Chicago and Chicago State respectively,
    and none has a cross-checking team on a calibrated course — so all four reads rest on an
    uncorrected course.
-6. Verify SAT and accept figures for the five schools where the federal file reports no SAT
-   range at all.
+6. Verify SAT figures for **Saint Xavier, Chicago State, Concordia Chicago and North Park**, the four
+   schools where the federal file reports no SAT range at all.
 7. Ask each coach the CS-lab-conflict question (see `greenville-sc.md` §9).
 
 **Resolved and off this list:** University of Chicago's roster times (§7), Wheaton's cross country
 results (§5b), 5th/7th man times for DePaul, Loyola and UIC (§2, §7), Trinity Christian's
-status (§2 — the college is closing), and the Roosevelt, Saint Xavier and Dominican measurements,
-which is what closed the metro down to one unmeasured school. Coach names and email addresses for
-all twelve are now on their detail pages.
+status (§2 — the college is closing), the Roosevelt, Saint Xavier and Dominican measurements, which is
+what closed the metro down to one unmeasured school, and **Calumet College**, which needed a cross
+country result and instead needed a track program — the both-sports check took it off the board (§2), so
+nothing here is unmeasured now. Coach names and email addresses for all eleven are on their detail
+pages, and all eleven carry a 2026 conference-championship 1500.

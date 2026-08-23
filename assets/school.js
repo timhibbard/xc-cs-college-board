@@ -5,8 +5,12 @@
    rather than quietly absent. */
 
 const QS = new URLSearchParams(location.search).get('s');
-const S = SCHOOLS.find(s => s.slug === QS) || REMOVED.find(s => s.slug === QS);
-const IS_CUT = !!(S && !SCHOOLS.includes(S));
+const S = SCHOOLS.find(s => s.slug === QS) || REMOVED.find(s => s.slug === QS)
+  || NO_TRACK.find(s => s.slug === QS);
+/* Two different kinds of "off the board", and they read differently on the page:
+   REMOVED is a judgement about level, NO_TRACK is a fact about which sports exist. */
+const IS_NOTRACK = !!(S && NO_TRACK.includes(S));
+const IS_CUT = !!(S && !SCHOOLS.includes(S) && !IS_NOTRACK);
 
 const usd = (n) => n == null ? null : '$' + n.toLocaleString('en-US');
 const SEASONS = {
@@ -28,16 +32,24 @@ function head() {
   document.title = `${S.name} — recruiting detail`;
   const tierLine = IS_CUT
     ? `<span class="badge cut"><span class="g" aria-hidden="true">✕</span>Cut</span>`
-    : badge(S.tier);
+    : IS_NOTRACK
+      ? `<span class="badge notrack"><span class="g" aria-hidden="true">⊗</span>No men&rsquo;s track</span>`
+      : badge(S.tier);
 
   return `
     <p class="eyebrow"><a href="${m.page}">${m.label}</a> · ${m.radius} radius</p>
     <h1>${S.name}</h1>
     <p class="lede">${S.city ?? ''}${S.div ? ' · ' + S.div : ''}${S.conf ? ' ' + S.conf : ''}${S.mi != null ? ' · ' + S.mi + ' mi from ' + m.label.replace(' SC', '') : ''}</p>
-    <p class="badge-row">${tierLine}${S.xc ? `<span class="src-tag">tier from cross country results</span>`
+    <p class="badge-row">${tierLine}${IS_NOTRACK ? `<span class="src-tag">cross country only &mdash; the tier below is the cross country measurement, not a recommendation</span>`
+      : S.xc ? `<span class="src-tag">tier from cross country results</span>`
       : IS_CUT ? '' : `<span class="src-tag">tier from one outdoor 5000 mark &mdash; no cross country data</span>`}</p>
     ${S.note ? `<p class="prose note-lede">${S.note}</p>` : ''}
-    ${IS_CUT ? `<div class="callout crit"><span class="c-title">Cut from the board</span><p>${S.why}</p></div>` : ''}`;
+    ${IS_CUT ? `<div class="callout crit"><span class="c-title">Cut from the board</span><p>${S.why}</p></div>` : ''}
+    ${IS_NOTRACK ? `<div class="callout crit"><span class="c-title">Off the board &mdash; cross country without track</span>
+      <p>${S.why}</p>
+      <p>He wants to run cross country <em>and</em> track. A program that sponsors one without the other
+      cannot give him both, so this school comes off the board no matter how the cross country
+      numbers read. Everything below is still here, and still true.</p></div>` : ''}`;
 }
 
 /* ---------- cost ---------- */
@@ -312,7 +324,22 @@ function gapCell(g, dp = 0) {
   return g >= 0 ? `<span class="gap-pos">+${v}s</span>` : `<span class="gap-neg">&minus;${v}s</span>`;
 }
 
+/* "3:58.39" out of 238.39. Marks are kept to the hundredth because that is how a
+   1500 is timed, and because fmtTime() rounds to whole seconds — which turns 3:59.9
+   into 3:60 and a 0.4s gap into a tie. */
+const fmt15 = (s) => {
+  if (s == null) return null;
+  const m = Math.floor(s / 60), r = s - m * 60;
+  return `${m}:${r < 10 ? '0' : ''}${r.toFixed(2)}`;
+};
+
 function trackMarks() {
+  if (IS_NOTRACK) return `
+    <h2>Track marks</h2>
+    <div class="callout crit"><span class="c-title">There are none, and that is the finding</span>
+      <p>This school fields no men&rsquo;s track and field team, so there is no outdoor 1500 or 5000 to
+      compare against and no conference 1500 field to place him in. TFRRS holds no top mark for the
+      program in any event. The cross country section above is the whole of the running record here.</p></div>`;
   if (S.b5000 == null && !S.b1500) return '';
   const g5 = S.b5000 == null ? null : ATHLETE.proj5000 - S.b5000;
   const their15 = parseMark(S.b1500);
@@ -336,6 +363,150 @@ function trackMarks() {
     <a href="methodology.html">Why that is</a>.</p>`;
 }
 
+/* ---------- the 1500 in May ---------- */
+
+/* A team best is one man on one day. A championship field is the thing he would
+   actually line up in, so T1500 (detail.js) holds the whole field and this section
+   drops his projection into it. Athletes are not named, for the same reason they are
+   not named in XCRACES; every card links its TFRRS results page. */
+
+const ORD = (n) => {
+  const t = n % 100;
+  if (t >= 11 && t <= 13) return n + 'th';
+  return n + ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th');
+};
+
+/* One card per meet: their entrants with his projection slotted in, then what the
+   field around them looked like. Identical shape for the conference meet and for
+   the postseason, because the question is identical. */
+function meetCard(m, kind) {
+  const P = ATHLETE.proj1500, PL = ATHLETE.proj1500Label;
+  const isConf = kind === 'conf';
+  const rows = [...m.theirs.map((t, i) => ({ n: `Their #${i + 1} at this meet`, t })),
+    { t: P, me: true }].sort((a, b) => a.t - b.t);
+  const g1 = m.theirs.length ? P - m.theirs[0] : null;
+  /* Field sizes are quoted with him in them: N men ran it, so with his projection
+     dropped in the field is N + 1 and "21st of 20" never appears. */
+  const field = m.n + 1;
+  const madeFinal = isConf && m.flast != null ? m.flast - P : null;
+  /* A conference final won slower than its own prelims is a tactical race, not a
+     level. Say so, or "1st in the final" reads as a result it is not. */
+  const tactical = isConf && m.fwin > m.win + 0.01;
+
+  return `
+    <div class="race">
+      <div class="race-head">
+        <div>
+          <div class="race-meet"><a href="${m.url}" rel="noopener">${m.meet}</a></div>
+          <div class="race-meta">${m.date}${isConf ? ` · ${m.conf} championship` : ' · postseason'} · ${m.n} men ran the 1500</div>
+        </div>
+        <div class="race-slot"><span class="rs-n">${m.place}</span><span class="rs-l">he would be<br>${ORD(m.place)} of ${field}</span></div>
+      </div>
+      ${m.theirs.length ? `
+      <div class="table-scroll">
+        <table class="race-table">
+          <thead><tr><th scope="col">Order</th><th scope="col">Runner</th><th scope="col" class="num">Time</th></tr></thead>
+          <tbody>${rows.map((x, i) => `<tr class="${x.me ? 'me' : ''}">
+            <td class="num">${i + 1}</td>
+            <td>${x.me ? `<strong>His projection &mdash; ${PL}</strong>` : x.n}</td>
+            <td class="num time">${fmt15(x.t)}</td>
+          </tr>`).join('')}</tbody>
+        </table>
+      </div>
+      <p class="map-note">
+        ${m.theirs.length === 1
+          ? 'This team put one man in the 1500 here, and he would be'
+          : `Among the ${m.theirs.length} men this team put in the 1500 here he would be`}
+        <strong>their #${m.slot ?? rows.findIndex(x => x.me) + 1}</strong>, ${Math.abs(g1).toFixed(1)}s
+        ${g1 >= 0 ? 'behind' : 'ahead of'} their fastest.
+        ${isConf ? (m.nfinal === 0
+          ? (m.theirs.length === 1 ? 'He did not make the final.' : 'None of them made the final.')
+          : `${m.nfinal === m.theirs.length ? (m.theirs.length === 1 ? 'He' : 'All of them') : m.nfinal + ' of them'} made the final.`) : ''}
+      </p>`
+      : `<div class="callout"><span class="c-title">They entered nobody in the 1500</span>
+        <p>No runner from this team appears in the 1500 at ${isConf ? 'its own conference championship' : 'this meet'}.
+        The field is still the field he would be running into${isConf ? ', and a program that skips the championship round of an event is telling you where its distance men actually race — ask the coach whether the 1500 is part of the plan' : ''}.</p></div>`}
+      <p class="map-note">
+        Fastest 1500 at the meet: <strong>${fmt15(m.win)}</strong>.
+        ${isConf ? `The final took ${m.fn} runners and was won in ${fmt15(m.fwin)}; the slowest man in it ran
+          <strong>${fmt15(m.flast)}</strong>, so on this year's marks his ${PL} projection would have
+          <strong>${madeFinal >= 0
+            ? `made that final with ${madeFinal.toFixed(1)}s to spare</strong> and finished ${ORD(m.fplace)} of ${m.fn + 1} in it`
+            : `missed that final by ${Math.abs(madeFinal).toFixed(1)}s</strong>`}.
+          ${tactical ? `That final was <em>tactical</em> — won in ${fmt15(m.fwin)}, slower than the ${fmt15(m.win)}
+            run in the rounds that fed it — so a placing inside it describes the race, not the level.` : ''}` : ''}
+        The ${ORD(m.place)}-of-${field} figure above compares every man who ran the event at this meet on
+        time, prelims included; it is the number to trust for exactly that reason.
+        <a href="${m.url}" rel="noopener">Full results</a>.
+      </p>
+    </div>`;
+}
+
+function fifteen() {
+  const T = (typeof T1500 !== 'undefined' && T1500[S.slug]) || null;
+  if (!T) return '';
+  const P = ATHLETE.proj1500, PL = ATHLETE.proj1500Label;
+  const depth = [...T.d15.map((t, i) => ({ n: `Their #${i + 1}`, t })), { t: P, me: true }]
+    .sort((a, b) => a.t - b.t);
+  /* D1 has a real qualifying round between the conference meet and nationals; the other
+     divisions go straight to a national championship, so "regional" means different things. */
+  const regionalNote = S.div === 'D1'
+    ? 'In Division 1 the round above the conference meet is the NCAA First Round &mdash; East or West &mdash; which is the qualifier for nationals.'
+    : S.div === 'NAIA'
+      ? 'The NAIA has no regional round in track: the conference meet feeds the national championship directly.'
+      : `Division ${S.div.slice(1)} outdoor track has no regional round &mdash; the conference meet feeds the national championship on descending-order marks, so a fast time anywhere counts.`;
+
+  return `
+    <h2>The 1500 in May &mdash; where he would have finished</h2>
+    <p class="prose">
+      The mark above is one man on one day. This is the field: every 1500 this program's runners
+      contested at their 2026 conference championship, with his projected ${PL} dropped in on time.
+      ${regionalNote}
+      Athletes are not named &mdash; their times are what the comparison needs &mdash; and every card links
+      the TFRRS results page it was read from.
+    </p>
+
+    <h3>Their 2026 outdoor 1500, man by man</h3>
+    ${T.nath === 0 ? `
+      <div class="callout"><span class="c-title">Nobody on this team ran a 1500 in 2026</span>
+        <p>They field a men's track team, but no one contested the 1500 outdoors this season, so there is
+        no depth chart to slot into. It usually means their distance men race the 800 or the 5000 instead.
+        Worth one line in the email: <em>is the 1500 part of the plan?</em></p></div>`
+      : `
+      <div class="table-scroll">
+        <table class="race-table">
+          <thead><tr><th scope="col">Order</th><th scope="col">Runner</th><th scope="col" class="num">Season best</th></tr></thead>
+          <tbody>${depth.map((x, i) => `<tr class="${x.me ? 'me' : ''}">
+            <td class="num">${i + 1}</td>
+            <td>${x.me ? `<strong>His projection &mdash; ${PL}</strong>` : x.n}</td>
+            <td class="num time">${fmt15(x.t)}</td>
+          </tr>`).join('')}</tbody>
+        </table>
+      </div>
+      <p class="map-note">
+        <strong>${T.nath === 1 ? 'One man' : T.nath + ' different men'}</strong> ran the 1500 for them outdoors in 2026${T.nath > T.d15.length
+          ? `; the ${T.d15.length} fastest are shown` : ''}. ${T.nath === 1 ? 'His best mark of the year.' : 'One mark each, their best.'}
+        His projection would be <strong>their #${T.dslot}</strong>${T.nath > T.d15.length && T.dslot > T.d15.length
+          ? ' — outside the group shown above' : ''}, ${P - T.d15[0] >= 0
+            ? `${(P - T.d15[0]).toFixed(1)}s behind their fastest`
+            : `${Math.abs(P - T.d15[0]).toFixed(1)}s ahead of their fastest`}.
+        The healthy band here is 10 to 15 seconds behind a team's best, not the 40 to 60 the 5000 asks for
+        &mdash; and being ahead of their #1 is a warning, not a win: it means the program has nobody to
+        train with him.
+      </p>`}
+
+    <h3>Conference championship</h3>
+    ${meetCard(T.cm, 'conf')}
+    ${T.post ? `
+      <h3>Postseason</h3>
+      <p class="prose">Rounds above the conference meet where this team had a 1500 runner. Getting here is
+      the thing to ask a coach about: it is the difference between a program that races the event and a
+      program that fills a lane in it.</p>
+      ${T.post.map(p => meetCard(p, 'post')).join('')}`
+      : `<p class="map-note">No runner from this team reached a postseason 1500 &mdash; no NCAA round, no
+        IC4A-ECAC. That is the common case, not a mark against them.</p>`}`;
+}
+
 /* ---------- meets: map + schedule ---------- */
 function meetSection() {
   const sched = (typeof SCHED !== 'undefined' && SCHED[S.name]) || [];
@@ -343,7 +514,7 @@ function meetSection() {
     return `
       <h2>Where they compete</h2>
       <div class="callout"><span class="c-title">Meet schedule not collected for this school</span>
-      <p>Full season schedules were pulled for the twelve schools that came out of the cross country
+      <p>Full season schedules were pulled for the eleven schools that came out of the cross country
       analysis as target tier. If this school moves up, its schedule is the next thing to add.</p></div>`;
   }
   const placed = sched.filter(m => VENUES[m.m]);
@@ -466,6 +637,11 @@ function completeness() {
   const has = (x) => x ? '<span class="cs-ok">have it</span>' : '<span class="cs-no">missing</span>';
   const rows = [
     ['Cross country top seven', !!S.xc, S.xc ? `${S.xc.nraces} championship result${S.xc.nraces === 1 ? '' : 's'}` : 'the highest-value gap here'],
+    ['1500 conference field', !!(typeof T1500 !== 'undefined' && T1500[S.slug]),
+      IS_NOTRACK ? 'there is no men’s track program to have a 1500 field'
+        : (typeof T1500 !== 'undefined' && T1500[S.slug])
+          ? `their conference championship 1500, read off TFRRS${T1500[S.slug].nath ? ` — ${T1500[S.slug].nath} of their men ran the event in 2026` : ' — none of their men ran the event in 2026'}`
+          : 'not collected'],
     ['Cost and net price', !!(S.cost && S.cost.tuition), 'College Scorecard'],
     ['SAT range', S.satSrc === 'fed', S.satSrc === 'fed' ? 'federal' : 'not reported federally — the figure shown is an estimate'],
     ['Admit rate', S.acceptSrc === 'fed', S.acceptSrc === 'fed' ? 'federal' : 'estimate'],
@@ -489,7 +665,7 @@ if (!S) {
   notFound();
 } else {
   document.getElementById('body').innerHTML =
-    head() + cost() + academics() + xcSection() + trackMarks() + meetSection() + coachSection() + completeness() + `
+    head() + cost() + academics() + xcSection() + trackMarks() + fifteen() + meetSection() + coachSection() + completeness() + `
     <hr>
     <p class="prose"><a href="${METROS[S.metro].page}">&larr; Back to ${METROS[S.metro].label}</a>
       &nbsp;·&nbsp; <a href="index.html">All ${SCHOOLS.length} schools</a></p>`;
