@@ -301,6 +301,8 @@ a.school:hover { color: var(--div-blue); text-decoration: underline; }
 #master .c-name { min-width: 22ch; }
 #master .c-conf { min-width: 17ch; }
 #master .c-sat { white-space: nowrap; }
+/* Six-figure town populations must not break across the thousands separator. */
+#master .c-size { white-space: nowrap; }
 .gap-pos { color: var(--div-blue); font-weight: 620; }
 .gap-neg { color: var(--div-red); font-weight: 620; }
 

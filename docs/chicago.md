@@ -1,6 +1,6 @@
 # College Search — Chicago (20 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-08-22
+XC/Track + Computer Science. Last updated 2026-08-23
 
 > **Radius changed from 30 miles back to 20.** That is not a cosmetic edit: it removes five
 > schools, including **North Central**, the best training environment on the Chicago list, and
@@ -19,7 +19,7 @@ Live version, with per-school pages and meet maps:
 | 3200m | 9:40 | 9:29 |
 | 5K XC | 16:29 | ~15:59 |
 
-Converted: **1500 4:03** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:07** · **10K XC 32:54**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:07** · **10K XC 32:54**
 
 The 8K and 10K projections are what the comparison actually runs on, because college cross
 country is raced at 8K (D2, D3, most conference meets) and 10K (D1 regionals and nationals).

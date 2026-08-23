@@ -181,7 +181,7 @@
   </div>
   <div class="table-scroll">
     <table id="master">
-      <caption>Miles are driving distance from Greenville. Click any school for its full page. <em>His slot in their 7</em> comes from 2025 championship cross country results; <em>vs their 7th</em> is negative when he is inside the seven. Click a header to sort.</caption>
+      <caption>Miles are driving distance from Greenville. Click any school for its full page. <em>Students</em> is undergraduate enrollment (federal); <em>Town</em> is the population of the place the campus sits in (ACS 2024 5-year) &mdash; both sortable, and both worth reading next to Mi. <em>His slot in their 7</em> comes from 2025 championship cross country results; <em>vs their 7th</em> is negative when he is inside the seven. Click a header to sort.</caption>
       <thead></thead><tbody></tbody>
     </table>
   </div>
@@ -214,6 +214,55 @@
   </p>
   <div class="table-scroll">
     <table id="removed"><thead><tr><th scope="col">School</th><th scope="col">Division</th><th scope="col">Why it was cut</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2>How big the school is, and how big the town is</h2>
+  <p class="prose">
+    Two new columns in the table above, and they only appear on this page: <strong>Students</strong>
+    (undergraduate enrollment, federal) and <strong>Town</strong> (the population of the place the
+    campus actually sits in, U.S. Census ACS 2024 5-year). New York and Chicago do not need them.
+    Around Greenville they matter, because the 250-mile ring reaches from Charlotte to towns of six
+    hundred people, and nothing else in the table tells those two apart.
+  </p>
+  <div class="prose">
+    <p>
+      The median school here has <strong>1,867 undergraduates in a town of 32,078</strong>, but the
+      median hides the shape of it: <strong>26 of the 81 sit in a place under 10,000 people</strong>
+      and <strong>24 sit in one over 100,000</strong>. There is not much in between.
+    </p>
+    <p>
+      <strong>Five campuses have more undergraduates than their town has residents</strong> — North
+      Georgia (16,146 students, Dahlonega's 7,299), UNC Pembroke (5,330 / 2,822), Western Carolina
+      (10,024 / 7,973), Kennesaw State (41,254 / 34,605) and Montreat (762 / 630). App State is
+      near-parity at 19,444 in a Boone of 20,032. In all six the school <em>is</em> the town, which is
+      a real answer to "what is there to do" and not automatically a bad one for someone whose
+      afternoons are spoken for.
+    </p>
+    <p>
+      At the other end are the genuinely small places: <strong>Montreat (630), Misenheimer NC (659 —
+      and Pfeiffer enrolls 655, so school and town are the same size), Franklin Springs GA (1,108),
+      Due West SC (1,177) and Young Harris GA (1,252)</strong>. Ask those coaches exactly one
+      question: where does the team run. A 12-mile long run out of a town of six hundred is either
+      trails and gravel, which is ideal, or a state highway with no shoulder, which is not.
+    </p>
+    <p>
+      <strong>Size cuts both ways on the two things that actually decide this.</strong> A small
+      college means a small training group — fewer people to chase, which is the whole point of the
+      framing rule — and it means the CS lab-conflict problem below is at its
+      worst. A big state school means depth to chase and multiple lab sections, and it means he is one
+      of forty distance runners competing for a coach's attention rather than one of eight. The target
+      tier spans the entire range: <strong>Catawba, 1,235 students in Salisbury</strong>, and
+      <strong>UNC Charlotte, 24,453 in a city of 903,844</strong>, are the same tier and completely
+      different lives.
+    </p>
+    <p>
+      Neither column moves any tier, and both carry caveats worth knowing before quoting them —
+      Augusta, Macon and Athens are consolidated city-county governments so their numbers are
+      county-wide, four of these places are census-designated rather than incorporated, and a small
+      figure inside Atlanta (Morrow GA, 6,364) describes the address rather than the setting. Read
+      the town column next to the Mi column, never alone.
+      <a href="methodology.html">The sources and all four caveats are in §6</a>.
+    </p>
   </div>
 
   <h2>Money and admissions</h2>
@@ -286,7 +335,7 @@ document.querySelector('#removed tbody').innerHTML = cut.map(r =>
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
 
 initMap('greenville');
-initTable();
+initTable({ size: true });
 initChart();
 </script>
 </body>

@@ -41,6 +41,24 @@ function head() {
 }
 
 /* ---------- cost ---------- */
+
+/* Two kinds of town figure that mean something other than what they look like.
+   Both are documented in TOWNPOP's header comment in data.js. */
+const CONSOLIDATED = ['Augusta GA', 'Macon GA', 'Athens GA'];
+const CDP = ['Buies Creek NC', 'Cullowhee NC', 'Tigerville SC', 'Emory VA'];
+
+function townNote(pop) {
+  let out = 'U.S. Census, ACS 2024 5-year estimate for the place itself';
+  if (CONSOLIDATED.includes(S.city))
+    out += ' — a consolidated city-county government, so this is county-wide and reads larger than the campus surroundings';
+  else if (CDP.includes(S.city))
+    out += ' — a census-designated place rather than an incorporated town, so the boundary is a statistical convenience';
+  /* The comparison that actually decides what the place feels like on a Tuesday night. */
+  if (S.cost?.size != null && S.cost.size > pop)
+    out += '. There are more undergraduates here than residents — the school <em>is</em> the town';
+  return out;
+}
+
 function cost() {
   const c = S.cost;
   if (!c) return `<h2>Cost</h2><p class="prose nodata">No federal cost record matched this school.</p>`;
@@ -50,8 +68,13 @@ function cost() {
     ['Room and board, on campus', usd(c.rb), ''],
     ['Sticker price for one year', usd(c.sticker), 'tuition + room and board, before any aid'],
     ['Average net price actually paid', usd(c.net), 'after grants and scholarships, averaged across all students — the number to plan against'],
-    ['Undergraduate enrollment', c.size == null ? null : c.size.toLocaleString('en-US'), ''],
+    ['Undergraduate enrollment', c.size == null ? null : c.size.toLocaleString('en-US'),
+      'federal headcount — the number that decides whether he is one of a hundred distance runners or one of six', 'num'],
   ];
+  /* Town population is collected for the Greenville ring only; the other two metros
+     do not need a number to answer the question. */
+  const pop = typeof TOWNPOP === 'undefined' ? null : TOWNPOP[S.city];
+  if (pop != null) rows.push(['Town population', pop.toLocaleString('en-US'), townNote(pop), 'num']);
   return `
     <h2>Cost</h2>
     <div class="kpi-row">
@@ -62,8 +85,8 @@ function cost() {
     </div>
     <div class="table-scroll">
       <table><tbody>
-        ${rows.map(([k, v, n]) => `<tr><th scope="row">${k}</th>
-          <td class="num money">${v ?? '<span class="nodata">not reported</span>'}</td>
+        ${rows.map(([k, v, n, cls]) => `<tr><th scope="row">${k}</th>
+          <td class="${cls ?? 'num money'}">${v ?? '<span class="nodata">not reported</span>'}</td>
           <td class="rownote">${n}</td></tr>`).join('')}
       </tbody></table>
     </div>
@@ -73,6 +96,9 @@ function cost() {
       ${inState ? ' In-state rates would apply here.' : ''}
       Net price is an average across all incoming students, not a prediction for one applicant — a strong
       student stacking merit aid usually lands below it.
+      ${pop == null ? '' : `Town population is the place the campus sits in, not the metro around it — a small
+      number inside Atlanta or Charlotte describes the address, not the setting, so read it against the
+      ${S.mi} miles above.`}
     </p>`;
 }
 
@@ -172,21 +198,42 @@ function xcSection() {
 }
 
 /* ---------- track marks ---------- */
+/* "3:51.1" -> 231.1. Marks are stored as written on the results page, tenths and all,
+   because rounding a 1500 to whole seconds throws away a tenth of the useful precision. */
+const parseMark = (t) => {
+  const m = /^(\d+):(\d+(?:\.\d+)?)$/.exec(String(t ?? '').trim());
+  return m ? +m[1] * 60 + +m[2] : null;
+};
+
+/* Positive = their runner is faster = he has room to grow into the squad, which is the
+   healthy direction. Same sign convention as the cross country columns. */
+function gapCell(g, dp = 0) {
+  if (g == null) return '<span class="nodata">&mdash;</span>';
+  const v = Math.abs(g).toFixed(dp);
+  return g >= 0 ? `<span class="gap-pos">+${v}s</span>` : `<span class="gap-neg">&minus;${v}s</span>`;
+}
+
 function trackMarks() {
   if (S.b5000 == null && !S.b1500) return '';
-  const g = S.b5000 == null ? null : ATHLETE.proj5000 - S.b5000;
+  const g5 = S.b5000 == null ? null : ATHLETE.proj5000 - S.b5000;
+  const their15 = parseMark(S.b1500);
+  const g15 = their15 == null ? null : ATHLETE.proj1500 - their15;
   return `
     <h2>Track marks</h2>
     <div class="table-scroll">
       <table><tbody>
         <tr><th scope="row">Their fastest outdoor 5000, 2026</th><td class="num time">${fmtTime(S.b5000) ?? '<span class="nodata">no data</span>'}</td></tr>
-        <tr><th scope="row">Their fastest outdoor 1500, 2026</th><td class="num time">${S.b1500 ?? '<span class="nodata">no data</span>'}</td></tr>
         <tr><th scope="row">His projected 5000</th><td class="num time">${ATHLETE.proj5000Label}</td></tr>
-        <tr><th scope="row">Gap to their #1</th><td class="num">${g == null ? '<span class="nodata">—</span>'
-          : g >= 0 ? `<span class="gap-pos">+${g}s</span>` : `<span class="gap-neg">−${Math.abs(g)}s</span>`}</td></tr>
+        <tr><th scope="row">Gap to their #1 at 5000</th><td class="num">${gapCell(g5)}</td></tr>
+        <tr><th scope="row">Their fastest outdoor 1500, 2026</th><td class="num time">${S.b1500 ?? '<span class="nodata">no data</span>'}</td></tr>
+        <tr><th scope="row">His projected 1500</th><td class="num time">${ATHLETE.proj1500Label}</td></tr>
+        <tr><th scope="row">Gap to their #1 at 1500</th><td class="num">${gapCell(g15, 1)}</td></tr>
       </tbody></table>
     </div>
     <p class="map-note">One athlete, one event, one season — a fast number here is strong evidence, a slow one is weak evidence.
+    His projected 1500 of ${ATHLETE.proj1500Label} converts a projected ${ATHLETE.proj1600Label} 1600, one more track season on
+    from the 4:21 he has run. Read the 1500 gap on its own scale: the healthy band at 5000 is 40&ndash;60 seconds behind a
+    team's best, and the same percentage over 1500 is only <strong>10 to 15 seconds</strong>.
     <a href="methodology.html">Why that is</a>.</p>`;
 }
 

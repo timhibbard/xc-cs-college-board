@@ -84,7 +84,30 @@ const COLS = [
   { key: 'tier',   label: 'Fit',      sort: (a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier) },
 ];
 
+/* Two columns that only make sense on the Greenville page: the question "how big is
+   the town" has an obvious answer in New York and Chicago. greenville.html asks for
+   them with initTable({ size: true }). Undergraduate count is federal; town
+   population is ACS — see TOWNPOP in data.js for the caveats. */
+const SIZE_COLS = [
+  { key: 'ug',  label: 'Students', num: true, sort: (a, b) => (a.cost?.size ?? 1e9) - (b.cost?.size ?? 1e9) },
+  { key: 'pop', label: 'Town',     num: true, sort: (a, b) => (TOWNPOP[a.city] ?? 1e9) - (TOWNPOP[b.city] ?? 1e9) },
+];
+
 let sortKey = 'tier', sortDir = 1, filters = { metro: 'all', div: 'all', tier: 'all', q: '' };
+
+/* Which columns this page shows. Frozen at initTable() time rather than read live off
+   `filters`, because the header is built once — deriving it from the metro filter would
+   drop cells out of every row while leaving the header cell standing. */
+let showMetroCol = true, showSizeCols = false;
+
+function activeCols() {
+  let cols = showMetroCol ? COLS : COLS.filter(c => c.key !== 'metro');
+  if (showSizeCols) {
+    const at = cols.findIndex(c => c.key === 'net') + 1;
+    cols = cols.slice(0, at).concat(SIZE_COLS, cols.slice(at));
+  }
+  return cols;
+}
 
 function visible() {
   return SCHOOLS.filter(s =>
@@ -93,17 +116,19 @@ function visible() {
     (filters.tier === 'all' || s.tier === filters.tier) &&
     (filters.q === '' || (s.name + ' ' + s.city + ' ' + s.conf).toLowerCase().includes(filters.q))
   ).sort((a, b) => {
-    const c = COLS.find(c => c.key === sortKey);
+    const c = activeCols().find(c => c.key === sortKey);
     return (c ? c.sort(a, b) : 0) * sortDir;
   });
 }
+
+const numCell = (n) => n == null ? '<span class="nodata">&mdash;</span>' : n.toLocaleString('en-US');
 
 function renderTable() {
   const rows = visible();
   const tb = document.querySelector('#master tbody');
   tb.innerHTML = rows.map(s => `<tr>
       <td class="c-name"><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span></td>
-      <td>${METROS[s.metro].label}</td>
+      ${showMetroCol ? `<td>${METROS[s.metro].label}</td>` : ''}
       <td class="num">${s.mi}</td>
       <td>${s.div}</td>
       <td class="c-conf">${s.conf}</td>
@@ -111,6 +136,8 @@ function renderTable() {
       <td class="time c-sat">${s.sat}</td>
       <td class="num">${s.accept}</td>
       <td class="num money">${s.cost?.net == null ? '<span class="nodata">&mdash;</span>' : '$' + s.cost.net.toLocaleString('en-US')}</td>
+      ${showSizeCols ? `<td class="num c-size">${numCell(s.cost?.size)}</td>
+      <td class="num c-size">${numCell(TOWNPOP[s.city])}</td>` : ''}
       <td class="num time">${fmtTime(s.b5000) ?? '<span class="nodata">&mdash;</span>'}</td>
       <td class="num">${s.xc ? '#' + s.xc.slot : '<span class="nodata">&mdash;</span>'}</td>
       <td class="num">${v7Txt(s)}</td>
@@ -137,8 +164,11 @@ function renderTable() {
   if (window.renderMap) window.renderMap();
 }
 
-function initTable() {
-  const head = COLS.map(c =>
+function initTable(opts = {}) {
+  showMetroCol = filters.metro === 'all';   /* a constant column is noise */
+  showSizeCols = !!opts.size;
+
+  const head = activeCols().map(c =>
     `<th data-key="${c.key}" class="sortable${c.num ? ' num' : ''}" scope="col">${c.label}<span class="arrow">▲</span></th>`
   ).join('') + '<th scope="col">Notes</th>';
   document.querySelector('#master thead').innerHTML = `<tr>${head}</tr>`;

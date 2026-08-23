@@ -23,7 +23,13 @@
    methodology.html §6a. Mileages past the original board are estimates: straight-line
    distance × 1.18, or × 1.35 in the mountain states, rounded to the nearest 5. */
 
+/* His projections. The 1600 is a real mark improved by one more track season
+   (4:21 today -> 4:18); the 1500 is that projected 1600 converted with Riegel at
+   e = 1.06, factor (1500/1600)^1.06 = 0.9339, so 258s -> 240.9s. The distance
+   projections stay 3200-anchored — see methodology.html §1 and §1a. */
 const ATHLETE = {
+  proj1600: 258, proj1600Label: '4:18',
+  proj1500: 241, proj1500Label: '4:01',
   proj5000: 920, proj5000Label: '15:20', band: [915, 925],
   proj8k: 1567, proj8kLabel: '26:07',
   proj10k: 1974, proj10kLabel: '32:54',
@@ -44,6 +50,93 @@ const COURSE_NOTES = {
     'ran about 96 seconds slow at 8K \u2014 Anderson, Catawba and Wingate each confirm it against the D2 regional',
   'CCIW Championships':
     'ran about 31 seconds fast at 8K, from four teams cross-checked against the D3 Midwest regional',
+};
+
+/* Town population, for the Greenville ring only — how big New York and Chicago are
+   is not a question this board needs to answer. Keyed by the exact `city` string on
+   each school, so a typo surfaces as a missing number rather than a wrong one.
+
+   Source: Census Reporter API, table B01003, ACS 2024 5-year (2020–2024). These are
+   *place* figures, which is the right unit for "what is this town like," with three
+   caveats worth carrying:
+     - Augusta GA, Macon GA and Athens GA are consolidated city-county governments,
+       so the figure is county-wide and reads larger than the campus surroundings.
+     - Buies Creek, Cullowhee, Tigerville and Emory VA are census-designated places
+       rather than incorporated towns — the boundary is a statistical convenience.
+     - A small place inside a large metro understates the setting: Morrow GA at 6,364
+       is Atlanta. Read this column next to the Mi column, never alone. */
+const TOWNPOP = {
+  "Aiken SC": 32521,
+  "Anderson SC": 30051,
+  "Asheville NC": 94535,
+  "Athens GA": 127345,
+  "Atlanta GA": 505268,
+  "Augusta GA": 201528,
+  "Banner Elk NC": 1473,
+  "Belmont NC": 15546,
+  "Bluefield WV": 9387,
+  "Boiling Springs NC": 4757,
+  "Boone NC": 20032,
+  "Brevard NC": 7897,
+  "Bristol TN": 27636,
+  "Buies Creek NC": 3746,
+  "Carrollton GA": 27392,
+  "Central SC": 5320,
+  "Chapel Hill NC": 61607,
+  "Charleston SC": 154338,
+  "Charlotte NC": 903844,
+  "Chattanooga TN": 185783,
+  "Clemson SC": 18072,
+  "Cleveland TN": 48829,
+  "Clinton SC": 7676,
+  "Columbia SC": 139643,
+  "Conway SC": 27263,
+  "Cullowhee NC": 7973,
+  "Dahlonega GA": 7299,
+  "Davidson NC": 15660,
+  "Demorest GA": 2512,
+  "Due West SC": 1177,
+  "Durham NC": 291467,
+  "Elon NC": 11032,
+  "Emory VA": 1419,
+  "Fayetteville NC": 210815,
+  "Florence SC": 40408,
+  "Fort Valley GA": 8858,
+  "Franklin Springs GA": 1108,
+  "Greeneville TN": 15646,
+  "Greensboro NC": 301198,
+  "Greenville SC": 72935,
+  "Greenwood SC": 22536,
+  "Harrogate TN": 4368,
+  "Hartsville SC": 7419,
+  "Hickory NC": 44258,
+  "High Point NC": 116245,
+  "Jefferson City TN": 8579,
+  "Johnson City TN": 72222,
+  "Kennesaw GA": 34605,
+  "Knoxville TN": 195185,
+  "LaGrange GA": 32078,
+  "Lookout Mtn GA": 1721,
+  "Macon GA": 156578,
+  "Mars Hill NC": 3025,
+  "Maryville TN": 32392,
+  "Milledgeville GA": 16748,
+  "Misenheimer NC": 659,
+  "Montreat NC": 630,
+  "Morrow GA": 6364,
+  "Newberry SC": 10790,
+  "Orangeburg SC": 13253,
+  "Pembroke NC": 2822,
+  "Rock Hill SC": 75259,
+  "Rome GA": 38189,
+  "Salisbury NC": 35825,
+  "Savannah GA": 147898,
+  "Spartanburg SC": 38910,
+  "Tigerville SC": 1880,
+  "Wingate NC": 4425,
+  "Winston-Salem NC": 252037,
+  "Wise VA": 2916,
+  "Young Harris GA": 1252,
 };
 
 const SCHOOLS = [

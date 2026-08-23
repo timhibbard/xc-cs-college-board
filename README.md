@@ -125,6 +125,16 @@ a program housed under mathematics can read as zero.
 Federal data replaced every estimate in the previous version: **33 SAT ranges were off by 60
 points or more, and 9 acceptance rates by 15 points or more.**
 
+**Town population:** the U.S. Census Bureau's American Community Survey, table B01003, **2024
+5-year estimates**, read through the Census Reporter API and matched to the exact place each campus
+sits in. Collected for the **Greenville ring only** — how big New York and Chicago are is not a
+question this board needs to answer. Undergraduate enrollment comes from the same federal record as
+the cost data. Both appear as columns on the Greenville table and as rows on every school page.
+Three figures are consolidated city-county governments (Augusta, Macon, Athens) and are therefore
+county-wide; four places are census-designated rather than incorporated (Buies Creek, Cullowhee,
+Tigerville, Emory VA); and a small figure inside a large metro describes the address, not the
+setting.
+
 **Individual athletes are not named anywhere.** Race tables show times in finishing order as
 "Their #1 … Their #7". The times are what the comparison needs; the identities are not, and this
 is a public page. Every race names the meet and date so any of it can be checked at source.
@@ -180,10 +190,17 @@ python3 -m http.server 8000
   xc: { slot: 4, g1: 97.4, v7: -41.3, spread: 138.7, disagree: false, nraces: 1 } }
 ```
 
-`b5000`, `spread`, `g1` and `v7` are in **seconds**; `null` means no data was found. `tier` is
+`b5000`, `spread`, `g1` and `v7` are in **seconds**; `b1500` is the mark as written on the results
+page, tenths and all, parsed at render time; `null` means no data was found. `tier` is
 `target`, `deep`, `verify`, or `caution`, and `tierSrc` records whether it came from cross
 country results (`xc`) or from track marks alone (`5000`). Changing a value updates the tables,
 the chart, the maps, the KPI tiles and the school page with no other edits.
+
+`ATHLETE` in the same file holds his projections, including `proj1600`/`proj1500`: the 1500 is the
+projected 4:18 1600 converted at the textbook Riegel exponent (4:01), which is the one conversion on
+this board anchored to the 1600 rather than the 3200 — over 100 metres *less* than a race he has run,
+a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS population; a key that does
+not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's top
 seven as raw seconds), `SCHED` (full season schedules), and `VENUES` (meet name → coordinates,

@@ -1,6 +1,6 @@
 # College Search — Greenville SC (250 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-08-23 (v5 — radius widened to 250 miles, candidate list rebuilt)
+XC/Track + Computer Science. Last updated 2026-08-23 (v6 — school and town size added in §8a; 1500m comparison added)
 
 > **The radius went from 200 to 250 miles, and the list went from 27 schools to 81 — but almost
 > none of that growth came from the extra fifty miles. It came from admitting the original list
@@ -21,7 +21,20 @@ Live version, with per-school pages, per-race results and meet maps:
 | 3200m | 9:40 | 9:29 |
 | 5K XC | 16:29 | ~15:59 |
 
-Converted: **1500 4:03** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:07** · **10K XC 32:54**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:07** · **10K XC 32:54**
+
+The **1500 of 4:01** is the one conversion anchored to the 1600 rather than the 3200, and
+deliberately so: it comes from the projected **4:18** 1600 at the textbook Riegel exponent
+(factor (1500/1600)^1.06 = 0.9339, so 258s → 240.9s), and the coach's rule of thumb — subtract
+about 17 seconds from a 1600 — gives the same answer. Over a distance 100 metres *shorter* than
+the race he has actually run, his speed lean is an asset rather than a flattering distortion. From
+today's 4:21 the same math gives 4:03.7; the board uses the projected figure because he has another
+track season first. Every school page now shows this next to that team's fastest 1500, and **33 of
+the 130 programs on the board have one on file** — marginally more than have a 5000.
+
+**Read the 1500 gap on its own scale.** The healthy band at 5000 is 40–60 seconds behind a team's
+best runner; the same percentage over 1500 is only **10 to 15 seconds**. Twelve seconds back at
+1500 is the same relationship as fifty back at 5000.
 
 The 8K and 10K projections are what the comparison runs on, because college cross country is
 raced at 8K (D2, D3 and most conference meets) and 10K (D1 regionals and nationals). The 10K
@@ -411,6 +424,131 @@ schools that survive.
 to four times the cost of UNCG for a comparable athletic fit. They are on the list because the
 running works; rank them last on money unless something specific offsets it. Clark Atlanta
 ($37,702) and Morehouse ($39,013) are in the same band among the additions.
+
+### 8a. School size and town size
+
+Two figures now sit beside the money on every school page, and as two extra columns in the master
+table on the website — **undergraduate enrollment** (federal, present for all 81) and **town
+population** (U.S. Census ACS 2024 5-year, table B01003, for the place the campus actually sits in).
+They are collected for this ring only; how big New York and Chicago are is not a question worth a
+column.
+
+The median school here has **1,867 undergraduates in a town of 32,078**, and the median hides the
+shape of it: **26 of the 81 sit in a place under 10,000 people** and **24 in one over 100,000**,
+with not much in between. That is the real texture of a 250-mile ring that reaches both Charlotte
+and towns of six hundred.
+
+**Five campuses enroll more undergraduates than their town has residents** — North Georgia (16,146
+against Dahlonega's 7,299), UNC Pembroke (5,330 / 2,822), Western Carolina (10,024 / 7,973),
+Kennesaw State (41,254 / 34,605) and Montreat (762 / 630), with App State near-parity at 19,444 in a
+Boone of 20,032. In those six the school *is* the town.
+
+At the other end: **Montreat (630), Misenheimer NC (659 — where Pfeiffer's 655 students make school
+and town the same size), Franklin Springs GA (1,108), Due West SC (1,177) and Young Harris GA
+(1,252)**. For any of them, ask the coach one question: *where does the team run?* A 12-mile long run
+out of a town of six hundred is either trails and gravel, which is ideal, or a state highway with no
+shoulder, which is not.
+
+Size cuts both ways on the two things that decide this. A small college means a small training group
+— fewer people to chase, which is the whole point of §3's framing rule — and it is where the CS
+lab-conflict problem in §9 is at its worst. A big state school means depth to chase and multiple lab
+sections, and it means being one of forty distance runners competing for a coach's attention rather
+than one of eight. The target tier spans the whole range: **Catawba, 1,235 students in Salisbury**,
+and **UNC Charlotte, 24,453 in a city of 903,844**, are the same tier and completely different lives.
+
+Three caveats before quoting any of these numbers. **Augusta, Macon and Athens are consolidated
+city-county governments**, so those figures are county-wide and read larger than the campus
+surroundings. **Buies Creek, Cullowhee, Tigerville and Emory VA are census-designated places**, not
+incorporated towns, so the boundary is a statistical convenience. And **a small place inside a large
+metro describes the address, not the setting** — Morrow GA is 6,364 people and is Atlanta. Read the
+town figure next to the *Mi* column, never alone.
+
+All 81, smallest town first. Ratio is undergraduates per resident; bold is a school bigger than its
+town.
+
+| School | Div | Undergrads | Town | Town population | Ratio |
+|---|---|---|---|---|---|
+| [Montreat](https://timhibbard.github.io/xc-cs-college-board/school.html?s=montreat) | NAIA | 762 | Montreat NC | 630 | **1.21×** |
+| [Pfeiffer](https://timhibbard.github.io/xc-cs-college-board/school.html?s=pfeiffer) | D3 | 655 | Misenheimer NC | 659 | 0.99× |
+| [Emmanuel (GA)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emmanuel-ga) | D2 | 775 | Franklin Springs GA | 1,108 | 0.70× |
+| [Erskine](https://timhibbard.github.io/xc-cs-college-board/school.html?s=erskine) | D2 | 766 | Due West SC | 1,177 | 0.65× |
+| [Young Harris](https://timhibbard.github.io/xc-cs-college-board/school.html?s=young-harris) | D2 | 755 | Young Harris GA | 1,252 | 0.60× |
+| [Emory & Henry](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory-and-henry) | D2 | 1,078 | Emory VA | 1,419 | 0.76× |
+| [Lees-McRae](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lees-mcrae) | D2 | 873 | Banner Elk NC | 1,473 | 0.59× |
+| [Covenant College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=covenant-college) | D3 | 939 | Lookout Mtn GA | 1,721 | 0.55× |
+| [North Greenville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-greenville) | D2 | 1,819 | Tigerville SC | 1,880 | 0.97× |
+| [Piedmont University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=piedmont-university) | D3 | 1,117 | Demorest GA | 2,512 | 0.44× |
+| [UNC Pembroke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-pembroke) | D2 | 5,330 | Pembroke NC | 2,822 | **1.89×** |
+| [UVA Wise](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uva-wise) | D2 | 1,101 | Wise VA | 2,916 | 0.38× |
+| [Mars Hill](https://timhibbard.github.io/xc-cs-college-board/school.html?s=mars-hill) | D2 | 1,044 | Mars Hill NC | 3,025 | 0.35× |
+| [Campbell](https://timhibbard.github.io/xc-cs-college-board/school.html?s=campbell) | D1 | 2,680 | Buies Creek NC | 3,746 | 0.72× |
+| [Lincoln Memorial](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lincoln-memorial) | D2 | 1,572 | Harrogate TN | 4,368 | 0.36× |
+| [Gardner-Webb](https://timhibbard.github.io/xc-cs-college-board/school.html?s=gardner-webb) | D1 | 1,856 | Boiling Springs NC | 4,757 | 0.39× |
+| [Southern Wesleyan](https://timhibbard.github.io/xc-cs-college-board/school.html?s=southern-wesleyan) | D2 | 747 | Central SC | 5,320 | 0.14× |
+| [Clayton State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clayton-state) | D2 | 4,348 | Morrow GA | 6,364 | 0.68× |
+| [North Georgia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-georgia) | D2 | 16,146 | Dahlonega GA | 7,299 | **2.21×** |
+| [Coker](https://timhibbard.github.io/xc-cs-college-board/school.html?s=coker) | D2 | 840 | Hartsville SC | 7,419 | 0.11× |
+| [Presbyterian](https://timhibbard.github.io/xc-cs-college-board/school.html?s=presbyterian) | D1 | 852 | Clinton SC | 7,676 | 0.11× |
+| [Brevard College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=brevard-college) | D3 | 815 | Brevard NC | 7,897 | 0.10× |
+| [Western Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=western-carolina) | D1 | 10,024 | Cullowhee NC | 7,973 | **1.26×** |
+| [Carson-Newman](https://timhibbard.github.io/xc-cs-college-board/school.html?s=carson-newman) | D2 | 1,387 | Jefferson City TN | 8,579 | 0.16× |
+| [Fort Valley State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fort-valley-state) | D2 | 2,684 | Fort Valley GA | 8,858 | 0.30× |
+| [Bluefield State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=bluefield-state) | D2 | 1,042 | Bluefield WV | 9,387 | 0.11× |
+| [Newberry](https://timhibbard.github.io/xc-cs-college-board/school.html?s=newberry) | D2 | 1,479 | Newberry SC | 10,790 | 0.14× |
+| [Elon](https://timhibbard.github.io/xc-cs-college-board/school.html?s=elon) | D1 | 6,452 | Elon NC | 11,032 | 0.58× |
+| [Claflin](https://timhibbard.github.io/xc-cs-college-board/school.html?s=claflin) | D2 | 1,706 | Orangeburg SC | 13,253 | 0.13× |
+| [SC State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=sc-state) | D1 | 2,934 | Orangeburg SC | 13,253 | 0.22× |
+| [Belmont Abbey](https://timhibbard.github.io/xc-cs-college-board/school.html?s=belmont-abbey) | D2 | 1,276 | Belmont NC | 15,546 | 0.08× |
+| [Tusculum](https://timhibbard.github.io/xc-cs-college-board/school.html?s=tusculum) | D2 | 785 | Greeneville TN | 15,646 | 0.05× |
+| [Davidson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=davidson) | D1 | 1,867 | Davidson NC | 15,660 | 0.12× |
+| [Georgia College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia-college) | D2 | 5,947 | Milledgeville GA | 16,748 | 0.36× |
+| [Appalachian State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=appalachian-state) | D1 | 19,444 | Boone NC | 20,032 | 0.97× |
+| [Lander](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lander) | D2 | 3,397 | Greenwood SC | 22,536 | 0.15× |
+| [Coastal Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=coastal-carolina) | D1 | 10,377 | Conway SC | 27,263 | 0.38× |
+| [West Georgia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=west-georgia) | D1 | 7,520 | Carrollton GA | 27,392 | 0.27× |
+| [King University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=king-university) | D2 | 908 | Bristol TN | 27,636 | 0.03× |
+| [Anderson (SC)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=anderson-sc) | D2 | 3,183 | Anderson SC | 30,051 | 0.11× |
+| [LaGrange](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lagrange) | D3 | 636 | LaGrange GA | 32,078 | 0.02× |
+| [Maryville College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=maryville-college) | D3 | 1,005 | Maryville TN | 32,392 | 0.03× |
+| [USC Aiken](https://timhibbard.github.io/xc-cs-college-board/school.html?s=usc-aiken) | D2 | 2,962 | Aiken SC | 32,521 | 0.09× |
+| [Kennesaw State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kennesaw-state) | D1 | 41,254 | Kennesaw GA | 34,605 | **1.19×** |
+| [Catawba](https://timhibbard.github.io/xc-cs-college-board/school.html?s=catawba) | D2 | 1,235 | Salisbury NC | 35,825 | 0.03× |
+| [Livingstone](https://timhibbard.github.io/xc-cs-college-board/school.html?s=livingstone) | D2 | 924 | Salisbury NC | 35,825 | 0.03× |
+| [Shorter](https://timhibbard.github.io/xc-cs-college-board/school.html?s=shorter) | D2 | 1,028 | Rome GA | 38,189 | 0.03× |
+| [Berry College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=berry-college) | D3 | 2,245 | Rome GA | 38,189 | 0.06× |
+| [Converse](https://timhibbard.github.io/xc-cs-college-board/school.html?s=converse) | D2 | 1,173 | Spartanburg SC | 38,910 | 0.03× |
+| [USC Upstate](https://timhibbard.github.io/xc-cs-college-board/school.html?s=usc-upstate) | D1 | 4,038 | Spartanburg SC | 38,910 | 0.10× |
+| [Wofford](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wofford) | D1 | 1,816 | Spartanburg SC | 38,910 | 0.05× |
+| [Francis Marion](https://timhibbard.github.io/xc-cs-college-board/school.html?s=francis-marion) | D2 | 2,628 | Florence SC | 40,408 | 0.07× |
+| [Lenoir-Rhyne](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lenoir-rhyne) | D2 | 1,359 | Hickory NC | 44,258 | 0.03× |
+| [Lee University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lee-university) | D2 | 2,617 | Cleveland TN | 48,829 | 0.05× |
+| [ETSU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=etsu) | D1 | 10,004 | Johnson City TN | 72,222 | 0.14× |
+| [Winthrop](https://timhibbard.github.io/xc-cs-college-board/school.html?s=winthrop) | D1 | 3,523 | Rock Hill SC | 75,259 | 0.05× |
+| [UNC Asheville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-asheville) | D1 | 2,910 | Asheville NC | 94,535 | 0.03× |
+| [High Point](https://timhibbard.github.io/xc-cs-college-board/school.html?s=high-point) | D1 | 5,129 | High Point NC | 116,245 | 0.04× |
+| [Allen University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=allen-university) | D2 | 576 | Columbia SC | 139,643 | 0.00× |
+| [Benedict](https://timhibbard.github.io/xc-cs-college-board/school.html?s=benedict) | D2 | 1,536 | Columbia SC | 139,643 | 0.01× |
+| [Savannah State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=savannah-state) | D2 | 2,833 | Savannah GA | 147,898 | 0.02× |
+| [Charleston Southern](https://timhibbard.github.io/xc-cs-college-board/school.html?s=charleston-southern) | D1 | 2,893 | Charleston SC | 154,338 | 0.02× |
+| [College of Charleston](https://timhibbard.github.io/xc-cs-college-board/school.html?s=college-of-charleston) | D1 | 10,558 | Charleston SC | 154,338 | 0.07× |
+| [The Citadel](https://timhibbard.github.io/xc-cs-college-board/school.html?s=the-citadel) | D1 | 2,705 | Charleston SC | 154,338 | 0.02× |
+| [Mercer](https://timhibbard.github.io/xc-cs-college-board/school.html?s=mercer) | D1 | 4,500 | Macon GA | 156,578 | 0.03× |
+| [Chattanooga](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chattanooga) | D1 | 10,074 | Chattanooga TN | 185,783 | 0.05× |
+| [Augusta University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=augusta-university) | D2 | 5,613 | Augusta GA | 201,528 | 0.03× |
+| [Fayetteville State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fayetteville-state) | D2 | 5,762 | Fayetteville NC | 210,815 | 0.03× |
+| [Methodist](https://timhibbard.github.io/xc-cs-college-board/school.html?s=methodist) | D3 | 1,448 | Fayetteville NC | 210,815 | 0.01× |
+| [Winston-Salem State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=winston-salem-state) | D2 | 4,170 | Winston-Salem NC | 252,037 | 0.02× |
+| [NC Central](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-central) | D1 | 6,081 | Durham NC | 291,467 | 0.02× |
+| [UNC Greensboro](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-greensboro) | D1 | 14,062 | Greensboro NC | 301,198 | 0.05× |
+| [NC A&T](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-aandt) | D1 | 12,182 | Greensboro NC | 301,198 | 0.04× |
+| [Guilford](https://timhibbard.github.io/xc-cs-college-board/school.html?s=guilford) | D3 | 1,001 | Greensboro NC | 301,198 | 0.00× |
+| [Emory](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory) | D3 | 7,298 | Atlanta GA | 505,268 | 0.01× |
+| [Clark Atlanta](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clark-atlanta) | D2 | 3,603 | Atlanta GA | 505,268 | 0.01× |
+| [Morehouse](https://timhibbard.github.io/xc-cs-college-board/school.html?s=morehouse) | D2 | 2,844 | Atlanta GA | 505,268 | 0.01× |
+| [Oglethorpe](https://timhibbard.github.io/xc-cs-college-board/school.html?s=oglethorpe) | D3 | 1,352 | Atlanta GA | 505,268 | 0.00× |
+| [UNC Charlotte](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-charlotte) | D1 | 24,453 | Charlotte NC | 903,844 | 0.03× |
+| [Johnson C. Smith](https://timhibbard.github.io/xc-cs-college-board/school.html?s=johnson-c-smith) | D2 | 1,244 | Charlotte NC | 903,844 | 0.00× |
+| [Queens (Charlotte)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-charlotte) | D1 | 1,211 | Charlotte NC | 903,844 | 0.00× |
 
 ## 9. Practical notes
 

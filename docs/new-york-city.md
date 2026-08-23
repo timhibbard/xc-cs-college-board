@@ -1,6 +1,6 @@
 # College Search — New York City (20 mile radius + all of Long Island)
 
-XC/Track + Computer Science. Last updated 2026-08-22 (v3 — radius tightened, CUNY and Long Island filled in)
+XC/Track + Computer Science. Last updated 2026-08-23 (v3 — radius tightened, CUNY and Long Island filled in)
 
 > **The ring changed and so did most of this document.** It is now **20 driving miles from Midtown
 > plus all of Nassau and Suffolk County** regardless of distance — a shape, not a circle, because
@@ -20,7 +20,7 @@ Live version, with per-school pages, per-race results and meet maps:
 | 3200m | 9:40 | 9:29 |
 | 5K XC | 16:29 | ~15:59 |
 
-Converted: **1500 4:03** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:07** · **10K XC 32:54**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:07** · **10K XC 32:54**
 
 Target: a program where he would arrive as their **5th through 9th man**. Being ahead of a team's
 #1 is not a good sign — it means the program is thin and he would train alone. The track 5000 is
