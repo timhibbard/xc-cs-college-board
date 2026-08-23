@@ -9,15 +9,15 @@ the one question that predicts whether a distance runner actually develops:
 
 **Live site:** https://timhibbard.github.io/xc-cs-college-board/
 
-**131 schools on the board, 15 cut as walk-on, 6 with no men's program to join.** All 152 carry
+**130 schools on the board, 15 cut as walk-on, 6 with no men's program to join.** All 151 carry
 federal cost and admissions data and a detail page; **37 have real cross country depth data** and
-eleven of those have a map of every meet the program attended last season. The other 94 sit at
+eleven of those have a map of every meet the program attended last season. The other 93 sit at
 *Verify*, which means **unmeasured, not borderline** — a placeholder for a lookup nobody has done.
 
 An earlier version of this file claimed the board listed *every* college inside each radius that
 sponsors men's cross country. **That was false**, and the correction is the largest single change
 in the project: rebuilding the candidate lists conference by conference from each conference's own
-men's-sponsored-sports tables added 73 schools, 41 of which had been inside the original Greenville
+men's-sponsored-sports tables added 72 schools, 40 of which had been inside the original Greenville
 radius the whole time — including one 25 driving miles from home. NAIA and NCCAA coverage is
 [still incomplete and documented as such](https://timhibbard.github.io/xc-cs-college-board/methodology.html).
 
@@ -59,7 +59,7 @@ target tier, which is documented rather than quietly fixed.
 
 | Metro | Radius | Schools | Target tier | With XC data | Source document |
 |---|---|---|---|---|---|
-| Greenville, SC | 250 mi | 82 | 9 | 22 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
+| Greenville, SC | 250 mi | 81 | 9 | 22 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
 | New York City | 20 mi + all of Long Island | 37 | 2 | 7 | [`docs/new-york-city.md`](docs/new-york-city.md) |
 | Chicago | 20 mi | 12 | 1 | 8 | [`docs/chicago.md`](docs/chicago.md) |
 

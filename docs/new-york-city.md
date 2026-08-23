@@ -281,7 +281,7 @@ information.
    his favor. **The only target-tier rating in this metro resting on track marks alone** — their
    conference championship result is the single most valuable lookup left here.
 3. **[NJIT](https://timhibbard.github.io/xc-cs-college-board/school.html?s=njit)** — **33.0% of its
-   bachelor's degrees are in computer science**, the highest share on the entire 131-school board,
+   bachelor's degrees are in computer science**, the highest share on the entire 130-school board,
    it is D1, and at **$16,504 net** it is a third the cost of Fordham. If the running fits, this is
    the best D1-plus-CS value in the metro by a wide margin. Everything hinges on roster times that
    do not exist yet.

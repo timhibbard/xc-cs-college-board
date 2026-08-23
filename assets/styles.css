@@ -229,7 +229,10 @@ input[type="search"] { min-width: 200px; }
 /* ---------- table ---------- */
 .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-1); }
 table { border-collapse: collapse; width: 100%; font-size: 14px; }
-caption { text-align: left; font-size: 13px; color: var(--muted); padding: 12px 14px 0; }
+/* A caption is as wide as its table, and the master table is wider than its scroll
+   container — so without a max-width the caption's last words are clipped off the right
+   edge until you scroll sideways. Cap it well inside the container so it wraps instead. */
+caption { text-align: left; font-size: 13px; color: var(--muted); padding: 12px 14px 0; max-width: 96ch; }
 th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--grid); vertical-align: top; }
 thead th {
   background: var(--surface-1);
@@ -238,8 +241,23 @@ thead th {
   border-bottom: 1px solid var(--baseline); z-index: 2;
 }
 /* Only the long master table needs a pinned header; on a short table inside a
-   card the sticky header detaches and lands on top of the first rows. */
-#master thead th { position: sticky; top: 59px; }
+   card the sticky header detaches and lands on top of the first rows.
+   It has to pin against .table-scroll rather than the page: overflow-x:auto on that
+   wrapper forces overflow-y to auto as well, which makes it the nearest scrolling
+   ancestor, so a viewport-relative offset here does nothing at all and the sticky
+   site nav ends up covering the first line of whichever row sits under it. Giving
+   the wrapper a height of its own puts the scrolling and the pinning in the same box. */
+.table-scroll:has(#master) {
+  max-height: calc(100vh - 96px);
+  /* Rows are two and three lines tall, so a scroll that stops mid-row hides the school
+     name and leaves its city line orphaned under the header — which reads as a torn row
+     rather than as a partial one. Snapping to row starts, with the padding set to the
+     header's own height, means a row is either fully below the header or not shown. */
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 38px;
+}
+#master thead th { position: sticky; top: 0; }
+#master tbody tr { scroll-snap-align: start; }
 thead th.sortable { cursor: pointer; user-select: none; }
 thead th.sortable:hover { color: var(--text-primary); }
 thead th .arrow { opacity: 0.35; font-size: 9px; margin-left: 3px; }
@@ -256,7 +274,18 @@ a.school:hover { color: var(--div-blue); text-decoration: underline; }
 .cs-ok::before { content: "✓ "; color: var(--good); font-weight: 700; }
 .cs-no::before { content: "? "; color: var(--muted); font-weight: 700; }
 .cs-no { color: var(--muted); }
-.rownote { font-size: 12.5px; color: var(--text-secondary); max-width: 40ch; }
+/* The note column has to be constrained by min-width, not max-width: under table
+   auto-layout a max-width on a cell is only a hint, so when the table is wider than its
+   scroll container the browser squeezes this column to a few characters and the row grows
+   to 300-400px tall. A row that tall is then only ever partly visible under the sticky
+   header, which reads as a torn, half-blank first row. Clamping to three lines keeps every
+   row a uniform height; the full note is on each school's own page and in its map popup. */
+.rownote {
+  font-size: 12.5px; color: var(--text-secondary);
+  min-width: 34ch; max-width: 46ch;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+  overflow: hidden;
+}
 .gap-pos { color: var(--div-blue); font-weight: 620; }
 .gap-neg { color: var(--div-red); font-weight: 620; }
 
@@ -341,9 +370,13 @@ footer.site p { font-size: 13px; color: var(--muted); }
   header.site .wrap { gap: 10px 18px; padding: 10px 16px; }
   nav.site { margin-left: 0; gap: 14px; }
   #theme { margin-left: auto; }
-  #master thead th { top: 0; }
+  /* on a phone the whole page is the scroll surface, so an inner scrollport just
+     traps the wheel; the header stops pinning, which is the lesser problem. */
+  .table-scroll:has(#master) { max-height: none; }
 }
 @media print {
   header.site, #theme, .controls, footer.site { display: none; }
   .table-scroll { overflow: visible; }
+  /* a capped scrollport would print as one screenful and silently drop the rest */
+  .table-scroll:has(#master) { max-height: none; }
 }

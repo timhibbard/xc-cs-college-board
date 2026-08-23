@@ -98,6 +98,12 @@ function visible() {
   });
 }
 
+/* The note cell is clamped to three lines, so the full text goes in a title attribute —
+   markup stripped and quotes escaped, since the notes carry <b> tags and curly quotes. */
+function plain(html) {
+  return (html ?? '').replace(/<[^>]*>/g, '').replace(/&mdash;/g, '—').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
 function renderTable() {
   const rows = visible();
   const tb = document.querySelector('#master tbody');
@@ -115,7 +121,7 @@ function renderTable() {
       <td class="num">${s.xc ? '#' + s.xc.slot : '<span class="nodata">&mdash;</span>'}</td>
       <td class="num">${v7Txt(s)}</td>
       <td>${badge(s.tier)}</td>
-      <td class="rownote">${s.note ?? ''}</td>
+      <td class="rownote" title="${plain(s.note)}">${s.note ?? ''}</td>
     </tr>`).join('');
 
   const pool = filters.metro === 'all'

@@ -1,11 +1,11 @@
 # College Search — Greenville SC (250 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-08-22 (v5 — radius widened to 250 miles, candidate list rebuilt)
+XC/Track + Computer Science. Last updated 2026-08-23 (v5 — radius widened to 250 miles, candidate list rebuilt)
 
-> **The radius went from 200 to 250 miles, and the list went from 27 schools to 82 — but almost
+> **The radius went from 200 to 250 miles, and the list went from 27 schools to 81 — but almost
 > none of that growth came from the extra fifty miles. It came from admitting the original list
 > was incomplete.** Rebuilding the candidate list conference by conference from each conference's
-> own men's-sponsored-sports tables found **56 schools**, and **41 of them were inside the original
+> own men's-sponsored-sports tables found **55 schools**, and **40 of them were inside the original
 > 200-mile ring the whole time** — including one 25 driving miles from home. Every one enters at
 > Verify with full federal cost and admissions data and no cross country data, so the ranked
 > analysis below is unchanged. Two other corrections and one new cut are in §2. See §2a first.
@@ -50,29 +50,29 @@ what is on the list and says nothing about what is missing.
 
 The rebuild works the other way round: for every NCAA D1, D2 and D3 conference with a member inside
 250 miles, read that conference's own men's-sponsored-sports table and take every school in range.
-That found **56 additions**:
+That found **55 additions**:
 
 | | Added | Of which inside the old 200 miles |
 |---|---|---|
 | Division 1 | 12 | 6 |
 | Division 2 | **35** | 27 |
 | Division 3 | 7 | 6 |
-| NAIA / NCCAA | 2 | 2 |
-| **Total** | **56** | **41** |
+| NAIA | 1 | 1 |
+| **Total** | **55** | **40** |
 
 **The Division 2 number is the one that matters.** D2 is where partial athletic scholarships live,
 and this document previously listed **seven** D2 programs in range. There are **forty-two**. The
-closest omission, **Southern Wesleyan**, is 25 driving miles from home. **Bob Jones** is three.
+closest omission, **Southern Wesleyan**, is 25 driving miles from home.
 
 Every addition enters at **Verify — meaning unmeasured, not borderline.** None has a cross country
 result or an outdoor 5000 on file, so none can be ranked yet, and none of §6's or §7's conclusions
-moves. What changed is the size of the unexplored space: **60 of the 82 schools on this list have no
+moves. What changed is the size of the unexplored space: **59 of the 81 schools on this list have no
 running data at all.**
 
 Two limits worth stating. The rebuild inherits the conferences' own errors — a stale sponsored-sports
 table is wrong in both directions, and no addition's sponsorship was re-confirmed on the school's
-own athletics site. And **NAIA and NCCAA coverage is still incomplete**: only Bob Jones (NCCAA) and
-Montreat (NAIA) are here, while at least Toccoa Falls, Truett McConnell, Brenau, Columbia
+own athletics site. And **NAIA and NCCAA coverage is still incomplete**: only Montreat (NAIA) is
+here, while at least Toccoa Falls, Truett McConnell, Brenau, Columbia
 International, Columbia College SC, Milligan, Johnson University, Reinhardt, Voorhees, Tennessee
 Wesleyan, Morris College, Bryan College, Bluefield University, Point University, Life University,
 Spartanburg Methodist and Warren Wilson are not. NAIA allows **12 scholarships** for men's XC and
@@ -86,7 +86,7 @@ track and field** — the distance programs are women's only. There was never a 
 This is the failure mode of a tier that means "no data yet": it reads as a program awaiting
 measurement rather than one that does not exist. It is kept on the map rather than deleted so the
 correction stays visible. If an error of this kind was sitting in a 27-school list, assume there
-are others in an 82-school one.
+are others in an 81-school one.
 
 ### 2c. Four rows on the cut list said "out of range" and were not
 
@@ -149,7 +149,7 @@ least three teams cross-check, and the two that survived that bar are documented
 | **Net cost/yr** | federal average net price after grant aid, from the College Scorecard — **not** sticker price. Out-of-state rates are used at public schools, except at the nine South Carolina publics, where the in-state rate applies. |
 | **CS** | ✅ with a percentage = share of that school's bachelor's degrees awarded in computer science, from federal completion data. A low share is not a bad program. |
 
-**Mileage caveat for the 56 additions.** Their `Mi` figures are **estimates**, not looked-up routes:
+**Mileage caveat for the 55 additions.** Their `Mi` figures are **estimates**, not looked-up routes:
 straight-line distance × 1.18, or × 1.35 in the mountain states (TN, VA, WV, KY), rounded to the
 nearest 5. Expect ±15%. That matters only near the line — **Campbell, Savannah State and NC
 Central at an estimated 250 could each be over it.**
@@ -267,19 +267,18 @@ Forty-two programs, thirty-five of them new to this document. Every new one is u
 | **[Berry College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=berry-college)** | Rome GA | 150 | SAA | ✅ 5.8% | 1125–1330 | 64% | $22,320 | — | — | — | Caution |
 | **[Guilford](https://timhibbard.github.io/xc-cs-college-board/school.html?s=guilford)** | Greensboro NC | 180 | ODAC | ✅ 7.2% | 1120–1260 | 80% | $22,270 | — | — | — | Caution |
 
-### NAIA and NCCAA
+### NAIA
 
-Neither is NCAA, which changes the rules rather than the running. NAIA allows **12 scholarships**
-for men's XC and track with looser eligibility rules; NCCAA has no NCAA eligibility clock and no
-NCAA championship path. Coverage here is known to be incomplete (§2a).
+Not NCAA, which changes the rules rather than the running: NAIA allows **12 scholarships** for
+men's XC and track and has looser eligibility rules. Coverage here is known to be incomplete (§2a),
+and no NCCAA program is on this list.
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | Tier |
 |---|---|---|---|---|---|---|---|---|
 | **[Montreat](https://timhibbard.github.io/xc-cs-college-board/school.html?s=montreat)** | Montreat NC | 70 | Appalachian Athletic (NAIA) | ✅ 13.9% | not reported | 69% | $27,061 | Verify |
-| **[Bob Jones](https://timhibbard.github.io/xc-cs-college-board/school.html?s=bob-jones)** | Greenville SC | 3 | NCCAA D2 South | ✅ 3.9% | not reported | not reported | $16,641 | Verify |
 
-**Bob Jones is three miles from home** and does sponsor men's cross country. Montreat's **13.9% CS
-degree share** is the third highest on this entire list. Both are unmeasured on running.
+Montreat's **13.9% CS degree share** is the third highest on this entire list, and it is the only
+non-NCAA program in range that made this list. It is unmeasured on running.
 
 ## 5. Schools removed — he would be a walk-on
 
@@ -307,8 +306,8 @@ Greensboro · ETSU · Elon · High Point · UNC Charlotte · Catawba (D2) · Emo
 
 **Deep — just outside the travel squad.** Anderson (SC) · Appalachian State
 
-**Verify — unmeasured, not borderline (58 schools).** Kennesaw State · Piedmont University · and the
-56 additions from §2a
+**Verify — unmeasured, not borderline (57 schools).** Kennesaw State · Piedmont University · and the
+55 additions from §2a
 
 **Caution — he arrives at or ahead of their #1.** USC Upstate · Western Carolina · Wofford ·
 Winthrop · Presbyterian · Gardner-Webb · North Greenville · Lander · Lenoir-Rhyne · Carson-Newman ·
@@ -317,9 +316,9 @@ King University · Berry College · Guilford
 **Cut on results or on level.** Furman · Clemson · Georgia Tech · Wingate · South Carolina ·
 Georgia · Tennessee · Wake Forest · UNC Chapel Hill · Duke
 
-Eighty-two schools, **nine of them target tier** — still by far the strongest of the three metros
-and still the reason this list is the primary one. But note what the ratio now means: **58 schools
-are unmeasured**, so nine-of-eighty-two is not a worse hit rate than v4's nine-of-twenty-seven, it
+Eighty-one schools, **nine of them target tier** — still by far the strongest of the three metros
+and still the reason this list is the primary one. But note what the ratio now means: **57 schools
+are unmeasured**, so nine-of-eighty-one is not a worse hit rate than v4's nine-of-twenty-seven, it
 is the same nine measured against a much larger and mostly unexplored field.
 
 That caution tier still needs care rather than dismissal. Being a team's #1 is fine *if* the coach
@@ -330,7 +329,7 @@ extreme number in this document and means there is effectively no distance squad
 
 ## 7. Top picks
 
-Unchanged by the radius change, because **none of the 56 additions has a cross country result yet**.
+Unchanged by the radius change, because **none of the 55 additions has a cross country result yet**.
 Treat this list as "the best of what has been measured," not "the best available."
 
 1. **[UNC Asheville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-asheville)**
@@ -370,7 +369,7 @@ Also worth the email, one tier down: **ETSU** and **High Point** are both solid 
 30 miles away and within two seconds of their travel squad.
 
 **And the highest-value unmeasured shortlist**, on cost, CS share and proximity rather than on
-running: **Southern Wesleyan** (25 mi), **Bob Jones** (3 mi), **Erskine** (40), **Newberry** (70),
+running: **Southern Wesleyan** (25 mi), **Erskine** (40), **Newberry** (70), **Emmanuel GA** (70),
 **Montreat** (70, 13.9% CS), **North Georgia** ($9,823 net, 9.2% CS), **Augusta** (15.6% CS),
 **Clayton State** ($8,365 net, 8.9% CS) and **USC Aiken** (in-state). One conference championship
 result covers seven or eight of these at a time.
@@ -439,13 +438,13 @@ altitude-training advantage.
 
 ## 10. To-dos, priority order
 
-1. **Get cross country results for the twelve schools inside 100 miles that have none.**
-   This is now the single highest-value action in the entire project. Bob Jones (3 mi), Southern
-   Wesleyan (25), Converse (35), Brevard (40), Erskine (40), Newberry (70), Emmanuel GA (70),
-   Montreat (70), Mars Hill (80), Belmont Abbey (95), Young Harris (95), Piedmont (100). Most are
+1. **Get cross country results for the eleven schools inside 100 miles that have none.**
+   This is now the single highest-value action in the entire project. Southern Wesleyan (25 mi),
+   Converse (35), Brevard (40), Erskine (40), Newberry (70), Emmanuel GA (70), Montreat (70),
+   Mars Hill (80), Belmont Abbey (95), Young Harris (95), Piedmont (100). Most are
    Conference Carolinas or South Atlantic, so **two championship results cover almost all of them.**
 2. **Then sweep the rest of the conferences.** Peach Belt, SIAC, CIAA, USA South, Southern Athletic,
-   Collegiate Conference of the South, Gulf South and MEAC would resolve most of the remaining 58
+   Collegiate Conference of the South, Gulf South and MEAC would resolve most of the remaining 57
    Verify-tier schools — 19 of them sit between 100 and 160 miles. Also Kennesaw State, which
    predates the additions, plus Berry and Guilford, ranked Caution on track marks alone.
 3. **Close the NAIA/NCCAA gap** listed in §2a — seventeen named programs, in the division with the
@@ -469,4 +468,4 @@ altitude-training advantage.
    school's detail page maps every meet they attended last year by season, which is a decent first
    check for the eleven schools that have one.
 9. Verify SAT figures for the **24 schools reporting no SAT range at all** in the federal file, and
-   admit rates for Bob Jones and Savannah State.
+   an admit rate for Savannah State.

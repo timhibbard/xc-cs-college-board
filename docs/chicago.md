@@ -205,7 +205,7 @@ country data nor the radius change moved it.
    strong CS option in the metro, and 31 seconds is one good freshman year. Worth the email.
 3. **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)**
    — the roster times are finally resolved: seven runners inside **33 seconds**, the tightest
-   pack on the entire 131-school board, with him about 34 seconds outside. Elite CS, and the net
+   pack on the entire 130-school board, with him about 34 seconds outside. Elite CS, and the net
    price of $14,860 is startlingly low for a $90k sticker. The obstacle is a **4% admit rate**,
    not the running.
 4. **[Roosevelt](https://timhibbard.github.io/xc-cs-college-board/school.html?s=roosevelt)** —

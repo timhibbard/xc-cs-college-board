@@ -14,7 +14,7 @@
    venue coordinates — lives in detail.js, loaded only by school.html.
 
    Candidate list: every NCAA D1/D2/D3 school inside each ring that sponsors men's
-   cross country, plus a handful of named NAIA and NCCAA programs. The rings are
+   cross country, plus three named NAIA programs. The rings are
    250 driving miles of Greenville SC, 20 driving miles of midtown Manhattan
    *plus all of Long Island*, and 20 driving miles of the Chicago Loop. Sponsorship
    was checked conference by conference from each conference's sponsored-sports
@@ -244,14 +244,6 @@ const SCHOOLS = [
     b1500: null, b5000: null, tier: "verify", tierSrc: "5000",
     xc: null,
     note: "Added when the radius widened; no cross country or outdoor 5000 mark has been collected yet, so it sits at <b>Verify</b> meaning unmeasured rather than borderline.",
-  },
-  { name: "Bob Jones", slug: "bob-jones", city: "Greenville SC", metro: "greenville", mi: 3,
-    lat: 34.874016, lon: -82.365838, div: "NCCAA", conf: "NCCAA D2 South",
-    cs: "verified", csSrc: "fed", csShare: 3.9, sat: "not reported", satSrc: "none", accept: "not reported", acceptSrc: "none",
-    cost: { own: "private", resid: "out", tuition: 24470, rb: 10380, sticker: 34850, net: 16641, size: 2005, ipeds: 217749 },
-    b1500: null, b5000: null, tier: "verify", tierSrc: "5000",
-    xc: null,
-    note: "Three miles from home and it does sponsor men’s cross country, but it is <b>not NCAA</b> — NCCAA Division 2, so there is no NCAA eligibility clock and no NCAA championship path. Added when the radius widened; no cross country or outdoor 5000 mark has been collected yet, so it sits at <b>Verify</b> meaning unmeasured rather than borderline.",
   },
   { name: "Brevard College", slug: "brevard-college", city: "Brevard NC", metro: "greenville", mi: 40,
     lat: 35.236763, lon: -82.729494, div: "D3", conf: "USA South",
