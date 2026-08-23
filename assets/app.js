@@ -23,8 +23,9 @@ function initChrome(current) {
 
   const foot = `
     <footer class="site"><div class="wrap">
-      <p>Times from TFRRS, 2026 outdoor season &mdash; single fastest athlete per event.
-      SAT and acceptance figures are approximate and unverified; check each school's Common Data Set.
+      <p>Cross country depth from 2025 championship results on TFRRS; track marks from the 2026
+      outdoor season, single fastest athlete per event. Cost, SAT, admit rate and CS-program data
+      from the U.S. Department of Education College Scorecard.
       <a href="methodology.html">Read the caveats</a> before acting on anything here.</p>
     </div></footer>`;
   document.body.insertAdjacentHTML('beforeend', foot);
@@ -44,6 +45,17 @@ const fmtTime = (s) => s == null ? null :
   `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
 
 const gapOf = (s) => s.b5000 == null ? null : ATHLETE.proj5000 - s.b5000;
+
+const TIER_ORDER = ['target', 'deep', 'verify', 'caution'];
+const link = (s) => `school.html?s=${encodeURIComponent(s.slug)}`;
+
+/* Where he lands relative to the team's 7th man. Negative is inside the seven. */
+function v7Txt(s) {
+  if (!s.xc || s.xc.v7 == null) return '<span class="nodata">&mdash;</span>';
+  return s.xc.v7 <= 0
+    ? `<span class="gap-pos">&minus;${Math.abs(s.xc.v7).toFixed(0)}s</span>`
+    : `<span class="gap-neg">+${s.xc.v7.toFixed(0)}s</span>`;
+}
 
 function badge(tier) {
   const t = TIERS[tier];
@@ -65,12 +77,14 @@ const COLS = [
   { key: 'cs',     label: 'CS',       sort: (a, b) => a.cs.localeCompare(b.cs) },
   { key: 'sat',    label: 'SAT',      sort: (a, b) => a.sat.localeCompare(b.sat) },
   { key: 'accept', label: 'Admit',    num: true, sort: (a, b) => parseInt(a.accept.replace(/\D/g, '')) - parseInt(b.accept.replace(/\D/g, '')) },
+  { key: 'net',    label: 'Net cost',    num: true, sort: (a, b) => (a.cost?.net ?? 1e9) - (b.cost?.net ?? 1e9) },
   { key: 'b5000',  label: 'Team best 5K', num: true, sort: (a, b) => (a.b5000 ?? 1e9) - (b.b5000 ?? 1e9) },
-  { key: 'gap',    label: 'Gap to #1', num: true, sort: (a, b) => (gapOf(a) ?? -1e9) - (gapOf(b) ?? -1e9) },
-  { key: 'tier',   label: 'Fit',      sort: (a, b) => ['target', 'verify', 'caution'].indexOf(a.tier) - ['target', 'verify', 'caution'].indexOf(b.tier) },
+  { key: 'slot',   label: 'His slot in their 7', num: true, sort: (a, b) => (a.xc?.slot ?? 1e9) - (b.xc?.slot ?? 1e9) },
+  { key: 'v7',     label: 'vs their 7th', num: true, sort: (a, b) => (a.xc?.v7 ?? 1e9) - (b.xc?.v7 ?? 1e9) },
+  { key: 'tier',   label: 'Fit',      sort: (a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier) },
 ];
 
-let sortKey = 'gap', sortDir = -1, filters = { metro: 'all', div: 'all', tier: 'all', q: '' };
+let sortKey = 'tier', sortDir = 1, filters = { metro: 'all', div: 'all', tier: 'all', q: '' };
 
 function visible() {
   return SCHOOLS.filter(s =>
@@ -87,26 +101,22 @@ function visible() {
 function renderTable() {
   const rows = visible();
   const tb = document.querySelector('#master tbody');
-  tb.innerHTML = rows.map(s => {
-    const g = gapOf(s);
-    const gTxt = g == null ? '<span class="nodata">&mdash;</span>'
-      : g >= 0 ? `<span class="gap-pos">+${g}s</span>`
-               : `<span class="gap-neg">&minus;${Math.abs(g)}s</span>`;
-    return `<tr>
-      <td><span class="school">${s.name}</span><span class="city">${s.city}</span></td>
+  tb.innerHTML = rows.map(s => `<tr>
+      <td><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span></td>
       <td>${METROS[s.metro].label}</td>
       <td class="num">${s.mi}</td>
       <td>${s.div}</td>
       <td>${s.conf}</td>
-      <td class="${s.cs === 'verified' ? 'cs-ok' : 'cs-no'}">${s.cs === 'verified' ? 'Verified' : 'Confirm'}</td>
+      <td class="${s.cs === 'verified' ? 'cs-ok' : 'cs-no'}">${s.cs === 'verified' ? 'Verified' : s.cs === 'none' ? 'None' : 'Confirm'}</td>
       <td class="time">${s.sat}</td>
       <td class="num">${s.accept}</td>
+      <td class="num money">${s.cost?.net == null ? '<span class="nodata">&mdash;</span>' : '$' + s.cost.net.toLocaleString('en-US')}</td>
       <td class="num time">${fmtTime(s.b5000) ?? '<span class="nodata">&mdash;</span>'}</td>
-      <td class="num">${gTxt}</td>
+      <td class="num">${s.xc ? '#' + s.xc.slot : '<span class="nodata">&mdash;</span>'}</td>
+      <td class="num">${v7Txt(s)}</td>
       <td>${badge(s.tier)}</td>
       <td class="rownote">${s.note ?? ''}</td>
-    </tr>`;
-  }).join('');
+    </tr>`).join('');
 
   const pool = filters.metro === 'all'
     ? SCHOOLS.length
@@ -316,9 +326,11 @@ function initMap(metro) {
       const body = s.kind === 'cut' || s.kind === 'none'
         ? `<div class="mp-meta">${s.div ?? ''}</div><div class="mp-why">${s.why}</div>`
         : `<div class="mp-meta">${s.city} &middot; ${s.div} ${s.conf} &middot; ${s.mi} mi</div>
-           <div class="mp-line">Team best 5K: <b>${fmtTime(s.b5000) ?? 'no data'}</b></div>
-           <div class="mp-line">Gap to their #1: <b>${g == null ? 'unknown' : (g >= 0 ? '+' + g + 's' : '−' + Math.abs(g) + 's')}</b></div>
-           <div class="mp-line">CS degree: <b>${s.cs === 'verified' ? 'verified' : 'unconfirmed'}</b> &middot; SAT ${s.sat}</div>
+           ${s.xc
+             ? `<div class="mp-line">In their scoring seven he is <b>#${s.xc.slot}</b>, ${s.xc.v7 <= 0 ? Math.abs(s.xc.v7).toFixed(0) + 's inside' : s.xc.v7.toFixed(0) + 's outside'} their 7th man</div>`
+             : `<div class="mp-line">No cross country data &mdash; team best 5K <b>${fmtTime(s.b5000) ?? 'unknown'}</b>${g == null ? '' : `, gap ${g >= 0 ? '+' + g : g}s`}</div>`}
+           <div class="mp-line">Net cost: <b>${s.cost?.net == null ? 'unknown' : '$' + s.cost.net.toLocaleString('en-US')}</b> &middot; SAT ${s.sat}</div>
+           <div class="mp-line">CS degree: <b>${s.cs === 'verified' ? 'verified' : s.cs === 'none' ? 'not offered' : 'unconfirmed'}</b></div>
            ${s.note ? `<div class="mp-why">${s.note}</div>` : ''}`;
 
       L.marker([s.lat, s.lon], {
@@ -332,7 +344,8 @@ function initMap(metro) {
       }).addTo(layer).bindPopup(
         `<div class="mp"><div class="mp-name">${s.name}</div>
          <div class="mp-tier pin-${s.kind}-txt">${glyph} ${KIND[s.kind] ?? TIERS[s.kind].label}</div>
-         ${body}${s.nudged ? '<div class="mp-nudge">Pin nudged slightly &mdash; another school shares this town.</div>' : ''}</div>`,
+         ${body}${s.nudged ? '<div class="mp-nudge">Pin nudged slightly &mdash; another school shares this town.</div>' : ''}
+         ${s.kind === 'none' ? '' : `<div class="mp-line"><a href="${link(s)}">Full detail &rarr;</a></div>`}</div>`,
         { maxWidth: 300 }
       );
     });

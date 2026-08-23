@@ -13,8 +13,10 @@
   <p class="eyebrow">Read before acting on anything here</p>
   <h1>Methodology, conversions, and what this data cannot tell you</h1>
   <p class="lede">
-    Every number on this site rests on a small set of conversions and one significant
-    data limitation. Both are worth understanding before using any of it to make a decision.
+    Every number on this site rests on a small set of conversions, one comparison, and a handful of
+    corrections that had to be made when better data arrived. All of it is worth understanding before
+    using any of it to make a decision — particularly §3, which explains why four of this board's
+    earlier recommendations were withdrawn.
   </p>
 
   <h2>1. The athlete's marks and how they convert</h2>
@@ -25,6 +27,8 @@
         <tr><td>1600m</td><td class="time">4:21</td><td class="time">~4:18</td></tr>
         <tr><td>3200m</td><td class="time">9:40</td><td class="time">9:29</td></tr>
         <tr><td>5K cross country</td><td class="time">16:29</td><td class="time">~15:59</td></tr>
+        <tr><td>8K cross country</td><td class="nodata">not raced</td><td class="time">26:07</td></tr>
+        <tr><td>10K cross country</td><td class="nodata">not raced</td><td class="time">32:54</td></tr>
       </tbody>
     </table>
   </div>
@@ -35,6 +39,15 @@
     Everything on this site is scored against the midpoint of that 5000 range,
     <strong>15:20</strong>. Using the slower end of the range shifts every gap by five
     seconds; it does not change any school's tier.
+  </p>
+  <p class="prose">
+    College men race <strong>8K</strong> in cross country and <strong>10K</strong> at most NCAA
+    championship meets, so the projection has to be carried across distances to be compared to a
+    scoring seven. From a 15:59 5K: <strong>8K = 26:07</strong>, and
+    <strong>10K = 8K × 1.26 = 32:54</strong>. That 1.26 factor is not assumed — it was checked
+    against teams that raced both an 8K conference championship and a 10K regional in 2025, and the
+    two implied 8K-equivalents agreed within about seven seconds for Big South and Southern
+    Conference squads.
   </p>
 
   <h2>2. The framing rule — and the mistake it corrects</h2>
@@ -76,11 +89,89 @@
         sits beside a "best 3000" of 10:21. Those tables were <em>empty</em>, not slow.
       </li>
       <li>
-        <strong>There is no team depth available.</strong> One athlete per event means no 5th man and
-        no 7th man. "Gap to their #1" is the only comparison the data supports — which is why
-        getting conference-championship results is the top task below.
+        <strong>Team pages carry no depth at all.</strong> One athlete per event means no 5th man and
+        no 7th man. This was the largest gap on the site and it has now been closed for
+        <strong>42 of 78 schools</strong> by going to a different source: individual
+        <em>meet result</em> pages from the 2025 cross country season, which list every team's
+        scoring seven by name and time. Where those exist they supersede the track marks entirely.
+        Where they do not, the school sits in <em>Verify</em> and its tier should be read as a
+        placeholder.
       </li>
     </ol>
+  </div>
+
+  <h2>3a. How the cross country comparison is actually built</h2>
+  <p class="prose">
+    For every school with results, his projection is dropped into that team's finishing order and
+    three numbers come out. All three are averaged across every race of theirs on file, and the
+    per-race detail is on each school's own page:
+  </p>
+  <div class="prose">
+    <ul>
+      <li><strong>Slot</strong> — where he would have finished inside their scoring seven. This is the headline number.</li>
+      <li><strong>vs their 7th</strong> — his projection minus their 7th man. Negative means he makes the travel squad.</li>
+      <li><strong>1&ndash;7 spread</strong> — the gap from their #1 to their #7. This is the <strong>most robust number on the site</strong>, because it compares a team only to itself and is therefore immune to course, weather, and conversion error. A 40-second spread is a pack; a 300-second spread is a handful of runners and some bodies.</li>
+    </ul>
+  </div>
+  <p class="prose">
+    Individual athletes are <strong>deliberately not named</strong> anywhere on this site. Their
+    times are what the comparison needs; their identities are not, and this is a public page. Every
+    race is labelled with its meet and date, so any of it can be checked against the source.
+  </p>
+  <p class="prose">
+    The four tiers follow mechanically: <strong>more than 45 seconds outside their 7th man is a
+    cut</strong>; anything outside it is <em>Deep</em>; a slot of 2 or better is <em>Caution</em>,
+    because he would arrive at or near their #1; a slot under 3.5 is <em>Verify</em>; and everything
+    else is <em>Target</em>.
+  </p>
+
+  <h3>Course difficulty, and why only two corrections were applied</h3>
+  <p class="prose">
+    Cross country courses are not comparable. A hilly 8K can run two minutes slower than a flat one,
+    so comparing his projection to raw times mis-ranks whole conferences. The correction available
+    here is that many teams raced both their conference championship and an NCAA regional, so the
+    difference in their scoring-five averages isolates the course rather than the team — <em>provided
+    enough teams did it</em>. Two meets cleared that bar:
+  </p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th scope="col">Meet</th><th scope="col" class="num">Offset at 8K</th><th scope="col">Teams cross-checked</th></tr></thead>
+      <tbody>
+        <tr><td>South Atlantic Conference championship</td><td class="num">&minus;96.5s (course ran slow)</td><td>Anderson, Catawba, Wingate</td></tr>
+        <tr><td>CCIW championship</td><td class="num">+31.4s (course ran fast)</td><td>four CCIW teams</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">
+    Single-team deltas were <strong>not</strong> applied — a CAA offset from Elon alone, or a MAAC
+    offset from Fairfield alone, cannot be separated from that one team having a bad day. Eight meets
+    remain uncorrected for this reason (NEC, UAA, Big East, Missouri Valley, MAAC, Atlantic 10, CAA,
+    and the D1 Northeast regional), so schools whose only result comes from one of those carry more
+    uncertainty than their tier suggests.
+  </p>
+  <p class="prose">
+    Getting this wrong is easy and the error is loud. A first pass had the sign inverted, which made
+    the South Atlantic times <em>slower</em> and promoted Wingate from a cut straight to target tier.
+    The fixed version reconciles all three South Atlantic teams' conference and regional reads to
+    within a few seconds of each other, which is what makes the correction believable.
+  </p>
+
+  <div class="callout crit">
+    <span class="c-title">A method that was built, tested, and thrown away</span>
+    <p>
+      An intermediate approach anchored his projection to each team's <em>own</em> 5000 data: take
+      their #1's cross country time, then add the gap between his 5000 and their best 5000, scaled to
+      8K. It is appealing because it cancels out course difficulty entirely.
+    </p>
+    <p>
+      It is also <strong>systematically too generous</strong>, and the reason is the same flaw that
+      runs through §3: a team's best outdoor 5000 is a floor, set by whichever athlete happened to
+      race it, and that athlete frequently is not their cross country #1. DePaul's best 5000 is
+      14:22, but their cross country #1 ran the equivalent of 23:44; Hofstra's is 14:32 against a
+      23:01. The method moved DePaul from 7th man to 4th, ETSU from 4th to 2nd, Wheaton from 5th to
+      2nd, and Hofstra from 8th to 5th — always in the flattering direction.
+      <strong>It was rejected in favour of raw comparison plus the two course corrections above.</strong>
+    </p>
   </div>
   <div class="callout">
     <span class="c-title">Claims that were withdrawn</span>
@@ -103,18 +194,33 @@
       consequential reversal on this site.
     </p>
     <p>
-      <strong>Wheaton College.</strong> Described in an earlier version as a "national-caliber D3
-      program," again from general knowledge. Its outdoor table — 1500 4:08.73, 3000 9:12.40,
-      5000 15:19.11, 10,000 31:52.17 — is internally consistent across all four events and modest,
-      so the sparse-table defence does not apply here. <strong>That characterization is withdrawn.</strong>
-      Wheaton is listed as <em>Verify</em> rather than reclassified, because a 15:19 team best is
-      still hard to reconcile with the program's CCIW cross country record; the likeliest reading is
-      that their distance men skipped outdoor track. Cross country results would settle it.
+      <strong>Wheaton College — wrong twice, in opposite directions.</strong> First described as a
+      "national-caliber D3 program" from general knowledge and cut on that basis; that was withdrawn
+      when its outdoor table (5000 in 15:19.11, internally consistent across four events) failed to
+      support it. Then a later pass declared the question resolved in Wheaton's favour and
+      <strong>upgraded it to Target, which was also wrong.</strong> Their CCIW pack of 25:43&ndash;26:48
+      does put him around 5th man, but at the D3 Midwest regional their 4th through 7th ran
+      27:03&ndash;27:35 and he would have been their <strong>#2</strong>. Correct the CCIW course, which
+      ran about 31 seconds fast, and the two races agree that he arrives near the front.
+      <strong>Wheaton is Caution.</strong>
     </p>
     <p>
-      The pattern in all three is the same and worth naming: <strong>every one began as a confident
-      claim from general knowledge that the roster data then contradicted.</strong> Treat any
-      statement on this site not backed by a specific time as provisional.
+      <strong>Hofstra and Loyola Chicago.</strong> Both were recommended as among the best fits in
+      their metros, on outdoor 5000 marks of 14:32 and 14:23. Both then won their conference
+      championships with sevens he would finish roughly 82 seconds outside — Hofstra's spanning
+      23:02&ndash;24:45, Loyola's just 47 seconds wide. <strong>Both are now cut.</strong>
+    </p>
+    <p>
+      <strong>North Central College — a withdrawal in the other direction.</strong> Cut on the
+      reasoning that a perennial D3 national-championship program must be far beyond him. Their
+      actual 7th man ran 25:34 at the CCIW meet and 25:46 at the regional, within about ten seconds
+      of his projection. <strong>It is back on the board</strong>, in the Deep tier.
+    </p>
+    <p>
+      The pattern in all of them is worth naming: <strong>every one began as a confident claim from
+      thin data — either general knowledge or a single fastest time — that a fuller result then
+      contradicted.</strong> Treat any statement on this site not backed by a named scoring seven as
+      provisional.
     </p>
   </div>
 
@@ -174,16 +280,41 @@
     </p>
   </div>
 
-  <h2>6. Known gaps in this data</h2>
+  <h2>6. Where the cost and admissions numbers come from</h2>
+  <p class="prose">
+    Every cost, SAT, admit-rate, and CS-program figure on this site now comes from the
+    <strong>U.S. Department of Education College Scorecard</strong> — the federal collection that
+    every institution is required to report to. Ninety-five schools were matched to exactly one
+    federal record each, using an <strong>explicit name map rather than fuzzy matching</strong>,
+    because fuzzy matching produced confident false positives at a similarity score of 1.0
+    (Georgia State matched to Georgia Tech, among six others).
+  </p>
+  <p class="prose">
+    That exercise was worth doing. It found <strong>33 SAT ranges wrong by 60 points or more and
+    nine admit rates wrong by 15 points or more</strong> versus the estimates this site previously
+    showed. King University is open-admission at 100%, not ~70%; Fairfield is 33%, not ~57%; Wofford
+    52%, not ~70%; Lander 81%, not ~55%. Anyone who had used the old figures to decide where to apply
+    would have been misled.
+  </p>
+  <div class="prose">
+    <p>Three caveats apply to reading them:</p>
+    <ul>
+      <li><strong>Public schools show the out-of-state rate</strong>, since he is a South Carolina resident. In-state figures apply only to the South Carolina publics on the list.</li>
+      <li><strong>Average net price is an average</strong> across all incoming students after grants and scholarships — not a quote. A strong student stacking merit aid usually lands below it; it is a planning number, not a prediction.</li>
+      <li><strong>The CS share is CIP family 11 only.</strong> A computer science degree housed administratively under mathematics reads as zero — which is exactly what happened at SUNY Purchase, where the real program is a combined BA in Mathematics/Computer Science. A low share is not proof of absence, so four schools were checked by hand and disqualified on their own course catalogues: SUNY Purchase, Mount Saint Vincent (no CS <em>and</em> no men's track), the Merchant Marine Academy (five marine majors and a service obligation), and North Park.</li>
+    </ul>
+  </div>
+
+  <h2>6a. Known gaps in this data</h2>
   <div class="prose">
     <ol>
-      <li><strong>No 5th or 7th man times anywhere.</strong> The highest-value missing input by a wide margin. Source: 2025 conference cross country championship results, which show every team's top seven. This is what settles the boundary cases — App State, UNC Charlotte, UIC, and NYU.</li>
-      <li><strong>CS degrees are unverified at most schools.</strong> Small-college websites were frequently unreachable, so those entries are marked <span class="cs-no">Confirm</span> rather than guessed at. Anderson (SC) is the specific case to watch: its site surfaces a BA in Applied AI and a cybersecurity center, but a traditional BS in Computer Science was not confirmed.</li>
-      <li><strong>SAT and acceptance figures are approximate and unverified</strong>, drawn from general knowledge rather than this cycle's data. Check each school's Common Data Set before relying on them.</li>
-      <li><strong>Several TFRRS pages could not be resolved</strong>, leaving schools with no times at all. The University of Chicago is the costliest of these — potentially the best combined fit in its metro, and still a blank after four attempts at its URL slug across two sessions.</li>
-      <li><strong>Wheaton College needs cross country results, not track results.</strong> Its outdoor table (15:19 team best) conflicts with its CCIW reputation, and that conflict is currently unresolved. It is the second-highest-value lookup after the 7th-man times.</li>
+      <li><strong>36 of 78 schools still have no cross country results</strong> — overwhelmingly D2 and D3 in the New York metro. Their tiers come from a single track mark, which is the exact failure mode that produced the Hofstra, Loyola, and Wheaton errors. Every school marked <em>Verify</em> is a placeholder, not a finding. This remains the highest-value work left.</li>
+      <li><strong>Only two of the fifteen championship courses have a difficulty correction.</strong> Eight meets have no cross-check at all (§3a). A school whose only result came from one of those could move a tier once a second race exists.</li>
+      <li><strong>Meet schedules were pulled for twelve schools</strong> — the target-tier list at the time — so most school pages have no meet map. Of the 303 appearances collected, <strong>243 (80%) could be placed on a map</strong>; the 46 unplaced meets are almost entirely conference and NCAA championships whose host rotates annually, and each school page names its own unplaced meets rather than hiding them.</li>
+      <li><strong>Venue coordinates carry two provenance levels.</strong> Most were read off the meet's own results page; the rest were inferred from the host named in the meet title, which places the campus but not necessarily the course, and those are labelled <em>host campus</em> on the map and in the table. Two TFRRS venue records contained wrong postal codes (a New Hampshire fairground coded to Massachusetts, an Indiana course coded to Missouri); both were corrected by hand.</li>
+      <li><strong>Piedmont University's CS program is still unconfirmed</strong> — federal data codes the degree but reports roughly zero graduates, and the school's own site was unreachable. Calumet College is in the same position.</li>
       <li><strong>Program existence needs confirming in two cases</strong> — whether NYIT still sponsors men's cross country, and whether each program carries full indoor and outdoor track rather than cross country alone.</li>
-      <li><strong>Web search was not available</strong> while building this. The geographic candidate lists were assembled from general knowledge, then verified against live TFRRS, athletics, and Wikipedia pages. A school could plausibly have been missed; the substance of what is listed was checked.</li>
+      <li><strong>The geographic candidate lists were assembled from general knowledge</strong>, then verified against live TFRRS, athletics, federal, and Wikipedia records. A school could plausibly have been missed; the substance of what is listed was checked.</li>
     </ol>
   </div>
 
@@ -217,13 +348,26 @@
     being nudged; zoom in to separate them.
   </p>
 
-  <h2>8. A note on the colors</h2>
+  <h2>8. Each school's own page, and the meet maps</h2>
   <p class="prose">
-    The three fit tiers each carry a distinct shape and a text label, never color alone. That is
+    Every school on the board has a page of its own, reached by clicking its name in any table or its
+    pin on any map. It carries the federal cost and admissions record, the CS share, the full named
+    scoring seven from each cross country result with his projection dropped into place, and — for
+    the twelve schools whose schedules were collected — a map of every meet the team travelled to
+    last season, <strong>colored and lettered by season</strong>: X for cross country, I for indoor
+    track, O for outdoor. Each page also ends with an explicit list of what is verified and what is
+    missing for that school, so a gap reads as a gap rather than as an absence of a problem.
+  </p>
+
+  <h2>9. A note on the colors</h2>
+  <p class="prose">
+    The four fit tiers each carry a distinct shape and a text label, never color alone. That is
     deliberate: green and red are separated by an OKLab ΔE of about 4 under deuteranopia, which is
     far too close to carry meaning on their own. The gap chart uses a blue-to-red diverging pair
-    with direct numeric labels on every bar for the same reason. The palette was checked with a
-    validator rather than by eye.
+    with direct numeric labels on every bar for the same reason. The three season colors on the meet
+    maps are the only three that clear the all-pairs colorblind separation floors in both light and
+    dark mode (worst pair ΔE 9.2 and 9.4), and each pin carries its season's letter as well. Every
+    palette was checked with a validator rather than by eye.
   </p>
 
   <hr>
@@ -232,6 +376,11 @@
     <a href="https://github.com/timhibbard/xc-cs-college-board/blob/main/docs/greenville-sc.md">Greenville SC</a> ·
     <a href="https://github.com/timhibbard/xc-cs-college-board/blob/main/docs/new-york-city.md">New York City</a> ·
     <a href="https://github.com/timhibbard/xc-cs-college-board/blob/main/docs/chicago.md">Chicago</a>
+  </p>
+  <p class="prose">
+    Data sources: <a href="https://www.tfrrs.org/">TFRRS</a> for all times and meet results,
+    <a href="https://collegescorecard.ed.gov/data/">College Scorecard</a> (api.data.gov) for cost,
+    admissions and program data, and Wikipedia for program existence and conference affiliation.
   </p>
 
 </main>
