@@ -1155,6 +1155,31 @@ const NO_PROGRAM = [
 
 const METROS = {
   greenville: { label: 'Greenville SC', radius: '250 mi', radiusMi: 250, center: [34.8526, -82.3940], zoom: 6, page: 'greenville.html' },
-  nyc:        { label: 'New York City', radius: '20 mi + Long Island', radiusMi: 20, center: [40.8100, -73.6000], zoom: 8, page: 'new-york.html' },
+  nyc: {
+    label: 'New York City', radius: '20 mi + Long Island', radiusMi: 20,
+    center: [40.7549, -73.9840], centerLabel: 'Midtown Manhattan',
+    zoom: 9, page: 'new-york.html',
+    /* The rule is a shape, not a circle: 20 miles from Midtown, plus all of Nassau and
+       Suffolk regardless of distance. Simplified county outline — a range boundary, not a
+       coastline — traced from the Queens line at Little Neck Bay, south to Inwood, east
+       along the barrier beaches and the South Fork to Montauk Point, straight across
+       Gardiners Bay to Orient Point (both forks and Shelter Island are Suffolk, so
+       enclosing the bay is correct), then west along the north shore to Kings Point. */
+    alsoInRange: {
+      note: 'All of Nassau and Suffolk County is in range regardless of distance.',
+      poly: [
+        [40.795, -73.755], [40.740, -73.730], [40.700, -73.720], [40.660, -73.730],
+        [40.605, -73.745], [40.590, -73.690], [40.578, -73.640], [40.588, -73.520],
+        [40.610, -73.400], [40.620, -73.280], [40.632, -73.180], [40.655, -73.030],
+        [40.700, -72.920], [40.740, -72.855], [40.770, -72.750], [40.795, -72.655],
+        [40.840, -72.470], [40.880, -72.390], [40.925, -72.300], [40.945, -72.190],
+        [40.975, -72.100], [41.000, -72.010], [41.035, -71.945], [41.070, -71.855],
+        [41.085, -71.930], [41.160, -72.235], [41.100, -72.360], [41.045, -72.470],
+        [40.995, -72.590], [40.968, -72.700], [40.958, -72.820], [40.963, -72.960],
+        [40.955, -73.060], [40.930, -73.180], [40.920, -73.290], [40.905, -73.400],
+        [40.900, -73.490], [40.875, -73.580], [40.850, -73.660], [40.830, -73.735],
+      ],
+    },
+  },
   chicago:    { label: 'Chicago',       radius: '20 mi', radiusMi: 20, center: [41.8781, -87.6298], zoom: 9, page: 'chicago.html' },
 };

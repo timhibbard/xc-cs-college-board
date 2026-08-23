@@ -143,12 +143,14 @@
 
   <h2>Where they are</h2>
   <div class="map-card">
-    <div class="chart-title">Every school in this metro, plotted against the 20-mile radius</div>
+    <div class="chart-title">Every school in this metro, plotted against the range boundary</div>
     <p class="chart-sub">
-      The dashed circle is only half the rule here. Everything inside it is in range; so is
-      everything on Long Island, which is why the pins run east well past the line to Farmingdale,
-      Patchogue and Stony Brook. What the map shows well is the density of the CUNY cluster inside
-      sixteen miles — ten colleges, all cheap, all unmeasured.
+      The dashed outline is the rule itself rather than a circle: 20 miles from Midtown,
+      <em>unioned with</em> all of Nassau and Suffolk. That is why the shape balloons east to
+      Montauk to take in Farmingdale, Patchogue and Stony Brook, and why it stops hard at the
+      Queens&ndash;Nassau line in one direction while reaching sixty miles in the other. What the map
+      shows well is the density of the CUNY cluster inside sixteen miles — ten colleges, all cheap,
+      all unmeasured.
     </p>
     <div class="map-bar">
       <label><input type="checkbox" id="map-showcut" checked> Show schools cut on roster times</label>
@@ -157,9 +159,10 @@
     <div id="map"></div>
     <div id="map-legend"></div>
     <p class="map-note">
-      Pins are approximate main-campus locations. The dashed circle is a straight-line 20-mile
-      radius from Midtown; the Long Island schools sit outside it <em>by design</em>, not by error.
-      The table's "Mi" column is driving distance. Filters below the chart also drive this map.
+      Pins are approximate main-campus locations. The dashed shape is a straight-line 20-mile radius
+      from Midtown joined to a simplified outline of Nassau and Suffolk County — the Long Island
+      schools are inside the boundary <em>by rule</em>, not by proximity. The table's "Mi" column is
+      driving distance. Filters below the chart also drive this map.
     </p>
   </div>
 

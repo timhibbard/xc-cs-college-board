@@ -65,8 +65,9 @@ target tier, which is documented rather than quietly fixed.
 
 The New York rule is a shape, not a circle: 20 driving miles from Midtown **plus all of Nassau and
 Suffolk County** regardless of distance, because Long Island is a commutable corridor while
-Westchester and central New Jersey at the same distance are a different decision. Long Island pins
-therefore plot outside the dashed circle on that map by design.
+Westchester and central New Jersey at the same distance are a different decision. The map draws that
+rule literally — a 20-mile circle around Midtown unioned with a traced outline of the two Long Island
+counties — rather than a circle with a caption apologising for the pins outside it.
 
 Radii were widened in Greenville and tightened in the other two after the first pass. The tightening
 was not free: New York lost target-tier **Fairfield** and deep-tier **Monmouth**, and Chicago lost

@@ -273,6 +273,22 @@ function declutter(pts, thresh = 0.02) {
   return out;
 }
 
+/* A radius circle rendered as an explicit ring of points, counter-clockwise, so it can
+   share one path with a hand-traced region and fill as a union under fill-rule nonzero.
+   Great-circle destination formula rather than a flat degree offset — at this latitude a
+   flat offset is visibly egg-shaped. */
+function circleRing([lat, lon], miles, n = 144) {
+  const R = 3958.8, f1 = lat * Math.PI / 180, l1 = lon * Math.PI / 180, d = miles / R, out = [];
+  for (let i = 0; i < n; i++) {
+    const t = -2 * Math.PI * i / n;
+    const f2 = Math.asin(Math.sin(f1) * Math.cos(d) + Math.cos(f1) * Math.sin(d) * Math.cos(t));
+    const l2 = l1 + Math.atan2(Math.sin(t) * Math.sin(d) * Math.cos(f1),
+      Math.cos(d) - Math.sin(f1) * Math.sin(f2));
+    out.push([f2 * 180 / Math.PI, l2 * 180 / Math.PI]);
+  }
+  return out;
+}
+
 function initMap(metro) {
   const host = document.getElementById('map');
   if (!host || typeof L === 'undefined') return;
@@ -287,17 +303,33 @@ function initMap(metro) {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
   }).addTo(map);
 
-  const circle = L.circle(M.center, {
-    radius: M.radiusMi * 1609.34,
-    className: 'radius-ring', interactive: false,
-  }).addTo(map);
+  /* Where a metro's rule is a radius PLUS a named region (New York: 20 miles from Midtown
+     plus all of Nassau and Suffolk), draw the rule itself — one path, two rings, wound the
+     same way and filled nonzero so the overlap is a union rather than a double-shaded wedge
+     or, under Leaflet's default evenodd, a hole. */
+  const ring = M.alsoInRange
+    ? L.polygon([circleRing(M.center, M.radiusMi), M.alsoInRange.poly], {
+        className: 'radius-ring', interactive: false, fillRule: 'nonzero', smoothFactor: 0,
+      }).addTo(map)
+    : L.circle(M.center, {
+        radius: M.radiusMi * 1609.34, className: 'radius-ring', interactive: false,
+      }).addTo(map);
 
   L.marker(M.center, {
     icon: L.divIcon({ className: 'pin-wrap', html: '<span class="pin pin-center" aria-hidden="true">◎</span>', iconSize: [22, 22], iconAnchor: [11, 11] }),
     keyboard: false,
-  }).addTo(map).bindPopup(`<b>${M.label}</b><br>Center of the ${M.radius} search radius`);
+  }).addTo(map).bindPopup(
+    `<b>${M.centerLabel ?? M.label}</b><br>Center of the ${M.radiusMi} mile radius` +
+    (M.alsoInRange ? `<br>${M.alsoInRange.note}` : '')
+  );
 
-  map.fitBounds(circle.getBounds(), { padding: [12, 12] });
+  /* Fit the shape AND every pin, not just the shape: Long Island runs well past the circle,
+     and several Greenville pins sit on estimated mileage that can land outside the ring. */
+  const bounds = ring.getBounds();
+  [...SCHOOLS, ...REMOVED, ...NO_PROGRAM]
+    .filter(s => s.metro === metro && s.lat != null)
+    .forEach(s => bounds.extend([s.lat, s.lon]));
+  map.fitBounds(bounds, { padding: [12, 12] });
 
   const layer = L.layerGroup().addTo(map);
   const showCut = document.getElementById('map-showcut');
