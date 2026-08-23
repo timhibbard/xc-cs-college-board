@@ -98,30 +98,24 @@ function visible() {
   });
 }
 
-/* The note cell is clamped to three lines, so the full text goes in a title attribute —
-   markup stripped and quotes escaped, since the notes carry <b> tags and curly quotes. */
-function plain(html) {
-  return (html ?? '').replace(/<[^>]*>/g, '').replace(/&mdash;/g, '—').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-}
-
 function renderTable() {
   const rows = visible();
   const tb = document.querySelector('#master tbody');
   tb.innerHTML = rows.map(s => `<tr>
-      <td><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span></td>
+      <td class="c-name"><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span></td>
       <td>${METROS[s.metro].label}</td>
       <td class="num">${s.mi}</td>
       <td>${s.div}</td>
-      <td>${s.conf}</td>
+      <td class="c-conf">${s.conf}</td>
       <td class="${s.cs === 'verified' ? 'cs-ok' : 'cs-no'}">${s.cs === 'verified' ? 'Verified' : s.cs === 'none' ? 'None' : 'Confirm'}</td>
-      <td class="time">${s.sat}</td>
+      <td class="time c-sat">${s.sat}</td>
       <td class="num">${s.accept}</td>
       <td class="num money">${s.cost?.net == null ? '<span class="nodata">&mdash;</span>' : '$' + s.cost.net.toLocaleString('en-US')}</td>
       <td class="num time">${fmtTime(s.b5000) ?? '<span class="nodata">&mdash;</span>'}</td>
       <td class="num">${s.xc ? '#' + s.xc.slot : '<span class="nodata">&mdash;</span>'}</td>
       <td class="num">${v7Txt(s)}</td>
       <td>${badge(s.tier)}</td>
-      <td class="rownote" title="${plain(s.note)}">${s.note ?? ''}</td>
+      <td class="rownote"><div class="notebox">${s.note ?? ''}</div></td>
     </tr>`).join('');
 
   const pool = filters.metro === 'all'

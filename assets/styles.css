@@ -274,18 +274,33 @@ a.school:hover { color: var(--div-blue); text-decoration: underline; }
 .cs-ok::before { content: "✓ "; color: var(--good); font-weight: 700; }
 .cs-no::before { content: "? "; color: var(--muted); font-weight: 700; }
 .cs-no { color: var(--muted); }
-/* The note column has to be constrained by min-width, not max-width: under table
-   auto-layout a max-width on a cell is only a hint, so when the table is wider than its
-   scroll container the browser squeezes this column to a few characters and the row grows
-   to 300-400px tall. A row that tall is then only ever partly visible under the sticky
-   header, which reads as a torn, half-blank first row. Clamping to three lines keeps every
-   row a uniform height; the full note is on each school's own page and in its map popup. */
-.rownote {
-  font-size: 12.5px; color: var(--text-secondary);
-  min-width: 34ch; max-width: 46ch;
-  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
-  overflow: hidden;
+.rownote { font-size: 12.5px; color: var(--text-secondary); }
+
+/* Every cell in a row stretches to the tallest one, so row height is set by whichever
+   column wraps worst. The note is far longer than anything else, so it gets a fixed
+   three-line box that scrolls inside itself — the whole note stays readable without the
+   row growing. The column has to be pinned by min-width as well as max-width: under table
+   auto-layout a max-width alone is only a hint, so a table wider than its scroll container
+   gets this column squeezed to a few characters. The height is three line-heights exactly,
+   and the cell's own padding stays on the cell: a scroll container paints its overflow into
+   its own bottom padding, so padding on the box itself would leak a sliced fourth line. */
+#master .rownote { min-width: 40ch; max-width: 40ch; }
+#master .notebox {
+  height: calc(1.55em * 3); overflow-y: auto;
+  /* A styled scrollbar is the affordance that there is more note to read: naming a colour
+     makes the browser draw a real one instead of the overlay bar that only appears mid-scroll.
+     The pseudo-elements are the same thing for engines that ignore the standard properties. */
+  scrollbar-width: thin; scrollbar-color: var(--baseline) transparent;
 }
+#master .notebox::-webkit-scrollbar { width: 7px; }
+#master .notebox::-webkit-scrollbar-thumb { background: var(--baseline); border-radius: 4px; }
+#master .notebox::-webkit-scrollbar-track { background: transparent; }
+/* With the note fixed, these three are what's left that can wrap past three lines: a long
+   school name over a long city, a spelled-out conference, and an SAT range broken across
+   two lines. Give them room and every row in the table is the same height. */
+#master .c-name { min-width: 22ch; }
+#master .c-conf { min-width: 17ch; }
+#master .c-sat { white-space: nowrap; }
 .gap-pos { color: var(--div-blue); font-weight: 620; }
 .gap-neg { color: var(--div-red); font-weight: 620; }
 
@@ -377,6 +392,8 @@ footer.site p { font-size: 13px; color: var(--muted); }
 @media print {
   header.site, #theme, .controls, footer.site { display: none; }
   .table-scroll { overflow: visible; }
-  /* a capped scrollport would print as one screenful and silently drop the rest */
+  /* a capped scrollport, or a capped note, would print as much as fits and silently
+     drop the rest */
   .table-scroll:has(#master) { max-height: none; }
+  #master .notebox { height: auto; overflow: visible; }
 }
