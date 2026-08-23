@@ -97,8 +97,8 @@ function cost() {
       Net price is an average across all incoming students, not a prediction for one applicant — a strong
       student stacking merit aid usually lands below it.
       ${pop == null ? '' : `Town population is the place the campus sits in, not the metro around it — a small
-      number inside Atlanta or Charlotte describes the address, not the setting, so read it against the
-      ${S.mi} miles above.`}
+      number inside Atlanta or Charlotte describes the address, not the setting${S.mi != null
+        ? `, so read it against the ${S.mi} miles above` : ''}.`}
     </p>`;
 }
 
@@ -121,6 +121,46 @@ function academics() {
           : 'Checked by hand against the school\'s own site or Wikipedia.'}</td></tr>
       </tbody></table>
     </div>`;
+}
+
+/* ---------- coach ---------- */
+
+/* Coaches are public professionals listed on their own employer's staff directory,
+   so they are named here — unlike the athletes in XCRACES, who are not. Everything
+   in this block was read off the page linked as the source in August 2026; staffs
+   turn over, so the link matters more than the name. */
+function coachSection() {
+  const c = S.coach;
+  if (!c) return `
+    <h2>Who to email</h2>
+    <p class="prose nodata">No coach has been recorded for this program yet.</p>`;
+
+  const vacant = c.name ? /vacant|\bTBA\b/i.test(c.name) : false;
+  const rows = [
+    ['Coach', c.name ? `<strong>${c.name}</strong>` : null,
+      vacant ? 'the directory names no coach for this program, which is itself worth knowing — write to the department address below and ask who is running it' : ''],
+    ['Title', c.title, 'as the school lists it — a "Director of Cross Country/Track &amp; Field" runs both seasons; a distance-specific title is the person who would actually coach him'],
+    ['Email', c.email ? `<a href="mailto:${c.email}">${c.email}</a>` : null,
+      c.email ? (vacant
+        ? 'a department address rather than a coach&rsquo;s — he can still write today; NCAA contact rules limit when <em>coaches</em> may initiate, not when a recruit may'
+        : 'he can email this address today — NCAA contact rules limit when <em>coaches</em> may initiate, not when a recruit may')
+        : `no address is published on the staff directory — use ${c.phone ? 'the phone number below or ' : ''}the team's online recruit form`],
+    ['Phone', c.phone ? `<a href="tel:${c.phone.replace(/[^0-9]/g, '')}">${c.phone}</a>` : null, c.phone ? 'office line' : ''],
+  ];
+  return `
+    <h2>Who to email</h2>
+    <div class="table-scroll">
+      <table><tbody>
+        ${rows.map(([k, v, n]) => `<tr><th scope="row">${k}</th>
+          <td>${v ?? '<span class="nodata">not published</span>'}</td>
+          <td class="rownote">${n}</td></tr>`).join('')}
+      </tbody></table>
+    </div>
+    <p class="map-note">
+      Read from <a href="${c.src}" rel="noopener">the school's own staff directory</a> in August 2026.
+      Coaching staffs turn over between seasons, so check the link before writing &mdash; and if the
+      title above names a different sport or an interim, that is what the directory said.
+    </p>`;
 }
 
 /* ---------- cross country ---------- */
@@ -162,7 +202,7 @@ function xcSection() {
         <div class="race-head">
           <div>
             <div class="race-meet">${r.meet}</div>
-            <div class="race-meta">${r.date} · ${r.dist}${r.level === 'conference' ? ' · conference championship' : r.level === 'regional' ? ' · NCAA regional' : ''}${r.place != null ? ` · finished ${r.place}${r.score != null ? ` with ${r.score} points` : ''}` : ''}</div>
+            <div class="race-meta">${r.date} · ${r.dist}${/conference/i.test(r.level || '') ? ' · conference championship' : /regional/i.test(r.level || '') ? ' · NCAA regional' : ''}${r.place != null ? ` · finished ${r.place}${r.score != null ? ` with ${r.score} points` : ''}` : ''}${r.nfin != null ? ` · only ${r.nfin} finisher${r.nfin === 1 ? '' : 's'}` : ''}</div>
           </div>
           <div class="race-slot"><span class="rs-n">${r.slot}</span><span class="rs-l">he would be<br>their #${r.slot}</span></div>
         </div>
@@ -178,23 +218,82 @@ function xcSection() {
           </table>
         </div>
         <p class="map-note">
-          ${r.v7 != null ? `His projection is <strong>${r.v7 <= 0 ? Math.abs(r.v7).toFixed(0) + 's inside' : r.v7.toFixed(0) + 's outside'}</strong> their 7th man, and ${Math.abs(r.g1).toFixed(0)}s ${r.g1 >= 0 ? 'behind' : 'ahead of'} their #1. ` : ''}
-          Their 1-through-${r.runners.length} spread is <strong>${r.spread.toFixed(0)}s</strong> — the most course-independent
-          number here, because it compares the team only to itself.
+          ${r.v7 != null
+            ? `His projection is <strong>${r.v7 <= 0 ? Math.abs(r.v7).toFixed(0) + 's inside' : r.v7.toFixed(0) + 's outside'}</strong> their 7th man, and ${Math.abs(r.g1).toFixed(0)}s ${r.g1 >= 0 ? 'behind' : 'ahead of'} their #1. `
+            : (r.nfin ?? r.runners.length) <= 2
+            ? `<strong>Only ${r.nfin === 1 ? 'one runner' : r.nfin + ' runners'} from this team ran here &mdash; ${r.nfin === 1 ? 'an individual qualifier' : 'individual qualifiers'} rather than a team
+               entry</strong>, so there is nothing to slot into. It is shown because it is part of the record:
+               ${r.nfin === 1 ? 'their fastest man was' : 'their fastest men were'} ${Math.abs(r.g1).toFixed(0)}s ${r.g1 >= 0 ? 'ahead of' : 'behind'} his projection at this distance.`
+            : `<strong>They finished ${r.nfin ?? r.runners.length}, not seven, so there is no 7th man to compare to.</strong>
+               ${r.vlast != null ? `Against their last finisher he is
+               <strong>${r.vlast <= 0 ? Math.abs(r.vlast).toFixed(0) + 's faster' : r.vlast.toFixed(0) + 's slower'}</strong>, and ` : ''}${Math.abs(r.g1).toFixed(0)}s
+               ${r.g1 >= 0 ? 'behind' : 'ahead of'} their #1.
+               ${(r.nfin ?? r.runners.length) < 5 ? `Five finishers are the minimum for a team score, so this one is not a team
+               result at all and does not enter the averages below &mdash; it is here because it is the only evidence there is.` : ''} `}
+          ${r.runners.length < 3 ? '' : `Their 1-through-${r.runners.length} spread is <strong>${r.spread.toFixed(0)}s</strong> — the most course-independent
+          number here, because it compares the team only to itself.`}
           ${corr ? `<br><strong>Course correction of ${corr > 0 ? '+' : ''}${corr}s applied.</strong> ${COURSE_NOTES[r.meet] ? 'This meet ' + COURSE_NOTES[r.meet] + '.' : ''}` : ''}
         </p>
       </div>`;
     }).join('')}
-    <div class="table-scroll" style="margin-top:18px">
-      <table><tbody>
-        <tr><th scope="row">Averaged over ${races.length} race${races.length === 1 ? '' : 's'}: his slot in their seven</th><td class="num"><strong>${S.xc.slot}</strong></td></tr>
-        <tr><th scope="row">Versus their 7th man</th><td class="num">${S.xc.v7 == null ? '<span class="nodata">—</span>' : (S.xc.v7 <= 0 ? '−' + Math.abs(S.xc.v7) + 's (inside)' : '+' + S.xc.v7 + 's (outside)')}</td></tr>
-        <tr><th scope="row">Versus their #1</th><td class="num">${S.xc.g1 >= 0 ? '+' + S.xc.g1 + 's behind' : '−' + Math.abs(S.xc.g1) + 's ahead'}</td></tr>
-        <tr><th scope="row">Tightest 1&ndash;7 spread on file</th><td class="num">${S.xc.spread}s</td></tr>
-      </tbody></table>
-    </div>
+    ${aggTable(races)}
     ${S.xc.disagree ? `<div class="callout"><span class="c-title">Their races disagree</span><p>His slot moves by three or more places
-      between these results. Treat the tier as provisional and weight the race on the course most like the one he would run.</p></div>` : ''}`;
+      between these results. Treat the tier as provisional and weight the race on the course most like the one he would run.</p></div>` : ''}
+    ${shortNote(races)}`;
+}
+
+/* A team that never finished seven has no 7th man to compare against, so the
+   headline number of this whole board does not exist for them. Say that rather
+   than printing a dash and leaving it to be read as missing data. */
+function aggTable(races) {
+  const x = S.xc;
+  const counted = races.filter(r => (r.nfin ?? r.runners.length) >= 5).length;
+  const gap = (v) => v <= 0 ? '−' + Math.abs(v) + 's (inside)' : '+' + v + 's (outside)';
+  const rows = [
+    [counted === 0
+      ? 'His slot among the runners they did finish'
+      : `Averaged over ${counted} race${counted === 1 ? '' : 's'}: his slot in their ${x.v7 == null ? 'finishers' : 'seven'}`,
+      `<strong>${x.slot ?? '—'}</strong>`],
+    ['Versus their 7th man', x.v7 == null
+      ? `<span class="nodata">no 7th man &mdash; they never finished seven</span>`
+      : gap(x.v7)],
+    ['Versus their #1', x.g1 == null ? '<span class="nodata">—</span>'
+      : (x.g1 >= 0 ? '+' + x.g1 + 's behind' : '−' + Math.abs(x.g1) + 's ahead')],
+    [x.short ? `Tightest front-to-back spread on file` : `Tightest 1&ndash;7 spread on file`,
+      x.spread == null ? '<span class="nodata">—</span>' : x.spread + 's'],
+  ];
+  if (x.maxfin != null) rows.push(['Most runners they finished in any of these races',
+    `${x.maxfin}${x.maxfin < 5 ? ' — below the five needed for a team score' : ''}`]);
+  return `
+    <div class="table-scroll" style="margin-top:18px">
+      <table><tbody>${rows.map(([k, v]) =>
+        `<tr><th scope="row">${k}</th><td class="num">${v}</td></tr>`).join('')}</tbody></table>
+    </div>`;
+}
+
+function shortNote(races) {
+  const x = S.xc;
+  if (!x.short) return '';
+  const counted = races.filter(r => (r.nfin ?? r.runners.length) >= 5).length;
+  if (counted === 0) return `
+    <div class="callout crit"><span class="c-title">This program never finished five runners in 2025</span>
+      <p>Five finishers are the minimum for a team score, and the most this team got to the line in any
+      championship race was <strong>${x.maxfin}</strong>. There is no scoring seven to slot into because
+      there is no scoring five. That is not a gap in the data &mdash; it is the finding, and it is the
+      reason this school sits at <b>caution</b> no matter how the times compare. Ask the coach directly
+      how many men are on the roster for the coming season before anything else.</p></div>`;
+  if (x.v7 == null) return `
+    <div class="callout"><span class="c-title">They never finished seven runners</span>
+      <p>Every result on file for this team ends before a 7th man, so the column this board is built on
+      &mdash; how far he would be from their 7th &mdash; cannot be computed. The comparison shown instead
+      is against their <em>last</em> finisher, which is a weaker test: he could be comfortably inside a
+      five-man squad and still have nobody to train with. A team that cannot field seven at its own
+      conference championship is a thin program, which is the same warning the number would have given.</p></div>`;
+  return `
+    <div class="callout"><span class="c-title">One of these races was short of seven</span>
+      <p>The team finished fewer than seven in at least one result above, so that race contributes a
+      last-finisher comparison rather than a 7th-man one. The averages use the ${counted} race${counted === 1 ? '' : 's'}
+      with at least five finishers.</p></div>`;
 }
 
 /* ---------- track marks ---------- */
@@ -372,6 +471,7 @@ function completeness() {
     ['Admit rate', S.acceptSrc === 'fed', S.acceptSrc === 'fed' ? 'federal' : 'estimate'],
     ['CS program', S.cs === 'verified', S.csSrc === 'fed' ? 'federal program data' : 'checked by hand'],
     ['Meet schedule', !!(typeof SCHED !== 'undefined' && SCHED[S.name]), 'pulled for target-tier schools only'],
+    ['Coach name and contact', !!(S.coach && S.coach.name), S.coach && S.coach.email ? 'name, title and email off the school\'s staff directory' : 'no email published — phone or recruit form only'],
   ];
   return `
     <h2>What is verified here, and what is not</h2>
@@ -389,7 +489,7 @@ if (!S) {
   notFound();
 } else {
   document.getElementById('body').innerHTML =
-    head() + cost() + academics() + xcSection() + trackMarks() + meetSection() + completeness() + `
+    head() + cost() + academics() + xcSection() + trackMarks() + meetSection() + coachSection() + completeness() + `
     <hr>
     <p class="prose"><a href="${METROS[S.metro].page}">&larr; Back to ${METROS[S.metro].label}</a>
       &nbsp;·&nbsp; <a href="index.html">All ${SCHOOLS.length} schools</a></p>`;

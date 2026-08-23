@@ -5,8 +5,9 @@ XC/Track + Computer Science. Last updated 2026-08-23
 > **Radius changed from 30 miles back to 20.** That is not a cosmetic edit: it removes five
 > schools, including **North Central**, the best training environment on the Chicago list, and
 > **Purdue Northwest**, which was the metro's only scholarship program. Their data is preserved
-> in §5b rather than deleted. **Roosevelt University** enters as the replacement scholarship
-> option. §2 has the whole accounting.
+> in §5b rather than deleted. **Roosevelt University** entered as the replacement scholarship
+> option and has since been measured: **four finishers at GLIAC**, where five are needed to score.
+> §2 has the whole accounting.
 
 Live version, with per-school pages and meet maps:
 <https://timhibbard.github.io/xc-cs-college-board/chicago.html>
@@ -46,11 +47,20 @@ to 20 costs five schools:
 | **Benedictine (IL)** | 25 | Caution | No. He would lead them by nearly two minutes. |
 | **Lake Forest** | 30 | Caution | No. He would lead them by about fifty seconds. |
 
-**Roosevelt University fills the scholarship slot.** D2, GLIAC, one mile from the centre of the
-Loop, still transitioning into Division 2 — which is exactly the situation where a mid-pack recruit
-ends up scoring. It has **no cross country data at all**, so it enters at Verify, and that one
-lookup is now the highest-value email in the metro. It is also a straight upgrade on location: the
-Loop instead of Hammond, Indiana.
+**Roosevelt University was supposed to fill the scholarship slot, and then it was measured.** D2,
+GLIAC, one mile from the centre of the Loop, still transitioning into Division 2 — which is exactly
+the situation where a mid-pack recruit ends up scoring, and it is a straight upgrade on location over
+Hammond, Indiana. It was the highest-value lookup in the metro and the answer came back badly: at the
+2025 GLIAC championship **four runners finished**, spanning 377 seconds, and a team needs five to
+score. He would arrive as their #1 with nobody within six minutes. It drops from Verify to Caution,
+and the metro is left with **no scholarship program worth ranking**.
+
+**The sweep that measured Roosevelt also measured everything else here but one.** Saint Xavier
+(NAIA) turned out to be a tight 56-second seven that he would nonetheless lead outright, and
+Dominican finished six. Only **Calumet College** is still unmeasured. The whole-metro picture is
+worse than the partial one was: **five of the eleven measured programs never finished seven
+runners**, and outside DePaul, UIC and the University of Chicago every school in range puts him at
+their #1.
 
 **Northwestern is out — they do not sponsor men's cross country or men's track and field at
 all.** ✅ Verified. Men's track & field is listed as defunct; only the women's programs exist.
@@ -90,52 +100,69 @@ worth reaching for is not another ten miles of Chicagoland, it is the Greenville
 | Column | What it means |
 |---|---|
 | **XC slot** | where his projection would have finished inside their top seven, averaged over every 2025 race on file. 1 = ahead of their #1. |
-| **vs their 7th** | seconds between his projection and their 7th man. `+31s` = he is 31 seconds *outside* the seven. `−3s` = 3 seconds *inside* it. |
-| **1–7 spread** | seconds from their #1 to their #7. This is the most course-independent number on the page, because it compares a team only to itself. A wide spread means a soft back end he can slot into; a tight one means there is no room. |
+| **vs their 7th** | seconds between his projection and their 7th man. `+31s` = he is 31 seconds *outside* the seven. `−3s` = 3 seconds *inside* it. **Blank where that team never finished seven runners** — five of the eleven measured programs here, whose pages compare him to the team's last finisher instead. |
+| **1–7 spread** | seconds from their #1 to their #7. This is the most course-independent number on the page, because it compares a team only to itself. A wide spread means a soft back end he can slot into; a tight one means there is no room. On a short squad it is first-to-last, and it is blank where fewer than five finished, because that is not a team result. |
 | **Tier** | Target = clean 4th–9th man fit · Deep = just outside the travel squad · Verify = **unmeasured**, no cross country data yet — a placeholder for a lookup nobody has done, not a judgement · Caution = he arrives at or ahead of their #1 |
+| **Coach** | the person who would actually recruit him, linked as a mailto, read off that school's own staff directory in August 2026. Title, office phone and the directory link are on each detail page. Staffs turn over yearly — if the name is stale, the linked directory is not. |
 | **Net cost/yr** | federal average net price after grant aid, from the College Scorecard — not sticker price. Out-of-state rates are used at public schools, since he is a South Carolina resident. |
 | **CS** | ✅ with a percentage = share of that school's bachelor's degrees awarded in computer science (federal data). A low share is not a bad program; a `0%` usually means CS is filed under mathematics. |
 
 ## 4. Master list
 
 Miles = approximate driving distance from the Loop. School names link to a full detail page with
-per-race results, a map of every meet they attended last year, and cost/admissions detail.
+per-race results, a map of every meet they attended last year, and cost/admissions detail. The
+**Coach** column links a mailto for the person who would actually recruit him, read off that
+school's own staff directory in August 2026; the detail page carries the title, office phone and a
+link to the directory itself.
+
+A blank **vs their 7th** means that team never finished seven runners in 2025, so there is no 7th man
+to measure against — five of the eleven measured programs in this metro are in that position, and the
+comparison on those pages runs against their last finisher instead. On those rows the spread column
+is first-to-last rather than 1-to-7, and it is blank entirely where fewer than five finished, because
+that is not a team result.
 
 ### Division 1
 
-| School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[DePaul](https://timhibbard.github.io/xc-cs-college-board/school.html?s=depaul)** | Lincoln Park | 3 | Big East | ✅ 10.7% | 1140–1330 | 76% | $30,902 | 7 | −3s | 146s | Target |
-| **[UIC](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uic)** | Near West Side | 3 | Missouri Valley | ✅ 11.9% | 1130–1350 | 77% | $10,974 | 8 | +31s | 72s | Deep |
-| **[Chicago State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chicago-state)** | Far South Side | 10 | NEC | ✅ 5.4% | not reported | 43% | $12,335 | 1 | — | 514s | Caution |
+| School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **[DePaul](https://timhibbard.github.io/xc-cs-college-board/school.html?s=depaul)** | Lincoln Park | 3 | Big East | ✅ 10.7% | 1140–1330 | 76% | $30,902 | 7 | −3s | 146s | Target | [Dave Dopek](mailto:ddopek@depaul.edu) |
+| **[UIC](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uic)** | Near West Side | 3 | Missouri Valley | ✅ 11.9% | 1130–1350 | 77% | $10,974 | 8 | +31s | 72s | Deep | [Paul Zavala](mailto:pzavala@uic.edu) |
+| **[Chicago State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chicago-state)** | Far South Side | 10 | NEC | ✅ 5.4% | not reported | 43% | $12,335 | 1 | — | 514s | Caution | [Katrina Brumfield Marsom](mailto:kbrumfie@csu.edu) |
 
 ### Division 2
 
-| School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Roosevelt](https://timhibbard.github.io/xc-cs-college-board/school.html?s=roosevelt)** | The Loop | 1 | GLIAC | ✅ 3.7% | 895–1175 | 97% | $20,194 | — | — | — | Verify |
+| School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **[Roosevelt](https://timhibbard.github.io/xc-cs-college-board/school.html?s=roosevelt)** | The Loop | 1 | GLIAC | ✅ 3.7% | 895–1175 | 97% | $20,194 | 1 | — | — | Caution | [Michael Moffitt](mailto:mmoffitt@roosevelt.edu) |
+
+Roosevelt is measured now, and the result is the worst kind: **four finishers at the 2025 GLIAC
+championship**, spanning 377 seconds, where five are needed to score. He would arrive as their #1
+with nobody within six minutes. The spread column is blank because a four-man result is not a team
+result.
 
 ### Division 3
 
-| School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)** | Hyde Park | 7 | UAA | ✅ 8.3% | 1510–1580 | 4% | $14,860 | 8 | +34s | 33s | Deep |
-| **[Concordia Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=concordia-chicago)** | River Forest | 10 | CCIW | ✅ 3.2% | not reported | 93% | $18,436 | 1 | −323s | 236s | Caution |
-| **[Dominican University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=dominican-university)** | River Forest | 10 | NACC | ✅ 6.7% | 880–1100 | 90% | $11,745 | — | — | — | Caution |
-| **[Elmhurst University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=elmhurst-university)** | Elmhurst | 16 | CCIW | ✅ 5.9% | 990–1260 | 74% | $24,185 | 1 | — | 184s | Caution |
-| **[Illinois Tech](https://timhibbard.github.io/xc-cs-college-board/school.html?s=illinois-tech)** | Bronzeville | 4 | NACC | ✅ 28.7% | 1180–1440 | 55% | $18,425 | 1 | — | 437s | Caution |
-| **[North Park University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-park-university)** | North Park | 8 | CCIW | ❌ none | not reported | 69% | $16,948 | 1 | −457s | 282s | Caution |
+| School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)** | Hyde Park | 7 | UAA | ✅ 8.3% | 1510–1580 | 4% | $14,860 | 8 | +34s | 33s | Deep | [Chris Hall](mailto:hallc@uchicago.edu) |
+| **[Concordia Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=concordia-chicago)** | River Forest | 10 | CCIW | ✅ 3.2% | not reported | 93% | $18,436 | 1 | −323s | 236s | Caution | [Chris Dvorak](mailto:Christopher.Dvorak@cuchicago.edu) |
+| **[Dominican University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=dominican-university)** | River Forest | 10 | NACC | ✅ 6.7% | 880–1100 | 90% | $11,745 | 1 | — | 138s | Caution | [Sergio Miranda](mailto:smiranda3@dom.edu) |
+| **[Elmhurst University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=elmhurst-university)** | Elmhurst | 16 | CCIW | ✅ 5.9% | 990–1260 | 74% | $24,185 | 1 | — | 184s | Caution | [David Stone](mailto:david.stone@elmhurst.edu) |
+| **[Illinois Tech](https://timhibbard.github.io/xc-cs-college-board/school.html?s=illinois-tech)** | Bronzeville | 4 | NACC | ✅ 28.7% | 1180–1440 | 55% | $18,425 | 1 | — | 437s | Caution | [Evan Balizado](mailto:ebalizado@illinoistech.edu) |
+| **[North Park University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-park-university)** | North Park | 8 | CCIW | ❌ none | not reported | 69% | $16,948 | 1 | −457s | 282s | Caution | [Bisrat Kidane](mailto:bgkidane@northpark.edu) |
 
 ### NAIA
 
-| School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Calumet College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=calumet-college)** | Whiting IN | 20 | CCAC | ⚠️ thin | not reported | not reported | $22,451 | — | — | — | Verify |
-| **[Saint Xavier](https://timhibbard.github.io/xc-cs-college-board/school.html?s=saint-xavier)** | Southwest Side | 13 | CCAC | ✅ 5.4% | not reported | 84% | $10,970 | — | — | — | Verify |
+| School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **[Calumet College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=calumet-college)** | Whiting IN | 20 | CCAC | ⚠️ thin | not reported | not reported | $22,451 | — | — | — | Verify | [Brian Kim](mailto:bkim@ccsj.edu) |
+| **[Saint Xavier](https://timhibbard.github.io/xc-cs-college-board/school.html?s=saint-xavier)** | Southwest Side | 13 | CCAC | ✅ 5.4% | not reported | 84% | $10,970 | 1 | −92s | 56s | Caution | [Rick Torres](mailto:enriquetorres@sxu.edu) |
 
 NAIA allows 12 scholarships for men's XC/track and has looser eligibility rules than the NCAA.
-Neither of the two has cross country results on file yet, which is why both sit at Verify rather
-than at a real tier. Trinity Christian was the third NAIA option and is closing (§2).
+Saint Xavier is now measured and it is a caution rather than an opportunity: a tight 56-second seven
+at the CCAC championship, but he would arrive as their #1, 92 seconds inside their 7th man.
+Calumet College is the one school in this metro still unmeasured. Trinity Christian was the third
+NAIA option and is closing (§2).
 
 ## 5. Schools removed — he would be a walk-on
 
@@ -179,15 +206,18 @@ nationals is one of the better development environments on the entire board.
 
 **Deep — just outside the travel squad, still a good environment.** UIC · University of Chicago
 
-**Verify — unmeasured, not borderline.** Roosevelt · Saint Xavier · Calumet College
+**Verify — unmeasured, not borderline.** Calumet College
 
-**Caution — he arrives at or ahead of their #1, in some cases by minutes.** Elmhurst ·
-Concordia Chicago · Dominican · Chicago State · North Park · Illinois Tech
+**Caution — he arrives at or ahead of their #1, in some cases by minutes.** Chicago State ·
+Concordia Chicago · Dominican · Elmhurst · Illinois Tech · North Park · Roosevelt · Saint Xavier
 
 **Cut on results.** Loyola Chicago
 
-Twelve schools, **one of them target tier**. That ratio is the finding, and neither the cross
-country data nor the radius change moved it.
+Twelve schools, **one of them target tier**. That ratio is the finding, and nothing has moved it:
+not the cross country data, not the radius change, and not the sweep that closed out the metro.
+Four schools were unmeasured at the last revision; three of them — **Roosevelt, Saint Xavier and
+Dominican** — now have results and all three landed in Caution, and the fourth, Calumet College, is
+still blank. **Five of the eleven measured programs here never finished seven runners.**
 
 ## 7. Top picks
 
@@ -205,22 +235,34 @@ country data nor the radius change moved it.
    strong CS option in the metro, and 31 seconds is one good freshman year. Worth the email.
 3. **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)**
    — the roster times are finally resolved: seven runners inside **33 seconds**, the tightest
-   pack on the entire 130-school board, with him about 34 seconds outside. Elite CS, and the net
+   pack on the entire 131-school board, with him about 34 seconds outside. Elite CS, and the net
    price of $14,860 is startlingly low for a $90k sticker. The obstacle is a **4% admit rate**,
    not the running.
 4. **[Roosevelt](https://timhibbard.github.io/xc-cs-college-board/school.html?s=roosevelt)** —
-   new to the board, unmeasured, and worth an email rather than a ranking. It is the **only
-   scholarship program left in metro Chicago** now that Purdue Northwest is out of range, it is a
-   mile from the centre of the Loop, and it is still transitioning into Division 2. Ask for their
-   2025 8K results and their incoming distance class in the same email. Note the 97% admit rate
-   and the modest 3.7% CS share: this is an access school, not a tech school.
+   **measured now, and it is bad news.** It is still the only scholarship program left in metro
+   Chicago now that Purdue Northwest is out of range, still a mile from the centre of the Loop, and
+   still transitioning into Division 2 — but at the 2025 GLIAC championship **four runners
+   finished**, spanning 377 seconds, and a team needs five to score. He would arrive as their #1 with
+   nobody within six minutes. That is a roster question rather than a recruiting one: ask
+   [Michael Moffitt](mailto:mmoffitt@roosevelt.edu) how many men are signed for the fall before
+   spending any more thought on it. Note also the 97% admit rate and the modest 3.7% CS share: this
+   is an access school, not a tech school.
+5. **[Calumet College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=calumet-college)**
+   — the one school in the metro still unmeasured, NAIA, 20 miles out, and its CS program is thin
+   rather than confirmed. Low priority, but it is the only lookup left here.
 
 **The hard truth about Illinois Tech:** **28.7% of its bachelor's degrees are in computer
 science** — by far the highest share on this list — and it is 4 miles from downtown. Its distance
-squad ran a 437 second 1-through-7 spread and he would beat their best runner by over two
-minutes. That is not a training environment; it is a solo career with a good CS degree attached.
-If CS is the priority and he accepts that, fine — but go in knowing it, and ask the coach
-directly what they are recruiting.
+squad finished **six runners spanning 437 seconds** at the D3 Midwest regional and he would beat
+their best runner by over two minutes. That is not a training environment; it is a solo career with
+a good CS degree attached. If CS is the priority and he accepts that, fine — but go in knowing it,
+and ask [Evan Balizado](mailto:ebalizado@illinoistech.edu) directly what they are recruiting.
+
+**And Illinois Tech is not unusual here.** With all eleven programs in range measured,
+**five never finished seven runners** — Illinois Tech, Elmhurst, Dominican, Chicago State and
+Roosevelt — and every school in the metro outside DePaul, UIC and the University of Chicago puts him
+at their #1. Chicago's problem was never the radius. It is that beyond three good programs there is
+very little men's distance running inside the city.
 
 ## 8. Chicago-specific considerations
 
@@ -249,27 +291,28 @@ national program and the only scholarship money were.
 
 ## 9. To-dos, priority order
 
-1. **Get cross country results for Roosevelt.** It is the only scholarship program in range and it
-   is completely unmeasured. This is the single highest-value lookup in the metro. Ask for their
-   2025 GLIAC 8K result.
-2. **Email DePaul.** They are the only target-tier school in the metro and the data supports the
-   approach. Lead with the 8K projection, not the 1600 time.
-3. **Get cross country results for the other three unmeasured schools** — Saint Xavier, Calumet
-   College, and Dominican, which sits at Caution on a track mark alone.
-4. **Ask UIC what their incoming class looks like.** They are about 31 seconds outside the scoring
-   seven, which one freshman year can close — but only if they are not already bringing in four
-   runners ahead of him.
+1. **Email [Dave Dopek at DePaul](mailto:ddopek@depaul.edu).** They are the only target-tier school
+   in the metro and the data supports the approach. Lead with the 8K projection, not the 1600 time.
+2. **Ask [Michael Moffitt at Roosevelt](mailto:mmoffitt@roosevelt.edu) how many men are signed for
+   the fall.** Four finishers at GLIAC is one season of evidence, not a verdict, and Roosevelt is
+   still the only place in range where partial athletic money exists. The coach knows whether that
+   roster is rebuilding or collapsing; nothing else will tell you.
+3. **Ask [Paul Zavala at UIC](mailto:pzavala@uic.edu) what their incoming class looks like.** They
+   are about 31 seconds outside the scoring seven, which one freshman year can close — but only if
+   they are not already bringing in four runners ahead of him.
+4. **Get a cross country result for Calumet College**, the last unmeasured school in the metro, and
+   confirm a **true BS in Computer Science** there at the same time — the federal data shows CS
+   degrees but the count is too small to confirm a standalone major, and their site was unreachable.
 5. **Calibrate the Big East, Missouri Valley, UAA and NEC courses.** Those four meets are the
    only 2025 races on file for DePaul, UIC, University of Chicago and Chicago State respectively,
    and none has a cross-checking team on a calibrated course — so all four reads rest on an
    uncorrected course.
-6. Confirm a **true BS in Computer Science** at Calumet College — the federal data shows CS
-   degrees but the count is too small to confirm a standalone major, and their site was
-   unreachable.
-7. Verify SAT and accept figures for the five schools where the federal file reports no SAT
+6. Verify SAT and accept figures for the five schools where the federal file reports no SAT
    range at all.
-8. Ask each coach the CS-lab-conflict question (see `greenville-sc.md` §9).
+7. Ask each coach the CS-lab-conflict question (see `greenville-sc.md` §9).
 
 **Resolved and off this list:** University of Chicago's roster times (§7), Wheaton's cross country
-results (§5b), 5th/7th man times for DePaul, Loyola and UIC (§2, §7), and Trinity Christian's
-status (§2 — the college is closing).
+results (§5b), 5th/7th man times for DePaul, Loyola and UIC (§2, §7), Trinity Christian's
+status (§2 — the college is closing), and the Roosevelt, Saint Xavier and Dominican measurements,
+which is what closed the metro down to one unmeasured school. Coach names and email addresses for
+all twelve are now on their detail pages.
