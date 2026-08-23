@@ -49,6 +49,34 @@ const gapOf = (s) => s.b5000 == null ? null : ATHLETE.proj5000 - s.b5000;
 const TIER_ORDER = ['target', 'deep', 'verify', 'caution'];
 const link = (s) => `school.html?s=${encodeURIComponent(s.slug)}`;
 
+/* ---------- net cost, on the residency basis that applies to him ----------
+
+   Two federal figures on different bases. `tuition` is already the rate he would
+   pay: in-state at the eleven South Carolina publics, out-of-state everywhere else.
+   `net` is not. IPEDS computes average net price at a public institution from
+   students paying the in-district or in-state rate only, so at an out-of-state
+   public the federal net price is an in-state number sitting under an out-of-state
+   tuition line. Adding the non-resident premium puts them on the same basis. It is
+   an estimate, not a federal figure, because it holds average grant aid constant —
+   a non-resident tuition waiver or athletic money can erase the whole premium,
+   which is exactly the thing to ask a coach about. Privates charge one rate, so
+   they need no adjustment. */
+function netPremium(s) {
+  const c = s.cost;
+  if (!c || c.own !== 'public' || c.resid !== 'out') return 0;
+  if (c.tuiIn == null || c.tuiOut == null) return 0;
+  return c.tuiOut - c.tuiIn;
+}
+const netFor = (s) => s.cost?.net == null ? null : s.cost.net + netPremium(s);
+const netIsEst = (s) => netPremium(s) > 0;
+const netCell = (s) => {
+  const n = netFor(s);
+  if (n == null) return '<span class="nodata">&mdash;</span>';
+  return netIsEst(s)
+    ? `<span class="est" title="Estimate: federal net price of $${s.cost.net.toLocaleString('en-US')} is on an in-state basis, plus the $${netPremium(s).toLocaleString('en-US')} non-resident tuition premium.">&asymp;$${n.toLocaleString('en-US')}</span>`
+    : '$' + n.toLocaleString('en-US');
+};
+
 /* Where he lands relative to the team's 7th man. Negative is inside the seven. */
 function v7Txt(s) {
   if (!s.xc || s.xc.v7 == null) return '<span class="nodata">&mdash;</span>';
@@ -77,7 +105,7 @@ const COLS = [
   { key: 'cs',     label: 'CS',       sort: (a, b) => a.cs.localeCompare(b.cs) },
   { key: 'sat',    label: 'SAT',      sort: (a, b) => a.sat.localeCompare(b.sat) },
   { key: 'accept', label: 'Admit',    num: true, sort: (a, b) => parseInt(a.accept.replace(/\D/g, '')) - parseInt(b.accept.replace(/\D/g, '')) },
-  { key: 'net',    label: 'Net cost',    num: true, sort: (a, b) => (a.cost?.net ?? 1e9) - (b.cost?.net ?? 1e9) },
+  { key: 'net',    label: 'Net cost',    num: true, sort: (a, b) => (netFor(a) ?? 1e9) - (netFor(b) ?? 1e9) },
   { key: 'b5000',  label: 'Team best 5K', num: true, sort: (a, b) => (a.b5000 ?? 1e9) - (b.b5000 ?? 1e9) },
   { key: 'slot',   label: 'His slot in their 7', num: true, sort: (a, b) => (a.xc?.slot ?? 1e9) - (b.xc?.slot ?? 1e9) },
   { key: 'v7',     label: 'vs their 7th', num: true, sort: (a, b) => (a.xc?.v7 ?? 1e9) - (b.xc?.v7 ?? 1e9) },
@@ -135,7 +163,7 @@ function renderTable() {
       <td class="${s.cs === 'verified' ? 'cs-ok' : 'cs-no'}">${s.cs === 'verified' ? 'Verified' : s.cs === 'none' ? 'None' : 'Confirm'}</td>
       <td class="time c-sat">${s.sat}</td>
       <td class="num">${s.accept}</td>
-      <td class="num money">${s.cost?.net == null ? '<span class="nodata">&mdash;</span>' : '$' + s.cost.net.toLocaleString('en-US')}</td>
+      <td class="num money">${netCell(s)}</td>
       ${showSizeCols ? `<td class="num c-size">${numCell(s.cost?.size)}</td>
       <td class="num c-size">${numCell(TOWNPOP[s.city])}</td>` : ''}
       <td class="num time">${fmtTime(s.b5000) ?? '<span class="nodata">&mdash;</span>'}</td>
@@ -397,7 +425,7 @@ function initMap(metro) {
            ${s.xc
              ? `<div class="mp-line">In their scoring seven he is <b>#${s.xc.slot}</b>, ${s.xc.v7 <= 0 ? Math.abs(s.xc.v7).toFixed(0) + 's inside' : s.xc.v7.toFixed(0) + 's outside'} their 7th man</div>`
              : `<div class="mp-line">No cross country data &mdash; team best 5K <b>${fmtTime(s.b5000) ?? 'unknown'}</b>${g == null ? '' : `, gap ${g >= 0 ? '+' + g : g}s`}</div>`}
-           <div class="mp-line">Net cost: <b>${s.cost?.net == null ? 'unknown' : '$' + s.cost.net.toLocaleString('en-US')}</b> &middot; SAT ${s.sat}</div>
+           <div class="mp-line">Net cost: <b>${netFor(s) == null ? 'unknown' : (netIsEst(s) ? '&asymp;$' : '$') + netFor(s).toLocaleString('en-US')}</b> &middot; SAT ${s.sat}</div>
            <div class="mp-line">CS degree: <b>${s.cs === 'verified' ? 'verified' : s.cs === 'none' ? 'not offered' : 'unconfirmed'}</b></div>
            ${s.note ? `<div class="mp-why">${s.note}</div>` : ''}`;
 

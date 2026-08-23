@@ -80,18 +80,25 @@ under $6,000 in federal average net price.** Three of the ten — **Baruch, Broo
 turned out to sponsor no men's track at all and have since left the board (§2h). Seven remain, and the
 table below keeps all ten so the finding stays legible; the three that left are marked.
 
-| CUNY college | Div | Mi | CS share | Net cost/yr | Gap to their #1 | Finishers | On the board |
-|---|---|---|---|---|---|---|---|
-| Hunter College | D3 | 2 | 9.9% | **$2,984** | he is 121s faster | 7 | yes |
-| Baruch College | D3 | 5 | 9.6% | $3,033 | 178s faster | 7 | **no — no men's track** |
-| Brooklyn College | D3 | 10 | 10.1% | $3,103 | 195s faster | 7 | **no — no men's track** |
-| Lehman College | D3 | 11 | 8.2% | $3,148 | **699s faster** | 7 | yes |
-| John Jay | D3 | 2 | 7.4% | $3,203 | — | **3** | **no — no men's track** |
-| CCNY | D3 | 6 | 4.9% | $3,776 | 479s faster | 6 | yes |
-| Queens College | D2 | 10 | 10.7% | $4,195 | 138s faster | 7 | yes |
-| York College | D3 | 12 | 6.3% | $4,456 | — | **4** | yes |
-| College of Staten Island | D2 | 16 | 7.8% | $5,579 | 257s faster | 7 | yes |
-| Medgar Evers | D3 | 7 | 4.8% | $5,718 | 719s faster | 5 | yes |
+**Read the two cost columns carefully, because the famous CUNY number is not his number.** The
+federal average net price at a public is computed from in-state students only, and CUNY charges a
+non-resident about **$7,950 more in tuition** — the same premium at every senior college. The second
+column adds that premium back, which is what a South Carolina applicant would actually face. The
+under-$6,000 finding is real and it belongs to New Yorkers; his version of it is under $14,000, which
+is still cheap for this metro but no longer in a class of its own.
+
+| CUNY college | Div | Mi | CS share | Net, in-state | Net, his rate | Gap to their #1 | Finishers | On the board |
+|---|---|---|---|---|---|---|---|---|
+| Hunter College | D3 | 2 | 9.9% | $2,984 | **≈$10,934** | he is 121s faster | 7 | yes |
+| Baruch College | D3 | 5 | 9.6% | $3,033 | ≈$10,983 | 178s faster | 7 | **no — no men's track** |
+| Brooklyn College | D3 | 10 | 10.1% | $3,103 | ≈$11,053 | 195s faster | 7 | **no — no men's track** |
+| Lehman College | D3 | 11 | 8.2% | $3,148 | ≈$11,098 | **699s faster** | 7 | yes |
+| John Jay | D3 | 2 | 7.4% | $3,203 | ≈$11,153 | — | **3** | **no — no men's track** |
+| CCNY | D3 | 6 | 4.9% | $3,776 | ≈$11,726 | 479s faster | 6 | yes |
+| Queens College | D2 | 10 | 10.7% | $4,195 | ≈$12,145 | 138s faster | 7 | yes |
+| York College | D3 | 12 | 6.3% | $4,456 | ≈$12,406 | — | **4** | yes |
+| College of Staten Island | D2 | 16 | 7.8% | $5,579 | ≈$13,529 | 257s faster | 7 | yes |
+| Medgar Evers | D3 | 7 | 4.8% | $5,718 | ≈$13,668 | 719s faster | 5 | yes |
 
 Hunter and Brooklyn each award about **10% of their bachelor's degrees in computer science** — a
 higher share than Fordham, NYU or any D1 in this metro except NJIT. Brooklyn is one of the three that
@@ -233,9 +240,10 @@ program. Cross country only, on both signals, means off the board.
 | **Yeshiva University** | D3 | Skyline | 5 | Caution | 25 sports, cross country for both sexes, no track and field, no 2026 outdoor marks. |
 
 **All ten were at Caution**, so nothing that survived a measurement was lost — the running was already
-thin at every one of them. What was lost is cheap: **Baruch ($3,033), Brooklyn ($3,103) and John Jay
-($3,203)** were three of the five cheapest schools on the entire board, and their removal leaves the
-CUNY cost argument standing on seven colleges instead of ten (§2b).
+thin at every one of them. What was lost is cheap: **Baruch, Brooklyn and John Jay** were three of
+the five cheapest schools on the entire board on the federal in-state basis ($3,033, $3,103 and
+$3,203) — around $11,000 each once the non-resident premium he would pay is added — and their removal
+leaves the CUNY cost argument standing on seven colleges instead of ten (§2b).
 
 **Two patterns are worth naming.** The ten are all **D3**, and **seven of the nine Skyline Conference
 programs** in range are among them — Skyline sponsors cross country broadly and track narrowly, which
@@ -338,9 +346,9 @@ a map of every meet they attended last year, cost and admissions detail.
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **[Columbia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=columbia)** | New York NY | 5 | Ivy | ✅ 16.0% | 1510–1580 | 4% | $21,590 | 6.5 | −26s | 156s | Target | [Daniel Ireland](mailto:dli2108@columbia.edu) |
 | **[Fordham](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fordham)** | Bronx NY | 8 | Atlantic 10 | ✅ 4.6% | 1320–1480 | 59% | $44,338 | 6 | −12s | 95s | Target | [Aaron Gordon](mailto:agordon64@fordham.edu) |
-| **[NJIT](https://timhibbard.github.io/xc-cs-college-board/school.html?s=njit)** | Newark NJ | 12 | America East | ✅ 33.0% | 1210–1460 | 65% | $16,504 | 4 | −84s | 139s | Target | [Jason Munsch](mailto:jason.s.munsch@njit.edu) |
+| **[NJIT](https://timhibbard.github.io/xc-cs-college-board/school.html?s=njit)** | Newark NJ | 12 | America East | ✅ 33.0% | 1210–1460 | 65% | ≈$34,194 | 4 | −84s | 139s | Target | [Jason Munsch](mailto:jason.s.munsch@njit.edu) |
 | **[Seton Hall](https://timhibbard.github.io/xc-cs-college-board/school.html?s=seton-hall)** | South Orange NJ | 18 | Big East | ✅ 2.4% | 1220–1390 | 73% | $31,446 | 5 | −49s | 109s | Target | [Jacob Simon](mailto:jacob.simon@shu.edu) |
-| **[Stony Brook](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stony-brook)** | Stony Brook NY | 60 | CAA | ✅ 9.0% | 1330–1500 | 49% | $18,784 | 7.5 | +10s | 143s | Deep | [Jason Headman](mailto:jason.headman@stonybrook.edu) |
+| **[Stony Brook](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stony-brook)** | Stony Brook NY | 60 | CAA | ✅ 9.0% | 1330–1500 | 49% | ≈$40,594 | 7.5 | +10s | 143s | Deep | [Jason Headman](mailto:jason.headman@stonybrook.edu) |
 | **[Fairleigh Dickinson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fairleigh-dickinson)** | Teaneck NJ | 12 | NEC | ✅ 2.0% | not reported | 91% | $15,404 | 1 | −143s | 128s | Caution | [Wesley Stephens](mailto:w.stephens@fdu.edu) |
 | **[LIU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=liu)** | Brooklyn NY | 5 | NEC | ✅ 3.3% | 1110–1350 | 86% | $33,062 | 1 | — | 143s | Caution | [Stormie Charles](mailto:stormie.charles@liu.edu) |
 | **[Manhattan](https://timhibbard.github.io/xc-cs-college-board/school.html?s=manhattan)** | Bronx NY | 10 | MAAC | ✅ 6.1% | 1180–1358 | 79% | $27,256 | 2 | — | 112s | Caution | [Todd Witzleben](mailto:twitzleben01@manhattan.edu) |
@@ -358,10 +366,10 @@ a map of every meet they attended last year, cost and admissions detail.
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **[Adelphi](https://timhibbard.github.io/xc-cs-college-board/school.html?s=adelphi)** | Garden City NY | 25 | NE10 | ✅ 5.8% | 1120–1340 | 66% | $30,783 | 1 | −222s | 189s | Caution | [Katie Rees](mailto:krees@adelphi.edu) |
 | **[Caldwell](https://timhibbard.github.io/xc-cs-college-board/school.html?s=caldwell)** | Caldwell NJ | 20 | CACC | ✅ 9.3% | 1130–1370 | 71% | $24,691 | 1 | — | 536s | Caution | [Kyle Price](mailto:kprice@caldwell.edu) |
-| **[College of Staten Island](https://timhibbard.github.io/xc-cs-college-board/school.html?s=college-of-staten-island)** | Staten Island NY | 16 | East Coast | ✅ 7.8% | 890–1250 | 92% | $5,579 | 1 | −753s | 497s | Caution | [Akil St. Louis](mailto:Akil.Stlouis@csi.cuny.edu) |
+| **[College of Staten Island](https://timhibbard.github.io/xc-cs-college-board/school.html?s=college-of-staten-island)** | Staten Island NY | 16 | East Coast | ✅ 7.8% | 890–1250 | 92% | ≈$13,529 | 1 | −753s | 497s | Caution | [Akil St. Louis](mailto:Akil.Stlouis@csi.cuny.edu) |
 | **[Felician](https://timhibbard.github.io/xc-cs-college-board/school.html?s=felician)** | Lodi NJ | 13 | CACC | ✅ 2.1% | not reported | not reported | $40,045 | 1 | −586s | 393s | Caution | [John Brennan](mailto:BrennanJ@felician.edu) |
 | **[Molloy](https://timhibbard.github.io/xc-cs-college-board/school.html?s=molloy)** | Rockville Centre NY | 25 | ECC | ✅ 0.7% | 1088–1290 | 82% | $24,347 | 1 | — | 328s | Caution | [Brad Rangell](mailto:brangell@molloy.edu) |
-| **[Queens College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-college-cuny)** | Queens NY | 10 | ECC | ✅ 10.7% | 1010–1290 | 64% | $4,195 | 1 | −406s | 268s | Caution | [Greg Welch](mailto:Gregory.Welch@qc.cuny.edu) |
+| **[Queens College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-college-cuny)** | Queens NY | 10 | ECC | ✅ 10.7% | 1010–1290 | 64% | ≈$12,145 | 1 | −406s | 268s | Caution | [Greg Welch](mailto:Gregory.Welch@qc.cuny.edu) |
 | **[St. Thomas Aquinas](https://timhibbard.github.io/xc-cs-college-board/school.html?s=st-thomas-aquinas)** | Sparkill NY | 20 | CACC | ✅ 3.6% | 880–1085 | 93% | $19,994 | 1 | −688s | 528s | Caution | [Ray Kondracki](mailto:rkondrac@stac.edu) |
 
 **Queens College and the College of Staten Island are the two to email first** — the only CUNYs at
@@ -378,16 +386,16 @@ in this division is real; the teams it would buy him into are not deep enough to
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **[NYU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nyu)** | Manhattan NY | 0 | UAA | ✅ 10.1% | 1480–1560 | 9% | $37,050 | 8 | +35s | 42s | Deep | [Nic Jacobsen](mailto:nnj219@nyu.edu) |
-| **[CCNY](https://timhibbard.github.io/xc-cs-college-board/school.html?s=ccny)** | Manhattan NY | 6 | CUNYAC | ✅ 4.9% | 1070–1430 | 60% | $3,776 | 1 | — | 895s | Caution | [Joseph Benson](mailto:jbenson@ccny.cuny.edu) |
-| **[Farmingdale State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=farmingdale-state)** | Farmingdale NY | 35 | Skyline | ✅ 9.4% | 1040–1240 | 63% | $10,867 | 1 | −353s | 279s | Caution | [Daniela Georgieva](mailto:georgid@farmingdale.edu) |
-| **[Hunter College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=hunter-college)** | Manhattan NY | 2 | CUNYAC | ✅ 9.9% | 1100–1420 | 54% | $2,984 | 1 | −543s | 384s | Caution | [Marvin Hawkins](mailto:marvin.hawkins@hunter.cuny.edu) |
-| **[Kean University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kean-university)** | Union NJ | 20 | NJAC | ✅ 5.6% | 930–1150 | 76% | $12,447 | 1 | −470s | 351s | Caution | [Danielle Todman](mailto:dtodman@kean.edu) |
-| **[Lehman College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lehman-college)** | Bronx NY | 11 | CUNYAC | ✅ 8.2% | 850–1150 | 57% | $3,148 | 1 | −1848s | 1150s | Caution | [Michael Francis](mailto:Michael.Francis@lehman.cuny.edu) |
-| **[Medgar Evers](https://timhibbard.github.io/xc-cs-college-board/school.html?s=medgar-evers)** | Brooklyn NY | 7 | CUNYAC | ✅ 4.8% | 850–1020 | 86% | $5,718 | 1 | — | 639s | Caution | [Hugh Reid](mailto:Hugh.Reid49@mec.cuny.edu) |
+| **[CCNY](https://timhibbard.github.io/xc-cs-college-board/school.html?s=ccny)** | Manhattan NY | 6 | CUNYAC | ✅ 4.9% | 1070–1430 | 60% | ≈$11,726 | 1 | — | 895s | Caution | [Joseph Benson](mailto:jbenson@ccny.cuny.edu) |
+| **[Farmingdale State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=farmingdale-state)** | Farmingdale NY | 35 | Skyline | ✅ 9.4% | 1040–1240 | 63% | ≈$20,777 | 1 | −353s | 279s | Caution | [Daniela Georgieva](mailto:georgid@farmingdale.edu) |
+| **[Hunter College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=hunter-college)** | Manhattan NY | 2 | CUNYAC | ✅ 9.9% | 1100–1420 | 54% | ≈$10,934 | 1 | −543s | 384s | Caution | [Marvin Hawkins](mailto:marvin.hawkins@hunter.cuny.edu) |
+| **[Kean University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kean-university)** | Union NJ | 20 | NJAC | ✅ 5.6% | 930–1150 | 76% | ≈$20,594 | 1 | −470s | 351s | Caution | [Danielle Todman](mailto:dtodman@kean.edu) |
+| **[Lehman College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lehman-college)** | Bronx NY | 11 | CUNYAC | ✅ 8.2% | 850–1150 | 57% | ≈$11,098 | 1 | −1848s | 1150s | Caution | [Michael Francis](mailto:Michael.Francis@lehman.cuny.edu) |
+| **[Medgar Evers](https://timhibbard.github.io/xc-cs-college-board/school.html?s=medgar-evers)** | Brooklyn NY | 7 | CUNYAC | ✅ 4.8% | 850–1020 | 86% | ≈$13,668 | 1 | — | 639s | Caution | [Hugh Reid](mailto:Hugh.Reid49@mec.cuny.edu) |
 | **[Merchant Marine Acad.](https://timhibbard.github.io/xc-cs-college-board/school.html?s=merchant-marine-acad)** | Kings Point NY | 20 | Skyline | ❌ none | 1110–1300 | 34% | $6,174 | 1.5 | −212s | 206s | Caution | [Kayla Koelbel](mailto:koelbelk@usmma.edu) |
-| **[Rutgers–Newark](https://timhibbard.github.io/xc-cs-college-board/school.html?s=rutgers-newark)** | Newark NJ | 13 | NJAC | ✅ 6.0% | not reported | 71% | $19,703 | 1 | −932s | 695s | Caution | [Joel Williams](mailto:Joel.williams@rutgers.edu) |
+| **[Rutgers–Newark](https://timhibbard.github.io/xc-cs-college-board/school.html?s=rutgers-newark)** | Newark NJ | 13 | NJAC | ✅ 6.0% | not reported | 71% | ≈$39,215 | 1 | −932s | 695s | Caution | [Joel Williams](mailto:Joel.williams@rutgers.edu) |
 | **[Stevens Institute](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stevens-institute)** | Hoboken NJ | 3 | MAC | ✅ 21.2% | 1380–1505 | 48% | $41,346 | 2 | −99s | 86s | Caution | [John Kolibab](mailto:jkolibab@stevens.edu) |
-| **[York College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=york-college-cuny)** | Jamaica NY | 12 | CUNYAC | ✅ 6.3% | 790–960 | 64% | $4,456 | 1 | — | — | Caution | [Eamon Sheerin](mailto:esheerin901@york.cuny.edu) |
+| **[York College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=york-college-cuny)** | Jamaica NY | 12 | CUNYAC | ✅ 6.3% | 790–960 | 64% | ≈$12,406 | 1 | — | — | Caution | [Eamon Sheerin](mailto:esheerin901@york.cuny.edu) |
 
 > **This table was 21 rows in v4 and is 11 now.** Ten D3 programs — three CUNYs and seven Skyline
 > schools, including both St. Joseph's campuses and Yeshiva — field cross country and no men's track,
@@ -476,7 +484,9 @@ revision, when 81% of the board was a placeholder, but it is not a longer shortl
    Email **[Aaron Gordon](mailto:agordon64@fordham.edu)**.
 3. **[NJIT](https://timhibbard.github.io/xc-cs-college-board/school.html?s=njit)** — **33.0% of its
    bachelor's degrees are in computer science, the highest share on the entire 116-school board**,
-   it is D1, and at **$16,504 net** it is a third the cost of Fordham. The running now checks out
+   it is D1, and at **≈$34,194 net on his residency** — $16,504 for a New Jersey resident, plus
+   NJIT's $17,690 non-resident tuition premium — it undercuts Fordham by about $10,000 a year rather
+   than by two thirds, which is a materially weaker version of the value case. The running checks out
    too: **their #4 at the America East championship, 84 seconds inside their 7th man**, on a 139
    second spread. That is the deepest slot-plus-margin combination of the four targets. One caveat —
    it rests on a single race, because they put only four men on the line at the Mid-Atlantic regional,
@@ -492,7 +502,8 @@ revision, when 81% of the board was a placeholder, but it is not a longer shortl
 5. **[Stony Brook](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stony-brook)** —
    Deep rather than Target, at 10 seconds *outside* their seven, which at D1 CAA level is close
    enough that a year of development closes it. The strongest CS department on Long Island (9.0%), a
-   full D1 program, **$18,784 net** (but see the out-of-state caveat in §8). Sixty miles out and on
+   full D1 program, and the worst residency penalty in this metro: **≈$40,594 net on his
+   residency**, against $18,784 for a New Yorker (§8). Sixty miles out and on
    this board only by the Long Island rule, so be honest about the commute.
    Email **[Jason Headman](mailto:jason.headman@stonybrook.edu)**.
 
@@ -502,7 +513,8 @@ very much a place he would improve. D3 means no scholarship is at stake in aimin
 admit rate is the gate. Email **[Nic Jacobsen](mailto:nnj219@nyu.edu)**.
 
 **Two schools dropped off this list when they were measured.** **Hunter College** was the entry to
-email first on the theory that a $2,984 CUNY with cross country *and* track was probably in reach —
+email first on the theory that a CUNY at $2,984 in-state — ≈$10,934 at his rate — with cross
+country *and* track was probably in reach —
 it is, emphatically, and that is the problem. Hunter **won the 2025 CUNYAC championship** and his
 projection would still be **two minutes ahead of their #1**. **Stevens Institute** is the near miss:
 21.2% CS, three miles out, and he would arrive **14 seconds ahead of their #1** — Caution by the
@@ -512,16 +524,23 @@ to **[John Kolibab](mailto:jkolibab@stevens.edu)**.
 
 ## 8. NYC-specific considerations
 
-**Cost of living is the dominant variable and the spread is now enormous.** Average net price runs
-from **$2,984 at Hunter** to **$44,338 at Fordham** — then Stevens $41,346, Felician $40,045 and NYU
-$37,050 at the top; NJIT $16,504 in the middle; seven CUNY campuses under $6,000. The two most
-expensive schools in v4, Yeshiva ($49,965) and Sarah Lawrence ($41,437), are off the board under the
-both-sports rule (§2h), which is the one respect in which that rule made this page cheaper. That is a six-figure difference over four years and no partial athletic
-scholarship in men's distance running comes close to closing it. Two caveats that pull in opposite
-directions: every figure is an average across all students after grants, not a quote for one
-applicant; and **the cheapest figures belong to commuter campuses with no dormitories**, where an
-out-of-state student's real cost is tuition plus New York rent. Model total cost of attendance, not
-tuition.
+**Cost of living is the dominant variable, and the residency correction compresses the spread.** On
+his residency, average net price runs from **≈$10,934 at Hunter** to **$44,338 at Fordham** — the
+Merchant Marine Academy is cheaper than any of them at $6,174, but it carries a service obligation and
+no computer science degree, which is why it is not in this comparison — then
+Stevens $41,346, Felician $40,045, Stony Brook ≈$40,594, Rutgers–Newark ≈$39,215 and NYU $37,050 at
+the top, with NJIT ≈$34,194 no longer in the middle at all. Seven CUNY campuses sit between ≈$10,900
+and ≈$13,700, and they are now the only genuinely cheap options here: **the median net price in this
+metro moves from $19,244 to $22,969** once every public is put on the rate he would pay, the largest
+shift of the three metros. The two most expensive schools in v4, Yeshiva ($49,965) and Sarah Lawrence
+($41,437), are off the board under the both-sports rule (§2h), which is the one respect in which that
+rule made this page cheaper. The remaining top-to-bottom gap is still a six-figure difference over
+four years and no partial athletic scholarship in men's distance running comes close to closing it.
+Three caveats, pulling in different directions: every figure is an average across all students after
+grants, not a quote for one applicant; the public figures carry an estimated premium that a
+non-resident tuition waiver could erase, so ask each one; and **the cheapest figures belong to
+commuter campuses with no dormitories**, where his real cost is tuition plus New York rent. Model
+total cost of attendance, not tuition.
 
 **Training terrain is a genuine question to raise with coaches.** Ask specifically where the team
 does long runs and workouts. Good answers: Van Cortlandt Park (Fordham, Manhattan), Central Park,
@@ -536,7 +555,11 @@ this metro is New York and New Jersey only. The New Jersey publics (Kean, NJIT, 
 the New York publics (the seven remaining CUNYs, Farmingdale and Stony Brook) will
 all charge out-of-state rates to a South Carolina applicant. The gap is small at CUNY — roughly
 $7,400 in-state against $15,300 out — and large at Stony Brook, where it is $10,931 against
-$32,741. Check it school by school before ranking any of them on price.
+$32,741. **Every net price on this page now has that gap added back for the twelve out-of-state
+publics in this metro**, marked with a ≈ because it is arithmetic rather than a reported federal
+figure; the method and its exceptions are in
+[§6 of the methodology](https://timhibbard.github.io/xc-cs-college-board/methodology.html#residency).
+Ask each school whether a non-resident waiver exists before ranking any of them on price.
 
 ## 9. To-dos, priority order
 

@@ -74,12 +74,25 @@ function townNote(pop) {
 function cost() {
   const c = S.cost;
   if (!c) return `<h2>Cost</h2><p class="prose nodata">No federal cost record matched this school.</p>`;
-  const inState = c.own === 'public' && S.metro === 'greenville' && /SC$/.test(S.city ?? '');
+  /* He is a South Carolina resident, so `resid` is a fact about the school, not a choice:
+     in-state at an SC public, out-of-state at every other public, irrelevant at a private. */
+  const inState = c.own === 'public' && c.resid === 'in';
+  const prem = netPremium(S);
+  const tuiNote = c.own !== 'public'
+    ? 'private, one rate for everyone'
+    : inState
+      ? `<strong>in-state rate</strong> — he is a South Carolina resident and this is a South Carolina public${c.tuiOut ? `. Out-of-state students pay ${usd(c.tuiOut)}` : ''}`
+      : `<strong>out-of-state rate</strong> — he is a South Carolina resident and this school is not in South Carolina${c.tuiIn ? `. Its own residents pay ${usd(c.tuiIn)}` : ''}`;
   const rows = [
-    ['Tuition and fees', usd(c.tuition), c.own === 'public' ? 'out-of-state rate — he is a South Carolina resident' : 'private, one rate for everyone'],
+    ['Tuition and fees', usd(c.tuition), tuiNote],
     ['Room and board, on campus', usd(c.rb), ''],
     ['Sticker price for one year', usd(c.sticker), 'tuition + room and board, before any aid'],
-    ['Average net price actually paid', usd(c.net), 'after grants and scholarships, averaged across all students — the number to plan against'],
+    ['Average net price actually paid', usd(c.net),
+      'after grants and scholarships, averaged across all students' + (c.own === 'public'
+        ? ' — and averaged across <strong>in-state</strong> students only, which is how the federal file computes it at every public'
+        : ' — the number to plan against')],
+    ...(prem > 0 ? [['Net price on his residency', usd(c.net + prem),
+      `<strong>estimate</strong> — the federal net price above plus the ${usd(prem)} non-resident tuition premium, holding average grant aid constant. A non-resident waiver or athletic money can erase it`]] : []),
     ['Undergraduate enrollment', c.size == null ? null : c.size.toLocaleString('en-US'),
       'federal headcount — the number that decides whether he is one of a hundred distance runners or one of six', 'num'],
   ];
@@ -91,7 +104,7 @@ function cost() {
     <h2>Cost</h2>
     <div class="kpi-row">
       <div class="kpi"><div class="k-label">Sticker price</div><div class="k-value">${usd(c.sticker) ?? '—'}</div><div class="k-sub">tuition + room and board</div></div>
-      <div class="kpi"><div class="k-label">Average net price</div><div class="k-value">${usd(c.net) ?? '—'}</div><div class="k-sub">what students actually pay</div></div>
+      <div class="kpi"><div class="k-label">Net price</div><div class="k-value">${prem > 0 ? '≈' + usd(c.net + prem) : usd(c.net) ?? '—'}</div><div class="k-sub">${prem > 0 ? 'estimated, on his residency' : 'what students actually pay'}</div></div>
       <div class="kpi"><div class="k-label">Admit rate</div><div class="k-value">${S.accept ?? '—'}</div><div class="k-sub">${S.acceptSrc === 'fed' ? 'federal data' : 'estimate'}</div></div>
       <div class="kpi"><div class="k-label">SAT, middle 50%</div><div class="k-value" style="font-size:22px">${S.sat ?? '—'}</div><div class="k-sub">${S.satSrc === 'fed' ? 'federal data' : 'estimate'}</div></div>
     </div>
@@ -104,8 +117,11 @@ function cost() {
     </div>
     <p class="map-note">
       U.S. Department of Education College Scorecard, most recent year available${c.ipeds ? `, IPEDS unit ${c.ipeds}` : ''}.
-      ${c.own === 'public' ? 'This is a public institution, so the figure above is the <strong>out-of-state</strong> rate.' : ''}
-      ${inState ? ' In-state rates would apply here.' : ''}
+      ${c.own !== 'public' ? 'A private college charges one tuition rate regardless of where a student lives, so residency does not enter this table.'
+        : inState ? 'A South Carolina public, so the in-state rate applies to him and the federal net price is already on the right basis.'
+        : `An out-of-state public. The tuition line is the rate he would pay, but the federal net price is computed from
+           in-state students only${prem > 0 ? `, so the two are on different bases — hence the ${usd(prem)} adjustment above` : ''}.
+           <a href="methodology.html#residency">How residency enters the net cost</a>.`}
       Net price is an average across all incoming students, not a prediction for one applicant — a strong
       student stacking merit aid usually lands below it.
       ${pop == null ? '' : `Town population is the place the campus sits in, not the metro around it — a small
@@ -507,18 +523,33 @@ function fifteen() {
         IC4A-ECAC. That is the common case, not a mark against them.</p>`}`;
 }
 
+/* How precisely a venue is placed. A facility coordinate needs no caveat; a ZIP or a
+   town centroid does, so it is labelled in the table and in the popup. */
+const SRCTAG = {
+  z: ' <span class="src-tag">ZIP area</span>',
+  c: ' <span class="src-tag">town</span>',
+};
+const SRCNOTE = {
+  z: 'Placed from the ZIP the results page printed, not the facility — the pin is the middle of that postal area.',
+  c: 'Placed from the town the results page named, not the facility — the pin is the middle of that town.',
+};
+
 /* ---------- meets: map + schedule ---------- */
 function meetSection() {
-  const sched = (typeof SCHED !== 'undefined' && SCHED[S.name]) || [];
+  const ids = (typeof SCHED !== 'undefined' && SCHED[S.name]) || [];
+  const sched = ids.map(k => MEETS[k]).filter(Boolean);
   if (!sched.length) {
     return `
       <h2>Where they compete</h2>
-      <div class="callout"><span class="c-title">Meet schedule not collected for this school</span>
-      <p>Full season schedules were pulled for the eleven schools that came out of the cross country
-      analysis as target tier. If this school moves up, its schedule is the next thing to add.</p></div>`;
+      <div class="callout"><span class="c-title">No 2025&ndash;26 schedule exists to show</span>
+      <p>Every other school on this board has its schedule read straight off its own TFRRS results
+      page. This one has no result on that page inside the 2025&ndash;26 window at all, so there is
+      nothing to map. That is itself the finding, and it is consistent with the program note above.</p></div>`;
   }
-  const placed = sched.filter(m => VENUES[m.m]);
-  const unplacedNames = [...new Set(sched.filter(m => !VENUES[m.m]).map(m => m.m))];
+  const placed = sched.filter(m => m.v != null);
+  const unplacedNames = [...new Set(sched.filter(m => m.v == null).map(m => m.m))];
+  const prec = { r: 0, z: 0, c: 0 };
+  new Set(placed.map(m => m.v)).forEach(i => prec[VENUES[i].src]++);
   const bySeason = { x: 0, i: 0, o: 0 };
   sched.forEach(m => bySeason[m.s]++);
 
@@ -540,11 +571,15 @@ function meetSection() {
         <span class="legend-item"><span class="pin pin-home" aria-hidden="true">⌂</span><span>Campus</span></span>
       </div>
       <p class="map-note">
-        <strong>${placed.length} of ${sched.length} appearances are placed</strong>
-        (${unplacedNames.length} distinct meet${unplacedNames.length === 1 ? '' : 's'} could not be located and are listed below the table).
-        Almost all of the gap is conference and NCAA championships, whose host rotates each year, so a
-        single coordinate would be wrong more often than right. Pins marked <em>host campus</em> place the
-        school that hosts the meet, not necessarily the course itself.
+        <strong>${placed.length} of ${sched.length} appearances are placed</strong>${unplacedNames.length
+          ? ` (${unplacedNames.length} meet${unplacedNames.length === 1 ? '' : 's'} printed no venue at all and ${unplacedNames.length === 1 ? 'is' : 'are'} listed below the table)`
+          : ''}.
+        Every venue here was read off that meet&rsquo;s own results page, so a conference or NCAA
+        championship is placed where it was actually held this season rather than at whoever hosted it
+        last year. The pins differ in how tightly they are placed:
+        ${prec.r} of these ${prec.r + prec.z + prec.c} distinct venues resolved to the facility itself, ${prec.z} only
+        to the ZIP the results page printed, and ${prec.c} only to the town it named. The looser two are
+        tagged in the table below.
       </p>
     </div>
     <h3>Full schedule</h3>
@@ -553,23 +588,25 @@ function meetSection() {
         <caption>The table is the accessible view of the map above — same data, no color needed.</caption>
         <thead><tr><th scope="col">Season</th><th scope="col">Date</th><th scope="col">Meet</th><th scope="col">Where</th></tr></thead>
         <tbody>${sched.map(m => {
-          const v = VENUES[m.m];
+          const v = m.v == null ? null : VENUES[m.v];
           return `<tr>
             <td><span class="s-tag s-${m.s}">${SEASONS[m.s].glyph}</span> ${SEASONS[m.s].label}</td>
             <td class="time">${m.d}</td>
             <td>${m.m}</td>
-            <td class="rownote">${v ? `${v.v}${v.src === 'h' ? ' <span class="src-tag">host campus</span>' : ''}`
-              : '<span class="nodata">not located</span>'}</td></tr>`;
+            <td class="rownote">${v ? `${v.v}${SRCTAG[v.src] || ''}`
+              : '<span class="nodata">no venue printed</span>'}</td></tr>`;
         }).join('')}</tbody>
       </table>
     </div>
-    ${unplacedNames.length ? `<p class="map-note"><strong>Not located:</strong> ${unplacedNames.join(' · ')}.</p>` : ''}`;
+    ${unplacedNames.length ? `<p class="map-note"><strong>No venue printed:</strong> ${unplacedNames.join(' · ')}.
+      TFRRS names a host for ${unplacedNames.length === 1 ? 'this meet' : 'these meets'} but no location, so there is
+      nothing to geocode.</p>` : ''}`;
 }
 
 function initMeetMap() {
   const host = document.getElementById('meetmap');
   if (!host || typeof L === 'undefined') return;
-  const sched = SCHED[S.name] || [];
+  const sched = (SCHED[S.name] || []).map(k => MEETS[k]).filter(Boolean);
 
   const map = L.map(host, { scrollWheelZoom: false }).setView([S.lat, S.lon], 6);
   L.control.scale({ imperial: true, metric: false }).addTo(map);
@@ -591,8 +628,8 @@ function initMeetMap() {
     // one marker per venue+season: a venue used for both indoor and outdoor is two
     // real facts about the schedule, not one, so both get a pin and declutter nudges them apart
     const bucket = new Map();
-    sched.filter(m => on.has(m.s) && VENUES[m.m]).forEach(m => {
-      const v = VENUES[m.m], k = `${v.v}|${m.s}`;
+    sched.filter(m => on.has(m.s) && m.v != null).forEach(m => {
+      const v = VENUES[m.v], k = `${v.v}|${m.s}`;
       if (!bucket.has(k)) bucket.set(k, { lat: v.lat, lon: v.lon, v: v.v, src: v.src, s: m.s, meets: [] });
       bucket.get(k).meets.push(m);
     });
@@ -608,15 +645,17 @@ function initMeetMap() {
         `<div class="mp"><div class="mp-name">${p.v}</div>
          <div class="mp-tier pin-s-${p.s}-txt">${S_.glyph} ${S_.label}</div>
          ${p.meets.map(m => `<div class="mp-line">${m.d} &middot; ${m.m}</div>`).join('')}
-         ${p.src === 'h' ? '<div class="mp-nudge">Located from the host named in the meet title — the campus, not necessarily the course.</div>' : ''}
+         ${SRCNOTE[p.src] ? `<div class="mp-nudge">${SRCNOTE[p.src]}</div>` : ''}
          ${p.nudged ? '<div class="mp-nudge">Pin nudged slightly — another season used this venue.</div>' : ''}</div>`,
         { maxWidth: 300 });
     });
 
     if (pts.length) map.fitBounds(L.latLngBounds([...pts.map(p => [p.lat, p.lon]), [S.lat, S.lon]]), { padding: [26, 26] });
     const n = document.getElementById('meet-count');
-    const shown = sched.filter(m => on.has(m.s) && VENUES[m.m]).length;
-    if (n) n.textContent = `${shown} appearance${shown === 1 ? '' : 's'} at ${pts.length} venue${pts.length === 1 ? '' : 's'}`;
+    const vis = sched.filter(m => on.has(m.s) && m.v != null);
+    const shown = vis.length, nv = new Set(vis.map(m => m.v)).size;
+    if (n) n.textContent = `${shown} appearance${shown === 1 ? '' : 's'} at ${nv} venue${nv === 1 ? '' : 's'}`
+      + (pts.length > nv ? `, ${pts.length} pins` : '');
   };
 
   document.querySelectorAll('.f-season').forEach(el => el.addEventListener('change', render));
@@ -646,7 +685,10 @@ function completeness() {
     ['SAT range', S.satSrc === 'fed', S.satSrc === 'fed' ? 'federal' : 'not reported federally — the figure shown is an estimate'],
     ['Admit rate', S.acceptSrc === 'fed', S.acceptSrc === 'fed' ? 'federal' : 'estimate'],
     ['CS program', S.cs === 'verified', S.csSrc === 'fed' ? 'federal program data' : 'checked by hand'],
-    ['Meet schedule', !!(typeof SCHED !== 'undefined' && SCHED[S.name]), 'pulled for target-tier schools only'],
+    ['Meet schedule', !!(typeof SCHED !== 'undefined' && SCHED[S.name]),
+      (typeof SCHED !== 'undefined' && SCHED[S.name])
+        ? `every 2025–26 meet on their own TFRRS results page — ${SCHED[S.name].length} appearances`
+        : 'their TFRRS results page holds nothing inside the 2025–26 season'],
     ['Coach name and contact', !!(S.coach && S.coach.name), S.coach && S.coach.email ? 'name, title and email off the school\'s staff directory' : 'no email published — phone or recruit form only'],
   ];
   return `

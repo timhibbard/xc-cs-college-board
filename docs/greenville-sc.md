@@ -366,8 +366,9 @@ sends no one to the conference 1500 either has no milers or does not race them t
 distinction matters enough to ask.
 
 **The sharpest single number in this section belongs to Fayetteville State.** It is the cheapest
-school on the entire board at **$7,892 net**, it came out of the sweep at Target — and it ran **no
-1500 anywhere in 2026**. The CIAA championship 1500 was won in **4:02.0**. A 4:01 would have won that
+target-tier school on the entire board at **≈$11,892 net on his residency** ($7,892 for a North
+Carolinian, plus a $4,000 non-resident premium that is unusually small), it came out of the sweep at
+Target — and it ran **no 1500 anywhere in 2026**. The CIAA championship 1500 was won in **4:02.0**. A 4:01 would have won that
 conference championship as a freshman, in a race his own school did not enter. Read that as the state
 of the program, not as a compliment to the projection.
 
@@ -414,30 +415,30 @@ per-race results, a map of every meet they attended last year, cost, and admissi
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **[Campbell](https://timhibbard.github.io/xc-cs-college-board/school.html?s=campbell)** | Buies Creek NC | 250 | CAA | ✅ 6.5% | not reported | 87% | $24,516 | 3 | −72s | 141s | Target | [Evan Darm](mailto:edarm@campbell.edu) |
-| **[Chattanooga](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chattanooga)** | Chattanooga TN | 225 | Southern | ✅ 4.2% | 1013–1210 | 81% | $14,265 | 4.5 | −113s | 220s | Target | [Steve Picucci](mailto:steve-picucci@utc.edu) |
+| **[Chattanooga](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chattanooga)** | Chattanooga TN | 225 | Southern | ✅ 4.2% | 1013–1210 | 81% | ≈$22,329 | 4.5 | −113s | 220s | Target | [Steve Picucci](mailto:steve-picucci@utc.edu) |
 | **[Coastal Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=coastal-carolina)** | Conway SC | 245 | Sun Belt | ✅ 2.5% | 1050–1220 | 75% | $13,966 | 3.5 | −22s | 89s | Target | [Michael Bianchina](mailto:mbianchin@coastal.edu) |
 | **[College of Charleston](https://timhibbard.github.io/xc-cs-college-board/school.html?s=college-of-charleston)** | Charleston SC | 235 | CAA | ✅ 4.1% | 1140–1310 | 60% | $18,960 | 5.5 | −20s | 97s | Target | [Chris Bailey](mailto:crbailey@cofc.edu) |
 | **[Davidson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=davidson)** | Davidson NC | 115 | Atlantic 10 | ✅ 6.9% | 1400–1530 | 13% | $17,379 | 4 | −41s | 139s | Target | [Matt Stuck](mailto:mastuck@davidson.edu) |
 | **[Elon](https://timhibbard.github.io/xc-cs-college-board/school.html?s=elon)** | Elon NC | 200 | Coastal | ✅ 2.6% | 1130–1280 | 66% | $41,555 | 5 | −40s | 78s | Target | [Mark Elliston](mailto:melliston@elon.edu) |
-| **[ETSU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=etsu)** | Johnson City TN | 140 | Southern | ✅ 4.2% | 980–1200 | 86% | $15,983 | 4 | −28s | 171s | Target | [Sterling Jones](mailto:jonessp6@etsu.edu) |
+| **[ETSU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=etsu)** | Johnson City TN | 140 | Southern | ✅ 4.2% | 980–1200 | 86% | ≈$20,033 | 4 | −28s | 171s | Target | [Sterling Jones](mailto:jonessp6@etsu.edu) |
 | **[High Point](https://timhibbard.github.io/xc-cs-college-board/school.html?s=high-point)** | High Point NC | 180 | Big South | ✅ 2.3% | 1110–1320 | 75% | $38,707 | 7 | −31s | 66s | Target | [Remy Tamer](mailto:rtamer@highpoint.edu) |
-| **[Kennesaw State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kennesaw-state)** | Kennesaw GA | 125 | CUSA | ✅ 11.1% | 1000–1220 | 69% | $15,048 | 4.5 | −82s | 275s | Target | [Cale McDaniel](mailto:cmcdan10@kennesaw.edu) |
+| **[Kennesaw State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kennesaw-state)** | Kennesaw GA | 125 | CUSA | ✅ 11.1% | 1000–1220 | 69% | ≈$26,976 | 4.5 | −82s | 275s | Target | [Cale McDaniel](mailto:cmcdan10@kennesaw.edu) |
 | **[Queens (Charlotte)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-charlotte)** | Charlotte NC | 105 | ASUN | ❌ none | 1140–1340 | 62% | $30,857 | 5 | −15s | 56s | Target | [Will Crocker](mailto:crockerw@queens.edu) |
-| **[UNC Asheville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-asheville)** | Asheville NC | 62 | Big South | ✅ 3.2% | 1170–1360 | 92% | $12,250 | 5.5 | −50s | 64s | Target | [Adam Puett](mailto:apuett@unca.edu) |
-| **[UNC Charlotte](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-charlotte)** | Charlotte NC | 100 | American | ✅ 15.2% | 1140–1330 | 80% | $15,435 | 7 | −11s | 167s | Target | [Riley Macon](mailto:rmacon4@charlotte.edu) |
-| **[UNC Greensboro](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-greensboro)** | Greensboro NC | 170 | Southern | ✅ 7.4% | 1150–1355 | 89% | $10,965 | 4.5 | −126s | 93s | Target | [Kaleigh Roach](mailto:k_roach@uncg.edu) |
-| **[West Georgia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=west-georgia)** | Carrollton GA | 210 | United Athletic | ✅ 2.7% | 950–1140 | 52% | $12,786 | 6 | −28s | 114s | Target | Ryan Bailey *(no email)* |
-| **[Appalachian State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=appalachian-state)** | Boone NC | 130 | Sun Belt | ✅ 2.9% | 1120–1280 | 90% | $16,836 | 8 | +35s | 101s | Deep | [Damion McLean](mailto:mcleandm@appstate.edu) |
+| **[UNC Asheville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-asheville)** | Asheville NC | 62 | Big South | ✅ 3.2% | 1170–1360 | 92% | ≈$29,598 | 5.5 | −50s | 64s | Target | [Adam Puett](mailto:apuett@unca.edu) |
+| **[UNC Charlotte](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-charlotte)** | Charlotte NC | 100 | American | ✅ 15.2% | 1140–1330 | 80% | ≈$30,688 | 7 | −11s | 167s | Target | [Riley Macon](mailto:rmacon4@charlotte.edu) |
+| **[UNC Greensboro](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-greensboro)** | Greensboro NC | 170 | Southern | ✅ 7.4% | 1150–1355 | 89% | ≈$27,316 | 4.5 | −126s | 93s | Target | [Kaleigh Roach](mailto:k_roach@uncg.edu) |
+| **[West Georgia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=west-georgia)** | Carrollton GA | 210 | United Athletic | ✅ 2.7% | 950–1140 | 52% | ≈$24,498 | 6 | −28s | 114s | Target | Ryan Bailey *(no email)* |
+| **[Appalachian State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=appalachian-state)** | Boone NC | 130 | Sun Belt | ✅ 2.9% | 1120–1280 | 90% | ≈$34,469 | 8 | +35s | 101s | Deep | [Damion McLean](mailto:mcleandm@appstate.edu) |
 | **[Charleston Southern](https://timhibbard.github.io/xc-cs-college-board/school.html?s=charleston-southern)** | Charleston SC | 220 | Big South | ✅ 4.7% | 930–1160 | 96% | $21,666 | 7.5 | +10s | 81s | Deep | [Jim Stintzi](mailto:jstintzi@csuniv.edu) |
 | **[Clemson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clemson)** | Clemson SC | 32 | ACC | ✅ 4.5% | 1240–1410 | 38% | $22,253 | 7.5 | +15s | 104s | Deep | [Mark Elliott](mailto:maellio@clemson.edu) |
 | **[Gardner-Webb](https://timhibbard.github.io/xc-cs-college-board/school.html?s=gardner-webb)** | Boiling Springs NC | 60 | Big South | ✅ 1.9% | 975–1198 | 77% | $17,674 | 1 | — | 966s | Caution | [Greg Thiel](mailto:gthiel@gardner-webb.edu) |
-| **[NC A&T](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-aandt)** | Greensboro NC | 200 | CAA | ✅ 8.9% | 1020–1190 | 50% | $10,846 | 1 | −175s | 169s | Caution | [Allen Johnson](mailto:akjohnson5@ncat.edu) |
-| **[NC Central](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-central)** | Durham NC | 250 | MEAC | ✅ 3.9% | ~1050 avg | 87% | $15,359 | 3 | — | 355s | Caution | [Fabrienne Swepson](mailto:fswepson@nccu.edu) |
+| **[NC A&T](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-aandt)** | Greensboro NC | 200 | CAA | ✅ 8.9% | 1020–1190 | 50% | ≈$24,706 | 1 | −175s | 169s | Caution | [Allen Johnson](mailto:akjohnson5@ncat.edu) |
+| **[NC Central](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-central)** | Durham NC | 250 | MEAC | ✅ 3.9% | ~1050 avg | 87% | ≈$28,395 | 3 | — | 355s | Caution | [Fabrienne Swepson](mailto:fswepson@nccu.edu) |
 | **[Presbyterian](https://timhibbard.github.io/xc-cs-college-board/school.html?s=presbyterian)** | Clinton SC | 45 | Big South | ✅ 1.4% | 980–1200 | 68% | $20,528 | 1 | −263s | 234s | Caution | [Robert "Bus" Baker](mailto:bbaker@presby.edu) |
 | **[SC State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=sc-state)** | Orangeburg SC | 150 | MEAC | ✅ 3.8% | not reported | 83% | $18,097 | 2 | −195s | 241s | Caution | [Donald Cooper](mailto:dcoope17@scsu.edu) |
 | **[The Citadel](https://timhibbard.github.io/xc-cs-college-board/school.html?s=the-citadel)** | Charleston SC | 235 | Southern | ✅ 4.0% | 1085–1285 | 23% | $20,723 | 1 | −163s | 96s | Caution | [Kris Kut](mailto:kutk@citadel.edu) |
 | **[USC Upstate](https://timhibbard.github.io/xc-cs-college-board/school.html?s=usc-upstate)** | Spartanburg SC | 32 | Big South | ✅ 8.3% | 1005–1175 | 67% | $13,557 | 2 | −43s | 82s | Caution | [Carson Blackwelder](mailto:cblackwelder@uscupstate.edu) |
-| **[Western Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=western-carolina)** | Cullowhee NC | 60 | Southern | ✅ 1.3% | 1080–1270 | 82% | $13,315 | 2 | −82s | 105s | Caution | [Jesse Norman](mailto:jnorman@email.wcu.edu) |
+| **[Western Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=western-carolina)** | Cullowhee NC | 60 | Southern | ✅ 1.3% | 1080–1270 | 82% | ≈$17,315 | 2 | −82s | 105s | Caution | [Jesse Norman](mailto:jnorman@email.wcu.edu) |
 | **[Winthrop](https://timhibbard.github.io/xc-cs-college-board/school.html?s=winthrop)** | Rock Hill SC | 100 | Big South | ✅ 2.5% | 1010–1220 | 79% | $15,343 | 1 | — | 143s | Caution | [Raffael Craig](mailto:craigr@winthrop.edu) |
 | **[Wofford](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wofford)** | Spartanburg SC | 32 | Southern | ✅ 3.6% | 1198–1343 | 52% | $18,732 | 1 | — | 222s | Caution | [Johnny Bomar](mailto:bomarjc@wofford.edu) |
 
@@ -453,29 +454,29 @@ v7 are gone from it: Clark Atlanta, USC Aiken and Winston-Salem State sponsor no
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Augusta University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=augusta-university)** | Augusta GA | 115 | Peach Belt | ✅ 15.6% | 970–1140 | 86% | $13,787 | 5 | −94s | 148s | Target | [Jacob Burgamy](mailto:jburgamy@augusta.edu) |
+| **[Augusta University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=augusta-university)** | Augusta GA | 115 | Peach Belt | ✅ 15.6% | 970–1140 | 86% | ≈$30,107 | 5 | −94s | 148s | Target | [Jacob Burgamy](mailto:jburgamy@augusta.edu) |
 | **[Catawba](https://timhibbard.github.io/xc-cs-college-board/school.html?s=catawba)** | Salisbury NC | 130 | South Atlantic | ✅ 1.6% | 1030–1300 | 75% | $17,879 | 5.5 | −96s | 133s | Target | [Jason Bryan](mailto:jpbryan14@catawba.edu) |
-| **[Fayetteville State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fayetteville-state)** | Fayetteville NC | 235 | CIAA | ✅ 3.3% | 890–1090 | 82% | $7,892 | 4.5 | −158s | 250s | Target | Frank Hyland *(no email)* |
+| **[Fayetteville State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fayetteville-state)** | Fayetteville NC | 235 | CIAA | ✅ 3.3% | 890–1090 | 82% | ≈$11,892 | 4.5 | −158s | 250s | Target | Frank Hyland *(no email)* |
 | **[Southern Wesleyan](https://timhibbard.github.io/xc-cs-college-board/school.html?s=southern-wesleyan)** | Central SC | 25 | Conference Carolinas | ✅ 2.7% | 1040–1210 | 100% | $15,464 | 4 | −105s | 116s | Target | [Peyton Shelton](mailto:pshelton@swu.edu) |
-| **[UNC Pembroke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-pembroke)** | Pembroke NC | 215 | Conference Carolinas | ✅ 4.8% | 970–1200 | 93% | $10,260 | 3 | −143s | 166s | Target | [Dr. Peter Ormsby](mailto:peter.ormsby@uncp.edu) |
+| **[UNC Pembroke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-pembroke)** | Pembroke NC | 215 | Conference Carolinas | ✅ 4.8% | 970–1200 | 93% | ≈$14,260 | 3 | −143s | 166s | Target | [Dr. Peter Ormsby](mailto:peter.ormsby@uncp.edu) |
 | **[Anderson (SC)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=anderson-sc)** | Anderson SC | 30 | South Atlantic | ✅ 5.0% | 1100–1280 | 55% | $23,544 | 7.5 | +2s | 66s | Deep | [Kevin Eagle](mailto:keagle@andersonuniversity.edu) |
 | **[Lee University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lee-university)** | Cleveland TN | 190 | Gulf South | ✅ 2.0% | 1040–1230 | 71% | $18,878 | 7.5 | +25s | 83s | Deep | [Caleb Morgan](mailto:cmorgan@leeuniversity.edu) |
 | **[Shorter](https://timhibbard.github.io/xc-cs-college-board/school.html?s=shorter)** | Rome GA | 195 | Conference Carolinas | ✅ 3.4% | 1040–1200 | 96% | $16,646 | — | — | — | Verify | [Anthony Yates](mailto:ayates@shorter.edu) |
 | **[Allen University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=allen-university)** | Columbia SC | 115 | SIAC | ❌ none | not reported | 73% | $10,972 | 1 | — | 914s | Caution | [Orinthal Striggles](mailto:ostriggles@allenuniversity.edu) |
 | **[Belmont Abbey](https://timhibbard.github.io/xc-cs-college-board/school.html?s=belmont-abbey)** | Belmont NC | 95 | Conference Carolinas | ❌ none | 960–1200 | 75% | $24,639 | 1 | −199s | 136s | Caution | [Dan Finanger](mailto:danielfinanger@bac.edu) |
 | **[Benedict](https://timhibbard.github.io/xc-cs-college-board/school.html?s=benedict)** | Columbia SC | 115 | SIAC | ✅ 3.2% | not reported | 96% | $18,250 | 1 | — | — | Caution | [Danny Brooks](mailto:daniel.brooks@benedict.edu) |
-| **[Bluefield State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=bluefield-state)** | Bluefield WV | 240 | CIAA | ✅ 1.9% | 870–1080 | 97% | $13,684 | 1 | — | 557s | Caution | [Wesley Arthur](mailto:warthur@bluefieldstate.edu) |
+| **[Bluefield State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=bluefield-state)** | Bluefield WV | 240 | CIAA | ✅ 1.9% | 870–1080 | 97% | ≈$21,412 | 1 | — | 557s | Caution | [Wesley Arthur](mailto:warthur@bluefieldstate.edu) |
 | **[Carson-Newman](https://timhibbard.github.io/xc-cs-college-board/school.html?s=carson-newman)** | Jefferson City TN | 150 | South Atlantic | ✅ 3.1% | 955–1215 | 90% | $20,251 | 1 | — | 289s | Caution | [Brent Borden](mailto:bborden@cn.edu) |
 | **[Claflin](https://timhibbard.github.io/xc-cs-college-board/school.html?s=claflin)** | Orangeburg SC | 150 | CIAA | ✅ 3.3% | not reported | 65% | $17,800 | 1 | — | 338s | Caution | [Malcolm Watts](mailto:mawatts@claflin.edu) |
-| **[Clayton State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clayton-state)** | Morrow GA | 165 | Peach Belt | ✅ 8.9% | 860–1078 | 68% | $8,365 | 1 | −229s | 183s | Caution | [Chris Brown, OLY](mailto:ChristopherBrown@Clayton.edu) |
+| **[Clayton State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clayton-state)** | Morrow GA | 165 | Peach Belt | ✅ 8.9% | 860–1078 | 68% | ≈$19,717 | 1 | −229s | 183s | Caution | [Chris Brown, OLY](mailto:ChristopherBrown@Clayton.edu) |
 | **[Coker](https://timhibbard.github.io/xc-cs-college-board/school.html?s=coker)** | Hartsville SC | 160 | South Atlantic | ✅ 0.0% | not reported | 94% | $20,286 | 1 | — | 302s | Caution | [Eugene Galloway](mailto:egalloway@coker.edu) |
 | **[Converse](https://timhibbard.github.io/xc-cs-college-board/school.html?s=converse)** | Spartanburg SC | 35 | Conference Carolinas | ✅ 1.6% | 1010–1250 | 68% | $23,283 | 1 | −188s | 168s | Caution | [Roger Malonda](mailto:roger.malonda@converse.edu) |
 | **[Emmanuel (GA)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emmanuel-ga)** | Franklin Springs GA | 70 | Conference Carolinas | ✅ 1.7% | not reported | 74% | $20,925 | 1 | −339s | 210s | Caution | [Jesse Kemmerer](mailto:jesse.kemmerer@ec.edu) |
 | **[Emory & Henry](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory-and-henry)** | Emory VA | 185 | South Atlantic | ❌ none | 1051–1223 | 84% | $19,061 | 1.5 | −285s | 269s | Caution | [Leroy Worley](mailto:lworley@emoryhenry.edu) |
 | **[Erskine](https://timhibbard.github.io/xc-cs-college-board/school.html?s=erskine)** | Due West SC | 40 | Conference Carolinas | ✅ 0.7% | not reported | 63% | $16,525 | 1 | −325s | 251s | Caution | [Dylan Anderson](mailto:danderson@erskine.edu) |
-| **[Fort Valley State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fort-valley-state)** | Fort Valley GA | 215 | SIAC | ✅ 4.6% | 930–1070 | 66% | $10,338 | 1 | — | 200s | Caution | [Alexander Jones](mailto:Alexander.jones@fvsu.edu) |
+| **[Fort Valley State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fort-valley-state)** | Fort Valley GA | 215 | SIAC | ✅ 4.6% | 930–1070 | 66% | ≈$21,744 | 1 | — | 200s | Caution | [Alexander Jones](mailto:Alexander.jones@fvsu.edu) |
 | **[Francis Marion](https://timhibbard.github.io/xc-cs-college-board/school.html?s=francis-marion)** | Florence SC | 190 | Conference Carolinas | ✅ 2.4% | 870–1115 | 86% | $11,386 | 1 | −518s | 312s | Caution | [Mark Bluman](mailto:mbluman@fmarion.edu) |
-| **[Georgia College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia-college)** | Milledgeville GA | 155 | Peach Belt | ✅ 6.2% | 1070–1230 | 78% | $20,686 | 1.5 | −140s | 115s | Caution | [Alexander Bruno](mailto:alexander.bruno@gcsu.edu) |
+| **[Georgia College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia-college)** | Milledgeville GA | 155 | Peach Belt | ✅ 6.2% | 1070–1230 | 78% | ≈$41,012 | 1.5 | −140s | 115s | Caution | [Alexander Bruno](mailto:alexander.bruno@gcsu.edu) |
 | **[Johnson C. Smith](https://timhibbard.github.io/xc-cs-college-board/school.html?s=johnson-c-smith)** | Charlotte NC | 105 | CIAA | ✅ 10.4% | not reported | 45% | $20,894 | 1 | — | 527s | Caution | [Carol Lawrence](mailto:clawrence@jcsu.edu) |
 | **[King University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=king-university)** | Bristol TN | 155 | Conf. Carolinas | ✅ 4.7% | not reported | 100% | $22,347 | 1 | — | 230s | Caution | [Jack Brunecz](mailto:jebrunecz@king.edu) |
 | **[Lander](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lander)** | Greenwood SC | 55 | Peach Belt | ✅ 3.4% | 950–1178 | 81% | $15,363 | 1 | −406s | 305s | Caution | [Colin Lamb](mailto:clamb@lander.edu) |
@@ -487,9 +488,9 @@ v7 are gone from it: Clark Atlanta, USC Aiken and Winston-Salem State sponsor no
 | **[Morehouse](https://timhibbard.github.io/xc-cs-college-board/school.html?s=morehouse)** | Atlanta GA | 165 | SIAC | ✅ 3.8% | ~1090 avg | 44% | $39,013 | 2 | −336s | 352s | Caution | [Christopher Doomes](mailto:christopher.doomes@morehouse.edu) |
 | **[Newberry](https://timhibbard.github.io/xc-cs-college-board/school.html?s=newberry)** | Newberry SC | 70 | South Atlantic | ✅ 1.5% | not reported | 90% | $21,656 | 1 | — | 581s | Caution | [Scott Hutchinson](mailto:scott.hutchinson@newberry.edu) |
 | **[North Greenville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-greenville)** | Tigerville SC | 25 | Conf. Carolinas | ✅ 4.2% | 1060–1240 | 67% | $21,063 | 1 | −397s | 266s | Caution | [Jarvis Robinson](mailto:Jarvis.Robinson@ngu.edu) |
-| **[Savannah State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=savannah-state)** | Savannah GA | 250 | SIAC | ✅ 0.9% | not reported | not reported | $8,172 | 1 | — | 642s | Caution | [Ted Whitaker](mailto:whitaket@savannahstate.edu) |
+| **[Savannah State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=savannah-state)** | Savannah GA | 250 | SIAC | ✅ 0.9% | not reported | not reported | ≈$21,465 | 1 | — | 642s | Caution | [Ted Whitaker](mailto:whitaket@savannahstate.edu) |
 | **[Tusculum](https://timhibbard.github.io/xc-cs-college-board/school.html?s=tusculum)** | Greeneville TN | 125 | South Atlantic | ✅ 0.9% | not reported | 72% | $21,131 | 2 | −158s | 181s | Caution | [Alaric Gwynn](mailto:agwynn@tusculum.edu) |
-| **[UVA Wise](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uva-wise)** | Wise VA | 200 | South Atlantic | ✅ 2.3% | 945–1120 | 29% | $9,210 | 1.5 | — | 210s | Caution | [Andrew Howard](mailto:andrewhoward@uvawise.edu) |
+| **[UVA Wise](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uva-wise)** | Wise VA | 200 | South Atlantic | ✅ 2.3% | 945–1120 | 29% | ≈$25,440 | 1.5 | — | 210s | Caution | [Andrew Howard](mailto:andrewhoward@uvawise.edu) |
 | **[Young Harris](https://timhibbard.github.io/xc-cs-college-board/school.html?s=young-harris)** | Young Harris GA | 95 | Conference Carolinas | ❌ none | not reported | 63% | $22,034 | 2 | −102s | 104s | Caution | [Matt Logan](mailto:mjlogan@yhc.edu) |
 
 > **Limestone University (Gaffney SC) closed in 2025** — remove it from any older list.
@@ -590,14 +591,17 @@ been measured — v6 reported nine of eighty-one with fifty-seven unknowns, and 
 that was "nine of the twenty-four measured." The sweep tripled the numerator without changing the
 denominator.
 
-Two shapes inside the target tier are worth separating. **Eight of the twenty-two are inside 130
-miles** — Southern Wesleyan, UNC Asheville, UNC Charlotte, Queens (Charlotte), Davidson, Augusta,
-Kennesaw State and Catawba — which is the list to work first on travel alone. And **eight are cheaper
-than $15,000 net**: Fayetteville State ($7,892 — the cheapest school on the entire board, at Target
-tier), UNC Pembroke ($10,260), UNC Greensboro ($10,965), UNC Asheville ($12,250), West Georgia
-($12,786), Augusta University ($13,787), Coastal Carolina ($13,966) and Chattanooga ($14,265). **Those
-two lists overlap in exactly two schools — UNC Asheville and Augusta** — which is the real trade in this
-ring: the close ones are not the cheap ones.
+Two shapes inside the target tier are worth separating, and the residency correction (§8) makes the
+second one much starker. **Eight of the twenty-two are inside 130 miles** — Southern Wesleyan, UNC
+Asheville, UNC Charlotte, Queens (Charlotte), Davidson, Augusta, Kennesaw State and Catawba — which is
+the list to work first on travel alone. On the federal in-state basis, eight were also under $15,000
+and the two lists overlapped at UNC Asheville and Augusta. **On the rate he would actually pay, only
+three targets are under $15,000 — Fayetteville State (≈$11,892), Coastal Carolina ($13,966) and UNC
+Pembroke (≈$14,260) — and they are 235, 245 and 215 miles out. The overlap is now empty.** Every cheap
+target in this ring is a long drive, and every close target is a North Carolina or Georgia public
+carrying an $11,900-to-$17,400 non-resident premium, or a private at private prices. The nearest target
+under $16,000 is **Southern Wesleyan at 25 miles and $15,464** — a private, so residency never enters
+— which makes it the only school in the ring that is both close and cheap, and it is 747 students.
 
 That caution tier still needs care rather than dismissal, and it is now 49 schools deep. Being a
 team's #1 is fine *if* the coach is building a class around him — always ask who else they are
@@ -627,23 +631,31 @@ address is the coach who would recruit him.
    — 62 miles, Big South, mountain terrain. Confirmed across **two races**: their 6th man at the
    conference meet, 7th at the regional, inside a **64 second 1-through-7 spread**. This is also the
    school that validated the whole method — the direct comparison predicted 6th man before the
-   regional results were pulled, and the regional matched. Add a **92% accept rate** and a **$12,250
-   net price**. The weakness is academic depth: 3.2% of degrees in CS at a 2,910-student campus.
+   regional results were pulled, and the regional matched. Add a **92% accept rate**. The money is
+   the part that changed: its federal net price is $12,250 for a North Carolinian, but on his
+   residency it is **≈$29,598** — UNC Asheville charges non-residents $17,348 more in tuition, the
+   third-largest premium in this ring. Ask about a non-resident waiver before ranking it on price.
+   The other weakness is academic depth: 3.2% of degrees in CS at a 2,910-student campus.
    Email **[Adam Puett](mailto:apuett@unca.edu)**.
 3. **[UNC Charlotte](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-charlotte)**
    — the best CS-and-running combination inside 100 miles. Right at their 7th man with a soft **167
-   second** back end, a real CS school at **15.2% of degrees**, **$15,435 net**, 80% accept. A large
+   second** back end, a real CS school at **15.2% of degrees**, 80% accept, and **≈$30,688 net on his
+   residency** ($15,435 in-state, plus a $15,253 non-resident premium). A large
    university with multiple sections of every CS course, which matters for the lab-conflict problem in
    §9 more than any other item on this list.
    Email **[Riley Macon](mailto:rmacon4@charlotte.edu)**.
 4. **[Augusta University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=augusta-university)**
    — the sweep's best find on the academic axis: **15.6% of degrees in computer science, the highest
    share of any school in this ring**, and it is **D2**, so the scholarship money is real. The running
-   is comfortable — **their #5, 94 seconds inside the seven**, on a 148 second spread — at **$13,787
-   net** and an 86% admit rate, 115 miles out. v6 could only list it as a hopeful unknown.
+   is comfortable — **their #5, 94 seconds inside the seven**, on a 148 second spread — with an 86%
+   admit rate, 115 miles out. v6 could only list it as a hopeful unknown. The money reads worse than
+   it used to: $13,787 net is the Georgia-resident figure, and on his residency it is **≈$30,107**,
+   a $16,320 premium. At a D2 with real scholarship money that is exactly the gap an offer could
+   close, which makes it a concrete question rather than a deal-breaker.
    Email **[Jacob Burgamy](mailto:jburgamy@augusta.edu)**.
 5. **[Kennesaw State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kennesaw-state)**
-   — D1 CUSA, **11.1% CS**, **$15,048 net**, 69% accept, 125 miles. **Their #4–5, 82 seconds inside
+   — D1 CUSA, **11.1% CS**, **≈$26,976 net on his residency** ($15,048 for a Georgian), 69% accept,
+   125 miles. **Their #4–5, 82 seconds inside
    the seven**, on a **275 second spread** — the widest back end of any target here, which cuts both
    ways: room to move up, and a squad whose 5th through 7th are a long way off its front. At 41,254
    undergraduates it is the largest school on the board, so he would be one of many; ask what the
@@ -657,10 +669,12 @@ address is the coach who would recruit him.
    *application* on the list — initiate a **pre-read** in spring of junior year.
    Email **[Matt Stuck](mailto:mastuck@davidson.edu)**.
 7. **[UNC Greensboro](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-greensboro)**
-   — their #4–5 at the conference meet, 7th at the regional, 93 second spread, **$10,965 net**, 89%
-   accept, 7.4% CS. It is no longer the cheapest target on the board — Fayetteville State and UNC
-   Pembroke are cheaper, and both are now measured targets too — but it is the cheapest one that is
-   also a D1 with a real CS share.
+   — their #4–5 at the conference meet, 7th at the regional, 93 second spread, 89% accept, 7.4% CS.
+   **This is the school the residency correction hurts most on this list**: $10,965 net for a North
+   Carolinian becomes **≈$27,316** for him, a $16,351 premium, and it loses the cheap-D1 argument that
+   put it here. Fayetteville State (≈$11,892) and UNC Pembroke (≈$14,260) are less than half the price
+   on his rate, and both are measured targets too — UNCG's remaining case is that it is a D1 with a
+   real CS share and a 93 second pack, not that it is cheap.
    Email **[Kaleigh Roach](mailto:k_roach@uncg.edu)**.
 8. **[Emory](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory)** — their #5 in a
    **74 second** UAA pack, elite academics, no athletic money but strong need-based aid bringing net
@@ -671,13 +685,15 @@ address is the coach who would recruit him.
 
 **The money outliers, both now measured and both Target tier.**
 **[Fayetteville State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fayetteville-state)**
-at **$7,892 net** is the cheapest school on the entire 116-school board and he would be their #4–5,
-158 seconds inside their seven — but it is 235 miles out, its CS share is 3.3%, and it is one of two
+at **≈$11,892 net on his residency** is the cheapest target-tier school on the entire 116-school
+board — its $4,000 non-resident premium is one of the three smallest anywhere on the board — and he
+would be their #4–5, 158 seconds inside their seven. But it is 235 miles out, its CS share is 3.3%,
+and it is one of two
 schools on the board with **no published coach email**, so that one starts with a phone call
 (Frank Hyland, number on the school page).
 **[UNC Pembroke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-pembroke)** at
-**$10,260** is the better version of the same trade: their #3, 143 seconds inside the seven, D2 money,
-4.8% CS, 215 miles. Email **[Dr. Peter Ormsby](mailto:peter.ormsby@uncp.edu)**.
+**≈$14,260** — also a $4,000 premium — is the better version of the same trade: their #3, 143 seconds
+inside the seven, D2 money, 4.8% CS, 215 miles. Email **[Dr. Peter Ormsby](mailto:peter.ormsby@uncp.edu)**.
 
 **One target with a disqualifying question attached.**
 **[Queens (Charlotte)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-charlotte)**
@@ -686,7 +702,8 @@ bachelor's computer science program at all**. It is the only `❌ none` school a
 the board. Check the catalog before anything else; at **$30,857 net** it needs to be right on academics
 to justify the price. Email **[Will Crocker](mailto:crockerw@queens.edu)**.
 
-Also worth the email, one tier down: **ETSU** (their #4, soft 171 second middle, $15,983),
+Also worth the email, one tier down: **ETSU** (their #4, soft 171 second middle, and ≈$20,033 on his
+residency — a $4,050 premium, among the four smallest in this ring),
 **High Point** (7th man twice, 66 second spread, but $38,707), **Catawba** (their #5–6 at D2 with real
 scholarship money, $17,879), **Pfeiffer** and **Berry College** (both D3 targets around $19–22k), and
 **Chattanooga** and **College of Charleston** further out. **Mercer** was on this line in v7 and is
@@ -717,23 +734,33 @@ at **Caution** — he would be their #1 — so the in-state price does not buy a
 measured Target at their #3–4, 22 seconds inside their seven.
 
 **Thirty-one new Division 2 programs changed the money picture more than the running picture.**
-D2 is where partial athletic scholarships live, and the cheapest schools on this entire board are all
-D2 additions: **Fayetteville State $7,892, Savannah State $8,172, Clayton State $8,365, UVA Wise
-$9,210, UNC Pembroke $10,260**. Those are around half the net price of UNC Greensboro and a fifth of
-Elon's. The sweep has now answered whether any of them is a training environment, and the answer is
-split: **Fayetteville State and UNC Pembroke came back at Target tier**, while Savannah State, Clayton
-State and UVA Wise are all Caution. Cheap and thin is the common case; cheap and deep exists, twice.
+D2 is where partial athletic scholarships live, and on the federal in-state basis the cheapest schools
+on this entire board were all D2 additions: **Fayetteville State $7,892, Savannah State $8,172, Clayton
+State $8,365, UVA Wise $9,210, UNC Pembroke $10,260**. On the rate he would pay, that list breaks in
+half. Fayetteville State (≈$11,892) and UNC Pembroke (≈$14,260) hold up, because North Carolina charges
+its non-residents only $4,000 more at both. Savannah State (≈$21,465), Clayton State (≈$19,717) and UVA
+Wise (≈$25,440) do not — their premiums are $13,293, $11,352 and $16,230, which puts all three in the
+same band as the mid-priced privates they were supposed to undercut. The sweep has now answered whether
+any of them is a training environment, and the answer is split the same way by luck: **Fayetteville
+State and UNC Pembroke came back at Target tier**, while Savannah State, Clayton State and UVA Wise are
+all Caution. Cheap and thin is the common case; cheap and deep exists, twice.
 
 **Academic aid often beats athletic aid.** D1 XC/track is a 12.6-scholarship equivalency spread
 across a 35–45 man roster — quarter and half rides, not fulls. A strong student stacking merit aid
-at UNC Greensboro ($10,965 net), UNC Asheville ($12,250) or Western Carolina ($13,315) can land
-well below the net cost of a bigger athletic offer somewhere expensive. **Model net cost, not
-scholarship percentage.** The net figures in this document are federal averages across all
-students, not a quote for him — treat them as a ranking tool and get real aid estimates from the
-schools that survive.
+at Western Carolina (≈$17,315 on his residency), UNC Greensboro (≈$27,316) or UNC Asheville
+(≈$29,598) can land well below the net cost of a bigger athletic offer somewhere expensive — and at
+those three the merit aid has to clear a non-resident premium first, which is the whole argument for
+asking about waivers early. Western Carolina is the one to notice: a $4,000 premium instead of
+$16,000. **Model net cost, not scholarship percentage.** The net figures in this document are federal
+averages across all students, not a quote for him; the ones marked ≈ add an estimated non-resident
+tuition premium on top of that average (§6 of the
+[methodology](https://timhibbard.github.io/xc-cs-college-board/methodology.html#residency)). Treat
+them as a ranking tool and get real aid estimates from the schools that survive.
 
 **The three expensive target-tier schools.** Elon ($41,555 net), High Point ($38,707) and Queens
-(Charlotte) ($30,857) are two to four times the cost of UNCG for a comparable athletic fit — and
+(Charlotte) ($30,857) are all privates, so these are the rates he would pay. They used to look two to
+four times the cost of UNCG; on his residency the multiple is closer to 1.1 to 1.5, which is the single
+biggest ranking change the residency correction makes in this ring — and
 Queens is the one with the unresolved CS question (§7). They are on the list because the running works;
 rank them last on money unless something specific offsets it. **Morehouse ($39,013)** is in the same
 price band and came back at Caution, which makes it hard to justify on any axis — and Clark Atlanta,

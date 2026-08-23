@@ -339,6 +339,9 @@ a.school:hover { color: var(--div-blue); text-decoration: underline; }
 .src-tag { font-size: 11.5px; color: var(--muted); border: 1px dashed var(--border); border-radius: 20px; padding: 1px 8px; white-space: nowrap; }
 .note-lede { max-width: 72ch; margin-top: 10px; }
 .money { font-variant-numeric: tabular-nums; }
+/* A net cost carrying the non-resident premium is an estimate, not a federal figure.
+   The dotted underline and the leading ≈ say so without a second column. */
+.est { border-bottom: 1px dotted var(--border); cursor: help; }
 th[scope="row"] { font-weight: 500; color: var(--text-secondary); font-size: 14px; text-transform: none; letter-spacing: 0; }
 
 /* Season pins carry a letter as well as a color: X cross country, I indoor, O outdoor.

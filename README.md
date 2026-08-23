@@ -260,6 +260,14 @@ python3 -m http.server 8000
            src: 'https://www.davidsonwildcats.com/sports/mens-cross-country/coaches' } }
 ```
 
+At a public school `cost` also carries `tuiIn` and `tuiOut`, both from the same federal record.
+`tuition` is already the rate that applies to him — in-state at the eleven South Carolina publics,
+out-of-state everywhere else — and the two extra fields let the site reconcile it with the federal
+average net price, which at a public is computed from **in-state students only**. Every net price
+shown for an out-of-state public is therefore `net + (tuiOut − tuiIn)`, marked with a `≈`; the
+[methodology](https://timhibbard.github.io/xc-cs-college-board/methodology.html#residency) explains
+why and lists the two flat-rate exceptions.
+
 `b5000`, `spread`, `g1` and `v7` are in **seconds**; `b1500` is the mark as written on the results
 page, tenths and all, parsed at render time; `null` means no data was found. `tier` is
 `target`, `deep`, `verify`, or `caution`, and `tierSrc` records whether it came from cross
@@ -282,9 +290,13 @@ not match shows as a missing number rather than a wrong one.
 as raw seconds, in order — 212 races across 140 schools; a short race also carries `nfin` and
 `vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for all 116 schools: the
 program's season depth chart `d15`, its conference-championship field `cm`, and any postseason rounds
-`post`, read from 39 conference championship result pages plus four postseason pages), `SCHED` (full season schedules
-for eleven schools), and `VENUES` (meet name → coordinates, with a flag for whether the location was
-read off the results page or inferred from the host).
+`post`, read from 39 conference championship result pages plus four postseason pages), and the 2025–26
+schedule, which is three tables so that no fact is stated twice: `VENUES` (410 places, each geocoded
+once, with `src` giving the precision — `r` the facility, `z` the ZIP the results page printed, `c` the
+town it named), `MEETS` (694 meets keyed by their own TFRRS id, because two different meets can share a
+name; each carries date, season and a `VENUES` index), and `SCHED` (school name → the meet ids its own
+TFRRS results page shows it at, in date order — 3,035 appearances across 142 of the 143 schools with a
+page).
 
 `NO_TRACK` in `assets/data.js` holds the fifteen schools removed under the both-sports rule. They keep
 their complete records — tier, cross country, cost, coach — plus a `why` naming both signals that

@@ -177,7 +177,7 @@ that is not a team result.
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **[DePaul](https://timhibbard.github.io/xc-cs-college-board/school.html?s=depaul)** | Lincoln Park | 3 | Big East | ✅ 10.7% | 1140–1330 | 76% | $30,902 | 7 | −3s | 146s | Target | [Dave Dopek](mailto:ddopek@depaul.edu) |
-| **[UIC](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uic)** | Near West Side | 3 | Missouri Valley | ✅ 11.9% | 1130–1350 | 77% | $10,974 | 8 | +31s | 72s | Deep | [Paul Zavala](mailto:pzavala@uic.edu) |
+| **[UIC](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uic)** | Near West Side | 3 | Missouri Valley | ✅ 11.9% | 1130–1350 | 77% | ≈$26,520 | 8 | +31s | 72s | Deep | [Paul Zavala](mailto:pzavala@uic.edu) |
 | **[Chicago State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chicago-state)** | Far South Side | 10 | NEC | ✅ 5.4% | not reported | 43% | $12,335 | 1 | — | 514s | Caution | [Katrina Brumfield Marsom](mailto:kbrumfie@csu.edu) |
 
 ### Division 2
@@ -285,8 +285,12 @@ man** as well as their #1 in cross country.
 2. **[UIC](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uic)** — the standing
    "borderline keep, resolve the depth question" note is now resolved, and the answer is **too
    deep, not too thin**: their Missouri Valley seven ran 24:24–25:36 inside a 72 second spread
-   and he is about 31 seconds outside it. At **$10,974 net** it is far and away the cheapest
-   strong CS option in the metro, and 31 seconds is one good freshman year. Worth the email.
+   and he is about 31 seconds outside it. Its federal net price of $10,974 is an Illinois-resident
+   figure; on his residency it is **≈$26,520**, which ends its claim to being far and away the cheapest
+   strong CS option in the metro. **Illinois Tech** — a private, so one rate for everyone — is
+   $18,425 and undercuts it by $8,000; even DePaul at $30,902 is only $4,400 more. It is still the
+   only Illinois public here with a serious CS department, and 31 seconds is one good freshman year. Worth the email, with a non-resident waiver
+   question attached.
 3. **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)**
    — the roster times are finally resolved: seven runners inside **33 seconds**, the tightest
    pack on the entire 116-school board, with him about 34 seconds outside. Their 1500 agrees: seventeen
@@ -319,11 +323,19 @@ very little men's distance running inside the city.
 
 ## 8. Chicago-specific considerations
 
-**Illinois public tuition.** UIC's out-of-state sticker is $29,884 tuition plus $16,500 room and
-board, but its **federal average net price is $10,974** — the gap between sticker and net is the
-whole story at UIC, and it makes the cheapest strong CS program in the metro also one of the
-cheapest schools on the entire board. Chicago State is $12,335 net. Both are worth a financial
-aid pre-read rather than a ranking on sticker price.
+**Illinois public tuition, and why UIC's headline number is not his.** UIC's out-of-state sticker is
+$29,884 tuition plus $16,500 room and board, and its **federal average net price is $10,974** — but
+that federal average is computed from **in-state students only**, which is not him. Illinois charges
+non-residents $15,546 more in tuition, so his planning figure is **≈$26,520**, and the gap between
+sticker and net is a much smaller share of the story than it looked. **Chicago State is the exception
+that proves the rule**: it charges one flat rate to everyone, so its $12,335 net price needs no
+adjustment at all — the only public on the board where that is true besides the Merchant Marine
+Academy. It is the cheapest public in this metro on his residency, though two privates are cheaper
+still (Saint Xavier $10,970 and Dominican $11,745, both Caution on the running). UIC is the only
+out-of-state public here — this metro is otherwise privates and the flat-rate Chicago State, which
+is why the residency correction moves the Chicago median less than the other two (from $16,948 to
+$18,425). Both publics are worth a financial aid pre-read rather than a ranking on sticker price, and
+at UIC the specific question is whether a non-resident tuition waiver exists.
 
 **Winter training is a real factor.** Chicago indoor track runs through genuine winter and
 lakefront wind is not a joke. Ask coaches what indoor facility they have access to — a full 200m
