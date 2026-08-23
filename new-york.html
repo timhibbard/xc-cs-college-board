@@ -3,39 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>New York City — 50 mile radius</title>
-<meta name="description" content="Colleges within 50 miles of New York City with men's cross country and a computer science degree.">
+<title>New York City — 20 mile radius plus Long Island</title>
+<meta name="description" content="Colleges within 20 miles of Midtown Manhattan, plus all of Long Island, that sponsor men's cross country and grant a computer science degree.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <main class="wrap">
 
-  <p class="eyebrow">Metro 2 of 3 · 50 mile radius</p>
+  <p class="eyebrow">Metro 2 of 3 · 20 mile radius + Long Island</p>
   <h1>New York City</h1>
   <p class="lede">
-    A 50-mile circle around Midtown captures more colleges than the other two metros
-    combined, spanning three states. It is also the metro the cross country data hit
-    hardest: <strong>Hofstra, previously recommended here as one of the two best fits, is now
-    cut</strong>, and only three schools are left in the target tier. Twenty-four of the
-    thirty-four still have no cross country results at all, which is where the remaining
-    work in this metro is. The variable that will decide it, though, is cost of living.
+    The ring here is <strong>20 driving miles from Midtown, plus all of Nassau and Suffolk
+    County</strong> regardless of distance — a shape, not a circle, because Long Island is a
+    commutable corridor and Westchester and central New Jersey are a different decision. Tightening
+    from 50 miles cost this metro <strong>ten schools, including one of its three target-tier
+    fits</strong>. Filling in the CUNY system and Long Island added sixteen. Two of the additions
+    reframe the whole metro on cost.
   </p>
 
   <div class="kpi-row">
-    <div class="kpi"><div class="k-label">Schools on the list</div><div class="k-value" id="k-n">—</div><div class="k-sub">Most of any metro</div></div>
-    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">All three D1 &mdash; down from five</div></div>
-    <div class="kpi"><div class="k-label">With XC depth data</div><div class="k-value" id="k-d">—</div><div class="k-sub">The other 24 are tiered from one track mark</div></div>
-    <div class="kpi"><div class="k-label">States in range</div><div class="k-value">3</div><div class="k-sub">NY, NJ, CT — three tuition regimes</div></div>
+    <div class="kpi"><div class="k-label">Schools on the list</div><div class="k-value" id="k-n">—</div><div class="k-sub">Second largest of the three metros</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">Fordham and Seton Hall &mdash; down from three</div></div>
+    <div class="kpi"><div class="k-label">With XC depth data</div><div class="k-value" id="k-d">—</div><div class="k-sub">The rest are unmeasured, not borderline</div></div>
+    <div class="kpi"><div class="k-label">States in range</div><div class="k-value">2</div><div class="k-sub">NY and NJ — Connecticut is now out</div></div>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">The tighter ring costs Fairfield and Monmouth, and both were real</span>
+    <p>
+      <strong>Fairfield</strong> (50 mi, Connecticut) was one of three target-tier schools in this
+      metro: he slotted in as their <strong>6th man at the MAAC championship</strong> on a tight
+      59-second seven. Its NCAA regional 10K disagreed — the same comparison made him their #1 —
+      so it was flagged as the metro's highest-value verification. That question is now moot at 20
+      miles. <strong>Monmouth</strong> (45 mi, New Jersey) was Deep tier and unambiguous: the same
+      shape as NYU in the CAA, about 21 seconds outside their seven.
+    </p>
+    <p>
+      Also out: <strong>Army West Point</strong> (50 mi — free tuition, excellent CS, real distance
+      program, and a congressional nomination plus a five-year service obligation), <strong>Sacred
+      Heart</strong> (52), and six Westchester and New Jersey schools —
+      <strong>Mercy</strong> (25), <strong>Pace</strong> (30), <strong>Manhattanville</strong> (30),
+      <strong>SUNY Purchase</strong> (30), <strong>Ramapo</strong> (25) and <strong>Drew</strong>
+      (30). <strong>Princeton</strong> and <strong>Rutgers</strong> leave the cut list. None of the
+      eight was tiered above Verify, so the honest accounting is: the radius change cost one Target,
+      one Deep, and eight unknowns.
+    </p>
+  </div>
+
+  <div class="callout good">
+    <span class="c-title">The finding that changes this metro: ten CUNY colleges</span>
+    <p>
+      Filling in the CUNY system added eight programs to this board — <strong>Hunter, Brooklyn, City
+      College, Lehman, John Jay, York, Medgar Evers</strong> and, at Division 2, the <strong>College
+      of Staten Island</strong>. With Baruch and Queens College, which were already here, that is
+      <strong>ten CUNY colleges in range, every one of them sponsoring men's cross country, every one
+      granting a bachelor's in computer science, and every one under $6,000 in federal average net
+      price.</strong> The cheapest, Hunter, is <strong>$2,984</strong>. Hunter and Brooklyn each award
+      about <strong>10% of their bachelor's degrees in computer science</strong>, a higher share than
+      Fordham, NYU or any D1 on this page except NJIT. All ten are unmeasured on running.
+    </p>
+    <p>
+      <strong>Read that net price with care, though.</strong> It is an average over a student body
+      that is overwhelmingly in-state and living at home. A South Carolina applicant pays the
+      out-of-state rate — about <strong>$15,300</strong> at CUNY, still low — and most of these
+      campuses <em>have no dormitories at all</em>, so housing means renting in New York City and
+      that cost appears nowhere in the federal file. The right way to use this: CUNY is the cheapest
+      tuition on the page by a wide margin and the most expensive housing problem on it.
+    </p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">Three schools were on this board in error and have no men's cross country</span>
+    <p id="np-nyit"></p>
+    <p id="np-montclair"></p>
+    <p id="np-wp"></p>
+    <p>
+      All three were carrying a <em>Verify</em> tier, which is the failure mode of a tier that means
+      "no data yet": it looks like a program awaiting measurement rather than a program that does not
+      exist. They are kept on the map rather than deleted so the correction is visible.
+    </p>
   </div>
 
   <h2>The ones worth real effort</h2>
   <div class="prose">
     <ol>
-      <li><strong>Fordham</strong> — still the best overall fit in the metro, and now the only one confirmed on cross country. At the Atlantic 10 championship he would have been their <strong>6th man</strong>, 12 seconds inside their scoring seven, with a healthy 95-second 1&ndash;7 spread. Add a real CS department and <strong>Van Cortlandt Park</strong> — the most historic cross country course in America — directly next to campus. It answers the "where do you actually run in New York" problem better than anything else on the list. The catch is money: a $44,338 average net price, the second highest in this metro.</li>
-      <li><strong>Fairfield</strong> — the strongest new find here, and the one to verify first. He slots in as their <strong>6th man at the MAAC championship</strong> on a tight 59-second seven, which is exactly the target pattern. But their NCAA regional 10K tells a different story, where the same comparison makes him their #1. Two races, two answers three or more places apart. Also: the federal admit rate is <strong>33%</strong>, not the ~57% this site previously estimated, so it is a genuinely selective school.</li>
+      <li><strong>Fordham</strong> — still the best overall fit in the metro, and the only one confirmed on cross country. At the Atlantic 10 championship he would have been their <strong>6th man</strong>, 12 seconds inside their scoring seven, with a healthy 95-second 1&ndash;7 spread. Add a real CS department and <strong>Van Cortlandt Park</strong> — the most historic cross country course in America — directly next to campus. It answers the "where do you actually run in New York" problem better than anything else on the list. The catch is money: a $44,338 average net price, the second highest in this metro.</li>
       <li><strong>Seton Hall</strong> — Big East, and a 14:58 team best that leaves him 20&ndash;25 seconds back. It is target tier <em>on a track mark only</em> — no cross country result was found, so treat the ranking as provisional. Their conference championship result is the single most valuable lookup left in this metro.</li>
-      <li><strong>NJIT</strong> — D1, a genuine tech-school CS program, 65% admit, and a <strong>$16,504 average net price</strong> — less than half of Fordham's and the best D1-plus-CS value in the metro by a wide margin. Still needs roster data of any kind.</li>
+      <li><strong>NJIT</strong> — D1, a genuine tech-school CS program at <strong>33% of its degrees</strong>, 65% admit, and a <strong>$16,504 average net price</strong> — less than half of Fordham's and the best D1-plus-CS value in the metro. Still needs roster data of any kind.</li>
+      <li><strong>Hunter College</strong> — the new entry to email first. D3 CUNYAC, two miles from Midtown, men's cross country <em>and</em> track, about 10% of its degrees in CS, and a $2,984 average net price. It is completely unmeasured on running, which is the point: at D3 CUNYAC level the odds that he is inside their seven are good, and it costs one email to find out. Ask for their 2025 CUNYAC 8K results.</li>
+      <li><strong>Stony Brook</strong> — the strongest CS department on Long Island and a full D1 CAA program. It is 60 miles out and only on this board because of the Long Island rule, so treat the commute honestly. Unmeasured on running, and at D1 CAA level that measurement is likely to be unkind — Hofstra, cut below, is the cautionary example from the same conference.</li>
       <li><strong>Stevens Institute of Technology</strong> — if CS leads the decision. One of the strongest CS and engineering schools on the list, in Hoboken, D3, no athletic-scholarship pressure, 48% admit. Also unverified on running.</li>
     </ol>
   </div>
@@ -46,9 +103,10 @@
       An outdoor 5000 of 14:32 suggested a clean 40-second gap, and this page called Hofstra "clean
       on both axes." They then <strong>won the CAA championship with a top seven of 23:02 to
       24:45</strong> — he would have finished roughly <strong>82 seconds outside</strong> their
-      scoring seven. That is walk-on territory by the same rule that cut Furman, Iona and Lewis.
+      scoring seven. That is walk-on territory by the same rule that cut Furman and Iona.
       The 14:32 was a floor, not a measure of the squad, and the reversal is stated here rather than
-      quietly edited out.
+      quietly edited out. Hofstra is in Hempstead, so it stays on the board under the Long Island
+      rule — as a cut.
     </p>
     <p>
       <strong>Wagner drops to Verify</strong> for a softer reason: only six runners are on file from
@@ -59,25 +117,38 @@
   </div>
 
   <div class="callout">
-    <span class="c-title">NYU and Monmouth: too good, not too thin</span>
+    <span class="c-title">NYU: too good, not too thin</span>
     <p>
       <strong>NYU won the UAA championship</strong> with seven runners inside 42 seconds; his
-      projection lands about 35 seconds off the back of that. <strong>Monmouth</strong> is the same
-      shape in the CAA, about 21 seconds outside their seven. Both are now <em>Deep</em> rather than
-      borderline keeps: real programs where he would train hard and not travel as a freshman. At NYU,
-      D3 means there is no scholarship at stake in aiming high — but the 9% admit rate is the real
-      gate, and a coach's support is what moves it.
+      projection lands about 35 seconds off the back of that. It is now <em>Deep</em> rather than a
+      borderline keep, and with Monmouth out of range it is the metro's only Deep-tier school: a real
+      program where he would train hard and not travel as a freshman. D3 means there is no scholarship
+      at stake in aiming high — but the 9% admit rate is the real gate, and a coach's support is what
+      moves it.
+    </p>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">Five schools here sponsor cross country but not men's track</span>
+    <p>
+      <strong>John Jay, Brooklyn College, SUNY Maritime, Sarah Lawrence</strong> and <strong>SUNY Old
+      Westbury</strong> field men's cross country with no men's indoor or outdoor track and field. For
+      someone who wants both seasons that is close to disqualifying, and it is not visible anywhere in
+      the federal data or in a tier — it is noted on each school's own page. Confirm it with the coach
+      before any of them goes on a shortlist; conference sponsorship tables lag reality by a season.
+      <strong>SUNY Maritime</strong> and the <strong>Merchant Marine Academy</strong> carry a second
+      constraint: a regiment and summer sea terms, which is a different life, not a detail.
     </p>
   </div>
 
   <h2>Where they are</h2>
   <div class="map-card">
-    <div class="chart-title">Every school in this metro, plotted against the 50-mile radius</div>
+    <div class="chart-title">Every school in this metro, plotted against the 20-mile radius</div>
     <p class="chart-sub">
-      The densest map of the three — and the one where geography matters least, because almost
-      every pin is reachable by train. The useful pattern to read here is how many of them are
-      hollow on data: most of the D2 and D3 cluster on Long Island and in northern New Jersey has
-      no 5000m mark at all — and the twenty-four hollow pins are the honest headline of this metro.
+      The dashed circle is only half the rule here. Everything inside it is in range; so is
+      everything on Long Island, which is why the pins run east well past the line to Farmingdale,
+      Patchogue and Stony Brook. What the map shows well is the density of the CUNY cluster inside
+      sixteen miles — ten colleges, all cheap, all unmeasured.
     </p>
     <div class="map-bar">
       <label><input type="checkbox" id="map-showcut" checked> Show schools cut on roster times</label>
@@ -86,16 +157,16 @@
     <div id="map"></div>
     <div id="map-legend"></div>
     <p class="map-note">
-      Pins are approximate main-campus locations. The dashed circle is a straight-line 50-mile
-      radius from Midtown, while the table's "Mi" column is driving distance — so Sacred Heart, at
-      the boundary, plots just outside the line. Filters below the chart also drive this map.
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 20-mile
+      radius from Midtown; the Long Island schools sit outside it <em>by design</em>, not by error.
+      The table's "Mi" column is driving distance. Filters below the chart also drive this map.
     </p>
   </div>
 
   <h2>Gap to each team's #1 &mdash; the weaker of the two signals</h2>
   <div class="chart-card">
     <div class="chart-title">Projected 15:20 5000m vs. each team's fastest 5000m runner</div>
-    <p class="chart-sub">Only ten schools in this metro have usable 5000m data, and this chart is the weaker signal even for those — it compares him to one athlete per team. Where a cross country result exists, the table below supersedes it. Most of D2 and D3 is still a blank, which is the work to do, not evidence of a weak program.</p>
+    <p class="chart-sub">Only seven schools in this metro have usable 5000m data, and this chart is the weaker signal even for those — it compares him to one athlete per team. Where a cross country result exists, the table below supersedes it. Everything else is a blank, which is the work to do, not evidence of a weak program.</p>
     <div class="legend">
       <span class="legend-item"><span class="swatch pos"></span><span>Their #1 is faster — healthy gap</span></span>
       <span class="legend-item"><span class="swatch neg"></span><span>He is faster than their #1 — thin squad</span></span>
@@ -116,18 +187,18 @@
   </div>
   <div class="table-scroll">
     <table id="master">
-      <caption>Miles are approximate driving distance from Midtown Manhattan. Click any school for its full page. <em>His slot in their 7</em> comes from 2025 championship cross country results; <em>vs their 7th</em> is negative when he is inside the seven. Click a header to sort.</caption>
+      <caption>Miles are approximate driving distance from Midtown Manhattan; schools past 20 miles are on Long Island and in range by that rule. Click any school for its full page. <em>His slot in their 7</em> comes from 2025 championship cross country results; <em>vs their 7th</em> is negative when he is inside the seven. Click a header to sort.</caption>
       <thead></thead><tbody></tbody>
     </table>
   </div>
 
   <h2>Cut as walk-on</h2>
   <p class="prose">
-    This is a real loss on the CS side. Columbia and Princeton have two of the best computer
-    science departments in the country, and Iona is only 20 miles out — their seven finished the
-    MAAC championship <strong>within 0.8 seconds of each other</strong> in a deliberate pack, which
-    is as clear a picture of a functioning program as anything on this board. All of them return
-    immediately if a walk-on path ever becomes acceptable.
+    This is a real loss on the CS side. Columbia has one of the best computer science departments in
+    the country, and Iona is only 20 miles out — their seven finished the MAAC championship
+    <strong>within 0.8 seconds of each other</strong> in a deliberate pack, which is as clear a
+    picture of a functioning program as anything on this board. All of them return immediately if a
+    walk-on path ever becomes acceptable.
   </p>
   <div class="table-scroll">
     <table id="removed"><thead><tr><th scope="col">School</th><th scope="col">Division</th><th scope="col">Why it was cut</th></tr></thead><tbody></tbody></table>
@@ -136,30 +207,31 @@
   <h2>Three things specific to New York</h2>
   <div class="prose">
     <p>
-      <strong>Cost of living is the dominant variable, and the federal numbers now quantify it.</strong>
-      Average net price actually paid: <strong>Fairfield $48,095, Fordham $44,338, Stevens $41,346,
-      NYU $37,050</strong> — against <strong>NJIT $16,504</strong> and the CUNYs and New Jersey
-      publics lower still. That is a $25,000-a-year spread, or a six-figure difference over four
-      years, and no partial athletic scholarship in men's distance running closes it. Every figure is
-      an average across all students after grants and aid, not a quote for one applicant, but the
-      ordering is real. Model total cost of attendance, not tuition.
+      <strong>Cost of living is the dominant variable, and the spread is now enormous.</strong>
+      Average net price actually paid runs from <strong>$2,984 at Hunter</strong> to
+      <strong>$49,965 at Yeshiva</strong> — with Fordham $44,338, Stevens $41,346 and NYU $37,050 at
+      the top, NJIT $16,504 in the middle, and ten CUNY campuses under $6,000. That is a
+      six-figure difference over four years and no partial athletic scholarship in men's distance
+      running comes close to closing it. Two caveats that matter in opposite directions: every figure
+      is an average across all students after grants, not a quote for one applicant; and the cheapest
+      figures belong to commuter campuses with no dormitories, where an out-of-state student's real
+      cost is tuition plus New York rent. Model total cost of attendance, not tuition.
     </p>
     <p>
       <strong>Training terrain is a genuine question to raise with coaches.</strong> Ask specifically
       where the team does long runs and workouts. Good answers: Van Cortlandt Park, Central Park,
-      the Rockefeller State Park carriage trails, Bear Mountain for hills, the Long Island parks.
-      A bad answer is a hesitation, or "we do a lot on the track."
+      Prospect Park, the Rockefeller carriage trails, Bear Mountain for hills, Sunken Meadow and
+      Bethpage on Long Island. A bad answer is a hesitation, or "we do a lot on the track." At a
+      commuter school, ask a harder version of the same question: where does the team actually meet,
+      and how many of them get there.
     </p>
     <p>
-      <strong>Three states means three sets of in-state tuition.</strong> The New Jersey publics
-      (Montclair, Kean, Ramapo, William Paterson, NJIT) and the New York publics (the CUNYs, Queens
-      College, Purchase, Farmingdale) will all charge out-of-state rates to a South Carolina
-      applicant. Factor that in before ranking any of them on price.
-    </p>
-    <p>
-      <strong>Army West Point</strong> deserves a separate note: free tuition, excellent CS, and a
-      real distance program — but it requires a congressional nomination and carries a five-year
-      active-duty service obligation. That is a different life decision, not just a college choice.
+      <strong>Two states, two sets of in-state tuition, neither of them his.</strong> The New Jersey
+      publics (Kean, NJIT, Rutgers&ndash;Newark) and the New York publics (the ten CUNYs, Farmingdale,
+      Old Westbury, Stony Brook, Maritime) will all charge out-of-state rates to a South Carolina
+      applicant. The gap is small at CUNY — roughly $7,400 in-state against $15,300 out — and large at
+      Stony Brook, where it is $10,931 against $32,741. Check it school by school before ranking any
+      of them on price.
     </p>
     <p><a href="https://github.com/timhibbard/xc-cs-college-board/blob/main/docs/new-york-city.md">Read the full source document →</a> &nbsp;·&nbsp; <a href="methodology.html">Methodology and caveats →</a></p>
   </div>
@@ -178,6 +250,11 @@ const mine = SCHOOLS.filter(s => s.metro === 'nyc');
 document.getElementById('k-n').textContent = mine.length;
 document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
 document.getElementById('k-d').textContent = mine.filter(s => s.xc).length;
+
+const np = n => (NO_PROGRAM.find(x => x.name === n) || {why: ''}).why;
+document.getElementById('np-nyit').innerHTML = '<b>NYIT.</b> ' + np('NYIT');
+document.getElementById('np-montclair').innerHTML = '<b>Montclair State.</b> ' + np('Montclair State');
+document.getElementById('np-wp').innerHTML = '<b>William Paterson.</b> ' + np('William Paterson');
 
 document.getElementById('legend-slot').innerHTML = tierLegend();
 document.getElementById('map-legend').innerHTML = mapLegend();

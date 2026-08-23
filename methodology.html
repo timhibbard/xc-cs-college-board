@@ -50,6 +50,73 @@
     Conference squads.
   </p>
 
+  <h2>1a. The pace conversions behind those numbers, and why the 1600 is not used</h2>
+  <p class="prose">
+    Every distance conversion on this site is a <strong>Riegel projection</strong>:
+    <code>T&#8322; = T&#8321; &times; (D&#8322;/D&#8321;)<sup>e</sup></code>, where <code>e</code> is a
+    fatigue exponent. The textbook value is <strong>1.06</strong>, fitted to trained adult
+    distance runners. Run straight off the 1600, that exponent gives an answer that looks great and
+    should not be believed:
+  </p>
+  <div class="table-scroll">
+    <table>
+      <caption>Riegel projections from a 4:21 1600, at several fatigue exponents</caption>
+      <thead><tr><th scope="col">Fatigue exponent</th><th scope="col">3200 implied</th><th scope="col">5000 implied</th></tr></thead>
+      <tbody>
+        <tr><td>1.06 <span class="nodata">(textbook)</span></td><td class="time">9:04.2</td><td class="time">14:33.3</td></tr>
+        <tr><td>1.08</td><td class="time">9:11.8</td><td class="time">14:53.5</td></tr>
+        <tr><td>1.10</td><td class="time">9:19.5</td><td class="time">15:14.1</td></tr>
+        <tr><td>1.12</td><td class="time">9:27.3</td><td class="time">15:35.1</td></tr>
+        <tr><td>1.15</td><td class="time">9:39.2</td><td class="time">16:07.6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px">
+    A 4:21 1600 at the textbook exponent converts to a <strong>14:33 5000</strong> — nearly two
+    minutes faster than he has actually run for 5K, and fast enough to make him a scoring runner at
+    half the D1 programs on this board. It is wrong, and the way to see that it is wrong is to stop
+    assuming the exponent and instead <strong>solve for his own</strong>, using pairs of marks he has
+    actually run:
+  </p>
+  <div class="table-scroll">
+    <table>
+      <caption>The fatigue exponent solved from his own marks, rather than assumed</caption>
+      <thead><tr><th scope="col">Pair of marks</th><th scope="col">Implied exponent</th></tr></thead>
+      <tbody>
+        <tr><td>1600 4:21 &rarr; 3200 9:40</td><td class="time">1.152</td></tr>
+        <tr><td>1600 4:21 &rarr; 3200 9:29 <span class="nodata">(projected)</span></td><td class="time">1.124</td></tr>
+        <tr><td>1600 4:21 &rarr; 5K 16:29</td><td class="time">1.169</td></tr>
+        <tr><td>3200 9:40 &rarr; 5K 16:29</td><td class="time">1.196</td></tr>
+        <tr><td class="nodata">textbook, trained adult</td><td class="time">1.060</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout" style="margin-top:14px">
+    <span class="c-title">The 1600 flatters his 5K, so the board does not use it</span>
+    <p>
+      His own exponent sits between <strong>1.12 and 1.20</strong> against a textbook 1.06. That is
+      the signature of a <strong>speed-leaning runner still building aerobic mileage</strong> — which
+      is normal for a high school junior and is not a criticism. But it means the further out from
+      1600m a projection is carried, the more it overstates him. Applying <em>his</em> exponent
+      instead of the textbook one, 4:21 converts to about <strong>16:08</strong> for 5K — close to
+      the 16:29 he has actually run, and 95 seconds off the 14:33 the textbook figure claims.
+    </p>
+    <p>
+      So the <strong>track 5000 of 15:20 used everywhere on this site is anchored to the 3200, not
+      the 1600</strong>: projected 3200 of 9:29 &rarr; 3000 of 8:53 &rarr; 5000 of 15:20. Anchoring
+      to the nearest race distance is the conservative choice and the defensible one. Checked
+      backwards at the textbook exponent, a 15:30 5000 implies a 9:39 3200 and a 4:38 1600 — which
+      is why a 15:20&ndash;15:30 5000 is consistent with his 3200 while a 14:33 is not.
+    </p>
+  </div>
+  <p class="prose">
+    Two practical consequences. First, <strong>a college coach shown only the 1600 will form a
+    different picture than the data supports</strong>, so lead with the 3200 and the 5K. Second, if
+    his exponent falls toward 1.10 as mileage goes up — the normal direction of travel — his 5K
+    improves faster than his 1600 does, and every gap on this board narrows without the 1600 moving
+    at all. That is the upside case, and it is a reason to email schools in the Deep tier.
+  </p>
+
   <h2>2. The framing rule — and the mistake it corrects</h2>
   <div class="callout good">
     <span class="c-title">Being behind the team's best runner is the goal</span>
@@ -144,7 +211,7 @@
   </div>
   <p class="prose">
     Single-team deltas were <strong>not</strong> applied — a CAA offset from Elon alone, or a MAAC
-    offset from Fairfield alone, cannot be separated from that one team having a bad day. Eight meets
+    offset from a single MAAC team alone, cannot be separated from that one team having a bad day. Eight meets
     remain uncorrected for this reason (NEC, UAA, Big East, Missouri Valley, MAAC, Atlantic 10, CAA,
     and the D1 Northeast regional), so schools whose only result comes from one of those carry more
     uncertainty than their tier suggests.
@@ -284,10 +351,11 @@
   <p class="prose">
     Every cost, SAT, admit-rate, and CS-program figure on this site now comes from the
     <strong>U.S. Department of Education College Scorecard</strong> — the federal collection that
-    every institution is required to report to. Ninety-five schools were matched to exactly one
-    federal record each, using an <strong>explicit name map rather than fuzzy matching</strong>,
-    because fuzzy matching produced confident false positives at a similarity score of 1.0
-    (Georgia State matched to Georgia Tech, among six others).
+    every institution is required to report to. All <strong>146 schools</strong> on this site — 131 on
+    the board and 15 on the cut list — are matched to exactly one federal record each, using an
+    <strong>explicit name map rather than fuzzy matching</strong>, because fuzzy matching produced
+    confident false positives at a similarity score of 1.0 (Georgia State matched to Georgia Tech,
+    among six others).
   </p>
   <p class="prose">
     That exercise was worth doing. It found <strong>33 SAT ranges wrong by 60 points or more and
@@ -299,22 +367,25 @@
   <div class="prose">
     <p>Three caveats apply to reading them:</p>
     <ul>
-      <li><strong>Public schools show the out-of-state rate</strong>, since he is a South Carolina resident. In-state figures apply only to the South Carolina publics on the list.</li>
+      <li><strong>Public schools show the out-of-state rate</strong>, since he is a South Carolina resident. In-state figures apply only to the nine South Carolina publics on the list: Lander, USC Upstate, Winthrop, USC Aiken, SC State, Francis Marion, Coastal Carolina, the College of Charleston and The Citadel.</li>
       <li><strong>Average net price is an average</strong> across all incoming students after grants and scholarships — not a quote. A strong student stacking merit aid usually lands below it; it is a planning number, not a prediction.</li>
-      <li><strong>The CS share is CIP family 11 only.</strong> A computer science degree housed administratively under mathematics reads as zero — which is exactly what happened at SUNY Purchase, where the real program is a combined BA in Mathematics/Computer Science. A low share is not proof of absence, so four schools were checked by hand and disqualified on their own course catalogues: SUNY Purchase, Mount Saint Vincent (no CS <em>and</em> no men's track), the Merchant Marine Academy (five marine majors and a service obligation), and North Park.</li>
+      <li><strong>The CS share is CIP family 11 only.</strong> A computer science degree housed administratively under mathematics reads as zero — which is exactly what happened at SUNY Purchase (now out of range), where the real program was a combined BA in Mathematics/Computer Science. A low share is not proof of absence. Three schools were checked by hand and disqualified on their own course catalogues: Mount Saint Vincent (no CS <em>and</em> no men's track), the Merchant Marine Academy (five marine majors and a service obligation), and North Park. <strong>Seven more carry an explicit warning on their own pages instead of a hand check</strong> — Brevard, Belmont Abbey, Young Harris, Queens (Charlotte), Allen, Oglethorpe and Emory &amp; Henry all report 0% computing degrees <em>and</em> a live mathematics program, which at a small college is usually the signature of CS filed under mathematics rather than of no CS at all.</li>
     </ul>
   </div>
 
   <h2>6a. Known gaps in this data</h2>
   <div class="prose">
     <ol>
-      <li><strong>36 of 78 schools still have no cross country results</strong> — overwhelmingly D2 and D3 in the New York metro. Their tiers come from a single track mark, which is the exact failure mode that produced the Hofstra, Loyola, and Wheaton errors. Every school marked <em>Verify</em> is a placeholder, not a finding. This remains the highest-value work left.</li>
-      <li><strong>Only two of the fifteen championship courses have a difficulty correction.</strong> Eight meets have no cross-check at all (§3a). A school whose only result came from one of those could move a tier once a second race exists.</li>
-      <li><strong>Meet schedules were pulled for twelve schools</strong> — the target-tier list at the time — so most school pages have no meet map. Of the 303 appearances collected, <strong>243 (80%) could be placed on a map</strong>; the 46 unplaced meets are almost entirely conference and NCAA championships whose host rotates annually, and each school page names its own unplaced meets rather than hiding them.</li>
+      <li><strong>94 of 131 schools have no cross country results.</strong> A tier of <em>Verify</em> means <em>unmeasured, not borderline</em> — it is a placeholder for a lookup nobody has done, and it is deliberately not a judgement. 92 of those 94 have no track mark either, so there is nothing behind them but cost and admissions data. This is by far the highest-value work left, and the cheapest: one conference championship result covers seven or eight schools at once.</li>
+      <li><strong>How the candidate lists were built, and why the earlier version of this claim was false.</strong> An earlier README said this board listed <em>every</em> school inside each radius that sponsors men's cross country. It did not. The lists were originally assembled from general knowledge and then verified individually, which validates what is present and says nothing about what is missing — and about 45 schools were missing from Greenville alone, including one 25 driving miles from home. The lists are now built the other way round: <strong>conference by conference, from each conference's own men's-sponsored-sports table</strong>, for every NCAA D1, D2 and D3 conference with a member inside a ring. That is a materially stronger guarantee, but it inherits the conferences' errors — a stale sponsored-sports table is wrong in both directions, and each new school's sponsorship was <em>not</em> re-confirmed on the school's own athletics site.</li>
+      <li><strong>NAIA and NCCAA coverage is incomplete and known to be.</strong> Only three non-NCAA programs are on the board — Saint Xavier and Calumet College in Chicago, and Bob Jones (NCCAA) and Montreat (NAIA) near Greenville. At least these NAIA and NCCAA programs in the Greenville footprint are <em>not</em> covered: Toccoa Falls, Truett McConnell, Brenau, Columbia International, Columbia College SC, Milligan, Johnson University, Reinhardt, Voorhees, Tennessee Wesleyan, Morris College, Bryan College, Bluefield University, Point University, Life University, Spartanburg Methodist and Warren Wilson. NAIA allows 12 scholarships for men's XC and track and has looser eligibility rules, so this gap is not academic — it is a gap in exactly the place where money is easiest to find.</li>
+      <li><strong>Driving distances for the newly added schools are estimates, not routes.</strong> The <em>Mi</em> column for schools already on the board was looked up. For the 73 added at the wider radii it is computed: <strong>straight-line distance × 1.18</strong>, or <strong>× 1.35</strong> for the mountain states (Tennessee, Virginia, West Virginia, Kentucky), rounded to the nearest 5 miles. Those factors were calibrated against the existing board, whose implied road-to-straight-line ratios run from 1.01 to 1.47 with a median near 1.15. Expect ±15% on any one of them, which matters only for the handful sitting near the 250-mile line: Campbell, Savannah State and NC Central at an estimated 250 could each be over it.</li>
+      <li><strong>Cross country without men's track.</strong> Five programs on this board sponsor men's cross country and no men's indoor or outdoor track and field, and all five are in New York — John Jay, Brooklyn College, SUNY Maritime, Sarah Lawrence and SUNY Old Westbury. Not one has been identified around Greenville or Chicago, which almost certainly means the check is incomplete in those two metros rather than that the number there is zero. It is recorded in prose on each school's page because it is not in any dataset. For someone who wants both seasons it is close to disqualifying, so confirm it with the coach.</li>
+      <li><strong>Only two of the fourteen championship courses have a difficulty correction.</strong> Twelve are uncorrected, eight of them because only a single team cross-checked them, which cannot be separated from that team having a bad day (§3a). A school whose only result came from one of those could move a tier once a second race exists.</li>
+      <li><strong>Meet schedules were pulled for eleven schools</strong> — the target-tier list at the time, minus Fairfield, which the tighter New York ring has since removed — so the large majority of school pages have no meet map. Of the 289 appearances collected, <strong>79% could be placed on a map</strong>; the 46 unplaced meets are almost entirely conference and NCAA championships whose host rotates annually, and each school page names its own unplaced meets rather than hiding them.</li>
       <li><strong>Venue coordinates carry two provenance levels.</strong> Most were read off the meet's own results page; the rest were inferred from the host named in the meet title, which places the campus but not necessarily the course, and those are labelled <em>host campus</em> on the map and in the table. Two TFRRS venue records contained wrong postal codes (a New Hampshire fairground coded to Massachusetts, an Indiana course coded to Missouri); both were corrected by hand.</li>
       <li><strong>Piedmont University's CS program is still unconfirmed</strong> — federal data codes the degree but reports roughly zero graduates, and the school's own site was unreachable. Calumet College is in the same position.</li>
-      <li><strong>Program existence needs confirming in two cases</strong> — whether NYIT still sponsors men's cross country, and whether each program carries full indoor and outdoor track rather than cross country alone.</li>
-      <li><strong>The geographic candidate lists were assembled from general knowledge</strong>, then verified against live TFRRS, athletics, federal, and Wikipedia records. A school could plausibly have been missed; the substance of what is listed was checked.</li>
+      <li><strong>Four schools were removed from the board because they field no men's cross country team, and one because it is closing.</strong> Georgia State, NYIT, Montclair State and William Paterson were all carrying a <em>Verify</em> tier, which is precisely how that tier fails: it reads as a program awaiting measurement rather than one that does not exist. Trinity Christian College announced on 4 November 2025 that it will close after the 2025&ndash;26 academic year. All five are kept on the maps rather than deleted so the corrections stay visible. If four errors of this kind were sitting in 78 schools, assume there are others in 131.</li>
     </ol>
   </div>
 
@@ -331,29 +402,35 @@
   </div>
   <p class="prose">
     Driving distance is always the larger of the two, so a school sitting right on the line can plot
-    just outside the circle. Sacred Heart in Fairfield CT is the one visible case: recorded at 52
-    miles by road, it is about 50 straight-line miles from Midtown and plots a fraction outside the
-    50-mile ring. It was kept as a boundary case rather than silently dropped.
+    just outside the circle. On the New York map that happens on purpose and at scale: the ring there
+    is <strong>20 driving miles from Midtown <em>plus all of Nassau and Suffolk County</em></strong>,
+    which is a shape a circle cannot draw. Adelphi, Molloy, SUNY Old Westbury, Farmingdale
+    State, St. Joseph's Long Island and Stony Brook all sit outside the dashed line and are all in
+    range, as does Hofstra on the cut list. Long Island is included because it is a commutable corridor;
+    Westchester and central New Jersey are excluded at the same distance because they are a different
+    decision.
   </p>
   <p class="prose">
     Campus coordinates are approximate main-campus points, accurate to roughly a kilometre — enough
     to place a pin, not a routing engine. Every one was checked programmatically against its
     recorded driving distance; a coordinate implying a straight-line distance <em>greater</em> than
-    the recorded road distance is impossible, and that check is what surfaced the Sacred Heart case.
+    the recorded road distance is impossible, and that check is what surfaced two bad pins in the
+    first pass. It cannot be run on the 73 schools added at the wider radii, because their mileage is
+    derived <em>from</em> the coordinate rather than measured independently.
     Where two schools sit within about a mile of each other — Concordia and Dominican in River
-    Forest, Manhattanville and SUNY Purchase, NYU and Baruch, LIU and St. Joseph's in Brooklyn,
-    Manhattan College and Mount Saint Vincent in Riverdale — the pins are nudged roughly a mile
-    apart so both stay clickable, and each popup says so. On the 200-mile Greenville map a pin
-    covers several miles of ground at the default zoom, so schools there can still overlap without
-    being nudged; zoom in to separate them.
+    Forest, NYU and Baruch, LIU and St. Joseph's in Brooklyn, Manhattan College and Mount Saint
+    Vincent in Riverdale, and now several of the CUNY campuses — the pins are nudged roughly a mile
+    apart so both stay clickable, and each popup says so. On the 250-mile Greenville map a pin
+    covers several miles of ground at the default zoom, so the Atlanta, Charlotte, Columbia and
+    Charleston clusters overlap without being nudged; zoom in to separate them.
   </p>
 
   <h2>8. Each school's own page, and the meet maps</h2>
   <p class="prose">
     Every school on the board has a page of its own, reached by clicking its name in any table or its
-    pin on any map. It carries the federal cost and admissions record, the CS share, the full named
+    pin on any map. It carries the federal cost and admissions record, the CS share, the full
     scoring seven from each cross country result with his projection dropped into place, and — for
-    the twelve schools whose schedules were collected — a map of every meet the team travelled to
+    the eleven schools whose schedules were collected — a map of every meet the team travelled to
     last season, <strong>colored and lettered by season</strong>: X for cross country, I for indoor
     track, O for outdoor. Each page also ends with an explicit list of what is verified and what is
     missing for that school, so a gap reads as a gap rather than as an absence of a problem.

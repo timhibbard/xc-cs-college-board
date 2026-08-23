@@ -3,34 +3,79 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Greenville SC — 200 mile radius</title>
-<meta name="description" content="Colleges within 200 miles of Greenville SC with men's cross country and a computer science degree.">
+<title>Greenville SC — 250 mile radius</title>
+<meta name="description" content="Every NCAA college within 250 driving miles of Greenville SC that sponsors men's cross country and grants a computer science degree.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <main class="wrap">
 
-  <p class="eyebrow">Metro 1 of 3 · 200 mile radius</p>
+  <p class="eyebrow">Metro 1 of 3 · 250 mile radius</p>
   <h1>Greenville, South Carolina</h1>
   <p class="lede">
     The deepest and best list of the three metros, and the one the cross country data
     <em>improved</em>: nine schools here have him finishing inside their scoring seven, more than the
     other two metros combined. It also lost the most to the walk-on cut, because the two closest
-    schools with the best CS departments are both nationally elite distance programs.
+    schools with the best CS departments are both nationally elite distance programs. Widening the
+    ring from 200 to 250 miles more than tripled this list — from 27 schools to 82 — but almost none
+    of that growth came from the extra fifty miles. It came from admitting that the original list
+    was incomplete.
   </p>
 
   <div class="kpi-row">
-    <div class="kpi"><div class="k-label">Schools on the list</div><div class="k-value" id="k-n">—</div><div class="k-sub">After the walk-on cut</div></div>
-    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">All nine confirmed on cross country results</div></div>
-    <div class="kpi"><div class="k-label">Cut as walk-on</div><div class="k-value" id="k-r">—</div><div class="k-sub">Including Furman at 0 miles</div></div>
+    <div class="kpi"><div class="k-label">Schools on the list</div><div class="k-value" id="k-n">—</div><div class="k-sub">After the walk-on cut &mdash; most of them unmeasured</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">All nine confirmed on cross country results &mdash; unchanged by the wider ring</div></div>
+    <div class="kpi"><div class="k-label">Cut as walk-on</div><div class="k-value" id="k-r">—</div><div class="k-sub">Including Furman at 0 miles, and now Duke and UNC</div></div>
     <div class="kpi"><div class="k-label">Closest target-tier</div><div class="k-value">62<span style="font-size:16px"> mi</span></div><div class="k-sub">UNC Asheville &mdash; 6th then 7th man in their two 2025 results</div></div>
+  </div>
+
+
+  <div class="callout crit">
+    <span class="c-title">The real correction here is not the extra fifty miles &mdash; it is that this list was incomplete</span>
+    <p>
+      Checking the ring properly, conference by conference, turned up roughly
+      <strong>41 schools that were inside the original 200 miles all along</strong> and had simply
+      never been found: most of Conference Carolinas, most of the SIAC and the CIAA, the Peach Belt,
+      the USA South, half the South Atlantic Conference. Southern Wesleyan is 25 driving miles away
+      and was not on this page. Adding a school at 230 miles while omitting one at 25 is not
+      defensible, so the fix was to add all of them: <strong>every NCAA Division 1, 2 and 3 school
+      inside 250 driving miles that sponsors men's cross country</strong>, plus two non-NCAA programs
+      close to home (Bob Jones at 3 miles, NCCAA; Montreat at 70, NAIA).
+    </p>
+    <p>
+      That takes the list from 27 schools to 82, and <strong>the README's earlier claim that this
+      board listed every school in range was false when it was written.</strong> It is closer to true
+      now. Two known gaps remain, and both are named in the
+      <a href="methodology.html">methodology</a>: the NAIA and NCCAA programs in this footprint are
+      not systematically covered, and sponsorship was read off conference tables, so a school whose
+      conference table is stale can still be wrong in either direction.
+    </p>
+    <p>
+      <strong>What it does not change: the ranking.</strong> All 56 additions enter at
+      <em>Verify</em> with full federal cost, admissions and CS data and no cross country data at
+      all. Verify here means unmeasured, not borderline. The nine target-tier schools, the two Deep
+      and the thirteen Caution are exactly the same schools they were before.
+    </p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">Georgia State was on this board in error &mdash; there is no men's program</span>
+    <p id="gs-why"></p>
+    <p>
+      It sat at <em>Verify</em> tier, which is the failure mode of a tier that means "no data yet":
+      it looked like a program awaiting measurement rather than one that does not exist. It is kept on
+      the map, greyed, rather than deleted, so the correction stays visible.
+    </p>
   </div>
 
   <h2>The five that matter</h2>
   <p class="prose">
-    Every ranking below is now anchored to a 2025 cross country result rather than to one outdoor
-    5000 mark, so each one names where he would actually have finished in that team's seven.
+    Every ranking below is anchored to a 2025 cross country result rather than to one outdoor 5000
+    mark, so each one names where he would actually have finished in that team's seven.
+    <strong>None of the 56 schools added to this page has such a result yet</strong>, so none of them
+    appears here — the top picks are unchanged by the radius change, and will stay that way until
+    somebody looks up a conference championship.
   </p>
   <div class="prose">
     <ol>
@@ -38,7 +83,7 @@
       <li><strong>Davidson</strong> — their <strong>4th man</strong>, and coach support is real admissions leverage at a <strong>13%</strong> admit rate. The highest-value application on the list: running unlocks a school his transcript alone might not. The caveat is their own shape — a big gap between their #1 and their 4th through 7th, so he would be filling a hole rather than joining a pack.</li>
       <li><strong>UNC Charlotte</strong> — the boundary case the data resolved, and it resolved upward. He lands essentially <strong>level with their 7th man</strong> (11 seconds inside) on a soft 167-second 1&ndash;7 spread. 100 miles, D1 American, 80% admit, $15,435 net, and one of the larger CS departments on the board.</li>
       <li><strong>Emory</strong> — the biggest single correction in this metro. Its 15:06 outdoor 5000 was a sparse-table artifact; on the UAA result he is their <strong>5th man</strong>, not their #1. Elite CS, D3, no athletic money but strong need-based aid, and an 11% admit rate that a coach's support genuinely moves.</li>
-      <li><strong>ETSU and UNC Greensboro</strong> — both put him around their 4th or 5th man in the Southern Conference, both admit at 86&ndash;89%, and UNC Greensboro is the cheapest school on the board at $10,965 net. Read ETSU's 171-second spread as a warning though: a team that strung out that badly is not a pack.</li>
+      <li><strong>ETSU and UNC Greensboro</strong> — both put him around their 4th or 5th man in the Southern Conference, both admit at 86&ndash;89%, and UNC Greensboro is the cheapest <em>target-tier</em> school on the board at $10,965 net. Read ETSU's 171-second spread as a warning though: a team that strung out that badly is not a pack.</li>
     </ol>
   </div>
 
@@ -89,11 +134,13 @@
 
   <h2>Where they are</h2>
   <div class="map-card">
-    <div class="chart-title">Every school in this metro, plotted against the 200-mile radius</div>
+    <div class="chart-title">Every school in this metro, plotted against the 250-mile radius</div>
     <p class="chart-sub">
-      This is the widest of the three searches, and the map shows why it works: the target-tier
-      programs are spread across upstate South Carolina, western North Carolina, and the Triad
-      rather than clustered in one city.
+      This is the widest of the three searches by a long way, and the map shows two things at once.
+      The target-tier programs are spread across upstate South Carolina, western North Carolina and
+      the Triad rather than clustered in one city — and almost everything else on the map is a hollow
+      pin, because 60 of these 82 schools have no cross country result on file. Atlanta, Charlotte,
+      Columbia, Charleston and the Tennessee valley are all now inside the ring.
     </p>
     <div class="map-bar">
       <label><input type="checkbox" id="map-showcut" checked> Show schools cut on roster times</label>
@@ -102,9 +149,11 @@
     <div id="map"></div>
     <div id="map-legend"></div>
     <p class="map-note">
-      Pins are approximate main-campus locations. The dashed circle is a straight-line 200-mile
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 250-mile
       radius from Greenville, while the table's "Mi" column is driving distance — so a school right
-      on the line can plot just outside it. Filters below the chart also drive this map.
+      on the line can plot well inside it. For the schools added at this radius the driving figure is
+      itself an estimate: straight-line distance × 1.18, or × 1.35 through the mountains, rounded to
+      the nearest 5 miles. Filters below the chart also drive this map.
     </p>
   </div>
 
@@ -124,7 +173,7 @@
   <div id="legend-slot"></div>
   <div class="controls">
     <label for="f-div">Division</label>
-    <select id="f-div"><option value="all">All</option><option value="D1">D1</option><option value="D2">D2</option><option value="D3">D3</option></select>
+    <select id="f-div"><option value="all">All</option><option value="D1">D1</option><option value="D2">D2</option><option value="D3">D3</option><option value="NAIA">NAIA</option><option value="NCCAA">NCCAA</option></select>
     <label for="f-tier">Fit</label>
     <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="deep">Deep</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
     <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
@@ -137,12 +186,31 @@
     </table>
   </div>
 
+  <p class="prose" style="margin-top:14px">
+    <strong>Sixty of these 82 rows have an empty "his slot in their 7" column</strong>, and that is
+    the honest state of this metro rather than a rendering problem. Sorting by <em>Fit</em> puts the
+    22 measured schools first; sorting by <em>Net cost/yr</em> is the more useful thing to do with the
+    other sixty. The cheapest schools on the entire board are here and they are almost all Division 2
+    &mdash; Fayetteville State at <strong>$7,892</strong>, Savannah State $8,172, Clayton State $8,365,
+    UVA Wise $9,210, North Georgia $9,823 &mdash; every one of them with a verified CS degree and
+    every one of them completely unmeasured on running.
+  </p>
+
   <h2>Cut as walk-on</h2>
   <p class="prose">
     Worth naming the cost plainly: this removes <strong>Furman</strong> (0 miles) and
     <strong>Clemson</strong> (32 miles) — the two closest schools with the strongest CS
     departments in the region. If a walk-on or redshirt path ever becomes acceptable,
     they return at the top of the list, not the bottom.
+  </p>
+  <p class="prose">
+    Four rows on this table used to read "out of range," which was simply wrong — Columbia SC is
+    105 driving miles from Greenville, Athens 140, Knoxville 145 and Winston-Salem 175, all inside
+    even the old 200-mile ring. <strong>South Carolina, Georgia, Tennessee and Wake Forest</strong>
+    now carry the real reason, which is level rather than distance. <strong>UNC Chapel Hill</strong>
+    and <strong>Duke</strong> join them, having genuinely come into range at 250 miles. All six are
+    cuts <em>by reputation, not by measurement</em>: no 2025 times have been transcribed for any of
+    them, and each row says so.
   </p>
   <div class="table-scroll">
     <table id="removed"><thead><tr><th scope="col">School</th><th scope="col">Division</th><th scope="col">Why it was cut</th></tr></thead><tbody></tbody></table>
@@ -172,9 +240,21 @@
       Catawba can land below the net cost of a bigger athletic offer somewhere else.
     </p>
     <p>
+      <strong>The wider ring added nine in-state options, which is the cheapest lever available.</strong>
+      A South Carolina resident pays in-state tuition at <strong>USC Aiken ($10,760), SC State
+      ($11,060), Francis Marion ($11,160), Coastal Carolina ($11,640), The Citadel ($12,570) and the
+      College of Charleston ($12,978)</strong>, alongside Lander, USC Upstate and Winthrop, which were
+      already here. Those are sticker tuition figures, not net, and they are lower than the
+      <em>net</em> price of most of the private colleges on this page. It also added
+      <strong>35 new Division 2 programs</strong>, which is where partial athletic aid actually lives:
+      D2 allows 12.6 scholarship equivalencies in men's cross country and track, the same as D1, on
+      much smaller rosters.
+    </p>
+    <p>
       <strong>CS labs collide with practice.</strong> Large schools like Charlotte and App State run
       multiple lab sections; small ones — Wofford, Presbyterian, Berry, Piedmont, North Greenville,
-      Catawba — may offer a required course in exactly one afternoon slot. Ask every coach how many
+      Catawba, and nearly every one of the small colleges just added — may offer a required course in
+      exactly one afternoon slot. Ask every coach how many
       of their athletes major in CS or engineering and how they handle lab conflicts. This question
       eliminates programs faster than times do.
     </p>
@@ -197,6 +277,8 @@ document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target
 const cut = REMOVED.filter(r => r.metro === 'greenville');
 document.getElementById('k-r').textContent = cut.length;
 
+document.getElementById('gs-why').innerHTML =
+  (NO_PROGRAM.find(x => x.name === 'Georgia State') || {why: ''}).why;
 document.getElementById('legend-slot').innerHTML = tierLegend();
 document.getElementById('map-legend').innerHTML = mapLegend();
 document.querySelector('#removed tbody').innerHTML = cut.map(r =>

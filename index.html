@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Recruiting Board — XC/Track + Computer Science</title>
-<meta name="description" content="College cross country and track programs paired with computer science degrees across three metros, scored against a projected 15:20 5000m.">
+<meta name="description" content="Every college in three metros that sponsors men's cross country and grants a computer science degree, scored against a projected 15:20 5000m.">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -17,8 +17,9 @@
     Three metro areas, every college inside the radius that sponsors men's cross country,
     ranked by the one question that predicts whether a distance runner develops:
     <strong>where would he finish inside this team's scoring seven?</strong>
-    Forty-two of the seventy-eight schools now have real cross country results behind that answer,
-    and they overturned four of this board's earlier recommendations.
+    <strong>37 of the 131 schools</strong> have real cross country results behind that answer. The
+    other 94 are unmeasured, which is the honest state of this board and the whole of the work left
+    to do.
   </p>
 
   <div class="kpi-row">
@@ -40,7 +41,7 @@
     <div class="kpi">
       <div class="k-label">With XC depth data</div>
       <div class="k-value" id="k-xc">—</div>
-      <div class="k-sub">Their whole scoring seven, named and timed</div>
+      <div class="k-sub">Their whole scoring seven, timed. The other 94 are blank.</div>
     </div>
   </div>
 
@@ -56,21 +57,30 @@
   </div>
 
   <div class="callout crit">
-    <span class="c-title">Four recommendations this board previously made are now withdrawn</span>
+    <span class="c-title">Recommendations this board previously made and has withdrawn</span>
     <p>
-      Cross country results arrived for 42 schools, and they contradicted the track data in four
-      places. <strong>Hofstra</strong> and <strong>Loyola Chicago</strong> were both recommended as
-      among the best fits in their metros on the strength of a 14:2x outdoor 5000 &mdash; but each won
-      its conference championship with a seven he would finish about 80 seconds outside. Both are now
-      cut. <strong>Wheaton College</strong>, which an earlier version of this page called resolved and
-      upgraded, is the reverse error: at the D3 Midwest regional he would have been their <em>#2</em>,
-      so it drops to caution. And <strong>North Central</strong>, cut on reputation, is back on the
-      board &mdash; their 7th man ran within about ten seconds of his projection.
+      Cross country results contradicted the track data in four places.
+      <strong>Hofstra</strong> and <strong>Loyola Chicago</strong> were both recommended as among the
+      best fits in their metros on the strength of a 14:2x outdoor 5000 &mdash; but each won its
+      conference championship with a seven he would finish about 80 seconds outside. Both are now cut.
+      <strong>Wheaton College</strong>, called resolved and upgraded by an earlier version of this
+      page, was the reverse error: at the D3 Midwest regional he would have been their <em>#2</em>, so
+      it dropped to caution. <strong>Lewis University</strong> was the school an earlier page
+      recommended widening the Chicago radius to reach; its roster data killed it. The pattern is the
+      same every time: <strong>a single fastest 5000 is a floor, not a measure of depth.</strong>
+      Where the two disagree, the cross country result wins.
+      <a href="methodology.html">How that comparison is built</a>.
     </p>
     <p>
-      The pattern is the same every time: <strong>a single fastest 5000 is a floor, not a measure of
-      depth.</strong> Where the two disagree, the cross country result wins.
-      <a href="methodology.html">How that comparison is built</a>.
+      <strong>A fifth withdrawal is about the list rather than a school.</strong> This page used to
+      claim it held <em>every</em> college inside each radius that sponsors men's cross country. That
+      was false. Checking the Greenville ring conference by conference found 41 schools that had been
+      inside the original 200 miles all along and never appeared &mdash; Southern Wesleyan is 25 miles
+      from home. Sixteen more were missing around New York, ten of them CUNY. They are all on the
+      board now, entering at <em>Verify</em> with full cost and admissions data and no running data at
+      all, so <strong>none of them changes a ranking</strong>. Four schools also came off it: Georgia
+      State, NYIT, Montclair State and William Paterson field no men's cross country team, and
+      Trinity Christian is closing.
     </p>
   </div>
 
@@ -102,9 +112,9 @@
     <label for="f-metro">Metro</label>
     <select id="f-metro">
       <option value="all">All three</option>
-      <option value="greenville">Greenville SC (200 mi)</option>
-      <option value="nyc">New York City (50 mi)</option>
-      <option value="chicago">Chicago (30 mi)</option>
+      <option value="greenville">Greenville SC (250 mi)</option>
+      <option value="nyc">New York City (20 mi + Long Island)</option>
+      <option value="chicago">Chicago (20 mi)</option>
     </select>
 
     <label for="f-div">Division</label>
@@ -114,6 +124,7 @@
       <option value="D2">D2</option>
       <option value="D3">D3</option>
       <option value="NAIA">NAIA</option>
+      <option value="NCCAA">NCCAA</option>
     </select>
 
     <label for="f-tier">Fit</label>
@@ -145,19 +156,19 @@
   <h2>Read the metro write-ups</h2>
   <div class="kpi-row">
     <a class="kpi linkcard" href="greenville.html">
-      <div class="k-label">Greenville SC · 200 mi</div>
+      <div class="k-label">Greenville SC · 250 mi</div>
       <div class="k-value" id="k-g">—</div>
-      <div class="k-sub">Deepest list, and nine target-tier fits &mdash; more than the other two metros combined.</div>
+      <div class="k-sub">Deepest list by far, and nine target-tier fits &mdash; more than the other two metros combined. 60 of its 82 schools are unmeasured.</div>
     </a>
     <a class="kpi linkcard" href="new-york.html">
-      <div class="k-label">New York City · 50 mi</div>
+      <div class="k-label">New York City · 20 mi + Long Island</div>
       <div class="k-value" id="k-n">—</div>
-      <div class="k-sub">Enormous school count, but only three targets left after the XC data. Cost of living is the real variable.</div>
+      <div class="k-sub">Two targets, and ten CUNY colleges under $6,000 net price. Cost of living is still the real variable.</div>
     </a>
     <a class="kpi linkcard" href="chicago.html">
-      <div class="k-label">Chicago · 30 mi</div>
+      <div class="k-label">Chicago · 20 mi</div>
       <div class="k-value" id="k-c">—</div>
-      <div class="k-sub">Widened from 20 mi. One target left, and it is DePaul.</div>
+      <div class="k-sub">Back to 20 mi, and down to twelve schools. One target, and it is DePaul.</div>
     </a>
   </div>
 
@@ -176,32 +187,34 @@
 
   <h2>Two structural findings worth stating plainly</h2>
   <div class="callout crit">
-    <span class="c-title">Northwestern has no men's program at all</span>
+    <span class="c-title">Six schools on these maps have no men's program to join</span>
     <p id="nw-why"></p>
+    <p id="np-rest"></p>
   </div>
   <div class="callout">
     <span class="c-title">Chicago is thin on its own merits, not because of the radius</span>
     <p>
-      An earlier version of this page blamed the 20-mile radius and recommended widening it to 30
-      to reach <strong>Lewis University</strong> — "a real distance program, a CS degree, and D2
-      scholarship money." The radius has now been widened, and pulling Lewis's roster data
-      <strong>reversed that conclusion</strong>: their team best 5000 is 13:45, a 95 second gap,
-      which makes Lewis a walk-on program by the same rule that cut Furman and Wingate.
+      This has now been tested in both directions. An earlier version of this page blamed the 20-mile
+      radius and recommended widening it to 30 to reach <strong>Lewis University</strong> — "a real
+      distance program, a CS degree, and D2 scholarship money." The radius was widened, Lewis's roster
+      data <strong>reversed that conclusion</strong> (a team best 5000 of 13:45, a 95 second gap, the
+      same band that cut Furman and Wingate), and the extra ten miles added four other schools and not
+      one target-tier fit. The radius has since come back to 20 miles.
     </p>
     <p>
-      The extra ten miles added four schools and not one target-tier fit. The cross country data then
-      made the metro thinner still: <strong>Loyola Chicago is now cut</strong> and Wheaton drops to
-      caution, leaving <strong>DePaul as the only target-tier school in Chicago</strong>, with UIC,
-      the University of Chicago, and North Central sitting just outside their sevens. Three good
-      programs he would not travel for as a freshman is a different problem from a weak metro, but it
-      is still a problem.
+      Through all of that, <strong>DePaul has been the only target-tier school in Chicago</strong>.
+      The tighter ring does cost two things worth naming: <strong>North Central</strong>, a D3
+      national-championship program whose 7th man ran within about ten seconds of his projection, and
+      <strong>Purdue Northwest</strong>, which was the metro's only scholarship program.
+      <strong>Roosevelt</strong>, one mile from the Loop, now fills the second of those. Nothing fills
+      the first.
     </p>
   </div>
 
   <h2>What to do next</h2>
   <div class="prose">
     <ol>
-      <li><strong>Get cross country results for the 36 schools that still lack them</strong> — almost all of D2 and D3 in the New York metro. Forty-two schools now have their full scoring seven from 2025 championship results, and every one of those lookups changed something. Any school still marked <span class="badge verify"><span class="g" aria-hidden="true">◆</span>Verify</span> is a tier assigned from one track mark.</li>
+      <li><strong>Get cross country results for the 94 schools that still lack them.</strong> 37 schools have their full scoring seven from 2025 championship results, and every one of those lookups changed something. A school marked <span class="badge verify"><span class="g" aria-hidden="true">◆</span>Verify</span> is <em>unmeasured, not borderline</em> — the tier is a placeholder for a lookup nobody has done. The highest-value ones: the eleven Greenville-metro schools inside 100 miles that were only just added, Seton Hall's Big East result, and any CUNYAC 8K result at all.</li>
       <li><strong>Confirm the CS degree</strong> at every school marked <span class="cs-no">Confirm</span> — a BA in applied AI is not a BS in computer science.</li>
       <li><strong>Email coaches directly.</strong> He can contact any coach in any division at any time; the NCAA contact restrictions only limit when coaches may initiate.</li>
       <li><strong>Ask about lab scheduling.</strong> Required CS labs collide with a 3:00–5:30 practice window. Big schools run multiple sections; small ones may run one.</li>
@@ -235,7 +248,11 @@ document.querySelector('#removed tbody').innerHTML = REMOVED.map(r => `<tr>
   <td>${r.div}</td>
   <td class="rownote" style="max-width:60ch">${r.why}</td></tr>`).join('');
 
-document.getElementById('nw-why').innerHTML = NO_PROGRAM[0].why;
+const npFind = n => (NO_PROGRAM.find(x => x.name === n) || {why: ''}).why;
+document.getElementById('nw-why').innerHTML = '<b>Northwestern.</b> ' + npFind('Northwestern');
+document.getElementById('np-rest').innerHTML = NO_PROGRAM
+  .filter(x => x.name !== 'Northwestern')
+  .map(x => `<b>${x.name}.</b> ${x.why}`).join('<br><br>');
 
 initTable();
 initChart();

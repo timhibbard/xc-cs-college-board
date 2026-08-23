@@ -4,7 +4,7 @@
    off that meet's own results page; src 'h' means it was inferred from the host
    named in the meet title, which places the campus but not necessarily the course.
    Meets missing from this table are counted and named on the page rather than
-   silently dropped — 46 of 183 could not be placed, almost all of them
+   silently dropped — 46 of 175 could not be placed, almost all of them
    conference and NCAA championships whose host rotates each year. */
 
 const VENUES = {
@@ -432,22 +432,6 @@ const SCHED = {
     { s: "o", d: "2026-05-11", m: "Southern Conference Outdoor Championships" },
     { s: "o", d: "2026-05-17", m: "Dani Palooza Last Chance" },
   ],
-  "Fairfield": [
-    { s: "x", d: "2025-08-30", m: "Marist Invitational" },
-    { s: "x", d: "2025-09-13", m: "Jasper Fall XC Invitational" },
-    { s: "x", d: "2025-09-20", m: "Ted Owen Invitational" },
-    { s: "x", d: "2025-10-03", m: "Paul Short Run" },
-    { s: "x", d: "2025-10-17", m: "IC4A/ECAC XC Championship" },
-    { s: "x", d: "2025-10-24", m: "CCSU Mini Meet" },
-    { s: "x", d: "2025-11-01", m: "2025 MAAC XC Championships" },
-    { s: "x", d: "2025-11-14", m: "NCAA D1 Northeast Region XC Championships" },
-    { s: "i", d: "2026-01-31", m: "BU John Thomas Terrier Classic" },
-    { s: "i", d: "2026-02-07", m: "IC4A/ECAC Indoor Track & Field" },
-    { s: "i", d: "2026-02-08", m: "IC4A-ECAC Open Events" },
-    { s: "i", d: "2026-02-14", m: "Yale Giegengack Invitational" },
-    { s: "o", d: "2026-04-10", m: "Friar Invitational" },
-    { s: "o", d: "2026-04-17", m: "Rider Invitational" },
-  ],
   "Fordham": [
     { s: "x", d: "2025-09-06", m: "Fordham Fiasco" },
     { s: "x", d: "2025-09-13", m: "Jasper Fall XC Invitational" },
@@ -556,26 +540,10 @@ const XCRACES = {
       slot: 4, g1: 40.6, v7: null, spread: 93.4, corr: 0,
       runners: [1933.4, 1940.5, 1972.4, 1994.6, 2026.8] },
   ],
-  "Fairfield": [
-    { meet: "2025 MAAC XC Championships", date: "2025-11-01", dist: "8K", level: "conference", place: 7, score: 183,
-      slot: 6, g1: 42.2, v7: -17, spread: 59.2, corr: 0,
-      runners: [1524.8, 1534.8, 1552.2, 1556.3, 1558.3, 1580.4, 1584] },
-    { meet: "NCAA D1 Northeast Region XC Championships", date: "2025-11-14", dist: "10K", level: "NCAA regional", place: 33, score: 925,
-      slot: 1, g1: -10, v7: -151, spread: 141, corr: 0,
-      runners: [1984, 2017, 2042, 2058, 2092, 2103, 2125] },
-  ],
   "Fordham": [
     { meet: "A10 XC Conference Championships", date: "2025-11-01", dist: "8K", level: "conference", place: 9, score: 238,
       slot: 6, g1: 82.7, v7: -12.1, spread: 94.8, corr: 0,
       runners: [1484.3, 1496.7, 1517.4, 1523.4, 1551.3, 1574.6, 1579.1] },
-  ],
-  "North Central": [
-    { meet: "CCIW Championships", date: "2025-11-01", dist: "8K", level: "conference", place: 1, score: 20,
-      slot: 8, g1: 94.5, v7: 2, spread: 92.5, corr: 31.4,
-      runners: [1441.1, 1494.5, 1500.3, 1501.2, 1513.6, 1514.9, 1533.6] },
-    { meet: "NCAA D3 Midwest Region XC Championships", date: "2025-11-15", dist: "8K", level: "NCAA regional", place: 3, score: 93,
-      slot: 8, g1: 107.1, v7: 20.7, spread: 86.4, corr: 0,
-      runners: [1459.9, 1481.5, 1485.6, 1519.2, 1529.8, 1544.8, 1546.3] },
   ],
   "UIC": [
     { meet: "Missouri Valley XC Championships", date: "2025-10-31", dist: "8K", level: "conference", place: 2, score: 74,
@@ -599,11 +567,6 @@ const XCRACES = {
     { meet: "NCAA D1 Southeast Region XC Championships", date: "2025-11-14", dist: "10K", level: "NCAA regional", place: 16, score: 441,
       slot: 8, g1: 136.8, v7: 35.4, spread: 101.4, corr: 0,
       runners: [1837.2, 1907.3, 1911, 1916.4, 1931.8, 1932.9, 1938.6] },
-  ],
-  "Monmouth": [
-    { meet: "2025 CAA XC Championship", date: "2025-10-31", dist: "8K", level: "conference", place: 5, score: 118,
-      slot: 8, g1: 114.5, v7: 20.6, spread: 93.9, corr: 0,
-      runners: [1452.5, 1463.7, 1481.5, 1486.4, 1507.6, 1508.7, 1546.4] },
   ],
   "NYU": [
     { meet: "UAA XC Championships", date: "2025-11-01", dist: "8K", level: "conference", place: 1, score: 27,
@@ -638,11 +601,6 @@ const XCRACES = {
       slot: 1, g1: -125, v7: null, spread: 437.2, corr: 0,
       runners: [1692, 1714.6, 1769.9, 1816.4, 1857.3, 2129.2] },
   ],
-  "Lake Forest": [
-    { meet: "NCAA D3 Midwest Region XC Championships", date: "2025-11-15", dist: "8K", level: "NCAA regional", place: 24, score: 720,
-      slot: 1, g1: -103.7, v7: -272, spread: 168.3, corr: 0,
-      runners: [1670.7, 1699, 1713.6, 1727.7, 1770.6, 1821.6, 1839] },
-  ],
   "North Park University": [
     { meet: "CCIW Championships", date: "2025-11-01", dist: "8K", level: "conference", place: 9, score: 278,
       slot: 1, g1: -125.3, v7: null, spread: 453.4, corr: 31.4,
@@ -650,14 +608,6 @@ const XCRACES = {
     { meet: "NCAA D3 Midwest Region XC Championships", date: "2025-11-15", dist: "8K", level: "NCAA regional", place: 30, score: 915,
       slot: 1, g1: -175.9, v7: -457.4, spread: 281.5, corr: 0,
       runners: [1742.9, 1788.8, 1866.6, 1950.9, 1960.9, 2013.8, 2024.4] },
-  ],
-  "Wheaton College": [
-    { meet: "CCIW Championships", date: "2025-11-01", dist: "8K", level: "conference", place: 3, score: 79,
-      slot: 1, g1: -7.5, v7: -72, spread: 64.5, corr: 31.4,
-      runners: [1543.1, 1553.1, 1556.8, 1563.5, 1592.2, 1602.6, 1607.6] },
-    { meet: "NCAA D3 Midwest Region XC Championships", date: "2025-11-15", dist: "8K", level: "NCAA regional", place: 12, score: 378,
-      slot: 2, g1: 14.1, v7: -87.7, spread: 101.8, corr: 0,
-      runners: [1552.9, 1579, 1611.7, 1622.7, 1641.6, 1654.3, 1654.7] },
   ],
   "Carson-Newman": [
     { meet: "NCAA D2 Southeast Region XC Championships", date: "2025-11-08", dist: "10K", level: "NCAA regional", place: 24, score: 686,

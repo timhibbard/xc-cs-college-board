@@ -104,8 +104,12 @@ function xcSection() {
     return `
       <h2>Cross country</h2>
       <div class="callout"><span class="c-title">No cross country results on file</span>
-      <p>This school's tier rests on a single outdoor 5000m mark${S.b5000 ? ` (${fmtTime(S.b5000)})` : ''}, which is a
-      floor rather than a measure of depth. It is the highest-value thing left to look up here:
+      <p>${S.b5000
+        ? `This school's tier rests on a single outdoor 5000m mark (${fmtTime(S.b5000)}), which is a
+           floor rather than a measure of depth.`
+        : `No cross country result and no outdoor 5000m mark has been collected for this program yet, so
+           it carries no real tier — <b>Verify</b> here means unmeasured, not borderline.`}
+      It is the highest-value thing left to look up here:
       the 2025 conference championship result would show their whole scoring seven.</p></div>`;
   }
   const P = { '8K': ATHLETE.proj8k, '10K': ATHLETE.proj10k };

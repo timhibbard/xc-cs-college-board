@@ -1,17 +1,25 @@
 # XC / Track + Computer Science — College Recruiting Board
 
 A research board for a high school distance runner who wants to run cross country and
-track in college while studying computer science. It covers three metro areas, lists
-every college inside each radius that sponsors men's cross country, and ranks them by
+track in college while studying computer science. It covers three metro areas, lists the
+colleges inside each radius that sponsor men's cross country, and ranks them by
 the one question that predicts whether a distance runner actually develops:
 
 > **Where would he finish inside this team's scoring seven?**
 
 **Live site:** https://timhibbard.github.io/xc-cs-college-board/
 
-78 schools on the board, 16 cut, 42 with real cross country depth data, all 78 with federal
-cost and admissions data, and a detail page per school with a map of every meet that program
-attended last season.
+**131 schools on the board, 15 cut as walk-on, 6 with no men's program to join.** All 152 carry
+federal cost and admissions data and a detail page; **37 have real cross country depth data** and
+eleven of those have a map of every meet the program attended last season. The other 94 sit at
+*Verify*, which means **unmeasured, not borderline** — a placeholder for a lookup nobody has done.
+
+An earlier version of this file claimed the board listed *every* college inside each radius that
+sponsors men's cross country. **That was false**, and the correction is the largest single change
+in the project: rebuilding the candidate lists conference by conference from each conference's own
+men's-sponsored-sports tables added 73 schools, 41 of which had been inside the original Greenville
+radius the whole time — including one 25 driving miles from home. NAIA and NCCAA coverage is
+[still incomplete and documented as such](https://timhibbard.github.io/xc-cs-college-board/methodology.html).
 
 ## The framing rule
 
@@ -49,13 +57,24 @@ target tier, which is documented rather than quietly fixed.
 
 ## Metros
 
-| Metro | Radius | Schools | Target tier | Source document |
-|---|---|---|---|---|
-| Greenville, SC | 200 mi | 27 | 9 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
-| New York City | 50 mi | 34 | 3 | [`docs/new-york-city.md`](docs/new-york-city.md) |
-| Chicago | 30 mi | 17 | 1 | [`docs/chicago.md`](docs/chicago.md) |
+| Metro | Radius | Schools | Target tier | With XC data | Source document |
+|---|---|---|---|---|---|
+| Greenville, SC | 250 mi | 82 | 9 | 22 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
+| New York City | 20 mi + all of Long Island | 37 | 2 | 7 | [`docs/new-york-city.md`](docs/new-york-city.md) |
+| Chicago | 20 mi | 12 | 1 | 8 | [`docs/chicago.md`](docs/chicago.md) |
 
-## Four withdrawn recommendations
+The New York rule is a shape, not a circle: 20 driving miles from Midtown **plus all of Nassau and
+Suffolk County** regardless of distance, because Long Island is a commutable corridor while
+Westchester and central New Jersey at the same distance are a different decision. Long Island pins
+therefore plot outside the dashed circle on that map by design.
+
+Radii were widened in Greenville and tightened in the other two after the first pass. The tightening
+was not free: New York lost target-tier **Fairfield** and deep-tier **Monmouth**, and Chicago lost
+**North Central**, a D3 national program whose 7th man was about ten seconds outside his projection,
+along with **Purdue Northwest**, which had been the metro's only scholarship program. **Roosevelt**
+(D2, one mile from the Loop) now fills that slot.
+
+## Withdrawn recommendations
 
 The cross country data reversed four confident earlier claims. All four are stated in place
 rather than edited out, because the pattern is the useful part:
@@ -66,15 +85,22 @@ rather than edited out, because the pattern is the useful part:
   runners inside 47 seconds; he projects ~82 seconds outside that pack. **Cut.**
 - **Lenoir-Rhyne** was one of three D2 top picks in Greenville. At the D2 regional its scoring
   six ran 33:44–39:11 and he would be their #1. **Caution.**
-- **North Central** was cut as a D3 national champion presumed far beyond him. Their 7th man
-  ran 25:34; he is about 10 seconds off the scoring seven. **Restored to the board.**
+- **Lewis University** was called "probably the single best fit in metro Chicago," and widening the
+  radius was recommended specifically to reach it. Its roster then showed a 13:45 5000 and a 95-second
+  gap. **Cut**, and now out of range as well.
 
-Also structural, and unchanged: **Northwestern sponsors no men's cross country or men's track
-and field at all** — men's track is listed as defunct, only the women's programs exist. Worth
-stating plainly, because Northwestern is the obvious first thought for Chicago plus elite CS.
-And **Chicago is thin on its own merits, not because of the radius** — widening it from 20 to
-30 miles added four schools and no target-tier fit, and the cross country data then took the
-metro from two target-tier schools to one.
+The fifth withdrawal is the completeness claim at the top of this file, and it is the biggest one.
+
+Also structural: **six schools on these maps have no men's program to join.** Northwestern sponsors
+no men's cross country or men's track and field at all — men's track is listed as defunct, only the
+women's programs exist, which is worth stating plainly because Northwestern is the obvious first
+thought for Chicago plus elite CS. Georgia State, NYIT, Montclair State and William Paterson were
+all sitting on the board at *Verify* tier when in fact no men's cross country team exists at any of
+them, which is exactly how that tier fails — it reads as a program awaiting measurement rather than
+one that does not exist. Trinity Christian announced on 4 November 2025 that it will close after the
+2025–26 year. All six are kept on the maps rather than deleted so the corrections stay visible.
+**Chicago is also thin on its own merits, not because of the radius** — at 30 miles it held four
+extra schools and still only one target-tier fit.
 
 The [methodology page](https://timhibbard.github.io/xc-cs-college-board/methodology.html) has
 the full list of withdrawn claims. Every one started as a confident statement from general
@@ -165,8 +191,12 @@ with a flag for whether the location was read off the results page or inferred f
 `mi` is approximate **driving** distance from the metro center; `lat`/`lon` are approximate
 main-campus coordinates used only to place a map pin. The two are different measurements, so a
 school sitting on the radius line can plot just outside the map's circle — driving distance is
-always the larger number. Sacred Heart is the one visible instance and is kept deliberately as
-a boundary case.
+always the larger number. On the New York map that happens at scale and on purpose, because
+everything on Long Island is in range regardless of miles.
+
+For the 73 schools added when the radii changed, `mi` is an **estimate**, not a looked-up route:
+straight-line distance × 1.18, or × 1.35 in the mountain states (TN, VA, WV, KY), rounded to the
+nearest 5. Expect ±15%, which matters only for the handful near the 250-mile line.
 
 ## Note on scope
 
