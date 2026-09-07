@@ -3,67 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Greenville SC — 250 mile radius</title>
-<meta name="description" content="Every NCAA college within 250 driving miles of Greenville SC that sponsors men's cross country and men's outdoor track and grants a computer science degree.">
+<title>Greenville SC — 300 mile radius</title>
+<meta name="description" content="Every NCAA Division 1 college within 300 driving miles of Greenville SC that sponsors men's cross country and men's outdoor track and grants a computer science degree.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <main class="wrap">
 
-  <p class="eyebrow">Metro 1 of 3 · 250 mile radius</p>
+  <p class="eyebrow">Metro 1 of 3 · 300 mile radius · Division 1</p>
   <h1>Greenville, South Carolina</h1>
   <p class="lede">
-    The deepest and best list of the three metros, and the one the cross country data
-    <em>improved</em>: <strong>22 schools here have him finishing inside their scoring seven</strong>,
-    more than four times the other two metros combined, and the closest of them is 25 miles from home.
-    That number was nine until every school on the page got measured. It also lost the most to the
-    walk-on cut, because the closest school with the best CS department in the region is a nationally
-    elite distance program. Widening the ring from 200 to 250 miles more than tripled this list — from
-    27 schools to 81 — but almost none of that growth came from the extra fifty miles. It came from
-    admitting that the original list was incomplete. The list then came back down to
-    <strong>77</strong>, because four of those schools sponsor cross country without men's outdoor
-    track and he wants to run both.
+    Still the deepest and best list of the three metros, and the one that both gained and lost the most
+    in the last two changes. Widening the ring from 250 to <strong>300 driving miles</strong> reached
+    eight Division 1 programs new to the board &mdash; three of them join it, three are cut on level and
+    two fail the both-sports rule; narrowing the board to
+    <strong>Division 1</strong> removed 55 schools from this ring alone, thirteen of them at
+    target tier. What is left is <strong>16 schools where he finishes inside their scoring seven</strong>
+    — more than three times the other two metros combined — every one of them measured on a 2025
+    championship result rather than a single track mark. The closest is now
+    <strong>UNC Asheville at 64 miles</strong>; before the Division 1 rule it was Anderson (SC) at 29,
+    and that row is archived rather than deleted, which is the honest way to carry a decision like this.
+    This metro also still loses the most to the walk-on cut, because the closest school with the best CS
+    department in the region is a nationally elite distance program.
   </p>
 
   <div class="kpi-row">
-    <div class="kpi"><div class="k-label">Schools on the list</div><div class="k-value" id="k-n">—</div><div class="k-sub">Both sports, after the walk-on cut &mdash; 76 of the 77 now measured</div></div>
+    <div class="kpi"><div class="k-label">Schools on the list</div><div class="k-value" id="k-n">—</div><div class="k-sub">Division 1, both sports, after the walk-on cut &mdash; all measured</div></div>
     <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">Every one on a 2025 cross country result, not a track mark</div></div>
-    <div class="kpi"><div class="k-label">Cut as walk-on</div><div class="k-value" id="k-r">—</div><div class="k-sub">Furman at 0 miles, Duke and UNC &mdash; Clemson came back</div></div>
-    <div class="kpi"><div class="k-label">Closest target-tier</div><div class="k-value">25<span style="font-size:16px"> mi</span></div><div class="k-sub">Southern Wesleyan &mdash; their 4th man at Conference Carolinas</div></div>
+    <div class="kpi"><div class="k-label">Cut as walk-on</div><div class="k-value" id="k-r">—</div><div class="k-sub">Furman at 7 miles, Duke and UNC &mdash; Clemson and Georgia Tech came back</div></div>
+    <div class="kpi"><div class="k-label">Closest target-tier</div><div class="k-value">64<span style="font-size:16px"> mi</span></div><div class="k-sub">UNC Asheville &mdash; their 5th man at the Big South</div></div>
   </div>
 
 
   <div class="callout crit">
-    <span class="c-title">The real correction here is not the extra fifty miles &mdash; it is that this list was incomplete</span>
+    <span class="c-title">Two rules, pulling in opposite directions: 300 miles added schools, Division 1 took away more</span>
     <p>
-      Checking the ring properly, conference by conference, turned up roughly
-      <strong>40 schools that were inside the original 200 miles all along</strong> and had simply
-      never been found: most of Conference Carolinas, most of the SIAC and the CIAA, the Peach Belt,
-      the USA South, half the South Atlantic Conference. Southern Wesleyan is 25 driving miles away
-      and was not on this page. Adding a school at 230 miles while omitting one at 25 is not
-      defensible, so the fix was to add all of them: <strong>every NCAA Division 1, 2 and 3 school
-      inside 250 driving miles that sponsors men's cross country</strong>, plus one non-NCAA program
-      close to home (Montreat, NAIA, at 70 miles).
+      The search was built the hard way before it was narrowed, and that order matters. Checking the
+      ring conference by conference turned up roughly <strong>40 schools that were inside the original
+      200 miles all along</strong> and had simply never been found: most of Conference Carolinas, most
+      of the SIAC and the CIAA, the Peach Belt, the USA South, half the South Atlantic Conference.
+      Southern Wesleyan is 27 driving miles away and was not on this page. Adding a school at 230 miles
+      while omitting one at 27 is not defensible, so all of them were added &mdash; every NCAA D1, D2
+      and D3 school in range that sponsors men's cross country, plus a handful of NAIA programs. Pushing
+      the ring out to <strong>300 driving miles</strong> then reached Auburn, Raleigh, Blacksburg,
+      Birmingham, Cookeville and Richmond, Kentucky, and the same conference-by-conference pass caught two
+      more that had been inside 250 all along: Radford at 250 miles and Jacksonville State at 248.
     </p>
     <p>
-      That takes the list from 27 schools to 81 &mdash; and then back down to <strong>77</strong>,
-      once the both-sports rule below removed four cross-country-only programs. <strong>The README's earlier claim that this
-      board listed every school in range was false when it was written.</strong> It is closer to true
-      now. Two known gaps remain, and both are named in the
-      <a href="methodology.html">methodology</a>: the NAIA and NCCAA programs in this footprint are
-      not systematically covered, and sponsorship was read off conference tables, so a school whose
-      conference table is stale can still be wrong in either direction.
+      <strong>All eight are now measured, and they split three ways.</strong> Three
+      joined the board: <strong>Auburn</strong> (253 mi) and <strong>Samford</strong> (296 mi) at
+      <em>target</em>, and <strong>Radford</strong> (250 mi) at <em>caution</em>, because at the
+      Southeast regional he would have arrived <em>ahead</em> of Radford's #1 &mdash; the thin-program
+      pattern, not a fit. Three are cut on level: <strong>NC State</strong>, <strong>Virginia
+      Tech</strong> and <strong>Eastern Kentucky</strong>, the last of which won the ASUN with seven men
+      inside 30 seconds and is the widest gap on the cut list after Wake Forest. And two came off under
+      the both-sports rule: <strong>Tennessee Tech</strong>, which measured <em>target</em> at their
+      5th-to-6th man, and <strong>Jacksonville State</strong>. Two of the eight are fits, one is a
+      caution, and the pass cost about as much as it bought.
     </p>
     <p>
-      <strong>And it changed the ranking, once the additions were measured.</strong> They entered at
-      <em>Verify</em> &mdash; full federal cost, admissions and CS data, no running data at all &mdash;
-      which was a placeholder rather than a judgement. Every one of them now has a 2025 championship
-      result, and <strong>the target tier went from nine schools to 23</strong> &mdash; 22 after the
-      both-sports rule took Mercer off the board. The single best
-      illustration is the one that was always closest: <strong>Southern Wesleyan, 25 driving miles from
-      home</strong>, where he would have been their 4th man at Conference Carolinas, 105 seconds inside
-      their seven. It was not on this page at all two versions ago.
+      <strong>Then the board was narrowed to Division 1, and this ring paid for almost all of it.</strong>
+      Fifty-five schools came off here, against 31 in New York and 10 in Chicago, and
+      <strong>all thirteen of the target-tier schools the rule cost anywhere on the board were in this
+      ring</strong>. None of it is thrown away: every one keeps its measurements, its coach and its own
+      page in the archive at the bottom of this page. Read that table as the price of the rule, not as
+      a list of rejections.
+    </p>
+    <p>
+      <strong>The single most expensive row is the nearest one.</strong> <strong>Anderson (SC), 29
+      driving miles from home</strong>, where he lands six seconds inside their 7th man on a 66 second
+      spread &mdash; the closest call anywhere in this project, and it is Division 2.
+      <strong>Fayetteville State</strong> was the cheapest target-tier school on the entire board at
+      about $11,892 on his residency, and it is Division 2 as well. On the Division 1 board the nearest
+      target is <strong>UNC Asheville at 64 miles</strong> and the cheapest is
+      <strong>Coastal Carolina at about $13,966</strong>, 238 miles out. That is the trade in two
+      numbers.
+    </p>
+    <p>
+      Two known gaps remain in the underlying search, and both are named in the
+      <a href="methodology.html">methodology</a>: the NAIA and NCCAA programs in this footprint are not
+      systematically covered &mdash; which no longer affects the board, only the archive &mdash; and
+      sponsorship was read off conference tables, so a school whose conference table is stale can still
+      be wrong in either direction.
     </p>
   </div>
 
@@ -80,72 +102,90 @@
   <h2>The six that matter</h2>
   <p class="prose">
     Every ranking below is anchored to a 2025 cross country result rather than to one outdoor 5000
-    mark, so each one names where he would actually have finished in that team's seven. This list
-    <em>did</em> change when the 55 additions were measured: the school 25 miles from the house went
-    from unmeasured to the closest target on the board, and the cheapest target now costs about
-    $11,900 a year on his residency.
-    Each of the six also carries its 2026 conference 1500 field on its own page; where that field
-    contradicts the cross country read, it is flagged below.
+    mark, so each one names where he would actually have finished in that team's seven. This list has
+    been rewritten twice in quick succession: once when the 55 additions were measured, and again when
+    the board was narrowed to <strong>Division 1</strong>, which removed four of the previous six
+    outright. The nearest target is now <strong>UNC Asheville at 64 miles</strong> and the cheapest is
+    <strong>Coastal Carolina at about $14,000</strong> on his residency, 238 miles away; the dearest is
+    <strong>Auburn at about $46,355</strong>, which the 300-mile ring added. Each of the six
+    also carries its 2026 conference 1500 field, its coach and the program's Instagram on its own page;
+    where the 1500 contradicts the cross country read, it is flagged below.
   </p>
   <div class="prose">
     <ol>
-      <li><strong>Southern Wesleyan</strong> — <strong>25 driving miles</strong>, D2 Conference Carolinas, a verified CS degree, a 100% admit rate and $15,464 net. He would have been their <strong>4th man</strong> at the conference championship, 105 seconds inside their scoring seven on a tight 116-second spread. Two cautions, both worth an email rather than a veto: 747 undergraduates is a small training group, and they took only four runners to the D2 regional two weeks later.</li>
-      <li><strong>UNC Asheville</strong> — 62 miles, Big South, mountain terrain, a 92% admit rate, and the one entry on this list the residency correction really hurts: its $12,250 federal net price is what a North Carolinian pays, and on his residency it is about <strong>$29,598</strong>. He slots in as their <strong>6th man at the Big South</strong>, 50 seconds inside their scoring seven, and as their 5th at the regional, where only six of them finished. Still the best combination of proximity, athletic fit and admissions ease among the D1 options — but no longer the best on price, which is now a waiver question for the coach.</li>
-      <li><strong>Davidson</strong> — their <strong>4th man</strong>, and coach support is real admissions leverage at a <strong>13%</strong> admit rate. The highest-value application on the list: running unlocks a school his transcript alone might not. The caveat is their own shape — a big gap between their #1 and their 4th through 7th, so he would be filling a hole rather than joining a pack.</li>
-      <li><strong>UNC Charlotte</strong> — the boundary case the data resolved, and it resolved upward. He lands essentially <strong>level with their 7th man</strong> (11 seconds inside) on a soft 167-second 1&ndash;7 spread. 100 miles, D1 American, 80% admit, about <strong>$30,688 net on his residency</strong> ($15,435 in-state), and one of the larger CS departments on the board.</li>
-      <li><strong>Emory</strong> — the biggest single correction in this metro. Its 15:06 outdoor 5000 was a sparse-table artifact; on the UAA result he is their <strong>5th man</strong>, not their #1. Elite CS, D3, no athletic money but strong need-based aid, and an 11% admit rate that a coach's support genuinely moves.</li>
-      <li><strong>Fayetteville State</strong> — still the cheapest target-tier school anywhere on this board at about <strong>$11,892 net on his residency</strong> ($7,892 in-state; North Carolina's $4,000 non-resident premium is one of the three smallest on the board), D2 CIAA, verified CS, 82% admit. They <em>won</em> the CIAA championship and he would have been their 3rd man there and their 6th at the Atlantic regional. Read the 250-second spread and the six-man regional squad as what they are: a front-loaded team with a thin back half, which is exactly where a 5th-to-7th man is useful. It is also 235 miles away, and its staff directory publishes no email — call the office.</li>
+      <li><strong>UNC Asheville</strong> — <strong>64 driving miles</strong>, Big South, mountain terrain, a 92% admit rate, and the cleanest fit on the page by the rule this board is built on: their #1 is <strong>39 seconds faster than he projects</strong>, which is the middle of the healthy band, and he lands as their <strong>4th-to-5th man, 57 seconds inside their scoring seven</strong> on an 83-second spread. The one entry here the residency correction really hurts: its $12,250 federal net price is what a North Carolinian pays, and on his residency it is about <strong>$29,598</strong>. Best combination of proximity, athletic fit and admissions ease on the board — but no longer the best on price, which is now a waiver question for coach <strong>Adam Puett</strong>.</li>
+      <li><strong>Davidson</strong> — 115 miles, Atlantic 10, their <strong>4th man</strong> and 48 seconds inside their seven, and coach support is real admissions leverage at a <strong>13%</strong> admit rate. The highest-value application on the list: running unlocks a school his transcript alone might not, and at <strong>$17,379</strong> it is also the second-cheapest target here. Two caveats, both about shape rather than level — their #1 is 90 seconds ahead of him, and their 1&ndash;7 spans 139 seconds, so he would be filling a hole between their front runner and their back half rather than joining a pack. <strong>His 4:01 would have won the Atlantic 10 1500 final</strong>, which is a tactical-race artifact rather than a level read, and their own 1500 depth chart is faster than that suggests.</li>
+      <li><strong>Coastal Carolina</strong> — the cheapest target on the Division 1 board at <strong>$13,966</strong>, Sun Belt, 75% admit, verified CS. He slots in as their <strong>3rd-to-4th man</strong>, 29 seconds inside their seven on a tight 89-second spread. The thing to ask about is the front of that squad, not the back: <strong>their #1 is only 19 seconds faster than he projects</strong>, which is the edge of the thin-program pattern this board exists to catch. 238 miles is also the second-longest drive on this list. Coach <strong>Michael Bianchina</strong>.</li>
+      <li><strong>College of Charleston</strong> — 213 miles, CAA, 60% admit, <strong>$18,960</strong>, and the most balanced numbers in the target band: their <strong>5th man</strong>, 27 seconds inside the seven, their #1 <strong>70 seconds</strong> ahead of him, and a 97-second 1&ndash;7 spread across two races rather than one. Nothing here is an artifact of a single result. Coach <strong>Chris Bailey</strong>.</li>
+      <li><strong>ETSU</strong> — 122 miles, Southern Conference, 86% admit, about <strong>$20,033</strong> on his residency. Their <strong>4th man</strong>, 35 seconds inside the seven, and a genuinely strong front &mdash; their #1 is 136 seconds faster than he projects. The warning is the same one the old page carried: a <strong>171-second 1&ndash;7 spread</strong> means the back half of that squad is soft, so the 4th-man slot is real but the pack around it may not be. He would also have <em>missed</em> the SoCon 1500 final on his projection, which is worth knowing before the email.</li>
+      <li><strong>UNC Charlotte</strong> — the boundary case the data resolved, and it resolved upward. He lands essentially <strong>level with their 7th man</strong> (19 seconds inside) on a soft 167-second spread. 108 miles, American Conference, 80% admit, about <strong>$30,688</strong> on his residency ($15,435 in-state), and <strong>the largest CS department on the board</strong> at 15.2% of all degrees granted — which for a computer science major is the strongest academic argument in this ring outside Davidson and Georgia Tech.</li>
     </ol>
     <p>
-      Just behind them: <strong>UNC Greensboro</strong> (4th-to-5th man; it used to be the cheapest D1
-      target at $10,965 and on his residency it is about $27,316, which is the argument it loses), <strong>Berry College</strong> (3rd-to-4th man at both the SAA meet and the D3 South
-      regional), <strong>Catawba</strong> and <strong>UNC Pembroke</strong> for the D2 scholarship
-      argument, and <strong>Campbell</strong> and <strong>Coastal Carolina</strong> at the far edge of
-      the ring. Read ETSU's 171-second spread as a warning though: a team that strung out that badly is
-      not a pack. <strong>Mercer used to be named here and is gone</strong> &mdash; it sponsors men's
-      cross country and no men's outdoor track, which is the single most expensive line in this whole
-      project.
+      Just behind them: <strong>UNC Greensboro</strong> (3rd-to-4th man and 133 seconds inside their
+      seven &mdash; the deepest slot in the metro, though $27,316 on his residency is the argument it
+      loses), <strong>Kennesaw State</strong> (4th man, but a 275-second spread, which is a strung-out
+      squad rather than a pack), <strong>Campbell</strong> and <strong>Chattanooga</strong> at the far
+      edge of the old 250-mile ring, and <strong>High Point</strong> and <strong>Elon</strong> if the
+      price stops mattering. The two the wider ring added sit here rather than in the six above, and for
+      opposite reasons: <strong>Auburn</strong> is an SEC target on the arithmetic but finished only six
+      men at the conference meet and costs about $46,355, and <strong>Samford</strong> is the cleaner of
+      the two on running &mdash; their 3rd-to-4th man, 109 seconds inside their seven &mdash; at
+      296 miles and $32,622, so distance and price are what hold it back rather than the fit.
+      <strong>Mercer used to be named here and is gone</strong> &mdash; it sponsors men's
+      cross country and no men's outdoor track, and it is one of three Division 1 schools the
+      both-sports rule cost, alongside <strong>Tennessee Tech</strong>, which the wider ring reached at
+      <em>target</em> tier and which the rule removed in the same pass, and Jacksonville State. <strong>Anderson (SC), Catawba, Emory, Fayetteville State and nine other target-tier
+      schools are gone for a different reason</strong> &mdash; the Division 1 rule &mdash; and they are
+      tabled at the bottom of this page rather than deleted.
     </p>
     <p>
       <strong>One target has to be flagged: Queens (Charlotte) has no computer science degree.</strong>
-      It earns the tier on running &mdash; their 5th man, 15 seconds inside their seven, on the
+      It earns the tier on running &mdash; their 5th man, 22 seconds inside their seven, on the
       tightest spread in the metro at 56 seconds &mdash; and it fails the other half of the search.
       It is the only school in the target band anywhere on the board without a CS program.
     </p>
   </div>
 
   <div class="callout">
-    <span class="c-title">The two boundary cases are settled, and they split</span>
+    <span class="c-title">The boundary cases are settled, and they split</span>
     <p>
-      <strong>UNC Charlotte moves up.</strong> Their seven at the American championship ran within
-      11 seconds of his projection at the back, so he is in the travel squad as a freshman. That is
-      a target.
+      <strong>UNC Charlotte moves up.</strong> Their seven at the D1 Southeast regional ran 30:18 to
+      33:05 over 10K, putting their 7th man 19 seconds behind his projection, so he is in the travel
+      squad as a freshman. That is a target.
     </p>
     <p>
-      <strong>Appalachian State moves down to Deep.</strong> Their 7th man is about 35 seconds faster
+      <strong>Appalachian State moves down to Deep.</strong> Their 7th man is about 27 seconds faster
       than his projection — a strong Sun Belt program he would train with but not travel for in year
       one. Not a cut, and not a target either: worth an email that asks specifically what their
       incoming distance class looks like.
     </p>
     <p>
-      <strong>Anderson (SC) also drops to Deep</strong>, and it is the most carefully checked school
-      on the board. At 30 miles it was the closest target-tier school here &mdash; Southern Wesleyan
-      has since taken that title at 25 &mdash; so it got the most scrutiny: their South Atlantic Conference course ran about 96 seconds slow at 8K (Anderson,
-      Catawba and Wingate each confirm that against the D2 regional), and once corrected he sits
-      <strong>within two seconds of their 7th man</strong> — the closest call anywhere in this
-      project. Two seconds is not a distinction; treat Anderson as a real option and ask the coach.
+      <strong>Anderson (SC) is settled too, and then archived</strong>, which is worth stating in the
+      same breath. At 30 miles it was the closest target-tier school here and got the most scrutiny of
+      any row on the board: their South Atlantic Conference course ran about 96 seconds slow at 8K
+      (Anderson, Catawba and Wingate each confirm that against the D2 regional), and once corrected he
+      sits <strong>six seconds inside their 7th man</strong> — the closest call anywhere in this
+      project. It is Division 2, so the Division 1 rule removed it. The measurement stands and the page
+      stands; only the board changed.
     </p>
   </div>
 
   <div class="callout crit">
-    <span class="c-title">Lenoir-Rhyne is withdrawn from the top picks</span>
+    <span class="c-title">The Division 2 scholarship argument, and why it is now an archive argument</span>
     <p>
-      An earlier version of this page grouped Lenoir-Rhyne with Catawba and Anderson as a healthy
-      D2 fit. Their cross country result does not support it: their <strong>scoring six spanned 326
-      seconds</strong> at the D2 Southeast regional, and he would arrive as their #1. That is the
-      thin-squad pattern this whole board is built to avoid. <strong>Catawba survives the same
-      test</strong> — 5th man, 95 seconds inside their seven — so the D2 scholarship argument is
-      still live, just at Catawba and Anderson rather than at Lenoir-Rhyne.
+      This callout used to be about picking the right D2 school. That question is settled and then
+      shelved, and both halves are worth keeping. <strong>Lenoir-Rhyne was withdrawn</strong> from an
+      earlier version's top picks on its own result: their <strong>scoring six spanned 326 seconds</strong>
+      at the D2 Southeast regional and he would arrive as their #1, which is the thin-squad pattern this
+      whole board is built to avoid. <strong>Catawba and Anderson survived the same test</strong> —
+      5th-to-6th man and 7th man respectively — so the D2 argument was live, and specific.
+    </p>
+    <p>
+      It is now an argument about the archive rather than the board. Division 2 is where the money for a
+      distance runner is easiest to find: <strong>52 of the 96 archived schools are D2</strong>, and in
+      this ring they include most of the thirteen target-tier rows the rule cost. If a partial D2 offer
+      ever becomes more attractive than a walk-on-adjacent spot in a D1 seven, the reversal is one line
+      of data and nothing has to be re-measured.
     </p>
   </div>
 
@@ -163,42 +203,54 @@
   </div>
 
   <div class="callout crit">
-    <span class="c-title">Wofford is not the exception &mdash; 23 of the 76 measured programs here never finished seven</span>
+    <span class="c-title">Wofford is not the exception, and the Division 1 rule is why it is no longer the rule</span>
     <p>
-      Measuring every school turned up a pattern the old page could not see. At <strong>23 of these 76
-      programs there is no 7th man to compare against</strong>: they never got seven runners to the
-      finish of a championship race in 2025. Carson-Newman, Gardner-Webb, Lenoir-Rhyne, Winthrop,
-      Wofford, King University, Newberry, Montreat, Coker, Methodist, Piedmont and Oglethorpe are all in
-      that group, and <strong>Benedict finished three</strong>. Those pages compare him to the team's
-      last finisher and say so plainly. It is not a data gap; it is the single most useful thing this
-      round of work produced, because <em>every one of those schools would otherwise have looked like
-      a place he could contribute</em>. He can, and there would be nobody to run with.
+      Measuring every school turned up a pattern the old page could not see. Across the full
+      all-divisions sweep of this ring, <strong>27 of 96 measured programs had no 7th man to compare
+      against</strong>: they never got seven runners to the finish of a championship race in 2025.
+      Carson-Newman, Lenoir-Rhyne, King University, Newberry, Montreat, Coker, Methodist, Piedmont and
+      Oglethorpe were all in that group, and <strong>Benedict finished three</strong>.
+    </p>
+    <p>
+      <strong>On the Division 1 board that count is five of 31</strong> &mdash; <strong>Winthrop</strong>
+      at five finishers, and <strong>Gardner-Webb</strong>, <strong>Wofford</strong>,
+      <strong>NC Central</strong> and now <strong>Auburn</strong> at six &mdash; with nine more that came up short in one of their two
+      races and fielded a full seven in the other, which is usually a regional entry list rather than a roster problem. Those pages
+      compare him to the team's last finisher and say so plainly. It is not a data gap; it is the single
+      most useful thing this round of work produced, because <em>every one of those schools would
+      otherwise have looked like a place he could contribute</em>. He can, and there would be nobody to
+      run with.
     </p>
   </div>
 
   <h2>Where they are</h2>
   <div class="map-card">
-    <div class="chart-title">Every school in this metro, plotted against the 250-mile radius</div>
+    <div class="chart-title">Every school in this metro, plotted against the 300-mile radius</div>
     <p class="chart-sub">
       This is the widest of the three searches by a long way, and the map shows two things at once.
-      The 22 target-tier programs are spread across upstate South Carolina, Georgia, western North
-      Carolina and the Triad rather than clustered in one city, and there is now a filled pin almost
-      everywhere: <strong>76 of these 77 schools have a 2025 cross country result on file</strong>,
-      against 22 a version ago. Only Shorter is still unmeasured. Atlanta, Charlotte, Columbia,
-      Charleston and the Tennessee valley are all inside the ring.
+      The target-tier programs are spread across western North Carolina, the Triad, the coast and
+      Tennessee rather than clustered in one city, and <strong>every pin on the board is filled</strong>
+      &mdash; every school here has a 2025 cross country result on file, against 22 a version ago.
+      Atlanta, Charlotte, Columbia, Charleston, Knoxville, Chattanooga and the Alabama and Virginia
+      edges are all inside the ring. Turn on the Division 1 archive to see what the narrowing removed:
+      <strong>55 more pins in this ring alone</strong>, and the closest of them is 29 miles out.
     </p>
     <div class="map-bar">
       <label><input type="checkbox" id="map-showcut" checked> Show schools that are off the board (cut, no men's track, no men's program)</label>
+      <!-- The Division 1 archive is off by default: 96 pins across the three metros would
+           swamp the sixteen rows that are actually a judgement about him or about a
+           program's existence. -->
+      <label><input type="checkbox" id="map-shownotd1"> Show the Division 1 archive (schools the D1-only rule removed)</label>
       <span class="count" id="map-count"></span>
     </div>
     <div id="map"></div>
     <div id="map-legend"></div>
     <p class="map-note">
-      Pins are approximate main-campus locations. The dashed circle is a straight-line 250-mile
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 300-mile
       radius from Greenville, while the table's "Mi" column is driving distance — so a school right
-      on the line can plot well inside it. For the schools added at this radius the driving figure is
-      itself an estimate: straight-line distance × 1.18, or × 1.35 through the mountains, rounded to
-      the nearest 5 miles. Filters below the chart also drive this map.
+      on the line can plot well inside it. Every driving figure here is a real route, returned by
+      OSRM driving directions and rounded to the mile; the earlier estimated version of this column
+      was off by as much as 54 miles. Filters below the chart also drive this map.
     </p>
   </div>
 
@@ -217,8 +269,6 @@
   <h2>Full list</h2>
   <div id="legend-slot"></div>
   <div class="controls">
-    <label for="f-div">Division</label>
-    <select id="f-div"><option value="all">All</option><option value="D1">D1</option><option value="D2">D2</option><option value="D3">D3</option><option value="NAIA">NAIA</option></select>
     <label for="f-tier">Fit</label>
     <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="deep">Deep</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
     <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
@@ -232,48 +282,72 @@
   </div>
 
   <p class="prose" style="margin-top:14px">
-    <strong>Seventy-six of these 77 rows now have a number in the "his slot in their 7" column</strong> —
-    it was 22 — so sorting by <em>Fit</em> is finally a real ranking rather than a list of things
-    nobody has looked up. Sorting by <em>Net cost/yr</em> is what the cheap end of this metro deserves,
-    and the answer it gives is now specific instead of hopeful — and it changed once the net cost
-    column was put on the rate <em>he</em> would pay rather than the in-state rate the federal file
-    reports (<a href="methodology.html#residency">how that works</a>). On the federal basis the five
-    cheapest schools on the entire board sat in this ring and all five were Division 2 with a verified CS
-    degree: Fayetteville State $7,892, Savannah State $8,172, Clayton State $8,365, UVA Wise $9,210 and
-    Fort Valley State $10,338. Add each one's non-resident tuition premium and only two stay cheap:
-    <strong>Fayetteville State at about $11,892</strong> and <strong>UNC Pembroke at about $14,260</strong>,
-    both on North Carolina's unusually small $4,000 premium. Savannah State becomes $21,465, Fort Valley
-    State $21,744, Clayton State $19,717 and UVA Wise $25,440 — the same band as the mid-priced privates
-    they were supposed to undercut. And the running test only ever cleared two of them: Fayetteville
-    State and UNC Pembroke, their 4th-to-5th and 3rd man respectively. At the others he would arrive as
-    the team's #1 or #2, which is the thin-squad outcome this board exists to catch.
+    <strong>Every row here has a number in the "his slot in their 7" column</strong> — it was 22 of 77
+    two versions ago — so sorting by <em>Fit</em> is a real ranking rather than a list of things nobody
+    has looked up. Sorting by <em>Net cost/yr</em> is the other useful sort, and the answer it gives
+    changed twice: once when the column was put on the rate <em>he</em> would pay rather than the
+    in-state rate the federal file reports (<a href="methodology.html#residency">how that works</a>),
+    and again when the board became Division 1 only.
+  </p>
+  <p class="prose">
+    <strong>The residency correction is what makes the cheap end of this ring honest.</strong> On the raw
+    federal basis the five cheapest schools on the entire board sat here and all five were Division 2
+    with a verified CS degree: Fayetteville State $7,892, Savannah State $8,172, Clayton State $8,365,
+    UVA Wise $9,210 and Fort Valley State $10,338. Add each one's non-resident tuition premium and only
+    two stayed cheap &mdash; <strong>Fayetteville State at about $11,892</strong> and
+    <strong>UNC Pembroke at about $14,260</strong>, both on North Carolina's unusually small $4,000
+    premium &mdash; while Savannah State became $21,465, Clayton State $19,717, Fort Valley State
+    $21,744 and UVA Wise $25,440, the same band as the mid-priced privates they were supposed to
+    undercut. All five are Division 2 and all five are now archived, so read that paragraph as a lesson
+    about the column rather than a shortlist.
+  </p>
+  <p class="prose">
+    <strong>On the Division 1 board the cheap end looks different and shallower.</strong> The three
+    cheapest schools in this ring are <strong>USC Upstate at $13,557</strong> (32 miles, and caution
+    tier &mdash; he would land near the front of that squad), <strong>Coastal Carolina at $13,966</strong>
+    (238 miles, and the cheapest <em>target</em> anywhere on the board) and <strong>Winthrop at
+    $15,343</strong> (92 miles, caution, five finishers at their conference meet). Only one of those
+    three is a fit, and it is the far one. <strong>Davidson at $17,379</strong> is the surprise on this
+    sort: a private with a 13% admit rate that costs less than four of the public universities here once
+    the non-resident premium is applied.
   </p>
 
   <h2>Cut as walk-on</h2>
   <p class="prose">
-    Worth naming the cost plainly: this removes <strong>Furman</strong> at 0 miles, the closest school
+    Worth naming the cost plainly: this removes <strong>Furman</strong> at 7 miles, the closest school
     with one of the strongest CS departments in the region. If a walk-on or redshirt path ever becomes
     acceptable, it returns at the top of the list, not the bottom.
   </p>
   <p class="prose">
-    <strong>Clemson, at 32 miles, is no longer on this list.</strong> It was cut on a 14:36 team-best
+    <strong>Clemson, at 30 miles, is no longer on this list.</strong> It was cut on a 14:36 team-best
     5000 alone, and the ACC championship result does not support that: he would have been their 8th man
-    there and their 7th at the Southeast regional, 15 seconds outside their seven on average. That is
+    there and their 7th at the Southeast regional, 8 seconds outside their seven on average. That is
     <em>deep</em> — a program he would train with and not travel for as a freshman — and it is back on
     the board above.
   </p>
   <p class="prose">
-    Four rows on this table used to read "out of range," which was simply wrong — Columbia SC is
-    105 driving miles from Greenville, Athens 140, Knoxville 145 and Winston-Salem 175, all inside
-    even the old 200-mile ring. <strong>South Carolina, Georgia, Tennessee and Wake Forest</strong>
-    now carry the real reason, which is level rather than distance. <strong>UNC Chapel Hill</strong>
-    and <strong>Duke</strong> join them, having genuinely come into range at 250 miles. Those cuts used
-    to rest on reputation; <strong>five of the six have now been measured</strong> against their 2025
-    championship results and the cut held every time — at Tennessee, the softest of them, he would have
-    been their 7th man and still 52 seconds outside it. That is what a confirmed cut looks like, and it
-    is why Clemson's reinstatement is credible rather than wishful. <strong>South Carolina is the one
-    row on this page still resting on reputation</strong> — no 2025 result has been transcribed for it,
-    and its row says so.
+    <strong>Georgia Tech is no longer on this list either, and it came off by the board's own rule
+    rather than by judgement.</strong> It was carried as a cut on reputation; the transcribed times put
+    it <strong>41.8 seconds outside their seventh man</strong> across the ACC championship and the D1
+    South regional, and the published cut line is 45. Keeping it cut would have meant contradicting the
+    ladder, so it is back on the board at <em>deep</em>, 143 miles out, with the strongest CS department
+    in this ring &mdash; and with the one caveat that reverses the usual argument here: at 30.4% of all
+    degrees granted in computer science and a 14% overall admit rate, the binding constraint at Georgia
+    Tech is the application, not the running.
+  </p>
+  <p class="prose">
+    Four rows on this table used to read "out of range," which was simply wrong — Athens is 101 driving
+    miles from Greenville, Knoxville 169 and Winston-Salem 177, all inside even the old 200-mile ring.
+    <strong>Georgia, Tennessee and Wake Forest</strong> now carry the real reason, which is level rather
+    than distance, and <strong>UNC Chapel Hill</strong> and <strong>Duke</strong> came genuinely into
+    range as the ring widened. <strong>Every cut on this page has now been measured</strong> against its
+    2025 championship results and the cut held every time — at Tennessee, the softest of them, he would
+    have been 45 seconds outside the seven at the SEC meet, where they ran a full squad; at Wake Forest,
+    the most decisive, 137 seconds outside in both races. That is what a confirmed cut looks like, and it
+    is why the Clemson and Georgia Tech reinstatements are credible rather than wishful.
+    <strong>South Carolina used to be the one row here resting on reputation, and it turned out to be
+    worse than that</strong> — it sponsors no men's cross country at all, so it was cut for times that
+    were never going to exist. It is in the section below.
   </p>
   <div class="table-scroll">
     <table id="removed"><thead><tr><th scope="col">School</th><th scope="col">Division</th><th scope="col">Why it was cut</th></tr></thead><tbody></tbody></table>
@@ -281,17 +355,64 @@
 
   <h2 id="notrack">Cross country but no men's track</h2>
   <p class="prose">
-    Four schools in this ring sponsor men's cross country and no men's <em>outdoor track</em>, so they
+    Some schools in this ring sponsor men's cross country and no men's <em>outdoor track</em>, so they
     cannot give him both sports and are off the board regardless of how the running reads. Each was
-    checked against the sport list the school publishes itself and against TFRRS for any 2026 men's
-    outdoor mark at any distance. <strong>Mercer is the one that hurts</strong>: measured on cross
-    country it was target tier, their 4th man, 185 miles out, with a verified CS degree. Their cross
-    country numbers are still on their pages, unchanged, because the numbers are true and the rule is
-    what removed them. <a href="methodology.html#both-sports">The rule, written out</a>.
+    checked against the sport list and published track roster the school puts out itself &mdash; two of
+    the three list a track and field page whose roster is entirely women &mdash; and then against TFRRS
+    for the school's men at their conference indoor and outdoor championships, where a sponsored program
+    has to appear. <strong>Mercer is the one that hurts</strong>: measured on cross country it was
+    target tier, their 4th man, 196 miles out, with a verified CS degree. The 300-mile ring then added
+    two more of the same shape &mdash; <strong>Tennessee Tech</strong>, also target tier at
+    their 5th-to-6th man and the better value of the two at about $18,446 on his residency, and
+    <strong>Jacksonville State</strong>, which measured <em>deep</em> and so costs least to lose.
+    All three of the Division 1 cases anywhere on the board are in this ring. Their cross country numbers are still on their page, unchanged, because the
+    numbers are true and the rule is what removed them. The non-Division-1 schools in this ring that
+    also failed this rule are in the Division 1 archive below rather than in this table, marked with the
+    reason that reached them first. <a href="methodology.html#both-sports">The rule, written out</a>.
   </p>
   <div class="table-scroll">
     <table id="notrack-tbl"><thead><tr><th scope="col">School</th><th scope="col">Division</th>
       <th scope="col">Tier on cross country</th><th scope="col">What it does and does not sponsor</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2 id="noxc">Track but no men's cross country &mdash; the mirror case</h2>
+  <p class="prose">
+    The both-sports rule cuts in both directions, and this is the direction that is easier to miss.
+    Three schools in this ring field men's outdoor track and <strong>no men's cross country team at
+    all</strong>: cross country is women's only. That is not a thin squad or a fast squad &mdash; it is
+    the absence of the thing this board measures, so there is no scoring seven to slot him into and
+    never was. <strong>South Carolina is the expensive one</strong>: the in-state SEC flagship, 105
+    driving miles away, $12,688 in-state tuition, a verified CS degree, and an earlier version of this
+    page said its cross country times simply had not been transcribed yet. They never will be. Each was
+    checked twice, against the school's own published sport list and against TFRRS.
+  </p>
+  <div class="table-scroll">
+    <table id="noxc-tbl"><thead><tr><th scope="col">School</th><th scope="col">Conference</th>
+      <th scope="col" class="num">Mi</th><th scope="col">What it does and does not sponsor</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2 id="notd1">Archived &mdash; the board is Division 1 only</h2>
+  <p class="prose" id="notd1-summary"></p>
+  <p class="prose">
+    <strong>This is where almost the entire cost of the Division 1 rule lands.</strong> Every one of the
+    thirteen target-tier schools the filter removed from this board is in this ring, and two of them
+    were the extreme points of the whole project: <strong>Anderson (SC) at 29 driving miles</strong>,
+    the closest target-tier school anywhere and the most carefully checked row on the site &mdash; their
+    7th man, six seconds inside the scoring seven &mdash; and <strong>Fayetteville State</strong>, the
+    cheapest at a $7,892 federal net price with a verified CS degree, where he would have been their
+    4th-to-5th man. Both are Division 2, which is exactly the division that can fund a distance runner
+    and where he would have counted for the team soonest.
+  </p>
+  <p class="prose">
+    Nothing in this table is a judgement about the school and nothing has been degraded to build it.
+    Every row keeps its measurement, its tier, its coach and its own page; the Division 1 rule is a
+    decision about the search, and it is one line of data to reverse.
+    <a href="methodology.html#d1-only">The rule and the full accounting</a>.
+  </p>
+  <div class="table-scroll">
+    <table id="notd1-tbl"><thead><tr><th scope="col">School</th><th scope="col">Division</th>
+      <th scope="col" class="num">Mi</th><th scope="col">Tier before the filter</th>
+      <th scope="col">What the measurement said</th></tr></thead><tbody></tbody></table>
   </div>
 
   <h2>The 1500 in May</h2>
@@ -302,30 +423,38 @@
   </p>
   <div class="prose">
     <p>
-      <strong>The event is within reach almost everywhere.</strong> His 4:01 would have made the
-      conference final at <strong>66 of these 77 championships</strong> and scored &mdash; top eight
-      &mdash; at <strong>35</strong>. The eleven where he would have missed the final are the level
-      marker worth knowing by name: ETSU, UNC Greensboro, Appalachian State, Chattanooga, Coastal
-      Carolina, Queens (Charlotte), The Citadel, West Georgia, Western Carolina, Wofford and Clemson.
-      <strong>Six of those eleven are target tier on cross country</strong>, which is the useful
-      surprise: the 8K and the 1500 are not the same question, and a program can be the right depth fit
-      in the fall and out of reach in May.
+      <strong>The event is genuinely competitive here, which is the change the Division 1 rule made.</strong>
+      Across the all-divisions version of this ring his 4:01 would have made 67 of 81 conference finals
+      and scored in 35. On the Division 1 board it makes the final at <strong>17 of 31</strong> and
+      scores &mdash; top eight &mdash; at <strong>3</strong>. The fourteen where he would have missed the
+      final are the level marker worth knowing by name: ETSU, UNC Greensboro, Appalachian State,
+      Chattanooga, Coastal Carolina, Queens (Charlotte), The Citadel, West Georgia, Western Carolina,
+      Wofford, Clemson, Georgia Tech, Auburn and Samford. <strong>Eight of those fourteen are target tier on cross
+      country</strong>, which is the useful surprise: the 8K and the 1500 are not the same question, and
+      a program can be the right depth fit in the fall and out of reach in May.
     </p>
     <p>
-      <strong>And the thinness shows up again.</strong> At <strong>33 of the 72 programs here that ran
-      a 1500 at all</strong> he would be their fastest man in the event &mdash; a warning by the rule
-      this board is built on, not a win. Five programs (Allen University, Bluefield State, Fayetteville
-      State, Johnson C. Smith and Guilford) sponsor men's track and entered nobody in a 1500 outdoors
-      all season, and they are part of a larger group: <strong>23 of the 77 entered nobody in the 1500 at
-      their own conference meet</strong>. <strong>Fayetteville
-      State is the awkward one</strong>: cheapest target-tier school on the entire board at about $11,892 net,
-      and no 1500 runner to compare him to. That is a question for the coach, not a cut.
+      <strong>And the thinness that dominated the wider board is mostly gone.</strong> The median
+      program in this ring has a 1500 runner at <strong>3:50.4</strong>, nearly eleven seconds faster
+      than he projects, and he would be their fastest man in the event at only <strong>4 of 31</strong>
+      &mdash; Elon, The Citadel, Gardner-Webb and Presbyterian. Across the all-divisions sweep it was 33
+      of 72, so this is the same reversal the front page describes. What has <em>not</em> gone away is
+      programs that sponsor men's track and do not race the metric mile: <strong>7 of the 31 entered
+      nobody in the 1500 at their own conference championship</strong> &mdash; Elon, Campbell,
+      Chattanooga, College of Charleston, The Citadel, Presbyterian and Wofford. <strong>College of
+      Charleston is the awkward one</strong>: fourth on the six at the top of this page, and no
+      conference-meet 1500 entry to compare him to. That is a question for the coach, not a cut.
     </p>
     <p>
-      Among the six at the top of this page the 1500 reads well: Southern Wesleyan (their #2),
-      UNC Asheville (#6), Davidson (#7), UNC Charlotte (#17), Emory (#8) &mdash; all inside a final,
-      and Charlotte's #17 on the season depth list is the healthiest number here, because it means a
-      genuine pack to train in. <a href="methodology.html#the-1500">How the 1500 comparison is built</a>.
+      Among the six at the top of this page the 1500 splits cleanly.
+      <strong>UNC Charlotte is the healthiest number on the page</strong>: he would be their
+      <strong>#17 of 23</strong> on the season depth list, which means a genuine pack to train in rather
+      than a slot to fill. <strong>UNC Asheville</strong> (#6 of 11) and <strong>ETSU</strong> (#8 of 11)
+      are next. <strong>Davidson</strong> (#7 of 7) and <strong>Coastal Carolina</strong> (#4 of 4) are
+      the warnings &mdash; he would be the slowest 1500 runner on either roster, which at Coastal
+      Carolina is a four-man event group. <strong>College of Charleston</strong> entered nobody at the
+      CAA meet. ETSU and Coastal Carolina are also the two of the six where he would have missed the
+      conference final. <a href="methodology.html#the-1500">How the 1500 comparison is built</a>.
     </p>
   </div>
 
@@ -334,28 +463,34 @@
     Two new columns in the table above, and they only appear on this page: <strong>Students</strong>
     (undergraduate enrollment, federal) and <strong>Town</strong> (the population of the place the
     campus actually sits in, U.S. Census ACS 2024 5-year). New York and Chicago do not need them.
-    Around Greenville they matter, because the 250-mile ring reaches from Charlotte to towns of six
+    Around Greenville they matter, because the 300-mile ring reaches from Charlotte to towns of six
     hundred people, and nothing else in the table tells those two apart.
   </p>
   <div class="prose">
     <p>
-      The median school here has <strong>1,819 undergraduates in a town of 27,636</strong>, but the
-      median hides the shape of it: <strong>25 of the 77 sit in a place under 10,000 people</strong>
-      and <strong>21 sit in one over 100,000</strong>. There is not much in between.
+      Narrowing to Division 1 changed both of these distributions more than any other column.
+      The median school here now has <strong>6,081 undergraduates in a town of 38,910</strong> —
+      against 1,819 in a town of 27,636 across the full all-divisions sweep, because the small-town
+      private colleges were almost all D2 and D3. Only <strong>4 of the 31 sit in a place under 10,000
+      people</strong> and <strong>11 sit in one over 100,000</strong>. The very small campuses are in the
+      archive, and that is a real difference in what freshman year would feel like, not just a
+      statistic.
     </p>
     <p>
-      <strong>Five campuses have more undergraduates than their town has residents</strong> — Kennesaw
-      State (41,254 students, Kennesaw's 34,605), Clemson (23,300 / 18,072), Western Carolina
-      (10,024 / 7,973), UNC Pembroke (5,330 / 2,822) and Montreat (762 / 630). App State is
-      near-parity at 19,444 in a Boone of 20,032. In all of them the school <em>is</em> the town, which is a real answer to "what is there to do"
-      and not automatically a bad one for someone whose afternoons are spoken for.
+      <strong>Three campuses on the board have more undergraduates than their town has residents</strong> — Kennesaw
+      State (41,254 students, Kennesaw's 34,605), Clemson (23,300 / 18,072) and Western Carolina
+      (10,024 / 7,973). App State is near-parity at 19,444 in a Boone of 20,032. In all of them the
+      school <em>is</em> the town, which is a real answer to "what is there to do" and not automatically
+      a bad one for someone whose afternoons are spoken for. Two more, UNC Pembroke (5,330 / 2,822) and
+      Montreat (762 / 630), are in the archive.
     </p>
     <p>
-      At the other end are the genuinely small places: <strong>Montreat (630), Misenheimer NC (659 —
-      and Pfeiffer enrolls 655, so school and town are the same size), Franklin Springs GA (1,108),
-      Due West SC (1,177) and Young Harris GA (1,252)</strong>. Ask those coaches exactly one
-      question: where does the team run. A 12-mile long run out of a town of six hundred is either
-      trails and gravel, which is ideal, or a state highway with no shoulder, which is not.
+      At the other end, the smallest places left on the board are <strong>Buies Creek NC (3,746, where
+      Campbell is target tier), Boiling Springs NC (4,757), Clinton SC (7,676) and Cullowhee NC
+      (7,973)</strong> — nothing under three thousand, where the wider sweep reached down to Montreat's
+      630 and Misenheimer NC's 659. Ask those coaches exactly one question anyway: where does the team
+      run. A 12-mile long run out of a town of four thousand is either trails and gravel, which is ideal,
+      or a state highway with no shoulder, which is not.
     </p>
     <p>
       <strong>Size cuts both ways on the two things that actually decide this.</strong> A small
@@ -363,9 +498,9 @@
       framing rule — and it means the CS lab-conflict problem below is at its
       worst. A big state school means depth to chase and multiple lab sections, and it means he is one
       of forty distance runners competing for a coach's attention rather than one of eight. The target
-      tier spans the entire range: <strong>Catawba, 1,235 students in Salisbury</strong>, and
-      <strong>UNC Charlotte, 24,453 in a city of 903,844</strong>, are the same tier and completely
-      different lives.
+      tier still spans most of the range: <strong>Queens (Charlotte), 1,211 students</strong>, and
+      <strong>Kennesaw State, 41,254</strong>, are the same tier and completely different lives —
+      a factor of 34 between them, where the all-divisions board spanned a factor of 63.
     </p>
     <p>
       Neither column moves any tier, and both carry caveats worth knowing before quoting them —
@@ -381,42 +516,48 @@
   <div class="prose">
     <p>
       <strong>Recruitment is an admissions lever at the selective schools.</strong> Coaches at
-      Davidson and Emory get supported slots and will run a pre-read: send transcript and scores,
-      and admissions tells the coach informally whether he would be admitted. Initiate this in the
-      spring of junior year. The federal numbers make the case sharper than the earlier estimates
-      did: <strong>Davidson admits 13% and Emory 11%</strong>, and he would be inside the scoring
-      seven at both.
+      Davidson get supported slots and will run a pre-read: send transcript and scores, and admissions
+      tells the coach informally whether he would be admitted. Initiate this in the spring of junior
+      year. The federal numbers make the case sharper than the earlier estimates did:
+      <strong>Davidson admits 13%</strong> and he would be their 4th man, which is the single
+      highest-value application on this page. <strong>Georgia Tech is the harder version of the same
+      lever</strong> &mdash; a 14% overall admit rate, and a CS admit that is much harder than that,
+      against a <em>deep</em> rather than target running fit. Emory used to be named here at an 11%
+      admit rate and is Division 3, so it is in the archive.
     </p>
     <p>
       <strong>Where academics are an asset rather than a constraint:</strong> UNC Asheville (92%),
-      Appalachian State (90%), UNC Greensboro (89%), ETSU (86%), and nearly the whole D2 list — all
-      figures now from federal data rather than estimates. Admission is close to automatic, which
-      shifts all the leverage to money. Two estimates on this page were badly wrong before that
-      check: <strong>Wofford is 52%</strong>, not ~70%, and <strong>Lander is 81%</strong>, not ~55%.
+      Appalachian State (90%), UNC Greensboro (89%), Campbell (87%), ETSU (86%) and Chattanooga (81%) —
+      all figures from federal data rather than estimates. Admission is close to automatic, which shifts
+      all the leverage to money. Note that the Division 1 rule removed most of the <em>easy</em>
+      admissions as well as most of the cheap prices: nearly the whole archived D2 list sat above 80%.
+      One estimate on this page was badly wrong before the federal check: <strong>Wofford is 52%</strong>,
+      not ~70%.
     </p>
     <p>
       <strong>Academic aid often beats athletic aid.</strong> D1 cross country and track is a
       12.6-scholarship equivalency spread across a 35–45 man roster — quarter and half rides, not
-      full ones. A strong student stacking merit aid at UNC Asheville, ETSU, High Point, Berry, or
-      Catawba can land below the net cost of a bigger athletic offer somewhere else.
+      full ones. A strong student stacking merit aid at UNC Asheville, ETSU, High Point or Elon can land
+      below the net cost of a bigger athletic offer somewhere else.
     </p>
     <p>
-      <strong>The wider ring added nine in-state options, which is the cheapest lever available.</strong>
-      A South Carolina resident pays in-state tuition at <strong>SC State
-      ($11,060), Francis Marion ($11,160), Coastal Carolina ($11,640), The Citadel ($12,570) and the
-      College of Charleston ($12,978)</strong>, alongside Lander, USC Upstate and Winthrop, which were
-      already here. USC Aiken was on that list and has come off it: no men's outdoor track. Those are sticker tuition figures, not net, and they are lower than the
-      <em>net</em> price of most of the private colleges on this page. It also added
-      <strong>35 new Division 2 programs</strong> &mdash; three of which have since left under the
-      both-sports rule &mdash; which is where partial athletic aid actually lives:
-      D2 allows 12.6 scholarship equivalencies in men's cross country and track, the same as D1, on
-      much smaller rosters.
+      <strong>In-state tuition is the cheapest lever available, and Division 1 keeps seven of them.</strong>
+      A South Carolina resident pays in-state tuition at <strong>SC State ($11,060), Coastal Carolina
+      ($11,640), The Citadel ($12,570) and the College of Charleston ($12,978)</strong>, alongside
+      <strong>USC Upstate</strong>, <strong>Winthrop</strong> and <strong>Clemson</strong>. Those are
+      sticker tuition figures, not
+      net, and they are lower than the <em>net</em> price of most of the private colleges on this page.
+      Two of the seven &mdash; Coastal Carolina and the College of Charleston &mdash; are target tier, which
+      is the useful overlap. What the Division 1 rule cost on this axis is the whole D2 layer:
+      <strong>the wider sweep found 43 Division 2 programs in this ring</strong>, and D2 allows 12.6
+      scholarship equivalencies in men's cross country and track, the same as D1, on much smaller
+      rosters. That is where partial athletic aid actually lives, and it is all in the archive now.
     </p>
     <p>
-      <strong>CS labs collide with practice.</strong> Large schools like Charlotte and App State run
-      multiple lab sections; small ones — Wofford, Presbyterian, Berry, Piedmont, North Greenville,
-      Catawba, and nearly every one of the small colleges just added — may offer a required course in
-      exactly one afternoon slot. Ask every coach how many
+      <strong>CS labs collide with practice.</strong> Large schools like Charlotte, Kennesaw State and
+      App State run multiple lab sections; small ones — Presbyterian (852 undergraduates), Queens
+      (1,211), Wofford (1,816), Gardner-Webb (1,856) and Davidson (1,867) — may offer a required course
+      in exactly one afternoon slot. Ask every coach how many
       of their athletes major in CS or engineering and how they handle lab conflicts. This question
       eliminates programs faster than times do &mdash; and every school page now carries the coach's
       name, title, office phone and email, so asking it is a list of messages to send rather than a
@@ -455,6 +596,16 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK
   .map(r => `<tr><td><a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a></td>
    <td>${r.div}</td><td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
+
+document.querySelector('#noxc-tbl tbody').innerHTML = NO_PROGRAM
+  .filter(r => r.metro === 'greenville')
+  .sort((a, b) => a.mi - b.mi)
+  .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
+   <td>${r.conf ?? '\u2014'}</td><td class="num">${r.mi ?? '\u2014'}</td>
+   <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
+
+document.getElementById('notd1-summary').innerHTML = notD1Summary('greenville');
+document.querySelector('#notd1-tbl tbody').innerHTML = notD1Rows('greenville');
 
 initMap('greenville');
 initTable({ size: true });

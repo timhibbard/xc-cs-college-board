@@ -148,6 +148,9 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 44px 0; }
 .badge.cut     { color: var(--text-secondary); }
 /* Off the board for a reason that is not about level: the sport does not exist there. */
 .badge.notrack { color: var(--text-secondary); }
+/* Off the board for a reason that is not about the school at all: the search was
+   narrowed to Division 1. Kept visually distinct from a cut for exactly that reason. */
+.badge.notd1   { color: var(--text-secondary); }
 :root[data-theme="dark"] .badge.verify,
 :root:where(:not([data-theme="light"])) .badge.verify { color: var(--warning); }
 @media (prefers-color-scheme: light) {
@@ -180,6 +183,8 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 44px 0; }
 .pin-cut     { background: var(--muted);    color: #fff; width: 17px; height: 17px; font-size: 9px; }
 .pin-notrack { background: var(--surface-1); color: var(--text-secondary); border-color: var(--muted); width: 19px; height: 19px; font-size: 10px; }
 .pin-none    { background: var(--surface-1); color: var(--text-primary); border-color: var(--baseline); }
+/* The Division 1 archive: 96 pins that are not judgements, so they read quieter than a cut. */
+.pin-notd1   { background: var(--surface-1); color: var(--muted); border-color: var(--muted); width: 15px; height: 15px; font-size: 9px; }
 .pin-center  { background: var(--div-blue); color: #fff; }
 .radius-ring { fill: var(--div-blue); fill-opacity: 0.06; stroke: var(--div-blue); stroke-opacity: 0.55; stroke-width: 1.5; stroke-dasharray: 6 5; }
 
@@ -196,7 +201,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 44px 0; }
 .pin-deep-txt    { color: var(--div-blue); }
 .pin-verify-txt  { color: #8a6200; }
 .pin-caution-txt { color: var(--critical); }
-.pin-cut-txt, .pin-notrack-txt, .pin-none-txt { color: var(--text-secondary); }
+.pin-cut-txt, .pin-notrack-txt, .pin-none-txt, .pin-notd1-txt { color: var(--text-secondary); }
 :root[data-theme="dark"] .pin-verify-txt { color: var(--warning); }
 @media (prefers-color-scheme: dark) {
   :root:where(:not([data-theme="light"])) .pin-verify-txt { color: var(--warning); }
@@ -273,6 +278,11 @@ td.time { font-variant-numeric: tabular-nums; }
 a.school { text-decoration: none; }
 a.school:hover { color: var(--div-blue); text-decoration: underline; }
 .city { color: var(--muted); font-size: 12.5px; display: block; }
+/* The program's Instagram, under the city. A team account is where a distance squad
+   actually publishes its workouts and its travel; a department account (marked with
+   a degree sign) is all this school links officially, so it says much less. */
+a.ig { color: var(--muted); font-size: 12.5px; display: block; text-decoration: none; }
+a.ig:hover { color: var(--div-blue); text-decoration: underline; }
 .nodata { color: var(--muted); }
 .cs-ok::before { content: "✓ "; color: var(--good); font-weight: 700; }
 .cs-no::before { content: "? "; color: var(--muted); font-weight: 700; }
