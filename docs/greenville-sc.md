@@ -1,7 +1,71 @@
 # College Search — Greenville SC (300 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-09-06 (v10 — 300-mile ring, Division 1 only, program
-Instagram)
+XC/Track + Computer Science. Last updated 2026-09-08 (v12 — coaches' own Instagram, and five coaching
+changes found)
+
+> **The Division 1 rule has been reversed, and this ring gets all 55 of its schools back.** The board here
+> is **81 programs — 31 Division 1, 38 Division 2, 11 Division 3 and one NAIA — and 29 of them are target
+> tier**, which is more than the other two metros hold in total. Every one of the 81 except **Shorter** rests
+> on a 2025 championship result. Nothing had to be re-measured to undo the rule, because it was implemented
+> as an archive rather than a deletion: slot, gap, spread, tier, cost and coach all came back exactly as they
+> went in. The two rows that make the argument are the two the rule cost first — **Anderson (SC)** at 29
+> driving miles, their 7th man by six seconds, the closest target anywhere on the board, and **Fayetteville
+> State** at an ≈$11,892 net price, the cheapest target anywhere. A filter on a label had silently deleted
+> the two rows this search exists to find.
+>
+> **The six that matter are now a mixed-division six**, on a stated criterion — a slot in the middle of the
+> seven, *and* a #1 still comfortably ahead of him, then proximity, price and the CS degree as tie-breakers:
+> **Anderson (SC)** (29 mi, D2), **UNC Asheville** (64, D1), **Catawba** (141, D2), **Davidson** (115, D1),
+> **Emory** (141, D3) and **UNC Charlotte** (108, D1). UNC Greensboro, ETSU, Chattanooga, Campbell, Coastal
+> Carolina, College of Charleston, UNC Pembroke, Fayetteville State, Augusta University, Berry, Kennesaw
+> State, High Point, Elon, Auburn and Samford all sit just behind them with their numbers intact.
+>
+> **What the reversal restores, in four columns.** *Depth:* **25 of the 81 never finished seven runners** —
+> five of those 25 are Division 1, so this was never a small-college problem with a divisional fix.
+> *Money:* the corrected median is **≈$21,131** on his residency against $19,061 on the raw federal basis,
+> and the cheap end runs Allen University $10,972 (no CS degree), Francis Marion $11,386, Fayetteville State
+> ≈$11,892, Livingstone $13,479, USC Upstate $13,557, Coastal Carolina $13,966 and UNC Pembroke ≈$14,260 —
+> plus **38 D2 programs**, ten of them target tier, where the 12.6 scholarship equivalencies are spread over
+> a much smaller squad than in D1. *Size:* the median school is **1,867 undergraduates in a town of 27,829**
+> — against 6,081 and 38,910 on the Division 1 board — with 25 towns under 10,000 and 22 over 100,000, and
+> the target tier spanning Pfeiffer's 655 students to Kennesaw State's 41,254. *The 1500:* **23 of the 81
+> entered nobody** at their conference meet and five raced none all season; against the 58 that entered he
+> makes **47 finals and top eight in 26**, would win the final outright in four conferences, and is the
+> fastest 1500 man on the roster at **33 of the 76 with a mark** — the same count cross country reaches
+> independently. The median team best is **3:59.9**.
+>
+> **Admissions data re-verified.** Every admit rate on the site was re-checked against the live College
+> Scorecard by IPEDS unit ID: **148 numeric rates match the federal figure exactly, zero mismatches**. One
+> row here changed — **Savannah State** read "not reported" and is in fact federally **open-admission**, so
+> it now reads 100%. All 81 schools in this ring now carry a federal admit rate; **34 of them admit 80% or
+> more** and the ring median is **75%**, with Emory (11%), Davidson (13%) and Georgia Tech (14%) at the other
+> end.
+>
+> **Instagram now covers this whole ring** — 97 of 97 rows, on the board and off it. The v10 note below said
+> archived rows carried none; that is no longer true, and an empty Instagram cell anywhere else on the site
+> means "not looked up," not "does not exist."
+>
+> **The coaches' own accounts are now a second layer, and this ring holds 14 of the 17 on the site** — UNC
+> Greensboro, Kennesaw State, Winthrop, Auburn, Augusta University, Fayetteville State, Johnson C. Smith,
+> Savannah State, Shorter, UVA Wise, Tennessee, UNC Chapel Hill, Duke and Virginia Tech. Six of those are
+> target tier: UNC Greensboro, Kennesaw State, Auburn, Augusta University, Fayetteville State and UVA Wise. A handle was recorded only where the account's own bio places the person in that program —
+> Fayetteville State's reads "Head Track and Field / Cross Country Coach Fayetteville State University" —
+> so an empty cell means unverified, not absent. Nine accounts share the name of the College of Charleston's
+> coach and eight share Clemson's, none of them saying anything about coaching or either school, and every
+> one of the seventeen was rejected. Read these accounts; write to the email address.
+>
+> **The by-product matters more than the handles: four coaches in this ring had already left.**
+> **Young Harris** now lists Wyatt Whipp (interim, cross country) and Dylan Dicicco (track), not Matt
+> Logan, who is at Evansville — the old address on this page would have reached nobody. **Savannah State**
+> lists Chad Cannon (interim) rather than Ted Whitaker, confirmed by the program's own Instagram announcing
+> the promotion. **Clayton State** lists Troy Hickom, whose title is cross-country-first rather than
+> track-first. **Montreat** lists Rylan Hincher (interim). Each of those pages now names the predecessor,
+> because the 2025 season it measures was coached by someone else — and an interim coach with a roster to
+> fill is a different proposition from a settled one.
+
+The v10 notes follow. They were written while the Division 1 rule was in force, so every count in them —
+"31 schools here," "16 target tier," "the archive" — describes that board rather than this one. The 55
+schools they call archived are all back on the board above, with the same measurements.
 
 > **Two rules changed the shape of this list, and they pull against each other.** The ring went from
 > 250 to **300 driving miles**, and the board then narrowed to **Division 1 only**. What is left in
@@ -1182,9 +1246,11 @@ rather than measurement.
     only school left on the Division 1 board with no published coach email; Fayetteville State is the
     other one in the ring and, at ≈$11,892, the cheapest target-tier school here at any division, so it
     is worth the call even from the archive.
-11. **Add Instagram handles to the archived non-Division 1 rows.** Every Division 1 row with a men's
-    program now carries the program's account; the 96 archived rows carry none, which makes the archive
-    harder to re-enter if the Division 1 rule is ever relaxed. Driving distance is off this list: every
+11. **Done — every row in this ring carries the program's Instagram, and 14 carry the coach's own.**
+    What is left open is the other 83 coaches: a search that requires the account's own bio to name the
+    program clears 17 of 150 across the site, and the rest are either private, absent, or posting under a
+    handle that contains no part of their name. The next useful pass is not more searching but the two
+    coaches with no published email — West Georgia and Fayetteville State — where the phone is the way in. Driving distance is off this list: every
     figure in this ring is now a routed OSRM distance (§3), which settled Campbell at 244, NC Central at
     241 and Savannah State at 262.
 12. Verify SAT figures for the **23 schools reporting no SAT range at all** in the federal file — only

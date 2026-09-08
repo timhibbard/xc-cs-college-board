@@ -1,6 +1,43 @@
 # College Search — Chicago (20 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-09-06 (v4 — Division 1 only, program Instagram)
+XC/Track + Computer Science. Last updated 2026-09-08 (v6 — coaches' own Instagram)
+
+> **The Division 1 rule has been reversed, and Chicago is back to eleven schools** — three D1, one D2, six
+> D3 and one NAIA. That divisional shape is the single most important fact about recruiting here:
+> **Chicago is a Division 3 city** for men's distance running, and Division 3 cannot offer athletic money at
+> all. Reversing the rule restores the only two places in this metro where athletic money exists —
+> **Roosevelt** (D2, one mile from the Loop, and it finished four runners at the GLIAC meet) and **Saint
+> Xavier** (NAIA, $10,970, and he would arrive as their #1) — plus the **University of Chicago** at Deep
+> tier, the strongest academic option in the metro. **DePaul is still the only target**, which has now been
+> true through five versions of this document, two ranking methods, a 30-mile ring and a 20-mile one.
+>
+> **What the eleven show.** He would arrive as the #1 at **eight of them**, and **five never finished seven
+> runners**. The corrected median net price is **$18,425**; the two cheapest schools in the metro are both
+> privates, Saint Xavier at $10,970 and Dominican at $11,745, and both come back Caution on the running,
+> which is the trade this metro keeps offering. On the 2026 conference 1500 his 4:01 clears the last
+> qualifier in all eleven finals and scores in **eight** — but the eight are the CCAC, NACC, GLIAC and CCIW
+> fields, not the Big East, where he would have been 12th of 13. He would be the fastest 1500 man on the
+> roster at **six of the eleven**, the median team best is **4:09.5** against **3:48.4** across the three
+> Division 1 rows, **Concordia Chicago entered nobody** in the event at the CCIW meet, and **none of the
+> eleven took a 1500 runner past its conference meet into a postseason round**.
+>
+> **Admissions data re-verified.** Every admit rate was re-checked against the live College Scorecard by
+> IPEDS unit ID: **148 numeric rates match exactly, zero mismatches**. One row here changed —
+> **Calumet College** read "not reported" and is federally **open-admission**, now 100%. It is off the board
+> anyway for sponsoring no men's outdoor track.
+>
+> **Instagram covers 12 of the 13 rows in this metro**; Dominican is the one gap. The v4 note below said
+> archived rows carried none — that is no longer true.
+>
+> **One coach's own account was verified here, and it is not DePaul's.** The **University of Chicago's**
+> *@cc\_hall65* reads "Chris Hall, Head Track & Field and Cross Country Coach at The University of Chicago"
+> — six posts, 209 followers, and the only coach account in this metro that identifies itself. DePaul's
+> coach, the one target in range, turned up nothing meeting the standard, which is the ordinary outcome
+> rather than a gap: an empty cell means unverified, not absent. No Chicago coach name had changed since
+> the August read — all thirteen rows in range still match their school's own staff page.
+
+The v4 notes follow. They were written while the Division 1 rule was in force, so their counts — "three
+schools," "ten archived" — describe that board rather than this one.
 
 > **The board narrowed to Division 1 only, and Chicago is the metro it cuts hardest in proportion.** Eleven
 > schools become **three** — **DePaul** at Target, **UIC** at Deep and **Chicago State** at Caution — with

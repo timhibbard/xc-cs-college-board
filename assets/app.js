@@ -86,6 +86,16 @@ const igLink = (s) => s.ig
        title="${s.igDept ? 'Department-wide account — this school links no cross country or track account of its own' : 'The team’s own cross country / track account'}">@${s.ig}${s.igDept ? '&deg;' : ''}</a>`
   : '';
 
+/* The coach's own account, separate from the program's. A handle is only recorded where
+   the account itself identifies the person as this program's coach — a matching name on
+   its own is not enough, because namesakes are common and getting it wrong here means
+   reading the wrong stranger's posts before writing to a coach. */
+const coachIgLink = (s) => s.coach?.ig
+  ? `<a class="ig cig" href="https://instagram.com/${s.coach.ig}" rel="noopener"
+       title="${s.coach.name}'s own account — verified from the account itself, not guessed from the name">
+       <span class="who">coach</span> @${s.coach.ig}</a>`
+  : '';
+
 /* Where he lands relative to the team's 7th man. Negative is inside the seven. */
 function v7Txt(s) {
   if (!s.xc || s.xc.v7 == null) return '<span class="nodata">&mdash;</span>';
@@ -102,49 +112,6 @@ function badge(tier) {
 function tierLegend() {
   return `<div class="legend">${Object.entries(TIERS).map(([k, t]) =>
     `<span class="legend-item">${badge(k)} <span>${t.desc}</span></span>`).join('')}</div>`;
-}
-
-/* ---------- the Division 1 archive, tabled ---------- */
-
-/* What each archived row is. A row whose `was` is "board" was a live candidate, so the
-   column worth showing is the tier the Division 1 rule took away from it; for the rest,
-   "not Division 1" is the second reason it is off the board and the first one is more
-   informative. Ordered so the cost reads top-down: live candidates first, best fit first. */
-const WAS_LBL = {
-  cut: 'Cut on times &mdash; walk-on',
-  notrack: 'No men&rsquo;s outdoor track',
-  none: 'No men&rsquo;s program',
-};
-const WAS_RANK = { board: 0, cut: 1, notrack: 2, none: 3 };
-const TIER_RANK = { target: 0, deep: 1, verify: 2, caution: 3 };
-
-function notD1Rows(metro) {
-  return NOT_D1.filter(r => r.metro === metro)
-    .sort((a, b) =>
-      (WAS_RANK[a.was] - WAS_RANK[b.was])
-      || ((TIER_RANK[a.tier] ?? 9) - (TIER_RANK[b.tier] ?? 9))
-      || ((a.mi ?? 1e9) - (b.mi ?? 1e9))
-      || a.name.localeCompare(b.name))
-    .map(r => `<tr>
-      <td>${r.slug ? `<a class="school" href="${link(r)}">${r.name}</a>` : r.name}</td>
-      <td>${r.div ?? '&mdash;'}${r.conf ? ` <span class="city">${r.conf}</span>` : ''}</td>
-      <td class="num">${r.mi == null ? '<span class="nodata">&mdash;</span>' : r.mi}</td>
-      <td>${r.was === 'board' && r.tier ? badge(r.tier) : `<span class="nodata">${WAS_LBL[r.was] ?? '&mdash;'}</span>`}</td>
-      <td class="rownote" style="max-width:60ch">${r.note ?? r.why ?? ''}</td></tr>`).join('');
-}
-
-/* One sentence of arithmetic the reader would otherwise have to do by hand: of the archived
-   rows in this metro, how many were live candidates and how many of those were targets. */
-function notD1Summary(metro) {
-  const all = NOT_D1.filter(r => r.metro === metro);
-  const board = all.filter(r => r.was === 'board');
-  const tg = board.filter(r => r.tier === 'target');
-  if (!all.length) return 'No school in this ring came off the board under the Division 1 rule.';
-  return `<strong>${all.length} school${all.length === 1 ? '' : 's'}</strong> in this ring
-    ${all.length === 1 ? 'is' : 'are'} archived here. ${board.length} of them
-    ${board.length === 1 ? 'was a live candidate' : 'were live candidates'} that the rule cost him${
-    tg.length ? `, and <strong>${tg.length} ${tg.length === 1 ? 'was' : 'were'} at target tier</strong> &mdash; inside a scoring seven` : ''}.
-    The rest were already off the board for a reason of their own.`;
 }
 
 /* ---------- master table ---------- */
@@ -182,9 +149,9 @@ let showMetroCol = true, showSizeCols = false;
 
 function activeCols() {
   let cols = showMetroCol ? COLS : COLS.filter(c => c.key !== 'metro');
-  /* Same reason the metro column drops on a single-metro page: the board is Division 1
-     only, so a Div column would read "D1" on every row. The conference column is where
-     the useful part of that distinction actually lives. */
+  /* Same reason the metro column drops on a single-metro page: if every row on the board
+     were one division, a Div column would read the same on every row. All four divisions
+     are live, so it stays — D2 is where partial athletic aid actually is. */
   if (new Set(SCHOOLS.map(s => s.div)).size < 2) cols = cols.filter(c => c.key !== 'div');
   if (showSizeCols) {
     const at = cols.findIndex(c => c.key === 'net') + 1;
@@ -211,7 +178,7 @@ function renderTable() {
   const rows = visible();
   const tb = document.querySelector('#master tbody');
   tb.innerHTML = rows.map(s => `<tr>
-      <td class="c-name"><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span>${igLink(s)}</td>
+      <td class="c-name"><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span>${igLink(s)}${coachIgLink(s)}</td>
       ${showMetroCol ? `<td>${METROS[s.metro].label}</td>` : ''}
       <td class="num">${s.mi}</td>
       <td>${s.div}</td>
@@ -440,14 +407,13 @@ function initMap(metro) {
   /* Fit the shape AND every pin, not just the shape: Long Island runs well past the circle,
      and several Greenville pins sit on estimated mileage that can land outside the ring. */
   const bounds = ring.getBounds();
-  [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM, ...NOT_D1]
+  [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM]
     .filter(s => s.metro === metro && s.lat != null)
     .forEach(s => bounds.extend([s.lat, s.lon]));
   map.fitBounds(bounds, { padding: [12, 12] });
 
   const layer = L.layerGroup().addTo(map);
   const showCut = document.getElementById('map-showcut');
-  const showNotD1 = document.getElementById('map-shownotd1');
 
   window.renderMap = function () {
     layer.clearLayers();
@@ -463,33 +429,19 @@ function initMap(metro) {
         ...NO_PROGRAM.filter(r => r.metro === metro).map(r => ({ ...r, kind: 'none' })),
       ];
     }
-    /* The Division 1 archive is its own toggle. It is 96 pins, most of them fine programs,
-       and folding them into the excluded layer would bury the ten cuts that are actually
-       a judgement about him. */
-    if (showNotD1 && showNotD1.checked) {
-      extra = extra.concat(NOT_D1.filter(r => r.metro === metro).map(r => ({ ...r, kind: 'notd1' })));
-    }
-
-    const GLYPH = { cut: '✕', notrack: '⊗', none: '⊘', notd1: '◇' };
+    const GLYPH = { cut: '✕', notrack: '⊗', none: '⊘' };
     const KIND = {
       cut: 'Cut &mdash; he would be a walk-on',
       notrack: 'Cross country but no men&rsquo;s track',
       none: 'No men&rsquo;s cross country team',
-      notd1: 'Archived &mdash; not Division 1',
     };
-    const OFF = new Set(['cut', 'notrack', 'none', 'notd1']);
+    const OFF = new Set(['cut', 'notrack', 'none']);
 
     declutter([...kept, ...extra]).forEach(s => {
       const glyph = GLYPH[s.kind] ?? TIERS[s.kind].glyph;
       const g = s.b5000 != null ? gapOf(s) : null;
 
-      /* A cut row explains itself in `why`; a Division 1 archive row that was a live
-         candidate explains itself in `note`, because that is the measurement text. */
-      const offText = s.kind === 'notd1'
-        ? `<div class="mp-line">Archived by the Division 1 rule, not by anything about the program${
-            s.was === 'board' ? ` &mdash; it was a live candidate at <b>${TIERS[s.tier].label.toLowerCase()}</b>` : ''}.</div>${
-            s.note || s.why ? `<div class="mp-why">${s.note ?? s.why}</div>` : ''}`
-        : `<div class="mp-why">${s.why}</div>`;
+      const offText = `<div class="mp-why">${s.why}</div>`;
 
       const body = OFF.has(s.kind)
         ? `<div class="mp-meta">${s.div ?? ''}${s.conf ? ' ' + s.conf : ''}${s.mi != null ? ' &middot; ' + s.mi + ' mi' : ''}</div>${offText}`
@@ -543,7 +495,6 @@ function mapLegend() {
   return `<div class="legend">
     ${Object.entries(TIERS).map(([k, t]) => item(k, t.glyph, t.label)).join('')}
     ${item('cut', '✕', 'Cut on roster times')}
-    ${item('notd1', '◇', 'Archived — not Division 1')}
     ${item('none', '⊘', 'No men’s cross country')}
     ${item('center', '◎', 'Search center')}
   </div>`;

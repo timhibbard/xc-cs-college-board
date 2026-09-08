@@ -1,6 +1,52 @@
 # College Search — New York City (20 mile radius + all of Long Island)
 
-XC/Track + Computer Science. Last updated 2026-09-06 (v7 — Division 1 only, program Instagram)
+XC/Track + Computer Science. Last updated 2026-09-08 (v9 — coaches' own Instagram, and one coaching
+change found)
+
+> **The Division 1 rule has been reversed, and this metro goes back to 28 schools.** Ten Division 1, seven
+> Division 2 and eleven Division 3, every one of them measured on a 2025 championship result. The four
+> targets are unchanged — **Fordham, Seton Hall, NJIT and Columbia** — because the rule never cost this
+> metro anything at target tier; what it cost was the cheap end and one application, and both are back.
+> **Merchant Marine Academy at $6,174, Hunter College at $10,934 and Baruch at $10,983** are on the board
+> again, and so is **NYU**: Deep tier, a UAA championship won with seven runners inside 42 seconds, his
+> projection 28 seconds off the back of that seven, a 9% admit rate and the strongest computer science
+> department in the metro. Division 3, so the coach's leverage is on the application rather than the price.
+>
+> **What the wider board shows that the narrow one hid.** **Eight of the 28 never finished seven runners**,
+> and one never finished five — LIU, Manhattan, Wagner, CCNY and Molloy at six, Caldwell and Medgar Evers at
+> five, York College at four. On price the range is **$6,174 to $44,338** (Fordham) with a corrected median
+> of **$22,969** against $19,244 raw, where the Division 1 board's median was $29,844 — thirteen publics
+> here, two states of in-state tuition, neither of them his. On the 2026 conference 1500 his 4:01 clears the
+> last qualifier in **27 of 28** finals and scores in **21**, he would be the fastest 1500 man on the roster
+> at **18 of the 27 with a mark**, and the median team best is **4:07.8** — against 3:49.6 across the ten
+> Division 1 rows, which is the cleanest single measure of what division means here. Five of the 28 entered
+> nobody in the event at their conference meet; six took a 1500 runner past it into a postseason round.
+>
+> **Admissions data re-verified.** Every admit rate was re-checked against the live College Scorecard by
+> IPEDS unit ID: **148 numeric rates match exactly, zero mismatches**. One row here changed — **Felician**
+> read "not reported" and is federally **open-admission**, now 100%. One row pair is worth knowing about:
+> **St. Joseph's Long Island and St. Joseph's Univ NY share IPEDS 195544**, correctly, because they are one
+> federally reporting institution fielding two NCAA programs — so the admit rate, SAT range, net price and
+> enrollment on both pages describe the combined university. Both are off the board under the both-sports
+> rule, so no ranking depends on it.
+>
+> **Instagram covers 38 of the 40 rows in this metro**, on the board and off it; Hunter College and Baruch
+> are the two gaps. The v7 note below said archived rows carried none — that is no longer true.
+>
+> **Two coaches' own accounts were verified here, and one of them is a target.** **Fordham's**
+> *@aarongordon3* — bio "Head Track & Field/XC Coach at @fordhamtfxc", 2026 Atlantic-10 coach of the year —
+> is the single most useful account on this metro's board, because Fordham is the closest thing to a fit in
+> range. **CCNY's** *@joey\_benson* reads "Head Coach @ccnyxctrack". Seton Hall, NJIT and Columbia turned up
+> nothing that met the standard: two accounts carry NJIT's coach's name and neither says a word about
+> coaching, so both were rejected. An empty cell here means unverified, not absent.
+>
+> **One coach had already left:** **Yeshiva University** now lists Steven Lange, not Miy Mahran. Yeshiva is
+> off the board under the both-sports rule, so nothing in the ranking moves, but the page names both.
+> **Baruch College is the one row on the whole site whose coach could not be re-checked** — its athletics
+> site serves a broken certificate chain and then times out, so that name still rests on the August read.
+
+The v7 notes follow. They were written while the Division 1 rule was in force, so their counts — "10
+schools," "31 archived" — describe that board rather than this one.
 
 > **The board narrowed to Division 1 only, and this metro lost nothing at target tier.** It goes from
 > 28 schools to **10**, and all four targets — **Fordham, Seton Hall, NJIT and Columbia** — are Division 1

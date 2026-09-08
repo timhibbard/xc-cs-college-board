@@ -6,19 +6,14 @@
 
 const QS = new URLSearchParams(location.search).get('s');
 const S = SCHOOLS.find(s => s.slug === QS) || REMOVED.find(s => s.slug === QS)
-  || NO_TRACK.find(s => s.slug === QS) || NO_PROGRAM.find(s => s.slug === QS)
-  || NOT_D1.find(s => s.slug === QS);
-/* Four different kinds of "off the board", and they read differently on the page:
-   REMOVED is a judgement about level, NO_TRACK and NO_PROGRAM are facts about which
-   sports exist, and NOT_D1 is a rule about the search itself — nothing to do with the
-   school. A NOT_D1 row can also carry one of the other reasons, in `was`, so check it
-   first. NO_PROGRAM rows mostly carry no slug and so never reach this page; the one
+  || NO_TRACK.find(s => s.slug === QS) || NO_PROGRAM.find(s => s.slug === QS);
+/* Three different kinds of "off the board", and they read differently on the page:
+   REMOVED is a judgement about level, and NO_TRACK and NO_PROGRAM are facts about which
+   sports exist. NO_PROGRAM rows mostly carry no slug and so never reach this page; the one
    that does is South Carolina, which earns a page precisely because it looks available. */
-const IS_NOTD1 = !!(S && NOT_D1.includes(S));
-const IS_NOTRACK = !!(S && (NO_TRACK.includes(S) || (IS_NOTD1 && S.was === 'notrack')));
-const IS_NOXC = !!(S && (NO_PROGRAM.includes(S) || (IS_NOTD1 && S.was === 'none')));
-const IS_CUT = !!(S && !SCHOOLS.includes(S) && !IS_NOTRACK && !IS_NOXC
-  && (!IS_NOTD1 || S.was === 'cut'));
+const IS_NOTRACK = !!(S && NO_TRACK.includes(S));
+const IS_NOXC = !!(S && NO_PROGRAM.includes(S));
+const IS_CUT = !!(S && !SCHOOLS.includes(S) && !IS_NOTRACK && !IS_NOXC);
 
 const usd = (n) => n == null ? null : '$' + n.toLocaleString('en-US');
 const SEASONS = {
@@ -46,24 +41,14 @@ function head() {
         ? `<span class="badge notrack"><span class="g" aria-hidden="true">⊘</span>No men&rsquo;s cross country</span>`
         : badge(S.tier);
 
-  const notD1Line = IS_NOTD1
-    ? `<span class="badge notd1"><span class="g" aria-hidden="true">◇</span>Not Division 1</span>` : '';
-
   return `
     <p class="eyebrow"><a href="${m.page}">${m.label}</a> · ${m.radius} radius</p>
     <h1>${S.name}</h1>
     <p class="lede">${S.city ?? ''}${S.div ? ' · ' + S.div : ''}${S.conf ? ' ' + S.conf : ''}${S.mi != null ? ' · ' + S.mi + ' mi from ' + m.label.replace(' SC', '') : ''}</p>
-    <p class="badge-row">${notD1Line}${tierLine}${IS_NOTRACK ? `<span class="src-tag">cross country only &mdash; the tier below is the cross country measurement, not a recommendation</span>`
+    <p class="badge-row">${tierLine}${IS_NOTRACK ? `<span class="src-tag">cross country only &mdash; the tier below is the cross country measurement, not a recommendation</span>`
       : S.xc ? `<span class="src-tag">tier from cross country results</span>`
       : IS_CUT || IS_NOXC ? '' : `<span class="src-tag">tier from one outdoor 5000 mark &mdash; no cross country data</span>`}</p>
     ${S.note ? `<p class="prose note-lede">${S.note}</p>` : ''}
-    ${IS_NOTD1 ? `<div class="callout"><span class="c-title">Archived &mdash; the board is Division 1 only</span>
-      <p>This is a <b>${S.div}</b> program, and the board was narrowed to Division 1. Nothing below has
-      changed and nothing about the school failed: the search rule did. The page is kept whole so the
-      measurement does not have to be redone if the rule is ever relaxed.</p>
-      ${S.was === 'board' ? `<p>Before the filter this was a <b>live candidate</b> at
-        <b>${TIERS[S.tier].label.toLowerCase()}</b> tier${S.tier === 'target' ? ' &mdash; inside their scoring seven, which is exactly what he is looking for' : ''}.
-        That is what the Division 1 rule cost here.</p>` : ''}</div>` : ''}
     ${IS_CUT ? `<div class="callout crit"><span class="c-title">Cut from the board</span><p>${S.why}</p></div>` : ''}
     ${IS_NOXC ? `<div class="callout crit"><span class="c-title">Off the board &mdash; there is no men&rsquo;s cross country team</span>
       <p>${S.why}</p>
@@ -207,7 +192,22 @@ function coachSection() {
           ? 'a <b>department-wide</b> account — this school links no cross country or track account of its own, so there is no public window on the distance squad. Worth asking the coach whether one exists'
           : 'the team&rsquo;s own account, linked from the page above. Read it before writing: who they signed last year, what their workouts look like, and whether the distance men get posted at all')
         : 'no Instagram is linked from the school&rsquo;s own athletics pages'],
+    ['Coach&rsquo;s Instagram',
+      c.ig ? `<a href="https://instagram.com/${c.ig}" rel="noopener">@${c.ig}</a>` : null,
+      c.ig
+        ? `the coach&rsquo;s <b>own</b> account, not the program&rsquo;s &mdash; recorded only because the account
+           itself says who they are${c.igSrc ? ` (${c.igSrc})` : ''}. Read it, do not message it: a recruiting question
+           belongs in the email above, where it is on the record and the coach can answer it as a coach`
+        : 'either this coach keeps no public account, or nothing found identifies one as theirs. A matching name alone was not accepted, so an empty cell here means <b>unverified</b>, not absent'],
   ];
+  /* A staff change found while checking Instagram, and the more valuable of the two
+     findings: the coach who recruited the class in the results below has gone, and the
+     email that was here would have reached nobody. Shown rather than silently corrected,
+     because a name a recruit half-remembers from last season should not just vanish. */
+  if (c.prev) rows.push(['Recently changed', `${c.prev} &rarr; <strong>${c.name}</strong>`,
+    `the staff page named ${c.prev} when this board was built and names ${c.name} now, so the
+     season measured below was coached by someone else. Read the results as the program&rsquo;s,
+     not the new coach&rsquo;s &mdash; and expect a new coach to be recruiting harder than a settled one`]);
   return `
     <h2>Who to email</h2>
     <div class="table-scroll">
@@ -218,9 +218,10 @@ function coachSection() {
       </tbody></table>
     </div>
     <p class="map-note">
-      Read from <a href="${c.src}" rel="noopener">the school's own staff directory</a> in August 2026.
-      Coaching staffs turn over between seasons, so check the link before writing &mdash; and if the
-      title above names a different sport or an interim, that is what the directory said.
+      Read from <a href="${c.src}" rel="noopener">the school's own staff directory</a> in August 2026 and
+      <b>re-checked against it in September 2026</b>, when five names across the board turned out to have
+      changed. Coaching staffs turn over between seasons, so check the link before writing &mdash; and if
+      the title above names a different sport or an interim, that is what the directory said.
     </p>`;
 }
 
@@ -756,6 +757,6 @@ if (!S) {
     head() + cost() + academics() + xcSection() + trackMarks() + fifteen() + meetSection() + coachSection() + completeness() + `
     <hr>
     <p class="prose"><a href="${METROS[S.metro].page}">&larr; Back to ${METROS[S.metro].label}</a>
-      &nbsp;·&nbsp; <a href="index.html">All ${SCHOOLS.length} Division 1 schools</a></p>`;
+      &nbsp;·&nbsp; <a href="index.html">All ${SCHOOLS.length} schools on the board</a></p>`;
   initMeetMap();
 }

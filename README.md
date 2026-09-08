@@ -9,14 +9,19 @@ ranks them by the one question that predicts whether a distance runner actually 
 
 **Live site:** https://timhibbard.github.io/xc-cs-college-board/
 
-**The board is Division 1 only: 44 schools on it, 12 cut as walk-on, 17 with cross country but no
-men's track, 11 with no men's program to join, and 77 more kept whole in the non-D1 archive.** All 150
-rows that have a men's program carry federal cost and admissions data, a detail page, and **the name and
-contact details of the coach who would recruit him**, plus **the program's Instagram** on every
-Division 1 row that has a men's program; **all 44 on the board rest on a real 2025 cross country result**, each with **its 2026
-conference-championship 1500 field** and his projected 4:01 dropped into it, and 150 of the 161 pages
-also carry a map of every meet the program attended last season. Only **Shorter** and **Calumet
-College**, both archived, still sit at *Verify*, which means **unmeasured, not borderline**.
+**The board covers every division: 120 schools on it — 44 D1, 46 D2, 28 D3 and two NAIA — plus 13 cut
+as walk-on, 17 with cross country but no men's track, and 11 with no men's program to join.** A
+Division-1-only rule was tried on this board and **reversed**; the write-up of it is kept as a decision
+made and undone rather than deleted, because the reason it failed is the useful part — it removed 96 rows,
+thirteen of them at target tier and all thirteen in the Greenville ring. All 150 rows that have a men's
+program carry federal cost and admissions data, a detail page, **the name and contact details of the coach
+who would recruit him**, and **the program's Instagram** (147 of the 150) — plus **the coach's own
+Instagram on 17 rows**, recorded only where the account's own bio says they coach this program; **119 of
+the 120 on the board
+rest on a real 2025 cross country result**, each with **its 2026 conference-championship 1500 field** and
+his projected 4:01 dropped into it, and 150 of the 161 pages also carry a map of every meet the program
+attended last season. Only **Shorter** and **Calumet College** still sit at *Verify*, which means
+**unmeasured, not borderline**.
 
 **The Greenville ring is 300 driving miles**, widened from 250. That pass turned up eight Division 1
 programs new to the board: Auburn, Samford and Radford joined it, NC State, Virginia Tech and Eastern
@@ -48,14 +53,19 @@ Measuring all of them produced one finding that changed the method: **45 of the 
 programs never finished seven runners in any 2025 championship race**, so there is no 7th man to
 compare against. Those schools are compared to the team's *last* finisher instead and say so, and
 the five that could not finish the scoring five — Roosevelt, Benedict, John Jay, Mount Saint Vincent
-and York College (CUNY) — are held at *Caution* regardless of times. On the Division 1 board the
-never-seven count is **9 of 44**.
+and York College (CUNY) — are held at *Caution* regardless of times. On the board itself the count is
+**38 of 120**: 25 around Greenville, 8 around New York and 5 in Chicago. It is not a small-college
+problem with a divisional fix — five of the 25 in Greenville are Division 1 — which is one of the
+reasons the Division 1 rule did not survive.
 
 The 1500 data says the same thing a second way: at **57 of the 114 programs that raced a 1500 in
 2026** his projected 4:01 would be their fastest man in the event, and the median program's best 1500
 went 4:01.1. In the other direction he would have made the conference final at **105 of 120**
-championships and scored — top eight — at **64**. On the Division 1 board alone the numbers are
-harder: their median best 1500 is **3:49.7**, he makes the final at 29 of 44 and scores at 8.
+championships and scored — top eight — at **64**. The divisional split is stark, and it cuts the other
+way from the tier ladder: across the 44 Division 1 rows the median best 1500 is **3:49.7**, he makes the
+final at 29 of them and scores at 8. Read against 91 rows that actually entered somebody in the event at
+their conference meet, he makes 79 finals and scores in 50 — **29 programs entered nobody in the 1500 at
+all**, which is a fact about how the event is used rather than about him.
 
 An earlier version of this file claimed the board listed *every* college inside each radius that
 sponsors men's cross country. **That was false**, and the correction is the second largest change
@@ -126,18 +136,20 @@ rather than edited in place, and the invariant is checkable: each stored `slot`,
 
 ## Metros
 
-Every count here is the **Division 1 board**; the schools the D1 rule removed are in the last column
-and are archived, not deleted.
+Every count here is the live board, all divisions.
 
-| Metro | Radius | On the board | Target tier | No 7th man | Cut as walk-on | No men's track (D1) | Archived non-D1 | Source document |
+| Metro | Radius | On the board | Target tier | No 7th man | Cut as walk-on | No men's track | No men's program | Source document |
 |---|---|---|---|---|---|---|---|---|
-| Greenville, SC | 300 mi | 31 | 16 | 5 | 9 | 3 | 55 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
-| New York City | 20 mi + all of Long Island | 10 | 4 | 3 | 2 | 0 | 31 | [`docs/new-york-city.md`](docs/new-york-city.md) |
-| Chicago | 20 mi | 3 | 1 | 1 | 1 | 0 | 10 | [`docs/chicago.md`](docs/chicago.md) |
+| Greenville, SC | 300 mi | 81 | 29 | 25 | 10 | 6 | 5 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
+| New York City | 20 mi + all of Long Island | 28 | 4 | 8 | 2 | 10 | 4 | [`docs/new-york-city.md`](docs/new-york-city.md) |
+| Chicago | 20 mi | 11 | 1 | 5 | 1 | 1 | 2 | [`docs/chicago.md`](docs/chicago.md) |
 
-Every school on the board has a 2025 cross country result, so a "with XC data" column would read 31, 10
-and 3. All ten of the no-men's-track schools in New York and the one in Chicago are non-D1 and are
-counted in the archive column instead.
+A "with XC data" column would read 80, 28 and 11 — every school on the board except **Shorter**, which
+never fielded a measurable championship squad. The divisional shape of the three rings is completely
+different and worth reading before the tiers: Greenville is 31 D1, 38 D2, 11 D3 and one NAIA; New York
+is 10 D1, 7 D2 and 11 D3; Chicago is 3 D1, one D2, 6 D3 and one NAIA. **Chicago is a Division 3 city**
+for men's distance running, and ten of New York's seventeen no-men's-track removals are D3 CUNY and
+small-private programs.
 
 The New York rule is a shape, not a circle: 20 driving miles from Midtown **plus all of Nassau and
 Suffolk County** regardless of distance, because Long Island is a commutable corridor while
@@ -171,10 +183,15 @@ rather than edited out, because the pattern is the useful part:
 The fifth withdrawal is the completeness claim at the top of this file. The sixth is larger than any
 of them and is a rule rather than a school: the board now requires **both** cross country and outdoor
 track, which took seventeen schools off it including target-tier **Mercer** and target-tier **Tennessee
-Tech**. The seventh is larger still and is also a rule: the board is now **Division 1 only**, which
-archived 96 rows, thirteen of them at target tier and all thirteen in the Greenville ring — including
-**Anderson (SC)**, 29 driving miles from home, and **Fayetteville State** at a $11,892 net price. None of
-it is deleted, and reversing either rule is one line of data.
+Tech**. The seventh is larger still, is also a rule, and is the only one that has itself been withdrawn: the
+board was narrowed to **Division 1 only**, which removed 96 rows, thirteen of them at target tier and all
+thirteen in the Greenville ring — including **Anderson (SC)**, 29 driving miles from home and the closest
+target anywhere, and **Fayetteville State** at an $11,892 net price, the cheapest target anywhere. Nothing
+about the running justified that: the thirteen were target tier on measured championship results, not on
+division. Because the rule was implemented as an archive rather than a deletion, undoing it required no
+re-measuring — every slot, gap, spread, tier and coach came back exactly as it went in. The lesson worth
+keeping is about the shape of the mistake: a filter on a *label* silently deleted the two rows the whole
+search existed to find.
 
 **Two schools were also cut in error and are back on the board.** Clemson and Columbia were both
 removed on their track marks alone — a 14:36 and a 13:43 5000 read as out of reach. Their actual
@@ -198,8 +215,9 @@ so the board was declining to recruit a program that does not exist. Trinity Chr
 than deleted so the corrections stay visible.
 **Chicago is also thin on its own merits, not because of the radius** — at 30 miles it held four
 extra schools and still only one target-tier fit, and now that all eleven programs in range are
-measured, five of them never finished seven. Only three of the eleven are Division 1, which is why the
-metro is three rows long on the board.
+measured, five of them never finished seven. Only three of the eleven are Division 1 and six are
+Division 3, so athletic money in this metro exists at exactly two addresses: Roosevelt (D2, and it
+finished four runners) and Saint Xavier (NAIA, and he would be their #1).
 
 The [methodology page](https://timhibbard.github.io/xc-cs-college-board/methodology.html) has
 the full list of withdrawn claims. Every one started as a confident statement from general
@@ -222,6 +240,25 @@ a program housed under mathematics can read as zero.
 
 Federal data replaced every estimate in the previous version: **33 SAT ranges were off by 60
 points or more, and 9 acceptance rates by 15 points or more.**
+
+**Every coach name was re-checked against the school's own staff directory a month after it was
+first read, and five had already changed** — Young Harris, Savannah State, Clayton State, Montreat and
+Yeshiva, four of the five replacements carrying an *interim* title. 141 names confirmed on the live page,
+three apparent misses that were the fetch's fault and confirmed correct elsewhere, and one row (Baruch)
+whose site would not answer at all. That is a ~3%-per-month decay rate on the most actionable column on
+the site, which is why every school page links the directory it was read from. The Young Harris change
+was found the long way round: a coach handle matched the name perfectly and had to be rejected because
+the bio placed him at Evansville — and it was right, and this board was a season out of date.
+
+Every admit rate was then **re-verified row by row against the live Scorecard**, matched on IPEDS unit ID
+rather than by name. **148 numeric rates match the federal figure exactly, with zero mismatches.** Two
+things came out of it. Three rows that read "not reported" — Savannah State, Felician and Calumet College
+— return no `admission_rate.overall` but carry `open_admissions_policy = 1` and a consumer rate of 1.0,
+so they are **open-admission schools rather than missing data** and now read 100%; every one of the 150
+rows has a federal admit rate. And **St. Joseph's Long Island and St. Joseph's Univ NY share IPEDS
+195544**, correctly: they are one federally reporting institution fielding two NCAA programs, so the
+admit rate, SAT range, net price and enrollment on both pages describe the combined university. Neither
+is on the board, so no ranking depends on it.
 
 **Town population:** the U.S. Census Bureau's American Community Survey, table B01003, **2024
 5-year estimates**, read through the Census Reporter API and matched to the exact place each campus
@@ -345,19 +382,18 @@ name; each carries date, season and a `VENUES` index), and `SCHED` (school name 
 TFRRS results page shows it at, in date order — 3,241 appearances across 150 of the 161 schools with a
 page).
 
-`NO_TRACK` in `assets/data.js` holds the three **Division 1** schools removed under the both-sports rule
-— Mercer, Tennessee Tech and Jacksonville State — and the other fourteen sit in `NOT_D1` tagged
-`was: 'notrack'`. All of them keep their complete records — tier, cross country, cost, coach — plus a
-`why` naming both signals that agreed, so the removal is reversible with one line of data if a
-cross-country-only program ever becomes acceptable.
+`NO_TRACK` in `assets/data.js` holds all **17** schools removed under the both-sports rule — three of
+them Division 1 (Mercer, Tennessee Tech and Jacksonville State), three D2, ten D3 and one NAIA. All of
+them keep their complete records — tier, cross country, cost, coach — plus a `why` naming both signals
+that agreed, so the removal is reversible with one line of data if a cross-country-only program ever
+becomes acceptable.
 
-`NOT_D1` holds the **96 rows the Division 1 rule archived**, each tagged with where it sat before the
-filter: `was: 'board'` (76 live candidates, thirteen of them at target tier), `'cut'` (1), `'notrack'`
-(14) or `'none'` (5, no men's program). Nothing about them is degraded — measured slot, gap, spread,
-tier, coach and reasoning are all intact, each has a school page and each metro map has them as a
-toggleable layer — so relaxing the rule needs no re-measuring. Instagram handles are the one thing these
-rows do not carry: that lookup was run for the Division 1 board and cut list only, so an empty Instagram
-cell on an archived page means "not looked up", not "does not exist".
+**There is no `NOT_D1` array any more.** The Division 1 rule held 96 rows in one, each tagged with where
+it sat before the filter, precisely so that reversing it would be mechanical; when it was reversed the 96
+went back into `SCHOOLS`, `REMOVED` and `NO_TRACK` and the `was:` tags came off. That is the argument for
+archiving rather than deleting, stated as an outcome rather than a plan: nothing had to be re-measured and
+no page had to be rebuilt. Division is a column and a filter on every table on the site, so the
+Division-1-only view is still one click away — it is just no longer the board.
 
 `mi` is approximate **driving** distance from the metro center; `lat`/`lon` are approximate
 main-campus coordinates used only to place a map pin. The two are different measurements, so a

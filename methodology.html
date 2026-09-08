@@ -304,8 +304,8 @@
         <em>meet result</em> pages from the 2025 cross country season, which list every team's
         scoring seven by name and time. Where those exist they supersede the track marks entirely.
         Where they do not, the school sits in <em>Verify</em> and its tier should be read as a
-        placeholder; only <strong>Shorter</strong> and <strong>Calumet College</strong> are left in
-        that state, both of them in the non-Division 1 archive.
+        placeholder; only <strong>Shorter</strong> (on the board, D2) and <strong>Calumet
+        College</strong> (removed under the both-sports rule) are left in that state.
       </li>
     </ol>
   </div>
@@ -552,8 +552,8 @@
     Every cost, SAT, admit-rate, and CS-program figure on this site now comes from the
     <strong>U.S. Department of Education College Scorecard</strong> — the federal collection that
     every institution is required to report to. All <strong>150 schools with a men&rsquo;s
-    program</strong> on this site — 44 on the board, 12 on the cut list, 17 that field cross
-    country without men&rsquo;s outdoor track, and 77 archived as non-Division 1 — are matched to exactly one federal record each, using an
+    program</strong> on this site — 120 on the board, 13 on the cut list and 17 that field cross
+    country without men&rsquo;s outdoor track — are matched to exactly one federal record each, using an
     <strong>explicit name map rather than fuzzy matching</strong>, because fuzzy matching produced
     confident false positives at a similarity score of 1.0 (Georgia State matched to Georgia Tech,
     among six others).
@@ -565,10 +565,40 @@
     52%, not ~70%; Lander 81%, not ~55%. Anyone who had used the old figures to decide where to apply
     would have been misled.
   </p>
+  <h3 id="admit-verified">Every admit rate re-checked, one row at a time</h3>
+  <p class="prose">
+    Because a single wrong admit rate can move a school from "apply" to "do not bother", all of them were
+    re-verified against the live Scorecard rather than trusted from the earlier import. Each of the
+    <strong>150 rows with a men's program</strong> was queried by its own IPEDS unit ID and its published
+    percentage compared to the federal <code>admission_rate.overall</code> field. <strong>148 numeric rates
+    match the federal figure exactly</strong>, to the rounded percentage point, with <strong>zero
+    mismatches</strong>. Two things came out of the exercise that were worth changing.
+  </p>
+  <div class="prose">
+    <ul>
+      <li><strong>Three rows said &ldquo;not reported&rdquo; and should not have.</strong>
+        <strong>Savannah State</strong>, <strong>Felician</strong> and <strong>Calumet College</strong>
+        return no <code>admission_rate.overall</code>, which is why they were blank &mdash; but all three
+        carry <code>open_admissions_policy = 1</code> and a consumer admission rate of 1.0 in the same
+        federal record. That is not missing data; it is an <strong>open-admission school</strong>, which is
+        a meaningful and favourable fact rather than an absence. All three now read <strong>100%</strong>,
+        which is the same convention two other rows on the board already used, and every one of the 150
+        rows now carries a federal admit rate.</li>
+      <li><strong>Two rows legitimately share one federal record.</strong>
+        <strong>St. Joseph's Long Island</strong> (Patchogue) and <strong>St. Joseph's Univ NY</strong>
+        (Brooklyn) both map to <strong>IPEDS 195544</strong>. That is correct rather than a matching error:
+        the two are one institution &mdash; St. Joseph's University, New York &mdash; reporting federally as
+        a single unit while fielding two separate NCAA programs. The consequence is that the admit rate, SAT
+        range, net price and enrollment shown on both pages describe the combined university, not the campus
+        named at the top of the page. Neither row is on the board (both sponsor cross country without men's
+        outdoor track), so nothing on the ranking depends on it, but the two pages should not be read as two
+        independent measurements.</li>
+    </ul>
+  </div>
   <p class="prose">
     Two <strong>size</strong> figures sit beside the money on the Greenville table and on every school
     page. <strong>Undergraduate enrollment</strong> is from the same federal record, and every one of
-    the 44 schools on the board has it. <strong>Town population</strong> is not federal-education data at all — it
+    the 120 schools on the board has it. <strong>Town population</strong> is not federal-education data at all — it
     comes from the <strong>U.S. Census Bureau's American Community Survey, table B01003, 2024 5-year
     estimates (2020&ndash;2024)</strong>, read through the Census Reporter API and matched to the
     exact place each campus sits in. It is collected for the <strong>Greenville ring only</strong>:
@@ -580,8 +610,8 @@
     <ul>
       <li><strong>Public schools show the rate he would actually pay</strong> &mdash; the out-of-state rate, since he is a South Carolina resident. In-state figures apply only to the <strong>eleven South Carolina publics</strong> on the site: Clemson, South Carolina, Coastal Carolina, the College of Charleston, The Citadel, Winthrop, Lander, USC Upstate, USC Aiken, Francis Marion and SC State. Which rate a school shows is a fact about the school, not a setting.</li>
       <li><strong>Average net price is an average</strong> across all incoming students after grants and scholarships — not a quote. A strong student stacking merit aid usually lands below it; it is a planning number, not a prediction. At a public school the federal average is also computed from <em>in-state</em> students only, which is not the basis that applies to him &mdash; see <a href="#residency">how residency enters the net cost</a> below.</li>
-      <li><strong>Town population is the <em>place</em>, not the setting.</strong> Three of these figures are consolidated city-county governments — Augusta and Macon in Georgia, and Athens for the University of Georgia — so they are county-wide and read larger than what surrounds the campus. Four are census-designated places rather than incorporated towns (Buies Creek, Cullowhee, Tigerville, and Emory VA), where the boundary is a statistical convenience. And a small number inside a large metro describes the address rather than the experience: Morrow GA is 6,364 people and is <em>Atlanta</em>. Always read the town column next to the Mi column. Where it is useful is the opposite case, and there are five of them: at Montreat, Western Carolina, Kennesaw State, Clemson and UNC Pembroke there are more undergraduates than town residents — and only the middle three are still on the Division 1 board.</li>
-      <li><strong>The CS share is CIP family 11 only.</strong> A computer science degree housed administratively under mathematics reads as zero — which is exactly what happened at SUNY Purchase (now out of range), where the real program was a combined BA in Mathematics/Computer Science. A low share is not proof of absence. <strong>One school on the board reports no CS degree: Queens (Charlotte)</strong>, and because it is <em>Target</em> tier on the running it is the only place this caveat could change a real decision on the board. It reports 0% computing degrees <em>and</em> a live mathematics program, which at a small college is usually the signature of CS filed under mathematics rather than of no CS at all, and its page says so rather than asserting the degree does not exist. <strong>Twelve of the archived non-D1 rows report none either</strong>, and they are not all the same case. Three were checked by hand and disqualified on their own course catalogues: Mount Saint Vincent (no CS <em>and</em> no men's track), the Merchant Marine Academy (five marine majors and a service obligation), and North Park. Five more carry the same explicit warning as Queens instead of a hand check — Brevard, Belmont Abbey, Young Harris, Allen University and Oglethorpe. <strong>Emory &amp; Henry is the row to re-check first</strong> if the Division 1 rule is ever relaxed: it is the only <em>Target</em>-tier row in the archive with no confirmed CS degree, and the §3b course correction is what moved it into Target, so its CS question was previously moot and now is not. The last three — Lees-McRae, SUNY Maritime and Sarah Lawrence — report 0% and have not been checked either way; all three are thin-squad cautions on the running side, so the CS question is not what rules them out.</li>
+      <li><strong>Town population is the <em>place</em>, not the setting.</strong> Three of these figures are consolidated city-county governments — Augusta and Macon in Georgia, and Athens for the University of Georgia — so they are county-wide and read larger than what surrounds the campus. Four are census-designated places rather than incorporated towns (Buies Creek, Cullowhee, Tigerville, and Emory VA), where the boundary is a statistical convenience. And a small number inside a large metro describes the address rather than the experience: Morrow GA is 6,364 people and is <em>Atlanta</em>. Always read the town column next to the Mi column. Where it is useful is the opposite case, and there are five of them: at Montreat, Western Carolina, Kennesaw State, Clemson and UNC Pembroke there are more undergraduates than town residents.</li>
+      <li><strong>The CS share is CIP family 11 only.</strong> A computer science degree housed administratively under mathematics reads as zero — which is exactly what happened at SUNY Purchase (now out of range), where the real program was a combined BA in Mathematics/Computer Science. A low share is not proof of absence. <strong>Ten schools on the board report no CS degree</strong>, and they are not all the same case. <strong>Two of the ten are <em>Target</em> tier on the running</strong>, which is where this caveat could change a real decision: <strong>Queens (Charlotte)</strong> and <strong>Emory &amp; Henry</strong>. Queens reports 0% computing degrees <em>and</em> a live mathematics program, which at a small college is usually the signature of CS filed under mathematics rather than of no CS at all, and its page says so rather than asserting the degree does not exist. Emory &amp; Henry is the row to re-check first: the §3b course correction is what moved it into Target, so its CS question was moot until recently and is not now. Three of the ten were checked by hand and disqualified on their own course catalogues: the Merchant Marine Academy (five marine majors and a service obligation), North Park, and Mount Saint Vincent, which is off the board anyway for having no men's track. Five more carry the same explicit warning as Queens instead of a hand check — Brevard, Belmont Abbey, Young Harris, Allen University and Oglethorpe — and Lees-McRae reports 0% and has not been checked either way; all six are thin-squad cautions on the running side, so the CS question is not what rules them out. Two schools removed under the both-sports rule, SUNY Maritime and Sarah Lawrence, report none as well.</li>
     </ul>
   </div>
 
@@ -608,20 +638,21 @@
     <span class="est">&asymp;</span> and a dotted underline to say it is an estimate rather than a
     reported figure. That arithmetic <strong>holds average grant aid constant</strong> and moves only
     the tuition, which is the only part of the bill that depends on residency &mdash; room and board do
-    not. It applies to <strong>17 of the 44 schools on the board</strong> (14 around Greenville, 2
+    not. It applies to <strong>36 of the 120 schools on the board</strong> (23 around Greenville, 12
     around New York, 1 in Chicago) and to 50 publics site-wide. Two publics are unaffected because they
     charge one rate to everyone: <strong>Chicago State</strong> and the <strong>Merchant Marine
     Academy</strong>. Privates are unaffected by definition.
   </p>
   <p class="prose">
-    The correction is not cosmetic. On the Division 1 board it moves the median net price from
-    <strong>$17,527 to $25,613</strong> &mdash; and from $24,423 to $29,844 around New York, where most
-    of the cheap options are public. It cuts <strong>&ldquo;targets under $15,000&rdquo; from five
-    schools to one</strong>: only <strong>Coastal Carolina</strong> ($13,966) survives, because it is in
-    South Carolina. UNC Asheville, UNC Greensboro, Chattanooga and West Georgia all read under $15,000
-    on the raw federal figure and none of them does on his residency. The largest single moves on the
-    board are Georgia Tech ($12,116 &rarr; $34,542), Auburn ($24,323 &rarr; $46,355) and Stony
-    Brook ($18,784 &rarr; $40,594).
+    The correction is not cosmetic. It moves the board's median net price from
+    <strong>$18,831 to $20,994</strong> &mdash; and from $19,244 to $22,969 around New York, where most
+    of the cheap options are public. It cuts <strong>&ldquo;targets under $15,000&rdquo; from nine
+    schools to three</strong>: <strong>Coastal Carolina</strong> ($13,966, in-state South Carolina),
+    <strong>Fayetteville State</strong> (&asymp;$11,892) and <strong>UNC Pembroke</strong>
+    (&asymp;$14,260) survive. UNC Asheville, UNC Greensboro, Chattanooga, West Georgia, Augusta
+    University and UVA Wise all read under $15,000 on the raw federal figure and none of them does on
+    his residency. The largest single moves on the board are Georgia Tech ($12,116 &rarr; $34,542),
+    Auburn ($24,323 &rarr; $46,355) and Stony Brook ($18,784 &rarr; $40,594).
   </p>
   <div class="prose">
     <p>Three things could make the estimate too high, and all three are worth asking about:</p>
@@ -634,7 +665,8 @@
         rates to a South Carolina student in a specific major not offered in-state; computer science
         will not usually qualify, but the mechanism exists.</li>
       <li><strong>Athletic money.</strong> Division I and II programs can award it; Division III cannot,
-        and roughly half this board is Division III. Where it exists in cross country it is normally
+        and <strong>28 of the 120 schools on this board are Division III</strong> (against 44 D1, 46 D2 and
+        two NAIA). Where it exists in cross country it is normally
         partial and split many ways.</li>
     </ul>
     <p>
@@ -664,27 +696,124 @@
       <li><strong>Sidearm obfuscates addresses in the page source</strong>, splitting them across two JavaScript variables that are concatenated in the browser, so an address that looks absent to a naive fetch is usually present. Reassembling those is the difference between the coverage above and roughly half of it.</li>
     </ul>
     <p>
-      <strong>This data decays faster than anything else on the site.</strong> Coaching staffs turn over
-      every year, and these were read in <strong>August 2026</strong>. The link matters more than the
-      name: if the name is stale, the directory behind it is not.
+      <strong>This data decays faster than anything else on the site, and there is now a measured rate
+      for it.</strong> These were read in <strong>August 2026</strong> and every one of the 150 was
+      re-checked against the same directories in <strong>September 2026</strong>: <strong>five names had
+      already changed</strong> in about a month (see below). The link matters more than the name: if the
+      name is stale, the directory behind it is not.
+    </p>
+  </div>
+
+
+  <h3 id="coach-recheck">Every coach name re-checked &mdash; five had already left</h3>
+  <p class="prose">
+    The staff directories had to be fetched again to look for coaches' Instagram accounts, which made a
+    second check almost free: does the page still name the coach this site names? Each of the 150 pages was
+    re-read and searched for the recorded name. <strong>141 confirmed on the live page. Five had
+    changed.</strong> Three more &mdash; Newberry, Dominican University and Clark Atlanta &mdash; looked
+    like misses but were the fetch's fault rather than the data's: those sites return no per-sport coaches
+    page, and all three coaches were confirmed on the department staff directory instead. One row,
+    <strong>Baruch College</strong>, could not be re-checked at all: its athletics site presents a broken
+    TLS certificate chain and then times out, so its coach is the single name here still resting on the
+    August read.
+  </p>
+  <div class="prose">
+    <p>The five changes, each read off the school's own 2026 staff page:</p>
+    <ul>
+      <li><strong>Young Harris:</strong> Matt Logan &rarr; <strong>Wyatt Whipp</strong> (interim, cross
+      country) with Dylan Dicicco taking track. Logan's own Instagram bio now reads <em>&ldquo;Head Track and
+      Field &amp; Cross Country Coach @ueathleticsxctf&rdquo;</em> &mdash; the University of Evansville. This is
+      the one that found the others: a handle that matched the name perfectly had to be rejected because the
+      account placed him at a different school, and checking why is what exposed the stale row.</li>
+      <li><strong>Savannah State:</strong> Ted Whitaker &rarr; <strong>Chad Cannon</strong> (interim).</li>
+      <li><strong>Clayton State:</strong> Chris Brown, OLY &rarr; <strong>Troy Hickom</strong>, whose title
+      is cross-country-first rather than track-first &mdash; a better contact for a distance runner than the
+      name it replaced.</li>
+      <li><strong>Montreat:</strong> Jacob Simms &rarr; <strong>Rylan Hincher</strong> (interim).</li>
+      <li><strong>Yeshiva University:</strong> Miy Mahran &rarr; <strong>Steven Lange</strong>.</li>
+    </ul>
+    <p>
+      Two of the five were then corroborated by the programs' own Instagram accounts &mdash;
+      <em>@savstatetigers</em> announcing Cannon's promotion to interim head coach, <em>@yhcathletics</em>
+      announcing Whipp and Dicicco &mdash; which is the only place in this project where Instagram produced
+      a <em>fact</em> rather than a link to read. <strong>Four of the five new titles say
+      &ldquo;interim&rdquo;</strong>, and that is worth reading as a recruiting signal in its own right: an
+      interim coach has a roster to fill and a case to make for the permanent job, and no authority to make
+      promises about years he may not be there for. Every changed row carries a <em>Recently changed</em>
+      line on its school page naming the predecessor, because the season measured on that page was coached
+      by someone else. The old address on the Young Harris row would have reached nobody at all.
+    </p>
+  </div>
+
+  <h3 id="coach-ig">The coach's own Instagram &mdash; 17 of 150, and why that number is honest</h3>
+  <p class="prose">
+    The program handles elsewhere on this site are read off school pages (&sect;6a). A coach's personal
+    account is never on those pages: all 150 staff directories were scanned for one and <strong>not a single
+    school links a coach's personal Instagram</strong>. Instagram itself cannot be queried either &mdash; a
+    profile page returns a login wall to anything that is not a browser. So this column could only be built
+    by search, one coach at a time: a <code>site:instagram.com &quot;&lt;coach name&gt;&quot; &lt;school&gt;</code>
+    query against Google's index, a plain-language fallback query where that returned no profile, and then a
+    third query on each surviving handle by itself, because a search on a person's name truncates the bio
+    while a search on the handle returns it in full. That bio is the evidence, and each accepted row stores
+    the words it rests on.
+  </p>
+  <div class="prose">
+    <p>
+      <strong>The standard is the whole story here.</strong> A handle is recorded only when the account
+      itself ties the person to this program: the name in the handle, the name on the account, the school
+      named in the account's own bio or its posts, and a coaching or running word. <strong>A matching name
+      is never enough on its own.</strong> Under that rule, of 150 coaches searched, 43 produced at least
+      one plausible candidate and <strong>17 were accepted</strong> &mdash; 13 of the 120 rows on the board,
+      and 7 of the 34 at target tier.
+    </p>
+    <p>The rejections are the reason to trust the acceptances:</p>
+    <ul>
+      <li><strong>Nine different accounts belong to a &ldquo;Chris Bailey&rdquo;</strong> and eight to a
+      &ldquo;Mark Elliott&rdquo;, the coaches at the College of Charleston and Clemson. Not one of the
+      seventeen says anything about coaching, running, or either school. Picking the plausible one would
+      have meant publishing a stranger's account under a coach's name.</li>
+      <li><strong>Three accounts belong to a &ldquo;Sterling Jones&rdquo;</strong>, ETSU's coach. The one
+      with 20,000 followers has no bio at all; another sells a food business. None of them coach.</li>
+      <li><strong>@riley.macon</strong> is the right name for UNC Charlotte's coach, has nine posts and no
+      bio, and proves nothing. <strong>@mark_elliston</strong> has zero posts. Both were rejected.</li>
+      <li><strong>@coachmattlogan</strong> is the instructive one: right name, right sport, wrong school
+      &mdash; and it turned out the school was wrong on this site, not in the bio (above).</li>
+    </ul>
+    <p>
+      <strong>What an empty cell means, precisely:</strong> either the coach keeps no public account, or
+      nothing found identifies one as theirs. It does not mean there is none. The search can only see a coach
+      whose handle contains part of their own name or who is named in someone else's caption, so a coach
+      posting under an unrelated handle is invisible to it &mdash; and about a third of the searches returned no
+      Instagram result of any kind, which for coaches in their fifties and sixties at small colleges is a
+      believable answer rather than a failure. One accepted account, <strong>Duke's</strong>, is private:
+      the handle is right and the bio is public, but nothing behind it is readable without being let in.
+    </p>
+    <p>
+      <strong>Read these; do not write to them.</strong> A coach's account is the most useful window on the
+      site &mdash; who they signed, what they say about their distance group, whether they post about
+      running at all &mdash; and the worst possible channel for a recruiting question. A direct message is
+      off the record, easy to miss, and reaches the person as a person rather than as a coach. The email
+      address in the same table is the one that gets an answer.
     </p>
   </div>
 
   <h2>6a. Known gaps in this data</h2>
   <div class="prose">
     <ol>
-      <li><strong>Every school on the board now has a cross country result</strong> — down from 93 unmeasured, which was the largest gap on this site for most of its life, and down from one. The tier <em>Verify</em>, which meant <em>unmeasured, not borderline</em>, is now unused: all 44 Division 1 schools on the board and all 12 on the cut list rest on a 2025 championship result. The two rows that were still open both left the board for reasons unconnected to measurement: <strong>Shorter</strong> is Division 2 and is archived under §6c (it may have been unmeasurable rather than unmeasured — it entered three men at its only 2025 meet and all three did not start), and <strong>South Carolina</strong> turned out to sponsor no men's cross country at all (§6b). The archive itself is not complete in this sense: 7 of the 96 archived non-D1 rows have no result on file, though only one of those was a live candidate.</li>
+      <li><strong>119 of the 120 schools on the board have a cross country result</strong> — down from 93 unmeasured, which was the largest gap on this site for most of its life. All 13 schools on the cut list rest on a 2025 championship result too. <strong>One row is still open: Shorter</strong>, which holds the last <em>Verify</em> tier on the site — and it may be unmeasurable rather than unmeasured, because it entered three men at its only 2025 meet and all three did not start. Two other rows that were open have since left the board for reasons unconnected to measurement: <strong>Calumet College</strong> failed the both-sports rule (§6b) and <strong>South Carolina</strong> turned out to sponsor no men's cross country at all.</li>
       <li><strong>Depth is now measured, but only from championship races.</strong> The 228 races on file are conference championships and NCAA regionals, because those are the ones where a program fields its actual seven. That is the right sample for the question, and it also means most schools rest on <strong>one or two races</strong>, run on a course whose difficulty is usually uncorrected (§3a). A regular-season result would not change a tier, but a second championship result could, and 45 of the measured programs have a further problem on top of that: no 7th man to compare against at all.</li>
-      <li><strong>How the candidate lists were built, and why the earlier version of this claim was false.</strong> An earlier README said this board listed <em>every</em> school inside each radius that sponsors men's cross country. It did not. The lists were originally assembled from general knowledge and then verified individually, which validates what is present and says nothing about what is missing — and about 45 schools were missing from Greenville alone, including one 25 driving miles from home. The lists are now built the other way round: <strong>conference by conference, from each conference's own men's-sponsored-sports table</strong>. That sweep covered every NCAA D1, D2 and D3 conference with a member inside a ring; the board has since been narrowed to Division 1 (§6c), and the non-D1 half of the sweep is kept whole in the archive rather than discarded. The guarantee is materially stronger than the old one, but it inherits the conferences' errors — a stale sponsored-sports table is wrong in both directions, and each school's sponsorship was <em>not</em> re-confirmed on the school's own athletics site.</li>
-      <li><strong>NAIA and NCCAA coverage is incomplete and known to be — which the Division 1 rule has made moot for the board and not for the archive.</strong> Since the board is Division 1 only, no NAIA or NCCAA program can appear on it, so this gap no longer affects any ranking. It does affect the archive: the four NAIA rows in <code>NOT_D1</code> are the only non-NCAA programs the sweep ever found, and at least these NAIA and NCCAA programs in the Greenville footprint were never checked — Toccoa Falls, Truett McConnell, Brenau, Columbia International, Columbia College SC, Milligan, Johnson University, Reinhardt, Voorhees, Tennessee Wesleyan, Morris College, Bryan College, Bluefield University, Point University, Life University, Spartanburg Methodist and Warren Wilson. NAIA allows 12 scholarships for men's XC and track and has looser eligibility rules, so if the Division 1 rule is ever relaxed this gap becomes live again, in exactly the place where money is easiest to find.</li>
+      <li><strong>How the candidate lists were built, and why the earlier version of this claim was false.</strong> An earlier README said this board listed <em>every</em> school inside each radius that sponsors men's cross country. It did not. The lists were originally assembled from general knowledge and then verified individually, which validates what is present and says nothing about what is missing — and about 45 schools were missing from Greenville alone, including one 25 driving miles from home. The lists are now built the other way round: <strong>conference by conference, from each conference's own men's-sponsored-sports table</strong>. That sweep covered every NCAA D1, D2 and D3 conference with a member inside a ring, and all of it is on the board: a Division-1-only rule was applied and then reversed (§6c). The guarantee is materially stronger than the old one, but it inherits the conferences' errors — a stale sponsored-sports table is wrong in both directions, and each school's sponsorship was <em>not</em> re-confirmed on the school's own athletics site.</li>
+      <li><strong>NAIA and NCCAA coverage is incomplete and known to be — and with the Division 1 rule reversed (§6c) this is a live gap again.</strong> The sweep was built from NCAA conference sponsored-sports tables, so the four NAIA rows on this site are only the non-NCAA programs it happened to run into. At least these NAIA and NCCAA programs in the Greenville footprint were never checked — Toccoa Falls, Truett McConnell, Brenau, Columbia International, Columbia College SC, Milligan, Johnson University, Reinhardt, Voorhees, Tennessee Wesleyan, Morris College, Bryan College, Bluefield University, Point University, Life University, Spartanburg Methodist and Warren Wilson. NAIA allows 12 scholarships for men's XC and track and has looser eligibility rules, so this gap sits in exactly the place where money is easiest to find. It is the largest known hole in the candidate list.</li>
       <li><strong>Greenville driving distances are real routes; the other two metros' are not.</strong> The <em>Mi</em> column for every school in the Greenville ring is now a road distance returned by OSRM driving directions from the search center and rounded to the mile. It used to be an estimate — straight-line distance × 1.18, or × 1.35 through the mountain states — and that estimate was off by as much as 54 miles, which is the difference between inside and outside a ring. New York and Chicago mileages are still the looked-up or estimated figures the board started with; at a 20-mile radius the error cannot move a school across the line, so they have not been re-routed.</li>
-      <li><strong>The both-sports check is a two-signal check, not a third-party dataset.</strong> No public file records which schools sponsor men's outdoor track, so §6b's seventeen removals — three Division 1 schools (Mercer, Tennessee Tech and Jacksonville State) plus the fourteen non-D1 rows now sitting in the §6c archive — rest on two independent signals per school rather than on an authority. Both can be wrong the same way: a school that publishes a stale sport list and a women's-only track roster <em>and</em> sent no men to its conference championships &mdash; a program suspended for one season, say &mdash; would read as no-track when it is not. That failure mode is why each removed school keeps its full record and its page rather than being deleted, and why the reversal is one line of data away.</li>
+      <li><strong>The both-sports check is a two-signal check, not a third-party dataset.</strong> No public file records which schools sponsor men's outdoor track, so §6b's seventeen removals — Mercer, Tennessee Tech and Jacksonville State in Division 1, plus fourteen D2, D3 and NAIA schools — rest on two independent signals per school rather than on an authority. Both can be wrong the same way: a school that publishes a stale sport list and a women's-only track roster <em>and</em> sent no men to its conference championships &mdash; a program suspended for one season, say &mdash; would read as no-track when it is not. That failure mode is why each removed school keeps its full record and its page rather than being deleted, and why the reversal is one line of data away.</li>
       <li><strong>Only two of roughly fifty championship courses have a difficulty correction.</strong> The 228 races on file span about fifty distinct conference and regional courses, and exactly two — the South Atlantic and CCIW championships — had enough teams racing both a conference meet and a regional to isolate the course from the team (§3a). Everywhere else the raw time is used. That is the largest remaining source of error on the board, and it is worst for schools whose only result came from a single uncorrected course: those could move a tier once a second race exists.</li>
-      <li><strong>Meet schedules cover 150 of the 161 schools with a page, and the venue is read off each meet's own results page.</strong> An earlier version of this board had schedules for eleven schools only, and could not place 21% of even those, because it guessed a venue from the host named in the meet title — which fails on exactly the meets that matter most, the conference and NCAA championships whose host rotates every year. Every meet page is now fetched directly, so a rotating championship is placed where it was actually held this season. The sweep covers <strong>712 distinct meets and 3,241 school-meet appearances</strong>, of which <strong>3,221 (99.4%) are placed</strong>. The gap is two meets — LIU's Fall Festival and the St. Joseph's Invitational — whose pages print no venue line at all. The eleven schools with no schedule are the ten that field no men's cross country team &mdash; where the absence is the finding, not a gap &mdash; plus <strong>Calumet College</strong>, whose TFRRS page holds no result after 2024; that is consistent with its removal under the both-sports rule (§6b), and its page says so instead of showing an empty map. <strong>South Carolina is the instructive one.</strong> It has a schedule, and every meet on it is a track meet: 22 outdoor and indoor meets in 2026 and not one cross country race, which is the same conclusion its empty TFRRS cross country page reaches by a different route.</li>
+      <li><strong>Meet schedules cover 150 of the 161 schools with a page, and the venue is read off each meet's own results page.</strong> An earlier version of this board had schedules for eleven schools only, and could not place 21% of even those, because it guessed a venue from the host named in the meet title — which fails on exactly the meets that matter most, the conference and NCAA championships whose host rotates every year. Every meet page is now fetched directly, so a rotating championship is placed where it was actually held this season. The sweep covers <strong>712 distinct meets and 3,241 school-meet appearances</strong>, of which <strong>3,221 (99.4%) are placed</strong>. The gap is two meets — LIU's Fall Festival and the St. Joseph's Invitational — whose pages print no venue line at all. The eleven schools with no schedule are the eleven that field no men's cross country team &mdash; where the absence is the finding, not a gap. <strong>Calumet College</strong> is the twelfth school with no usable schedule: its TFRRS page holds no result after 2024, which is consistent with its removal under the both-sports rule (§6b), and its page says so instead of showing an empty map. <strong>South Carolina is the instructive one.</strong> It has a schedule, and every meet on it is a track meet: 22 outdoor and indoor meets in 2026 and not one cross country race, which is the same conclusion its empty TFRRS cross country page reaches by a different route.</li>
       <li><strong>Venue coordinates carry three precision levels, and most are town-level.</strong> TFRRS prints a venue as free text, sometimes with a facility and ZIP and sometimes with neither. Of the 419 distinct venues, <strong>76 resolved to the facility itself, 112 only to the ZIP the results page printed, and 231 only to the town it named</strong> — so the majority of pins are a town centroid, which is right for judging travel and wrong for finding the start line. The looser two levels are labelled <em>ZIP area</em> and <em>town</em> on the map and in the table. Geocoding is OpenStreetMap's Nominatim. Eleven venue strings it could not resolve were placed by hand, most of them because TFRRS misspells the town (Bourbannais, Genev, Athen) and two because the place is not a town at all (West Point, Mississippi State); a further dozen had the town silently glued to the end of the facility name and were relabelled by hand. Two TFRRS venue records also contained wrong postal codes (a New Hampshire fairground coded to Massachusetts, an Indiana course coded to Missouri); both were corrected.</li>
-      <li><strong>Instagram handles were collected for the Division 1 board only.</strong> Every school on the board and every school on the cut list has one, and each was read off an official page — the athletics site's own social links or the program's TFRRS/roster header — rather than searched for by name, because a name search on a school like <em>Wingate</em> or <em>Manhattan</em> returns accounts that have nothing to do with the team. Preference is the <strong>program</strong> account (the men's cross country / track and field team), and where a school links no cross country or track account of its own the fallback is the <strong>athletics department's</strong>, marked with a degree sign in the tables so it reads as what it is &mdash; <strong>six schools on the board</strong> fall back that way: Appalachian State, the College of Charleston, SC State, West Georgia, Western Carolina and Samford. No school needed a coach's personal account, and where nothing could be verified on an official page no handle is listed rather than a guess. Where a school runs separate cross country and track accounts &mdash; UNC Charlotte, Gardner-Webb, Campbell, Charleston Southern, LIU &mdash; the cross country one is used, which is why Charleston Southern's reads <em>@csudistance</em> rather than the track account. The 96 archived non-D1 rows have <em>no</em> handles at all &mdash; that lookup was not run for them &mdash; so an empty Instagram cell on an archived school's page means "not looked up," not "does not exist." Five of the six schools with no men's cross country team have none for the obvious reason; the exception is <strong>South Carolina</strong>, which sponsors men's <em>track</em> and lists a combined track and cross country account, so its page carries it. The three Division 1 schools removed under the both-sports rule &mdash; Mercer, Tennessee Tech and Jacksonville State &mdash; keep theirs as well.</li>
+      <li><strong>Instagram handles now cover 148 of the 151 schools that have a page &mdash; 118 of the 120 on the board.</strong> Each was read off the school's own men's cross country page: the sport record its athletics site publishes for that sport, or the cross country entry in its sport navigation. None was searched for by name, because a name search on a school like <em>Wingate</em> or <em>Manhattan</em> returns accounts that have nothing to do with the team. Preference is the <strong>program</strong> account (the men's cross country / track and field team), and where a school links no cross country or track account of its own the fallback is the <strong>athletics department's</strong> &mdash; the university's, at North Park &mdash; marked with a degree sign in the tables so it reads as what it is. <strong>Twenty-five schools on the board</strong> fall back that way: five in Division 1 (the College of Charleston, SC State, West Georgia, Western Carolina, Samford), thirteen in Division 2 (Emmanuel GA, Emory &amp; Henry, Fort Valley State, Francis Marion, Johnson C. Smith, Lenoir-Rhyne, Lincoln Memorial, Mars Hill, Newberry, Savannah State, Shorter, St. Thomas Aquinas, the College of Staten Island) and seven in Division 3 (Illinois Tech, Kean, LaGrange, Lehman, Medgar Evers, Methodist, North Park). No school needed a coach's personal account for this column: the coaches' own accounts are a
+      separate layer, searched separately and verified to a different standard (&sect;6 above), and they
+      cover 17 of the 150. <strong>Reading the men's page, rather than counting Instagram links across a whole athletics site, is what makes this reliable at the schools that run separate men's and women's accounts</strong> &mdash; it is the difference between <em>@elmhurstu_xctf</em> and <em>@elmhurst_xctf</em> at Elmhurst, between <em>@Valkyriesxctrack</em> and <em>@Valkyriesxctf</em> at Converse, and between <em>@landerxc</em> and <em>@landerxctf</em> at Lander, and it moved Queens (Charlotte) to <em>@Queens_trackandfield</em> and upgraded Appalachian State from the department account to <em>@appstate_tf_xc</em>. Where a school runs separate cross country and track accounts &mdash; UNC Charlotte, Gardner-Webb, Campbell, Charleston Southern, LIU &mdash; the cross country one is used, which is why Charleston Southern's reads <em>@csudistance</em> rather than the track account. Eastern Kentucky is the one school whose two signals disagree: its cross country navigation links <em>@eku_xctf</em> while the sport record names <em>@ekudistance</em>, and the navigation handle is kept. <strong>Three schools link no Instagram anywhere on their own pages</strong> &mdash; Hunter College and Dominican University on the board, Baruch College on the no-track list &mdash; and their pages say exactly that, so an empty Instagram cell now means "the school's own pages link none," not "not looked up." Ten of the eleven schools with no men's cross country team have no page here at all; the exception is <strong>South Carolina</strong>, which sponsors men's <em>track</em> and lists a combined track and cross country account, so its page carries it. All thirteen schools on the cut list and sixteen of the seventeen removed under the both-sports rule keep theirs as well.</li>
       <li><strong>Piedmont University's CS program is still unconfirmed</strong> — federal data codes the degree but reports roughly zero graduates, and the school's own site was unreachable. It is the last open lookup on the board.</li>
-      <li><strong>Ten schools were removed because they field no men's cross country team, and one because it is closing.</strong> Georgia State, NYIT, Montclair State, William Paterson and North Georgia were all carrying a <em>Verify</em> tier, which is precisely how that tier fails: it reads as a program awaiting measurement rather than one that does not exist. <strong>St. John's</strong> and <strong>South Carolina</strong> were sitting on the cut list, cut on reputation for times that were never going to exist; both sponsor women's cross country only. Northwestern is the eighth. The 300-mile Greenville sweep then added two more: <strong>UAB</strong> came into range at 294 miles and sponsors no men's cross country, and <strong>Georgia Southern</strong> at 198 miles was inside even the old ring and sponsors none either &mdash; both have an empty TFRRS men's cross country page and women's distance programs only. Trinity Christian College announced on 4 November 2025 that it will close after the 2025&ndash;26 academic year. The six Division 1 cases have their own section on each metro page; the rest are in the §6c archive, tagged so their pages say the same thing. All are kept on the maps rather than deleted so the corrections stay visible. Ten errors of this kind have now surfaced; assume there are others.</li>
+      <li><strong>Eleven schools were removed because they field no men's cross country team, and one of those is also closing.</strong> Georgia State, NYIT, Montclair State, William Paterson and North Georgia were all carrying a <em>Verify</em> tier, which is precisely how that tier fails: it reads as a program awaiting measurement rather than one that does not exist. <strong>St. John's</strong> and <strong>South Carolina</strong> were sitting on the cut list, cut on reputation for times that were never going to exist; both sponsor women's cross country only. Northwestern is another. The 300-mile Greenville sweep then added two more: <strong>UAB</strong> came into range at 294 miles and sponsors no men's cross country, and <strong>Georgia Southern</strong> at 198 miles was inside even the old ring and sponsors none either &mdash; both have an empty TFRRS men's cross country page and women's distance programs only. Trinity Christian College announced on 4 November 2025 that it will close after the 2025&ndash;26 academic year. All eleven are tabled on their metro pages and kept on the maps rather than deleted, so the corrections stay visible. Eleven errors of this kind have now surfaced; assume there are others.</li>
     </ol>
   </div>
 
@@ -748,33 +877,33 @@
       <strong>Ten of the seventeen are in New York</strong>, which is a fact about the metro rather than
       a coincidence: small private and CUNY colleges there routinely field cross country as the cheapest
       possible varsity sport and stop. Six are around Greenville &mdash; including all three Division 1
-      cases &mdash; and one is in Chicago.
+      cases, which are the expensive ones &mdash; and one is in Chicago.
     </p>
   </div>
 
-  <h2 id="d1-only">6c. The Division 1 rule &mdash; the search narrowed, and what it cost</h2>
+  <h2 id="d1-only">6c. The Division 1 rule &mdash; tried, and reversed</h2>
   <p class="prose">
-    The board was built as a sweep of every NCAA Division 1, 2 and 3 school inside each ring, plus a
-    few NAIA programs. It has since been narrowed to <strong>Division 1 only</strong>. That is a
-    decision about the search, not a finding about any school, and it is the second rule on this site
-    &mdash; after the both-sports rule in §6b &mdash; that removes a school for a reason unconnected to
-    how fast anybody runs.
+    The board is a sweep of every NCAA Division 1, 2 and 3 school inside each ring that sponsors men's
+    cross country, plus the NAIA programs the sweep happened to find. For one version it was narrowed to
+    <strong>Division 1 only</strong>. That rule has been <strong>reversed</strong>, and this section is
+    kept because the reasoning for it was sound, the price was not obvious until it was paid, and
+    somebody reading this board a year from now will have the same idea.
   </p>
   <p class="prose">
-    <strong>Ninety-six schools came off the board.</strong> None of the work on them is thrown away:
-    every one is kept whole in the <code>NOT_D1</code> archive in <code>data.js</code> &mdash; measured
-    slot, gap to their #1, 1&ndash;7 spread, tier, coach, contact details and reasoning all intact
-    &mdash; so the rule can be relaxed later without re-measuring anything. Each keeps its own school
-    page, each is a toggleable layer on its metro map, and each metro page tables them.
+    <strong>The rule removed 96 schools in one line</strong> &mdash; 52 D2, 40 D3 and 4 NAIA. It was
+    implemented as an archive rather than a deletion, so nothing had to be re-measured to undo it: all 96
+    are now back in <code>SCHOOLS</code>, <code>REMOVED</code>, <code>NO_TRACK</code> and
+    <code>NO_PROGRAM</code> with the slot, gap, spread, tier, coach and reasoning they always had.
+    Division is a column and a filter on every table on this site, so the D1-only view is still one
+    click away; it is no longer the only view.
   </p>
   <p class="prose">
-    Two exclusions can apply to the same school, so each archived row records where it sat
-    <em>before</em> the filter. That matters for reading the cost honestly:
+    Where the 96 sat before the rule, which is also where they sit again now:
   </p>
   <div class="prose">
     <ul>
-      <li><strong>76 were live candidates</strong> &mdash; tier and all. These are the only rows the
-      Division 1 rule actually cost him.</li>
+      <li><strong>76 were live candidates</strong> &mdash; tier and all. These are the rows the rule
+      actually cost him.</li>
       <li><strong>1 was already cut</strong> on its roster times (Wingate, where he would have been a
       walk-on).</li>
       <li><strong>14 had already failed the both-sports rule</strong> &mdash; cross country without
@@ -783,18 +912,19 @@
     </ul>
   </div>
   <div class="callout crit">
-    <span class="c-title">The cost, stated plainly: thirteen target-tier schools, and the two extremes of the whole board</span>
+    <span class="c-title">What the rule cost, and why it was reversed: thirteen target-tier schools, and both extremes of the board</span>
     <p>
       Thirteen of the 76 were at <strong>target</strong> tier &mdash; inside a scoring seven, which is
       the entire point of this exercise &mdash; and all thirteen are in the Greenville ring. Two of them
       were the extreme points of the entire project:
     </p>
     <p>
-      <strong>Anderson (SC), 29 driving miles from home</strong>, was the closest target-tier school
+      <strong>Anderson (SC), 29 driving miles from home</strong>, is the closest target-tier school
       anywhere on the board and the most carefully checked row on the site: their 7th man, six seconds
       inside the scoring seven, on a course correction verified three ways (§3b). <strong>Fayetteville
-      State</strong> was the cheapest, at a $7,892 federal net price with a verified CS degree, where he
-      would have been their 4th-to-5th man. Both are Division 2. Both are archived.
+      State</strong> is the cheapest, at a $7,892 federal net price with a verified CS degree, where he
+      would be their 4th-to-5th man. Both are Division 2 &mdash; the division that can actually fund a
+      distance runner.
     </p>
     <p>
       The rest of the thirteen: <strong>Mars Hill</strong> (79 mi), <strong>Augusta University</strong>
@@ -806,18 +936,25 @@
     </p>
   </div>
   <p class="prose">
-    <strong>The rule is not purely a loss, and it is worth being precise about why.</strong> Of the 96,
-    <strong>40 are Division 3</strong> &mdash; and D3 cannot offer athletic money at all, so on the
-    scholarship axis those rows were never going to compete with a partial D1 or D2 offer. The real
-    price is the <strong>52 Division 2 programs</strong>, which can fund a distance runner and where he
-    would frequently have been a scoring man rather than a squad member. That is the trade the filter
-    makes: a shorter, more uniform list of programs that can all offer athletic aid, bought by giving up
-    the schools where he would have counted for the team soonest.
+    <strong>The case for the rule, recorded honestly, because two of its three arguments were real.</strong>
+    First, a uniform list: 44 programs that can all offer athletic aid, all measured against the same
+    kind of championship, is easier to reason about than 120 across four divisions. Second,
+    <strong>squad depth</strong>: the D1-only board had no program below five finishers, where the full
+    board has three that could not field the scoring five at all (Roosevelt, Benedict, York College
+    (CUNY) &mdash; §5). Third, and this one was an illusion: the median team's fastest 1500 improved from
+    4:01.1 to 3:49.7 and the number of programs where he would arrive as their #1 fell from 57 in 114 to
+    8 in 44. That is not the board getting better, it is the sample being selected for programs that
+    recruit milers &mdash; the same error as judging a program on one fast 5000, one level up.
   </p>
   <p class="prose">
-    Reversing it is one line of data. Nothing in the archive is degraded, and the school pages of
-    archived rows say at the top what tier they held before the filter and that the school itself did
-    not fail anything.
+    <strong>The case against, which won.</strong> Of the 96, <strong>40 are Division 3</strong> and
+    cannot offer athletic money at all &mdash; so on the scholarship axis those rows were never going to
+    beat a partial D1 or D2 offer, and cutting them cost little. The <strong>52 Division 2
+    programs</strong> are a different matter: D2 splits the same 12.6 equivalencies across a much smaller
+    squad, which makes a real partial offer likelier there than in D1, and ten of those D2 rows are at
+    target tier. The rule spent the cheapest school on the board, the closest target-tier school on the
+    board, and the ten places where he would have counted for the team soonest, in exchange for a
+    shorter list. That is the wrong trade for this athlete, and the reversal is the finding.
   </p>
 
   <h2 id="the-1500">7. How the 1500 comparison is built</h2>
