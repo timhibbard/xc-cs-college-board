@@ -475,7 +475,6 @@ function initMap(metro) {
   };
 
   if (showCut) showCut.addEventListener('change', window.renderMap);
-  if (showNotD1) showNotD1.addEventListener('change', window.renderMap);
 
   document.getElementById('theme').addEventListener('click', () => {
     map.removeLayer(tiles);
