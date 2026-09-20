@@ -72,7 +72,8 @@ the ones the Division 1 rule archived say so at the top of theirs.
 > **He has run 15:55 for 5K cross country**, which retires the ~15:59 this document projected and
 > replaces it with a mark that exists. The 8K comes down seven seconds to **26:00** and the 10K to
 > **32:46** — only seven seconds, because the 8K was already built on the projection rather than on
-> the 16:29 he had actually run. **No school in this metro changed tier**: every gap here tightened
+> the 16:29 he had actually run. (The 10K was re-anchored to **33:11** in a later sweep, which
+> is a separate correction from this one — see `../methodology.html#distance-bias`.) **No school in this metro changed tier**: every gap here tightened
 > by about seven seconds and nothing crossed a boundary. The tables below carry the new numbers.
 > Derivation, and what the PR did and did not buy, are in `../methodology.html` §1 and §1c.
 >
@@ -101,12 +102,13 @@ Live version, with per-school pages and meet maps:
 | 3200m | 9:40 | 9:29 |
 | 5K XC | **15:55** | the ~15:59 projection is already met |
 
-Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 32:46**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 33:11**
 
 The 8K and 10K projections are what the comparison actually runs on, because college cross
 country is raced at 8K (D2, D3, most conference meets) and 10K (D1 regionals and nationals).
-The 10K figure is the 8K figure × 1.26; that factor was validated against teams that raced both
-distances in 2025 and it agreed within about 7 seconds. Both now come off the **15:55 he actually
+The 10K figure is now **8K × 1.276**, measured against the 1,252 team-seasons in the 2025-26 sweep;
+the ×1.26 this document originally used was below the entire range teams actually produce, and
+correcting it moved the 10K from 32:46 to 33:11. Both now come off the **15:55 he actually
 ran** rather than off a projection. The track 5000 of **15:20** is anchored on the 3200 rather than
 the 1600 on purpose — solving Riegel's exponent on his own marks gives 1.12 from 1600→3200 against
 a textbook 1.06, so he is speed-leaning and the 1600 flatters the 5K. The 15:55 corroborates that

@@ -41,7 +41,7 @@
         <tr><td>3200m</td><td class="time">9:40</td><td class="time">9:29</td></tr>
         <tr><td>5K cross country</td><td class="time">15:55</td><td class="nodata">the ~15:59 projection is already met</td></tr>
         <tr><td>8K cross country</td><td class="nodata">not raced</td><td class="time">26:00</td></tr>
-        <tr><td>10K cross country</td><td class="nodata">not raced</td><td class="time">32:46</td></tr>
+        <tr><td>10K cross country</td><td class="nodata">not raced</td><td class="time">33:11</td></tr>
       </tbody>
     </table>
   </div>
@@ -69,12 +69,41 @@
   <p class="prose">
     College men race <strong>8K</strong> in cross country and <strong>10K</strong> at most NCAA
     championship meets, so the mark has to be carried across distances to be compared to a
-    scoring seven. From his 15:55 5K: <strong>8K = 26:00</strong>, and
-    <strong>10K = 8K × 1.26 = 32:46</strong>. That 1.26 factor is not assumed — it was checked
-    against teams that raced both an 8K conference championship and a 10K regional in 2025, and the
-    two implied 8K-equivalents agreed within about seven seconds for Big South and Southern
-    Conference squads.
+    scoring seven. Each distance gets its own projection and <strong>a race is only ever compared
+    against the projection for the distance it was actually run at</strong>. From his 15:55 5K:
+    <strong>8K = 5K × 1.634 = 26:00</strong>, and <strong>10K = 8K × 1.276 = 33:11</strong>.
   </p>
+  <p class="prose">
+    Neither factor is assumed. Both are now measured against the whole 2025–26 sweep — 1,252
+    team-seasons of results — by comparing each team's own <em>n</em>th man at the two distances in the
+    same season, which is the only comparison that holds the runners fixed:
+  </p>
+  <div class="table-scroll">
+    <table>
+      <caption>What teams actually did at two distances in the same season</caption>
+      <thead><tr><th scope="col">Conversion</th><th scope="col">Measured</th><th scope="col">Sample</th><th scope="col">The board uses</th></tr></thead>
+      <tbody>
+        <tr><td>5K &rarr; 8K</td><td class="time">1.620 – 1.639 by slot</td><td>248 team-seasons, 1,608 slot pairs</td><td class="time">1.634 &mdash; unchanged</td></tr>
+        <tr><td>8K &rarr; 10K</td><td class="time">1.266 at their #1, 1.288 at their 7th</td><td>208 team-seasons</td><td class="time">1.276</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout" style="margin-top:14px">
+    <span class="c-title">The 10K was 32:46 until this sweep, and 32:46 was too fast</span>
+    <p>
+      The old figure came off <strong>8K × 1.26</strong>, a factor that had been checked against a
+      handful of Big South and Southern Conference squads. Measured against 208 team-seasons instead,
+      <strong>1.26 sits below the entire range</strong> teams produce: 1.266 at the front of a team,
+      1.288 at its 7th man, median 1.272. On the board's own 84 schools — their conference 8K against
+      their own 10K regional — the front four slots come out at 1.277 to 1.279, which is where
+      <strong>1.276 and 33:11</strong> come from. Two independent routes land on the same second: the
+      measured factor gives 1560 × 1.2763 = 33:11, and the textbook Riegel exponent of 1.06 applied
+      straight to his real 15:55 (955 × 2<sup>1.06</sup>) also gives 33:11. That is the only place on
+      this board where the textbook exponent and the measured one agree, and the reason they do is that
+      both ends here are long, aerobic races — see §1a for why 1.06 cannot be trusted from the 1600.
+      The correction made his 10K comparisons <strong>25 seconds harsher</strong>; §3c has what it moved.
+    </p>
+  </div>
 
   <h2>1a. The pace conversions behind those numbers, and why the 1600 is not used</h2>
   <p class="prose">
@@ -228,8 +257,11 @@
     It is not, and §1 says why. But the 15:55 was run <strong>early in the season</strong>, and the
     obvious question is what a normal end-of-season improvement would do to the tiers. The honest answer
     is that the ladder is sensitive to it, so this table exists to keep anyone — including a coach shown
-    this board — from treating the current tiers as more stable than they are. The 8K figures use the
-    same 5K&rarr;8K factor as §1.
+    this board — from treating the current tiers as more stable than they are. The 8K and 10K figures use
+    the same 5K&rarr;8K and 8K&rarr;10K factors as §1, and the counts below are the ladder run against
+    itself &mdash; the tier it gives at 15:55 against the tier it gives at the faster mark, over the 87
+    schools it can run on at all. That isolates the projection: a school only appears because his mark
+    moved, not because its hand tier and the ladder already disagreed (&sect;3a lists those six).
   </p>
   <div class="table-scroll">
     <table>
@@ -237,21 +269,23 @@
       <thead><tr><th scope="col">End-of-season 5K XC</th><th scope="col">Implied 8K</th><th scope="col" class="num">Schools that change tier</th></tr></thead>
       <tbody>
         <tr><td class="time">15:55 <span class="nodata">(what the board uses — no projection)</span></td><td class="time">26:00</td><td class="num">&mdash;</td></tr>
-        <tr><td class="time">15:45</td><td class="time">25:44</td><td class="num">8</td></tr>
-        <tr><td class="time">15:40</td><td class="time">25:36</td><td class="num">12</td></tr>
-        <tr><td class="time">15:30</td><td class="time">25:20</td><td class="num">23</td></tr>
+        <tr><td class="time">15:45</td><td class="time">25:44</td><td class="num">6</td></tr>
+        <tr><td class="time">15:40</td><td class="time">25:36</td><td class="num">11</td></tr>
+        <tr><td class="time">15:30</td><td class="time">25:20</td><td class="num">21</td></tr>
       </tbody>
     </table>
   </div>
   <div class="callout" style="margin-top:14px">
     <span class="c-title">It cuts both ways, which is the point of the framing rule</span>
     <p>
-      Getting faster does not simply promote schools. At 25:36 it would move
-      <strong>Clemson, Appalachian State, Charleston Southern, Lee and Stony Brook</strong> from
-      <em>Deep</em> into <em>Target</em> — the email list gets longer. But it would also move
-      <strong>UNC Asheville, UNC Greensboro, Berry, UNC Pembroke, Mars Hill, UVA Wise and Emory &amp;
-      Henry</strong> from <em>Target</em> into <em>Caution</em>, because he would then arrive at or near
-      their #1. Seven down against five up: §2 explains why that is a downgrade and not a compliment.
+      Getting faster does not simply promote schools. At 25:36 it would move seven from <em>Deep</em> into
+      <em>Target</em> — <strong>Clemson, Stony Brook, Charleston Southern, Lee University, Anderson (SC),
+      NYU and the University of Chicago</strong> — and pull <strong>Appalachian State and Georgia
+      Tech</strong> back off the cut line into <em>Deep</em>, so the email list gets longer. But it would
+      also move <strong>UNC Pembroke and Berry College</strong> from <em>Target</em> into
+      <em>Caution</em>, because he would then arrive at or near their #1. §2 explains why that is a
+      downgrade and not a compliment, and the schools already carrying a caution are the ones it would
+      happen to next.
     </p>
     <p>
       The practical consequence: <strong>the Deep tier is where a faster 5K pays off</strong>, and those
@@ -267,6 +301,9 @@
       For a projected 15:15–15:25 5000, <strong>40 to 60 seconds behind a team's best runner is
       the healthy target.</strong> It means training partners ahead of him and a realistic path to
       scoring by junior year. The aim is to be the <strong>5th to 9th man as a freshman</strong>.
+      Those seconds are <strong>8K seconds</strong>: the same standing is 51 seconds at a 10K and 24 at a
+      5K, so every averaged gap on this site is converted to 8K-equivalent before it is held against this
+      window — <a href="#distance-bias">§3c</a> has the arithmetic.
     </p>
     <p>
       Arriving <em>ahead</em> of a team's #1 means the program is thin, not that he is a star.
@@ -302,8 +339,10 @@
         <strong>Team pages carry no depth at all.</strong> One athlete per event means no 5th man and
         no 7th man. This was the largest gap on the site and it has now been closed for
         <strong>148 of the 150 schools that field a men's team</strong> — it was 37 — by going to a different source: individual
-        <em>meet result</em> pages from the 2025 cross country season, which list every team's
-        scoring seven by name and time. Where those exist they supersede the track marks entirely.
+        <em>meet result</em> pages, which list every team's scoring seven by name, time and
+        <strong>class year</strong>. Every comparable race of the 2025 and 2026 seasons is now read
+        rather than one or two per school: <strong>904 races, a median of six per school</strong>.
+        Where those exist they supersede the track marks entirely.
         Where they do not, the school sits in <em>Verify</em> and its tier should be read as a
         placeholder; only <strong>Shorter</strong> (on the board, D2) and <strong>Calumet
         College</strong> (removed under the both-sports rule) are left in that state.
@@ -314,8 +353,9 @@
   <h2>3a. How the cross country comparison is actually built</h2>
   <p class="prose">
     For every school with results, his projection is dropped into that team's finishing order and
-    three numbers come out. All three are averaged across every race of theirs on file, and the
-    per-race detail is on each school's own page:
+    three numbers come out. The per-race detail is on each school's own page, and the averages are
+    kept in <strong>three separate groups</strong> rather than one pool &mdash; 2025 championships,
+    2025 invitationals, and the 2026 season so far &mdash; for the reason measured below:
   </p>
   <div class="prose">
     <ul>
@@ -324,20 +364,183 @@
       <li><strong>1&ndash;7 spread</strong> — the gap from their #1 to their #7. This is the <strong>most robust number on the site</strong>, because it compares a team only to itself and is therefore immune to course, weather, and conversion error. A 40-second spread is a pack; a 300-second spread is a handful of runners and some bodies.</li>
     </ul>
   </div>
+  <h3 id="three-groups">Why the tier rests on championships only, and what the other races are worth</h3>
+  <p class="prose">
+    The first version of this board read one or two championship races per school. Sweeping every
+    comparable race of both seasons &mdash; <strong>904 races: 303 championships, 475 invitationals,
+    and 126 from the 2026 season</strong> &mdash; makes it possible to test the assumption behind
+    that choice instead of asserting it. The test: for the 141 schools with both, compare his gap to
+    their #1 at their championships against the same gap at their invitationals.
+  </p>
+  <div class="prose">
+    <ul>
+      <li><strong>The invitationals flatter him by a median 14.5 seconds</strong> (mean 13.2; 91 of the 141 schools move in that direction). At an invitational a team's best man is running in a pack rather than for a place, and squads get rested and split. The shrinkage is the calendar, not the runner, so pooling the two groups would make every program on the board look closer than it is.</li>
+      <li><strong>The slot barely moves at all:</strong> median difference <strong>zero</strong> places. His position inside a team is roughly level-independent even though the gap in seconds is not &mdash; which is one more reason the slot, not the gap, is the headline number.</li>
+      <li><strong>So the tier uses the championships and nothing else</strong>, exactly as before. The invitationals are kept, averaged separately, and shown on each school page behind a fold: they are the best evidence there is about the men <em>behind</em> a team's front, because that is where a program's 5th through 9th runners actually race.</li>
+    </ul>
+  </div>
+  <h3 id="what-counts">What counts as a championship, and the 24 races that were labelled wrong</h3>
+  <p class="prose">
+    Level is matched on the meet name, and the first sweep called anything containing the word
+    "championship" a <em>conference</em> championship. That is wrong for a whole class of meet:
+    <strong>IC4A/ECAC, the NEICAAA and Metropolitan championships, DIII North, and the Private College
+    and Little Three Championships</strong> are open to whoever enters from a region, not to the members
+    of one league. <strong>24 races across 20 schools</strong> were being described on their own school
+    pages as that school's conference championship when they were nothing of the kind &mdash; Fordham,
+    Iona, Seton Hall and Hofstra worst affected.
+  </p>
+  <div class="prose">
+    <ul>
+      <li><strong>They are now labelled <em>area championship</em>, and they still count in the championship group.</strong> That second half is a measurement rather than a preference: for the eight schools with both an area championship and their own conference meet at the same 8K, the two came out a median <strong>3.9 seconds and 0.0 slots</strong> apart. Eight schools is a weak test and the individual schools swing hard in both directions &mdash; Iona's IC4A field was four slots softer than its MAAC meet, Seton Hall's Metropolitan three slots harder &mdash; but there is no systematic discount to apply, and these are raced rather than jogged, so throwing them out would discard evidence.</li>
+      <li><strong>The NCCAA and USCAA championships moved to <em>national championship</em></strong>, for the same reason inverted: those are governing associations with no conference above them, so their title meet is the top of their own pyramid rather than a league meet.</li>
+      <li><strong>Not one aggregate changed.</strong> The relabelling moved races between labels <em>inside</em> the championship group, never in or out of it, so every slot, gap and spread on the board is the same number it was before. The finding is that the pages were saying something untrue about 24 races, not that the tiers were wrong.</li>
+    </ul>
+  </div>
+  <h3 id="distance-bias">8K and 10K are not the same measurement &mdash; two errors, both now fixed</h3>
+  <p class="prose">
+    A conference meet is usually 8K and an NCAA regional is always 10K, so most schools' championship
+    average spans both distances: <strong>68 of the 148</strong> with races on file, and 104 of them once
+    the invitationals are counted too. Reading a season that mixes distances turned out to involve two
+    separate mistakes, and this section is what they were, what they were worth, and what is left.
+  </p>
+  <div class="prose">
+    <ul>
+      <li><strong>The 10K projection itself was too fast.</strong> It came off 8K &times; 1.26, and 1.26 is
+        below the entire range teams actually produce. It is now <strong>33:11</strong> rather than 32:46
+        &mdash; a 25-second correction, derived and cross-checked in &sect;1.</li>
+      <li><strong>Seconds at 8K and seconds at 10K were being averaged as if they were the same unit.</strong>
+        They are not. The same standing against a team is 40 seconds at 8K, 51 at 10K and 24 at a 5K,
+        because his time and theirs both grow with the race. Every <em>averaged</em> gap on this board is
+        now converted to <strong>8K-equivalent</strong> first &mdash; each race's gap multiplied by his 8K
+        projection over his projection for that race's distance (a 10K gap &times; 0.784, a 5K gap
+        &times; 1.634), which is the same as reading the gap as a share of his own projected time. Per-race
+        numbers are untouched: each race card compares him against the projection for the distance that was
+        run, which was always right.</li>
+    </ul>
+  </div>
+  <p class="prose">
+    Measured on the 49 schools that finished seven at a championship at each distance &mdash; same teams,
+    both distances &mdash; here is what each fix was worth. A negative number means the 10K flattered him:
+  </p>
+  <div class="table-scroll">
+    <table>
+      <caption>10K minus 8K, on the same 49 schools: how far apart the two distances read</caption>
+      <thead><tr><th scope="col">Anchor and currency</th><th scope="col">Gap to their #1</th><th scope="col">Gap to their 7th man</th><th scope="col">Their 1&ndash;7 spread</th></tr></thead>
+      <tbody>
+        <tr><td>32:46, raw seconds <span class="nodata">(as published before)</span></td><td class="time">&minus;0.1s</td><td class="time">&minus;73.7s</td><td class="time">+19.8s</td></tr>
+        <tr><td>32:46, 8K-equivalent</td><td class="time">&minus;20.6s</td><td class="time">&minus;45.7s</td><td class="time">&minus;5.7s</td></tr>
+        <tr><td>33:11, raw seconds</td><td class="time">+24.9s</td><td class="time">&minus;48.7s</td><td class="time">+44.8s</td></tr>
+        <tr><td><strong>33:11, 8K-equivalent</strong> <span class="nodata">(the board now)</span></td><td class="time"><strong>&minus;1.0s</strong></td><td class="time"><strong>&minus;26.1s</strong></td><td class="time"><strong>+13.9s</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout" style="margin-top:14px">
+    <span class="c-title">The old version looked unbiased at the front because two errors cancelled</span>
+    <p>
+      Read the first row again: at the old anchor, in raw seconds, his gap to a team's <em>#1</em> came out
+      a tenth of a second apart at the two distances. That looked like evidence the conversion was right,
+      and it was not &mdash; it was a 25-second-too-fast projection cancelling against a 28% overstatement
+      of what a 10K second is worth. Fix either one alone and the bias appears (rows two and three). Fix
+      both and the front-of-team comparison agrees to <strong>one second</strong>, which is the number that
+      says the 33:11 is the right anchor: a projection that is right should put him the same distance behind
+      a team's best man whatever distance that team is racing.
+    </p>
+  </div>
+  <p class="prose">
+    <strong>What is left is real, and it is about their 7th man rather than about him.</strong> Even with
+    both fixes, his gap to a team's 7th man still reads a median <strong>26 seconds kinder at 10K</strong>
+    (36 of the 49 in that direction). The reason is measurable: on the 84 board schools with their own
+    conference 8K and their own 10K regional, a team's #1 runs the 10K at <strong>1.277&times;</strong> his
+    8K, and its 7th man at <strong>1.297&times;</strong> &mdash; the back of a scoring seven fades harder
+    over the extra 2K than its leader does, with the team score already settled and the man buried in a
+    30-team field. Their 1&ndash;7 spread runs 14 seconds wider at 10K for the same reason, and his
+    <strong>slot moves a median 0.00 places</strong>, which is the whole argument for the slot being the
+    headline. That 26 seconds is not folded into his projection, because it is a fact about how their
+    seventh man races a 10K, not about how he would.
+  </p>
+  <p class="prose">
+    <strong>What the two fixes moved.</strong> No race time changed and no race was added or dropped:
+    <strong>67 of the 148</strong> school aggregates were re-derived, all of them schools with a 10K or a
+    5K in the pool. Two schools crossed the 45-second cut line that the ladder uses and are the honest cost
+    of the correction: <strong>Appalachian State</strong> (66.0 outside their 7th at the Sun Belt 8K, 41.1
+    at the 10K regional, 53.5 averaged) and <strong>Georgia Tech</strong> (66.0 and 33.3, averaging 49.6).
+    Both sat at <em>deep</em> on a pre-correction average in the low forties.
+  </p>
+  <p class="prose">
+    <strong>Six schools where the ladder and the hand tier now disagree</strong> &mdash; listed because the
+    ladder describes the tiers rather than generating them (see below), so a disagreement is a question
+    rather than a correction, and none of these six has been moved:
+  </p>
+  <div class="prose">
+    <ul>
+      <li><strong>UNC Charlotte</strong> &mdash; carries <em>target</em>; the ladder says <em>deep</em> on a 37.0s average. This is the one worth a decision: at the American Conference 8K he is <strong>69.4 seconds outside</strong> their 7th man and would be their 8th, which is past the cut line, and only the 10K regional (4.5s outside, 8K-equivalent) keeps it on the board at all. Before the anchor fix that regional read 19 seconds <em>inside</em> their 7th.</li>
+      <li><strong>Appalachian State</strong> and <strong>Georgia Tech</strong> &mdash; carry <em>deep</em>; the ladder now says <em>cut</em> at 53.5 and 49.6. Both are a few seconds past a line, not a long way past it.</li>
+      <li><strong>UIC</strong> &mdash; carries <em>deep</em>; the ladder says <em>target</em> at 13.6 inside. Their Missouri Valley 8K puts him 24.4 outside their 7th and their regional 51.6 inside: a 76-second disagreement between two races a fortnight apart, which is the argument for leaving it at <em>deep</em> until a third championship exists.</li>
+      <li><strong>Anderson (SC)</strong> &mdash; carries <em>target</em>; the ladder says <em>deep</em> at 11.4 outside, over three championships (8.4 inside at the conference 8K, then 17.0 and 25.7 outside at the D2 regional and the NCCAA national).</li>
+      <li><strong>Montreat</strong> &mdash; carries <em>caution</em>; the ladder says <em>target</em>. The caution is not a times judgement: they finished six at their national championship, and a program that cannot get seven to the line is the warning &sect;3a describes.</li>
+    </ul>
+  </div>
+  <p class="prose">
+    <strong>Fifteen of those 49 schools still tier differently depending on which of their two
+    championships you read</strong>, and after both fixes that is no longer a conversion problem &mdash; it
+    is two hard races a fortnight apart on different courses in different fields, which genuinely differ by
+    fifty seconds either way. DePaul is the clearest case: at the Big East 8K he is 10 seconds inside their
+    7th man, and at the Midwest regional their 7th ran 35:53 and he is 127 seconds inside (8K-equivalent).
+    Nothing about the conversion explains that; their seventh man had a bad day in a big field. The board's
+    answer is to average every championship on file rather than pick one, to show each race on its own line
+    with its own distance, and to flag the schools whose slot moves three or more places between races on
+    their own pages.
+  </p>
+  <p class="prose">
+    The four boundary schools that drove the old cut decisions still split, and now split less.
+    <strong>Loyola Chicago</strong> is 75.3 seconds outside their 7th man at the A10 8K and 12.5 inside at
+    the 10K regional &mdash; the cut rests on the 8K, which is the sharper test. <strong>Iona</strong> is
+    107.4 outside at the MAAC 8K but 70.8 <em>inside</em> at the IC4A two weeks earlier, which is a
+    different field rather than a different distance. <strong>Hofstra</strong> reads 74.7 outside at its CAA
+    8K and 74.5 outside at the regional &mdash; the two now agree almost exactly, where before the fixes the
+    regional looked 20 seconds kinder. <strong>UNC Charlotte</strong> is the one above. The cuts stand on
+    the conference 8K, and the school pages say so.
+  </p>
+  <h3>The 2026 season, which is running now</h3>
+  <p class="prose">
+    The board was swept on <strong>20 September 2026</strong>, so the 126 races of the current season
+    all fall between <strong>4 and 19 September</strong> and all are invitationals. They get an
+    aggregate of their own and are read against the <em>2025 invitational</em> column rather than the
+    championship one, which is the only like-for-like comparison available. Across the 98 schools with
+    both, his gap to their #1 is a median <strong>11.9 seconds smaller</strong> in 2026 &mdash; and
+    that is a statement about the sample, not about 150 programs getting slower: three weeks into a
+    season is the softest part of it, while the 2025 invitational group runs through October. The
+    2026 races matter for a different reason: the class years in them are the current ones.
+  </p>
+  <h3 id="class-years">Class years, and what a team looks like after its seniors go</h3>
+  <p class="prose">
+    Every finisher's class year is now read off the results page alongside the time &mdash;
+    <strong>5,775 of 5,798 finishers, 99.6%</strong>, with 894 of the 904 races fully labelled. A gap
+    in a team's seven that closes when three seniors graduate is a different opportunity from the same
+    gap in a team of freshmen, and no time comparison can tell the two apart.
+  </p>
+  <div class="prose">
+    <ul>
+      <li><strong>The class mix is read off one race, not pooled.</strong> The same seven men appear in every race a team runs, and no athlete names are stored here to deduplicate by, so pooling would count one sophomore five times. The most recent <em>season</em> wins, because its years are the current ones; within that season the deepest race wins, because it shows the most of the squad. For 100 of the 144 schools with a class mix that reference race is from 2026.</li>
+      <li><strong>One race is only the men who ran that day, and the page says so.</strong> Mount Saint Vincent's last 2025 race was five seniors with its freshmen sitting out, which alone would read as a team with nobody coming back. So the largest count of each class seen in <em>any other race of that season</em> is carried as a floor and shown when it beats the reference race &mdash; "at least 2 freshmen and 1 junior also raced for this team." It is a floor and never a total: without names there is no way to know whether the two freshmen in one race are the two in another. <strong>45 of the 144</strong> carry such a floor.</li>
+      <li><strong>Incoming freshmen are invisible</strong> in all of this. It counts men who have already raced, which is the only thing a results page can support. So is a transfer who has not yet run, and so is anyone who quits in April.</li>
+      <li><strong>Names are still not stored anywhere.</strong> A class year is not identifying; a name is. The years are read from the same row as the time and the name in that row is discarded.</li>
+    </ul>
+  </div>
   <h3>Teams with no 7th man — the rule that had to be added once everyone was measured</h3>
   <p class="prose">
     A cross country team scores five and travels seven, so every number above assumes seven
     finishers. Measuring all 155 schools showed that assumption is wrong far more often than
-    expected: <strong>45 of the 148 measured programs never finished seven runners in any 2025
-    championship race</strong> — 27 around Greenville, 13 around New York, 5 in Chicago. Guessing at
-    the missing men would invent the exact number the board is built on, so instead:
+    expected: <strong>40 of the 148 measured programs never finished seven runners in any 2025
+    championship race</strong>, and 113 of the 303 championship races on file ended short of seven.
+    Guessing at the missing men would invent the exact number the board is built on, so instead:
   </p>
   <div class="prose">
     <ul>
       <li><strong>Short races store what actually happened.</strong> A race with fewer than seven finishers records how many there were and reports <strong>his projection minus their <em>last</em> finisher</strong> in place of vs-7th. The school page says which it is, race by race, and <em>vs their 7th</em> is left blank in every table rather than filled with a substitute.</li>
-      <li><strong>Fewer than five finishers is not a team result.</strong> Five is the minimum to score, so those races are excluded from the averaged slot, gap and spread entirely — 17 of the 228 races on file. They still appear on the school page, because "they entered three men and finished three" is the finding.</li>
+      <li><strong>Fewer than five finishers is not a team result.</strong> Five is the minimum to score, so those races are excluded from the averaged slot, gap and spread entirely — 36 of the 303 championship races on file. They still appear on the school page, because "they entered three men and finished three" is the finding. No invitational or 2026 race on file is that short, which is itself a sign of what a championship entry means: teams turn up to their conference meet with whoever is left.</li>
       <li><strong>Five schools never finished five:</strong> Roosevelt, Benedict, John Jay, Mount Saint Vincent and York College (CUNY). Being the fastest man on a squad of four is the outcome this board exists to avoid, so all five sit at <em>Caution</em> regardless of how the times read.</li>
-      <li><strong>One- and two-finisher races are read as individual qualifiers, not teams.</strong> Every such race on file is an NCAA regional, where a program that did not qualify as a team may still send one or two runners. Those are labelled as regionals on the school page and carry no team inference at all.</li>
+      <li><strong>One- and two-finisher races are read as individual qualifiers, not teams.</strong> All 19 of them are an NCAA regional (9) or a national championship (10) — meets where a program that did not qualify as a team may still send one or two runners. They are labelled with that level on the school page and carry no team inference at all.</li>
     </ul>
   </div>
   <p class="prose">
@@ -346,11 +549,39 @@
     race is labelled with its meet and date, so any of it can be checked against the source.
   </p>
   <p class="prose">
-    For a measured school the tiers then follow mechanically: <strong>more than 45 seconds outside
+    For a measured school the tiers follow this ladder: <strong>more than 45 seconds outside
     their 7th man is a cut</strong>; anything outside it is <em>Deep</em>; a slot of 2 or better is
     <em>Caution</em>, because he would arrive at or near their #1; and everything else is
     <em>Target</em>. Where there is no 7th man, the same ladder runs on the last finisher, which is
     strictly harder to clear.
+  </p>
+  <h3 id="tier-ladder">The ladder describes the tiers &mdash; it does not generate them</h3>
+  <p class="prose">
+    Worth being exact about now that every school has been re-averaged over its whole championship
+    season instead of one or two races. <strong>The tiers are assigned by hand</strong>, and the ladder
+    is the rule they almost always follow. Of the 148 measured schools, <strong>87</strong> have both a
+    tier and a 7th man at a championship, which is what the ladder needs to run at all;
+    <strong>six of those 87 now disagree with it</strong> &mdash; four did before the 10K anchor was
+    corrected, and the correction added two. In each case the hand call is kept for now, and the reason is
+    recorded here rather than left as an unexplained exception:
+  </p>
+  <div class="prose">
+    <ul>
+      <li><strong>UNC Charlotte</strong> &mdash; hand <em>Target</em>, ladder <em>Deep</em>. He is <strong>37.0s outside</strong> their 7th man over two championships at a slot of 8, and their 2026 opener says the same thing: slot 8, 36.3s outside, with a 1&ndash;7 spread of only 28 seconds. That spread is a real pack, which is what a target school should have &mdash; but he would not be in it yet. The two championships also point opposite ways, and <a href="#distance-bias">the distance section</a> says why: at their conference <strong>8K</strong> he is <strong>69.4s outside</strong> their 7th, which is past the cut line, and only the 10K regional pulls the average back &mdash; by less than it used to, since at the corrected anchor that regional reads 4.5s outside rather than 19.2s inside. Read on 8K evidence alone this school belongs on the cut list beside Iona, Hofstra and Loyola Chicago, whose numbers look the same. <strong>This is the one the new data argues against most clearly, and it is flagged for review rather than defended.</strong></li>
+      <li><strong>Appalachian State</strong> &mdash; hand <em>Deep</em>, ladder <em>Cut</em>. He is <strong>53.5s</strong> outside their 7th, 8.5 seconds past the cut line. Before the 10K correction this read 46.7s and the case for keeping it was that 1.7 seconds should not decide whether a school is worth writing to; at 8.5 seconds that argument is thinner, and what is left of it is their 33-second invitational spread &mdash; a genuine pack, just one he would be behind.</li>
+      <li><strong>Georgia Tech</strong> &mdash; hand <em>Deep</em>, ladder <em>Cut</em>, and new to this list: <strong>49.6s</strong> outside their 7th, 4.6 past the line, having sat just inside it before the correction. Same shape as Appalachian State, and the same open question.</li>
+      <li><strong>UIC</strong> &mdash; hand <em>Deep</em>, ladder <em>Target</em>. He is 13.6s <em>inside</em> their 7th on the championship average, so the ladder promotes him &mdash; but his slot moves from 8th at their Missouri Valley 8K to 6th at their regional 10K, a 76-second disagreement between two races a fortnight apart, which is why the school page carries the "their races disagree" callout; their 2026 opener puts him at #3. A measurement that unstable does not support the better tier.</li>
+      <li><strong>Anderson (SC)</strong> &mdash; hand <em>Target</em>, ladder <em>Deep</em>, also new: <strong>11.4s</strong> outside their 7th across three championships, where the pre-correction average had him 1.3s inside. The three races run 8.4 inside, 17.0 outside and 25.7 outside &mdash; the conference 8K is the kind one. This is a boundary case in the literal sense: eleven seconds over an 8K is a bad morning, and the tier turns on it.</li>
+      <li><strong>Montreat</strong> &mdash; hand <em>Caution</em>, ladder <em>Target</em>. He is 61s inside their 7th at a slot of 3.0, and their 1&ndash;7 spread is <strong>186 seconds</strong>. Arriving as the #3 man of a team with three minutes between its first and seventh runner is the situation &sect;2 is about: there is no pack in front to train with. Nothing about the distance correction touches this one &mdash; both their championships were 8Ks.</li>
+    </ul>
+  </div>
+  <p class="prose">
+    A further <strong>32</strong> schools have a tier but never finished seven at a championship, so the
+    ladder cannot be evaluated on them at all: the last-finisher version runs race by race and is not
+    kept as an average. <strong>Wagner</strong> (slot 2.5, no 7th man, a 329-second spread) and
+    <strong>Oglethorpe</strong> (slot 3.0, 382 seconds) are both in that group, and both sit at
+    <em>Caution</em> on Montreat's reasoning &mdash; with the 2026 season making the point twice over,
+    since he would open this year as the #1 man at each of them.
   </p>
   <p class="prose">
     <strong><em>Verify</em> now means one thing only: no cross country result exists yet.</strong> An
@@ -456,11 +687,22 @@
       stored <code>runners</code> array, and those agreed perfectly — a pre-corrected array is
       indistinguishable from a raw one if the array is all you look at. The check now re-fetches every
       race page and verifies the stored times against <strong>the source</strong>, which is what
-      exposed these seven. All <strong>228</strong> races on file now reproduce exactly from TFRRS
-      page times on gap, slot, spread and gap-to-seventh, and the same pass caught two unrelated
+      exposed these seven. All <strong>228</strong> races on file at that point reproduced exactly from
+      TFRRS page times on gap, slot, spread and gap-to-seventh, and the same pass caught two unrelated
       errors: <strong>UNC Asheville</strong> and <strong>UNC Greensboro</strong> each had a regional
       result stored one finisher short, which had understated both spreads and wrongly recorded
       Asheville as never fielding a seventh man.
+    </p>
+    <p>
+      The sweep to <strong>904</strong> races removes that class of error rather than re-checking for
+      it. Every stored race is now written straight from the fetched result page, and slot, gap, spread
+      and gap-to-seventh are re-derived from the stored times by the generator, so a stored array and a
+      stored average cannot drift apart &mdash; the hand-entered step where a pre-corrected time could
+      masquerade as a raw one no longer exists. Team place and score are read from the meet's own
+      team-scores table rather than inferred, and <strong>827 of the 904</strong> races carry them: of
+      the 77 that do not, 36 finished fewer than five men and so were never scored, and the other 41
+      are meets whose team-score table yielded no row for that team &mdash; mostly the IC4A/ECAC
+      championship. Those cells are left empty rather than guessed.
     </p>
   </div><div class="callout crit">
     <span class="c-title">A method that was built, tested, and thrown away</span>
@@ -840,12 +1082,12 @@
   <div class="prose">
     <ol>
       <li><strong>119 of the 120 schools on the board have a cross country result</strong> — down from 93 unmeasured, which was the largest gap on this site for most of its life. All 13 schools on the cut list rest on a 2025 championship result too. <strong>One row is still open: Shorter</strong>, which holds the last <em>Verify</em> tier on the site — and it may be unmeasurable rather than unmeasured, because it entered three men at its only 2025 meet and all three did not start. Two other rows that were open have since left the board for reasons unconnected to measurement: <strong>Calumet College</strong> failed the both-sports rule (§6b) and <strong>South Carolina</strong> turned out to sponsor no men's cross country at all.</li>
-      <li><strong>Depth is now measured, but only from championship races.</strong> The 228 races on file are conference championships and NCAA regionals, because those are the ones where a program fields its actual seven. That is the right sample for the question, and it also means most schools rest on <strong>one or two races</strong>, run on a course whose difficulty is usually uncorrected (§3a). A regular-season result would not change a tier, but a second championship result could, and 45 of the measured programs have a further problem on top of that: no 7th man to compare against at all.</li>
+      <li><strong>Depth is measured, but the tier still comes from championship races only.</strong> 303 of the 904 races on file are conference championships, NCAA regionals or national championships, because those are the ones where a program fields its actual seven &mdash; and §3a measures what the alternative would cost: the invitationals run a median 14.5 seconds kinder. The consequence is that the median school's tier rests on <strong>two</strong> scoring-five championship races, <strong>49 of the 148 rest on one or none</strong>, and the course is usually uncorrected. 40 of the measured programs have a further problem on top of that: no 7th man to compare against at all.</li>
       <li><strong>How the candidate lists were built, and why the earlier version of this claim was false.</strong> An earlier README said this board listed <em>every</em> school inside each radius that sponsors men's cross country. It did not. The lists were originally assembled from general knowledge and then verified individually, which validates what is present and says nothing about what is missing — and about 45 schools were missing from Greenville alone, including one 25 driving miles from home. The lists are now built the other way round: <strong>conference by conference, from each conference's own men's-sponsored-sports table</strong>. That sweep covered every NCAA D1, D2 and D3 conference with a member inside a ring, and all of it is on the board: a Division-1-only rule was applied and then reversed (§6c). The guarantee is materially stronger than the old one, but it inherits the conferences' errors — a stale sponsored-sports table is wrong in both directions, and each school's sponsorship was <em>not</em> re-confirmed on the school's own athletics site.</li>
       <li><strong>NAIA and NCCAA coverage is incomplete and known to be — and with the Division 1 rule reversed (§6c) this is a live gap again.</strong> The sweep was built from NCAA conference sponsored-sports tables, so the four NAIA rows on this site are only the non-NCAA programs it happened to run into. At least these NAIA and NCCAA programs in the Greenville footprint were never checked — Toccoa Falls, Truett McConnell, Brenau, Columbia International, Columbia College SC, Milligan, Johnson University, Reinhardt, Voorhees, Tennessee Wesleyan, Morris College, Bryan College, Bluefield University, Point University, Life University, Spartanburg Methodist and Warren Wilson. NAIA allows 12 scholarships for men's XC and track and has looser eligibility rules, so this gap sits in exactly the place where money is easiest to find. It is the largest known hole in the candidate list.</li>
       <li><strong>Greenville driving distances are real routes; the other two metros' are not.</strong> The <em>Mi</em> column for every school in the Greenville ring is now a road distance returned by OSRM driving directions from the search center and rounded to the mile. It used to be an estimate — straight-line distance × 1.18, or × 1.35 through the mountain states — and that estimate was off by as much as 54 miles, which is the difference between inside and outside a ring. New York and Chicago mileages are still the looked-up or estimated figures the board started with; at a 20-mile radius the error cannot move a school across the line, so they have not been re-routed.</li>
       <li><strong>The both-sports check is a two-signal check, not a third-party dataset.</strong> No public file records which schools sponsor men's outdoor track, so §6b's seventeen removals — Mercer, Tennessee Tech and Jacksonville State in Division 1, plus fourteen D2, D3 and NAIA schools — rest on two independent signals per school rather than on an authority. Both can be wrong the same way: a school that publishes a stale sport list and a women's-only track roster <em>and</em> sent no men to its conference championships &mdash; a program suspended for one season, say &mdash; would read as no-track when it is not. That failure mode is why each removed school keeps its full record and its page rather than being deleted, and why the reversal is one line of data away.</li>
-      <li><strong>Only two of roughly fifty championship courses have a difficulty correction.</strong> The 228 races on file span about fifty distinct conference and regional courses, and exactly two — the South Atlantic and CCIW championships — had enough teams racing both a conference meet and a regional to isolate the course from the team (§3a). Everywhere else the raw time is used. That is the largest remaining source of error on the board, and it is worst for schools whose only result came from a single uncorrected course: those could move a tier once a second race exists.</li>
+      <li><strong>Only two of roughly fifty championship courses have a difficulty correction.</strong> The championship races on file span <strong>62</strong> distinct conference, regional and national meets &mdash; 194 counting the invitationals &mdash; and exactly two, the South Atlantic and CCIW championships, had enough teams racing both a conference meet and a regional to isolate the course from the team (§3a). Everywhere else the raw time is used. That is the largest remaining source of error on the board, and it is worst for schools whose only result came from a single uncorrected course: those could move a tier once a second race exists.</li>
       <li><strong>Meet schedules cover 150 of the 161 schools with a page, and the venue is read off each meet's own results page.</strong> An earlier version of this board had schedules for eleven schools only, and could not place 21% of even those, because it guessed a venue from the host named in the meet title — which fails on exactly the meets that matter most, the conference and NCAA championships whose host rotates every year. Every meet page is now fetched directly, so a rotating championship is placed where it was actually held this season. The sweep covers <strong>712 distinct meets and 3,241 school-meet appearances</strong>, of which <strong>3,221 (99.4%) are placed</strong>. The gap is two meets — LIU's Fall Festival and the St. Joseph's Invitational — whose pages print no venue line at all. The eleven schools with no schedule are the eleven that field no men's cross country team &mdash; where the absence is the finding, not a gap. <strong>Calumet College</strong> is the twelfth school with no usable schedule: its TFRRS page holds no result after 2024, which is consistent with its removal under the both-sports rule (§6b), and its page says so instead of showing an empty map. <strong>South Carolina is the instructive one.</strong> It has a schedule, and every meet on it is a track meet: 22 outdoor and indoor meets in 2026 and not one cross country race, which is the same conclusion its empty TFRRS cross country page reaches by a different route.</li>
       <li><strong>Venue coordinates carry three precision levels, and most are town-level.</strong> TFRRS prints a venue as free text, sometimes with a facility and ZIP and sometimes with neither. Of the 419 distinct venues, <strong>76 resolved to the facility itself, 112 only to the ZIP the results page printed, and 231 only to the town it named</strong> — so the majority of pins are a town centroid, which is right for judging travel and wrong for finding the start line. The looser two levels are labelled <em>ZIP area</em> and <em>town</em> on the map and in the table. Geocoding is OpenStreetMap's Nominatim. Eleven venue strings it could not resolve were placed by hand, most of them because TFRRS misspells the town (Bourbannais, Genev, Athen) and two because the place is not a town at all (West Point, Mississippi State); a further dozen had the town silently glued to the end of the facility name and were relabelled by hand. Two TFRRS venue records also contained wrong postal codes (a New Hampshire fairground coded to Massachusetts, an Indiana course coded to Missouri); both were corrected.</li>
       <li><strong>Instagram handles now cover 148 of the 151 schools that have a page &mdash; 118 of the 120 on the board.</strong> Each was read off the school's own men's cross country page: the sport record its athletics site publishes for that sport, or the cross country entry in its sport navigation. None was searched for by name, because a name search on a school like <em>Wingate</em> or <em>Manhattan</em> returns accounts that have nothing to do with the team. Preference is the <strong>program</strong> account (the men's cross country / track and field team), and where a school links no cross country or track account of its own the fallback is the <strong>athletics department's</strong> &mdash; the university's, at North Park &mdash; marked with a degree sign in the tables so it reads as what it is. <strong>Twenty-five schools on the board</strong> fall back that way: five in Division 1 (the College of Charleston, SC State, West Georgia, Western Carolina, Samford), thirteen in Division 2 (Emmanuel GA, Emory &amp; Henry, Fort Valley State, Francis Marion, Johnson C. Smith, Lenoir-Rhyne, Lincoln Memorial, Mars Hill, Newberry, Savannah State, Shorter, St. Thomas Aquinas, the College of Staten Island) and seven in Division 3 (Illinois Tech, Kean, LaGrange, Lehman, Medgar Evers, Methodist, North Park). No school needed a coach's personal account for this column: the coaches' own accounts are a
@@ -1126,7 +1368,11 @@
   <p class="prose">
     Every school on the board has a page of its own, reached by clicking its name in any table or its
     pin on any map. It carries the federal cost and admissions record, the CS share, the full
-    scoring seven from each cross country result with his projection dropped into place, the
+    scoring seven from <em>every</em> cross country result on file with his projection dropped into
+    place and <strong>each runner's class year beside his time</strong> &mdash; grouped into the 2025
+    championships the tier rests on, the 2026 season as it runs, and the 2025 invitationals behind a
+    fold &mdash; a panel reading off how much of that seven is <strong>not graduating</strong> and how
+    far he would be from the fastest man who stays, the
     <strong>2026 conference-championship 1500 field</strong> with the same projection dropped into that
     (§7), the coach to email, and a map of <strong>every meet that team travelled to in 2025&ndash;26</strong>,
     read off its own TFRRS results page and <strong>colored and lettered by season</strong>: X for cross

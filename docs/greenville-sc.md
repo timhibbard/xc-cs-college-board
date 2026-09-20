@@ -120,7 +120,8 @@ have pages, and the ones the Division 1 rule archived say so at the top of their
 > **He has run 15:55 for 5K cross country**, which retires the ~15:59 this document projected and
 > replaces it with a mark that exists. The 8K comes down seven seconds to **26:00** and the 10K to
 > **32:46** — only seven seconds, because the 8K was already built on the projection rather than on
-> the 16:29 he had actually run. **Seven schools in this ring changed tier and the target count goes
+> the 16:29 he had actually run. (The 10K was re-anchored to **33:11** in a later sweep, which
+> is a separate correction from this one — see `../methodology.html#distance-bias`.) **Seven schools in this ring changed tier and the target count goes
 > 22 → 27**, but only two of those moves belong to the PR: **Anderson (SC)** clears a scoring seven
 > at 29 miles, and **Southern Wesleyan** — the closest school on the board and a target in v8 — drops
 > to **Caution**, because he now arrives as their 2nd man. The other five moves are a correction, not
@@ -158,7 +159,7 @@ Live version, with per-school pages, per-race results and meet maps:
 | 3200m | 9:40 | 9:29 |
 | 5K XC | **15:55** | the ~15:59 projection is already met |
 
-Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 32:46**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 33:11**
 
 The **1500 of 4:01** is the one conversion anchored to the 1600 rather than the 3200, and
 deliberately so: it comes from the projected **4:18** 1600 at the textbook Riegel exponent
@@ -195,7 +196,8 @@ the ~39 second grass-to-track differential this model uses, a 15:55 on grass imp
 on the track — so the 15:20 is now a floor rather than a projection, reached by two independent
 routes. Run the 15:55 backwards it would imply a ~9:20 3200 and a ~15:06 track 5000; **that number is
 used nowhere**, because stacking a projection on a projection is how a board talks itself into
-schools. The board still runs on 15:20, 26:00 and 32:46.
+schools. The board still runs on 15:20, 26:00 and 33:11 — the 10K was 32:46 here and has since been
+re-anchored, which is a change to the conversion rather than to anything he ran.
 
 **The framing rule, unchanged — and the PR is the clearest demonstration of it yet.** **Arriving as a
 team's 5th through 9th man is the healthy target** — training partners ahead of him and a path to

@@ -390,6 +390,28 @@ th[scope="row"] { font-weight: 500; color: var(--text-secondary); font-size: 14p
 .race-table tbody tr.me td:first-child { border-left: 2px solid var(--div-blue); }
 .race-table tbody tr.me td:last-child { border-right: 2px solid var(--div-blue); }
 
+/* Class year beside a runner. It is a label, not a status, so it gets the neutral
+   chip and never a color of its own - FR vs SR carries no good/bad meaning. */
+.yr {
+  display: inline-block; margin-left: 6px; padding: 1px 5px; border-radius: 3px;
+  background: var(--neutral-mid); color: var(--text-secondary);
+  font-size: 10.5px; font-weight: 650; letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums; vertical-align: 1px;
+}
+.race[data-kind="shape"] { border-left: 3px solid var(--season-i); }
+
+/* The invitationals are folded because the reader who wants the headline has already
+   had it. Shut, the summary still says how many are inside, so nothing hides. */
+details.more { margin: 12px 0 0; }
+details.more > summary {
+  cursor: pointer; font-size: 13px; font-weight: 620; color: var(--text-secondary);
+  padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px;
+  background: var(--surface-1);
+}
+details.more > summary:hover { color: var(--text-primary); }
+details.more > summary:focus-visible { outline: 2px solid var(--div-blue); outline-offset: 2px; }
+details.more[open] > summary { margin-bottom: 4px; }
+
 footer.site { border-top: 1px solid var(--border); margin-top: 60px; padding: 26px 0 50px; }
 footer.site p { font-size: 13px; color: var(--muted); }
 
@@ -416,4 +438,8 @@ footer.site p { font-size: 13px; color: var(--muted); }
      drop the rest */
   .table-scroll:has(#master) { max-height: none; }
   #master .notebox { height: auto; overflow: visible; }
+  /* A folded block prints as its summary and drops the races inside it, which on
+     paper reads as if they were never collected. */
+  details.more > summary { display: none; }
+  details.more:not([open]) > *:not(summary) { display: block; }
 }

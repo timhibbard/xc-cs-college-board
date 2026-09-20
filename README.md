@@ -30,7 +30,7 @@ found two schools with no men's cross country to join at all — UAB and Georgia
 
 **He has a new 5K cross country best: 15:55.** The whole cross-country chain used to run off a
 *projected* ~15:59, so the board is now scored against a mark that exists rather than one he might
-reach — **8K 26:00, 10K 32:46**, and his solved fatigue exponent drops from **1.196 to 1.117**, which
+reach — **8K 26:00, 10K 32:46** (the 10K has since been re-anchored to **33:11**), and his solved fatigue exponent drops from **1.196 to 1.117**, which
 is the "upside case" the methodology page described arriving a season early. It moves less than it
 sounds: seven seconds at 8K, and **two tier changes** (Anderson SC up to *Target*, Southern Wesleyan
 down to *Caution*). The track 5000 stays at **15:20** — the 15:55 independently implies about 15:16 via

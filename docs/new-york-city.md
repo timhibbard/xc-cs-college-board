@@ -82,7 +82,8 @@ all still have pages, and the ones the Division 1 rule archived say so at the to
 > **He has run 15:55 for 5K cross country**, which retires the ~15:59 this document projected and
 > replaces it with a mark that exists. The 8K comes down seven seconds to **26:00** and the 10K to
 > **32:46** — only seven seconds, because the 8K was already built on the projection rather than on
-> the 16:29 he had actually run. **No school in this metro changed tier.** Every gap below tightened
+> the 16:29 he had actually run. (The 10K was re-anchored to **33:11** in a later sweep, which
+> is a separate correction from this one — see `../methodology.html#distance-bias`.) **No school in this metro changed tier.** Every gap below tightened
 > by about seven seconds, which is enough to move Stony Brook to 3 seconds outside a scoring seven
 > and Fordham to 19 seconds inside one, but not enough to cross a boundary anywhere. The count stays
 > **28 schools, four of them target tier**. Derivation, and what the PR did and did not buy, are in
@@ -124,7 +125,7 @@ Live version, with per-school pages, per-race results and meet maps:
 | 3200m | 9:40 | 9:29 |
 | 5K XC | **15:55** | the ~15:59 projection is already met |
 
-Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 32:46**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 33:11**
 
 Target: a program where he would arrive as their **5th through 9th man**. Being ahead of a team's
 #1 is not a good sign — it means the program is thin and he would train alone. The track 5000 is

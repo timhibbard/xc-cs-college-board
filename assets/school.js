@@ -226,6 +226,29 @@ function coachSection() {
 }
 
 /* ---------- cross country ---------- */
+/* The races are shown in three groups rather than one list, because they do not
+   measure the same thing. A championship is where a team runs its actual seven and
+   its #1 is racing flat out; the identical comparison comes out a median 14.5s kinder
+   at an invitational, and that shrinkage is the calendar, not the runner.
+   So the tier rests on the championships, and the rest of the season is context. */
+/* An area championship — IC4A/ECAC, NEICAAA, the Metropolitan, DIII North, the Private
+   College and Little Three meets — is open to whoever enters from a region rather than to
+   one league's members, so it is not this school's conference championship and is not
+   labelled as one. It still counts here: against the same teams' own conference meets
+   these came out a median 4 seconds and 0 slots apart, so they are raced, not jogged. */
+const XC_CHAMP = ['conference', 'area championship', 'NCAA regional', 'national championship'];
+const isChamp = (r) => XC_CHAMP.includes(r.level);
+const LEVEL_LABEL = {
+  conference: 'conference championship', 'area championship': 'area championship',
+  'NCAA regional': 'NCAA regional',
+  'national championship': 'national championship', invitational: 'invitational',
+};
+/* A cross country 5K needs no projection at all: 15:55 is the mark itself, the one
+   the 8K and 10K are scaled from. Early September is full of them. */
+const XP = { '8K': ATHLETE.proj8k, '10K': ATHLETE.proj10k, '5K': ATHLETE.proj5kxc };
+const XPL = { '8K': ATHLETE.proj8kLabel, '10K': ATHLETE.proj10kLabel, '5K': ATHLETE.proj5kxcLabel };
+const nOf = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
+
 function xcSection() {
   const races = (typeof XCRACES !== 'undefined' && XCRACES[S.name]) || [];
   /* No results and no team are different findings, and only one of them is worth
@@ -250,31 +273,54 @@ function xcSection() {
       It is the highest-value thing left to look up here:
       the 2025 conference championship result would show their whole scoring seven.</p></div>`;
   }
-  const P = { '8K': ATHLETE.proj8k, '10K': ATHLETE.proj10k };
-  const PL = { '8K': ATHLETE.proj8kLabel, '10K': ATHLETE.proj10kLabel };
+  const ch = races.filter(r => r.date < '2026-01-01' && isChamp(r));
+  const inv = races.filter(r => r.date < '2026-01-01' && !isChamp(r));
+  const now = races.filter(r => r.date >= '2026-01-01');
 
   return `
     <h2>Cross country — where he would have finished</h2>
     <p class="prose">
-      Every 2025 championship result on file for this team, with their scoring seven in finishing
-      order and his projection dropped into place. This is the comparison that decides the tier; the
-      outdoor 5000 mark below is only a floor. The individual athletes are not named — their times
-      are what the comparison needs, their identities are not, and each meet is named so any of it
-      can be checked against TFRRS.
+      Every comparable result on file for this team, ${nOf(races.length, 'race')} in all: their scoring
+      seven in finishing order, each runner's class year as the results page gave it, and his
+      projection dropped into place. The individual athletes are not named — their times and their
+      years are what the comparison needs, their identities are not — and every meet is named and
+      dated so any of it can be checked against TFRRS.
     </p>
-    ${races.map(r => {
-      const corr = r.corr || 0;
-      /* Athletes are not named — their times are what the comparison needs, and this
-         is a public page. The meet and date are given so any of it can be checked. */
-      const runners = r.runners.map((t, i) => ({ n: `Their #${i + 1}`, t, adj: t + corr }));
-      const me = { t: P[r.dist], adj: P[r.dist], me: true };
-      const all = [...runners, me].sort((a, b) => a.adj - b.adj);
-      return `
+    ${shapePanel()}
+    ${ch.length ? `
+    <h3>2025 championships — the ${ch.length === 1 ? 'one race' : nOf(ch.length, 'race')} the tier rests on</h3>
+    <p class="prose">A team runs its real seven at a championship and its #1 races flat out, so this is
+      the honest version of the comparison and the only group the tier uses.</p>
+    ${ch.map(raceCard).join('')}
+    ${aggTable(ch)}
+    ${distNote(ch)}
+    ${eqNote(S.xc, ch)}
+    ${S.xc.disagree ? `<div class="callout"><span class="c-title">Their races disagree</span><p>His slot moves by three or more places
+      between these results. Treat the tier as provisional and weight the race on the course most like the one he would run.</p></div>` : ''}
+    ${shortNote(ch)}` : `
+    <div class="callout"><span class="c-title">No championship result on file</span>
+      <p>Everything below is an invitational, where a team often rests its front and its #1 is not
+      racing flat out. The tier here is softer evidence than it looks.</p></div>`}
+    ${nowPanel(now, ch)}
+    ${invPanel(inv)}`;
+}
+
+/* One race, one card: their finishers in order with his projection slotted in by
+   adjusted time. Athletes are not named — their times are what the comparison needs,
+   and this is a public page. The meet and date are given so any of it can be checked. */
+function raceCard(r) {
+  const corr = r.corr || 0;
+  const years = r.years || [];
+  const runners = r.runners.map((t, i) => ({ n: `Their #${i + 1}`, y: years[i] || null, t, adj: t + corr }));
+  const me = { t: XP[r.dist], adj: XP[r.dist], me: true };
+  const all = [...runners, me].sort((a, b) => a.adj - b.adj);
+  const lvl = LEVEL_LABEL[r.level] ? ` · ${LEVEL_LABEL[r.level]}` : '';
+  return `
       <div class="race" data-kind="xc">
         <div class="race-head">
           <div>
             <div class="race-meet">${r.meet}</div>
-            <div class="race-meta">${r.date} · ${r.dist}${/conference/i.test(r.level || '') ? ' · conference championship' : /regional/i.test(r.level || '') ? ' · NCAA regional' : ''}${r.place != null ? ` · finished ${r.place}${r.score != null ? ` with ${r.score} points` : ''}` : ''}${r.nfin != null ? ` · only ${r.nfin} finisher${r.nfin === 1 ? '' : 's'}` : ''}</div>
+            <div class="race-meta">${r.date} · ${r.dist}${lvl}${r.place != null ? ` · finished ${r.place}${r.score != null ? ` with ${r.score} points` : ''}` : ''}${r.nfin != null ? ` · only ${nOf(r.nfin, 'finisher')}` : ''}</div>
           </div>
           <div class="race-slot"><span class="rs-n">${r.slot}</span><span class="rs-l">he would be<br>their #${r.slot}</span></div>
         </div>
@@ -283,7 +329,7 @@ function xcSection() {
             <thead><tr><th scope="col">Place</th><th scope="col">Runner</th><th scope="col" class="num">Time</th>${corr ? '<th scope="col" class="num">Course-adjusted</th>' : ''}</tr></thead>
             <tbody>${all.map((x, i) => `<tr class="${x.me ? 'me' : ''}">
               <td class="num">${i + 1}</td>
-              <td>${x.me ? `<strong>His projection &mdash; ${PL[r.dist]}</strong>` : x.n}</td>
+              <td>${x.me ? `<strong>His projection &mdash; ${XPL[r.dist]}</strong>` : `${x.n}${x.y ? ` <span class="yr" title="class year on the results page">${x.y}</span>` : ''}`}</td>
               <td class="num time">${fmtTime(x.t)}</td>
               ${corr ? `<td class="num time">${x.me ? '<span class="nodata">—</span>' : fmtTime(x.adj)}</td>` : ''}
             </tr>`).join('')}</tbody>
@@ -301,17 +347,150 @@ function xcSection() {
                <strong>${r.vlast <= 0 ? Math.abs(r.vlast).toFixed(0) + 's faster' : r.vlast.toFixed(0) + 's slower'}</strong>, and ` : ''}${Math.abs(r.g1).toFixed(0)}s
                ${r.g1 >= 0 ? 'behind' : 'ahead of'} their #1.
                ${(r.nfin ?? r.runners.length) < 5 ? `Five finishers are the minimum for a team score, so this one is not a team
-               result at all and does not enter the averages below &mdash; it is here because it is the only evidence there is.` : ''} `}
+               result at all and does not enter the averages &mdash; it is here because it is the only evidence there is.` : ''} `}
           ${r.runners.length < 3 ? '' : `Their 1-through-${r.runners.length} spread is <strong>${r.spread.toFixed(0)}s</strong> — the most course-independent
           number here, because it compares the team only to itself.`}
           ${corr ? `<br><strong>Course correction of ${corr > 0 ? '+' : ''}${corr}s applied.</strong> ${COURSE_NOTES[r.meet] ? 'This meet ' + COURSE_NOTES[r.meet] + '.' : ''}` : ''}
         </p>
       </div>`;
-    }).join('')}
-    ${aggTable(races)}
-    ${S.xc.disagree ? `<div class="callout"><span class="c-title">Their races disagree</span><p>His slot moves by three or more places
-      between these results. Treat the tier as provisional and weight the race on the course most like the one he would run.</p></div>` : ''}
-    ${shortNote(races)}`;
+}
+
+/* The forward-looking half of the page. Class years are read off one race rather
+   than pooled over the season, because the same seven men appear in every race and
+   pooling would count them over and over; the most recent race wins, because the
+   roster it shows is the current one. */
+function shapePanel() {
+  const sh = S.shape;
+  if (!sh) return '';
+  const stale = sh.date < '2026-01-01';
+  const mix = [['Freshmen', sh.fr], ['Sophomores', sh.so], ['Juniors', sh.jr], ['Seniors', sh.sr]];
+  const g = sh.g1ret;
+  /* m* is the most of that class seen in any other race of the same season, and it is
+     only carried where it beats the race above — so it says "there is at least one more
+     freshman than you can see here", never how many there are in total. */
+  const floor = [['freshman', 'freshmen', sh.mfr], ['sophomore', 'sophomores', sh.mso],
+    ['junior', 'juniors', sh.mjr], ['senior', 'seniors', sh.msr]]
+    .filter(([, , v]) => v != null).map(([one, many, v]) => `${v} ${v === 1 ? one : many}`);
+  const andList = (a) => a.length < 2 ? a[0] : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+  /* Same framing rule as the tiers: 40 to 60 seconds behind a team's best man is the
+     healthy target, and arriving ahead of him is a warning about the program. */
+  const read = g == null ? ''
+    : g < 0 ? `He would arrive <strong>${Math.abs(g).toFixed(0)}s ahead of their fastest returning man</strong>,
+        which is the thin-program warning rather than a compliment — there would be nobody in front to pull him along.`
+    : g < 40 ? `He would arrive <strong>${g.toFixed(0)}s behind their fastest returning man</strong> — closer than the
+        40-to-60s window this board looks for, so their front would not do much pulling.`
+    : g <= 60 ? `He would arrive <strong>${g.toFixed(0)}s behind their fastest returning man</strong>, squarely in the
+        40-to-60s window this board looks for.`
+    : `He would arrive <strong>${g.toFixed(0)}s behind their fastest returning man</strong> — further back than the
+        40-to-60s window, so he would be a developmental addition to this front rather than part of it.`;
+  return `
+    <h3>How this team is shaped when their seniors go</h3>
+    <div class="race" data-kind="shape">
+      <div class="race-head">
+        <div>
+          <div class="race-meet">${sh.ret === 0 ? `Every one of their ${sh.n} was a senior`
+            : `${sh.ret} of their ${sh.n} were not seniors`}</div>
+          <div class="race-meta">Class years as they stood at ${sh.meet} · ${sh.date} · ${sh.dist}</div>
+        </div>
+        <div class="race-slot"><span class="rs-n">${sh.sr}</span><span class="rs-l">graduating<br>from that ${sh.n}</span></div>
+      </div>
+      <div class="table-scroll">
+        <table class="race-table">
+          <thead><tr>${mix.map(([k]) => `<th scope="col" class="num">${k}</th>`).join('')}</tr></thead>
+          <tbody><tr>${mix.map(([, v]) => `<td class="num">${v === 0 ? '<span class="nodata">0</span>' : v}</td>`).join('')}</tr></tbody>
+        </table>
+      </div>
+      <p class="map-note">
+        ${read}
+        ${sh.sr >= 3 ? `<strong>${sh.sr} of the ${sh.n} graduate</strong>, so the front of this team turns over
+          rather than reloads — which cuts both ways: the places open up, and there is less of a pack left to train with.` : ''}
+        ${sh.ret < 5 ? `Fewer than five men here come back, and five is the minimum for a team score: on this race alone
+          the squad has to recruit to field a scoring team at all, which is worth asking the coach about directly.` : ''}
+        ${floor.length ? `<br><strong>Other races that season had men this one did not.</strong> At least
+          ${andList(floor)} raced for this team elsewhere in the season, so the mix above is the squad that
+          ran that day rather than the whole roster — and the youngest of them are the ones still here.` : ''}
+        ${sh.eq && g != null ? `<br>That gap is 8K-equivalent: the race read here was a ${sh.dist}, and a gap
+          in seconds grows with the distance, so it is scaled to 8K before being held against the
+          40-to-60s window.` : ''}
+        ${stale ? `<br>These years come from a 2025 race, the most recent one on file for this team — so every man
+          has moved up a year since, and the seniors counted here have already gone.` : ''}
+        <br>Incoming freshmen are invisible in this count: it reads only the men who have already raced.
+      </p>
+    </div>`;
+}
+
+/* Two or three aggregates side by side, which is the level bias made visible rather
+   than asserted: same team, same measurement, different kind of race. */
+function compareTable(cols) {
+  const gap = (v) => v == null ? '<span class="nodata">&mdash;</span>'
+    : v <= 0 ? '&minus;' + Math.abs(v) + 's (inside)' : '+' + v + 's (outside)';
+  const beh = (v) => v == null ? '<span class="nodata">&mdash;</span>'
+    : v >= 0 ? '+' + v + 's behind' : '&minus;' + Math.abs(v) + 's ahead';
+  const rows = [
+    ['His slot in their seven', (c) => `<strong>${c.slot ?? '—'}</strong>`],
+    ['Versus their #1', (c) => beh(c.g1)],
+    ['Versus their 7th man', (c) => gap(c.v7)],
+    ['Their 1&ndash;7 spread', (c) => c.spread == null ? '<span class="nodata">&mdash;</span>' : c.spread + 's'],
+    ['Races averaged', (c) => c.nraces],
+  ];
+  return `
+    <div class="table-scroll" style="margin-top:14px">
+      <table><thead><tr><th scope="col"></th>${cols.map(c =>
+        `<th scope="col" class="num">${c.label}</th>`).join('')}</tr></thead>
+        <tbody>${rows.map(([k, f]) => `<tr><th scope="row">${k}</th>${cols.map(c =>
+          `<td class="num">${f(c.a)}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table>
+    </div>
+    ${cols.some(c => c.a && c.a.eq) ? `<p class="map-note">At least one of these columns includes a race
+      that was not an 8K, so every second in the table is 8K-equivalent &mdash; each race's gap scaled by
+      his 8K projection over the projection for its own distance. Without that the columns would not be
+      in the same units, and the point of putting them side by side is that they are.</p>` : ''}`;
+}
+
+/* The season that is running now. Every 2026 race on the board is a September
+   invitational, so it is read against the 2025 invitationals — same kind of race,
+   same soft early-season pacing — and the championship column is there to show how
+   much of the difference is just the level. */
+function nowPanel(races, ch) {
+  if (!races.length) return `
+    <h3>2026 season</h3>
+    <p class="prose">No 2026 result for this team is on file. The board was swept on 20 September 2026,
+      about three weeks into the season, and this program either had not raced a distance this board can
+      convert by then or its result had not posted to TFRRS yet.</p>`;
+  const cols = [];
+  if (S.xc26) cols.push({ label: '2026 so far', a: S.xc26 });
+  if (S.xcInv) cols.push({ label: '2025 invitationals', a: S.xcInv });
+  if (S.xc && ch.length) cols.push({ label: '2025 championships', a: S.xc });
+  const bias = S.xcInv && S.xc && ch.length;
+  return `
+    <h3>2026 season so far — ${nOf(races.length, 'race')}</h3>
+    <p class="prose">This is the roster as it stands, and the class years in it are the ones that say who
+      is here next year rather than who was here last year. Every 2026 race on file is a September
+      invitational${cols.length > 1 ? `, so the honest comparison in the table below is the 2025
+      invitational column rather than the championship one${bias ? `; the distance between those two 2025
+      columns is about what the level alone is worth` : ''}` : ''}.</p>
+    ${races.map(raceCard).join('')}
+    ${cols.length > 1 ? compareTable(cols) : ''}
+    ${S.xc26 ? '' : `<p class="map-note">No 2026 average is shown: none of these races had the five
+      finishers a team score needs, so there is nothing to average.</p>`}`;
+}
+
+/* Kept out of the tier and kept on the page. Folded shut because a reader who wants
+   the number has already had it, and nine more cards would bury the 2026 season. */
+function invPanel(races) {
+  if (!races.length) return '';
+  return `
+    <h3>2025 invitationals</h3>
+    <details class="more">
+      <summary>${nOf(races.length, 'invitational result')} — shown in full, kept out of the tier</summary>
+      <p class="prose">Across the 141 schools with both, his gap to a team's #1 comes out a median
+        <strong>14.5s smaller</strong> at an invitational than at that same team's championship: their
+        best man is running in a pack rather than for a place, and teams rest or split their squads.
+        Averaging these in with the championships would make every program on the board look closer
+        than it is, so they are averaged separately &mdash; and shown, because the depth behind their
+        front is real either way.</p>
+      ${races.map(raceCard).join('')}
+    </details>`;
 }
 
 /* A team that never finished seven has no 7th man to compare against, so the
@@ -324,10 +503,10 @@ function aggTable(races) {
   const rows = [
     [counted === 0
       ? 'His slot among the runners they did finish'
-      : `Averaged over ${counted} race${counted === 1 ? '' : 's'}: his slot in their ${x.v7 == null ? 'finishers' : 'seven'}`,
+      : `Averaged over ${counted} championship race${counted === 1 ? '' : 's'}: his slot in their ${x.v7 == null ? 'finishers' : 'seven'}`,
       `<strong>${x.slot ?? '—'}</strong>`],
     ['Versus their 7th man', x.v7 == null
-      ? `<span class="nodata">no 7th man &mdash; they never finished seven</span>`
+      ? `<span class="nodata">no 7th man &mdash; they never finished seven in one</span>`
       : gap(x.v7)],
     ['Versus their #1', x.g1 == null ? '<span class="nodata">—</span>'
       : (x.g1 >= 0 ? '+' + x.g1 + 's behind' : '−' + Math.abs(x.g1) + 's ahead')],
@@ -343,12 +522,69 @@ function aggTable(races) {
     </div>`;
 }
 
+/* Every race card above is read against the projection for the distance that was
+   actually run — 26:00 at 8K, 33:11 at 10K, his own 15:55 at a 5K — so no card mixes
+   anything. The averages are the part that needs care, because a gap in seconds is not
+   the same quantity at two distances: the same standing against a team is 40s at 8K, 51s
+   at 10K and 24s at 5K, since his time and theirs both grow with the race. The averaged
+   seconds are therefore converted to 8K-equivalent first (see EQ in the generator), which
+   is what makes them comparable to the 45-second cut line and to every other school.
+   What survives the conversion is a real difference and is worth saying out loud: over
+   the 49 board schools with a 2025 championship at both distances his gap to their #1 now
+   agrees to a median 1 second, but his gap to their 7th man still reads a median 26s
+   kinder at the 10K, because a team's back man fades harder over 10K than its leader does
+   (1.297x against 1.277x, measured on 84 schools' own conference 8K and 10K regional).
+   The slot moves a median 0.00 places, which is why the slot is the headline. */
+const EQF = { '10K': 0.78, '5K': 1.63 };
+const eqPhrase = (d) => `a ${d} gap &times; ${EQF[d]}`;
+
+function distNote(races) {
+  const d = [...new Set(races.filter(r => (r.nfin ?? r.runners.length) >= 5).map(r => r.dist))];
+  if (d.length < 2) return '';
+  const conv = d.filter(x => EQF[x]).map(eqPhrase);
+  const resid = [];
+  if (d.includes('10K')) resid.push(`a median <strong>26s kinder at 10K</strong> than at 8K`);
+  if (d.includes('5K')) resid.push(`a median <strong>15s kinder at 5K</strong> than at 8K`);
+  return `
+    <div class="callout"><span class="c-title">These averages are in 8K-equivalent seconds</span>
+      <p>This team's championships were run at ${d.join(' and ')} &mdash; typically a conference 8K and a
+      10K regional. Each race above is compared against his projection <em>for that distance</em>
+      (${d.map(x => `${XPL[x]} at ${x}`).join(', ')}), so no card mixes anything. The averages would, because
+      a gap of 40s at 8K is 51s at 10K for exactly the same standing &mdash; his time and theirs both grow
+      with the race. So each race's gap is converted before averaging (${conv.join(', ')}), which is the
+      same as reading it as a share of his own projected time.</p>
+      <p>What is left after that conversion is real. Across the 49 schools with a championship at both
+      distances his gap to their <em>#1</em> now agrees to a median 1 second, but his gap to their
+      <em>7th man</em> still comes out ${resid.join(', and ')}: the back of a scoring seven fades harder
+      over the longer race than its leader does, with the score already settled and the man in traffic.
+      His slot moves a median 0.0 places either way, which is why the slot is the headline number here.</p></div>`;
+}
+
+/* A school whose championships were all run at one non-8K distance gets no mixing
+   callout, but its averaged seconds are still converted, and a reader comparing it to
+   the school above it needs to know that. */
+function eqNote(x, races) {
+  if (!x || !x.eq) return '';
+  const d = [...new Set(races.filter(r => (r.nfin ?? r.runners.length) >= 5).map(r => r.dist))];
+  if (d.length !== 1 || !EQF[d[0]]) return '';
+  return `<p class="map-note">Their championships were run at ${d[0]}, and he is compared against
+    ${d[0] === '5K' ? `his real <strong>${XPL['5K']}</strong>, which needs no projecting`
+      : `his <strong>${XPL[d[0]]}</strong> projection for that distance`}. The averaged seconds above are
+    then converted to 8K-equivalent (${eqPhrase(d[0])}) so they can be read against the same lines as
+    every other school on the board; his slot needs no conversion. Expect this school's 7th-man gap to
+    run about ${d[0] === '10K'
+      ? `26s kinder than the same team's 8K would &mdash; the back of a scoring seven fades harder over
+         the longer race than its leader does`
+      : `15s kinder than the same team's 8K would &mdash; 5Ks are early-season races, run before anybody
+         is fit`}.</p>`;
+}
+
 function shortNote(races) {
   const x = S.xc;
   if (!x.short) return '';
   const counted = races.filter(r => (r.nfin ?? r.runners.length) >= 5).length;
   if (counted === 0) return `
-    <div class="callout crit"><span class="c-title">This program never finished five runners in 2025</span>
+    <div class="callout crit"><span class="c-title">This program never finished five runners in a 2025 championship</span>
       <p>Five finishers are the minimum for a team score, and the most this team got to the line in any
       championship race was <strong>${x.maxfin}</strong>. There is no scoring seven to slot into because
       there is no scoring five. That is not a gap in the data &mdash; it is the finding, and it is the
@@ -356,15 +592,15 @@ function shortNote(races) {
       how many men are on the roster for the coming season before anything else.</p></div>`;
   if (x.v7 == null) return `
     <div class="callout"><span class="c-title">They never finished seven runners</span>
-      <p>Every result on file for this team ends before a 7th man, so the column this board is built on
+      <p>Every championship result on file for this team ends before a 7th man, so the column this board is built on
       &mdash; how far he would be from their 7th &mdash; cannot be computed. The comparison shown instead
       is against their <em>last</em> finisher, which is a weaker test: he could be comfortably inside a
       five-man squad and still have nobody to train with. A team that cannot field seven at its own
       conference championship is a thin program, which is the same warning the number would have given.</p></div>`;
   return `
     <div class="callout"><span class="c-title">One of these races was short of seven</span>
-      <p>The team finished fewer than seven in at least one result above, so that race contributes a
-      last-finisher comparison rather than a 7th-man one. The averages use the ${counted} race${counted === 1 ? '' : 's'}
+      <p>The team finished fewer than seven in at least one championship above, so that race contributes a
+      last-finisher comparison rather than a 7th-man one. The averages use the ${counted} championship${counted === 1 ? '' : 's'}
       with at least five finishers.</p></div>`;
 }
 
