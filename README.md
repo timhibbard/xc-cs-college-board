@@ -125,14 +125,21 @@ cleared that bar, so most schools rest on an uncorrected time — the largest re
 error here. Getting the sign of one correction backwards briefly promoted a cut school to
 target tier, which is documented rather than quietly fixed.
 
-**And it was then only half-applied.** The −96.5s South Atlantic correction reached the three teams
-used to *derive* it and none of the other seven, so those programs' times sat in the tables raw for
-several passes. Because the correction makes their times faster, the omission made them read as
-thinner than they are, and **five schools were sitting at *Caution* on an arithmetic omission**:
-Emory & Henry, Lincoln Memorial, Mars Hill, Tusculum and UVA Wise, all now *Target*. Every derived
-number in `assets/data.js` and `assets/detail.js` is now **generated from the raw runner times**
-rather than edited in place, and the invariant is checkable: each stored `slot`, `g1`, `v7` and
-`spread` must reproduce exactly from the times it summarises.
+**And it was then applied twice.** The −96.5s South Atlantic correction reached the three teams used
+to *derive* it and none of the other seven, so those programs' times sat in the tables raw for
+several passes. The fix for that wrote the offset **into** the stored `runners` array while leaving
+`corr: -96.5` on the race object, so every derived gap subtracted it a second time. Because the
+correction makes times faster, double-counting it made those squads read as **deeper than they
+are**, and it inflated all seven gaps by exactly 96.5s — **five schools had been promoted to
+*Target* on arithmetic alone**: Emory & Henry, Lincoln Memorial, Mars Hill, Tusculum and UVA Wise,
+all back at *Caution*.
+
+The check is what really failed, and it has changed. Recomputing the stored `slot`, `g1`, `v7` and
+`spread` from the stored `runners` array passed cleanly, because a pre-corrected array is
+indistinguishable from a raw one when the array is all you compare against. The invariant is now
+anchored to the **source**: every race is re-fetched from its results page and each stored number
+must reproduce from the published times. All 228 races currently do, and the same pass caught two
+regional results stored one finisher short (UNC Asheville, UNC Greensboro).
 
 ## Metros
 
@@ -140,7 +147,7 @@ Every count here is the live board, all divisions.
 
 | Metro | Radius | On the board | Target tier | No 7th man | Cut as walk-on | No men's track | No men's program | Source document |
 |---|---|---|---|---|---|---|---|---|
-| Greenville, SC | 300 mi | 81 | 29 | 25 | 10 | 6 | 5 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
+| Greenville, SC | 300 mi | 81 | 24 | 25 | 10 | 6 | 5 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
 | New York City | 20 mi + all of Long Island | 28 | 4 | 8 | 2 | 10 | 4 | [`docs/new-york-city.md`](docs/new-york-city.md) |
 | Chicago | 20 mi | 11 | 1 | 5 | 1 | 1 | 2 | [`docs/chicago.md`](docs/chicago.md) |
 

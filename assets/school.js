@@ -270,7 +270,7 @@ function xcSection() {
       const me = { t: P[r.dist], adj: P[r.dist], me: true };
       const all = [...runners, me].sort((a, b) => a.adj - b.adj);
       return `
-      <div class="race">
+      <div class="race" data-kind="xc">
         <div class="race-head">
           <div>
             <div class="race-meet">${r.meet}</div>
@@ -454,7 +454,7 @@ function meetCard(m, kind) {
   const tactical = isConf && m.fwin > m.win + 0.01;
 
   return `
-    <div class="race">
+    <div class="race" data-kind="t1500">
       <div class="race-head">
         <div>
           <div class="race-meet"><a href="${m.url}" rel="noopener">${m.meet}</a></div>

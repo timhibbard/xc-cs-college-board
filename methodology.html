@@ -20,9 +20,10 @@
     <strong>He has run a new 5K cross country best of 15:55</strong>, which retires the ~15:59
     projection the whole cross-country chain was built on and drops his solved fatigue exponent from
     1.196 to 1.117 — the upside case §1a described, arriving a season early. Recomputing every school
-    against it also surfaced a real error: the 96.5 second South Atlantic course correction had only
-    ever been applied to the three teams used to <em>derive</em> it, and never to the other seven
-    (§3b). Both changes are in. Before them,
+    against it also surfaced a real error — and a later audit against the source pages found the
+    <em>fix</em> for it was wrong too: the 96.5 second South Atlantic course correction was being
+    applied <strong>twice</strong> to seven programs, which had lifted five of them into <em>Target</em>
+    on arithmetic alone. All five are back in <em>Caution</em> (§3b). Both changes are in. Before them,
     <strong>the board required both sports</strong> — men's cross country <em>and</em> men's outdoor
     track — which removed seventeen schools that sponsor only the first (§6b), and every school page now
     carries its team's <strong>2026 conference-championship 1500 field</strong> with his projection
@@ -394,36 +395,74 @@
     within a few seconds of each other, which is what makes the correction believable.
   </p>
 
-  <h2 id="half-applied">3b. The correction that was only half-applied</h2>
+  <h2 id="half-applied">3b. The correction that was applied twice</h2>
   <div class="callout crit">
-    <span class="c-title">Seven of the ten South Atlantic races never got the correction described above</span>
+    <span class="c-title">Seven of the ten South Atlantic races got the &minus;96.5 second correction counted twice, and it reversed five tiers</span>
     <p>
-      Recomputing the board against the 15:55 exposed this. The &minus;96.5 second offset was applied
-      to <strong>Anderson, Catawba and Wingate</strong> — the three teams whose conference-to-regional
-      deltas were used to <em>derive</em> it — and then never back-filled to the other seven South
-      Atlantic programs on the board. Their times sat in the tables raw. In two cases the same race
-      object was internally inconsistent: the gap-to-#1 was computed without the correction while the
-      gap-to-last-finisher was computed with it.
+      An earlier version of this section reported the opposite problem: that seven South Atlantic
+      programs never received the correction at all, that their times &ldquo;sat in the tables raw,&rdquo;
+      and that fixing it lifted five schools out of <em>Caution</em> into <em>Target</em>. The
+      correction went in. It went in <strong>twice</strong>.
     </p>
     <p>
-      The direction matters. The correction makes those teams' times <em>faster</em>, so leaving it out
-      made them look <strong>thinner than they are</strong> — and thin is exactly what this board
-      demotes. Five schools were sitting in <em>Caution</em> for a reason that was an arithmetic
-      omission: <strong>Emory &amp; Henry, Lincoln Memorial, Mars Hill, Tusculum and UVA Wise</strong>,
-      all now <em>Target</em>. Two more, Coker and Newberry, had their gaps corrected but stay in
-      Caution on the underlying result.
+      The mechanism is worth stating precisely, because it is the kind of bug a regeneration check is
+      supposed to catch and did not. Every race object on this site stores the finishers'
+      <em>raw</em> page times in <code>runners</code> and the course offset separately in
+      <code>corr</code>; the gap to their #1 is then derived as
+      <code>projection &minus; (runners[0] + corr)</code>. The fix for those seven races wrote the
+      offset <em>into</em> the <code>runners</code> array — the stored times were already 96.5 seconds
+      faster than the page — and left <code>corr: &minus;96.5</code> sitting on the object. So the
+      derivation subtracted it again. Anderson, Catawba and Wingate, the three teams whose
+      conference-to-regional deltas were used to <em>derive</em> the offset, stored raw times all along
+      and were always right.
     </p>
     <p>
-      This is the fourth error on this page that ran in the flattering-to-thin-programs direction, and
-      like the sign inversion above it was only found because everything was recomputed from the raw
-      times rather than edited in place. <strong>Every derived number in the data files is now
-      regenerated from the runners' times</strong>, so this particular class of error cannot recur
-      silently: the check is that each stored slot, gap and spread reproduces exactly from the times it
-      claims to summarise.
+      The direction is the same one that has caught this project out four times before. Double-counting
+      a correction that makes times faster makes a team look <strong>deeper than it is</strong>, and
+      every one of the seven gaps was inflated by <strong>exactly 96.5 seconds</strong> — the
+      giveaway that this was arithmetic rather than a data problem.
     </p>
-  </div>
-
-  <div class="callout crit">
+    <table class="tbl">
+      <thead><tr><th>School</th><th>Gap to their #1, as published</th><th>Corrected</th><th>His slot in their seven</th></tr></thead>
+      <tbody>
+        <tr><td>Lincoln Memorial</td><td>+149.6</td><td><strong>+53.1</strong></td><td>6th &rarr; <strong>2nd</strong></td></tr>
+        <tr><td>Tusculum</td><td>+113.0</td><td><strong>+16.5</strong></td><td>4th &rarr; <strong>2nd</strong></td></tr>
+        <tr><td>Emory &amp; Henry</td><td>+109.4</td><td><strong>+12.9</strong></td><td>4th &rarr; <strong>2nd</strong></td></tr>
+        <tr><td>UVA Wise</td><td>+100.7</td><td><strong>+4.2</strong></td><td>5th &rarr; <strong>2nd</strong></td></tr>
+        <tr><td>Mars Hill</td><td>+71.1</td><td><strong>&minus;25.4</strong></td><td>4th &rarr; <strong>1st</strong></td></tr>
+        <tr><td>Newberry</td><td>&minus;13.4</td><td><strong>&minus;109.9</strong></td><td>1st</td></tr>
+        <tr><td>Coker</td><td>&minus;97.3</td><td><strong>&minus;193.8</strong></td><td>1st</td></tr>
+      </tbody>
+    </table>
+    <p>
+      A positive number is seconds <em>behind</em> their best runner, which is the direction §2 wants.
+      Read the corrected column against the 40&ndash;to&ndash;60&ndash;second target and the result is
+      unambiguous: <strong>all five promotions are reversed</strong>. Emory &amp; Henry, Lincoln
+      Memorial, Mars Hill, Tusculum and UVA Wise are back in <em>Caution</em>, and Coker and Newberry
+      are thinner than the board said. Averaged across each school's championship races he arrives as
+      the <strong>#1 or #2 man at all seven programs</strong>.
+    </p>
+    <p>
+      Lincoln Memorial is the one worth a second look rather than a dismissal. Its corrected
+      conference gap of +53.1 seconds lands squarely in the target band, and that is a real runner
+      ahead of him. But their #2 is a further 1:44 back, so the <em>slot</em> signal and the
+      <em>gap</em> signal disagree: he would be 53 seconds behind a strong #1 and simultaneously their
+      second man, with no pack in between. Where those two signals disagree this board follows the
+      slot, because the argument of §2 is about training partners and one of them is not a pack.
+    </p>
+    <p>
+      <strong>What actually failed was the check, not just the arithmetic.</strong> The old check
+      recomputed each stored <code>slot</code>, <code>g1</code> and <code>spread</code> from the
+      stored <code>runners</code> array, and those agreed perfectly — a pre-corrected array is
+      indistinguishable from a raw one if the array is all you look at. The check now re-fetches every
+      race page and verifies the stored times against <strong>the source</strong>, which is what
+      exposed these seven. All <strong>228</strong> races on file now reproduce exactly from TFRRS
+      page times on gap, slot, spread and gap-to-seventh, and the same pass caught two unrelated
+      errors: <strong>UNC Asheville</strong> and <strong>UNC Greensboro</strong> each had a regional
+      result stored one finisher short, which had understated both spreads and wrongly recorded
+      Asheville as never fielding a seventh man.
+    </p>
+  </div><div class="callout crit">
     <span class="c-title">A method that was built, tested, and thrown away</span>
     <p>
       An intermediate approach anchored his projection to each team's <em>own</em> 5000 data: take
@@ -611,7 +650,7 @@
       <li><strong>Public schools show the rate he would actually pay</strong> &mdash; the out-of-state rate, since he is a South Carolina resident. In-state figures apply only to the <strong>eleven South Carolina publics</strong> on the site: Clemson, South Carolina, Coastal Carolina, the College of Charleston, The Citadel, Winthrop, Lander, USC Upstate, USC Aiken, Francis Marion and SC State. Which rate a school shows is a fact about the school, not a setting.</li>
       <li><strong>Average net price is an average</strong> across all incoming students after grants and scholarships — not a quote. A strong student stacking merit aid usually lands below it; it is a planning number, not a prediction. At a public school the federal average is also computed from <em>in-state</em> students only, which is not the basis that applies to him &mdash; see <a href="#residency">how residency enters the net cost</a> below.</li>
       <li><strong>Town population is the <em>place</em>, not the setting.</strong> Three of these figures are consolidated city-county governments — Augusta and Macon in Georgia, and Athens for the University of Georgia — so they are county-wide and read larger than what surrounds the campus. Four are census-designated places rather than incorporated towns (Buies Creek, Cullowhee, Tigerville, and Emory VA), where the boundary is a statistical convenience. And a small number inside a large metro describes the address rather than the experience: Morrow GA is 6,364 people and is <em>Atlanta</em>. Always read the town column next to the Mi column. Where it is useful is the opposite case, and there are five of them: at Montreat, Western Carolina, Kennesaw State, Clemson and UNC Pembroke there are more undergraduates than town residents.</li>
-      <li><strong>The CS share is CIP family 11 only.</strong> A computer science degree housed administratively under mathematics reads as zero — which is exactly what happened at SUNY Purchase (now out of range), where the real program was a combined BA in Mathematics/Computer Science. A low share is not proof of absence. <strong>Ten schools on the board report no CS degree</strong>, and they are not all the same case. <strong>Two of the ten are <em>Target</em> tier on the running</strong>, which is where this caveat could change a real decision: <strong>Queens (Charlotte)</strong> and <strong>Emory &amp; Henry</strong>. Queens reports 0% computing degrees <em>and</em> a live mathematics program, which at a small college is usually the signature of CS filed under mathematics rather than of no CS at all, and its page says so rather than asserting the degree does not exist. Emory &amp; Henry is the row to re-check first: the §3b course correction is what moved it into Target, so its CS question was moot until recently and is not now. Three of the ten were checked by hand and disqualified on their own course catalogues: the Merchant Marine Academy (five marine majors and a service obligation), North Park, and Mount Saint Vincent, which is off the board anyway for having no men's track. Five more carry the same explicit warning as Queens instead of a hand check — Brevard, Belmont Abbey, Young Harris, Allen University and Oglethorpe — and Lees-McRae reports 0% and has not been checked either way; all six are thin-squad cautions on the running side, so the CS question is not what rules them out. Two schools removed under the both-sports rule, SUNY Maritime and Sarah Lawrence, report none as well.</li>
+      <li><strong>The CS share is CIP family 11 only.</strong> A computer science degree housed administratively under mathematics reads as zero — which is exactly what happened at SUNY Purchase (now out of range), where the real program was a combined BA in Mathematics/Computer Science. A low share is not proof of absence. <strong>Ten schools on the board report no CS degree</strong>, and they are not all the same case. <strong>One of the ten is <em>Target</em> tier on the running</strong>, which is where this caveat could change a real decision: <strong>Queens (Charlotte)</strong>. Queens reports 0% computing degrees <em>and</em> a live mathematics program, which at a small college is usually the signature of CS filed under mathematics rather than of no CS at all, and its page says so rather than asserting the degree does not exist. <strong>Emory &amp; Henry</strong> was the second such row for exactly one revision of this site: the §3b course correction appeared to move it into Target, and the follow-up audit found that correction had been counted twice. It is back in Caution on the running, so its CS question is moot again — and it is a good illustration of why this caveat is written in terms of which tier a row sits in rather than in terms of a fixed list. Three of the ten were checked by hand and disqualified on their own course catalogues: the Merchant Marine Academy (five marine majors and a service obligation), North Park, and Mount Saint Vincent, which is off the board anyway for having no men's track. Five more carry the same explicit warning as Queens instead of a hand check — Brevard, Belmont Abbey, Young Harris, Allen University and Oglethorpe — and Lees-McRae reports 0% and has not been checked either way; all six are thin-squad cautions on the running side, so the CS question is not what rules them out. Two schools removed under the both-sports rule, SUNY Maritime and Sarah Lawrence, report none as well.</li>
     </ul>
   </div>
 
@@ -764,7 +803,7 @@
       named in the account's own bio or its posts, and a coaching or running word. <strong>A matching name
       is never enough on its own.</strong> Under that rule, of 150 coaches searched, 43 produced at least
       one plausible candidate and <strong>17 were accepted</strong> &mdash; 13 of the 120 rows on the board,
-      and 7 of the 34 at target tier.
+      and 6 of the 29 at target tier.
     </p>
     <p>The rejections are the reason to trust the acceptances:</p>
     <ul>

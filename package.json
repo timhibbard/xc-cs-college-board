@@ -1,0 +1,11 @@
+{
+  "name": "xc-cs-college-board",
+  "private": true,
+  "description": "Static recruiting board. No build step — package.json exists only for the render check.",
+  "scripts": {
+    "check": "node tools/render-check.js"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.0"
+  }
+}
