@@ -6412,6 +6412,13 @@ const XCRACES = {
       runners: [1599.1, 1642.9, 1768, 1843.2, 1909.3, 2065.5],
       years: ["SR", "SR", "SO", "SO", "FR", "SO"] },
   ],
+  /* The one key here with no page behind it, on purpose. Drew is not a row in data.js: the Newark
+     ring reached it and measured it, then the Midtown route came back 29.6 miles against a 20-mile
+     radius and it stayed on new-york.html's cut list instead. These nine races are what that ring
+     bought — a measured Caution, 50 seconds ahead of their #1 at the Landmark championship — and
+     they are kept rather than deleted because the radius is the thing that put Drew out, and the
+     page says Fairfield and Monmouth come straight back if it ever loosens. Nothing renders them
+     today; no page links to school.html?s=drew. */
   "Drew": [
     { meet: "NJIT Alumni XC Opener", date: "2025-08-29", dist: "8K", level: "invitational", place: 5, score: 103,
       slot: 1, g1: -79.4, v7: -456.7, spread: 377.3, corr: 0,

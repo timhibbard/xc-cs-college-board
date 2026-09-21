@@ -2360,27 +2360,17 @@ const SCHOOLS = [
     note: "Division 1, 15 miles out, and <b>five men finished</b> the 2025 CAA championship &mdash; he would have led them by 20 seconds, with their five spanning six minutes. A <b>1.8%</b> computer science share at $25,319 net. All four programs in this metro failed to finish seven, and this is the one where it matters most.",
   },
   /* --- nyc --- */
-  /* The one row on the board outside its metro's rule. Drew came in on the Newark ring at
-     16.2 miles from downtown Newark; when that page was folded into New York the OSRM route
-     from Midtown came back 29.6 miles, well past the 20-mile radius and past the 23-mile
-     straight line too. new-york.html has in fact listed Drew as a casualty of the radius
-     tightening since 50 miles became 20, at an estimated 30 mi the route confirms — so it is
-     both a recorded cut and a row, and both pages say so instead of reconciling it quietly.
-     It is carried rather than deleted because a school with a men's program and a computer
-     science degree that the board once held should not vanish silently; dropping it is the
-     defensible alternative. `outsideRule` is what the prose reads to state the exception. */
-  { name: "Drew", slug: "drew", city: "Madison NJ", metro: "nyc", mi: 29.6,
-    miBy: { newark: 16.2, nyc: 29.6 }, outsideRule: "29.6 driving miles from Midtown, outside the 20-mile radius — it reached the board on the retired Newark ring, 16.2 miles from downtown Newark.",
-    lat: 40.761829, lon: -74.424584, div: "D3", conf: "Landmark",
-    cs: "verified", csSrc: "fed", csShare: 5.6, sat: "1103–1338", satSrc: "fed", accept: "68%", acceptSrc: "fed",
-    cost: { own: "private", resid: "out", tuition: 47100, rb: 17640, sticker: 64740, net: 24280, size: 1533, ipeds: 184348 },
-    b1500: null, b5000: null, tier: "caution", tierSrc: "ladder",
-    xc: { slot: 1, g1: -69.8, v7: -424.1, spread: 354.4, nraces: 2 },
-    xcInv: { slot: 1, g1: -119, v7: -385.8, spread: 266.8, eq: true, nraces: 6 },
-    xc26: { slot: 1, g1: -128.4, v7: -538.3, spread: 409.9, nraces: 1, date: "2026-09-12" },
-    shape: { date: "2025-11-15", meet: "NCAA Division III Metro Region Cross Country Championships", dist: "8K", n: 7, ret: 6, g1ret: -89.5, fr: 3, so: 2, jr: 1, sr: 1 },
-    note: "The one row the board carries from outside a metro's rule: <b>29.6 driving miles from Midtown</b>, past the 20-mile radius, and here because the retired Newark ring reached it at 16.2. The running is a caution on both championships anyway &mdash; <b>50 seconds ahead of their #1</b> at the Landmark meet and 90 at the Division 3 Metro regional &mdash; so the exception costs nothing: it is a row to know about, not one to chase. $24,280 net, 5.6% computer science.",
-  },
+  /* Drew is deliberately not a row here. The Newark ring reached it at 16.2 miles from downtown
+     Newark and it was on that page; when Newark was folded into New York the OSRM route from
+     Midtown came back 29.6 miles, past the 20-mile radius and past the 23-mile straight line
+     too, and new-york.html has listed Drew as a casualty of the tightening from 50 miles to 20
+     ever since that change was made. Carrying it would have made the same school both a recorded
+     cut and a board row, and it would have been the only row on any page outside its metro's
+     rule. It is dropped instead, so the rule holds everywhere with no exception to explain: at
+     50 seconds ahead of their #1 at the Landmark championship and 90 at the Division 3 Metro
+     regional it was a caution, and nothing it measured is worth an exception. Its nine races stay
+     in detail.js, the only key there with no page behind it, and that comment says why. The
+     estimated 30 miles new-york.html lists for it now reads as the confirmed 29.6. */
   { name: "Pratt Institute", slug: "pratt-institute", city: "Brooklyn NY", metro: "nyc", mi: 8.6,
     lat: 40.691297, lon: -73.96431, div: "D3", conf: "Atlantic East",
     cs: "thin", csSrc: "fed", csShare: 0.0, sat: "1150–1390", satSrc: "fed", accept: "73%", acceptSrc: "fed",
@@ -2999,8 +2989,9 @@ const METROS = {
   },
   /* Newark had its own page until the overlap with New York proved near-total: twelve rows
      sat in both rules and nine of its ten board rows were already on new-york.html, so the
-     page earned its nav entry on one caution row. It was folded in — every New Jersey row is
-     `nyc` now, and NEWARK_CENTER below keeps the second measurement, which was the real
+     page earned its nav entry on one caution row, Drew, which turned out to sit outside the New
+     York radius and was dropped rather than carried as an exception. It was folded in — every
+     New Jersey row is `nyc` now, and NEWARK_CENTER below keeps the second measurement, the real
      content: Rutgers–Newark reads as 13 miles from Midtown and half a mile from downtown
      Newark, NJIT as 12 and 0.8. The `metro`-as-array machinery stays; this was a judgment
      about Newark, not about the model, and the next ring pair will need it. */
@@ -3015,7 +3006,8 @@ const METROS = {
 };
 
 /* The retired Newark ring's center, kept as a second measurement rather than a second page.
-   Thirteen New Jersey rows still carry `miBy.newark`, and for most of them it is the more
-   useful number: the New York page's New Jersey section ranks them by it. Not a METROS entry
-   — there is no newark.html, no nav link and no `metro: "newark"` row left. */
+   Twelve New Jersey rows still carry `miBy.newark` — nine on the board and three in NO_PROGRAM
+   — and for most of them it is the more useful number: the New York page's New Jersey section
+   ranks the nine by it. Not a METROS entry — there is no newark.html, no nav link and no
+   `metro: "newark"` row left. */
 const NEWARK_CENTER = { label: 'downtown Newark', center: [40.7357, -74.1724] };

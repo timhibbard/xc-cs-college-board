@@ -1,22 +1,23 @@
 # College Search — New York City (20 mile radius + all of Long Island)
 
-XC/Track + Computer Science. Last updated 2026-09-21 (v12 — the Newark page folded back into this one,
-which brings Drew onto the metro and takes it to 30 schools)
+XC/Track + Computer Science. Last updated 2026-09-21 (v13 — the Newark page folded back into this one,
+and Drew stayed off the board on the radius, so the metro is still 29 schools)
 
-> **The Newark page has been retired into this one, and the metro gains Drew.** v11 gave Newark its own
-> page and had nine of these rows appear on both; the overlap turned out to be near-total — **twelve rows
-> in both rules, and the only row unique to Newark was Drew** — so the page was folded in and every New
-> Jersey row is a New York row now. **This metro is 30 schools: ten Division 1, seven Division 2 and
-> thirteen Division 3**, six of them target tier. No tier changed and no measurement changed. The
+> **The Newark page has been retired into this one, and the metro is unchanged at 29 schools.** v11 gave
+> Newark its own page and had nine of these rows appear on both; the overlap turned out to be near-total —
+> **twelve rows in both rules, and the only row unique to Newark was Drew** — so the page was folded in and
+> every New Jersey row is a New York row now. **This metro is 29 schools: ten Division 1, seven Division 2
+> and twelve Division 3**, six of them target tier. No tier changed and no measurement changed. The
 > downtown-Newark distances are kept as a second reading of the same rows, where NJIT is 0.8 miles out
 > rather than 12 and Rutgers–Newark half a mile rather than 13.
 >
-> **Drew is the board's one row carried from outside a metro rule, stated rather than hidden.** It reached
-> the board on the Newark ring at 16.2 miles; routing it from Midtown for the first time returned **29.6
-> driving miles**, past the 20-mile radius and past the 23-mile straight line. It is kept because a school
-> with a men's program and a CS degree should not vanish from a board that once held it, and the tier makes
-> the exception cheap: **50 seconds ahead of their #1** at the Landmark championship and 90 at the D3 Metro
-> regional. The corrected median net price moves to **$24,314** with it on the list.
+> **Drew did not come across, and v12 briefly had it wrong.** It reached the Newark page at 16.2 miles;
+> routing it from Midtown for the first time returned **29.6 driving miles**, past the 20-mile radius and
+> past the 23-mile straight line — and §1 has listed it as a casualty of the tightening from 50 miles to 20
+> since that change was made, at an estimated *30 mi* the route now confirms. v12 carried it anyway as a
+> documented exception; **v13 drops it**, so every row on every metro page is inside its own ring with no
+> exception to explain. The running never argued for one: **50 seconds ahead of their #1** at the Landmark
+> championship and 90 at the D3 Metro regional, a *Caution* either way. Its nine races stay on file.
 
 > **This metro gained one row and lost none, and nine of its rows now appear twice on purpose.** The
 > federal candidate sweep that added eight metros to the board found one college inside this ring that
@@ -187,13 +188,14 @@ Ten schools leave the board and two of them were load-bearing.
 | **Manhattanville** | 30 | Verify | Westchester. |
 | **SUNY Purchase** | 30 | Verify | Westchester — and the school whose `❌ none` CS reading turned out to be a program filed under mathematics, which is the caveat that now carries across the whole board. |
 | **Ramapo College** | 25 | Verify | New Jersey. |
-| **Drew University** | 30 | Verify | New Jersey. **It came back.** The Newark ring reached it at 16.2 miles and measured it to *Caution*; the Newark fold then left it on this page, and routing it from Midtown confirmed the 30 above at **29.6**. It is the one row on the board outside its metro's rule, and §4 says so. |
+| **Drew University** | 29.6 | Verify | New Jersey. **The one figure in this table that is a route rather than an estimate.** The Newark ring reached it at 16.2 miles and measured it to *Caution*; folding that page in meant routing it from Midtown for the first time, which confirmed the 30 at **29.6** — still outside the radius, so it stayed here rather than becoming the only board row outside its own ring. Its races are on file. |
 
 **Princeton and Rutgers also leave the cut list** — both were removed on level, and both are now
 simply out of range.
 
-Honest accounting: the radius change cost **one Target, one Deep, and eight unknowns** — seven of which
-are still out.
+Honest accounting: the radius change cost **one Target, one Deep, and eight unknowns**, and all eight are
+still out. One of them stopped being unknown in the meantime: the Newark ring reached Drew and measured
+it to *Caution*, which is the only thing this list has learned since it was written.
 
 ### 2b. The finding that changed this metro: ten CUNY colleges, seven of which survive
 
@@ -466,8 +468,7 @@ revision — thirty were unmeasured. Read the tier as a measurement now rather t
 ## 4. Master list
 
 Miles = approximate driving distance from Midtown Manhattan. **Anything past 20 miles is on Long
-Island and in range by that rule — except Drew at 29.6, the one row on the board carried from outside
-its metro's rule, which came in on the retired Newark ring.** School names link to a full detail page with per-race results,
+Island and in range by that rule**, with no exceptions. School names link to a full detail page with per-race results,
 a map of every meet they attended last year, cost and admissions detail.
 
 ### Division 1
@@ -517,7 +518,6 @@ in this division is real; the teams it would buy him into are not deep enough to
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **[NYU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nyu)** | Manhattan NY | 0 | UAA | ✅ 10.1% | 1480–1560 | 9% | $37,050 | 7.3 | −7s | 54s | Target | [Nic Jacobsen](mailto:nnj219@nyu.edu) |
 | **[CCNY](https://timhibbard.github.io/xc-cs-college-board/school.html?s=ccny)** | Manhattan NY | 6 | CUNYAC | ✅ 4.9% | 1070–1430 | 60% | ≈$11,726 | 1 | −810s | 612s | Caution | [Joseph Benson](mailto:jbenson@ccny.cuny.edu) |
-| **[Drew](https://timhibbard.github.io/xc-cs-college-board/school.html?s=drew)** | Madison NJ | 29.6 | Landmark | ✅ 5.6% | 1103–1338 | 68% | $24,280 | 1 | −424s | 354s | Caution | — |
 | **[Farmingdale State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=farmingdale-state)** | Farmingdale NY | 35 | Skyline | ✅ 9.4% | 1040–1240 | 63% | ≈$20,777 | 1 | −384s | 279s | Caution | [Daniela Georgieva](mailto:georgid@farmingdale.edu) |
 | **[Hunter College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=hunter-college)** | Manhattan NY | 2 | CUNYAC | ✅ 9.9% | 1100–1420 | 54% | ≈$10,934 | 1 | −574s | 384s | Caution | [Marvin Hawkins](mailto:marvin.hawkins@hunter.cuny.edu) |
 | **[Kean University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kean-university)** | Union NJ | 20 | NJAC | ✅ 5.6% | 930–1150 | 76% | ≈$20,594 | 1 | −456s | 320s | Caution | [Danielle Todman](mailto:dtodman@kean.edu) |
@@ -528,7 +528,7 @@ in this division is real; the teams it would buy him into are not deep enough to
 | **[Stevens Institute](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stevens-institute)** | Hoboken NJ | 3 | MAC | ✅ 21.2% | 1380–1505 | 48% | $41,346 | 1 | −130s | 86s | Caution | [John Kolibab](mailto:jkolibab@stevens.edu) |
 | **[York College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=york-college-cuny)** | Jamaica NY | 12 | CUNYAC | ✅ 6.3% | 790–960 | 64% | ≈$12,406 | 1 | — | — | Caution | [Eamon Sheerin](mailto:esheerin901@york.cuny.edu) |
 
-> **This table was 21 rows in v4 and is 12 now** — Drew arrived with the Newark fold. Ten D3 programs — three CUNYs and seven Skyline
+> **This table was 21 rows in v4 and is 11 now.** Ten D3 programs — three CUNYs and seven Skyline
 > schools, including both St. Joseph's campuses and Yeshiva — field cross country and no men's track,
 > and left the board under the both-sports rule. They are listed with what the check found in §2h.
 >
@@ -585,15 +585,14 @@ schools that held it are both at Target now, and everything else here is a Cauti
 
 **Verify — unmeasured (0).** Nothing. Every program in this metro has a 2025 cross country result.
 
-**Caution — he arrives at or ahead of their #1 (24).** Everything else: all seven D2 schools, twelve of
-the thirteen D3 schools, and five of the ten D1s — Fairleigh Dickinson, LIU, Manhattan, Saint
-Peter's, Wagner. **Pratt Institute** and **Drew** are the newest of them, the first added by the metro
-sweep and the second by the Newark fold.
+**Caution — he arrives at or ahead of their #1 (23).** Everything else: all seven D2 schools, eleven of
+the twelve D3 schools, and five of the ten D1s — Fairleigh Dickinson, LIU, Manhattan, Saint
+Peter's, Wagner. **Pratt Institute** is the newest of them, added by the metro sweep.
 
 **Cut on results (2).** Hofstra · Iona
 
-Thirty schools, **six of them target tier**, none left at Verify. The measurement sweep moved
-thirty schools out of Verify and only two of them landed above Caution — NJIT and Stony Brook — while
+Twenty-nine schools, **six of them target tier**, none left at Verify. The measurement sweep moved
+twenty-nine schools out of Verify and only two of them landed above Caution — NJIT and Stony Brook — while
 Columbia came back from the cut list and Wagner went the other way, and the both-sports rule then took
 ten more off the board entirely (§2h). The honest summary is that this metro's board is now fully
 measured and the answer it gives is narrow: six schools where the running works, and a shorter but
