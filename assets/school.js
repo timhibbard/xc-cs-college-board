@@ -357,8 +357,12 @@ function raceCard(r) {
 
 /* The forward-looking half of the page. Class years are read off one race rather
    than pooled over the season, because the same seven men appear in every race and
-   pooling would count them over and over; the most recent race wins, because the
-   roster it shows is the current one. */
+   pooling would count them over and over; the deepest championship wins, because it
+   is the fullest picture of the squad and the one race where the front is honest.
+   It used to read the most recent race of any kind, which meant a September 2026
+   invitational: the roster was newer and the gap it produced was softer, because a
+   team in week three is not sorted out yet and its #1 is not racing flat out. The
+   year's staleness is a disclosure; a flattering gap would have been an error. */
 function shapePanel() {
   const sh = S.shape;
   if (!sh) return '';
@@ -412,8 +416,11 @@ function shapePanel() {
         ${sh.eq && g != null ? `<br>That gap is 8K-equivalent: the race read here was a ${sh.dist}, and a gap
           in seconds grows with the distance, so it is scaled to 8K before being held against the
           40-to-60s window.` : ''}
-        ${stale ? `<br>These years come from a 2025 race, the most recent one on file for this team — so every man
-          has moved up a year since, and the seniors counted here have already gone.` : ''}
+        ${stale ? `<br>These years come from a 2025 championship, not from this team's 2026 races, even where
+          those are more recent — so every man has moved up a year since and the seniors counted here have
+          already gone. A September invitational is the wrong place to read a front-runner gap from: the
+          team is not sorted out yet and its #1 is not racing flat out, which made the same gap read
+          softer. A year of staleness is something this page can tell you about; a flattering gap is not.` : ''}
         <br>Incoming freshmen are invisible in this count: it reads only the men who have already raced.
       </p>
     </div>`;
@@ -464,11 +471,12 @@ function nowPanel(races, ch) {
   const bias = S.xcInv && S.xc && ch.length;
   return `
     <h3>2026 season so far — ${nOf(races.length, 'race')}</h3>
-    <p class="prose">This is the roster as it stands, and the class years in it are the ones that say who
-      is here next year rather than who was here last year. Every 2026 race on file is a September
-      invitational${cols.length > 1 ? `, so the honest comparison in the table below is the 2025
+    <p class="prose">This is the roster as it stands, and it is context rather than evidence. <strong>Every
+      2026 race on file is a September invitational</strong> — three weeks into a season, with teams still
+      sorting out their own order and nobody's #1 racing flat out — so nothing here enters the tier or the
+      squad-shape read above${cols.length > 1 ? `. The honest comparison in the table below is the 2025
       invitational column rather than the championship one${bias ? `; the distance between those two 2025
-      columns is about what the level alone is worth` : ''}` : ''}.</p>
+      columns is about what the level alone is worth, and it is the reason the tier ignores both` : ''}` : ''}.</p>
     ${races.map(raceCard).join('')}
     ${cols.length > 1 ? compareTable(cols) : ''}
     ${S.xc26 ? '' : `<p class="map-note">No 2026 average is shown: none of these races had the five

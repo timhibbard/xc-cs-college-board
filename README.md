@@ -9,15 +9,15 @@ ranks them by the one question that predicts whether a distance runner actually 
 
 **Live site:** https://timhibbard.github.io/xc-cs-college-board/
 
-**The board covers every division: 120 schools on it — 44 D1, 46 D2, 28 D3 and two NAIA — plus 13 cut
+**The board covers every division: 123 schools on it — 46 D1, 47 D2, 28 D3 and two NAIA — plus 10 cut
 as walk-on, 17 with cross country but no men's track, and 11 with no men's program to join.** A
 Division-1-only rule was tried on this board and **reversed**; the write-up of it is kept as a decision
 made and undone rather than deleted, because the reason it failed is the useful part — it removed 96 rows,
-thirteen of them at target tier and all thirteen in the Greenville ring. All 150 rows that have a men's
+nine of them at target tier, seven of those in the Greenville ring. All 150 rows that have a men's
 program carry federal cost and admissions data, a detail page, **the name and contact details of the coach
 who would recruit him**, and **the program's Instagram** (147 of the 150) — plus **the coach's own
-Instagram on 17 rows**, recorded only where the account's own bio says they coach this program; **119 of
-the 120 on the board
+Instagram on 17 rows**, recorded only where the account's own bio says they coach this program; **122 of
+the 123 on the board
 rest on a real 2025 cross country result**, each with **its 2026 conference-championship 1500 field** and
 his projected 4:01 dropped into it, and 150 of the 161 pages also carry a map of every meet the program
 attended last season. Only **Shorter** and **Calumet College** still sit at *Verify*, which means
@@ -28,20 +28,30 @@ programs new to the board: Auburn, Samford and Radford joined it, NC State, Virg
 Kentucky are cut on level, and Tennessee Tech and Jacksonville State fail the both-sports rule. It also
 found two schools with no men's cross country to join at all — UAB and Georgia Southern.
 
-**He has a new 5K cross country best: 15:55.** The whole cross-country chain used to run off a
-*projected* ~15:59, so the board is now scored against a mark that exists rather than one he might
-reach — **8K 26:00, 10K 32:46** (the 10K has since been re-anchored to **33:11**), and his solved fatigue exponent drops from **1.196 to 1.117**, which
-is the "upside case" the methodology page described arriving a season early. It moves less than it
-sounds: seven seconds at 8K, and **two tier changes** (Anderson SC up to *Target*, Southern Wesleyan
-down to *Caution*). The track 5000 stays at **15:20** — the 15:55 independently implies about 15:16 via
-the grass-to-track differential, so 15:20 is now a floor rather than a goal. Nothing projects the 15:55
-forward even though it was run early in the season; the methodology page has the sensitivity if you
-want it.
+**He has a new 5K cross country best: 15:40.** The whole cross-country chain used to run off a
+*projected* ~15:59, then off a 15:55 he had run; the board is now scored against **15:40** — **8K
+25:36, 10K 32:40**. The 8K comes down 24 seconds and the 10K 31 from the previous anchor, and at
+15:40 the Riegel route and the board's own ratio agree on the 10K to the second. **Eight schools
+changed tier**: Charleston Southern, Clemson, Lee University, NYU, Stony Brook and the University of
+Chicago came up to *Target*, Berry College and UNC Pembroke went back to *Caution*, and the target
+band went from 29 schools to **33**. Six rows on the cut list came inside the 45-second line on their
+championship average, and **three of them are now back on the board at *Deep*** — the three that clear
+the conference-8K test the cut actually rested on. **Tennessee** is 21.3 seconds outside the seven it
+ran at the SEC championship, its only full squad of the season. **Wingate** is 19.5 seconds *inside*
+its South Atlantic seven once that course's 96.5 second offset is removed, though 42 and 109 outside at
+the D2 regional and the national championship, so 33 outside averaged. **Furman** is seven driving miles
+from home and the hardest call on the board: 39.1 outside the seven it won the Southern Conference with,
+73 at the regional, **48.1 averaged** — three seconds the wrong side of the line. It is on the board by
+decision rather than by the ladder, and the ladder is published as disagreeing rather than quietly
+overruled. The deep tier goes from three schools to six. The track 5000 stays at **15:20**, and it is now an explicitly
+conservative floor: 15:40 on grass plus the ~39 second grass-to-track differential implies about
+**15:01**. Nothing projects the 15:40 forward even though it was run early in the season; the
+methodology page has the sensitivity table, including what 15:35 through 15:20 would do.
 
 **The board requires both sports.** He wants to run cross country *and* track, so a program that
 sponsors one without the other cannot give him both: **seventeen schools came off the board** for that
 reason alone, ten of them in New York, and one of them — **Mercer** — was sitting at *Target* tier
-with his 4th man 196 miles from home. Each was checked twice: the sport list and published track roster
+as their 2nd-to-3rd man 196 miles from home. Each was checked twice: the sport list and published track roster
 the school puts out itself, and TFRRS for the school's men at their **conference indoor and outdoor
 championships**, where a sponsored program has to appear. That second check is deliberately narrow: men
 on a cross country roster post open-meet 1500s and 5000s whether or not the school sponsors men's track,
@@ -49,20 +59,20 @@ which is exactly the case at **Tennessee Tech** — target tier at 270 miles, an
 keep their pages and their cross country numbers, because the numbers are true and it is the rule that
 removed them. Three of them are Division 1, and all three are in the Greenville ring.
 
-Measuring all of them produced one finding that changed the method: **45 of the 148 measured
+Measuring all of them produced one finding that changed the method: **35 of the 143 measured
 programs never finished seven runners in any 2025 championship race**, so there is no 7th man to
 compare against. Those schools are compared to the team's *last* finisher instead and say so, and
 the five that could not finish the scoring five — Roosevelt, Benedict, John Jay, Mount Saint Vincent
 and York College (CUNY) — are held at *Caution* regardless of times. On the board itself the count is
-**38 of 120**: 25 around Greenville, 8 around New York and 5 in Chicago. It is not a small-college
-problem with a divisional fix — five of the 25 in Greenville are Division 1 — which is one of the
+**32 of 123**: 22 around Greenville, 5 around New York and 5 in Chicago. It is not a small-college
+problem with a divisional fix — five of the 22 in Greenville are Division 1 — which is one of the
 reasons the Division 1 rule did not survive.
 
 The 1500 data says the same thing a second way: at **57 of the 114 programs that raced a 1500 in
 2026** his projected 4:01 would be their fastest man in the event, and the median program's best 1500
-went 4:01.1. In the other direction he would have made the conference final at **105 of 120**
-championships and scored — top eight — at **64**. The divisional split is stark, and it cuts the other
-way from the tier ladder: across the 44 Division 1 rows the median best 1500 is **3:49.7**, he makes the
+went 4:01.1. In the other direction he would have made the conference final at **105 of the 120 rows
+with a 1500 on file** and scored — top eight — at **64**. The divisional split is stark, and it cuts the other
+way from the tier ladder: across the 44 Division 1 rows with a 1500 on file the median best 1500 is **3:49.7**, he makes the
 final at 29 of them and scores at 8. Read against 91 rows that actually entered somebody in the event at
 their conference meet, he makes 79 finals and scores in 50 — **29 programs entered nobody in the 1500 at
 all**, which is a fact about how the event is used rather than about him.
@@ -147,9 +157,9 @@ Every count here is the live board, all divisions.
 
 | Metro | Radius | On the board | Target tier | No 7th man | Cut as walk-on | No men's track | No men's program | Source document |
 |---|---|---|---|---|---|---|---|---|
-| Greenville, SC | 300 mi | 81 | 24 | 25 | 10 | 6 | 5 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
-| New York City | 20 mi + all of Long Island | 28 | 4 | 8 | 2 | 10 | 4 | [`docs/new-york-city.md`](docs/new-york-city.md) |
-| Chicago | 20 mi | 11 | 1 | 5 | 1 | 1 | 2 | [`docs/chicago.md`](docs/chicago.md) |
+| Greenville, SC | 300 mi | 84 | 25 | 22 | 7 | 6 | 5 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
+| New York City | 20 mi + all of Long Island | 28 | 6 | 5 | 2 | 10 | 4 | [`docs/new-york-city.md`](docs/new-york-city.md) |
+| Chicago | 20 mi | 11 | 2 | 5 | 1 | 1 | 2 | [`docs/chicago.md`](docs/chicago.md) |
 
 A "with XC data" column would read 80, 28 and 11 — every school on the board except **Shorter**, which
 never fielded a measurable championship squad. The divisional shape of the three rings is completely
@@ -191,10 +201,10 @@ The fifth withdrawal is the completeness claim at the top of this file. The sixt
 of them and is a rule rather than a school: the board now requires **both** cross country and outdoor
 track, which took seventeen schools off it including target-tier **Mercer** and target-tier **Tennessee
 Tech**. The seventh is larger still, is also a rule, and is the only one that has itself been withdrawn: the
-board was narrowed to **Division 1 only**, which removed 96 rows, thirteen of them at target tier and all
-thirteen in the Greenville ring — including **Anderson (SC)**, 29 driving miles from home and the closest
-target anywhere, and **Fayetteville State** at an $11,892 net price, the cheapest target anywhere. Nothing
-about the running justified that: the thirteen were target tier on measured championship results, not on
+board was narrowed to **Division 1 only**, which removed 96 rows, nine of them at target tier and seven
+of those nine in the Greenville ring — including **Anderson (SC)**, 29 driving miles from home and the closest
+target anywhere, and **Fayetteville State** at a $7,892 net price, the cheapest target anywhere. Nothing
+about the running justified that: the nine were target tier on measured championship results, not on
 division. Because the rule was implemented as an archive rather than a deletion, undoing it required no
 re-measuring — every slot, gap, spread, tier and coach came back exactly as it went in. The lesson worth
 keeping is about the shape of the mistake: a filter on a *label* silently deleted the two rows the whole
@@ -203,7 +213,7 @@ search existed to find.
 **Two schools were also cut in error and are back on the board.** Clemson and Columbia were both
 removed on their track marks alone — a 14:36 and a 13:43 5000 read as out of reach. Their actual
 championship results say otherwise: he would have been Clemson's 8th man at the ACC meet and their
-7th at the Southeast regional, and Columbia's #5 at Ivy Heps before slipping to 8th at the Northeast
+7th at the Southeast regional, and Columbia's #3 at Ivy Heps before slipping to 8th at the Northeast
 regional. Clemson returns at *Deep*, Columbia at *Target*. Cutting a school on one fast 5000 is the
 same mistake as recommending one on it.
 
@@ -378,10 +388,11 @@ a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS populatio
 not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
-as raw seconds, in order — 228 races across 148 schools; a short race also carries `nfin` and
-`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for 120 schools: the
-program's season depth chart `d15`, its conference-championship field `cm`, and any postseason rounds
-`post`, read from 40 conference championship result pages plus four postseason pages), and the 2025–26
+as raw seconds, in order — 904 races across 148 schools; a short race also carries `nfin` and
+`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 120 schools where one
+was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
+postseason rounds `post`, read from 40 conference championship result pages plus four postseason
+pages; Furman, Tennessee and Wingate came back onto the board without one), and the 2025–26
 schedule, which is three tables so that no fact is stated twice: `VENUES` (419 places, each geocoded
 once, with `src` giving the precision — `r` the facility, `z` the ZIP the results page printed, `c` the
 town it named), `MEETS` (712 meets keyed by their own TFRRS id, because two different meets can share a

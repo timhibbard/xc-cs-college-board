@@ -324,9 +324,16 @@ function initChart() {
    straight-line distance, while the table's "Mi" column is driving distance,
    so a school near the line can sit a mile or two outside the circle. */
 
+/* CARTO raster tiles now require a key or they come back watermarked. The key is
+   a public client-side credential - it travels in every tile request a browser
+   makes, so there is no version of this that keeps it out of the page source.
+   Restrict it by domain in the CARTO dashboard rather than by hiding it. Free up
+   to 5,000,000 tile requests a month; the OpenStreetMap and CARTO attribution
+   below is a condition of use, so leave it on every map. */
+const CARTO_KEY = 'cb1_3rol_1_dfa2af4cae2e7a98dc854842';
 const TILES = {
-  light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-  dark:  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  light: `https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`,
+  dark:  `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`,
 };
 
 const isDarkNow = () => getComputedStyle(document.documentElement)
@@ -447,7 +454,12 @@ function initMap(metro) {
         ? `<div class="mp-meta">${s.div ?? ''}${s.conf ? ' ' + s.conf : ''}${s.mi != null ? ' &middot; ' + s.mi + ' mi' : ''}</div>${offText}`
         : `<div class="mp-meta">${s.city} &middot; ${s.div} ${s.conf} &middot; ${s.mi} mi</div>
            ${s.xc
-             ? `<div class="mp-line">In their scoring seven he is <b>#${s.xc.slot}</b>, ${s.xc.v7 <= 0 ? Math.abs(s.xc.v7).toFixed(0) + 's inside' : s.xc.v7.toFixed(0) + 's outside'} their 7th man</div>`
+             ? `<div class="mp-line">In their scoring seven he is <b>#${s.xc.slot ?? '&mdash;'}</b>${
+                 /* A team that never finished seven has no 7th man to measure against, so the
+                    aggregate carries no v7 at all. Say that rather than printing a gap. */
+                 s.xc.v7 == null
+                   ? ' &mdash; they never finished seven, so there is no 7th man to compare against'
+                   : `, ${s.xc.v7 <= 0 ? Math.abs(s.xc.v7).toFixed(0) + 's inside' : s.xc.v7.toFixed(0) + 's outside'} their 7th man`}</div>`
              : `<div class="mp-line">No cross country data &mdash; team best 5K <b>${fmtTime(s.b5000) ?? 'unknown'}</b>${g == null ? '' : `, gap ${g >= 0 ? '+' + g : g}s`}</div>`}
            <div class="mp-line">Net cost: <b>${netFor(s) == null ? 'unknown' : (netIsEst(s) ? '&asymp;$' : '$') + netFor(s).toLocaleString('en-US')}</b> &middot; SAT ${s.sat}</div>
            <div class="mp-line">CS degree: <b>${s.cs === 'verified' ? 'verified' : s.cs === 'none' ? 'not offered' : 'unconfirmed'}</b></div>

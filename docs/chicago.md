@@ -1,6 +1,15 @@
 # College Search — Chicago (20 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-09-08 (v6 — coaches' own Instagram)
+XC/Track + Computer Science. Last updated 2026-09-20 (v7 — a new 15:40 5K cross country PR, and
+the whole board re-anchored on it)
+
+> **He has run 15:40 for 5K cross country**, and the whole board is re-anchored on it. The 8K comes
+> down 24 seconds to **25:36** and the 10K 31 seconds to **32:40**; at this mark the board's own
+> 8K×1.276 ratio and the textbook Riegel route agree on the 10K to the second, which they did not at
+> 15:55. **One school in this metro changed tier**: the **University of Chicago** came up from Deep to
+> Target, 12 seconds *inside* a scoring seven averaged over all three of its championships, so Chicago
+> now has two targets rather than one. **UIC** stays at Deep, and **DePaul** is unchanged. The tables
+> below carry the new numbers. Derivation and sensitivity: `../methodology.html` §1, §1a and §1c.
 
 > **The Division 1 rule has been reversed, and Chicago is back to eleven schools** — three D1, one D2, six
 > D3 and one NAIA. That divisional shape is the single most important fact about recruiting here:
@@ -100,9 +109,9 @@ Live version, with per-school pages and meet maps:
 |---|---|---|
 | 1600m | 4:21 | ~4:18 |
 | 3200m | 9:40 | 9:29 |
-| 5K XC | **15:55** | the ~15:59 projection is already met |
+| 5K XC | **15:40** | a mark he has run; the ~15:59 projection is long past |
 
-Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 33:11**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 25:36** · **10K XC 32:40**
 
 The 8K and 10K projections are what the comparison actually runs on, because college cross
 country is raced at 8K (D2, D3, most conference meets) and 10K (D1 regionals and nationals).
@@ -127,7 +136,7 @@ to 20 costs five schools:
 
 | School | Mi | Tier it held | Does the loss matter? |
 |---|---|---|---|
-| **North Central** | 28 | Deep | **Yes — the real loss.** D3 national-championship program, 7th man 25:34 (CCIW) and 25:46 (D3 Midwest regional), so roughly 5 seconds outside the scoring seven once the CCIW course is corrected. Best *training environment* on the list. |
+| **North Central** | 28 | Deep | **Yes — the real loss.** D3 national-championship program, 7th man 25:34 (CCIW) and 25:46 (D3 Midwest regional), so 29 and 10 seconds *inside* the scoring seven at the 15:40 mark, once the CCIW course is corrected. Best *training environment* on the list. |
 | **Purdue Northwest** | 25 | Caution | **Yes, on mechanism not merit.** The only Division 2 program in range, therefore the only place partial athletic money existed. |
 | **Wheaton College** | 25 | Caution | No. Interesting but settled: he arrives near the front of that squad. |
 | **Benedictine (IL)** | 25 | Caution | No. He would lead them by nearly two minutes. |
@@ -213,16 +222,17 @@ back end to slot into. **The recommendation is withdrawn and Loyola is on the cu
 **Withdrawn: Lewis University, twice over.** An earlier version called Lewis *"probably the single
 best fit in metro Chicago"* and recommended widening the radius specifically to reach it. Its 13:45
 5000, 29:58 10K and 3:51 1500 are internally consistent and put him ~95 seconds off their #1, the
-same band as Furman and Wingate. At 30 miles it sat on the cut list as a documented reversal; at 20
+same band as Furman and Wingate — both of which the 15:40 anchor has since put back on the board at
+*Deep*. At 30 miles Lewis sat on the cut list as a documented reversal; at 20
 miles it is out of range as well as out of contention, so it no longer appears anywhere. **Keep the
 lesson, not the school: the original error was reading one fast 5000 as a measure of a squad's
 depth.** It happened here with Lewis and again with Loyola, and it is why this document now ranks on
 cross country results.
 
-**Net effect.** Eleven schools, **one of them target tier**, and DePaul is the answer in Chicago —
-which has now been true through three versions of this document, two radii and two ranking methods.
-The thinness is a property of the metro, not an artifact of the radius: at 30 miles the metro held
-four more schools and still exactly one target-tier fit. If the search can flex, the next thing
+**Net effect.** Eleven schools, **two of them target tier** — DePaul, which has been the answer in
+Chicago through every version of this document, two radii and two ranking methods, and the University
+of Chicago, which the 15:40 mark brought up from Deep. The thinness is a property of the metro, not an
+artifact of the radius: at 30 miles the metro held four more schools and still only one target-tier fit. If the search can flex, the next thing
 worth reaching for is not another ten miles of Chicagoland, it is the Greenville or New York list.
 
 ## 3. How to read the numbers below
@@ -255,8 +265,8 @@ that is not a team result.
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[DePaul](https://timhibbard.github.io/xc-cs-college-board/school.html?s=depaul)** | Lincoln Park | 3 | Big East | ✅ 10.7% | 1140–1330 | 76% | $30,902 | 7 | −10s | 146s | Target | [Dave Dopek](mailto:ddopek@depaul.edu) |
-| **[UIC](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uic)** | Near West Side | 3 | Missouri Valley | ✅ 11.9% | 1130–1350 | 77% | ≈$26,520 | 8 | +24s | 72s | Deep | [Paul Zavala](mailto:pzavala@uic.edu) |
+| **[DePaul](https://timhibbard.github.io/xc-cs-college-board/school.html?s=depaul)** | Lincoln Park | 3 | Big East | ✅ 10.7% | 1140–1330 | 76% | $30,902 | 4 | −93s | 153s | Target | [Dave Dopek](mailto:ddopek@depaul.edu) |
+| **[UIC](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uic)** | Near West Side | 3 | Missouri Valley | ✅ 11.9% | 1130–1350 | 77% | ≈$26,520 | 6 | −38s | 112s | Deep | [Paul Zavala](mailto:pzavala@uic.edu) |
 | **[Chicago State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chicago-state)** | Far South Side | 10 | NEC | ✅ 5.4% | not reported | 43% | $12,335 | 1 | — | 514s | Caution | [Katrina Brumfield Marsom](mailto:kbrumfie@csu.edu) |
 
 ### Division 2
@@ -274,22 +284,22 @@ result.
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)** | Hyde Park | 7 | UAA | ✅ 8.3% | 1510–1580 | 4% | $14,860 | 8 | +27s | 33s | Deep | [Chris Hall](mailto:hallc@uchicago.edu) |
-| **[Concordia Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=concordia-chicago)** | River Forest | 10 | CCIW | ✅ 3.2% | not reported | 93% | $18,436 | 1 | −330s | 236s | Caution | [Chris Dvorak](mailto:Christopher.Dvorak@cuchicago.edu) |
+| **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)** | Hyde Park | 7 | UAA | ✅ 8.3% | 1510–1580 | 4% | $14,860 | 6.7 | −12s | 62s | Target | [Chris Hall](mailto:hallc@uchicago.edu) |
+| **[Concordia Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=concordia-chicago)** | River Forest | 10 | CCIW | ✅ 3.2% | not reported | 93% | $18,436 | 1 | −351s | 237s | Caution | [Chris Dvorak](mailto:Christopher.Dvorak@cuchicago.edu) |
 | **[Dominican University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=dominican-university)** | River Forest | 10 | NACC | ✅ 6.7% | 880–1100 | 90% | $11,745 | 1 | — | 138s | Caution | [Sergio Miranda](mailto:smiranda3@dom.edu) |
 | **[Elmhurst University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=elmhurst-university)** | Elmhurst | 16 | CCIW | ✅ 5.9% | 990–1260 | 74% | $24,185 | 1 | — | 190s | Caution | [David Stone](mailto:david.stone@elmhurst.edu) |
-| **[Illinois Tech](https://timhibbard.github.io/xc-cs-college-board/school.html?s=illinois-tech)** | Bronzeville | 4 | NACC | ✅ 28.7% | 1180–1440 | 55% | $18,425 | 1 | — | 437s | Caution | [Evan Balizado](mailto:ebalizado@illinoistech.edu) |
-| **[North Park University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-park-university)** | North Park | 8 | CCIW | ❌ none | not reported | 69% | $16,948 | 1 | −464s | 368s | Caution | [Bisrat Kidane](mailto:bgkidane@northpark.edu) |
+| **[Illinois Tech](https://timhibbard.github.io/xc-cs-college-board/school.html?s=illinois-tech)** | Bronzeville | 4 | NACC | ✅ 28.7% | 1180–1440 | 55% | $18,425 | 1 | — | 392s | Caution | [Evan Balizado](mailto:ebalizado@illinoistech.edu) |
+| **[North Park University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-park-university)** | North Park | 8 | CCIW | ❌ none | not reported | 69% | $16,948 | 1 | −488s | 367s | Caution | [Bisrat Kidane](mailto:bgkidane@northpark.edu) |
 
 ### NAIA
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Saint Xavier](https://timhibbard.github.io/xc-cs-college-board/school.html?s=saint-xavier)** | Southwest Side | 13 | CCAC | ✅ 5.4% | not reported | 84% | $10,970 | 1 | −99s | 56s | Caution | [Rick Torres](mailto:enriquetorres@sxu.edu) |
+| **[Saint Xavier](https://timhibbard.github.io/xc-cs-college-board/school.html?s=saint-xavier)** | Southwest Side | 13 | CCAC | ✅ 5.4% | not reported | 84% | $10,970 | 1 | −123s | 56s | Caution | [Rick Torres](mailto:enriquetorres@sxu.edu) |
 
 NAIA allows 12 scholarships for men's XC/track and has looser eligibility rules than the NCAA.
 Saint Xavier is now measured and it is a caution rather than an opportunity: a tight 56-second seven
-at the CCAC championship, but he would arrive as their #1, 99 seconds inside their 7th man — though its
+at the CCAC championship, but he would arrive as their #1, 123 seconds inside their 7th man — though its
 1500 reads better than its cross country, with a 3:58.8 man ahead of his projection and him at #2 of
 ten. **This table had two rows.** Calumet College was the other, and it is off the board for having no
 men's track (§2); Trinity Christian was the third NAIA option and is closing (§2).
@@ -298,7 +308,7 @@ men's track (§2); Trinity Christian was the third NAIA option and is closing (�
 
 | School | Div | Conf. | Location | XC slot | vs their 7th | 1–7 spread | Why removed |
 |---|---|---|---|---|---|---|---|
-| **[Loyola Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=loyola-chicago)** | D1 | Atlantic 10 | Chicago IL | 8 | +75s | 47s | Cut on cross country data, reversing an earlier recommendation. Its 14:23 outdoor 5000 read as a clean +57 second gap and this document ranked it co-equal with DePaul. They then won the Atlantic 10 with seven runners inside 47 seconds of each other (23:58–24:45); he would be about 75 seconds outside that pack. The tight spread is what makes it decisive — there is no soft back end to slot into. |
+| **[Loyola Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=loyola-chicago)** | D1 | Atlantic 10 | Chicago IL | 7.5 | +7s | 78s | Cut on cross country data, reversing an earlier recommendation. Its 14:23 outdoor 5000 read as a clean +57 second gap and this document ranked it co-equal with DePaul. They then won the Atlantic 10 with seven runners inside 47 seconds of each other (23:58–24:45); he would be about 51 seconds outside that pack. The tight spread is what makes it decisive — there is no soft back end to slot into. The 15:40 mark pulls the average across both its championships to 7 seconds outside their 7th man, inside the 45-second line, but the cut rests on the conference 8K and that still reads +51. |
 
 **Northwestern and Trinity Christian are not on the removal list** — Northwestern because there is
 no men's program to be removed from, Trinity Christian because the college is closing (§2). Both
@@ -323,6 +333,13 @@ ring. Recorded here because if the radius ever flexes again, this is the work al
 | **Benedictine (IL)** | D3 | 25 | NACC | $22,313 | — | — | — | Caution |
 | **Purdue Northwest** | D2 | 25 | GLIAC | $6,079 | — | — | — | Caution |
 
+**The four measured columns in this table are frozen at the anchor of the day, and they have not been
+re-derived at 15:40** — these schools left the board, so their race data left with them and there is
+nothing to recompute from. North Central is the one worth correcting by hand, because it is the only
+reversal in the group: its 7th man ran 25:34 at the CCIW meet and 25:46 at the D3 Midwest regional,
+which against a 25:36 projection and the +31 second CCIW correction puts him **29 and 10 seconds
+inside their seven**, not 5 outside. It was the metro's best training environment at 15:55 and the new
+mark only widens that. The tier labels are what each school held when it was dropped.
 **Wheaton was reversed twice and this is the settled reading.** Their tight CCIW pack
 (25:43–26:48) suggested he would be their 5th man, which would have made it a target. At the D3
 Midwest regional their 4th through 7th ran 27:03–27:35 and he would have been their **#2**.
@@ -335,18 +352,21 @@ nationals is one of the better development environments on the entire board.
 
 ## 6. Tiering
 
-**Target — clean development band, concentrate effort here.** DePaul
+**Target — clean development band, concentrate effort here.** DePaul · University of Chicago
 
-**Deep — just outside the travel squad, still a good environment.** UIC · University of Chicago
+**Deep — just outside the travel squad, still a good environment.** UIC
 
 **Caution — he arrives at or ahead of their #1, in some cases by minutes.** Chicago State ·
 Concordia Chicago · Dominican · Elmhurst · Illinois Tech · North Park · Roosevelt · Saint Xavier
 
 **Cut on results.** Loyola Chicago
 
-Eleven schools, **one of them target tier**. That ratio is the finding, and nothing has moved it: not
-the cross country data, not the radius change, not the sweep that closed out the metro, and not the
-1500. Four schools were unmeasured at the last revision; three of them — **Roosevelt, Saint Xavier and
+Eleven schools, **two of them target tier**. For five versions that ratio was one in eleven and
+nothing moved it — not the cross country data, not the radius change, not the sweep that closed out
+the metro, not the 1500. The **15:40 5K is the first thing that has**, and it moved it by exactly one
+school: the **University of Chicago** came up from Deep, 12 seconds inside a scoring seven averaged
+over all three of its championships. The finding is barely dented — nine of the eleven still put him
+at or ahead of their #1. Four schools were unmeasured at the last revision; three of them — **Roosevelt, Saint Xavier and
 Dominican** — now have results and all three landed in Caution, and the fourth, **Calumet College**, is
 off the board for having no men's track, so **nothing here is at Verify any more**. **Five of the eleven
 programs never finished seven runners**, and **six of the eleven would have him as their fastest 1500
@@ -357,26 +377,31 @@ man** as well as their #1 in cross country.
 1. **[DePaul](https://timhibbard.github.io/xc-cs-college-board/school.html?s=depaul)** — 3 miles
    from the Loop, Big East D1, a genuinely strong CS program (School of Computing), and the one
    school in the metro where the cross country data actually confirms the fit. Their Big East
-   seven ran 23:45–26:10 and he lands **7th man, ten seconds inside it**. The 146 second
+   seven ran 23:45–26:10 and he lands **6th man, 34 seconds inside it**; at the Midwest regional he
+   is their 2nd man, which averages to 4th and 93 seconds inside. The 153 second
    1-through-7 spread is the widest of any target-tier school here, which is the good kind of
    soft: there is real room at the back of that squad. Net price $30,902. Best fit in Chicago,
    comfortably, and now the only one.
 2. **[UIC](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uic)** — the standing
    "borderline keep, resolve the depth question" note is now resolved, and the answer is **too
    deep, not too thin**: their Missouri Valley seven ran 24:24–25:36 inside a 72 second spread
-   and he is about 24 seconds outside it. Its federal net price of $10,974 is an Illinois-resident
+   and at 15:40 he arrives level with their 7th man to the second — 38 seconds inside once the
+   Midwest regional is averaged in, where he would be their 4th man. Its federal net price of $10,974 is an Illinois-resident
    figure; on his residency it is **≈$26,520**, which ends its claim to being far and away the cheapest
    strong CS option in the metro. **Illinois Tech** — a private, so one rate for everyone — is
    $18,425 and undercuts it by $8,000; even DePaul at $30,902 is only $4,400 more. It is still the
-   only Illinois public here with a serious CS department, and 24 seconds is one good freshman year. Worth the email, with a non-resident waiver
+   only Illinois public here with a serious CS department, and dead level with a 7th man is exactly
+   the position this board is looking for. Worth the email, with a non-resident waiver
    question attached.
 3. **[University of Chicago](https://timhibbard.github.io/xc-cs-college-board/school.html?s=university-of-chicago)**
-   — the roster times are finally resolved: seven runners inside **33 seconds**, the tightest
-   pack anywhere in this project bar Iona's 0.8-second MAAC finish, with him about 27 seconds outside.
+   — **target tier as of the 15:40**, and the roster times are finally resolved: seven runners inside
+   **33 seconds** at the UAA meet, the tightest pack anywhere in this project bar Iona's 0.8-second
+   MAAC finish, with him 3 seconds off the back of it there — and 25 seconds inside their seven at the
+   D3 regional and 14 inside at nationals, which averages to 12 seconds inside and their 6th-to-7th man.
    On the Division 1 board the tightest are Queens (Charlotte) at 56 seconds and Georgia Tech at 71. Their 1500 agrees: seventeen
    men on file in 2026 and he would be their **#6**, 16th of 25 in the UAA field. Elite CS, and the net
    price of $14,860 is startlingly low for a $90k sticker. The obstacle is a **4% admit rate**,
-   not the running.
+   not the running — and D3, so there is no athletic money either way.
 4. **[Roosevelt](https://timhibbard.github.io/xc-cs-college-board/school.html?s=roosevelt)** —
    **measured now, and it is bad news.** It is still the only scholarship program left in metro
    Chicago now that Purdue Northwest is out of range, still a mile from the centre of the Loop, and

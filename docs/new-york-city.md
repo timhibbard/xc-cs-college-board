@@ -1,7 +1,18 @@
 # College Search — New York City (20 mile radius + all of Long Island)
 
-XC/Track + Computer Science. Last updated 2026-09-08 (v9 — coaches' own Instagram, and one coaching
-change found)
+XC/Track + Computer Science. Last updated 2026-09-20 (v10 — a new 15:40 5K cross country PR, and
+the whole board re-anchored on it)
+
+> **He has run 15:40 for 5K cross country**, and the whole board is re-anchored on it. The 8K comes
+> down 24 seconds to **25:36** and the 10K 31 seconds to **32:40**; at this mark the board's own
+> 8K×1.276 ratio and the textbook Riegel route agree on the 10K to the second, which they did not at
+> 15:55. **Two schools in this metro changed tier**, both up to Target: **NYU** and **Stony Brook**,
+> which takes this ring from four targets to six — NYU, Columbia, Fordham, NJIT and Seton Hall all
+> inside 18 miles of midtown, plus Stony Brook out on the Island. Five are Division 1 and NYU is the
+> D3 exception. **Hofstra** and **Iona** both moved inside the 45-second cut line on their
+> championship average (17.3 and 0.8 seconds) without being reinstated, because the conference 8K the
+> cut actually rests on still reads 50.7 seconds outside for Hofstra and 83.4 for Iona. The tables
+> below carry the new numbers. Derivation and sensitivity: `../methodology.html` §1, §1a and §1c.
 
 > **The Division 1 rule has been reversed, and this metro goes back to 28 schools.** Ten Division 1, seven
 > Division 2 and eleven Division 3, every one of them measured on a 2025 championship result. The four
@@ -123,9 +134,9 @@ Live version, with per-school pages, per-race results and meet maps:
 |---|---|---|
 | 1600m | 4:21 | ~4:18 |
 | 3200m | 9:40 | 9:29 |
-| 5K XC | **15:55** | the ~15:59 projection is already met |
+| 5K XC | **15:40** | a mark he has run; the ~15:59 projection is long past |
 
-Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 33:11**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 25:36** · **10K XC 32:40**
 
 Target: a program where he would arrive as their **5th through 9th man**. Being ahead of a team's
 #1 is not a good sign — it means the program is thin and he would train alone. The track 5000 is
@@ -176,16 +187,16 @@ is still cheap for this metro but no longer in a class of its own.
 
 | CUNY college | Div | Mi | CS share | Net, in-state | Net, his rate | Gap to their #1 | Finishers | On the board |
 |---|---|---|---|---|---|---|---|---|
-| Hunter College | D3 | 2 | 9.9% | $2,984 | **≈$10,934** | he is 128s faster | 7 | yes |
-| Baruch College | D3 | 5 | 9.6% | $3,033 | ≈$10,983 | 185s faster | 7 | **no — no men's track** |
-| Brooklyn College | D3 | 10 | 10.1% | $3,103 | ≈$11,053 | 202s faster | 7 | **no — no men's track** |
-| Lehman College | D3 | 11 | 8.2% | $3,148 | ≈$11,098 | **706s faster** | 7 | yes |
+| Hunter College | D3 | 2 | 9.9% | $2,984 | **≈$10,934** | he is 152s faster | 7 | yes |
+| Baruch College | D3 | 5 | 9.6% | $3,033 | ≈$10,983 | 175s faster | 7 | **no — no men's track** |
+| Brooklyn College | D3 | 10 | 10.1% | $3,103 | ≈$11,053 | 226s faster | 7 | **no — no men's track** |
+| Lehman College | D3 | 11 | 8.2% | $3,148 | ≈$11,098 | **730s faster** | 7 | yes |
 | John Jay | D3 | 2 | 7.4% | $3,203 | ≈$11,153 | — | **3** | **no — no men's track** |
-| CCNY | D3 | 6 | 4.9% | $3,776 | ≈$11,726 | 486s faster | 6 | yes |
-| Queens College | D2 | 10 | 10.7% | $4,195 | ≈$12,145 | 145s faster | 7 | yes |
+| CCNY | D3 | 6 | 4.9% | $3,776 | ≈$11,726 | 495s faster | 7 | yes |
+| Queens College | D2 | 10 | 10.7% | $4,195 | ≈$12,145 | 169s faster | 7 | yes |
 | York College | D3 | 12 | 6.3% | $4,456 | ≈$12,406 | — | **4** | yes |
-| College of Staten Island | D2 | 16 | 7.8% | $5,579 | ≈$13,529 | 264s faster | 7 | yes |
-| Medgar Evers | D3 | 7 | 4.8% | $5,718 | ≈$13,668 | 726s faster | 5 | yes |
+| College of Staten Island | D2 | 16 | 7.8% | $5,579 | ≈$13,529 | 288s faster | 7 | yes |
+| Medgar Evers | D3 | 7 | 4.8% | $5,718 | ≈$13,668 | 653s faster | 7 | yes |
 
 Hunter and Brooklyn each award about **10% of their bachelor's degrees in computer science** — a
 higher share than Fordham, NYU or any D1 in this metro except NJIT. Brooklyn is one of the three that
@@ -252,10 +263,13 @@ is at 28:59 across a **360 second** spread, and **they never finished more than 
 would be their 2nd man on a squad with no back end — which is exactly the outcome the framing rule
 in §1 says to avoid. It is a Caution now rather than a placeholder.
 
-**NYU is Deep — too good, not too thin.** They won the UAA with a seven spanning 24:50–25:32, a
-**42 second spread**, and he would be about 28 seconds outside it. With Monmouth out of range it is
-now the metro's **only** Deep-tier school. D3 means no scholarship is at stake in aiming high; the
-9% admit rate is the real gate, and a coach's support is what moves it.
+**NYU is a Target at the 15:40 mark, and it used to be the metro's only Deep.** They won the UAA with
+a seven spanning 24:50–25:32, a **42 second spread**, and he is 4 seconds off the back of that one —
+but 7 seconds *inside* their seven at the D3 Niagara regional and 17 inside at nationals, which
+averages to **7 seconds inside and their 7th man**. Three championships, all 8K, all within 17
+seconds of his projection at the same point in the squad: this is the most consistent row in the
+metro, and the tightest packs on the board outside Iona's. D3 means no scholarship is at stake in
+aiming high; the 9% admit rate is the real gate, and a coach's support is what moves it.
 
 **Iona's cut is confirmed in the most emphatic way available.** At the MAAC championship all seven
 Iona runners crossed **within 0.8 seconds of each other** in a deliberate pack finish, 107 seconds
@@ -264,9 +278,9 @@ ahead of his projection. When a team can do that, there is no back end to slot i
 ### 2e. Columbia is back on the board, and it is a target
 
 Columbia was cut on a **13:43 outdoor 5000** that read as plainly out of reach. Its actual
-championship results say otherwise: **he would have been their #5 at Ivy Heps**, where the team
-finished 6th, slipping to their 8th man at the 10K NCAA Northeast regional — an average slot of 6.5
-and, across the two races, 33 seconds inside their 7th man. It returns at
+championship results say otherwise: **he would have been their #3 at Ivy Heps**, where the team
+finished 6th, and their #2 at the Metropolitan, slipping to their 8th man at the 10K NCAA Northeast
+regional — an average slot of 4.3 and, across the three races, 69 seconds inside their 7th man. It returns at
 **target tier**, five miles from Midtown, with one of the best CS departments in the country and a
 $21,590 average net price that is less than half of Fordham's.
 
@@ -295,11 +309,11 @@ separates them.
 
 ### 2g. Net effect
 
-**Twenty-eight schools, four of them target tier** — Columbia, Fordham, NJIT and Seton Hall, and all
-four now rest on cross country results rather than track marks. **Nothing is at Verify any more**:
+**Twenty-eight schools, six of them target tier** — Columbia, Fordham, NJIT, Seton Hall, NYU and
+Stony Brook, and all six rest on cross country results rather than track marks. **Nothing is at Verify any more**:
 every school in this metro has been measured. That is the good news and it comes with the bad, which
-is that **twenty-two of the twenty-eight are Caution** and seventeen of those would have him as
-the team's #1. This metro is unambiguously the strongest of the three on cost and the weakest on
+is that **twenty-two of the twenty-eight are Caution** and twenty-one of those twenty-two would have
+him as the team's #1. This metro is unambiguously the strongest of the three on cost and the weakest on
 running fit, and neither the measurement sweep nor the both-sports rule closed that gap — the cheapest
 schools here were also the thinnest, and three of them are no longer schools this board can recommend
 at all.
@@ -411,7 +425,7 @@ project; the 1500 fields are recorded as times only.
 
 | Column | What it means |
 |---|---|
-| **XC slot** | where his 15:55-equivalent 8K/10K would have finished inside their top seven, averaged over every 2025 race on file. 1 = ahead of their #1. |
+| **XC slot** | where his 15:40-equivalent 8K/10K would have finished inside their top seven, averaged over every 2025 race on file. 1 = ahead of their #1. |
 | **vs their 7th** | seconds between his mark and their 7th man. `+28s` = 28 seconds *outside* the seven; `−19s` = 19 seconds *inside* it. **Blank at the eight programs that never finished seven** (§2f), whose pages compare him to the team's last finisher instead. |
 | **1–7 spread** | seconds from their #1 to their #7 — the most course-independent number here, because it compares a team only to itself. Wide = a soft back end to slot into. Tight = no room (see Iona, at 0.8 seconds). On a short squad it is first-to-last, and blank where fewer than five finished, because that is not a team result. |
 | **Tier** | Target = clean 4th–9th man fit · Deep = just outside the travel squad · Verify = **unmeasured**, no cross country data yet · Caution = he arrives at or ahead of their #1. **No school in this metro is at Verify any more.** |
@@ -432,16 +446,16 @@ a map of every meet they attended last year, cost and admissions detail.
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Columbia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=columbia)** | New York NY | 5 | Ivy | ✅ 16.0% | 1510–1580 | 4% | $21,590 | 6.5 | −33s | 156s | Target | [Daniel Ireland](mailto:dli2108@columbia.edu) |
-| **[Fordham](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fordham)** | Bronx NY | 8 | Atlantic 10 | ✅ 4.6% | 1320–1480 | 59% | $44,338 | 6 | −19s | 95s | Target | [Aaron Gordon](mailto:agordon64@fordham.edu) |
-| **[NJIT](https://timhibbard.github.io/xc-cs-college-board/school.html?s=njit)** | Newark NJ | 12 | America East | ✅ 33.0% | 1210–1460 | 65% | ≈$34,194 | 4 | −91s | 139s | Target | [Jason Munsch](mailto:jason.s.munsch@njit.edu) |
-| **[Seton Hall](https://timhibbard.github.io/xc-cs-college-board/school.html?s=seton-hall)** | South Orange NJ | 18 | Big East | ✅ 2.4% | 1220–1390 | 73% | $31,446 | 4.5 | −57s | 109s | Target | [Jacob Simon](mailto:jacob.simon@shu.edu) |
-| **[Stony Brook](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stony-brook)** | Stony Brook NY | 60 | CAA | ✅ 9.0% | 1330–1500 | 49% | ≈$40,594 | 7.5 | +3s | 143s | Deep | [Jason Headman](mailto:jason.headman@stonybrook.edu) |
-| **[Fairleigh Dickinson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fairleigh-dickinson)** | Teaneck NJ | 12 | NEC | ✅ 2.0% | not reported | 91% | $15,404 | 1 | −150s | 128s | Caution | [Wesley Stephens](mailto:w.stephens@fdu.edu) |
-| **[LIU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=liu)** | Brooklyn NY | 5 | NEC | ✅ 3.3% | 1110–1350 | 86% | $33,062 | 1 | — | 143s | Caution | [Stormie Charles](mailto:stormie.charles@liu.edu) |
-| **[Manhattan](https://timhibbard.github.io/xc-cs-college-board/school.html?s=manhattan)** | Bronx NY | 10 | MAAC | ✅ 6.1% | 1180–1358 | 79% | $27,256 | 2 | — | 112s | Caution | [Todd Witzleben](mailto:twitzleben01@manhattan.edu) |
-| **[Saint Peter's](https://timhibbard.github.io/xc-cs-college-board/school.html?s=saint-peter-s)** | Jersey City NJ | 5 | MAAC | ✅ 6.9% | not reported | 90% | $12,199 | 1 | −212s | 212s | Caution | [John Marshall](mailto:jmarshall1@saintpeters.edu) |
-| **[Wagner](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wagner)** | Staten Island NY | 12 | NEC | ✅ 3.8% | 1190–1290 | 88% | $28,241 | 2 | — | 360s | Caution | [Marvin Azor](mailto:marvin.azor@wagner.edu) |
+| **[Columbia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=columbia)** | New York NY | 5 | Ivy | ✅ 16.0% | 1510–1580 | 4% | $21,590 | 4.3 | −69s | 130s | Target | [Daniel Ireland](mailto:dli2108@columbia.edu) |
+| **[Fordham](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fordham)** | Bronx NY | 8 | Atlantic 10 | ✅ 4.6% | 1320–1480 | 59% | $44,338 | 4 | −40s | 108s | Target | [Aaron Gordon](mailto:agordon64@fordham.edu) |
+| **[NJIT](https://timhibbard.github.io/xc-cs-college-board/school.html?s=njit)** | Newark NJ | 12 | America East | ✅ 33.0% | 1210–1460 | 65% | ≈$34,194 | 3.3 | −125s | 190s | Target | [Jason Munsch](mailto:jason.s.munsch@njit.edu) |
+| **[Seton Hall](https://timhibbard.github.io/xc-cs-college-board/school.html?s=seton-hall)** | South Orange NJ | 18 | Big East | ✅ 2.4% | 1220–1390 | 73% | $31,446 | 4.3 | −47s | 92s | Target | [Jacob Simon](mailto:jacob.simon@shu.edu) |
+| **[Stony Brook](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stony-brook)** | Stony Brook NY | 60 | CAA | ✅ 9.0% | 1330–1500 | 49% | ≈$40,594 | 7.5 | −5s | 119s | Target | [Jason Headman](mailto:jason.headman@stonybrook.edu) |
+| **[Fairleigh Dickinson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fairleigh-dickinson)** | Teaneck NJ | 12 | NEC | ✅ 2.0% | not reported | 91% | $15,404 | 1 | −173s | 127s | Caution | [Wesley Stephens](mailto:w.stephens@fdu.edu) |
+| **[LIU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=liu)** | Brooklyn NY | 5 | NEC | ✅ 3.3% | 1110–1350 | 86% | $33,062 | 1 | — | 111s | Caution | [Stormie Charles](mailto:stormie.charles@liu.edu) |
+| **[Manhattan](https://timhibbard.github.io/xc-cs-college-board/school.html?s=manhattan)** | Bronx NY | 10 | MAAC | ✅ 6.1% | 1180–1358 | 79% | $27,256 | 1 | −104s | 97s | Caution | [Todd Witzleben](mailto:twitzleben01@manhattan.edu) |
+| **[Saint Peter's](https://timhibbard.github.io/xc-cs-college-board/school.html?s=saint-peter-s)** | Jersey City NJ | 5 | MAAC | ✅ 6.9% | not reported | 90% | $12,199 | 1.2 | −212s | 188s | Caution | [John Marshall](mailto:jmarshall1@saintpeters.edu) |
+| **[Wagner](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wagner)** | Staten Island NY | 12 | NEC | ✅ 3.8% | 1190–1290 | 88% | $28,241 | 2 | — | 329s | Caution | [Marvin Azor](mailto:marvin.azor@wagner.edu) |
 
 > **Stony Brook** is 60 miles out and here only by the Long Island rule, so treat the commute
 > honestly. It has the strongest CS department on Long Island and a full D1 CAA program — and at D1
@@ -452,13 +466,13 @@ a map of every meet they attended last year, cost and admissions detail.
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Adelphi](https://timhibbard.github.io/xc-cs-college-board/school.html?s=adelphi)** | Garden City NY | 25 | NE10 | ✅ 5.8% | 1120–1340 | 66% | $30,783 | 1 | −230s | 189s | Caution | [Katie Rees](mailto:krees@adelphi.edu) |
+| **[Adelphi](https://timhibbard.github.io/xc-cs-college-board/school.html?s=adelphi)** | Garden City NY | 25 | NE10 | ✅ 5.8% | 1120–1340 | 66% | $30,783 | 1 | −215s | 162s | Caution | [Katie Rees](mailto:krees@adelphi.edu) |
 | **[Caldwell](https://timhibbard.github.io/xc-cs-college-board/school.html?s=caldwell)** | Caldwell NJ | 20 | CACC | ✅ 9.3% | 1130–1370 | 71% | $24,691 | 1 | — | 536s | Caution | [Kyle Price](mailto:kprice@caldwell.edu) |
-| **[College of Staten Island](https://timhibbard.github.io/xc-cs-college-board/school.html?s=college-of-staten-island)** | Staten Island NY | 16 | East Coast | ✅ 7.8% | 890–1250 | 92% | ≈$13,529 | 1 | −761s | 497s | Caution | [Akil St. Louis](mailto:Akil.Stlouis@csi.cuny.edu) |
-| **[Felician](https://timhibbard.github.io/xc-cs-college-board/school.html?s=felician)** | Lodi NJ | 13 | CACC | ✅ 2.1% | not reported | not reported | $40,045 | 1 | −593s | 393s | Caution | [John Brennan](mailto:BrennanJ@felician.edu) |
-| **[Molloy](https://timhibbard.github.io/xc-cs-college-board/school.html?s=molloy)** | Rockville Centre NY | 25 | ECC | ✅ 0.7% | 1088–1290 | 82% | $24,347 | 1 | — | 328s | Caution | [Brad Rangell](mailto:brangell@molloy.edu) |
-| **[Queens College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-college-cuny)** | Queens NY | 10 | ECC | ✅ 10.7% | 1010–1290 | 64% | ≈$12,145 | 1 | −413s | 268s | Caution | [Greg Welch](mailto:Gregory.Welch@qc.cuny.edu) |
-| **[St. Thomas Aquinas](https://timhibbard.github.io/xc-cs-college-board/school.html?s=st-thomas-aquinas)** | Sparkill NY | 20 | CACC | ✅ 3.6% | 880–1085 | 93% | $19,994 | 1 | −695s | 528s | Caution | [Ray Kondracki](mailto:rkondrac@stac.edu) |
+| **[College of Staten Island](https://timhibbard.github.io/xc-cs-college-board/school.html?s=college-of-staten-island)** | Staten Island NY | 16 | East Coast | ✅ 7.8% | 890–1250 | 92% | ≈$13,529 | 1 | −784s | 497s | Caution | [Akil St. Louis](mailto:Akil.Stlouis@csi.cuny.edu) |
+| **[Felician](https://timhibbard.github.io/xc-cs-college-board/school.html?s=felician)** | Lodi NJ | 13 | CACC | ✅ 2.1% | not reported | not reported | $40,045 | 1 | −617s | 351s | Caution | [John Brennan](mailto:BrennanJ@felician.edu) |
+| **[Molloy](https://timhibbard.github.io/xc-cs-college-board/school.html?s=molloy)** | Rockville Centre NY | 25 | ECC | ✅ 0.7% | 1088–1290 | 82% | $24,347 | 1 | — | 302s | Caution | [Brad Rangell](mailto:brangell@molloy.edu) |
+| **[Queens College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-college-cuny)** | Queens NY | 10 | ECC | ✅ 10.7% | 1010–1290 | 64% | ≈$12,145 | 1 | −437s | 268s | Caution | [Greg Welch](mailto:Gregory.Welch@qc.cuny.edu) |
+| **[St. Thomas Aquinas](https://timhibbard.github.io/xc-cs-college-board/school.html?s=st-thomas-aquinas)** | Sparkill NY | 20 | CACC | ✅ 3.6% | 880–1085 | 93% | $19,994 | 1 | −617s | 455s | Caution | [Ray Kondracki](mailto:rkondrac@stac.edu) |
 
 **Queens College and the College of Staten Island are the two to email first** — the only CUNYs at
 a level where partial athletic aid is possible, both around 10% and 8% CS degrees, both under
@@ -473,16 +487,16 @@ in this division is real; the teams it would buy him into are not deep enough to
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[NYU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nyu)** | Manhattan NY | 0 | UAA | ✅ 10.1% | 1480–1560 | 9% | $37,050 | 8 | +28s | 42s | Deep | [Nic Jacobsen](mailto:nnj219@nyu.edu) |
-| **[CCNY](https://timhibbard.github.io/xc-cs-college-board/school.html?s=ccny)** | Manhattan NY | 6 | CUNYAC | ✅ 4.9% | 1070–1430 | 60% | ≈$11,726 | 1 | — | 895s | Caution | [Joseph Benson](mailto:jbenson@ccny.cuny.edu) |
-| **[Farmingdale State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=farmingdale-state)** | Farmingdale NY | 35 | Skyline | ✅ 9.4% | 1040–1240 | 63% | ≈$20,777 | 1 | −361s | 279s | Caution | [Daniela Georgieva](mailto:georgid@farmingdale.edu) |
-| **[Hunter College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=hunter-college)** | Manhattan NY | 2 | CUNYAC | ✅ 9.9% | 1100–1420 | 54% | ≈$10,934 | 1 | −550s | 384s | Caution | [Marvin Hawkins](mailto:marvin.hawkins@hunter.cuny.edu) |
-| **[Kean University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kean-university)** | Union NJ | 20 | NJAC | ✅ 5.6% | 930–1150 | 76% | ≈$20,594 | 1 | −477s | 351s | Caution | [Danielle Todman](mailto:dtodman@kean.edu) |
-| **[Lehman College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lehman-college)** | Bronx NY | 11 | CUNYAC | ✅ 8.2% | 850–1150 | 57% | ≈$11,098 | 1 | −1855s | 1150s | Caution | [Michael Francis](mailto:Michael.Francis@lehman.cuny.edu) |
-| **[Medgar Evers](https://timhibbard.github.io/xc-cs-college-board/school.html?s=medgar-evers)** | Brooklyn NY | 7 | CUNYAC | ✅ 4.8% | 850–1020 | 86% | ≈$13,668 | 1 | — | 639s | Caution | [Hugh Reid](mailto:Hugh.Reid49@mec.cuny.edu) |
-| **[Merchant Marine Acad.](https://timhibbard.github.io/xc-cs-college-board/school.html?s=merchant-marine-acad)** | Kings Point NY | 20 | Skyline | ❌ none | 1110–1300 | 34% | $6,174 | 1.5 | −219s | 206s | Caution | [Kayla Koelbel](mailto:koelbelk@usmma.edu) |
-| **[Rutgers–Newark](https://timhibbard.github.io/xc-cs-college-board/school.html?s=rutgers-newark)** | Newark NJ | 13 | NJAC | ✅ 6.0% | not reported | 71% | ≈$39,215 | 1 | −939s | 695s | Caution | [Joel Williams](mailto:Joel.williams@rutgers.edu) |
-| **[Stevens Institute](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stevens-institute)** | Hoboken NJ | 3 | MAC | ✅ 21.2% | 1380–1505 | 48% | $41,346 | 2 | −106s | 86s | Caution | [John Kolibab](mailto:jkolibab@stevens.edu) |
+| **[NYU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nyu)** | Manhattan NY | 0 | UAA | ✅ 10.1% | 1480–1560 | 9% | $37,050 | 7.3 | −7s | 54s | Target | [Nic Jacobsen](mailto:nnj219@nyu.edu) |
+| **[CCNY](https://timhibbard.github.io/xc-cs-college-board/school.html?s=ccny)** | Manhattan NY | 6 | CUNYAC | ✅ 4.9% | 1070–1430 | 60% | ≈$11,726 | 1 | −810s | 612s | Caution | [Joseph Benson](mailto:jbenson@ccny.cuny.edu) |
+| **[Farmingdale State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=farmingdale-state)** | Farmingdale NY | 35 | Skyline | ✅ 9.4% | 1040–1240 | 63% | ≈$20,777 | 1 | −384s | 279s | Caution | [Daniela Georgieva](mailto:georgid@farmingdale.edu) |
+| **[Hunter College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=hunter-college)** | Manhattan NY | 2 | CUNYAC | ✅ 9.9% | 1100–1420 | 54% | ≈$10,934 | 1 | −574s | 384s | Caution | [Marvin Hawkins](mailto:marvin.hawkins@hunter.cuny.edu) |
+| **[Kean University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kean-university)** | Union NJ | 20 | NJAC | ✅ 5.6% | 930–1150 | 76% | ≈$20,594 | 1 | −456s | 320s | Caution | [Danielle Todman](mailto:dtodman@kean.edu) |
+| **[Lehman College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lehman-college)** | Bronx NY | 11 | CUNYAC | ✅ 8.2% | 850–1150 | 57% | ≈$11,098 | 1 | −1879s | 1150s | Caution | [Michael Francis](mailto:Michael.Francis@lehman.cuny.edu) |
+| **[Medgar Evers](https://timhibbard.github.io/xc-cs-college-board/school.html?s=medgar-evers)** | Brooklyn NY | 7 | CUNYAC | ✅ 4.8% | 850–1020 | 86% | ≈$13,668 | 1 | −1285s | 684s | Caution | [Hugh Reid](mailto:Hugh.Reid49@mec.cuny.edu) |
+| **[Merchant Marine Acad.](https://timhibbard.github.io/xc-cs-college-board/school.html?s=merchant-marine-acad)** | Kings Point NY | 20 | Skyline | ❌ none | 1110–1300 | 34% | $6,174 | 1.3 | −208s | 171s | Caution | [Kayla Koelbel](mailto:koelbelk@usmma.edu) |
+| **[Rutgers–Newark](https://timhibbard.github.io/xc-cs-college-board/school.html?s=rutgers-newark)** | Newark NJ | 13 | NJAC | ✅ 6.0% | not reported | 71% | ≈$39,215 | 1 | −963s | 748s | Caution | [Joel Williams](mailto:Joel.williams@rutgers.edu) |
+| **[Stevens Institute](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stevens-institute)** | Hoboken NJ | 3 | MAC | ✅ 21.2% | 1380–1505 | 48% | $41,346 | 1 | −130s | 86s | Caution | [John Kolibab](mailto:jkolibab@stevens.edu) |
 | **[York College (CUNY)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=york-college-cuny)** | Jamaica NY | 12 | CUNYAC | ✅ 6.3% | 790–960 | 64% | ≈$12,406 | 1 | — | — | Caution | [Eamon Sheerin](mailto:esheerin901@york.cuny.edu) |
 
 > **This table was 21 rows in v4 and is 11 now.** Ten D3 programs — three CUNYs and seven Skyline
@@ -503,8 +517,8 @@ in this division is real; the teams it would buy him into are not deep enough to
 
 | School | Div | Conf. | Location | XC slot | vs their 7th | 1–7 spread | Why removed |
 |---|---|---|---|---|---|---|---|
-| **[Hofstra](https://timhibbard.github.io/xc-cs-college-board/school.html?s=hofstra)** | D1 | Coastal | Hempstead NY | 8 | +75s | 104s | Cut on cross country data, reversing an earlier recommendation. An outdoor 5000 of 14:32 suggested a clean 40 second gap and this document called it one of the best fits in the metro. They then won the CAA championship with a top seven of 23:02–24:45 — he would be roughly 75 seconds outside the scoring seven, which is walk-on territory by the same rule that cut Furman and Lewis. The team best 5000 was a floor, not a measure of the squad. |
-| **[Iona](https://timhibbard.github.io/xc-cs-college-board/school.html?s=iona)** | D1 | MAAC | New Rochelle NY | 8 | +107s | 1s | 5000 14:03, 10K 29:02, 1500 3:38 — a national cross country program, 20 miles out. Cross country confirms it emphatically: at the MAAC championship all seven runners crossed within 0.8 seconds of each other in a deliberate pack finish, 107 seconds ahead of his projection. |
+| **[Hofstra](https://timhibbard.github.io/xc-cs-college-board/school.html?s=hofstra)** | D1 | Coastal | Hempstead NY | 7 | +17s | 145s | Cut on cross country data, reversing an earlier recommendation. An outdoor 5000 of 14:32 suggested a clean 40 second gap and this document called it one of the best fits in the metro. They then won the CAA championship with a top seven of 23:02–24:45 — he would be roughly 75 seconds outside the scoring seven, which is walk-on territory by the same rule that cut Furman and Lewis. (Furman has since come back onto the board at *Deep* on the 15:40 anchor; Hofstra, at 17.3 seconds outside averaged, is inside the cut line too and stays cut on the conference-8K test — see `../methodology.html#cut-line`.) The team best 5000 was a floor, not a measure of the squad. |
+| **[Iona](https://timhibbard.github.io/xc-cs-college-board/school.html?s=iona)** | D1 | MAAC | New Rochelle NY | 6.8 | +1s | 88s | 5000 14:03, 10K 29:02, 1500 3:38 — a national cross country program, 20 miles out. Cross country confirms it emphatically: at the MAAC championship all seven runners crossed within 0.8 seconds of each other in a deliberate pack finish, 107 seconds ahead of his projection. |
 
 **This list is down to two.** Both cuts now rest on a cross country result rather than on team best
 track marks, which is the only kind of evidence that has held up: Hofstra was cut *by* the sweep,
@@ -512,9 +526,9 @@ reversing an earlier recommendation, and Iona was confirmed by it.
 
 **Columbia has left this list and is back on the board at Target tier.** It was cut on team bests —
 a 13:43 5000 and a 29:09 10K, which are elite and are also the marks of two or three individuals. Its
-actual championship depth is a different picture: **their #5 at the Ivy Heps, their #8 at the NCAA
-Northeast regional**, an average slot of 6.5, **33 seconds inside their 7th man**, with a 156 second
-1-through-7 spread. At **$21,590 net** — Ivy aid is need-based and generous — it is now the single
+actual championship depth is a different picture: **their #3 at the Ivy Heps and their #2 at the
+Metropolitan**, slipping to their #8 at the NCAA Northeast regional — an average slot of 4.3, **69
+seconds inside their 7th man**, with a 130 second 1-through-7 spread. At **$21,590 net** — Ivy aid is need-based and generous — it is now the single
 best combination of running fit, computer science and cost anywhere on this board. See §2e. The 9%
 NYU note below and Columbia's 4% admit rate are the same caution: the gate here is admissions, not
 running.
@@ -533,9 +547,12 @@ ten were at Caution, so none of them was a fit either.
 
 ## 6. Tiering
 
-**Target — concentrate effort here (4).** Columbia · Fordham · NJIT · Seton Hall
+**Target — concentrate effort here (6).** NYU · Columbia · Fordham · NJIT · Seton Hall ·
+Stony Brook. NYU and Stony Brook are the two the 15:40 mark moved up; the other four have held the
+tier through every revision.
 
-**Deep — just outside the travel squad (2).** NYU · Stony Brook
+**Deep — just outside the travel squad (0).** Nothing. This metro no longer has a Deep row: the two
+schools that held it are both at Target now, and everything else here is a Caution or a cut.
 
 **Verify — unmeasured (0).** Nothing. Every program in this metro has a 2025 cross country result.
 
@@ -545,27 +562,28 @@ Peter's, Wagner.
 
 **Cut on results (2).** Hofstra · Iona
 
-Twenty-eight schools, **four of them target tier**, none left at Verify. The measurement sweep moved
+Twenty-eight schools, **six of them target tier**, none left at Verify. The measurement sweep moved
 thirty schools out of Verify and only two of them landed above Caution — NJIT and Stony Brook — while
 Columbia came back from the cut list and Wagner went the other way, and the both-sports rule then took
 ten more off the board entirely (§2h). The honest summary is that this metro's board is now fully
-measured and the answer it gives is narrow: four schools where the running works, and a shorter but
+measured and the answer it gives is narrow: six schools where the running works, and a shorter but
 still long tail of programs he would immediately lead. That is a better position than the last
 revision, when 81% of the board was a placeholder, but it is not a longer shortlist.
 
 ## 7. Ones worth real effort
 
 1. **[Columbia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=columbia)** — the
-   largest correction on this board and now the best school on it. Their **#5 at Ivy Heps**, their
-   **#8 at the NCAA Northeast regional**, 33 seconds inside their 7th man across the two, on a 156
-   second 1-through-7 spread that leaves real room at the back. Five miles from Midtown, **16.0% of
+   largest correction on this board and now the best school on it. Their **#3 at Ivy Heps** and their
+   **#2 at the Metropolitan**, slipping to **#8 at the NCAA Northeast regional**, 69 seconds inside
+   their 7th man across the three, on a 130 second 1-through-7 spread that leaves real room at the back. Five miles from Midtown, **16.0% of
    degrees in CS**, and **$21,590 net** — less than half of Fordham, because Ivy aid is need-based
    and there is no athletic money to negotiate. The gate is a **4% admit rate and a 1510–1580 SAT
    band**, which is a different problem from the running one and not one a coach solves.
    Email **[Daniel Ireland](mailto:dli2108@columbia.edu)**.
 2. **[Fordham](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fordham)** — the
-   cleanest running fit in the metro: **their 6th man in the Atlantic 10 championship seven**, 19
-   seconds inside it, against a 95 second 1-through-7 spread. They train at **Van Cortlandt Park**,
+   cleanest running fit in the metro: **their #5 in the Atlantic 10 championship seven**, 43
+   seconds inside their 7th man, against a 95 second 1-through-7 spread — and the same #5 at IC4A.
+   Across all four of its championships it averages slot 4 and 40 seconds inside the seven. They train at **Van Cortlandt Park**,
    the most historic cross country course in America, next to campus — which answers the "where do
    you actually run in New York" question better than anyone. The problem is money: **$44,338 net**,
    the second highest in this metro, and only 4.6% of degrees in CS.
@@ -575,28 +593,34 @@ revision, when 81% of the board was a placeholder, but it is not a longer shortl
    it is D1, and at **≈$34,194 net on his residency** — $16,504 for a New Jersey resident, plus
    NJIT's $17,690 non-resident tuition premium — it undercuts Fordham by about $10,000 a year rather
    than by two thirds, which is a materially weaker version of the value case. The running checks out
-   too: **their #4 at the America East championship, 91 seconds inside their 7th man**, on a 139
-   second spread. That is the deepest slot-plus-margin combination of the four targets. One caveat —
-   it rests on a single race, because they put only four men on the line at the Mid-Atlantic regional,
-   so ask what the roster looks like this fall.
+   too: **their #4 at the America East championship, 115 seconds inside their 7th man**, on a 139
+   second spread, and slot 3.3 at 125 seconds inside averaged across its championships. That is the
+   deepest slot-plus-margin combination of the six targets. One caveat — they put only four men on
+   the line at the Mid-Atlantic regional, which keeps that race out of the average, so ask what the
+   roster looks like this fall.
    Email **[Jason Munsch](mailto:jason.s.munsch@njit.edu)**.
 4. **[Seton Hall](https://timhibbard.github.io/xc-cs-college-board/school.html?s=seton-hall)** —
    Big East D1, 18 miles, **$31,446 net**, 73% accept, and **no longer a rating built on track
-   marks**: their #5 at the Big East championship and their #5 again at the Mid-Atlantic regional,
-   57 seconds inside the seven across both. Their distance squad is weaker than the conference name
-   suggests, which works in his favor. The weakness is academic fit — **2.4% of degrees in CS**, the
-   thinnest of the four targets.
+   marks**: their #5 at the Big East championship and their #4 at the Mid-Atlantic regional,
+   **47 seconds inside the seven** averaged across its three championships in 8K-equivalent terms.
+   Their distance squad is weaker than the conference name suggests, which works in his favor. The
+   weakness is academic fit — **2.4% of degrees in CS**, the thinnest of the six targets.
    Email **[Jacob Simon](mailto:jacob.simon@shu.edu)**.
 5. **[Stony Brook](https://timhibbard.github.io/xc-cs-college-board/school.html?s=stony-brook)** —
-   Deep rather than Target, at 3 seconds *outside* their seven, which at D1 CAA level is close
-   enough that a year of development closes it. The strongest CS department on Long Island (9.0%), a
+   **Target now rather than Deep**, which the 15:40 bought: he lands **4.8 seconds inside their
+   seven** on the average of its two championships, though that is 45 seconds *outside* on the CAA 8K
+   itself and 70 inside at the Northeast regional — a school he is level with rather than clearly
+   inside. The strongest CS department on Long Island (9.0%), a
    full D1 program, and the worst residency penalty in this metro: **≈$40,594 net on his
    residency**, against $18,784 for a New Yorker (§8). Sixty miles out and on
    this board only by the Long Island rule, so be honest about the commute.
    Email **[Jason Headman](mailto:jason.headman@stonybrook.edu)**.
 
-**NYU: too good, not too thin.** Deep rather than Target, and still worth an email. Their 42 second
-pack is elite for D3 and he would be 28 seconds off it — not a place he would score as a freshman,
+**NYU: target tier, and the thinnest kind of target.** The 15:40 moved them up from Deep. Across
+their UAA championship, the D3 Niagara regional and the D3 national championship — all three at 8K, so
+nothing here is converted — he averages their 7th man with **6.7 seconds** to spare, on a 54 second
+1-through-7 spread. Their pack is elite for D3 and he would be 46 seconds off its front at the UAA
+meet, which sits squarely in the healthy 40-to-60 window: not a place he would score as a freshman,
 very much a place he would improve. D3 means no scholarship is at stake in aiming high; the 9%
 admit rate is the gate. Email **[Nic Jacobsen](mailto:nnj219@nyu.edu)**.
 
@@ -651,14 +675,14 @@ Ask each school whether a non-resident waiver exists before ranking any of them 
 
 ## 9. To-dos, priority order
 
-1. **Email the four targets and Stony Brook**, in the order in §7, with his 1600/3200/5K marks and
+1. **Email all six targets**, in the order in §7, with his 1600/3200/5K marks and
    the specific question each one raises. The addresses are in the tables above and in §7; there is
    nothing left to look up before writing. NCAA rules limit when a coach may initiate contact, not
    when a recruit may.
 2. **Start the Columbia admissions question in parallel**, because it is the binding constraint on
    the best fit on the board and it has nothing to do with running. Ask the coach directly how much
    support a recruit at his level gets in the Ivy admissions process — the answer is a number
-   (a likely letter, a slot, or nothing), and it decides whether the other four matter.
+   (a likely letter, a slot, or nothing), and it decides whether the other five matter.
 3. **Get a second race for Wagner.** Still the weakest single-race reading in this metro: six
    finishers at the NEC championship and a 360 second first-to-last spread, which cannot be trusted
    in either direction. It is the one school here whose tier could move a full band.

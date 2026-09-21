@@ -1,7 +1,23 @@
 # College Search — Greenville SC (300 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-09-20 (v13 — the South Atlantic course correction was
-being applied twice, and five tiers in this ring reverse)
+XC/Track + Computer Science. Last updated 2026-09-20 (v14 — a new 15:40 5K cross country PR, and
+the whole board re-anchored on it)
+
+> **He has run 15:40 for 5K cross country**, and the whole board is re-anchored on it. The 8K comes
+> down 24 seconds to **25:36** and the 10K 31 seconds to **32:40**; at this mark the board's own
+> 8K×1.276 ratio and the textbook Riegel route agree on the 10K to the second, which they did not at
+> 15:55. **Five schools in this ring changed tier**: **Charleston Southern**, **Clemson** and **Lee
+> University** came up to Target, and **Berry College** and **UNC Pembroke** went back to Caution —
+> net, 24 targets to 25. **Three schools came off the cut list and back onto the board at *Deep***,
+> because they clear the conference-8K test the cut actually rested on: **Tennessee** (21.3 seconds
+> outside their 7th man at the SEC meet, and only six finished the regional), **Wingate** (19.5 seconds
+> *inside* theirs at the South Atlantic championship, 33 outside averaged across three championships)
+> and **Furman** (39.1 outside at the Southern Conference meet, 48.1 averaged). Furman's average is
+> three seconds the wrong side of the 45-second cut line, so it is on the board by decision rather than
+> by the rule, and the tier ladder is published as disagreeing with that row. **NC State** (42.8) is
+> also inside the line and stays cut, because board membership is a decision rather than a calculation.
+> The ring goes from 81 schools to **84**. The tables below carry the new numbers. Derivation and
+> sensitivity: `../methodology.html` §1, §1a and §1c.
 
 > **Five schools in this ring leave the target tier, and the reason is arithmetic rather than new data.**
 > The &minus;96.5 second South Atlantic course correction was being counted **twice** on seven programs:
@@ -21,14 +37,14 @@ being applied twice, and five tiers in this ring reverse)
 > fielded a seventh man after all.
 
 > **The Division 1 rule has been reversed, and this ring gets all 55 of its schools back.** The board here
-> is **81 programs — 31 Division 1, 38 Division 2, 11 Division 3 and one NAIA — and 24 of them are target
-> tier**, which is more than the other two metros hold in total. Every one of the 81 except **Shorter** rests
+> is **84 programs — 33 Division 1, 39 Division 2, 11 Division 3 and one NAIA — and 25 of them are target
+> tier**, which is more than the other two metros hold in total. Every one of the 84 except **Shorter** rests
 > on a 2025 championship result. Nothing had to be re-measured to undo the rule, because it was implemented
 > as an archive rather than a deletion: slot, gap, spread, tier, cost and coach all came back exactly as they
 > went in. The two rows that make the argument are the two the rule cost first — **Anderson (SC)** at 29
-> driving miles, their 7th man by six seconds, the closest target anywhere on the board, and **Fayetteville
-> State** at an ≈$11,892 net price, the cheapest target anywhere. A filter on a label had silently deleted
-> the two rows this search exists to find.
+> driving miles, thirteen seconds inside their 7th man averaged over three championships, the closest target
+> anywhere on the board, and **Fayetteville State** at an ≈$11,892 net price, the cheapest target anywhere.
+> A filter on a label had silently deleted the two rows this search exists to find.
 >
 > **The six that matter are now a mixed-division six**, on a stated criterion — a slot in the middle of the
 > seven, *and* a #1 still comfortably ahead of him, then proximity, price and the CS degree as tie-breakers:
@@ -37,24 +53,26 @@ being applied twice, and five tiers in this ring reverse)
 > Carolina, College of Charleston, UNC Pembroke, Fayetteville State, Augusta University, Berry, Kennesaw
 > State, High Point, Elon, Auburn and Samford all sit just behind them with their numbers intact.
 >
-> **What the reversal restores, in four columns.** *Depth:* **25 of the 81 never finished seven runners** —
-> five of those 25 are Division 1, so this was never a small-college problem with a divisional fix.
-> *Money:* the corrected median is **≈$21,131** on his residency against $19,061 on the raw federal basis,
+> **What the reversal restores, in four columns.** *Depth:* **22 of the 84 never finished seven runners** —
+> five of those 22 are Division 1, so this was never a small-college problem with a divisional fix.
+> *Money:* the corrected median is **≈$21,272** on his residency against $19,069 on the raw federal basis,
 > and the cheap end runs Allen University $10,972 (no CS degree), Francis Marion $11,386, Fayetteville State
 > ≈$11,892, Livingstone $13,479, USC Upstate $13,557, Coastal Carolina $13,966 and UNC Pembroke ≈$14,260 —
-> plus **38 D2 programs**, five of them target tier, where the 12.6 scholarship equivalencies are spread over
-> a much smaller squad than in D1. *Size:* the median school is **1,867 undergraduates in a town of 27,829**
-> — against 6,081 and 38,910 on the Division 1 board — with 25 towns under 10,000 and 22 over 100,000, and
-> the target tier spanning Pfeiffer's 655 students to Kennesaw State's 41,254. *The 1500:* **23 of the 81
-> entered nobody** at their conference meet and five raced none all season; against the 58 that entered he
-> makes **47 finals and top eight in 26**, would win the final outright in four conferences, and is the
-> fastest 1500 man on the roster at **33 of the 76 with a mark** — the same count cross country reaches
-> independently. The median team best is **3:59.9**.
+> plus **39 D2 programs**, five of them target tier, where the 12.6 scholarship equivalencies are spread over
+> a much smaller squad than in D1. *Size:* the median school is **2,312 undergraduates in a town of 28,940**
+> — against 6,081 and 38,910 on the Division 1 board — with 26 towns under 10,000 and 23 over 100,000, and
+> the target tier spanning Pfeiffer's 655 students to Kennesaw State's 41,254. *The 1500:* **26 of the 84
+> entered nobody** at their conference meet and eight raced none all season — three of those eight are the
+> reinstated Furman, Tennessee and Wingate, which have no 1500 record on the board yet. Against the 58 that
+> entered he makes **47 finals and top eight in 26**, would win the final outright in four conferences, and is
+> the fastest 1500 man on the roster at **33 of the 76 with a mark** — where cross country, measured
+> independently, makes him the #1 at **43** of those same 76, so the 1500 is the more conservative of the two
+> readings. The median team best is **3:59.9**.
 >
 > **Admissions data re-verified.** Every admit rate on the site was re-checked against the live College
 > Scorecard by IPEDS unit ID: **148 numeric rates match the federal figure exactly, zero mismatches**. One
 > row here changed — **Savannah State** read "not reported" and is in fact federally **open-admission**, so
-> it now reads 100%. All 81 schools in this ring now carry a federal admit rate; **34 of them admit 80% or
+> it now reads 100%. All 84 schools in this ring now carry a federal admit rate; **35 of them admit 80% or
 > more** and the ring median is **75%**, with Emory (11%), Davidson (13%) and Georgia Tech (14%) at the other
 > end.
 >
@@ -157,9 +175,9 @@ Live version, with per-school pages, per-race results and meet maps:
 |---|---|---|
 | 1600m | 4:21 | ~4:18 |
 | 3200m | 9:40 | 9:29 |
-| 5K XC | **15:55** | the ~15:59 projection is already met |
+| 5K XC | **15:40** | a mark he has run; the ~15:59 projection is long past |
 
-Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 26:00** · **10K XC 33:11**
+Converted: **1500 4:01** · **3000 8:53** · **track 5000 15:20** · **8K XC 25:36** · **10K XC 32:40**
 
 The **1500 of 4:01** is the one conversion anchored to the 1600 rather than the 3200, and
 deliberately so: it comes from the projected **4:18** 1600 at the textbook Riegel exponent
@@ -235,16 +253,16 @@ and this document previously listed **seven** D2 programs in range. There are **
 field both men's cross country and men's outdoor track, plus three more that field cross country only
 (§2h). The
 closest omission, **Southern Wesleyan**, is 27 driving miles from home — and it came out of the
-measurement sweep at Target tier — and the 15:55 has since taken it back out, because he would now
-arrive as their 2nd man. It is still the most consequential single omission on the board; the finding
+measurement sweep at Target tier — and the PRs since have taken it back out, because he would now
+arrive as their **#1**, twenty seconds up on their fastest man. It is still the most consequential single omission on the board; the finding
 is now that the nearest school in range is too thin rather than that it fits.
 
 Every addition entered at **Verify — meaning unmeasured, not borderline** — and every one of them
 has since been measured, which is the work described in §2e. That is what makes the rebuild the
-biggest finding here rather than a bookkeeping note: **fifteen of the twenty-seven target-tier
-schools in §6 are additions**. The closest one on the board is no longer among them — Southern
-Wesleyan left the tier on the 15:55 — but five more South Atlantic additions joined it (§3b). Had the list not been rebuilt,
-the ranked answer would still be v3's, and it would have been wrong by a wide margin. Of the 77
+biggest finding here rather than a bookkeeping note: **more than half the target-tier schools in §6 are
+additions**. The closest one on the board is no longer among them — Southern Wesleyan left the tier on
+the 15:55 — but five more South Atlantic additions joined it (§3b). Had the list not been rebuilt,
+the ranked answer would still be v3's, and it would have been wrong by a wide margin. Of the 84
 schools, exactly **one — Shorter — still has no cross country result.**
 
 Two limits worth stating. The rebuild inherits the conferences' own errors — a stale sponsored-sports
@@ -279,9 +297,13 @@ an error of this kind was sitting in a 27-school list, assume there are others i
 
 Tennessee (Knoxville, 169 mi), Georgia (Athens, 101), Wake Forest (Winston-Salem, 177) and South
 Carolina (Columbia, ~105 — the in-state flagship) all carried `why: "Out of range."` They were never
-out of a 200-mile range, let alone a 250-mile one. They are **cut on level, not on distance and not
-on measurement**: no 2025 cross country times have been transcribed for any of them. Those rows now
-say so. Treat all four as cuts by reputation, reopenable if the numbers ever come in.
+out of a 200-mile range, let alone a 250-mile one. They were **cut on level, not on distance and not
+on measurement**: at the time no 2025 cross country times had been transcribed for any of them. Those
+rows now say so — and the numbers have since come in, which is the point of having written it that way.
+Three of the four are no longer cuts by reputation: **Tennessee** is measured and back on the board at
+*Deep* (§3), **South Carolina** sponsors no men's cross country at all (§2b), and **Wake Forest** is
+measured and the cut held emphatically at 105 seconds outside. **Georgia** is the one still resting on
+level, because it has never finished seven men at a championship for the board to measure against.
 
 **Two genuinely new cuts came in with the wider radius:** **UNC Chapel Hill** (237 mi) and **Duke**
 (~255, so genuinely borderline). Both are cut on level; Duke is also cut on admissions at a 6%
@@ -299,29 +321,51 @@ spread — and he would arrive as their **#1 by nearly a minute**. It sits at Ca
 
 - **UNC Charlotte** was kept in v3 with a flag ("~65–75 seconds off their best runner"). At the
   D1 Southeast regional their seven ran **30:18–33:05** over 10K, putting him right at their 7th
-  man, 19 seconds inside the scoring seven. A 167 second 1-through-7 spread means the back of
-  that squad is soft — which is exactly where a freshman wants to land. **Target**, and it has
+  man, **25 seconds inside the scoring seven** on a 167 second 1-through-7 spread — the back of that
+  squad is soft, which is exactly where a freshman wants to land. The American Conference 8K
+  disagrees, at 45 seconds *outside* their seven on a 53 second spread, so the average is 13 seconds
+  outside and this is one of the three rows in this ring where the tier ladder disagrees with the hand
+  tier (§6). It is held at **Target** on the regional read, and it has
   the highest CS degree share of any D1 school on this list at 15.2%.
 - **Emory** sat in the caution tier on a 15:06 outdoor 5000 that read as "immediate top-2." That
   was a sparse-table artifact too, in the opposite direction: the UAA championship shows a
   **25:14–26:27 top seven**, so he slots in around **5th man**. **Target.**
 
 **Resolved downward: Appalachian State.** Listed in the ideal band in early versions; it sits at
-**Deep** — just outside the travel squad rather than inside it, about 27 seconds outside their
-scoring seven at the regional.
+**Deep** — just outside the travel squad rather than inside it, **29 seconds outside their scoring seven**
+averaged across the Sun Belt championship and the regional, which is closer than it was at 15:55 but
+still outside.
 
 **Anderson (SC) was the other one, and the 15:55 reversed it.** It spent v7 and v8 at Deep, *two
-seconds* outside their 7th man — last man in rather than comfortably in. Seven seconds of PR turns
-that into **6 seconds inside their seven at slot 7**, so it is a **Target**, and it is the closest
-target in this ring at 29 miles. It is also the thinnest possible version of one: a 66 second
-1-through-7 spread means there is no soft back end, and a single good freshman ahead of him puts him
-straight back outside. Treat it as a target that has to be re-checked in the autumn, not a settled fit.
+seconds* outside their 7th man — last man in rather than comfortably in. The PRs since turn that into
+**13 seconds inside their seven at slot 7**, so it is a **Target**, and it is the closest target in this
+ring at 29 miles. It is also the thinnest possible version of one: a 73 second 1-through-7 spread means
+there is no soft back end, he is 32 seconds inside at the conference meet but 2 seconds *outside* at the
+D2 national championship, and a single good freshman ahead of him puts him straight back outside. Treat it as a target that has to be re-checked in the autumn, not a settled fit.
 
-**Furman and Wingate stay cut, and cross country confirms both.** Furman won the Southern
-Conference with seven runners inside 42 seconds (24:15–24:57) — he would be 63 to 79 seconds
-outside that. Wingate's regional seven ran 30:48–31:58, about 48 seconds clear of him. Worth
-naming the cost again: this cuts the closest school on the entire board — Furman, seven miles away, with a
-verified CS degree. **Clemson, the other local cut, did not stay cut**; see §2e.
+**Furman and Wingate came off the cut list at the 15:40 mark, and Tennessee with them.** All three
+were cut as walk-on prospects and all three now clear the conference-8K test that cut rested on, so all
+three are back on the board at **Deep**.
+
+**Furman** won the Southern Conference with seven runners inside 42 seconds (24:14.6–24:56.9) and he
+would be **39.1 seconds outside** that seventh man; at the Southeast regional 10K he is 72.9 seconds
+outside, which is 57 in 8K-equivalent seconds. Averaged, **48.1** — three seconds the wrong side of the
+45-second cut line. That is the one row on this board carried **against** the tier ladder rather than by
+it, and the reason is stated rather than hidden: seven driving miles, a verified CS degree, one of the
+strongest departments in the ring, and a margin inside the noise of a single course. The ladder in
+`../methodology.html#tier-ladder` is published as disagreeing with this row.
+
+**Wingate** is the mirror image: **19.5 seconds *inside*** their seven at the South Atlantic
+championship once the −96.5 second course offset is applied, then 42.1 outside at the D2 regional and
+109.3 at the national championship, both 10K races. In one currency that averages **33 seconds outside**,
+and its slot moves three places between races, so the row carries the *disagree* flag as well as the tier.
+
+**Tennessee** is the softest of the three: **21.3 seconds outside** the seven it ran at the SEC
+championship, its only full squad of the season. Only six Tennessee men finished the Southeast regional
+and only one finished nationals, and at the regional he would have landed **inside** that six. A 169-mile
+SEC program at Deep on one measured championship is an honest label, not an invitation.
+
+**Clemson, the other local cut, did not stay cut either**; see §2e.
 
 **A correction that nearly went the other way.** The South Atlantic Conference championship
 course ran about **96 seconds slow** at 8K — confirmed independently by Anderson, Catawba and
@@ -360,25 +404,26 @@ placeholder. Where the 56 newly measured programs landed:
 
 | Moved from Verify to | Count | Notable |
 |---|---|---|
-| **Target** | 11 | Augusta (15.6% CS), Kennesaw State, Chattanooga, UNC Pembroke, Pfeiffer, College of Charleston, Coastal Carolina, Campbell, West Georgia, Fayetteville State, Queens (Charlotte). Five more — Emory & Henry, Lincoln Memorial, Mars Hill, Tusculum, UVA Wise — were listed here on the course correction and are **back at Caution** now that it turns out to have been applied twice (§3b). **Southern Wesleyan (27 mi)** was another until the 15:55 moved it to Caution. |
-| **Deep** | 2 | Charleston Southern (2s outside their seven), Lee University (17s) |
+| **Target** | 11 | Augusta (15.6% CS), Kennesaw State, Chattanooga, UNC Pembroke, Pfeiffer, College of Charleston, Coastal Carolina, Campbell, West Georgia, Fayetteville State, Queens (Charlotte). Five more — Emory & Henry, Lincoln Memorial, Mars Hill, Tusculum, UVA Wise — were listed here on the course correction and are **back at Caution** now that it turns out to have been applied twice (§3b). **Southern Wesleyan (27 mi)** was another until the 15:55 moved it to Caution, and **UNC Pembroke** followed it on the 15:40. |
+| **Deep** | 2 | Charleston Southern (2s outside their seven at the time), Lee University (17s) — **both are Target now**, at 11 seconds and a third of a second inside on the 15:40 average |
 | **Caution** | 33 | he would be at or ahead of their #1 |
 | **Measured, then removed for having no men's track** | 4 | §2h — **Mercer** was one of the seventeen new targets |
 | **No program to measure** | 1 | North Georgia (§2b) |
 
 **Southern Wesleyan was the headline, and the 15:55 took it away.** Twenty-five driving miles from
 home, D2 so partial athletic aid exists, **$15,464 net** — and on the ~15:59 projection the running
-worked cleanly at their #4, 105 seconds inside their seventh. On the mark he actually ran he is
-**their #2, four seconds behind their #1**, on that same 116 second 1-through-7 spread. Nothing about
-the program changed; he passed two of their runners. By the framing rule in §1 that is a **Caution**:
+worked cleanly at their #4, 105 seconds inside their seventh. At 15:55 he was their #2, four seconds
+behind their #1; at **15:40 he is their #1 by 19.8 seconds**, on that same 116 second 1-through-7
+spread. Nothing about the program changed; he passed three of their runners. By the framing rule in §1 that is a **Caution**:
 the nearest school on the board has a fast front man and nobody for him to train with. It is still
 worth one email — Conference Carolinas, one race on file, and a coach who knows what he has signed for
 the fall — but it is no longer the answer this document had in v8. The academic weakness stands too:
 2.7% of degrees in CS, and a 100% admit rate means no admissions leverage to gain from running.
 
-**Clemson is reinstated at Deep.** It was cut on a 3:43 1500 and a 14:36 5000 that read as out of
-reach. Its actual depth says otherwise: 14th at the ACC championship and 15th at the D1 Southeast
-regional put him at their **7th-to-8th man, 8 seconds outside the seven** and 111 seconds behind
+**Clemson was reinstated at Deep and the 15:40 has since made it a Target.** It was cut on a 3:43 1500
+and a 14:36 5000 that read as out of reach. Its actual depth says otherwise: 14th at the ACC championship
+and 15th at the D1 Southeast regional put him at their **7th-to-8th man, 3 seconds inside the seven** on
+the average — 25 seconds outside at the ACC meet itself, 40 inside at the regional — and 85 seconds behind
 their #1. That is not a place he travels as a freshman, and it is 30 miles from home with a real CS
 department at **$22,253 in-state**. Cutting a school on team best track marks is the same error as
 recommending one on them, and this board has now made it in both directions — see Lenoir-Rhyne above
@@ -388,21 +433,23 @@ for the other.
 running well (their #5, 56 second spread) and has **no bachelor's computer science program in the
 federal file** — it is the only school left on the 44-school Division 1 board, at any tier, with a
 `❌ none` CS reading, so the catalog check in §10 item 7 has to happen before it goes on any list. **Berry College**
-went the other way, moving up from Caution to Target on its championship result (their #3–4, 82 seconds
-inside the seven) after v6 had ranked it on track marks alone.
+went the other way, moving up from Caution to Target on its championship result after v6 had ranked it on
+track marks alone — and the 15:40 has moved it back to **Caution**, because he now arrives 17 seconds
+behind their #1 as their **2nd man**, with 113 seconds of empty road back to their seventh.
 
-### 2f. Twenty-seven programs here never finished seven runners
+### 2f. Twenty-five programs here never finished seven runners
 
 A cross country team scores five and travels seven, and the 7th man is what this document ranks on. At
-twenty-seven of the ninety-six measured schools in this ring **there is no 7th man** — they never got seven men to the
+twenty-five of the ninety-six measured schools in this ring **there is no 7th man** — they never got seven men to the
 finish of a championship race in 2025. Those rows show a blank in *vs their 7th*, and their pages
 compare him to the team's last finisher instead:
 
 **Allen, Auburn\*, Benedict, Bluefield State, Brevard, Carson-Newman, Claflin, Coker, Fort Valley
-State, Gardner-Webb\*, Georgia\*, Johnson C. Smith, King University, LaGrange, Lenoir-Rhyne,
-Methodist, Montreat, NC Central\*, Newberry, Oglethorpe, Piedmont, Savannah State, USC Aiken, UVA
-Wise, Winston-Salem State, Winthrop\*, Wofford\*** — the starred seven are Division 1 and five of them
-are on the current board.
+State, Gardner-Webb\*, Georgia\*, Johnson C. Smith, LaGrange, Lenoir-Rhyne, Methodist, NC Central\*,
+Newberry, Oglethorpe, Piedmont, Savannah State, USC Aiken, UVA Wise, Winston-Salem State, Winthrop\*,
+Wofford\*** — the starred six are Division 1 and five of them are on the current board. **King
+University and Montreat have come off this list**: both put seven men on the line at their conference
+championship, which is the race that counts here.
 
 **USC Aiken** and **Winston-Salem State** are on this list and also off the board for having no men's
 track (§2h), which is the same finding twice: a program that cannot fill a scoring seven in the autumn
@@ -502,7 +549,7 @@ in `../methodology.html` §7.
 
 | For a 4:01 | Whole ring | Division 1 board |
 |---|---|---|
-| Schools with a 2026 championship 1500 on file | **81 of 102** | 31 of 31 |
+| Schools with a 2026 championship 1500 on file | **81 of 102** | 31 of 33 |
 | Schools that raced a 1500 in 2026 | **76 of 81** | 31 of 31 |
 | He would be their **fastest man** | **33 of 76** | **4 of 31** |
 | He would be their **#3 or better** | 52 of 76 | 13 of 31 |
@@ -536,20 +583,20 @@ is the number to trust:
 case.** A 4:01 would be their **#3 of six** — behind a 3:48.1 and a 3:53.8, ahead of a 4:02.9 — and it
 makes the South Atlantic final by nine seconds for 9th of twelve. Two real training partners at the
 distance is more than the cross country read gives him, and it is the argument for the school that the
-6-second cross country margin cannot make on its own.
+13-second cross country margin cannot make on its own.
 
 **Southern Wesleyan is the awkward one, and it is no longer a pick.** A 4:01 would be their **#2** —
 their fastest man ran 3:58.4 and their third was 4:05.5 — which is a thin 1500 group by the standard in
-§1, and it now sits next to a #2 cross country slot at the same school rather than a #4. The two
+§1, and it now sits next to a **#1** cross country slot at the same school rather than a #4. The two
 measurements agree, and what they agree on is thinness. Ask anyway who else is being signed at
 1500–5000 pace, because 27 miles is 27 miles.
 
 **Three of the eight would have to earn the final rather than get in on time**, and one does not make
 it: **UNC Greensboro misses the Southern Conference final by two tenths of a second**, and UNC
 Charlotte (3.7s) and Kennesaw State (4.2s) are inside it by less than the margin a bad day costs.
-Across the whole ring **eleven schools' conference finals are out of reach on a 4:01** — six of them
-target tier: **ETSU, UNC Greensboro, Chattanooga, Coastal Carolina, Queens (Charlotte) and West
-Georgia**, plus Appalachian State and Clemson at Deep and The Citadel, Western Carolina and Wofford at
+Across the whole ring **eleven schools' conference finals are out of reach on a 4:01** — seven of them
+target tier: **ETSU, UNC Greensboro, Chattanooga, Coastal Carolina, Queens (Charlotte), West
+Georgia and Clemson**, plus Appalachian State at Deep and The Citadel, Western Carolina and Wofford at
 Caution. Conference level in the 1500 does not track conference level in cross country, and this is
 where the two measurements disagree most.
 
@@ -582,7 +629,7 @@ all-sections file rather than a final, and why prelim times are included — is 
 
 | Column | What it means |
 |---|---|
-| **XC slot** | where his 15:55-equivalent 8K/10K would have finished inside their top seven, averaged over every 2025 race on file. 1 = ahead of their #1. |
+| **XC slot** | where his 15:40-equivalent 8K/10K would have finished inside their top seven, averaged over every 2025 race on file. 1 = ahead of their #1. |
 | **vs their 7th** | seconds between his mark and their 7th man. `+27s` = he is 27 seconds *outside* the seven. `−6s` = 6 seconds *inside* it. **Blank at the twenty-seven programs that never finished seven** (§2f), whose pages compare him to the team's last finisher instead. |
 | **1–7 spread** | seconds from their #1 to their #7. The most course-independent number here, because it compares a team only to itself. A wide spread means a soft back end to slot into; a tight one means there is no room. On a short squad it is first-to-last, and blank where fewer than five finished, because that is not a team result. |
 | **Tier** | Target = clean 4th–9th man fit · Deep = just outside the travel squad · Verify = **unmeasured**, no cross country result exists yet · Caution = he arrives at or ahead of their #1. **Only Shorter is still at Verify, and it is in the non-Division 1 archive** — nothing on the Division 1 board is unmeasured, so read every tier there as a measurement. |
@@ -622,88 +669,89 @@ per-race results, a map of every meet they attended last year, cost, and admissi
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Campbell](https://timhibbard.github.io/xc-cs-college-board/school.html?s=campbell)** | Buies Creek NC | 244 | CAA | ✅ 6.5% | not reported | 87% | $24,516 | 3 | −79s | 141s | Target | [Evan Darm](mailto:edarm@campbell.edu) |
-| **[Chattanooga](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chattanooga)** | Chattanooga TN | 249 | Southern | ✅ 4.2% | 1013–1210 | 81% | ≈$22,329 | 4.5 | −121s | 220s | Target | [Steve Picucci](mailto:steve-picucci@utc.edu) |
-| **[Coastal Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=coastal-carolina)** | Conway SC | 238 | Sun Belt | ✅ 2.5% | 1050–1220 | 75% | $13,966 | 3.5 | −29s | 89s | Target | [Michael Bianchina](mailto:mbianchin@coastal.edu) |
-| **[College of Charleston](https://timhibbard.github.io/xc-cs-college-board/school.html?s=college-of-charleston)** | Charleston SC | 213 | CAA | ✅ 4.1% | 1140–1310 | 60% | $18,960 | 5 | −27s | 97s | Target | [Chris Bailey](mailto:crbailey@cofc.edu) |
-| **[Davidson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=davidson)** | Davidson NC | 115 | Atlantic 10 | ✅ 6.9% | 1400–1530 | 13% | $17,379 | 4 | −48s | 139s | Target | [Matt Stuck](mailto:mastuck@davidson.edu) |
-| **[Elon](https://timhibbard.github.io/xc-cs-college-board/school.html?s=elon)** | Elon NC | 206 | Coastal | ✅ 2.6% | 1130–1280 | 66% | $41,555 | 4.5 | −47s | 89s | Target | [Mark Elliston](mailto:melliston@elon.edu) |
-| **[ETSU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=etsu)** | Johnson City TN | 122 | Southern | ✅ 4.2% | 980–1200 | 86% | ≈$20,033 | 4 | −35s | 171s | Target | [Sterling Jones](mailto:jonessp6@etsu.edu) |
-| **[High Point](https://timhibbard.github.io/xc-cs-college-board/school.html?s=high-point)** | High Point NC | 176 | Big South | ✅ 2.3% | 1110–1320 | 75% | $38,707 | 7 | −38s | 81s | Target | [Remy Tamer](mailto:rtamer@highpoint.edu) |
-| **[Kennesaw State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kennesaw-state)** | Kennesaw GA | 157 | CUSA | ✅ 11.1% | 1000–1220 | 69% | ≈$26,976 | 4 | −90s | 275s | Target | [Cale McDaniel](mailto:cmcdan10@kennesaw.edu) |
-| **[Queens (Charlotte)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-charlotte)** | Charlotte NC | 104 | ASUN | ❌ none | 1140–1340 | 62% | $30,857 | 5 | −22s | 56s | Target | [Will Crocker](mailto:crockerw@queens.edu) |
-| **[UNC Asheville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-asheville)** | Asheville NC | 64 | Big South | ✅ 3.2% | 1170–1360 | 92% | ≈$29,598 | 4.5 | −57s | 83s | Target | [Adam Puett](mailto:apuett@unca.edu) |
-| **[UNC Charlotte](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-charlotte)** | Charlotte NC | 108 | American | ✅ 15.2% | 1140–1330 | 80% | ≈$30,688 | 7 | −19s | 167s | Target | [Riley Macon](mailto:rmacon4@charlotte.edu) |
-| **[UNC Greensboro](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-greensboro)** | Greensboro NC | 189 | Southern | ✅ 7.4% | 1150–1355 | 89% | ≈$27,316 | 3.5 | −133s | 131s | Target | [Kaleigh Roach](mailto:k_roach@uncg.edu) |
-| **[West Georgia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=west-georgia)** | Carrollton GA | 198 | ASUN | ✅ 2.7% | 950–1140 | 52% | ≈$24,498 | 5 | −35s | 114s | Target | Ryan Bailey *(no email)* |
-| **[Appalachian State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=appalachian-state)** | Boone NC | 131 | Sun Belt | ✅ 2.9% | 1120–1280 | 90% | ≈$34,469 | 8 | +27s | 101s | Deep | [Damion McLean](mailto:mcleandm@appstate.edu) |
-| **[Charleston Southern](https://timhibbard.github.io/xc-cs-college-board/school.html?s=charleston-southern)** | Charleston SC | 197 | Big South | ✅ 4.7% | 930–1160 | 96% | $21,666 | 7 | +2s | 81s | Deep | [Jim Stintzi](mailto:jstintzi@csuniv.edu) |
-| **[Clemson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clemson)** | Clemson SC | 30 | ACC | ✅ 4.5% | 1240–1410 | 38% | $22,253 | 7.5 | +8s | 104s | Deep | [Mark Elliott](mailto:maellio@clemson.edu) |
+| **[Campbell](https://timhibbard.github.io/xc-cs-college-board/school.html?s=campbell)** | Buies Creek NC | 244 | CAA | ✅ 6.5% | not reported | 87% | $24,516 | 3 | −103s | 141s | Target | [Evan Darm](mailto:edarm@campbell.edu) |
+| **[Chattanooga](https://timhibbard.github.io/xc-cs-college-board/school.html?s=chattanooga)** | Chattanooga TN | 249 | Southern | ✅ 4.2% | 1013–1210 | 81% | ≈$22,329 | 2.5 | −120s | 191s | Target | [Steve Picucci](mailto:steve-picucci@utc.edu) |
+| **[Coastal Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=coastal-carolina)** | Conway SC | 238 | Sun Belt | ✅ 2.5% | 1050–1220 | 75% | $13,966 | 2.5 | −53s | 78s | Target | [Michael Bianchina](mailto:mbianchin@coastal.edu) |
+| **[College of Charleston](https://timhibbard.github.io/xc-cs-college-board/school.html?s=college-of-charleston)** | Charleston SC | 213 | CAA | ✅ 4.1% | 1140–1310 | 60% | $18,960 | 4.5 | −34s | 85s | Target | [Chris Bailey](mailto:crbailey@cofc.edu) |
+| **[Davidson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=davidson)** | Davidson NC | 115 | Atlantic 10 | ✅ 6.9% | 1400–1530 | 13% | $17,379 | 4 | −72s | 139s | Target | [Matt Stuck](mailto:mastuck@davidson.edu) |
+| **[Elon](https://timhibbard.github.io/xc-cs-college-board/school.html?s=elon)** | Elon NC | 206 | Coastal | ✅ 2.6% | 1130–1280 | 66% | $41,555 | 4.5 | −54s | 78s | Target | [Mark Elliston](mailto:melliston@elon.edu) |
+| **[ETSU](https://timhibbard.github.io/xc-cs-college-board/school.html?s=etsu)** | Johnson City TN | 122 | Southern | ✅ 4.2% | 980–1200 | 86% | ≈$20,033 | 2.5 | −59s | 132s | Target | [Sterling Jones](mailto:jonessp6@etsu.edu) |
+| **[High Point](https://timhibbard.github.io/xc-cs-college-board/school.html?s=high-point)** | High Point NC | 176 | Big South | ✅ 2.3% | 1110–1320 | 75% | $38,707 | 6.5 | −62s | 74s | Target | [Remy Tamer](mailto:rtamer@highpoint.edu) |
+| **[Kennesaw State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kennesaw-state)** | Kennesaw GA | 157 | CUSA | ✅ 11.1% | 1000–1220 | 69% | ≈$26,976 | 4 | −114s | 240s | Target | [Cale McDaniel](mailto:cmcdan10@kennesaw.edu) |
+| **[Queens (Charlotte)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-charlotte)** | Charlotte NC | 104 | ASUN | ❌ none | 1140–1340 | 62% | $30,857 | 4 | −46s | 56s | Target | [Will Crocker](mailto:crockerw@queens.edu) |
+| **[UNC Asheville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-asheville)** | Asheville NC | 64 | Big South | ✅ 3.2% | 1170–1360 | 92% | ≈$29,598 | 3 | −94s | 116s | Target | [Adam Puett](mailto:apuett@unca.edu) |
+| **[UNC Charlotte](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-charlotte)** | Charlotte NC | 108 | American | ✅ 15.2% | 1140–1330 | 80% | ≈$30,688 | 7.5 | +13s | 92s | Target | [Riley Macon](mailto:rmacon4@charlotte.edu) |
+| **[UNC Greensboro](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-greensboro)** | Greensboro NC | 189 | Southern | ✅ 7.4% | 1150–1355 | 89% | ≈$27,316 | 2.5 | −157s | 149s | Target | [Kaleigh Roach](mailto:k_roach@uncg.edu) |
+| **[West Georgia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=west-georgia)** | Carrollton GA | 198 | ASUN | ✅ 2.7% | 950–1140 | 52% | ≈$24,498 | 4 | −59s | 114s | Target | Ryan Bailey *(no email)* |
+| **[Appalachian State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=appalachian-state)** | Boone NC | 131 | Sun Belt | ✅ 2.9% | 1120–1280 | 90% | ≈$34,469 | 8 | +29s | 63s | Deep | [Damion McLean](mailto:mcleandm@appstate.edu) |
+| **[Charleston Southern](https://timhibbard.github.io/xc-cs-college-board/school.html?s=charleston-southern)** | Charleston SC | 197 | Big South | ✅ 4.7% | 930–1160 | 96% | $21,666 | 6.5 | −11s | 68s | Target | [Jim Stintzi](mailto:jstintzi@csuniv.edu) |
+| **[Clemson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clemson)** | Clemson SC | 30 | ACC | ✅ 4.5% | 1240–1410 | 38% | $22,253 | 7.5 | −3s | 88s | Target | [Mark Elliott](mailto:maellio@clemson.edu) |
 | **[Gardner-Webb](https://timhibbard.github.io/xc-cs-college-board/school.html?s=gardner-webb)** | Boiling Springs NC | 62 | Big South | ✅ 1.9% | 975–1198 | 77% | $17,674 | 1 | — | 966s | Caution | [Greg Thiel](mailto:gthiel@gardner-webb.edu) |
-| **[NC A&T](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-aandt)** | Greensboro NC | 191 | CAA | ✅ 8.9% | 1020–1190 | 50% | ≈$24,706 | 1 | −182s | 169s | Caution | [Allen Johnson](mailto:akjohnson5@ncat.edu) |
+| **[NC A&T](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-aandt)** | Greensboro NC | 191 | CAA | ✅ 8.9% | 1020–1190 | 50% | ≈$24,706 | 1 | −206s | 169s | Caution | [Allen Johnson](mailto:akjohnson5@ncat.edu) |
 | **[NC Central](https://timhibbard.github.io/xc-cs-college-board/school.html?s=nc-central)** | Durham NC | 241 | MEAC | ✅ 3.9% | ~1050 avg | 87% | ≈$28,395 | 2 | — | 355s | Caution | [Fabrienne Swepson](mailto:fswepson@nccu.edu) |
-| **[Presbyterian](https://timhibbard.github.io/xc-cs-college-board/school.html?s=presbyterian)** | Clinton SC | 45 | Big South | ✅ 1.4% | 980–1200 | 68% | $20,528 | 1 | −270s | 234s | Caution | [Robert "Bus" Baker](mailto:bbaker@presby.edu) |
-| **[SC State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=sc-state)** | Orangeburg SC | 141 | MEAC | ✅ 3.8% | not reported | 83% | $18,097 | 2 | −202s | 241s | Caution | [Donald Cooper](mailto:dcoope17@scsu.edu) |
-| **[The Citadel](https://timhibbard.github.io/xc-cs-college-board/school.html?s=the-citadel)** | Charleston SC | 212 | Southern | ✅ 4.0% | 1085–1285 | 23% | $20,723 | 1 | −170s | 96s | Caution | [Kris Kut](mailto:kutk@citadel.edu) |
-| **[USC Upstate](https://timhibbard.github.io/xc-cs-college-board/school.html?s=usc-upstate)** | Spartanburg SC | 32 | Big South | ✅ 8.3% | 1005–1175 | 67% | $13,557 | 2 | −50s | 82s | Caution | [Carson Blackwelder](mailto:cblackwelder@uscupstate.edu) |
-| **[Western Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=western-carolina)** | Cullowhee NC | 81 | Southern | ✅ 1.3% | 1080–1270 | 82% | ≈$17,315 | 2 | −89s | 105s | Caution | [Jesse Norman](mailto:jnorman@email.wcu.edu) |
-| **[Winthrop](https://timhibbard.github.io/xc-cs-college-board/school.html?s=winthrop)** | Rock Hill SC | 92 | Big South | ✅ 2.5% | 1010–1220 | 79% | $15,343 | 1 | — | 143s | Caution | [Raffael Craig](mailto:craigr@winthrop.edu) |
+| **[Presbyterian](https://timhibbard.github.io/xc-cs-college-board/school.html?s=presbyterian)** | Clinton SC | 45 | Big South | ✅ 1.4% | 980–1200 | 68% | $20,528 | 1 | −294s | 234s | Caution | [Robert "Bus" Baker](mailto:bbaker@presby.edu) |
+| **[SC State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=sc-state)** | Orangeburg SC | 141 | MEAC | ✅ 3.8% | not reported | 83% | $18,097 | 2 | −226s | 241s | Caution | [Donald Cooper](mailto:dcoope17@scsu.edu) |
+| **[The Citadel](https://timhibbard.github.io/xc-cs-college-board/school.html?s=the-citadel)** | Charleston SC | 212 | Southern | ✅ 4.0% | 1085–1285 | 23% | $20,723 | 1 | −194s | 96s | Caution | [Kris Kut](mailto:kutk@citadel.edu) |
+| **[USC Upstate](https://timhibbard.github.io/xc-cs-college-board/school.html?s=usc-upstate)** | Spartanburg SC | 32 | Big South | ✅ 8.3% | 1005–1175 | 67% | $13,557 | 1.5 | −135s | 129s | Caution | [Carson Blackwelder](mailto:cblackwelder@uscupstate.edu) |
+| **[Western Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=western-carolina)** | Cullowhee NC | 81 | Southern | ✅ 1.3% | 1080–1270 | 82% | ≈$17,315 | 1 | −113s | 105s | Caution | [Jesse Norman](mailto:jnorman@email.wcu.edu) |
+| **[Winthrop](https://timhibbard.github.io/xc-cs-college-board/school.html?s=winthrop)** | Rock Hill SC | 92 | Big South | ✅ 2.5% | 1010–1220 | 79% | $15,343 | 1 | — | 136s | Caution | [Raffael Craig](mailto:craigr@winthrop.edu) |
 | **[Wofford](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wofford)** | Spartanburg SC | 32 | Southern | ✅ 3.6% | 1198–1343 | 52% | $18,732 | 1 | — | 222s | Caution | [Johnny Bomar](mailto:bomarjc@wofford.edu) |
 
 ### Division 2 (scholarship money exists)
 
 Thirty-eight programs, thirty-one of them new to this document, and **thirty-seven of the thirty-eight
 are measured** — Shorter is the one that is not. This is where the scholarship money is and where the
-sweep did the most work: it produced **three of the five D2 targets** — Augusta, UNC Pembroke and
-Fayetteville State. Five more (Emory & Henry, Lincoln Memorial, Mars Hill, Tusculum and UVA Wise) were
-targets on the South Atlantic course correction and are **back at Caution** now that the correction
-turns out to have been applied twice (§3b), and **Southern Wesleyan (27 mi)** is at Caution on the
-15:55. **Catawba** and **Anderson (SC)** are the only two D2 targets that were already in this
-document. The sweep also produced thirteen of the twenty-three programs that never finished seven
-runners. Three D2 programs that were on this table in
+sweep did the most work: it produced **three of the five D2 targets** — Augusta, Fayetteville State and
+Lee University, which the 15:40 promoted out of Deep. Five more (Emory & Henry, Lincoln Memorial, Mars
+Hill, Tusculum and UVA Wise) were targets on the South Atlantic course correction and are **back at
+Caution** now that the correction turns out to have been applied twice (§3b); **UNC Pembroke** was a
+target until the 15:40 made him its #1; and **Southern Wesleyan (27 mi)** is at Caution on the same
+arithmetic. **Catawba** and **Anderson (SC)** are the only two D2 targets that were already in this
+document. The sweep also produced most of the programs in this ring that never finished seven runners
+(§2f). Three D2 programs that were on this table in
 v7 are gone from it: Clark Atlanta, USC Aiken and Winston-Salem State sponsor no men's outdoor track
 (§2h).
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Anderson (SC)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=anderson-sc)** | Anderson SC | 29 | South Atlantic | ✅ 5.0% | 1100–1280 | 55% | $23,544 | 7 | −6s | 77s | Target | [Kevin Eagle](mailto:keagle@andersonuniversity.edu) |
-| **[Augusta University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=augusta-university)** | Augusta GA | 115 | Peach Belt | ✅ 15.6% | 970–1140 | 86% | ≈$30,107 | 5 | −102s | 148s | Target | [Jacob Burgamy](mailto:jburgamy@augusta.edu) |
-| **[Catawba](https://timhibbard.github.io/xc-cs-college-board/school.html?s=catawba)** | Salisbury NC | 141 | South Atlantic | ✅ 1.6% | 1030–1300 | 75% | $17,879 | 5.5 | −103s | 151s | Target | [Jason Bryan](mailto:jpbryan14@catawba.edu) |
-| **[Fayetteville State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fayetteville-state)** | Fayetteville NC | 265 | CIAA | ✅ 3.3% | 890–1090 | 82% | ≈$11,892 | 4.5 | −165s | 250s | Target | Frank Hyland *(no email)* |
-| **[UNC Pembroke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-pembroke)** | Pembroke NC | 214 | Conference Carolinas | ✅ 4.8% | 970–1200 | 93% | ≈$14,260 | 3 | −151s | 166s | Target | [Dr. Peter Ormsby](mailto:peter.ormsby@uncp.edu) |
-| **[Lee University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lee-university)** | Cleveland TN | 200 | Gulf South | ✅ 2.0% | 1040–1230 | 71% | $18,878 | 7 | +17s | 83s | Deep | [Caleb Morgan](mailto:cmorgan@leeuniversity.edu) |
+| **[Anderson (SC)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=anderson-sc)** | Anderson SC | 29 | South Atlantic | ✅ 5.0% | 1100–1280 | 55% | $23,544 | 7 | −13s | 73s | Target | [Kevin Eagle](mailto:keagle@andersonuniversity.edu) |
+| **[Augusta University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=augusta-university)** | Augusta GA | 115 | Peach Belt | ✅ 15.6% | 970–1140 | 86% | ≈$30,107 | 2.5 | −97s | 124s | Target | [Jacob Burgamy](mailto:jburgamy@augusta.edu) |
+| **[Catawba](https://timhibbard.github.io/xc-cs-college-board/school.html?s=catawba)** | Salisbury NC | 141 | South Atlantic | ✅ 1.6% | 1030–1300 | 75% | $17,879 | 4.5 | −105s | 132s | Target | [Jason Bryan](mailto:jpbryan14@catawba.edu) |
+| **[Fayetteville State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fayetteville-state)** | Fayetteville NC | 265 | CIAA | ✅ 3.3% | 890–1090 | 82% | ≈$11,892 | 4.5 | −189s | 225s | Target | Frank Hyland *(no email)* |
+| **[UNC Pembroke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-pembroke)** | Pembroke NC | 214 | Conference Carolinas | ✅ 4.8% | 970–1200 | 93% | ≈$14,260 | 1.5 | −142s | 142s | Caution | [Dr. Peter Ormsby](mailto:peter.ormsby@uncp.edu) |
+| **[Lee University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lee-university)** | Cleveland TN | 200 | Gulf South | ✅ 2.0% | 1040–1230 | 71% | $18,878 | 7 | +0s | 80s | Target | [Caleb Morgan](mailto:cmorgan@leeuniversity.edu) |
 | **[Shorter](https://timhibbard.github.io/xc-cs-college-board/school.html?s=shorter)** | Rome GA | 204 | Conference Carolinas | ✅ 3.4% | 1040–1200 | 96% | $16,646 | — | — | — | Verify | [Anthony Yates](mailto:ayates@shorter.edu) |
 | **[Allen University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=allen-university)** | Columbia SC | 104 | SIAC | ❌ none | not reported | 73% | $10,972 | 1 | — | 914s | Caution | [Orinthal Striggles](mailto:ostriggles@allenuniversity.edu) |
-| **[Belmont Abbey](https://timhibbard.github.io/xc-cs-college-board/school.html?s=belmont-abbey)** | Belmont NC | 90 | Conference Carolinas | ❌ none | 960–1200 | 75% | $24,639 | 1 | −206s | 136s | Caution | [Dan Finanger](mailto:danielfinanger@bac.edu) |
+| **[Belmont Abbey](https://timhibbard.github.io/xc-cs-college-board/school.html?s=belmont-abbey)** | Belmont NC | 90 | Conference Carolinas | ❌ none | 960–1200 | 75% | $24,639 | 1 | −193s | 123s | Caution | [Dan Finanger](mailto:danielfinanger@bac.edu) |
 | **[Benedict](https://timhibbard.github.io/xc-cs-college-board/school.html?s=benedict)** | Columbia SC | 104 | SIAC | ✅ 3.2% | not reported | 96% | $18,250 | 1 | — | — | Caution | [Danny Brooks](mailto:daniel.brooks@benedict.edu) |
-| **[Bluefield State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=bluefield-state)** | Bluefield WV | 266 | CIAA | ✅ 1.9% | 870–1080 | 97% | ≈$21,412 | 1 | — | 557s | Caution | [Wesley Arthur](mailto:warthur@bluefieldstate.edu) |
-| **[Carson-Newman](https://timhibbard.github.io/xc-cs-college-board/school.html?s=carson-newman)** | Jefferson City TN | 145 | South Atlantic | ✅ 3.1% | 955–1215 | 90% | $20,251 | 1 | — | 289s | Caution | [Brent Borden](mailto:bborden@cn.edu) |
+| **[Bluefield State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=bluefield-state)** | Bluefield WV | 266 | CIAA | ✅ 1.9% | 870–1080 | 97% | ≈$21,412 | 1 | — | 480s | Caution | [Wesley Arthur](mailto:warthur@bluefieldstate.edu) |
+| **[Carson-Newman](https://timhibbard.github.io/xc-cs-college-board/school.html?s=carson-newman)** | Jefferson City TN | 145 | South Atlantic | ✅ 3.1% | 955–1215 | 90% | $20,251 | 1 | — | 252s | Caution | [Brent Borden](mailto:bborden@cn.edu) |
 | **[Claflin](https://timhibbard.github.io/xc-cs-college-board/school.html?s=claflin)** | Orangeburg SC | 140 | CIAA | ✅ 3.3% | not reported | 65% | $17,800 | 1 | — | 338s | Caution | [Malcolm Watts](mailto:mawatts@claflin.edu) |
-| **[Clayton State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clayton-state)** | Morrow GA | 158 | Peach Belt | ✅ 8.9% | 860–1078 | 68% | ≈$19,717 | 1 | −236s | 183s | Caution | [Chris Brown, OLY](mailto:ChristopherBrown@Clayton.edu) |
+| **[Clayton State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clayton-state)** | Morrow GA | 158 | Peach Belt | ✅ 8.9% | 860–1078 | 68% | ≈$19,717 | 1 | −221s | 161s | Caution | [Chris Brown, OLY](mailto:ChristopherBrown@Clayton.edu) |
 | **[Coker](https://timhibbard.github.io/xc-cs-college-board/school.html?s=coker)** | Hartsville SC | 170 | South Atlantic | ✅ 0.0% | not reported | 94% | $20,286 | 1 | — | 302s | Caution | [Eugene Galloway](mailto:egalloway@coker.edu) |
-| **[Converse](https://timhibbard.github.io/xc-cs-college-board/school.html?s=converse)** | Spartanburg SC | 33 | Conference Carolinas | ✅ 1.6% | 1010–1250 | 68% | $23,283 | 1 | −196s | 168s | Caution | [Roger Malonda](mailto:roger.malonda@converse.edu) |
-| **[Emmanuel (GA)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emmanuel-ga)** | Franklin Springs GA | 67 | Conference Carolinas | ✅ 1.7% | not reported | 74% | $20,925 | 1 | −346s | 210s | Caution | [Jesse Kemmerer](mailto:jesse.kemmerer@ec.edu) |
-| **[Emory & Henry](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory-and-henry)** | Emory VA | 181 | South Atlantic | ❌ none | 1051–1223 | 84% | $19,061 | 1.5 | −293s | 269s | Caution | [Leroy Worley](mailto:lworley@emoryhenry.edu) |
-| **[Erskine](https://timhibbard.github.io/xc-cs-college-board/school.html?s=erskine)** | Due West SC | 46 | Conference Carolinas | ✅ 0.7% | not reported | 63% | $16,525 | 1 | −332s | 251s | Caution | [Dylan Anderson](mailto:danderson@erskine.edu) |
+| **[Converse](https://timhibbard.github.io/xc-cs-college-board/school.html?s=converse)** | Spartanburg SC | 33 | Conference Carolinas | ✅ 1.6% | 1010–1250 | 68% | $23,283 | 1 | −182s | 144s | Caution | [Roger Malonda](mailto:roger.malonda@converse.edu) |
+| **[Emmanuel (GA)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emmanuel-ga)** | Franklin Springs GA | 67 | Conference Carolinas | ✅ 1.7% | not reported | 74% | $20,925 | 1 | −312s | 180s | Caution | [Jesse Kemmerer](mailto:jesse.kemmerer@ec.edu) |
+| **[Emory & Henry](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory-and-henry)** | Emory VA | 181 | South Atlantic | ❌ none | 1051–1223 | 84% | $19,061 | 1 | −269s | 237s | Caution | [Leroy Worley](mailto:lworley@emoryhenry.edu) |
+| **[Erskine](https://timhibbard.github.io/xc-cs-college-board/school.html?s=erskine)** | Due West SC | 46 | Conference Carolinas | ✅ 0.7% | not reported | 63% | $16,525 | 1 | −356s | 251s | Caution | [Dylan Anderson](mailto:danderson@erskine.edu) |
 | **[Fort Valley State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fort-valley-state)** | Fort Valley GA | 245 | SIAC | ✅ 4.6% | 930–1070 | 66% | ≈$21,744 | 1 | — | 200s | Caution | [Alexander Jones](mailto:Alexander.jones@fvsu.edu) |
-| **[Francis Marion](https://timhibbard.github.io/xc-cs-college-board/school.html?s=francis-marion)** | Florence SC | 187 | Conference Carolinas | ✅ 2.4% | 870–1115 | 86% | $11,386 | 1 | −525s | 312s | Caution | [Mark Bluman](mailto:mbluman@fmarion.edu) |
-| **[Georgia College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia-college)** | Milledgeville GA | 173 | Peach Belt | ✅ 6.2% | 1070–1230 | 78% | ≈$41,012 | 1.5 | −148s | 115s | Caution | [Alexander Bruno](mailto:alexander.bruno@gcsu.edu) |
+| **[Francis Marion](https://timhibbard.github.io/xc-cs-college-board/school.html?s=francis-marion)** | Florence SC | 187 | Conference Carolinas | ✅ 2.4% | 870–1115 | 86% | $11,386 | 1 | −549s | 312s | Caution | [Mark Bluman](mailto:mbluman@fmarion.edu) |
+| **[Georgia College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia-college)** | Milledgeville GA | 173 | Peach Belt | ✅ 6.2% | 1070–1230 | 78% | ≈$41,012 | 1 | −140s | 100s | Caution | [Alexander Bruno](mailto:alexander.bruno@gcsu.edu) |
 | **[Johnson C. Smith](https://timhibbard.github.io/xc-cs-college-board/school.html?s=johnson-c-smith)** | Charlotte NC | 101 | CIAA | ✅ 10.4% | not reported | 45% | $20,894 | 1 | — | 527s | Caution | [Carol Lawrence](mailto:clawrence@jcsu.edu) |
-| **[King University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=king-university)** | Bristol TN | 144 | Conf. Carolinas | ✅ 4.7% | not reported | 100% | $22,347 | 1 | — | 230s | Caution | [Jack Brunecz](mailto:jebrunecz@king.edu) |
-| **[Lander](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lander)** | Greenwood SC | 55 | Peach Belt | ✅ 3.4% | 950–1178 | 81% | $15,363 | 1 | −414s | 305s | Caution | [Colin Lamb](mailto:clamb@lander.edu) |
-| **[Lees-McRae](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lees-mcrae)** | Banner Elk NC | 121 | Conference Carolinas | ❌ none | not reported | 77% | $28,340 | 1.5 | −227s | 244s | Caution | [Ley Fletcher](mailto:fletcherl@lmc.edu) |
-| **[Lenoir-Rhyne](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lenoir-rhyne)** | Hickory NC | 116 | South Atlantic | ✅ 3.7% | not reported | 85% | $20,689 | 1 | — | 326s | Caution | [Bob Braman](mailto:robert.braman@lr.edu) |
-| **[Lincoln Memorial](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lincoln-memorial)** | Harrogate TN | 184 | South Atlantic | ✅ 1.0% | 1000–1210 | 63% | $20,406 | 1.5 | −168s | 159s | Caution | [Jeff Kavalunas](mailto:jeffrey.kavalunas@lmunet.edu) |
-| **[Livingstone](https://timhibbard.github.io/xc-cs-college-board/school.html?s=livingstone)** | Salisbury NC | 140 | CIAA | ✅ 3.4% | not reported | 59% | $13,479 | 1 | −449s | 337s | Caution | [Justin Davis](mailto:jdavis@livingstone.edu) |
-| **[Mars Hill](https://timhibbard.github.io/xc-cs-college-board/school.html?s=mars-hill)** | Mars Hill NC | 79 | South Atlantic | ✅ 0.4% | not reported | 68% | $19,910 | 1 | −206s | 155s | Caution | [Carter Benge](mailto:carter_benge@mhu.edu) |
-| **[Morehouse](https://timhibbard.github.io/xc-cs-college-board/school.html?s=morehouse)** | Atlanta GA | 147 | SIAC | ✅ 3.8% | ~1090 avg | 44% | $39,013 | 2 | −343s | 352s | Caution | [Christopher Doomes](mailto:christopher.doomes@morehouse.edu) |
-| **[Newberry](https://timhibbard.github.io/xc-cs-college-board/school.html?s=newberry)** | Newberry SC | 66 | South Atlantic | ✅ 1.5% | not reported | 90% | $21,656 | 1 | — | 581s | Caution | [Scott Hutchinson](mailto:scott.hutchinson@newberry.edu) |
-| **[North Greenville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-greenville)** | Tigerville SC | 19 | Conf. Carolinas | ✅ 4.2% | 1060–1240 | 67% | $21,063 | 1 | −405s | 266s | Caution | [Jarvis Robinson](mailto:Jarvis.Robinson@ngu.edu) |
+| **[King University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=king-university)** | Bristol TN | 144 | Conf. Carolinas | ✅ 4.7% | not reported | 100% | $22,347 | 1 | −366s | 208s | Caution | [Jack Brunecz](mailto:jebrunecz@king.edu) |
+| **[Lander](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lander)** | Greenwood SC | 55 | Peach Belt | ✅ 3.4% | 950–1178 | 81% | $15,363 | 1 | −295s | 212s | Caution | [Colin Lamb](mailto:clamb@lander.edu) |
+| **[Lees-McRae](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lees-mcrae)** | Banner Elk NC | 121 | Conference Carolinas | ❌ none | not reported | 77% | $28,340 | 1 | −251s | 217s | Caution | [Ley Fletcher](mailto:fletcherl@lmc.edu) |
+| **[Lenoir-Rhyne](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lenoir-rhyne)** | Hickory NC | 116 | South Atlantic | ✅ 3.7% | not reported | 85% | $20,689 | 1 | — | 377s | Caution | [Bob Braman](mailto:robert.braman@lr.edu) |
+| **[Lincoln Memorial](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lincoln-memorial)** | Harrogate TN | 184 | South Atlantic | ✅ 1.0% | 1000–1210 | 63% | $20,406 | 1.5 | −162s | 146s | Caution | [Jeff Kavalunas](mailto:jeffrey.kavalunas@lmunet.edu) |
+| **[Livingstone](https://timhibbard.github.io/xc-cs-college-board/school.html?s=livingstone)** | Salisbury NC | 140 | CIAA | ✅ 3.4% | not reported | 59% | $13,479 | 1 | −473s | 337s | Caution | [Justin Davis](mailto:jdavis@livingstone.edu) |
+| **[Mars Hill](https://timhibbard.github.io/xc-cs-college-board/school.html?s=mars-hill)** | Mars Hill NC | 79 | South Atlantic | ✅ 0.4% | not reported | 68% | $19,910 | 1 | −196s | 138s | Caution | [Carter Benge](mailto:carter_benge@mhu.edu) |
+| **[Morehouse](https://timhibbard.github.io/xc-cs-college-board/school.html?s=morehouse)** | Atlanta GA | 147 | SIAC | ✅ 3.8% | ~1090 avg | 44% | $39,013 | 1 | −367s | 352s | Caution | [Christopher Doomes](mailto:christopher.doomes@morehouse.edu) |
+| **[Newberry](https://timhibbard.github.io/xc-cs-college-board/school.html?s=newberry)** | Newberry SC | 66 | South Atlantic | ✅ 1.5% | not reported | 90% | $21,656 | 1 | — | 553s | Caution | [Scott Hutchinson](mailto:scott.hutchinson@newberry.edu) |
+| **[North Greenville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=north-greenville)** | Tigerville SC | 19 | Conf. Carolinas | ✅ 4.2% | 1060–1240 | 67% | $21,063 | 1 | −296s | 203s | Caution | [Jarvis Robinson](mailto:Jarvis.Robinson@ngu.edu) |
 | **[Savannah State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=savannah-state)** | Savannah GA | 262 | SIAC | ✅ 0.9% | not reported | not reported | ≈$21,465 | 1 | — | 642s | Caution | [Ted Whitaker](mailto:whitaket@savannahstate.edu) |
-| **[Southern Wesleyan](https://timhibbard.github.io/xc-cs-college-board/school.html?s=southern-wesleyan)** | Central SC | 27 | Conference Carolinas | ✅ 2.7% | 1040–1210 | 100% | $15,464 | 2 | −112s | 116s | Caution | [Peyton Shelton](mailto:pshelton@swu.edu) |
-| **[Tusculum](https://timhibbard.github.io/xc-cs-college-board/school.html?s=tusculum)** | Greeneville TN | 121 | South Atlantic | ✅ 0.9% | not reported | 72% | $21,131 | 2 | −165s | 181s | Caution | [Alaric Gwynn](mailto:agwynn@tusculum.edu) |
-| **[UVA Wise](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uva-wise)** | Wise VA | 195 | South Atlantic | ✅ 2.3% | 945–1120 | 29% | ≈$25,440 | 1.5 | — | 210s | Caution | [Andrew Howard](mailto:andrewhoward@uvawise.edu) |
-| **[Young Harris](https://timhibbard.github.io/xc-cs-college-board/school.html?s=young-harris)** | Young Harris GA | 107 | Conference Carolinas | ❌ none | not reported | 63% | $22,034 | 1.5 | −109s | 104s | Caution | [Matt Logan](mailto:mjlogan@yhc.edu) |
+| **[Southern Wesleyan](https://timhibbard.github.io/xc-cs-college-board/school.html?s=southern-wesleyan)** | Central SC | 27 | Conference Carolinas | ✅ 2.7% | 1040–1210 | 100% | $15,464 | 1 | −136s | 116s | Caution | [Peyton Shelton](mailto:pshelton@swu.edu) |
+| **[Tusculum](https://timhibbard.github.io/xc-cs-college-board/school.html?s=tusculum)** | Greeneville TN | 121 | South Atlantic | ✅ 0.9% | not reported | 72% | $21,131 | 1 | −189s | 181s | Caution | [Alaric Gwynn](mailto:agwynn@tusculum.edu) |
+| **[UVA Wise](https://timhibbard.github.io/xc-cs-college-board/school.html?s=uva-wise)** | Wise VA | 195 | South Atlantic | ✅ 2.3% | 945–1120 | 29% | ≈$25,440 | 1 | — | 182s | Caution | [Andrew Howard](mailto:andrewhoward@uvawise.edu) |
+| **[Young Harris](https://timhibbard.github.io/xc-cs-college-board/school.html?s=young-harris)** | Young Harris GA | 107 | Conference Carolinas | ❌ none | not reported | 63% | $22,034 | 1 | −107s | 90s | Caution | [Matt Logan](mailto:mjlogan@yhc.edu) |
 
 > **Limestone University (Gaffney SC) closed in 2025** — remove it from any older list.
 > **Anderson (SC) CS note:** the federal file shows 5.0% of their bachelor's degrees in computer
@@ -715,17 +763,17 @@ v7 are gone from it: Clark Atlanta, USC Aiken and Winston-Salem State sponsor no
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Berry College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=berry-college)** | Rome GA | 204 | SAA | ✅ 5.8% | 1125–1330 | 64% | $22,320 | 3 | −89s | 130s | Target | [Paul Deaton](mailto:pdeaton@berry.edu) |
-| **[Emory](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory)** | Atlanta GA | 141 | UAA | ✅ 3.9% | 1470–1550 | 11% | $22,585 | 5 | −27s | 74s | Target | [Linh Nguyen](mailto:linh.nguyen@emory.edu) |
-| **[Pfeiffer](https://timhibbard.github.io/xc-cs-college-board/school.html?s=pfeiffer)** | Misenheimer NC | 138 | USA South | ✅ 5.5% | not reported | 96% | $19,076 | 6.5 | −42s | 105s | Target | [Bob Marchinko](mailto:bob.marchinko@pfeiffer.edu) |
+| **[Berry College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=berry-college)** | Rome GA | 204 | SAA | ✅ 5.8% | 1125–1330 | 64% | $22,320 | 2 | −113s | 130s | Caution | [Paul Deaton](mailto:pdeaton@berry.edu) |
+| **[Emory](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory)** | Atlanta GA | 141 | UAA | ✅ 3.9% | 1470–1550 | 11% | $22,585 | 3.5 | −52s | 90s | Target | [Linh Nguyen](mailto:linh.nguyen@emory.edu) |
+| **[Pfeiffer](https://timhibbard.github.io/xc-cs-college-board/school.html?s=pfeiffer)** | Misenheimer NC | 138 | USA South | ✅ 5.5% | not reported | 96% | $19,076 | 5 | −66s | 104s | Target | [Bob Marchinko](mailto:bob.marchinko@pfeiffer.edu) |
 | **[Brevard College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=brevard-college)** | Brevard NC | 47 | USA South | ❌ none | 870–1220 | 42% | $23,509 | 1 | — | 332s | Caution | [Matthew Jelley](mailto:jelleymm@brevard.edu) |
-| **[Covenant College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=covenant-college)** | Lookout Mtn GA | 253 | Collegiate Conf. of the South | ✅ 1.4% | 1160–1380 | 87% | $26,265 | 1 | −138s | 109s | Caution | [Eli Kaczinski](mailto:eli.kaczinski@covenant.edu) |
-| **[Guilford](https://timhibbard.github.io/xc-cs-college-board/school.html?s=guilford)** | Greensboro NC | 193 | ODAC | ✅ 7.2% | 1120–1260 | 80% | $22,270 | 1 | −1066s | 635s | Caution | [Kevin Scola](mailto:kscola@guilford.edu) |
+| **[Covenant College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=covenant-college)** | Lookout Mtn GA | 253 | Collegiate Conf. of the South | ✅ 1.4% | 1160–1380 | 87% | $26,265 | 1 | −162s | 109s | Caution | [Eli Kaczinski](mailto:eli.kaczinski@covenant.edu) |
+| **[Guilford](https://timhibbard.github.io/xc-cs-college-board/school.html?s=guilford)** | Greensboro NC | 193 | ODAC | ✅ 7.2% | 1120–1260 | 80% | $22,270 | 1 | −1090s | 635s | Caution | [Kevin Scola](mailto:kscola@guilford.edu) |
 | **[LaGrange](https://timhibbard.github.io/xc-cs-college-board/school.html?s=lagrange)** | LaGrange GA | 212 | Collegiate Conf. of the South | ✅ 0.0% | not reported | 62% | $20,875 | 1 | — | 1344s | Caution | [Cire Campbell](mailto:ecampbell1@lagrange.edu) |
-| **[Maryville College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=maryville-college)** | Maryville TN | 172 | Collegiate Conf. of the South | ✅ 2.8% | not reported | 61% | $19,360 | 1 | −266s | 181s | Caution | [Kaitlyn Carringer-Adams](mailto:kaitlyn.carringeradams@maryvillecollege.edu) |
+| **[Maryville College](https://timhibbard.github.io/xc-cs-college-board/school.html?s=maryville-college)** | Maryville TN | 172 | Collegiate Conf. of the South | ✅ 2.8% | not reported | 61% | $19,360 | 1 | −290s | 181s | Caution | [Kaitlyn Carringer-Adams](mailto:kaitlyn.carringeradams@maryvillecollege.edu) |
 | **[Methodist](https://timhibbard.github.io/xc-cs-college-board/school.html?s=methodist)** | Fayetteville NC | 237 | USA South | ✅ 4.4% | 1080–1250 | 75% | $24,704 | 1 | — | 1119s | Caution | [William Helms](mailto:whelms@methodist.edu) |
 | **[Oglethorpe](https://timhibbard.github.io/xc-cs-college-board/school.html?s=oglethorpe)** | Atlanta GA | 136 | Southern Athletic | ❌ none | 1090–1310 | 88% | $19,509 | 3 | — | 382s | Caution | [Margaret Fox](mailto:mfox1@oglethorpe.edu) |
-| **[Piedmont University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=piedmont-university)** | Demorest GA | 85 | Collegiate Conf. of the South | ⚠️ thin | 1038–1245 | 93% | $20,599 | 1.5 | — | 453s | Caution | [Dr. Remel Williams](mailto:rwilliams@piedmont.edu) |
+| **[Piedmont University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=piedmont-university)** | Demorest GA | 85 | Collegiate Conf. of the South | ⚠️ thin | 1038–1245 | 93% | $20,599 | 1 | — | 452s | Caution | [Dr. Remel Williams](mailto:rwilliams@piedmont.edu) |
 
 ### NAIA
 
@@ -735,7 +783,7 @@ and no NCCAA program is on this list.
 
 | School | Location | Mi | Conf. | CS | SAT | Accept | Net cost/yr | XC slot | vs their 7th | 1–7 spread | Tier | Coach |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **[Montreat](https://timhibbard.github.io/xc-cs-college-board/school.html?s=montreat)** | Montreat NC | 73 | Appalachian Athletic | ✅ 13.9% | not reported | 69% | $27,061 | 3 | — | 228s | Caution | [Jacob Simms](mailto:jacob.simms@montreat.edu) |
+| **[Montreat](https://timhibbard.github.io/xc-cs-college-board/school.html?s=montreat)** | Montreat NC | 73 | Appalachian Athletic | ✅ 13.9% | not reported | 69% | $27,061 | 3 | −85s | 186s | Caution | [Jacob Simms](mailto:jacob.simms@montreat.edu) |
 
 Montreat's **13.9% CS degree share** is the third highest on this entire list, and it is the only
 non-NCAA program in range that made this list. It has now been measured, and it does not work: he
@@ -747,31 +795,36 @@ still the place to look for money, but Montreat itself is answered.
 
 | School | Div | Conf. | Location | XC slot | vs their 7th | 1–7 spread | Why removed |
 |---|---|---|---|---|---|---|---|
-| **[Furman](https://timhibbard.github.io/xc-cs-college-board/school.html?s=furman)** | D1 | Southern | Greenville SC | 8 | +71s | 42s | Team best 5000 13:40; nationally elite, ~1:40 gap. Zero miles away with a verified CS degree, which is what makes the cut hurt. Cross country confirms it: they won the Southern Conference with seven runners inside 42 seconds (24:15–24:57) and were 7th at the regional. He would be 63 to 79 seconds outside the scoring seven. |
-| **[Georgia Tech](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia-tech)** | D1 | ACC | Atlanta GA | 8 | +42s | 71s | 5000 13:41, 10K 29:45. Also the hardest CS admit on the list — GT computing is far more selective than the university's overall rate suggests. Cross country confirms the cut: 8th man in both races, 42 seconds outside the scoring seven. |
-| **[Wingate](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wingate)** | D2 | South Atlantic | Wingate NC | 8 | +26s | 70s | 5000 13:37, 10K 29:20 — the strongest D2 distance program in the region. **Archived as Division 2, so it is off the current cut list.** Cross country is mixed but does not rescue it: at the D2 regional their seven ran 30:48–31:58, about 48 seconds clear of his projection. Kept as a cut on the regional evidence, and this is the school the sign-error correction briefly promoted. |
+| **[Furman](https://timhibbard.github.io/xc-cs-college-board/school.html?s=furman)** | D1 | Southern | Greenville SC | 8 | +48s | 51s | **No longer a cut — back on the board at *Deep*, kept here for the record.** Team best 5000 13:40; nationally elite. Seven miles away with a verified CS degree, which is what made the cut hurt. At the 15:40 anchor he is 39.1 seconds outside the seven that won the Southern Conference (24:14.6–24:56.9) and 72.9 outside at the regional 10K — 48.1 averaged in 8K-equivalent seconds, three seconds past the published cut line, so this row is carried against the tier ladder rather than by it (§3). |
+| **[Georgia Tech](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia-tech)** | D1 | ACC | Atlanta GA | 8 | +26s | 60s | **No longer a cut — back on the board at *Deep*, kept here for the record.** 5000 13:41, 10K 29:45. Also the hardest CS admit on the list — GT computing is far more selective than the university's overall rate suggests, and at Georgia Tech the application is the binding constraint rather than the running. Measured: 8th man in both championships, 25.5 seconds outside the scoring seven, well inside the 45-second cut line. |
+| **[Wingate](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wingate)** | D2 | South Atlantic | Wingate NC | 7 | +33s | 63s | **No longer a cut — back on the board at *Deep*, kept here for the record.** 5000 13:37, 10K 29:20 — the strongest D2 distance program in the region. Cross country is genuinely mixed: 19.5 seconds *inside* their seven at the South Atlantic championship once the −96.5s course offset is applied, then 42.1 outside at the D2 regional and 109.3 at nationals, which averages 33 outside in one currency. The slot moves three places between races, so the row carries the *disagree* flag too. This is also the school the sign-error correction briefly promoted. |
 | **[South Carolina](https://timhibbard.github.io/xc-cs-college-board/school.html?s=south-carolina)** | D1 | SEC | Columbia SC | — | — | — | **No longer a cut — kept here for the record.** SEC program, 105 mi, the in-state flagship. It sponsors no men's cross country at all, so there is no team to be cut from (§2b); the row is filed with Georgia State now. |
-| **[Georgia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia)** | D1 | SEC | Athens GA | 7 | — | 104s | SEC program, 101 mi. Cut on level; the earlier "out of range" was wrong (§2c). Cross country confirms it: only six finished either race and he is behind all six, 146 to 191 seconds behind their #1. |
-| **[Tennessee](https://timhibbard.github.io/xc-cs-college-board/school.html?s=tennessee)** | D1 | SEC | Knoxville TN | 7 | +45s | 147s | SEC program, 169 mi. Cut on level; the earlier "out of range" was wrong (§2c). Cross country confirms it, and this is the softest of these cuts: 45 seconds outside the seven at the SEC meet, where they ran a full squad. Only six finished the regional, and he would have landed inside that six. |
-| **[Wake Forest](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wake-forest)** | D1 | ACC | Winston-Salem NC | 8 | +137s | 81s | ACC program, 177 mi. Cut on level; the earlier "out of range" was wrong (§2c). Cross country confirms it emphatically: 137 seconds outside the seven in both races. |
-| **[UNC Chapel Hill](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-chapel-hill)** | D1 | ACC | Chapel Hill NC | 8 | +69s | 112s | **New when the ring went to 250 miles** (237 mi routed). ACC program with one of the strongest public-university CS departments in the country and a 15% admit rate. Cut on level: their scoring seven is a national-championship-qualifying group, and cross country confirms it — 8th man in both races, 69 seconds outside the seven. |
-| **[Duke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=duke)** | D1 | ACC | Durham NC | 8 | +96s | 40s | **New when the ring went to 250 miles** (239 mi routed, so no longer borderline). ACC program, elite CS, 6% admit. Cut on level and also on admissions — the running is not the binding constraint here, and cross country agrees: 96 seconds outside the seven on a 40 second spread. |
+| **[Georgia](https://timhibbard.github.io/xc-cs-college-board/school.html?s=georgia)** | D1 | SEC | Athens GA | 7 | — | 99s | SEC program, 101 mi. Cut on level; the earlier "out of range" was wrong (§2c). Cross country confirms it: six finished at each of its three championships and he is behind all six every time, 122 to 160 seconds behind their #1 in 8K-equivalent terms. |
+| **[Tennessee](https://timhibbard.github.io/xc-cs-college-board/school.html?s=tennessee)** | D1 | SEC | Knoxville TN | 7 | +21s | 123s | **No longer a cut — back on the board at *Deep*, kept here for the record.** SEC program, 169 mi. Cut on level; the earlier "out of range" was wrong (§2c). It was always the softest of these cuts and the 15:40 ended it: 21.3 seconds outside the seven at the SEC meet, their only full squad of the season. Only six finished the regional and one finished nationals, and at the regional he would have landed inside that six. |
+| **[Wake Forest](https://timhibbard.github.io/xc-cs-college-board/school.html?s=wake-forest)** | D1 | ACC | Winston-Salem NC | 8 | +105s | 79s | ACC program, 177 mi. Cut on level; the earlier "out of range" was wrong (§2c). Cross country confirms it emphatically: 137 seconds outside the seven in both races. |
+| **[UNC Chapel Hill](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-chapel-hill)** | D1 | ACC | Chapel Hill NC | 8 | +63s | 90s | **New when the ring went to 250 miles** (237 mi routed). ACC program with one of the strongest public-university CS departments in the country and a 15% admit rate. Cut on level: their scoring seven is a national-championship-qualifying group, and cross country confirms it — 8th man in both races, 69 seconds outside the seven. |
+| **[Duke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=duke)** | D1 | ACC | Durham NC | 8 | +72s | 34s | **New when the ring went to 250 miles** (239 mi routed, so no longer borderline). ACC program, elite CS, 6% admit. Cut on level and also on admissions — the running is not the binding constraint here, and cross country agrees: 72 seconds outside the seven on a 34 second spread. |
 
-**Clemson has left this list**, which is the change worth noting here: it was cut on a 3:43 1500 and a
-14:36 5000, and its championship depth puts him at their 7th-to-8th man. It is back on the board at
-Deep, 30 miles away (§2e). Furman stays cut, and at **$30,308** it is no longer the most expensive cut
-on the board: on his residency Virginia Tech (≈$46,769), UNC Chapel Hill (≈$43,864), NC State
-(≈$41,351), Tennessee (≈$38,420) and Georgia (≈$34,174) all cost more. It is still seven miles from
-home with verified CS, and if a walk-on or redshirt path ever becomes acceptable it goes straight back
-to the top on every non-athletic axis.
+**Six rows have now left this list**, which is the change worth noting here. **Clemson** was cut on a
+3:43 1500 and a 14:36 5000, and its championship depth puts him at their 7th-to-8th man — 3 seconds
+*inside* their seven averaged — so it is back on the board at *Target*, 30 miles away (§2e).
+**Georgia Tech** was carried on reputation and measures 25.5 seconds outside, half the cut line, so it
+is back at *Deep*. **South Carolina** turned out to sponsor no men's cross country at all. And the 15:40
+anchor took **Furman**, **Wingate** and **Tennessee** off, all three at *Deep* (§3). Seven rows are left,
+and they are expensive ones: on his residency Virginia Tech (≈$46,769), UNC Chapel Hill (≈$43,864), NC
+State (≈$41,351) and Georgia (≈$34,174) all cost more than Furman's **$30,308** did. If a walk-on or
+redshirt path ever becomes acceptable, nothing above changes — but it is no longer the mechanism that
+decides the closest school in the ring.
 
-**Every cut here is now measured, and the 300-mile ring added three more.** Furman and Wingate were
-confirmed by the sweep that built this document; Georgia Tech, Georgia, Tennessee, Wake Forest, UNC
-Chapel Hill and Duke were confirmed afterwards, and the cut held every time — at Tennessee, the softest
-of them, he is 45 seconds outside the seven at the SEC meet, where they ran a full squad. The wider ring
+**Every cut here is measured, and measurement is what has been dismantling the list.** Furman and
+Wingate were measured by the sweep that built this document; Georgia Tech, Georgia, Tennessee, Wake
+Forest, UNC Chapel Hill and Duke were measured afterwards. Of those eight rows the cut held at four —
+Georgia, Wake Forest, UNC Chapel Hill and Duke — and failed at four: Georgia Tech on the measurement
+itself, and Furman, Wingate and Tennessee once the anchor moved to 15:40. The wider ring
 then reached **NC State** (260 mi), **Virginia Tech** (264) and **Eastern Kentucky** (292), all three cut
 on level; Eastern Kentucky is the hardest of them, an ASUN champion with seven men inside 30 seconds and
-the widest gap on the cut list after Wake Forest. **South Carolina is no longer a cut at all**: it turned
+the widest gap on the cut list after Wake Forest. **NC State is the row to watch**: at 42.8 seconds
+outside it is inside the 45-second line, so it sits where Furman sits, on the other side of the decision. **South Carolina is no longer a cut at all**: it turned
 out to sponsor no men's cross country (§2b), which is why the row that had been "cut on reputation" is
 now filed with Georgia State. Clemson is the proof that reputation is not a safe basis for a cut, which
 is why that correction matters.
@@ -780,12 +833,41 @@ is why that correction matters.
 is no men's program to be removed from (§2b). Neither are **Mercer, Tennessee Tech, Jacksonville State,
 Clark Atlanta, USC Aiken and Winston-Salem State**, which were measured, ranked, and then removed for
 sponsoring no men's outdoor track (§2h). Nothing about their running was the problem, which is why they
-are not cuts. **Wingate** is not on the current list either, for a third reason: it is Division 2 and is
-archived.
+are not cuts.
 
 ## 6. Tiering
 
-### The Division 1 board, as it stands now (31 schools)
+### The board as it stands now, all divisions, at the 15:40 anchor (84 schools)
+
+**Target — clean development band, concentrate effort here (25).** Nearest first: Anderson (SC)
+(29 mi) · Clemson (30) · UNC Asheville (64) · Queens (Charlotte) (104) · UNC Charlotte (108) ·
+Davidson (115) · Augusta University (115) · ETSU (122) · Pfeiffer (138) · Catawba (141) · Emory (141) ·
+Kennesaw State (157) · High Point (176) · UNC Greensboro (189) · Charleston Southern (197) ·
+West Georgia (198) · Lee University (200) · Elon (206) · College of Charleston (213) ·
+Coastal Carolina (238) · Campbell (244) · Chattanooga (249) · Auburn (253) ·
+Fayetteville State (265) · Samford (296)
+
+**Deep — just outside the travel squad (5).** Nearest first: Furman (7) · Appalachian State (131) ·
+Wingate (133) · Georgia Tech (143) · Tennessee (169)
+
+**Verify — unmeasured (1).** Shorter (204).
+
+**Caution — he arrives at or ahead of their #1 (53).** Everything else, including five of the eight
+schools inside 35 miles: North Greenville (19) · Southern Wesleyan (27) · USC Upstate (32) ·
+Wofford (32) · Converse (33). The other three inside 35 are Anderson (SC) and Clemson at Target and
+Furman, at 7 miles, at Deep. The full list is in the tables in §4.
+
+**Cut on results or on level (7).** Georgia (101) · Wake Forest (177) · UNC Chapel Hill (237) ·
+Duke (239) · NC State (260) · Virginia Tech (264) · Eastern Kentucky (292)
+
+**Twenty-five targets out of 84**, against six of 28 in New York and two of 11 in Chicago: this ring
+holds **25 of the 33 target-tier schools on the entire board**. The 15:40 mark moved five rows here —
+Charleston Southern, Clemson and Lee University up to Target, Berry College and UNC Pembroke back to
+Caution — and brought Furman, Wingate and Tennessee back off the cut list at Deep. The tier ladder in
+`../methodology.html#tier-ladder` disagrees with four of the 84 (Montreat, Oglethorpe, UNC Charlotte
+and Furman), which the methodology page lists rather than resolves.
+
+### The Division-1-only board, as that rule left it (31 schools) — reversed
 
 **Target — concentrate effort here (16).** Nearest first: UNC Asheville (64 mi) · Queens (Charlotte)
 (104) · UNC Charlotte (108) · Davidson (115) · ETSU (122) · Kennesaw State (157) · High Point (176) ·
@@ -803,9 +885,10 @@ NC A&T (191) · The Citadel (212) · NC Central (241) · **Radford (250)**
 UNC Chapel Hill (237) · Duke (239) · **NC State (260)** · **Virginia Tech (264)** ·
 **Eastern Kentucky (292)**
 
-Sixteen targets out of 31, against four out of 10 in New York and one out of 3 in Chicago: this ring
-holds **16 of the 21 target-tier schools on the entire board**. Nothing here is at *Verify* — every one
-of the 31 rests on a 2025 championship result.
+Sixteen targets out of 31, against four out of 10 in New York and one out of 3 in Chicago: on that
+board this ring held **16 of the 21 target-tier schools**. Nothing there was at *Verify* — every one
+of the 31 rested on a 2025 championship result. The rule has since been reversed; the section above is
+the live board.
 
 ### The all-divisions board this document was written for (v9)
 
@@ -841,33 +924,40 @@ that was "nine of the twenty-four measured." The sweep tripled the numerator wit
 denominator.
 
 Two shapes inside the target tier are worth separating, and the residency correction (§8) makes the
-second one much starker. **Seven of the twenty-four are inside 130 miles** — Anderson (SC), UNC
-Asheville, Queens (Charlotte), UNC Charlotte, Davidson, Augusta and ETSU — which is the list to work
-first on travel alone. It was nine until the §3b re-audit took Mars Hill (79) and Tusculum (121) out of
-the target tier, and those two were the closest cheap entries on it. **On the rate he would actually pay,
-only three targets are under $15,000 — Fayetteville State (≈$11,892), UNC Pembroke (≈$14,260) and
-Coastal Carolina ($13,966) — and they are 265, 214 and 238 miles out. The overlap with the close list is
-empty.** Every cheap target in this ring is a long drive, and every close target is a North Carolina or
-Georgia public carrying an $11,900-to-$17,400 non-resident premium, or a private at private prices.
-**The 15:55 made this worse rather than better, and the §3b re-audit made it worse again**: the one
-school that was both close and cheap was Southern Wesleyan at 27 miles and $15,464, and it is now a
-Caution; Mars Hill at 79 miles and $19,910 replaced it and has now gone the same way. The nearest
-target under $20,000 is **Davidson at 115 miles and $17,379** — cheaper than Mars Hill was, but a
-13%-admit private and more than four times the drive from Southern Wesleyan.
+second one much starker. **Eight of the twenty-five are inside 130 miles** — Anderson (SC) (29),
+Clemson (30), UNC Asheville (64), Queens (Charlotte) (104), UNC Charlotte (108), Davidson (115),
+Augusta (115) and ETSU (122) — which is the list to work first on travel alone. Clemson is there
+because the 15:40 promoted it; the §3b re-audit had earlier taken Mars Hill (79) and Tusculum (121)
+out of the target tier, and those two were the closest cheap entries on it. **On the rate he would
+actually pay, two targets are under $15,000 — Fayetteville State (≈$11,892) at 265 miles and Coastal
+Carolina ($13,966) at 238. The overlap with the close list is empty.** Coastal Carolina is the one of
+the two that needs no estimate at all: it is a South Carolina public, so the federal net price is
+already the rate he pays. Two schools that used to sit on this list do not survive the residency
+correction: UNC Pembroke (≈$14,260) is a Caution now, and West Georgia's $12,786 is the in-state
+figure at a Georgia public — on his residency it is ≈$24,498. Otherwise every cheap target in this
+ring is a long drive, and every *close* target is a North Carolina or Georgia public carrying a
+$15,000-to-$25,000 non-resident premium, or a private at private prices.
+**The 15:55 made this worse rather than better, the §3b re-audit made it worse again, and the 15:40
+did not fix it**: the one school that was both close and cheap was Southern Wesleyan at 27 miles and
+$15,464, and it is now a Caution; Mars Hill at 79 miles and $19,910 replaced it and has now gone the
+same way. The nearest target under $20,000 is **Davidson at 115 miles and $17,379** — cheaper than
+Mars Hill was, but a 13%-admit private and more than four times the drive from Southern Wesleyan.
 
-On the Division 1 board the same squeeze is tighter still: **exactly one target is under $15,000 —
-Coastal Carolina ($13,966), 238 miles out** — and the nearest target under $20,000 is **Davidson at 115
-miles and $17,379**, which comes with a 13% admit rate attached. Inside 130 miles the Division 1 target
-list is five schools: UNC Asheville (64), Queens (Charlotte) (104), UNC Charlotte (108), Davidson (115)
-and ETSU (122), and only Davidson is under $20,000 on his residency.
+Restricted to Division 1 the squeeze is only slightly looser: **the one D1 target under $15,000 on his
+residency is Coastal Carolina at $13,966, and it is 238 miles away**; the nearest one under $20,000 is
+**Davidson at 115 miles and $17,379**, with
+its 13% admit rate attached. Inside 130 miles the Division 1 target list is six schools: Clemson (30),
+UNC Asheville (64), Queens (Charlotte) (104), UNC Charlotte (108), Davidson (115) and ETSU (122), and
+only Davidson is under $20,000 on his residency — Clemson, the closest of them, is the most expensive
+school in the ring at ≈$47,565.
 
-That caution tier still needs care rather than dismissal, and it is now 45 schools deep. Being a
+That caution tier still needs care rather than dismissal, and it is now 53 schools deep. Being a
 team's #1 is fine *if* the coach is building a class around him — always ask who else they are
 signing. It is bad if he trains alone for four years. **Wofford is still the sharpest version:**
 strong academics, verified CS, 32 miles, six finishers at their championship, and a team he would lead
 on arrival. A handful of Caution schools are genuine near misses where a season either way flips the
-reading — **Piedmont University (1 second ahead of their #1), Southern Wesleyan (4s behind theirs),
-Young Harris (6s ahead), Morehouse (9s behind) and NC A&T (14s ahead)** — and those are worth an email
+reading — **UNC Pembroke (0.6 seconds ahead of their #1), Radford (1.7s behind theirs), USC Upstate
+(5.3s ahead), Tusculum (7.5s ahead) and Western Carolina (7.6s ahead)** — and those are worth an email
 if something else about the school fits. Note the direction of travel on these: another PR moves them
 *further* into Caution, not out of it. At the other end,
 **LaGrange's 1,344 second first-to-last spread, Methodist's 1,119 and Gardner-Webb's 966** are the
@@ -882,32 +972,35 @@ list** — it was #1 in v8 at 27 miles and their #4, and on the mark he actually
 seconds behind their #1 (§2e). That is the whole shape of this revision: the nearest school stopped
 being an answer because he got faster, not because anything about the program changed.
 
-**How the Division 1 rule reorders this list.** Three of these eight are now in the non-Division 1
-archive — **Anderson (SC)** (D2), **Augusta University** (D2) and **Emory** (D3) — along with the D2 and
-D3 names in the also-worth-an-email paragraph below. Their measurements and coaches are intact and
-their school pages still work; they are simply off the ranked board. On Division 1 alone the order in
-this ring reads: **UNC Asheville** (64 mi), **Queens (Charlotte)** (104, with the CS question),
+**How the Division 1 rule reordered this list, before it was reversed.** For one revision three of
+these eight were in the non-Division 1 archive — **Anderson (SC)** (D2), **Augusta University** (D2) and
+**Emory** (D3) — along with the D2 and D3 names in the also-worth-an-email paragraph below. **That rule
+is gone and all three are back on the ranked board**; the ordering below is kept because it is still the
+right list if he decides he only wants D1. On Division 1 alone the order in this ring reads: **UNC Asheville** (64 mi), **Queens (Charlotte)** (104, with the CS question),
 **UNC Charlotte** (108), **Davidson** (115), **ETSU** (122), **Kennesaw State** (157), then
 **UNC Greensboro** (189) and **High Point** (176) on money, with **Auburn** (253) and **Samford** (296)
 as the two new far ones. Everything below is the v9 eight, kept as written.
 
 1. **[Anderson (SC)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=anderson-sc)**
    — **29 driving miles from home**, D2 South Atlantic, and the closest target in this ring now that
-   Southern Wesleyan is out (it is archived as non-Division 1, which changes the ranking and not the fit). The 15:55 is what put it here: it sat at Deep through v7 and v8, two
-   seconds *outside* their 7th man, and seven seconds of PR turns that into **their 7th man in both
-   races, 6 seconds inside the seven**. Read that honestly — he is the last man in, on a **66 second
-   1-through-7 spread at the conference meet** (77 across the two races) that is among the tightest of
-   any target in this ring — only Queens (Charlotte) at 56 is tighter — so there is no soft back end
-   and one good freshman ahead of him puts him back outside. It is the target most likely to move
-   again, in either direction. **$23,544 net** at a 3,183-student private, so residency never enters,
+   Southern Wesleyan is out — it is a Caution now, because he would arrive as its #1. The PRs are what
+   put Anderson here: it sat at Deep through v7 and v8, two seconds *outside* their 7th man, and the
+   15:40 turns that into **their 7th man on average, 13 seconds inside the seven**. Read that honestly —
+   he is the last man in, on a **66 second 1-through-7 spread at the conference meet** (73 across its
+   three championships) that is among the tightest of any target in this ring — only Queens (Charlotte)
+   at 56 is tighter — so there is no soft back end and one good freshman ahead of him puts him back
+   outside. The three races say it too: their **#6** at the South Atlantic meet, their **#7** at the D2
+   regional, their **#8** at nationals, where he is 2 seconds outside. It is the target most likely to
+   move again, in either direction. **$23,544 net** at a 3,183-student private, so residency never enters,
    and the CS question in §4 needs asking first: the federal file shows a 5.0% CS degree share, but
    their own site leads with a BA in Applied AI, so confirm the **BS in Computer Science** exists
    before this ranks first on anything but the drive.
    Email **[Kevin Eagle](mailto:keagle@andersonuniversity.edu)**.
 2. **[UNC Asheville](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-asheville)**
-   — 64 miles, Big South, mountain terrain. Confirmed across **two races**: their 5th man at the
-   conference meet and **4th of the six who finished** the regional, which came in inside a **64
-   second first-to-last**. This is also the school that validated the whole method — the direct
+   — 64 miles, Big South, mountain terrain. Confirmed across **two races**: their **#2** at the Big
+   South meet, 81 seconds inside their seven, and their **#4** at the D1 Southeast regional, 137 inside
+   on a 164 second spread — slot 3 and 94 seconds inside averaged, which is the deepest close-in read in
+   the ring. This is also the school that validated the whole method — the direct
    comparison predicted a mid-pack slot before the regional results were pulled, and the regional
    matched. Add a **92% accept rate**. The money is
    the part that changed: its federal net price is $12,250 for a North Carolinian, but on his
@@ -916,8 +1009,10 @@ as the two new far ones. Everything below is the v9 eight, kept as written.
    The other weakness is academic depth: 3.2% of degrees in CS at a 2,910-student campus.
    Email **[Adam Puett](mailto:apuett@unca.edu)**.
 3. **[UNC Charlotte](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-charlotte)**
-   — the best CS-and-running combination inside 110 miles. Right at their 7th man with a soft **167
-   second** back end, a real CS school at **15.2% of degrees**, 80% accept, and **≈$30,688 net on his
+   — the best CS-and-running combination inside 110 miles, and the one row here to read with a caveat:
+   he is **25 seconds inside** their seventh at the regional on a soft **167 second** back end, but 45
+   seconds *outside* it at the American Conference meet, which averages to 13 outside and is why the tier
+   ladder disagrees with holding it at Target (§6). On the regional read it is right at their 7th man — a real CS school at **15.2% of degrees**, 80% accept, and **≈$30,688 net on his
    residency** ($15,435 in-state, plus a $15,253 non-resident premium). A large
    university with multiple sections of every CS course, which matters for the lab-conflict problem in
    §9 more than any other item on this list.
@@ -925,7 +1020,8 @@ as the two new far ones. Everything below is the v9 eight, kept as written.
 4. **[Augusta University](https://timhibbard.github.io/xc-cs-college-board/school.html?s=augusta-university)**
    — the sweep's best find on the academic axis: **15.6% of degrees in computer science, the highest
    share of any school in this ring**, and it is **D2**, so the scholarship money is real. The running
-   is comfortable — **their #5, 102 seconds inside the seven**, on a 148 second spread — with an 86%
+   is comfortable — **their #3 at the Peach Belt meet and their #2 at the D2 regional, 97 seconds
+   inside the seven averaged**, on a 124 second spread — with an 86%
    admit rate, 115 miles out. v6 could only list it as a hopeful unknown. The money reads worse than
    it used to: $13,787 net is the Georgia-resident figure, and on his residency it is **≈$30,107**,
    a $16,320 premium. At a D2 with real scholarship money that is exactly the gap an offer could
@@ -933,8 +1029,8 @@ as the two new far ones. Everything below is the v9 eight, kept as written.
    Email **[Jacob Burgamy](mailto:jburgamy@augusta.edu)**.
 5. **[Kennesaw State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=kennesaw-state)**
    — D1 CUSA, **11.1% CS**, **≈$26,976 net on his residency** ($15,048 for a Georgian), 69% accept,
-   157 miles — the routed distance, half again the 125 the estimate gave. **Their #4 in both races, 90 seconds inside
-   the seven**, on a **275 second spread** — the widest back end of any target here, which cuts both
+   157 miles — the routed distance, half again the 125 the estimate gave. **Their #4 in both races, 114 seconds inside
+   the seven**, on a **240 second spread** — the widest back end of any target here, which cuts both
    ways: room to move up, and a squad whose 5th through 7th are a long way off its front. At 41,254
    undergraduates it is the largest school on the board, so he would be one of many; ask what the
    distance group actually looks like.
@@ -947,32 +1043,40 @@ as the two new far ones. Everything below is the v9 eight, kept as written.
    *application* on the list — initiate a **pre-read** in spring of junior year.
    Email **[Matt Stuck](mailto:mastuck@davidson.edu)**.
 7. **[UNC Greensboro](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-greensboro)**
-   — their #4 at the conference meet and **#3 of the five who finished** the regional, 93 second
-   first-to-last, 89% accept, 7.4% CS.
+   — their **#2** at the Southern Conference meet, 157 seconds inside their seven, and **#3 of the six
+   who finished** the regional, on a 149 second average first-to-last, 89% accept, 7.4% CS.
    **This is the school the residency correction hurts most on this list**: $10,965 net for a North
    Carolinian becomes **≈$27,316** for him, a $16,351 premium, and it loses the cheap-D1 argument that
-   put it here. Fayetteville State (≈$11,892) and UNC Pembroke (≈$14,260) are less than half the price
-   on his rate, and both are measured targets too — UNCG's remaining case is that it is a D1 with a
-   real CS share and a 93 second pack, not that it is cheap.
+   put it here. Fayetteville State (≈$11,892) is less than half the price on his rate and a measured
+   target too, and UNC Pembroke (≈$14,260) was until the 15:40 made him its #1 — UNCG's remaining
+   case is that it is a D1 with a real CS share and a 149 second average pack, not that it is cheap.
    Email **[Kaleigh Roach](mailto:k_roach@uncg.edu)**.
-8. **[Emory](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory)** — their #5 in a
-   **74 second** UAA pack, elite academics, no athletic money but strong need-based aid bringing net
+8. **[Emory](https://timhibbard.github.io/xc-cs-college-board/school.html?s=emory)** — their **#3** in a
+   **74 second** UAA pack, 51 seconds inside their seven there and the same 52 inside at the D3 South
+   regional, elite academics, no athletic money but strong need-based aid bringing net
    cost to **$22,585**. An **11% admit**, so the coach's pre-read matters as much as it does at
    Davidson. The federal CS share reads only 3.9%, which understates a strong department at a school
    where most students major in something else.
    Email **[Linh Nguyen](mailto:linh.nguyen@emory.edu)**.
 
-**The money outliers, both now measured and both Target tier.**
+**The money outliers — both measured, and the 15:40 split them.**
 **[Fayetteville State](https://timhibbard.github.io/xc-cs-college-board/school.html?s=fayetteville-state)**
 at **≈$11,892 net on his residency** is the cheapest target-tier school anywhere in this document at
 any division — its $4,000 non-resident premium is one of the three smallest in the ring — and he
-would be their #3 at the CIAA championship and 165 seconds inside their seven across the two races. But it is 265 miles out on the routed
+would be their #3 at the CIAA championship and 189 seconds inside their seven there — the only one of
+its three championships where seven of them finished. Note the disagreement the school page flags:
+their #3 at the conference meet and their #6 at the D2 Atlantic regional. But it is 265 miles out on the routed
 distance (the estimate said 235), its CS share is 3.3%, and it is one of two
 schools in this ring with **no published coach email**, so that one starts with a phone call
 (Frank Hyland, number on the school page).
 **[UNC Pembroke](https://timhibbard.github.io/xc-cs-college-board/school.html?s=unc-pembroke)** at
-**≈$14,260** — also a $4,000 premium — is the better version of the same trade: their #3, 151 seconds
-inside the seven, D2 money, 4.8% CS, 214 miles. Email **[Dr. Peter Ormsby](mailto:peter.ormsby@uncp.edu)**.
+**≈$14,260** — also a $4,000 premium — was the better version of the same trade through v13, and the
+15:40 has taken it off this line: he now arrives **0.6 seconds ahead of their #1** averaged over their
+two championships, their #1 at the conference meet and their #2 at the D2 Southeast regional, which is
+a Caution however deep the 142 seconds back to their seventh looks. The money and the 4.8% CS share at
+214 miles are still the best in the ring on price, so it stays worth one email on the same terms as
+Wofford — ask who else they are signing.
+Email **[Dr. Peter Ormsby](mailto:peter.ormsby@uncp.edu)**.
 
 **One target with a disqualifying question attached.**
 **[Queens (Charlotte)](https://timhibbard.github.io/xc-cs-college-board/school.html?s=queens-charlotte)**
@@ -984,13 +1088,17 @@ to justify the price. Email **[Will Crocker](mailto:crockerw@queens.edu)**.
 Also worth the email, one tier down: **ETSU** (their #4, soft 171 second middle, and ≈$20,033 on his
 residency — a $4,050 premium, among the four smallest in this ring),
 **High Point** (7th man twice, 81 second average spread, but $38,707), **Catawba** (their #5–6 at D2 with real
-scholarship money, $17,879), **Pfeiffer** and **Berry College** (both D3 targets around $19–22k), and
-**Chattanooga** and **College of Charleston** further out. **Mercer** was on this line in v7 and is
-gone: it measured as a clean target at 196 miles and sponsors no men's outdoor track (§2h). On the Deep tier,
-**[Clemson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clemson)** is 30 miles away
-at in-state tuition and 8 seconds outside their seven — he would not travel as a freshman, and it is
-the one Deep school where a redshirt year is a plausible plan rather than a consolation. **Charleston
-Southern** is the other near one, 2 seconds outside its seven at 197 miles.
+scholarship money, $17,879), **Pfeiffer** (a D3 target around $19k), and **Chattanooga** and
+**College of Charleston** further out. **Berry College** was on this line and is not any more — at
+15:40 he is 17 seconds behind their #1 and their 2nd man, which is a Caution. **Mercer** was on this
+line in v7 and is gone: it measured as a clean target at 196 miles and sponsors no men's outdoor track
+(§2h). **[Clemson](https://timhibbard.github.io/xc-cs-college-board/school.html?s=clemson)** has come
+off the Deep tier altogether: 30 miles away at in-state tuition, 3 seconds *inside* their seven on the
+average — though that is 25 seconds outside at the ACC meet itself and 40 inside at the Southeast
+regional — so he would not travel as a freshman, and it is the one close target where a redshirt year
+is a plausible plan rather than a consolation. **Charleston Southern** made the same move, 11 seconds
+inside its seven at 197 miles, and **Lee University** is level with theirs to within a third of a
+second at 200.
 
 **Five schools arrived on this line by correction rather than by running, and all five have since
 left it (§2d).** **Mars Hill** (79 mi, D2, $19,910), **Tusculum** (121 mi, $21,131), **Emory & Henry**
@@ -1023,11 +1131,14 @@ automatic, so all the leverage shifts to **money**.
 USC Upstate, Winthrop, SC State, Francis Marion, Coastal Carolina, the College of Charleston and The
 Citadel are all quoted at in-state tuition in the tables above; every other public school on the list
 is quoted out-of-state. USC Aiken was a tenth until the both-sports rule removed it (§2h), and South
-Carolina is an eleventh with no men's cross country to join (§2b). Two of the nine — Lander and Francis
-Marion — are archived as non-Division 1, so seven of them are still on the board. Francis
+Carolina is an eleventh with no men's cross country to join (§2b). Lander and Francis Marion were
+archived for a while under the Division-1-only rule; that rule was reversed, so all nine are on the
+board. Francis
 Marion ($11,386) and USC Upstate ($13,557) are the cheapest of the nine, and both came out of the sweep
-at **Caution** — he would be their #1 — so the in-state price does not buy a training group. **Coastal Carolina ($13,966) is the in-state bargain that does**: a
-measured Target at their #3–4, 29 seconds inside their seven.
+at **Caution** — he would be their #1 — so the in-state price does not buy a training group. **Coastal
+Carolina ($13,966) is the in-state bargain that does**: a measured Target at their #2–3, 53 seconds
+inside their seven, at the in-state rate, with no non-resident premium to estimate and no waiver to
+negotiate. The cost of it is the drive — 238 miles, the third-furthest target in the ring.
 
 **Thirty-one new Division 2 programs changed the money picture more than the running picture.**
 D2 is where partial athletic scholarships live, and on the federal in-state basis the cheapest schools
@@ -1038,7 +1149,8 @@ its non-residents only $4,000 more at both. Savannah State (≈$21,465), Clayton
 Wise (≈$25,440) do not — their premiums are $13,293, $11,352 and $16,230, which puts all three in the
 same band as the mid-priced privates they were supposed to undercut. The sweep has now answered whether
 any of them is a training environment, and the answer is split the same way by luck: **Fayetteville
-State and UNC Pembroke came back at Target tier**, while Savannah State and Clayton State are Caution.
+State came back at Target tier and UNC Pembroke was there until the 15:40 made him its #1**, while
+Savannah State and Clayton State are Caution.
 UVA Wise was the third, on the South Atlantic offset, and is back at Caution now that the offset turns
 out to have been applied twice (§2d) — which is just as well, because on his residency it is the
 priciest of the five at ≈$25,440. Cheap and thin is the common case; cheap and deep exists, twice.
@@ -1070,13 +1182,13 @@ $37,702 at Caution, is off the board entirely for having no men's track (§2h).
 ### 8a. School size and town size
 
 Two figures now sit beside the money on every school page, and as two extra columns in the master
-table on the website — **undergraduate enrollment** (federal, present for all 77) and **town
+table on the website — **undergraduate enrollment** (federal, present for all 84) and **town
 population** (U.S. Census ACS 2024 5-year, table B01003, for the place the campus actually sits in).
 They are collected for this ring only; how big New York and Chicago are is not a question worth a
 column.
 
-The median school here has **1,819 undergraduates in a town of 27,636**, and the median hides the
-shape of it: **25 of the 77 sit in a place under 10,000 people** and **21 in one over 100,000**,
+The median school here has **1,867 undergraduates in a town of 27,829**, and the median hides the
+shape of it: **26 of the 84 sit in a place under 10,000 people** and **23 in one over 100,000**,
 with not much in between. That is the real texture of the all-divisions ring that reaches both Charlotte
 and towns of six hundred.
 
@@ -1088,9 +1200,10 @@ Division 1 mostly removed the small-town half of this ring.
 **Five campuses enroll more undergraduates than their town has residents** — Clemson (23,300 against
 Clemson SC's 18,072), UNC Pembroke (5,330 / 2,822), Western Carolina (10,024 / 7,973), Kennesaw State
 (41,254 / 34,605) and Montreat (762 / 630), with App State near-parity at 19,444 in a Boone of 20,032.
-In those six the school *is* the town. **Three of the five are still on the Division 1 board** —
-Kennesaw State at Target, Clemson at Deep, Western Carolina at Caution — with UNC Pembroke and Montreat
-archived, so this is a live consideration rather than a curiosity.
+In those six the school *is* the town. **Three of the five are Division 1** — Kennesaw State and
+Clemson both at Target, Western Carolina at Caution — and UNC Pembroke (D2) and Montreat (NAIA) are back
+on the board now that the Division-1-only rule has been reversed, so this is a live consideration
+rather than a curiosity.
 
 At the other end: **Montreat (630), Misenheimer NC (659 — where Pfeiffer's 655 students make school
 and town the same size), Franklin Springs GA (1,108), Due West SC (1,177) and Young Harris GA
@@ -1233,8 +1346,8 @@ conference-championship 1500** on file as well (§2i). On the Division 1 board i
 schools on both counts. What is left is mostly contact and confirmation
 rather than measurement.
 
-1. **Email the eight schools in §7, starting with Anderson (SC).** Twenty-nine miles, D2 money, and the
-   15:55 just put him inside their seven — there is nothing left to look up before writing, and NCAA
+1. **Email the eight schools in §7, starting with Anderson (SC).** Twenty-nine miles, D2 money, and at
+   15:40 he is their 7th man with 13 seconds to spare — there is nothing left to look up before writing, and NCAA
    rules limit when a *coach* may initiate, not when he may. Davidson and Emory need a **pre-read** that
    takes months to arrange, so start those in parallel even though they rank 6th and 8th. **Southern
    Wesleyan is still worth one email** even though it left the target tier: 27 miles, and the question
@@ -1299,4 +1412,4 @@ one of which — Mercer — was then removed for having no men's track); **the b
 v7's item 8 and is now done for every school on the board and moved six schools off this ring (§2h);
 Kennesaw State, Berry and Guilford, all three of which had been ranked on track marks alone; North
 Georgia's phantom program (§2b); Clemson's cut, reversed on its championship depth (§2e); and the coach
-contact details, now on all 77 school pages.
+contact details, now on all 84 school pages.
