@@ -82,7 +82,12 @@ const METROS = [
     const dom = await render(file);
     const doc = dom.window.document;
     const rows = doc.querySelectorAll('#master tbody tr');
-    const want = SCHOOLS.filter(s => s.metro === metro).length;
+    /* `metro` is an array wherever a school sits in two rings, so this has to match the
+       pages' own inMetro() rather than compare against a string. It read `s.metro === metro`
+       until the Newark fold left no array rows to catch it out, at which point the check
+       started passing for the wrong reason. */
+    const want = SCHOOLS.filter(s =>
+      (Array.isArray(s.metro) ? s.metro : [s.metro]).includes(metro)).length;
     ok(`${file} board rows`, rows.length, want);
     dom.window.close();
   }

@@ -306,7 +306,7 @@ const SCHOOLS = [
     ig: "fordhamspikedshoeclub",
     note: "Confirmed on cross country: <b>6th man</b> in the A10 championship seven, 43 seconds inside it. Van Cortlandt Park is next to campus.",
   },
-  { name: "Seton Hall", slug: "seton-hall", city: "South Orange NJ", metro: ["newark", "nyc"], mi: 4.2,
+  { name: "Seton Hall", slug: "seton-hall", city: "South Orange NJ", metro: "nyc", mi: 18,
     miBy: { newark: 4.2, nyc: 18 },
     lat: 40.743, lon: -74.247, div: "D1", conf: "Big East",
     cs: "verified", csSrc: "fed", csShare: 2.4, sat: "1220–1390", satSrc: "fed", accept: "73%", acceptSrc: "fed",
@@ -498,7 +498,7 @@ const SCHOOLS = [
     ig: "uwgathletics", igDept: true,
     note: "First measurement, from the 2025 Atlantic Sun Conference Cross Country Championships (9th, 237 pts): <b>4th man</b>, 59 seconds inside their seventh and 55 seconds behind their #1. Their seven spanned 114 seconds.",
   },
-  { name: "NJIT", slug: "njit", city: "Newark NJ", metro: ["newark", "nyc"], mi: 0.8,
+  { name: "NJIT", slug: "njit", city: "Newark NJ", metro: "nyc", mi: 12,
     miBy: { newark: 0.8, nyc: 12 },
     lat: 40.742, lon: -74.179, div: "D1", conf: "America East",
     cs: "verified", csSrc: "fed", csShare: 33, sat: "1210–1460", satSrc: "fed", accept: "65%", acceptSrc: "fed",
@@ -620,7 +620,7 @@ const SCHOOLS = [
     ig: "woffordxc_tf",
     note: "Sharpest version of the trade-off: strong academics, verified CS, 32 miles, and a team best he beats on arrival.",
   },
-  { name: "Fairleigh Dickinson", slug: "fairleigh-dickinson", city: "Teaneck NJ", metro: ["nyc", "newark"], mi: 12,
+  { name: "Fairleigh Dickinson", slug: "fairleigh-dickinson", city: "Teaneck NJ", metro: "nyc", mi: 12,
     miBy: { newark: 18.9, nyc: 12 },
     lat: 40.894, lon: -74.009, div: "D1", conf: "NEC",
     cs: "verified", csSrc: "fed", csShare: 2, sat: "not reported", satSrc: "none", accept: "91%", acceptSrc: "fed",
@@ -658,7 +658,7 @@ const SCHOOLS = [
     coach: { name: "Todd Witzleben", title: "Head Coach, Cross Country and Track & Field", email: "twitzleben01@manhattan.edu", phone: null, src: "https://www.gojaspers.com/sports/mens-cross-country/coaches" },
     ig: "jaspersxctf",
   },
-  { name: "Saint Peter's", slug: "saint-peter-s", city: "Jersey City NJ", metro: ["nyc", "newark"], mi: 5,
+  { name: "Saint Peter's", slug: "saint-peter-s", city: "Jersey City NJ", metro: "nyc", mi: 5,
     miBy: { newark: 6.0, nyc: 5 },
     lat: 40.728, lon: -74.071, div: "D1", conf: "MAAC",
     cs: "verified", csSrc: "fed", csShare: 6.9, sat: "not reported", satSrc: "none", accept: "90%", acceptSrc: "fed",
@@ -1353,7 +1353,7 @@ const SCHOOLS = [
     ig: "ccnyxctrack",
     note: "First measurement, from the 2025 DIII North XC Championship (7th, 185 pts): <b>he would arrive as their #1</b>, 495 seconds ahead of their fastest 2025 runner — and they finished only 6 runners, not seven. Thin squad: there would be nobody to train with, which is the whole argument of this board.",
   },
-  { name: "Caldwell", slug: "caldwell", city: "Caldwell NJ", metro: ["newark", "nyc"], mi: 13.1,
+  { name: "Caldwell", slug: "caldwell", city: "Caldwell NJ", metro: "nyc", mi: 20,
     miBy: { newark: 13.1, nyc: 20 },
     lat: 40.832753, lon: -74.272571, div: "D2", conf: "CACC",
     cs: "verified", csSrc: "fed", csShare: 9.3, sat: "1130–1370", satSrc: "fed", accept: "71%", acceptSrc: "fed",
@@ -1393,7 +1393,7 @@ const SCHOOLS = [
     ig: "fsc_xctf",
     note: "First measurement, from the 2025 Skyline Conference Championship (3rd, 76 pts): <b>he would arrive as their #1</b>, 105 seconds ahead of their fastest 2025 runner. Thin rather than a bad fit — there would be nobody to train with, which is the whole argument of this board.",
   },
-  { name: "Felician", slug: "felician", city: "Lodi NJ", metro: ["newark", "nyc"], mi: 11.5,
+  { name: "Felician", slug: "felician", city: "Lodi NJ", metro: "nyc", mi: 13,
     miBy: { newark: 11.5, nyc: 13 },
     lat: 40.867272, lon: -74.096452, div: "D2", conf: "CACC",
     cs: "verified", csSrc: "fed", csShare: 2.1, sat: "not reported", satSrc: "none", accept: "100%", acceptSrc: "fed",
@@ -1418,7 +1418,7 @@ const SCHOOLS = [
     coach: { name: "Marvin Hawkins", title: "Head Men's and Women's Cross Country, Indoor and Outdoor Track and Field Head Coach", email: "marvin.hawkins@hunter.cuny.edu", phone: "212-772-4791", src: "https://www.huntercollegeathletics.com/sports/mens-cross-country/coaches" },
     note: "First measurement, from the 2025 CUNYAC Cross Country Championships (1st, 28 pts) and the 2025 NCAA Division III Niagara Region Cross Country Championships (23rd, 701 pts): <b>he would arrive as their #1</b>, 152 seconds ahead of their fastest 2025 runner. Thin rather than a bad fit — there would be nobody to train with, which is the whole argument of this board.",
   },
-  { name: "Kean University", slug: "kean-university", city: "Union NJ", metro: ["newark", "nyc"], mi: 6.9,
+  { name: "Kean University", slug: "kean-university", city: "Union NJ", metro: "nyc", mi: 20,
     miBy: { newark: 6.9, nyc: 20 },
     lat: 40.68, lon: -74.238, div: "D3", conf: "NJAC",
     cs: "verified", csSrc: "fed", csShare: 5.6, sat: "930–1150", satSrc: "fed", accept: "76%", acceptSrc: "fed",
@@ -1497,7 +1497,7 @@ const SCHOOLS = [
     ig: "queensxctf",
     note: "First measurement, from the 2025 ECC Cross Country Championship (6th, 140 pts): <b>he would arrive as their #1</b>, 169 seconds ahead of their fastest 2025 runner. Thin rather than a bad fit — there would be nobody to train with, which is the whole argument of this board.",
   },
-  { name: "Rutgers–Newark", slug: "rutgers-newark", city: "Newark NJ", metro: ["newark", "nyc"], mi: 0.5,
+  { name: "Rutgers–Newark", slug: "rutgers-newark", city: "Newark NJ", metro: "nyc", mi: 13,
     miBy: { newark: 0.5, nyc: 13 },
     lat: 40.739122, lon: -74.175809, div: "D3", conf: "NJAC",
     cs: "verified", csSrc: "fed", csShare: 6, sat: "not reported", satSrc: "none", accept: "71%", acceptSrc: "fed",
@@ -1524,7 +1524,7 @@ const SCHOOLS = [
     ig: "stacspartans", igDept: true,
     note: "First measurement, from the 2025 ECC Cross Country Championship (4th, 106 pts) and the 2025 NCAA Division II East Region Cross Country Championships (15th, 435 pts): <b>he would arrive as their #1</b>, 162 seconds ahead of their fastest 2025 runner. Thin rather than a bad fit — there would be nobody to train with, which is the whole argument of this board.",
   },
-  { name: "Stevens Institute", slug: "stevens-institute", city: "Hoboken NJ", metro: ["nyc", "newark"], mi: 3,
+  { name: "Stevens Institute", slug: "stevens-institute", city: "Hoboken NJ", metro: "nyc", mi: 3,
     miBy: { newark: 10.0, nyc: 3 },
     lat: 40.745, lon: -74.025, div: "D3", conf: "MAC",
     cs: "verified", csSrc: "fed", csShare: 21.2, sat: "1380–1505", satSrc: "fed", accept: "48%", acceptSrc: "fed",
@@ -2359,8 +2359,18 @@ const SCHOOLS = [
     shape: { date: "2025-10-31", meet: "2025 CAA Cross Country Championship", dist: "8K", n: 5, ret: 4, g1ret: -19.8, fr: 2, so: 1, jr: 1, sr: 1 },
     note: "Division 1, 15 miles out, and <b>five men finished</b> the 2025 CAA championship &mdash; he would have led them by 20 seconds, with their five spanning six minutes. A <b>1.8%</b> computer science share at $25,319 net. All four programs in this metro failed to finish seven, and this is the one where it matters most.",
   },
-  /* --- newark --- */
-  { name: "Drew", slug: "drew", city: "Madison NJ", metro: "newark", mi: 16.2,
+  /* --- nyc --- */
+  /* The one row on the board outside its metro's rule. Drew came in on the Newark ring at
+     16.2 miles from downtown Newark; when that page was folded into New York the OSRM route
+     from Midtown came back 29.6 miles, well past the 20-mile radius and past the 23-mile
+     straight line too. new-york.html has in fact listed Drew as a casualty of the radius
+     tightening since 50 miles became 20, at an estimated 30 mi the route confirms — so it is
+     both a recorded cut and a row, and both pages say so instead of reconciling it quietly.
+     It is carried rather than deleted because a school with a men's program and a computer
+     science degree that the board once held should not vanish silently; dropping it is the
+     defensible alternative. `outsideRule` is what the prose reads to state the exception. */
+  { name: "Drew", slug: "drew", city: "Madison NJ", metro: "nyc", mi: 29.6,
+    miBy: { newark: 16.2, nyc: 29.6 }, outsideRule: "29.6 driving miles from Midtown, outside the 20-mile radius — it reached the board on the retired Newark ring, 16.2 miles from downtown Newark.",
     lat: 40.761829, lon: -74.424584, div: "D3", conf: "Landmark",
     cs: "verified", csSrc: "fed", csShare: 5.6, sat: "1103–1338", satSrc: "fed", accept: "68%", acceptSrc: "fed",
     cost: { own: "private", resid: "out", tuition: 47100, rb: 17640, sticker: 64740, net: 24280, size: 1533, ipeds: 184348 },
@@ -2369,9 +2379,8 @@ const SCHOOLS = [
     xcInv: { slot: 1, g1: -119, v7: -385.8, spread: 266.8, eq: true, nraces: 6 },
     xc26: { slot: 1, g1: -128.4, v7: -538.3, spread: 409.9, nraces: 1, date: "2026-09-12" },
     shape: { date: "2025-11-15", meet: "NCAA Division III Metro Region Cross Country Championships", dist: "8K", n: 7, ret: 6, g1ret: -89.5, fr: 3, so: 2, jr: 1, sr: 1 },
-    note: "The one row on the Newark page that the New York page does not carry, 16.2 miles out, and the running is a caution on both championships: <b>50 seconds ahead of their #1</b> at the Landmark meet and 90 at the Division 3 Metro regional. $24,280 net, 5.6% computer science.",
+    note: "The one row the board carries from outside a metro's rule: <b>29.6 driving miles from Midtown</b>, past the 20-mile radius, and here because the retired Newark ring reached it at 16.2. The running is a caution on both championships anyway &mdash; <b>50 seconds ahead of their #1</b> at the Landmark meet and 90 at the Division 3 Metro regional &mdash; so the exception costs nothing: it is a row to know about, not one to chase. $24,280 net, 5.6% computer science.",
   },
-  /* --- nyc --- */
   { name: "Pratt Institute", slug: "pratt-institute", city: "Brooklyn NY", metro: "nyc", mi: 8.6,
     lat: 40.691297, lon: -73.96431, div: "D3", conf: "Atlantic East",
     cs: "thin", csSrc: "fed", csShare: 0.0, sat: "1150–1390", satSrc: "fed", accept: "73%", acceptSrc: "fed",
@@ -2932,9 +2941,9 @@ const NO_PROGRAM = [
   { name: "St. John’s", city: "Queens NY", metro: "nyc", mi: 13, lat: 40.722, lon: -73.794, div: "D1", conf: "Big East",
     why: "Sponsors <b>women’s</b> cross country only, which an earlier version of this board missed: it was carried as a <em>cut</em>, on the reasoning that a nationally strong Big East distance program was out of reach. The program it was cut against is the women’s one. The men’s track and field team still exists; men’s cross country does not." },
   { name: "Trinity Christian", city: "Palos Heights IL", metro: "chicago", lat: 41.664, lon: -87.796, mi: 21, div: "NAIA", conf: "CCAC", why: "Announced on 4 November 2025 that it will <b>close</b> at the end of the 2025–26 academic year. It did sponsor men’s cross country and track in the NAIA and sat at Verify on an earlier version of this board. It is not an option." },
-  { name: "Montclair State", city: "Montclair NJ", metro: ["newark", "nyc"], miBy: { newark: 13.6, nyc: 17 }, lat: 40.862, lon: -74.198, mi: 13.6, div: "D3", conf: "NJAC", why: "Sponsors men’s indoor and outdoor track and field but <b>not</b> men’s cross country. An earlier version of this board listed it as a cross country option, which was wrong. Still worth a look as a track-only program if that trade is acceptable." },
+  { name: "Montclair State", city: "Montclair NJ", metro: "nyc", miBy: { newark: 13.6, nyc: 17 }, lat: 40.862, lon: -74.198, mi: 17, div: "D3", conf: "NJAC", why: "Sponsors men’s indoor and outdoor track and field but <b>not</b> men’s cross country. An earlier version of this board listed it as a cross country option, which was wrong. Still worth a look as a track-only program if that trade is acceptable." },
   { name: "NYIT", city: "Old Westbury NY", metro: "nyc", lat: 40.81, lon: -73.6, mi: 25, div: "D2", conf: "ECC", why: "Suspended its <em>entire</em> intercollegiate athletics program in August 2020 and has not reinstated it. The federal file still shows a strong computer science school on Long Island, which is why an earlier version of this board carried it at Verify tier — but there is no team to verify." },
-  { name: "William Paterson", city: "Wayne NJ", metro: ["newark", "nyc"], miBy: { newark: 19.5, nyc: 22 }, lat: 40.949, lon: -74.24, mi: 19.5, div: "D3", conf: "NJAC", why: "Sponsors neither men’s cross country nor men’s track and field. It appeared on an earlier version of this board in error." },
+  { name: "William Paterson", city: "Wayne NJ", metro: "nyc", miBy: { newark: 19.5, nyc: 22 }, lat: 40.949, lon: -74.24, mi: 22, div: "D3", conf: "NJAC", why: "Sponsors neither men’s cross country nor men’s track and field. It appeared on an earlier version of this board in error." },
   { name: "North Georgia", city: "Dahlonega GA", metro: "greenville", lat: 34.530219, lon: -83.985694, mi: 127, div: "D2", conf: "Peach Belt", why: "Sponsors <b>women’s</b> cross country only. Two independent checks agree: the athletics site publishes a women’s cross country program and no men’s one, and its only cross country coach is titled Head Women’s Cross Country Coach; TFRRS holds no men’s result for the school in 2025. It sat at Verify on an earlier version of this board — there was never a men’s team to verify." },
   /* --- washington --- */
   { name: "Maryland", slug: "maryland", city: "College Park MD", metro: "washington", mi: 9.7,
@@ -2943,8 +2952,8 @@ const NO_PROGRAM = [
     cost: { own: "public", resid: "out", tuition: 41186, tuiIn: 11809, tuiOut: 41186, rb: 15958, sticker: 57144, net: 15678, size: 30760, ipeds: 163286 },
     why: "Sponsors men’s indoor and outdoor track and field but <b>not</b> men’s cross country — the same shape as Montclair State a page over. The tell is on Maryland’s own site: the men’s cross country section has no current roster and the most recent one it links is <b>2012-13</b>, while women’s cross country carries a current roster. TFRRS holds no 2025 men’s cross country race for Maryland.",
   },
-  /* --- newark --- */
-  { name: "NJCU", slug: "njcu", city: "Jersey City NJ", metro: ["newark", "nyc"], mi: 3.3,
+  /* --- nyc --- */
+  { name: "NJCU", slug: "njcu", city: "Jersey City NJ", metro: "nyc", mi: 10.1,
     miBy: { newark: 3.3, nyc: 10.1 },
     lat: 40.709937, lon: -74.08727, div: "D3", conf: "NJAC",
     cs: "verified", csSrc: "fed", csShare: 10.6, sat: "not reported", satSrc: "none", accept: "98%", acceptSrc: "fed",
@@ -2988,18 +2997,13 @@ const METROS = {
       ],
     },
   },
-  /* Newark is its own page rather than a corner of the New York one because the money is
-     different: nine of its thirteen rows are New Jersey publics or small NJAC privates, and
-     the in-state question is live for none of them but the price gap is. The rule is the
-     New Jersey side only - the circle reaches Manhattan and Staten Island, and anything
-     across the Hudson belongs to New York, which already carries it. Eleven rows sit in
-     both rules and appear on both pages. */
-  newark: {
-    label: 'Newark NJ', nav: 'Newark', radius: '20 mi', radiusMi: 20,
-    center: [40.7357, -74.1724], centerLabel: 'downtown Newark',
-    ruleNote: 'New Jersey side only — schools across the Hudson are on the New York page.',
-    zoom: 9, page: 'newark.html',
-  },
+  /* Newark had its own page until the overlap with New York proved near-total: twelve rows
+     sat in both rules and nine of its ten board rows were already on new-york.html, so the
+     page earned its nav entry on one caution row. It was folded in — every New Jersey row is
+     `nyc` now, and NEWARK_CENTER below keeps the second measurement, which was the real
+     content: Rutgers–Newark reads as 13 miles from Midtown and half a mile from downtown
+     Newark, NJIT as 12 and 0.8. The `metro`-as-array machinery stays; this was a judgment
+     about Newark, not about the model, and the next ring pair will need it. */
   philadelphia:    { label: 'Philadelphia',  radius: '20 mi', radiusMi: 20, center: [39.9526, -75.1652], centerLabel: 'City Hall',            zoom: 9, page: 'philadelphia.html' },
   baltimore:       { label: 'Baltimore',     radius: '20 mi', radiusMi: 20, center: [39.2904, -76.6122], centerLabel: 'downtown Baltimore',   zoom: 9, page: 'baltimore.html' },
   washington:      { label: 'Washington DC', nav: 'Washington', radius: '20 mi', radiusMi: 20, center: [38.9072, -77.0369], centerLabel: 'downtown Washington', zoom: 9, page: 'washington.html' },
@@ -3009,3 +3013,9 @@ const METROS = {
   pittsburgh:      { label: 'Pittsburgh',    radius: '20 mi', radiusMi: 20, center: [40.4406, -79.9959], centerLabel: 'downtown Pittsburgh',  zoom: 9, page: 'pittsburgh.html' },
   chicago:         { label: 'Chicago',       radius: '20 mi', radiusMi: 20, center: [41.8781, -87.6298], zoom: 9, page: 'chicago.html' },
 };
+
+/* The retired Newark ring's center, kept as a second measurement rather than a second page.
+   Thirteen New Jersey rows still carry `miBy.newark`, and for most of them it is the more
+   useful number: the New York page's New Jersey section ranks them by it. Not a METROS entry
+   — there is no newark.html, no nav link and no `metro: "newark"` row left. */
+const NEWARK_CENTER = { label: 'downtown Newark', center: [40.7357, -74.1724] };

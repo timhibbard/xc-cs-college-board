@@ -1,7 +1,8 @@
 # College Search — Chicago (20 mile radius)
 
 XC/Track + Computer Science. Last updated 2026-09-20 (v8 — one school found that this list had
-never carried, and the board around it grew to eleven metros)
+never carried, and the board around it grew to eleven metros — ten since the Newark page was folded
+into New York)
 
 > **The board went from three metros to eleven and this list did not change, with one exception.** A
 > federal candidate sweep rerun over every metro in range found **81 colleges the board held no row

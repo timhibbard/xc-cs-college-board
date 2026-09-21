@@ -11,9 +11,9 @@ ranks them by the one question that predicts whether a distance runner actually 
 
 **The board covers every division: 186 schools on it — 64 D1, 55 D2, 63 D3, three NAIA and one USCAA —
 plus 12 cut as walk-on, 29 with cross country but no men's track, and 14 with no men's program to
-join.** Eight of the eleven metros were added in one pass (Boston, Philadelphia, Washington, Baltimore,
+join.** Eight metros were added in one pass (Boston, Philadelphia, Washington, Baltimore,
 Pittsburgh, Buffalo, Hampton Roads and Newark), which found **81 colleges this board held no row for**
-and put 63 of them on it. A
+and put 63 of them on it; Newark has since been folded into New York, leaving **ten metros**. A
 Division-1-only rule was tried on this board and **reversed**; the write-up of it is kept as a decision
 made and undone rather than deleted, because the reason it failed is the useful part — it removed 96 rows,
 nine of them at target tier, seven of those in the Greenville ring. All 227 rows that have a men's
@@ -165,11 +165,10 @@ Every count here is the live board, all divisions.
 | Metro | Radius | On the board | Measured | Target tier | No 7th man | Cut as walk-on | No men's track | No men's program | Page |
 |---|---|---|---|---|---|---|---|---|---|
 | Greenville, SC | 300 mi | 85 | 83 | 25 | 22 | 7 | 9 | 6 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
-| New York City | 20 mi + all of Long Island | 29 | 29 | 6 | 6 | 2 | 10 | 5 | [`docs/new-york-city.md`](docs/new-york-city.md) |
+| New York City | 20 mi + all of Long Island | 30 | 30 | 6 | 6 | 2 | 10 | 5 | [`docs/new-york-city.md`](docs/new-york-city.md) |
 | Boston | 20 mi | 16 | 16 | 3 | 5 | 0 | 1 | 0 | [`boston.html`](boston.html) |
 | Philadelphia | 20 mi | 14 | 12 | 4 | 3 | 1 | 2 | 0 | [`philadelphia.html`](philadelphia.html) |
 | Chicago | 20 mi | 11 | 11 | 2 | 5 | 1 | 2 | 2 | [`docs/chicago.md`](docs/chicago.md) |
-| Newark, NJ | 20 mi | 10 | 10 | 2 | 1 | 0 | 0 | 3 | [`newark.html`](newark.html) |
 | Washington, DC | 20 mi | 7 | 5 | 2 | 2 | 1 | 2 | 1 | [`washington.html`](washington.html) |
 | Pittsburgh | 20 mi | 7 | 5 | 2 | 0 | 0 | 1 | 0 | [`pittsburgh.html`](pittsburgh.html) |
 | Baltimore | 20 mi | 6 | 6 | 1 | 1 | 0 | 1 | 0 | [`baltimore.html`](baltimore.html) |
@@ -177,14 +176,15 @@ Every count here is the live board, all divisions.
 | Hampton Roads | 20 mi | 4 | 4 | 1 | 4 | 0 | 0 | 0 | [`hampton-roads.html`](hampton-roads.html) |
 
 The rows do not add to 186 because **a school can sit in two metros**: `metro` is an array whose first
-entry is the home metro, and `miBy` carries a separate driving distance for each. **Newark and New York
-are the only pair that overlaps**: nine of Newark's ten board rows and all three of its no-program rows
-are also carried on the New York page, deliberately, because the number in front of them changes —
-Rutgers–Newark is 13 miles from Midtown and half a mile from downtown Newark. Every metro page counts a
-shared school once and quotes its own distance.
+entry is the home metro, and `miBy` carries a separate driving distance for each. Every metro page counts
+a shared school once and quotes its own distance. **No pair of rings currently overlaps.** Newark and New
+York did, and the overlap was near-total — twelve rows in both rules, nine of Newark's ten board rows
+already on the New York page — so [the Newark page was retired](#the-newark-fold) rather than kept for
+the one row unique to it. The array machinery stays, because the fold was a judgement about Newark and
+not about the model.
 
 The divisional shape of the rings is completely different and worth reading before the tiers:
-Greenville is 33 D1, 39 D2, 11 D3 and two NAIA; New York is 10 D1, 7 D2 and 12 D3; Boston is 12 D3,
+Greenville is 33 D1, 39 D2, 11 D3 and two NAIA; New York is 10 D1, 7 D2 and 13 D3; Boston is 12 D3,
 3 D1 and one D2; Chicago is 3 D1, one D2, 6 D3 and one NAIA; Pittsburgh and Washington are each 3 D1
 and 3 D3. **Boston and Chicago are Division 3 cities** for men's distance running, and ten of New
 York's no-men's-track removals are D3 CUNY and small-private programs. The ten unmeasured rows are
@@ -210,7 +210,9 @@ along with **Purdue Northwest**, which had been the metro's only scholarship pro
 The three original metros were chosen; the other eight were found. Rebuilding the candidate list from
 each conference's own men's-sponsored-sports table across the Northeast corridor turned up **81 colleges
 this board held no row for**, and they clustered so cleanly around eight centres that each got its own
-page: Boston, Philadelphia, Washington, Baltimore, Pittsburgh, Buffalo, Hampton Roads and Newark.
+page: Boston, Philadelphia, Washington, Baltimore, Pittsburgh, Buffalo, Hampton Roads and Newark. Seven
+of those pages survive — [Newark was folded into New York](#the-newark-fold) once it was clear the two
+rings were measuring nearly the same schools.
 
 **63 went onto the board** — 35 Division 3, 18 Division 1, eight D2, one NAIA and one USCAA — as **14
 targets** (MIT, Harvard, Tufts, Penn, La Salle, Haverford, Swarthmore, American, George Mason, UMBC,
@@ -224,11 +226,44 @@ Two things about those 63 rows matter more than the count, and every new page sa
 - **Their tiers come from the published ladder and nothing else** — `tierSrc: 'ladder'`. The same
   championship-only aggregates, the same ≥5-finisher and ≥7-finisher rules, the same 45-second line. No
   row was moved by judgement, and Furman stays the only school on this board placed against its ladder.
-- **They are thinner than the original 150.** No track marks were collected for any of them, so seven of the
-  eight pages have no 5000m column at all and only **Newark**, whose rows were already on the New York
-  page with marks, carries the gap chart. No coach names, no program Instagram, no 2026 conference 1500 field, no meet map. The
+- **They are thinner than the original 150.** No track marks were collected for any of them, so none of the
+  seven surviving pages has a 5000m column. **Newark** was the exception — its rows were already on the New
+  York page with marks, so it carried a gap chart — and that is the same fact that made it the one page of
+  the eight that could be folded back in. No coach names, no program Instagram, no 2026 conference 1500 field, no meet map. The
   both-sports check was done school by school against the sport list each athletics site publishes
   itself, because TFRRS cannot answer that question.
+
+### The Newark fold
+
+**Newark was the eighth page the sweep produced and it is the one that did not last.** The overlap with
+New York was near-total: twelve rows sat inside both rules, **nine of Newark's ten board rows and all
+three of its no-program rows were already on `new-york.html`**, and the only row unique to the page was
+Drew, a caution. It earned a nav entry, a metro definition and a hand-written disambiguation rule
+(*New Jersey side only*) on one school, while asking anyone comparing the two pages to reconcile two sets
+of driving distances. So the rows stayed and the page went. Every New Jersey row is `metro: "nyc"` now.
+
+**What the fold deliberately kept** is the second measurement, which was the real content of the page.
+`miBy.newark` still holds a downtown-Newark distance for thirteen rows, `NEWARK_CENTER` in `assets/data.js`
+still names the centre it was measured from, and [the New Jersey section on the New York
+page](new-york.html) ranks those rows by it — because Rutgers–Newark reading as 13 miles from Midtown and
+**half a mile** from downtown Newark is a fact worth printing, and NJIT as 12 and **0.8** likewise. What
+it did not keep is a second page, a second nav entry or a second rule.
+
+**One thing the fold turned up that the plan for it did not anticipate:** Drew had no Midtown distance,
+and routing it produced **29.6 driving miles** — well outside the 20-mile ring and outside the 23-mile
+straight line too. Worse, the New York page had **already cut Drew on that radius**: it is one of the
+eight schools listed as a casualty of the tightening from 50 miles to 20, at an estimated *30 mi* that
+the route has now confirmed. So the same school is both a recorded radius casualty and a row on the
+board, and both pages say so rather than reconciling it quietly. It is the **only row on the board
+carried from outside its metro's rule**, and it is carried rather than deleted because a school with a
+men's program and a CS degree should not vanish silently from a board that once held it — but **dropping
+it is the defensible alternative**, and the rule would be cleaner for it. The row says so in its own note, the page says so in its New
+Jersey section, and it carries an `outsideRule` field so the exception is data rather than prose. The
+tier makes the exception cheap: he would arrive 50 seconds ahead of their #1 at the Landmark
+championship, so it is a row to know about, not one to chase.
+
+The `metro`-as-array machinery (`metrosOf`, `homeMetro`, `inMetro`, `miIn`, `metroLabel`) **stays**. It is
+the right shape and the next pair of overlapping rings will need it. This was a judgement about Newark.
 
 ## Withdrawn recommendations
 
@@ -368,7 +403,6 @@ baltimore.html
 pittsburgh.html
 buffalo.html
 hampton-roads.html
-newark.html         the one new page with 5000m marks, so the only one with a gap chart
 school.html         one data-driven detail page, routed by ?s=<slug>
 methodology.html    conversions, how the XC comparison is built, withdrawn claims, known gaps
 assets/data.js      schools, tiers, cost, admissions, XC summary — the board's source of truth
