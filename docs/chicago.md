@@ -1,7 +1,17 @@
 # College Search — Chicago (20 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-09-20 (v7 — a new 15:40 5K cross country PR, and
-the whole board re-anchored on it)
+XC/Track + Computer Science. Last updated 2026-09-20 (v8 — one school found that this list had
+never carried, and the board around it grew to eleven metros)
+
+> **The board went from three metros to eleven and this list did not change, with one exception.** A
+> federal candidate sweep rerun over every metro in range found **81 colleges the board held no row
+> for**, eight new pages' worth, and inside this ring it found exactly one: **Moody Bible Institute**,
+> 1.6 miles from the Loop, NCCAA, which sponsors cross country and no men's outdoor track and therefore
+> comes onto the no-track list rather than the board. **No tier in this metro changed and the board count
+> here is still 11.** The two things worth carrying away are about proportion rather than about Chicago:
+> this ring now holds two of the board's 47 targets rather than two of 33, and Boston — 12 D3 programs of
+> 16 — is the second Division 3 city on the board, which is the shape this document has been describing
+> since v3.
 
 > **He has run 15:40 for 5K cross country**, and the whole board is re-anchored on it. The 8K comes
 > down 24 seconds to **25:36** and the 10K 31 seconds to **32:40**; at this mark the board's own

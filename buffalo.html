@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buffalo — six schools within 20 miles, and the cheapest metro on the board</title>
+<meta name="description" content="Every college within 20 miles of downtown Buffalo with men's cross country, men's outdoor track and a computer science degree. Six schools, a $21,449 median net price, and one clear answer.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">20 mile radius · all divisions · new in this pass</p>
+  <h1>Buffalo</h1>
+  <p class="lede">
+    Six schools, the <strong>cheapest metro on this board</strong> at a $21,449 median net price, and one clear answer: <strong>University at Buffalo</strong>, Division 1 in the Mid-American, where he lands <strong>two seconds inside their seventh man</strong>. The metro's other real fit is unavailable &mdash; <strong>Canisius</strong> is a target on the running and sponsors no track at all &mdash; and two of the remaining rows are unmeasured rather than thin. Small, cheap, and thinner than it looks.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="k-label">Schools inside 20 mi</div><div class="k-value" id="k-n">&mdash;</div><div class="k-sub">1 D1, 2 D2, 2 D3, 1 USCAA</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">&mdash;</div><div class="k-sub">University at Buffalo alone</div></div>
+    <div class="kpi"><div class="k-label">He would be their #1 at</div><div class="k-value" id="k-lead">&mdash;</div><div class="k-sub">Three of the six</div></div>
+    <div class="kpi"><div class="k-label">Median net price</div><div class="k-value">$21,449</div><div class="k-sub">The cheapest metro on the board</div></div>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">Canisius is the most painful row in this pass</span>
+    <p>Division 1 in the MAAC, 3.3 miles from downtown, and on the running one of the best fits anywhere in this sweep: across three championships he arrives as their <b>5th man</b>, 86 seconds behind their #1 and <b>48 seconds inside their seventh</b>, into a seven that spans 134 seconds. Then the sponsorship check: its athletics site publishes a single combined cross country section and <b>not one track page</b>, for either gender.</p>
+    <p>So it sits on the no-track table below rather than at the top of the list. It is the first row on this whole board to reopen if running cross country only ever becomes acceptable.</p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">Two of the six rows are unmeasured, not thin</span>
+    <p><strong>Bryant &amp; Stratton</strong> is a USCAA college rather than an NCAA or NAIA one, 0.6 miles from the centre, and the entire men's cross country record on file is <b>two men in one 2026 invitational</b>. At <b>$14,135</b> it is the cheapest row on the page, and the federal file reports no admit rate and no SAT range for it at all.</p>
+    <p><strong>Hilbert</strong> finished two men at the 2025 AMCC championship and two at the Division 3 Niagara regional, and its athletics site is a further worry: the navigation lists neither cross country nor track among its sports, and the most recent schedules it publishes are <b>fall 2025</b> for cross country and <b>spring 2025</b> for men's outdoor track. Confirm both sports still exist before spending time on it.</p>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">What is not on this page yet</span>
+    <p>Every tier on this page comes from <a href="methodology.html#tier-ladder">the published ladder</a> run over 2025 championship results &mdash; conference, regional and national meets only. Three things the older metro pages have and this one does not, yet: <b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; <b>no coach names, emails or Instagram handles</b>; and <b>no meet maps</b>. The one screen that is complete is the both-sports rule &mdash; men's outdoor track sponsorship was checked school by school against the sport list each athletics site publishes itself, because TFRRS cannot answer it.</p>
+  </div>
+
+
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every school in this metro, plotted against the 20-mile radius</div>
+    <p class="chart-sub">Six pins, five of them within six miles of downtown. University at Buffalo plots at 11.1 miles on its north campus, which is where the running program is.</p>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools that are off the board (cut, no men's track, no men's program)</label>
+      <span class="count" id="map-count"></span>
+    </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 20-mile
+      radius from downtown Buffalo, while the table's "Mi" column is driving distance &mdash; so a school
+      right on the line can plot just outside it. Filters below drive this map too.
+    </p>
+  </div>
+
+  <h2>The ones worth real effort</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>University at Buffalo</strong> &mdash; D1 Mid-American, 11.1 miles, <b>7.9%</b>
+        CS, <b>74%</b> admit, <b>$41,595</b> on his residency as a New York public, and he lands
+        <strong>two seconds inside their seventh man</strong>, 82 behind their #1. The only
+        target-tier row in the metro and the only Division 1 program in it. Its price is also the
+        highest here by $19,000, so the non-resident waiver question is the first one to ask.</li>
+      <li><strong>Buffalo State</strong> &mdash; D3 SUNYAC, 5.1 miles, <b>5.4%</b> CS, <b>$22,466</b>,
+        and he would arrive 35 seconds ahead of their #1 and 261 inside their seventh. Caution tier,
+        cheap, and central; a place to be the team rather than join one.</li>
+      <li><strong>Daemen</strong> and <strong>D'Youville</strong> &mdash; the two Division 2 programs
+        and therefore the only partial-athletic-money doors in range, at <b>$18,693</b> and
+        <b>$20,433</b>. Both are thin: he would lead Daemen by 16 seconds and D'Youville by 137, and
+        D'Youville never finished seven runners.</li>
+    </ol>  </div>
+
+  <h2>Full list</h2>
+  <div id="legend-slot"></div>
+  <div class="controls">
+    <label for="f-tier">Fit</label>
+    <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="deep">Deep</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
+    <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="table-scroll">
+    <table id="master">
+      <caption>Miles are approximate driving distance from downtown Buffalo. Click any school for its full page.
+        <em>His slot in their 7</em> comes from 2025 championship cross country results;
+        <em>vs their 7th</em> is negative when he is inside the seven, and blank where a team never
+        finished seven runners. Click a header to sort.</caption>
+      <thead></thead><tbody></tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px">
+    <strong>This is the cheapest metro on the board and the one target in it is the most expensive row on the page.</strong> The median is <b>$21,449</b>; University at Buffalo is <b>$41,595</b> on his residency, because it is a New York public and the federal net price it reports is an in-state figure to which this board adds the non-resident premium (<a href="methodology.html#residency">how that works</a>). Everything else in range is under $23,000: <strong>Bryant &amp; Stratton at $14,135</strong>, <strong>Daemen at $18,693</strong>, <strong>D'Youville at $20,433</strong>, <strong>Buffalo State at $22,466</strong> and <strong>Hilbert at $22,723</strong>. The two Division 2 programs are the only partial-aid doors; the two Division 3 programs can offer nothing by rule.
+  </p>
+
+  <h2 id="notrack">Cross country but no men's track</h2>
+  <p class="prose">One school in this metro sponsors cross country and no track of any kind, and on the running it would have been the best fit in range.
+    <a href="methodology.html#both-sports">The rule, written out</a>.</p>
+  <div class="table-scroll">
+    <table id="notrack-tbl"><thead><tr><th scope="col">School</th><th scope="col">Division</th>
+      <th scope="col" class="num">Mi</th><th scope="col">Tier it held on cross country</th>
+      <th scope="col">What it does and does not sponsor</th></tr></thead><tbody></tbody></table>
+  </div>
+
+
+  <div class="prose">
+    <p><a href="methodology.html">Methodology and caveats &rarr;</a></p>
+  </div>
+
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('buffalo');
+filters.metro = 'buffalo';
+
+const mine = SCHOOLS.filter(s => inMetro(s, 'buffalo'));
+document.getElementById('k-n').textContent = mine.length;
+document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
+document.getElementById('k-lead').textContent = mine.filter(s => s.xc && s.xc.slot <= 1.5).length;
+document.getElementById('legend-slot').innerHTML = tierLegend();
+document.getElementById('map-legend').innerHTML = mapLegend();
+
+const TIERLBL = { target: 'Target', deep: 'Deep', verify: 'Verify', caution: 'Caution' };
+const byMi = (a, b) => (miIn(a, 'buffalo') ?? 999) - (miIn(b, 'buffalo') ?? 999);
+const miCell = r => miIn(r, 'buffalo') ?? '\u2014';
+
+document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => inMetro(r, 'buffalo'))
+  .sort(byMi)
+  .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
+   <td>${r.div}</td><td class="num">${miCell(r)}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
+
+initMap('buffalo');
+initTable();
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baltimore — six schools within 20 miles</title>
+<meta name="description" content="Every college within 20 miles of downtown Baltimore with men's cross country, men's outdoor track and a computer science degree. Six schools, and UMBC is the find.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">20 mile radius · all divisions · new in this pass</p>
+  <h1>Baltimore</h1>
+  <p class="lede">
+    Six schools, and <strong>UMBC is the find of this pass</strong>: <strong>26.8%</strong> of its bachelor's degrees are in computer science &mdash; the highest share on the board outside MIT &mdash; it is Division 1 in America East, eight miles from downtown, and he lands as their <strong>6th man</strong>, 41 seconds inside their scoring seven. <strong>Johns Hopkins</strong> is four seconds the wrong side of its seventh man at a 6% admit rate. The other four are caution tier, and <strong>Loyola Maryland</strong> &mdash; where he would arrive level with their #1 &mdash; sponsors no men's track.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="k-label">Schools inside 20 mi</div><div class="k-value" id="k-n">&mdash;</div><div class="k-sub">3 D1, 3 D3</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">&mdash;</div><div class="k-sub">UMBC alone</div></div>
+    <div class="kpi"><div class="k-label">He would be their #1 at</div><div class="k-value" id="k-lead">&mdash;</div><div class="k-sub">Half the list</div></div>
+    <div class="kpi"><div class="k-label">Median net price</div><div class="k-value">$24,175</div><div class="k-sub">Second-cheapest metro in this pass</div></div>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">UMBC is the best computer-science-plus-running row in this pass</span>
+    <p><b>26.8%</b> computer science, Division 1 in America East, <b>72%</b> admit, <b>$34,486</b> on his residency as a Maryland public, and on the running he is their <b>6th man</b>, 41 seconds inside their seven and 68 behind their #1. There is no other row on this board that pairs a CS share above 25% with a target-tier measurement and an admit rate above 20%.</p>
+    <p>The one caveat is the price basis: UMBC is a public, so the federal net price is an in-state figure and the number above adds the non-resident premium <a href="methodology.html#residency">the way this board does everywhere</a>. A non-resident waiver or an athletic share would change it materially, and Division 1 means both exist in principle.</p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">Johns Hopkins, and the two cheap MEAC publics</span>
+    <p><strong>Johns Hopkins</strong> is <em>deep</em> by four seconds &mdash; their seventh man is that close &mdash; with <b>10.5%</b> CS, a <b>$18,809</b> net price and a <b>6%</b> admit rate. Division 3, so no athletic money; it is an admissions conversation like Harvard and MIT.</p>
+    <p><strong>Coppin State</strong> at <b>$16,901</b> and <strong>Morgan State</strong> at <b>$25,880</b> are the two Division 1 MEAC publics, 3.5 and 4.6 miles out, and both are thin: Coppin State never finished seven runners, and at Morgan State he would arrive level with their #1 and 367 seconds inside their seventh. The money and the location are real; ask both how many men are signed for the fall.</p>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">What is not on this page yet</span>
+    <p>Every tier on this page comes from <a href="methodology.html#tier-ladder">the published ladder</a> run over 2025 championship results &mdash; conference, regional and national meets only. Three things the older metro pages have and this one does not, yet: <b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; <b>no coach names, emails or Instagram handles</b>; and <b>no meet maps</b>. The one screen that is complete is the both-sports rule &mdash; men's outdoor track sponsorship was checked school by school against the sport list each athletics site publishes itself, because TFRRS cannot answer it.</p>
+  </div>
+
+
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every school in this metro, plotted against the 20-mile radius</div>
+    <p class="chart-sub">Six pins, four of them inside five miles of the Inner Harbour. UMBC at 8 miles and Stevenson at 18.8 are the two that sit out in the county.</p>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools that are off the board (cut, no men's track, no men's program)</label>
+      <span class="count" id="map-count"></span>
+    </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 20-mile
+      radius from downtown Baltimore, while the table's "Mi" column is driving distance &mdash; so a school
+      right on the line can plot just outside it. Filters below drive this map too.
+    </p>
+  </div>
+
+  <h2>The ones worth real effort</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>UMBC</strong> &mdash; D1 America East, 8 miles, <b>26.8%</b> CS, <b>72%</b> admit,
+        <b>$34,486</b> on his residency, and his <strong>6th man</strong> slot is 41 seconds inside
+        their seven. Best row on the page by a distance, and the residency question is the first
+        thing to ask the coach.</li>
+      <li><strong>Johns Hopkins</strong> &mdash; D3 Centennial, 3.6 miles, <b>10.5%</b> CS,
+        <b>$18,809</b>, <b>6%</b> admit, and four seconds outside their seventh man. A real training
+        environment where he would not score early, behind a hard admissions door.</li>
+      <li><strong>Morgan State</strong> &mdash; D1 MEAC, 4.6 miles, <b>8%</b> CS, <b>82%</b> admit,
+        <b>$25,880</b>. Caution tier because he would arrive as their #2 and level with their #1,
+        which is a thin squad rather than a bad school; Division 1 money and an open door make it
+        worth the email anyway.</li>
+    </ol>
+    <p>
+      <strong>And the row that is not on the list.</strong> <strong>Loyola Maryland</strong> is
+      Division 1 in the Patriot League, 4.1 miles from downtown, and he would arrive <em>level with
+      their #1</em> &mdash; one second behind &mdash; and 110 seconds inside their seventh. It is on
+      the no-track table below because its athletics site publishes a combined cross country section
+      and <b>women's</b> track and field only. <strong>Goucher</strong> and
+      <strong>Stevenson</strong> round out the page at caution: 14.2 and 18.8 miles, $22,470 and
+      $26,505, and he would lead both.
+    </p>  </div>
+
+  <h2>Full list</h2>
+  <div id="legend-slot"></div>
+  <div class="controls">
+    <label for="f-tier">Fit</label>
+    <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="deep">Deep</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
+    <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="table-scroll">
+    <table id="master">
+      <caption>Miles are approximate driving distance from downtown Baltimore. Click any school for its full page.
+        <em>His slot in their 7</em> comes from 2025 championship cross country results;
+        <em>vs their 7th</em> is negative when he is inside the seven, and blank where a team never
+        finished seven runners. Click a header to sort.</caption>
+      <thead></thead><tbody></tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px">
+    <strong>Three of these six are Division 1 and three are Division 3, so there is no Division 2 partial-aid door in range at all.</strong> The Division 1 three &mdash; UMBC, Coppin State and Morgan State &mdash; are all Maryland publics, which means all three carry a non-resident premium on top of the federal net price and all three can in principle waive it. The metro median is <b>$24,175</b>, the cheapest rows are <strong>Coppin State at $16,901</strong> and <strong>Johns Hopkins at $18,809</strong>, and the most expensive is <strong>UMBC at $34,486</strong> &mdash; which is the same row as the best fit, so the residency conversation matters more here than anywhere else in this pass.
+  </p>
+
+  <h2 id="notrack">Cross country but no men's track</h2>
+  <p class="prose">One school in this metro sponsors men's cross country and no men's <em>outdoor track</em>, and it is a Division 1 Patriot League program four miles from downtown where he would have landed level with their #1.
+    <a href="methodology.html#both-sports">The rule, written out</a>.</p>
+  <div class="table-scroll">
+    <table id="notrack-tbl"><thead><tr><th scope="col">School</th><th scope="col">Division</th>
+      <th scope="col" class="num">Mi</th><th scope="col">Tier it held on cross country</th>
+      <th scope="col">What it does and does not sponsor</th></tr></thead><tbody></tbody></table>
+  </div>
+
+
+  <div class="prose">
+    <p><a href="methodology.html">Methodology and caveats &rarr;</a></p>
+  </div>
+
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('baltimore');
+filters.metro = 'baltimore';
+
+const mine = SCHOOLS.filter(s => inMetro(s, 'baltimore'));
+document.getElementById('k-n').textContent = mine.length;
+document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
+document.getElementById('k-lead').textContent = mine.filter(s => s.xc && s.xc.slot <= 1.5).length;
+document.getElementById('legend-slot').innerHTML = tierLegend();
+document.getElementById('map-legend').innerHTML = mapLegend();
+
+const TIERLBL = { target: 'Target', deep: 'Deep', verify: 'Verify', caution: 'Caution' };
+const byMi = (a, b) => (miIn(a, 'baltimore') ?? 999) - (miIn(b, 'baltimore') ?? 999);
+const miCell = r => miIn(r, 'baltimore') ?? '\u2014';
+
+document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => inMetro(r, 'baltimore'))
+  .sort(byMi)
+  .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
+   <td>${r.div}</td><td class="num">${miCell(r)}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
+
+initMap('baltimore');
+initTable();
+</script>
+</body>
+</html>

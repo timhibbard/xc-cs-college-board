@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hampton Roads — four schools, and not one finished seven runners</title>
+<meta name="description" content="Every college within 20 miles of downtown Norfolk with men's cross country, men's outdoor track and a computer science degree. Four schools, and the thinnest depth on the board.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">20 mile radius · all divisions · new in this pass</p>
+  <h1>Hampton Roads</h1>
+  <p class="lede">
+    Four schools, and the finding is the same at all four: <strong>not one of them finished seven runners in a 2025 championship</strong>. Norfolk State's target tier therefore rests on its last finisher rather than a seventh man, and at the other three he would arrive ahead of their #1 on the day he enrolled. This is the thinnest metro on the board, and the honest summary is that it is a place to be someone's #1 rather than a place to develop in a pack.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="k-label">Schools inside 20 mi</div><div class="k-value" id="k-n">&mdash;</div><div class="k-sub">2 D1, 2 D3</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">&mdash;</div><div class="k-sub">Norfolk State, on its last finisher</div></div>
+    <div class="kpi"><div class="k-label">He would be their #1 at</div><div class="k-value" id="k-lead">&mdash;</div><div class="k-sub">Three of the four</div></div>
+    <div class="kpi"><div class="k-label">Never finished seven</div><div class="k-value">4 of 4</div><div class="k-sub">No other metro on the board reads like this</div></div>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">What "target" means when nobody finished seven</span>
+    <p>The board's ladder measures him against a team's <b>seventh</b> man, because the seventh is the last scorer and therefore the honest test of whether he would help. Where a team never finished seven in a championship there is no seventh man, so <a href="methodology.html#tier-ladder">the same thresholds run on the last finisher they did produce</a>. Every row on this page is tiered that way.</p>
+    <p>So read <strong>Norfolk State's</strong> target tier as "he fits into the middle of what they managed to field", not "he is their fifth man". Division 1 in the MEAC, 1.9 miles from downtown, <b>88%</b> admit, <b>$26,784</b>, <b>4.8%</b> computer science, and 75 seconds behind their #1. Ask how many men are signed for the fall before ranking it; that single answer decides whether this row is real.</p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">The other three, in order of how close they come</span>
+    <p><strong>Hampton</strong> is the nearest thing to a squad: Division 1 in the CAA, 15 miles out, and he would arrive <b>20 seconds</b> ahead of their #1 &mdash; close enough that one recruiting class changes the picture. <b>1.8%</b> CS and <b>$25,319</b>.</p>
+    <p><strong>Regent</strong> (D3 Coast-to-Coast, 8.5 miles, <b>38%</b> admit, <b>$19,923</b>, <b>5.1%</b> CS) and <strong>Virginia Wesleyan</strong> (D3 ODAC, 7.5 miles, <b>$19,676</b>) are both cheap and both thin: 107 and 168 seconds ahead of their #1 respectively.</p>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">What is not on this page yet</span>
+    <p>Every tier on this page comes from <a href="methodology.html#tier-ladder">the published ladder</a> run over 2025 championship results &mdash; conference, regional and national meets only. Three things the older metro pages have and this one does not, yet: <b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; <b>no coach names, emails or Instagram handles</b>; and <b>no meet maps</b>. The one screen that is complete is the both-sports rule &mdash; men's outdoor track sponsorship was checked school by school against the sport list each athletics site publishes itself, because TFRRS cannot answer it.</p>
+  </div>
+
+
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every school in this metro, plotted against the 20-mile radius</div>
+    <p class="chart-sub">Four pins across the water from each other &mdash; Norfolk, Virginia Beach and Hampton are one metro on paper and three drives in practice. The 20-mile circle crosses open water, so driving distance and the pin positions disagree more here than anywhere else on the board.</p>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools that are off the board (cut, no men's track, no men's program)</label>
+      <span class="count" id="map-count"></span>
+    </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 20-mile
+      radius from downtown Norfolk, while the table's "Mi" column is driving distance &mdash; so a school
+      right on the line can plot just outside it. Filters below drive this map too.
+    </p>
+  </div>
+
+  <h2>The ones worth real effort</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>Norfolk State</strong> &mdash; D1 MEAC, 1.9 miles, <b>88%</b> admit,
+        <b>$26,784</b>, <b>4.8%</b> CS. The only target here, measured on a last finisher rather
+        than a seventh man, 75 seconds behind their #1. Division 1 means equivalency shares exist,
+        and an HBCU in the MEAC with an open door is a real option &mdash; but the first question is
+        roster size, not money.</li>
+      <li><strong>Hampton</strong> &mdash; D1 CAA, 15 miles, <b>62%</b> admit, <b>$25,319</b>. He
+        would be their #1 by 20 seconds, which is the smallest such gap on this page by a factor of
+        five. Caution tier today; the row most likely to look different in a year.</li>
+      <li><strong>Regent</strong> &mdash; D3 Coast-to-Coast, 8.5 miles, <b>$19,923</b>, and the most
+        selective door on the page at <b>38%</b>. No athletic money in Division 3, and he would lead
+        them by nearly two minutes.</li>
+    </ol>
+    <p>
+      <strong>There is no Division 2 program inside 20 miles of Norfolk</strong>, so the partial
+      athletic-aid door that exists in most metros on this board does not exist here at all: it is
+      two Division 1 programs with equivalency shares, and two Division 3 programs with none.
+    </p>  </div>
+
+  <h2>Full list</h2>
+  <div id="legend-slot"></div>
+  <div class="controls">
+    <label for="f-tier">Fit</label>
+    <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="deep">Deep</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
+    <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="table-scroll">
+    <table id="master">
+      <caption>Miles are approximate driving distance from downtown Norfolk. Click any school for its full page.
+        <em>His slot in their 7</em> comes from 2025 championship cross country results;
+        <em>vs their 7th</em> is negative when he is inside the seven, and blank where a team never
+        finished seven runners. Click a header to sort.</caption>
+      <thead></thead><tbody></tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px">
+    <strong>Two Division 1 programs and two Division 3 programs, and no Division 2 at all.</strong> That makes the money picture unusually simple: athletic aid exists at Norfolk State and Hampton in the form of equivalency shares, and nowhere else in range. Norfolk State is a Virginia public, so its <b>$26,784</b> includes the non-resident premium this board adds by hand; Hampton, Regent and Virginia Wesleyan are private and charge one rate. The two Division 3 rows are the cheapest on the page &mdash; <strong>Virginia Wesleyan at $19,676</strong> and <strong>Regent at $19,923</strong> &mdash; and the metro median is <b>$22,621</b>.
+  </p>
+
+
+  <div class="prose">
+    <p><a href="methodology.html">Methodology and caveats &rarr;</a></p>
+  </div>
+
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('hampton-roads');
+filters.metro = 'hampton-roads';
+
+const mine = SCHOOLS.filter(s => inMetro(s, 'hampton-roads'));
+document.getElementById('k-n').textContent = mine.length;
+document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
+document.getElementById('k-lead').textContent = mine.filter(s => s.xc && s.xc.slot <= 1.5).length;
+document.getElementById('legend-slot').innerHTML = tierLegend();
+document.getElementById('map-legend').innerHTML = mapLegend();
+
+const TIERLBL = { target: 'Target', deep: 'Deep', verify: 'Verify', caution: 'Caution' };
+const byMi = (a, b) => (miIn(a, 'hampton-roads') ?? 999) - (miIn(b, 'hampton-roads') ?? 999);
+const miCell = r => miIn(r, 'hampton-roads') ?? '\u2014';
+
+initMap('hampton-roads');
+initTable();
+</script>
+</body>
+</html>

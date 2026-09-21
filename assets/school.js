@@ -31,7 +31,13 @@ function notFound() {
 }
 
 function head() {
-  const m = METROS[S.metro];
+  const m = METROS[homeMetro(S)];
+  /* A row inside two rules gets named on the page it calls home, with the other page
+     linked and its own driving distance, because that second number is the one that
+     decides whether a weekend visit is one trip or two. */
+  const also = metrosOf(S).slice(1).map(id =>
+    ` &middot; also <a href="${METROS[id].page}">${METROS[id].label}</a>, ${miIn(S, id)} mi`
+  ).join('');
   document.title = `${S.name} — recruiting detail`;
   const tierLine = IS_CUT
     ? `<span class="badge cut"><span class="g" aria-hidden="true">✕</span>Cut</span>`
@@ -42,12 +48,16 @@ function head() {
         : badge(S.tier);
 
   return `
-    <p class="eyebrow"><a href="${m.page}">${m.label}</a> · ${m.radius} radius</p>
+    <p class="eyebrow"><a href="${m.page}">${m.label}</a> · ${m.radius} radius${also}</p>
     <h1>${S.name}</h1>
     <p class="lede">${S.city ?? ''}${S.div ? ' · ' + S.div : ''}${S.conf ? ' ' + S.conf : ''}${S.mi != null ? ' · ' + S.mi + ' mi from ' + m.label.replace(' SC', '') : ''}</p>
     <p class="badge-row">${tierLine}${IS_NOTRACK ? `<span class="src-tag">cross country only &mdash; the tier below is the cross country measurement, not a recommendation</span>`
       : S.xc ? `<span class="src-tag">tier from cross country results</span>`
-      : IS_CUT || IS_NOXC ? '' : `<span class="src-tag">tier from one outdoor 5000 mark &mdash; no cross country data</span>`}</p>
+      : IS_CUT || IS_NOXC ? ''
+      : S.b5000 != null ? `<span class="src-tag">tier from one outdoor 5000 mark &mdash; no cross country data</span>`
+      /* Neither a championship aggregate nor a track mark: Verify here means unmeasured,
+         and saying "tier from a 5000 mark" would invent a measurement that does not exist. */
+      : `<span class="src-tag">unmeasured &mdash; no championship result and no track mark on file</span>`}</p>
     ${S.note ? `<p class="prose note-lede">${S.note}</p>` : ''}
     ${IS_CUT ? `<div class="callout crit"><span class="c-title">Cut from the board</span><p>${S.why}</p></div>` : ''}
     ${IS_NOXC ? `<div class="callout crit"><span class="c-title">Off the board &mdash; there is no men&rsquo;s cross country team</span>
@@ -287,7 +297,7 @@ function xcSection() {
       dated so any of it can be checked against TFRRS.
     </p>
     ${shapePanel()}
-    ${ch.length ? `
+    ${ch.length && S.xc ? `
     <h3>2025 championships — the ${ch.length === 1 ? 'one race' : nOf(ch.length, 'race')} the tier rests on</h3>
     <p class="prose">A team runs its real seven at a championship and its #1 races flat out, so this is
       the honest version of the comparison and the only group the tier uses.</p>
@@ -297,7 +307,19 @@ function xcSection() {
     ${eqNote(S.xc, ch)}
     ${S.xc.disagree ? `<div class="callout"><span class="c-title">Their races disagree</span><p>His slot moves by three or more places
       between these results. Treat the tier as provisional and weight the race on the course most like the one he would run.</p></div>` : ''}
-    ${shortNote(ch)}` : `
+    ${shortNote(ch)}` : ch.length ? `
+    <h3>2025 championships — ${ch.length === 1 ? 'one race' : nOf(ch.length, 'race')}, and not enough of a team to score</h3>
+    <p class="prose">They entered a championship and did not get five men to the finish, so there is no
+      team result to average and no aggregate below. Five is the minimum for a score, seven for the
+      comparison this board is built on.</p>
+    ${ch.map(raceCard).join('')}
+    <div class="callout crit"><span class="c-title">Too few finishers to measure this program</span>
+      <p>The ${ch.length === 1 ? 'race above is' : 'races above are'} real and ${ch.length === 1 ? 'it is' : 'they are'}
+      all this team has on file, and the most it got to a championship finish line is
+      <strong>${Math.max(...ch.map(r => r.nfin ?? r.runners.length))}</strong>
+      ${Math.max(...ch.map(r => r.nfin ?? r.runners.length)) === 1 ? 'runner' : 'runners'}. That is why the
+      tier here reads <b>Verify</b>: unmeasured rather than borderline. Ask the coach how many men are on
+      the roster for the coming season before anything else on this page matters.</p></div>` : `
     <div class="callout"><span class="c-title">No championship result on file</span>
       <p>Everything below is an invitational, where a team often rests its front and its #1 is not
       racing flat out. The tier here is softer evidence than it looks.</p></div>`}
@@ -993,14 +1015,14 @@ function completeness() {
 }
 
 /* ---------- go ---------- */
-initChrome(S ? S.metro : 'index');
+initChrome(S ? homeMetro(S) : 'index');
 if (!S) {
   notFound();
 } else {
   document.getElementById('body').innerHTML =
     head() + cost() + academics() + xcSection() + trackMarks() + fifteen() + meetSection() + coachSection() + completeness() + `
     <hr>
-    <p class="prose"><a href="${METROS[S.metro].page}">&larr; Back to ${METROS[S.metro].label}</a>
+    <p class="prose"><a href="${METROS[homeMetro(S)].page}">&larr; Back to ${METROS[homeMetro(S)].label}</a>
       &nbsp;·&nbsp; <a href="index.html">All ${SCHOOLS.length} schools on the board</a></p>`;
   initMeetMap();
 }

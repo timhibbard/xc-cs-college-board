@@ -1,7 +1,7 @@
 # XC / Track + Computer Science — College Recruiting Board
 
 A research board for a high school distance runner who wants to run cross country and
-track in college while studying computer science. It covers three metro areas, lists the
+track in college while studying computer science. It covers eleven metro areas, lists the
 colleges inside each radius that sponsor **both** men's cross country and men's outdoor track, and
 ranks them by the one question that predicts whether a distance runner actually develops:
 
@@ -9,19 +9,22 @@ ranks them by the one question that predicts whether a distance runner actually 
 
 **Live site:** https://timhibbard.github.io/xc-cs-college-board/
 
-**The board covers every division: 123 schools on it — 46 D1, 47 D2, 28 D3 and two NAIA — plus 10 cut
-as walk-on, 17 with cross country but no men's track, and 11 with no men's program to join.** A
+**The board covers every division: 186 schools on it — 64 D1, 55 D2, 63 D3, three NAIA and one USCAA —
+plus 12 cut as walk-on, 29 with cross country but no men's track, and 14 with no men's program to
+join.** Eight of the eleven metros were added in one pass (Boston, Philadelphia, Washington, Baltimore,
+Pittsburgh, Buffalo, Hampton Roads and Newark), which found **81 colleges this board held no row for**
+and put 63 of them on it. A
 Division-1-only rule was tried on this board and **reversed**; the write-up of it is kept as a decision
 made and undone rather than deleted, because the reason it failed is the useful part — it removed 96 rows,
-nine of them at target tier, seven of those in the Greenville ring. All 150 rows that have a men's
-program carry federal cost and admissions data, a detail page, **the name and contact details of the coach
-who would recruit him**, and **the program's Instagram** (147 of the 150) — plus **the coach's own
-Instagram on 17 rows**, recorded only where the account's own bio says they coach this program; **122 of
-the 123 on the board
-rest on a real 2025 cross country result**, each with **its 2026 conference-championship 1500 field** and
-his projected 4:01 dropped into it, and 150 of the 161 pages also carry a map of every meet the program
-attended last season. Only **Shorter** and **Calumet College** still sit at *Verify*, which means
-**unmeasured, not borderline**.
+nine of them at target tier, seven of those in the Greenville ring. All 227 rows that have a men's
+program carry federal cost and admissions data and a detail page, and **176 of the 186 on the board rest
+on a real 2025 cross country result**. The 150 rows that predate the eight-metro pass also carry **the
+name and contact details of the coach who would recruit him**, **the program's Instagram** (147 of the
+150), **the coach's own Instagram on 17 rows** — recorded only where the account's own bio says they
+coach this program — **its 2026 conference-championship 1500 field** with his projected 4:01 dropped
+into it, and a map of every meet the program attended last season. **The 77 rows the new metros added
+have none of those five things yet**, which is the largest open gap in this repo; each new metro page
+says so in its own words. Ten rows sit at *Verify*, which means **unmeasured, not borderline**.
 
 **The Greenville ring is 300 driving miles**, widened from 250. That pass turned up eight Division 1
 programs new to the board: Auburn, Samford and Radford joined it, NC State, Virginia Tech and Eastern
@@ -49,22 +52,26 @@ conservative floor: 15:40 on grass plus the ~39 second grass-to-track differenti
 methodology page has the sensitivity table, including what 15:35 through 15:20 would do.
 
 **The board requires both sports.** He wants to run cross country *and* track, so a program that
-sponsors one without the other cannot give him both: **seventeen schools came off the board** for that
+sponsors one without the other cannot give him both: **twenty-nine schools came off the board** for that
 reason alone, ten of them in New York, and one of them — **Mercer** — was sitting at *Target* tier
 as their 2nd-to-3rd man 196 miles from home. Each was checked twice: the sport list and published track roster
 the school puts out itself, and TFRRS for the school's men at their **conference indoor and outdoor
 championships**, where a sponsored program has to appear. That second check is deliberately narrow: men
 on a cross country roster post open-meet 1500s and 5000s whether or not the school sponsors men's track,
-which is exactly the case at **Tennessee Tech** — target tier at 270 miles, and removed. All seventeen
+which is exactly the case at **Tennessee Tech** — target tier at 270 miles, and removed. All twenty-nine
 keep their pages and their cross country numbers, because the numbers are true and it is the rule that
-removed them. Three of them are Division 1, and all three are in the Greenville ring.
+removed them. Seven of them are Division 1 — Mercer, Tennessee Tech and Jacksonville State in the
+Greenville ring, then Temple, George Washington, Loyola Maryland and Canisius from the eight-metro
+pass, which is a reminder that the rule keeps biting at the top of the division table.
 
-Measuring all of them produced one finding that changed the method: **35 of the 143 measured
+Measuring all of them produced one finding that changed the method: **57 of the 212 measured
 programs never finished seven runners in any 2025 championship race**, so there is no 7th man to
 compare against. Those schools are compared to the team's *last* finisher instead and say so, and
 the five that could not finish the scoring five — Roosevelt, Benedict, John Jay, Mount Saint Vincent
 and York College (CUNY) — are held at *Caution* regardless of times. On the board itself the count is
-**32 of 123**: 22 around Greenville, 5 around New York and 5 in Chicago. It is not a small-college
+**49 of 186**, and the new metros made it worse rather than better: all four Hampton Roads programs
+and five of Boston's sixteen never finished seven, while Pittsburgh is the one metro where every
+measured program did. It is not a small-college
 problem with a divisional fix — five of the 22 in Greenville are Division 1 — which is one of the
 reasons the Division 1 rule did not survive.
 
@@ -155,18 +162,34 @@ regional results stored one finisher short (UNC Asheville, UNC Greensboro).
 
 Every count here is the live board, all divisions.
 
-| Metro | Radius | On the board | Target tier | No 7th man | Cut as walk-on | No men's track | No men's program | Source document |
-|---|---|---|---|---|---|---|---|---|
-| Greenville, SC | 300 mi | 84 | 25 | 22 | 7 | 6 | 5 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
-| New York City | 20 mi + all of Long Island | 28 | 6 | 5 | 2 | 10 | 4 | [`docs/new-york-city.md`](docs/new-york-city.md) |
-| Chicago | 20 mi | 11 | 2 | 5 | 1 | 1 | 2 | [`docs/chicago.md`](docs/chicago.md) |
+| Metro | Radius | On the board | Measured | Target tier | No 7th man | Cut as walk-on | No men's track | No men's program | Page |
+|---|---|---|---|---|---|---|---|---|---|
+| Greenville, SC | 300 mi | 85 | 83 | 25 | 22 | 7 | 9 | 6 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
+| New York City | 20 mi + all of Long Island | 29 | 29 | 6 | 6 | 2 | 10 | 5 | [`docs/new-york-city.md`](docs/new-york-city.md) |
+| Boston | 20 mi | 16 | 16 | 3 | 5 | 0 | 1 | 0 | [`boston.html`](boston.html) |
+| Philadelphia | 20 mi | 14 | 12 | 4 | 3 | 1 | 2 | 0 | [`philadelphia.html`](philadelphia.html) |
+| Chicago | 20 mi | 11 | 11 | 2 | 5 | 1 | 2 | 2 | [`docs/chicago.md`](docs/chicago.md) |
+| Newark, NJ | 20 mi | 10 | 10 | 2 | 1 | 0 | 0 | 3 | [`newark.html`](newark.html) |
+| Washington, DC | 20 mi | 7 | 5 | 2 | 2 | 1 | 2 | 1 | [`washington.html`](washington.html) |
+| Pittsburgh | 20 mi | 7 | 5 | 2 | 0 | 0 | 1 | 0 | [`pittsburgh.html`](pittsburgh.html) |
+| Baltimore | 20 mi | 6 | 6 | 1 | 1 | 0 | 1 | 0 | [`baltimore.html`](baltimore.html) |
+| Buffalo | 20 mi | 6 | 4 | 1 | 1 | 0 | 1 | 0 | [`buffalo.html`](buffalo.html) |
+| Hampton Roads | 20 mi | 4 | 4 | 1 | 4 | 0 | 0 | 0 | [`hampton-roads.html`](hampton-roads.html) |
 
-A "with XC data" column would read 80, 28 and 11 — every school on the board except **Shorter**, which
-never fielded a measurable championship squad. The divisional shape of the three rings is completely
-different and worth reading before the tiers: Greenville is 31 D1, 38 D2, 11 D3 and one NAIA; New York
-is 10 D1, 7 D2 and 11 D3; Chicago is 3 D1, one D2, 6 D3 and one NAIA. **Chicago is a Division 3 city**
-for men's distance running, and ten of New York's seventeen no-men's-track removals are D3 CUNY and
-small-private programs.
+The rows do not add to 186 because **a school can sit in two metros**: `metro` is an array whose first
+entry is the home metro, and `miBy` carries a separate driving distance for each. **Newark and New York
+are the only pair that overlaps**: nine of Newark's ten board rows and all three of its no-program rows
+are also carried on the New York page, deliberately, because the number in front of them changes —
+Rutgers–Newark is 13 miles from Midtown and half a mile from downtown Newark. Every metro page counts a
+shared school once and quotes its own distance.
+
+The divisional shape of the rings is completely different and worth reading before the tiers:
+Greenville is 33 D1, 39 D2, 11 D3 and two NAIA; New York is 10 D1, 7 D2 and 12 D3; Boston is 12 D3,
+3 D1 and one D2; Chicago is 3 D1, one D2, 6 D3 and one NAIA; Pittsburgh and Washington are each 3 D1
+and 3 D3. **Boston and Chicago are Division 3 cities** for men's distance running, and ten of New
+York's no-men's-track removals are D3 CUNY and small-private programs. The ten unmeasured rows are
+all in the new metros or at the edge of the Greenville ring: Shorter, Carolina University, Thomas
+Jefferson, Rosemont, Gallaudet, Marymount, Carlow, Chatham, Bryant & Stratton and Hilbert.
 
 The New York rule is a shape, not a circle: 20 driving miles from Midtown **plus all of Nassau and
 Suffolk County** regardless of distance, because Long Island is a commutable corridor while
@@ -181,6 +204,31 @@ was not free: New York lost target-tier **Fairfield** and deep-tier **Monmouth**
 along with **Purdue Northwest**, which had been the metro's only scholarship program. **Roosevelt**
 (D2, one mile from the Loop) was supposed to fill that slot, and then its GLIAC result came in:
 **four finishers**, where five are needed to score.
+
+### The eight-metro sweep
+
+The three original metros were chosen; the other eight were found. Rebuilding the candidate list from
+each conference's own men's-sponsored-sports table across the Northeast corridor turned up **81 colleges
+this board held no row for**, and they clustered so cleanly around eight centres that each got its own
+page: Boston, Philadelphia, Washington, Baltimore, Pittsburgh, Buffalo, Hampton Roads and Newark.
+
+**63 went onto the board** — 35 Division 3, 18 Division 1, eight D2, one NAIA and one USCAA — as **14
+targets** (MIT, Harvard, Tufts, Penn, La Salle, Haverford, Swarthmore, American, George Mason, UMBC,
+Duquesne, Carnegie Mellon, University at Buffalo, Norfolk State), **six at deep** (Northeastern, Boston
+College, Saint Joseph's, Johns Hopkins, Pittsburgh, Robert Morris), 34 at caution and nine unmeasured.
+**Villanova and Georgetown are cut on level.** Eight fail the both-sports rule, four of them Division 1.
+**Maryland**, a flagship public 9 miles from downtown Washington, sponsors no men's cross country at all.
+
+Two things about those 63 rows matter more than the count, and every new page says both in its own words:
+
+- **Their tiers come from the published ladder and nothing else** — `tierSrc: 'ladder'`. The same
+  championship-only aggregates, the same ≥5-finisher and ≥7-finisher rules, the same 45-second line. No
+  row was moved by judgement, and Furman stays the only school on this board placed against its ladder.
+- **They are thinner than the original 150.** No track marks were collected for any of them, so seven of the
+  eight pages have no 5000m column at all and only **Newark**, whose rows were already on the New York
+  page with marks, carries the gap chart. No coach names, no program Instagram, no 2026 conference 1500 field, no meet map. The
+  both-sports check was done school by school against the sport list each athletics site publishes
+  itself, because TFRRS cannot answer that question.
 
 ## Withdrawn recommendations
 
@@ -199,8 +247,8 @@ rather than edited out, because the pattern is the useful part:
 
 The fifth withdrawal is the completeness claim at the top of this file. The sixth is larger than any
 of them and is a rule rather than a school: the board now requires **both** cross country and outdoor
-track, which took seventeen schools off it including target-tier **Mercer** and target-tier **Tennessee
-Tech**. The seventh is larger still, is also a rule, and is the only one that has itself been withdrawn: the
+track, which took twenty-nine schools off it including target-tier **Mercer** and target-tier
+**Tennessee Tech**. The seventh is larger still, is also a rule, and is the only one that has itself been withdrawn: the
 board was narrowed to **Division 1 only**, which removed 96 rows, nine of them at target tier and seven
 of those nine in the Greenville ring — including **Anderson (SC)**, 29 driving miles from home and the closest
 target anywhere, and **Fayetteville State** at a $7,892 net price, the cheapest target anywhere. Nothing
@@ -217,8 +265,9 @@ championship results say otherwise: he would have been Clemson's 8th man at the 
 regional. Clemson returns at *Deep*, Columbia at *Target*. Cutting a school on one fast 5000 is the
 same mistake as recommending one on it.
 
-Also structural: **ten schools on these maps have no men's program to join at all**, and an eleventh is
-closing — a different finding from the seventeen that sponsor cross country without track. **UAB** came
+Also structural: **fourteen schools on these maps have no men's program to join at all** — a different
+finding from the twenty-nine that sponsor cross country without track. Maryland is the newest of them:
+a flagship Division 1 public 9 miles from downtown Washington that sponsors no men's cross country. **UAB** came
 into range at 300 miles and turned out to have nothing to come into range for, and **Georgia Southern**
 was inside even the old 250-mile ring; neither sponsors men's cross country. Northwestern sponsors
 no men's cross country or men's track and field at all — men's track is listed as defunct, only the
@@ -308,10 +357,18 @@ publishes their name and work email in order to be contacted.
 ## Structure
 
 ```
-index.html          overview: KPIs, filterable table of every school, gap chart
+index.html          overview: KPIs, eleven metro cards, filterable table of every school, gap chart
 greenville.html     per-metro write-up + filtered table, chart, and radius map
 new-york.html
 chicago.html
+boston.html         the eight metros added in the 2026 sweep; same shape, ladder-derived
+philadelphia.html   tiers, no coach block and no meet map yet, and each page says so
+washington.html
+baltimore.html
+pittsburgh.html
+buffalo.html
+hampton-roads.html
+newark.html         the one new page with 5000m marks, so the only one with a gap chart
 school.html         one data-driven detail page, routed by ?s=<slug>
 methodology.html    conversions, how the XC comparison is built, withdrawn claims, known gaps
 assets/data.js      schools, tiers, cost, admissions, XC summary — the board's source of truth
@@ -319,7 +376,7 @@ assets/detail.js    per-race results, meet venue coordinates, full season schedu
 assets/school.js    the school detail template + its per-season meet map
 assets/app.js       table sort/filter, gap chart, Leaflet metro maps, theme toggle
 assets/styles.css   light/dark tokens, accessible tier and season palettes
-docs/*.md           the long-form research documents, one per metro
+docs/*.md           long-form research documents for the three original metros
 ```
 
 Every school name in every table and every map popup links to `school.html?s=<slug>`, which
@@ -371,8 +428,10 @@ why and lists the two flat-rate exceptions.
 
 `b5000`, `spread`, `g1` and `v7` are in **seconds**; `b1500` is the mark as written on the results
 page, tenths and all, parsed at render time; `null` means no data was found. `tier` is
-`target`, `deep`, `verify`, or `caution`, and `tierSrc` records whether it came from cross
-country results (`xc`) or from track marks alone (`5000`). Changing a value updates the tables,
+`target`, `deep`, `verify`, or `caution`, and `tierSrc` records where it came from: cross country
+results read race by race (`xc`, 122 rows), the published tier ladder applied to championship
+aggregates alone (`ladder`, the 63 rows the eight-metro sweep added), or track marks with no cross
+country to read (`5000`, one row). Changing a value updates the tables,
 the chart, the maps, the KPI tiles and the school page with no other edits.
 
 A team that never finished seven carries `v7: null` plus `short: true` and `maxfin: N` — the most
@@ -388,7 +447,7 @@ a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS populatio
 not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
-as raw seconds, in order — 904 races across 148 schools; a short race also carries `nfin` and
+as raw seconds, in order — 1,330 races across 219 schools; a short race also carries `nfin` and
 `vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 120 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
 postseason rounds `post`, read from 40 conference championship result pages plus four postseason
@@ -397,11 +456,12 @@ schedule, which is three tables so that no fact is stated twice: `VENUES` (419 p
 once, with `src` giving the precision — `r` the facility, `z` the ZIP the results page printed, `c` the
 town it named), `MEETS` (712 meets keyed by their own TFRRS id, because two different meets can share a
 name; each carries date, season and a `VENUES` index), and `SCHED` (school name → the meet ids its own
-TFRRS results page shows it at, in date order — 3,241 appearances across 150 of the 161 schools with a
+TFRRS results page shows it at, in date order — 3,241 appearances across 150 of the 227 schools with a
 page).
 
-`NO_TRACK` in `assets/data.js` holds all **17** schools removed under the both-sports rule — three of
-them Division 1 (Mercer, Tennessee Tech and Jacksonville State), three D2, ten D3 and one NAIA. All of
+`NO_TRACK` in `assets/data.js` holds all **29** schools removed under the both-sports rule — seven of
+them Division 1 (Mercer, Tennessee Tech, Jacksonville State, Temple, Canisius, Loyola Maryland and
+George Washington), four D2, fifteen D3, two NAIA and one NCCAA. All of
 them keep their complete records — tier, cross country, cost, coach — plus a `why` naming both signals
 that agreed, so the removal is reversible with one line of data if a cross-country-only program ever
 becomes acceptable.
@@ -412,6 +472,12 @@ went back into `SCHOOLS`, `REMOVED` and `NO_TRACK` and the `was:` tags came off.
 archiving rather than deleting, stated as an outcome rather than a plan: nothing had to be re-measured and
 no page had to be rebuilt. Division is a column and a filter on every table on the site, so the
 Division-1-only view is still one click away — it is just no longer the board.
+
+A school in two metros carries `metro` as an **array whose first entry is the home metro** and
+`miBy: { metro: miles }` alongside `mi`, so each page can print its own distance to the same campus.
+`assets/app.js` exposes `metrosOf`, `homeMetro`, `inMetro(s, m)`, `miIn(s, m)` and `metroLabel(s)`, and
+every page filters and sorts through those rather than comparing `metro` to a string — that comparison
+is what silently dropped shared rows before the helpers existed.
 
 `mi` is approximate **driving** distance from the metro center; `lat`/`lon` are approximate
 main-campus coordinates used only to place a map pin. The two are different measurements, so a

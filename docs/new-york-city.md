@@ -1,7 +1,18 @@
 # College Search — New York City (20 mile radius + all of Long Island)
 
-XC/Track + Computer Science. Last updated 2026-09-20 (v10 — a new 15:40 5K cross country PR, and
-the whole board re-anchored on it)
+XC/Track + Computer Science. Last updated 2026-09-20 (v11 — one row added by the metro sweep, and
+Newark now has a page of its own)
+
+> **This metro gained one row and lost none, and nine of its rows now appear twice on purpose.** The
+> federal candidate sweep that added eight metros to the board found one college inside this ring that
+> this document had never listed: **Pratt Institute** (8.6 mi, D3, Atlantic East), at *Caution* on the
+> published ladder — he would arrive at or ahead of their #1. That takes the metro to **29 schools, six
+> of them target tier**, with the D3 block going from eleven to twelve. **No tier here changed.** The
+> second change is presentational and deliberate: **Newark now has its own page**, and nine of the rows
+> on it are these rows — NJIT, Seton Hall, Fairleigh Dickinson, Saint Peter's, Caldwell, Felician, Kean,
+> Rutgers–Newark and Stevens — measured from downtown Newark instead of Midtown, where NJIT reads 0.8
+> miles rather than 12 and Rutgers–Newark half a mile rather than 13. Each row names whichever centre is
+> actually nearer as its home metro; the overlap is the point, not a duplication.
 
 > **He has run 15:40 for 5K cross country**, and the whole board is re-anchored on it. The 8K comes
 > down 24 seconds to **25:36** and the 10K 31 seconds to **32:40**; at this mark the board's own
@@ -556,13 +567,13 @@ schools that held it are both at Target now, and everything else here is a Cauti
 
 **Verify — unmeasured (0).** Nothing. Every program in this metro has a 2025 cross country result.
 
-**Caution — he arrives at or ahead of their #1 (22).** Everything else: all seven D2 schools, ten of
-the eleven D3 schools, and five of the ten D1s — Fairleigh Dickinson, LIU, Manhattan, Saint
-Peter's, Wagner.
+**Caution — he arrives at or ahead of their #1 (23).** Everything else: all seven D2 schools, eleven of
+the twelve D3 schools, and five of the ten D1s — Fairleigh Dickinson, LIU, Manhattan, Saint
+Peter's, Wagner. **Pratt Institute** is the newest of them, added by the metro sweep.
 
 **Cut on results (2).** Hofstra · Iona
 
-Twenty-eight schools, **six of them target tier**, none left at Verify. The measurement sweep moved
+Twenty-nine schools, **six of them target tier**, none left at Verify. The measurement sweep moved
 thirty schools out of Verify and only two of them landed above Caution — NJIT and Stony Brook — while
 Columbia came back from the cut list and Wagner went the other way, and the both-sports rule then took
 ten more off the board entirely (§2h). The honest summary is that this metro's board is now fully
@@ -644,7 +655,7 @@ Stevens $41,346, Felician $40,045, Stony Brook ≈$40,594, Rutgers–Newark ≈$
 the top, with NJIT ≈$34,194 no longer in the middle at all. Seven CUNY campuses sit between ≈$10,900
 and ≈$13,700, and they are now the only genuinely cheap options here: **the median net price in this
 metro moves from $19,244 to $22,969** once every public is put on the rate he would pay, the largest
-shift of the three metros. The two most expensive schools in v4, Yeshiva ($49,965) and Sarah Lawrence
+shift of any metro on the board. The two most expensive schools in v4, Yeshiva ($49,965) and Sarah Lawrence
 ($41,437), are off the board under the both-sports rule (§2h), which is the one respect in which that
 rule made this page cheaper. The remaining top-to-bottom gap is still a six-figure difference over
 four years and no partial athletic scholarship in men's distance running comes close to closing it.

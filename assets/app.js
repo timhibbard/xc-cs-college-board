@@ -7,14 +7,19 @@
 })();
 
 function initChrome(current) {
+  /* One link per metro, straight off METROS in its declared order, so adding a ring means
+     adding a page and a METROS entry and nothing else. `nav` is the short label where the
+     full one is too long for a menu. */
+  const metroLinks = Object.entries(METROS).map(([id, m]) =>
+    `<a href="${m.page}"${current === id ? ' aria-current="page"' : ''}>${m.nav ?? m.label}</a>`
+  ).join('\n        ');
+
   const nav = `
     <header class="site"><div class="wrap">
       <a class="brand" href="index.html">Recruiting Board <span class="pill">XC / TF + CS</span></a>
       <nav class="site">
         <a href="index.html"${current === 'index' ? ' aria-current="page"' : ''}>Overview</a>
-        <a href="greenville.html"${current === 'greenville' ? ' aria-current="page"' : ''}>Greenville</a>
-        <a href="new-york.html"${current === 'nyc' ? ' aria-current="page"' : ''}>New York</a>
-        <a href="chicago.html"${current === 'chicago' ? ' aria-current="page"' : ''}>Chicago</a>
+        ${metroLinks}
         <a href="methodology.html"${current === 'method' ? ' aria-current="page"' : ''}>Methodology</a>
       </nav>
       <button id="theme" type="button" aria-label="Toggle color theme">Theme</button>
@@ -48,6 +53,19 @@ const gapOf = (s) => s.b5000 == null ? null : ATHLETE.proj5000 - s.b5000;
 
 const TIER_ORDER = ['target', 'deep', 'verify', 'caution'];
 const link = (s) => `school.html?s=${encodeURIComponent(s.slug)}`;
+
+/* ---------- metros a row belongs to ----------
+
+   The rules overlap, and pretending they don't would hide real options: Jersey City is
+   3.3 driving miles from downtown Newark and 10.1 from Midtown, so it belongs on both
+   pages. Such a row carries `metro` as an array — first entry is the page it calls home,
+   which is the one the Overview and the school page name — and `miBy` carries the miles
+   to each centre. Single-metro rows keep a plain string and their `mi`. */
+const metrosOf = (s) => Array.isArray(s.metro) ? s.metro : [s.metro];
+const homeMetro = (s) => metrosOf(s)[0];
+const inMetro = (s, m) => m === 'all' || metrosOf(s).includes(m);
+const miIn = (s, m) => (s.miBy && s.miBy[m] != null) ? s.miBy[m] : s.mi;
+const metroLabel = (s) => metrosOf(s).map(m => METROS[m].label).join(' / ');
 
 /* ---------- net cost, on the residency basis that applies to him ----------
 
@@ -117,8 +135,9 @@ function tierLegend() {
 /* ---------- master table ---------- */
 const COLS = [
   { key: 'name',   label: 'School',   sort: (a, b) => a.name.localeCompare(b.name) },
-  { key: 'metro',  label: 'Metro',    sort: (a, b) => a.metro.localeCompare(b.metro) },
-  { key: 'mi',     label: 'Mi',       num: true, sort: (a, b) => a.mi - b.mi },
+  { key: 'metro',  label: 'Metro',    sort: (a, b) => metroLabel(a).localeCompare(metroLabel(b)) },
+  { key: 'mi',     label: 'Mi',       num: true,
+    sort: (a, b) => miIn(a, filters.metro) - miIn(b, filters.metro) },
   { key: 'div',    label: 'Div',      sort: (a, b) => a.div.localeCompare(b.div) },
   { key: 'conf',   label: 'Conference', sort: (a, b) => a.conf.localeCompare(b.conf) },
   { key: 'cs',     label: 'CS',       sort: (a, b) => a.cs.localeCompare(b.cs) },
@@ -162,7 +181,7 @@ function activeCols() {
 
 function visible() {
   return SCHOOLS.filter(s =>
-    (filters.metro === 'all' || s.metro === filters.metro) &&
+    inMetro(s, filters.metro) &&
     (filters.div === 'all' || s.div === filters.div) &&
     (filters.tier === 'all' || s.tier === filters.tier) &&
     (filters.q === '' || (s.name + ' ' + s.city + ' ' + s.conf).toLowerCase().includes(filters.q))
@@ -179,8 +198,8 @@ function renderTable() {
   const tb = document.querySelector('#master tbody');
   tb.innerHTML = rows.map(s => `<tr>
       <td class="c-name"><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span>${igLink(s)}${coachIgLink(s)}</td>
-      ${showMetroCol ? `<td>${METROS[s.metro].label}</td>` : ''}
-      <td class="num">${s.mi}</td>
+      ${showMetroCol ? `<td>${metroLabel(s)}</td>` : ''}
+      <td class="num">${miIn(s, filters.metro)}</td>
       <td>${s.div}</td>
       <td class="c-conf">${s.conf}</td>
       <td class="${s.cs === 'verified' ? 'cs-ok' : 'cs-no'}">${s.cs === 'verified' ? 'Verified' : s.cs === 'none' ? 'None' : 'Confirm'}</td>
@@ -196,9 +215,7 @@ function renderTable() {
       <td class="rownote"><div class="notebox">${s.note ?? ''}</div></td>
     </tr>`).join('');
 
-  const pool = filters.metro === 'all'
-    ? SCHOOLS.length
-    : SCHOOLS.filter(s => s.metro === filters.metro).length;
+  const pool = SCHOOLS.filter(s => inMetro(s, filters.metro)).length;
   document.querySelector('#count').textContent = `${rows.length} of ${pool} schools`;
 
   document.querySelectorAll('#master thead th[data-key]').forEach(th => {
@@ -408,14 +425,15 @@ function initMap(metro) {
     keyboard: false,
   }).addTo(map).bindPopup(
     `<b>${M.centerLabel ?? M.label}</b><br>Center of the ${M.radiusMi} mile radius` +
-    (M.alsoInRange ? `<br>${M.alsoInRange.note}` : '')
+    (M.alsoInRange ? `<br>${M.alsoInRange.note}` : '') +
+    (M.ruleNote ? `<br>${M.ruleNote}` : '')
   );
 
   /* Fit the shape AND every pin, not just the shape: Long Island runs well past the circle,
      and several Greenville pins sit on estimated mileage that can land outside the ring. */
   const bounds = ring.getBounds();
   [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM]
-    .filter(s => s.metro === metro && s.lat != null)
+    .filter(s => inMetro(s, metro) && s.lat != null)
     .forEach(s => bounds.extend([s.lat, s.lon]));
   map.fitBounds(bounds, { padding: [12, 12] });
 
@@ -425,15 +443,15 @@ function initMap(metro) {
   window.renderMap = function () {
     layer.clearLayers();
 
-    const kept = visible().filter(s => s.metro === metro)
+    const kept = visible().filter(s => inMetro(s, metro))
       .map(s => ({ ...s, kind: s.tier }));
 
     let extra = [];
     if (showCut && showCut.checked) {
       extra = [
-        ...REMOVED.filter(r => r.metro === metro).map(r => ({ ...r, kind: 'cut' })),
-        ...NO_TRACK.filter(r => r.metro === metro).map(r => ({ ...r, kind: 'notrack' })),
-        ...NO_PROGRAM.filter(r => r.metro === metro).map(r => ({ ...r, kind: 'none' })),
+        ...REMOVED.filter(r => inMetro(r, metro)).map(r => ({ ...r, kind: 'cut' })),
+        ...NO_TRACK.filter(r => inMetro(r, metro)).map(r => ({ ...r, kind: 'notrack' })),
+        ...NO_PROGRAM.filter(r => inMetro(r, metro)).map(r => ({ ...r, kind: 'none' })),
       ];
     }
     const GLYPH = { cut: '✕', notrack: '⊗', none: '⊘' };
@@ -451,8 +469,8 @@ function initMap(metro) {
       const offText = `<div class="mp-why">${s.why}</div>`;
 
       const body = OFF.has(s.kind)
-        ? `<div class="mp-meta">${s.div ?? ''}${s.conf ? ' ' + s.conf : ''}${s.mi != null ? ' &middot; ' + s.mi + ' mi' : ''}</div>${offText}`
-        : `<div class="mp-meta">${s.city} &middot; ${s.div} ${s.conf} &middot; ${s.mi} mi</div>
+        ? `<div class="mp-meta">${s.div ?? ''}${s.conf ? ' ' + s.conf : ''}${s.mi != null ? ' &middot; ' + miIn(s, metro) + ' mi' : ''}</div>${offText}`
+        : `<div class="mp-meta">${s.city} &middot; ${s.div} ${s.conf} &middot; ${miIn(s, metro)} mi</div>
            ${s.xc
              ? `<div class="mp-line">In their scoring seven he is <b>#${s.xc.slot ?? '&mdash;'}</b>${
                  /* A team that never finished seven has no 7th man to measure against, so the

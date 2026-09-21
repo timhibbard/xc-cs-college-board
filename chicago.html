@@ -11,7 +11,7 @@
 <body>
 <main class="wrap">
 
-  <p class="eyebrow">Metro 3 of 3 · 20 mile radius · all divisions</p>
+  <p class="eyebrow">Metro 11 of 11 · 20 mile radius · all divisions</p>
   <h1>Chicago</h1>
   <p class="lede">
     This is by far the smallest of the three boards: <strong>eleven schools</strong>, every one of them
@@ -232,11 +232,14 @@
 
   <h2 id="notrack">Cross country but no men's track</h2>
   <p class="prose">
-    One school in this metro sponsors men's cross country and no men's <em>outdoor track</em>, and
-    that is enough to remove it: he wants to run both. Checked twice, against the sport list the school
+    Two schools in this metro sponsor men's cross country and no men's <em>outdoor track</em>, and
+    that is enough to remove them: he wants to run both. Checked twice, against the sport list each school
     publishes itself and against TFRRS for any 2026 men's outdoor mark at any distance. Chicago got off
     lightly here &mdash; New York lost ten schools to the same rule. <strong>No Division 1 school in this
-    metro sponsors cross country without men's track.</strong>
+    metro sponsors cross country without men's track.</strong> The second row is
+    <strong>Moody Bible</strong>, 1.6 miles from the Loop, which a later metro sweep found had never
+    been on this board at all: cross country for both genders, no track, and not an NCAA or NAIA member
+    either &mdash; it races the NCCAA, where he would have arrived as their #1 by nearly two minutes.
     <a href="methodology.html#both-sports">The rule, written out</a>.
   </p>
   <div class="table-scroll">
@@ -268,7 +271,7 @@
   <div class="prose">
     <p>
       <strong>His 4:01 clears the last qualifying time in all eleven of these conference finals, and
-      scores &mdash; top eight &mdash; in eight of them</strong>, the highest hit rate of the three metros.
+      scores &mdash; top eight &mdash; in eight of them</strong>, the highest hit rate of the three metros that carry 1500 data at all.
       One caveat on the denominator first: <strong>Concordia Chicago entered nobody in the 1500 at the CCIW
       meet</strong>, so its row is a comparison against a field its own team did not contest. Then look at
       which eight:
@@ -338,7 +341,7 @@
 initChrome('chicago');
 filters.metro = 'chicago';
 
-const mine = SCHOOLS.filter(s => s.metro === 'chicago');
+const mine = SCHOOLS.filter(s => inMetro(s, 'chicago'));
 document.getElementById('k-n').textContent = mine.length;
 document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
 document.getElementById('k-dp').textContent = mine.filter(s => s.tier === 'deep').length;
@@ -348,24 +351,24 @@ document.getElementById('nw-why').innerHTML = '<b>Northwestern.</b> ' + np('Nort
 document.getElementById('legend-slot').innerHTML = tierLegend();
 document.getElementById('map-legend').innerHTML = mapLegend();
 
-document.querySelector('#removed tbody').innerHTML = REMOVED.filter(r => r.metro === 'chicago').map(r =>
+document.querySelector('#removed tbody').innerHTML = REMOVED.filter(r => inMetro(r, 'chicago')).map(r =>
   `<tr><td><a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a></td><td>${r.div}</td>
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
 
 const TIERLBL = { target: 'Target', deep: 'Deep', verify: 'Verify', caution: 'Caution' };
 document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK
-  .filter(r => r.metro === 'chicago')
-  .sort((a, b) => a.mi - b.mi)
+  .filter(r => inMetro(r, 'chicago'))
+  .sort((a, b) => (miIn(a, 'chicago') ?? 999) - (miIn(b, 'chicago') ?? 999))
   .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
-   <td>${r.div}</td><td class="num">${r.mi ?? '\u2014'}</td>
+   <td>${r.div}</td><td class="num">${miIn(r, 'chicago') ?? '\u2014'}</td>
    <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
    <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
 
 document.querySelector('#noxc-tbl tbody').innerHTML = NO_PROGRAM
-  .filter(r => r.metro === 'chicago')
-  .sort((a, b) => a.mi - b.mi)
+  .filter(r => inMetro(r, 'chicago'))
+  .sort((a, b) => (miIn(a, 'chicago') ?? 999) - (miIn(b, 'chicago') ?? 999))
   .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
-   <td>${r.conf ?? '\u2014'}</td><td class="num">${r.mi ?? '\u2014'}</td>
+   <td>${r.conf ?? '\u2014'}</td><td class="num">${miIn(r, 'chicago') ?? '\u2014'}</td>
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
 
 initMap('chicago');

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boston — sixteen schools within 20 miles</title>
+<meta name="description" content="Every college within 20 miles of downtown Boston with men's cross country, men's outdoor track and a computer science degree, in any division. Sixteen schools, and all three of the best fits admit 11% or fewer.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">20 mile radius · all divisions · new in this pass</p>
+  <h1>Boston</h1>
+  <p class="lede">
+    Sixteen schools, which is more than any metro on this board except Greenville, and <strong>twelve of them are Division 3</strong>. The usual problem is inverted here. The running works at the top &mdash; three target-tier programs, more than any new metro in this pass &mdash; but those three are <strong>MIT, Harvard and Tufts</strong>, which admit 5%, 4% and 11% of applicants. Below them the depth falls away fast: he would arrive as the <strong>#1 man at ten of the sixteen</strong>, and five never finished seven runners in a championship at all. In Boston this is an admissions decision wearing a running decision's clothes.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="k-label">Schools inside 20 mi</div><div class="k-value" id="k-n">&mdash;</div><div class="k-sub">3 D1, 1 D2, 12 D3</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">&mdash;</div><div class="k-sub">MIT, Harvard and Tufts</div></div>
+    <div class="kpi"><div class="k-label">He would be their #1 at</div><div class="k-value" id="k-lead">&mdash;</div><div class="k-sub">Ten of the sixteen</div></div>
+    <div class="kpi"><div class="k-label">Median net price</div><div class="k-value">$31,033</div><div class="k-sub">The most expensive metro on the board</div></div>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">All three fits are elite-admit schools, and two of them are the cheapest rows here</span>
+    <p><strong>MIT</strong> is the strongest single row in this pass: <b>35.2%</b> of its bachelor's degrees are in computer science &mdash; the highest share on the whole board &mdash; and across the NEWMAC championship, the Division 3 East regional and Division 3 nationals he lands as their <b>6th man</b>, 22 seconds inside their seven. Admit rate <b>5%</b>, average net price <b>$20,111</b>.</p>
+    <p><strong>Harvard</strong> measures almost identically to its seventh man &mdash; six seconds inside it across the Ivy League championship, the Division 1 Northeast regional and the national championship &mdash; at a <b>4%</b> admit rate and <b>$19,066</b>, the lowest net price in range. <strong>Tufts</strong> is the third: four championships on file including Division 3 nationals, 15 seconds inside their seventh, <b>11%</b> admit, and <b>$39,998</b>, which is nearly the most expensive row here. Need-based aid is why the two hardest admissions in the metro are also its two cheapest rows.</p>
+    <p>The two <em>deep</em> rows are the near misses, and both are Division 1: <strong>Northeastern</strong> is <b>8 seconds</b> outside its seventh man across the IC4A, the CAA championship and the Division 1 regional, and <strong>Boston College</strong> is <b>31</b> outside in the ACC. Neither is out of reach in two years; both are on the wrong side of the line today.</p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">What caution means in this metro</span>
+    <p>Eleven of the sixteen rows are <em>caution</em>, and that word is doing real work here: at ten of them he would be the fastest man on the roster on arrival. <strong>Five programs never finished seven runners</strong> in a 2025 championship &mdash; Lesley, UMass Boston, Lasell, Curry and Regis &mdash; so there is no seventh man to measure against and the ladder falls back to their last finisher. Lesley is the extreme: he would arrive <b>184 seconds</b> ahead of their #1.</p>
+    <p><strong>Wentworth</strong> is the row to understand before writing the metro off. It is <b>23.9%</b> computer science, 2.7 miles from downtown, and admits <b>91%</b> &mdash; the accessible version of Boston CS &mdash; but he would arrive as their <b>#2 man</b>, two seconds behind their #1 and 167 seconds inside their seventh. That is a place to be the team rather than join one, and at <b>$34,170</b> it is not cheap.</p>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">What is not on this page yet</span>
+    <p>Every tier on this page comes from <a href="methodology.html#tier-ladder">the published ladder</a> run over 2025 championship results &mdash; conference, regional and national meets only. Three things the older metro pages have and this one does not, yet: <b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; <b>no coach names, emails or Instagram handles</b>; and <b>no meet maps</b>. The one screen that is complete is the both-sports rule &mdash; men's outdoor track sponsorship was checked school by school against the sport list each athletics site publishes itself, because TFRRS cannot answer it.</p>
+  </div>
+
+
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every school in this metro, plotted against the 20-mile radius</div>
+    <p class="chart-sub">Sixteen pins, almost all of them inside the city and along the Green Line corridor, and the three that matter most &mdash; MIT, Harvard and Tufts &mdash; sit within six miles of the centre. Distance is not the constraint in Boston; admissions is.</p>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools that are off the board (cut, no men's track, no men's program)</label>
+      <span class="count" id="map-count"></span>
+    </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 20-mile
+      radius from downtown Boston, while the table's "Mi" column is driving distance &mdash; so a school
+      right on the line can plot just outside it. Filters below drive this map too.
+    </p>
+  </div>
+
+  <h2>The ones worth real effort</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>MIT</strong> &mdash; 2.2 miles out, D3 NEWMAC, and the best CS row on the board at
+        <b>35.2%</b> of degrees. He is their <strong>6th man</strong>, 22 seconds inside a seven that
+        spans 73 seconds, measured across three championships including D3 nationals. Net price
+        <b>$20,111</b> against a <b>5%</b> admit rate. Division 3, so there is no athletic money at
+        all &mdash; the whole conversation is admissions, and a coach's support in that process is the
+        only lever that exists.</li>
+      <li><strong>Harvard</strong> &mdash; 5.5 miles out, Ivy League, <b>10.3%</b> CS, and the
+        cheapest row in the metro at <b>$19,066</b> on need-based aid. He lands <b>six seconds inside
+        their seventh man</b> averaged over the Ivy championship, the Division 1 Northeast regional
+        and the national championship, which is as close to exactly-the-right-place as this board
+        measures. The Ivy League offers no athletic scholarships either; the admit rate is
+        <b>4%</b>.</li>
+      <li><strong>Tufts</strong> &mdash; 6 miles, NESCAC, <b>12%</b> CS, four championships on file
+        and 15 seconds inside their seventh. The most plausible of the three on admissions at
+        <b>11%</b>, and the most expensive at <b>$39,998</b>.</li>
+    </ol>
+    <p>
+      <strong>Two more belong here with an asterisk.</strong> <strong>Northeastern</strong> (D1 CAA,
+      2.5 mi, 16% CS, $30,915) and <strong>Boston College</strong> (D1 ACC, 7 mi, $41,704) are both
+      <em>deep</em> rather than thin &mdash; 8 and 31 seconds outside their sevenths &mdash; which
+      means a real training environment where he would not score early. Northeastern's co-op program
+      is a CS-specific reason to take it seriously. <strong>Bentley</strong> is the metro's only
+      Division 2 program, so it is the only place partial athletic money exists inside 20 miles
+      &mdash; and he would arrive 58 seconds ahead of their #1, which is the trade this metro keeps
+      offering.
+    </p>  </div>
+
+  <h2>Full list</h2>
+  <div id="legend-slot"></div>
+  <div class="controls">
+    <label for="f-tier">Fit</label>
+    <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="deep">Deep</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
+    <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="table-scroll">
+    <table id="master">
+      <caption>Miles are approximate driving distance from downtown Boston. Click any school for its full page.
+        <em>His slot in their 7</em> comes from 2025 championship cross country results;
+        <em>vs their 7th</em> is negative when he is inside the seven, and blank where a team never
+        finished seven runners. Click a header to sort.</caption>
+      <thead></thead><tbody></tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px">
+    <strong>Thirteen of these sixteen schools cannot offer him a dollar of athletic money.</strong> Twelve are Division 3, where athletic aid does not exist by rule, and Harvard's Ivy League does not award it either; the only partial-aid door inside 20 miles is <strong>Bentley</strong> in Division 2. That makes the metro's <b>$31,033</b> median net price &mdash; the highest of any metro on this board &mdash; mostly a question about need-based and merit aid. The two cheapest rows are <strong>Harvard at $19,066</strong> and <strong>MIT at $20,111</strong>, both driven by need-based aid at schools that admit under 6%; the cheapest accessible rows are <strong>Emmanuel at $26,706</strong>, <strong>Regis at $27,477</strong> and <strong>Lasell at $27,511</strong>, and all three are caution tier. <strong>UMass Boston is the only public in range</strong>, so it is the only row where the residency question that dominates Chicago and Greenville arises at all &mdash; its $39,924 already carries the non-resident premium <a href="methodology.html#residency">this board adds by hand</a>.
+  </p>
+
+  <h2 id="notrack">Cross country but no men's track</h2>
+  <p class="prose">One school in this metro sponsors men's cross country and no men's <em>outdoor track</em>, which is enough to remove it: he wants both seasons. <strong>Emerson</strong> lists men's and women's cross country on its athletics site and no track program for anyone.
+    <a href="methodology.html#both-sports">The rule, written out</a>.</p>
+  <div class="table-scroll">
+    <table id="notrack-tbl"><thead><tr><th scope="col">School</th><th scope="col">Division</th>
+      <th scope="col" class="num">Mi</th><th scope="col">Tier it held on cross country</th>
+      <th scope="col">What it does and does not sponsor</th></tr></thead><tbody></tbody></table>
+  </div>
+
+
+  <div class="prose">
+    <p><a href="methodology.html">Methodology and caveats &rarr;</a></p>
+  </div>
+
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('boston');
+filters.metro = 'boston';
+
+const mine = SCHOOLS.filter(s => inMetro(s, 'boston'));
+document.getElementById('k-n').textContent = mine.length;
+document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
+document.getElementById('k-lead').textContent = mine.filter(s => s.xc && s.xc.slot <= 1.5).length;
+document.getElementById('legend-slot').innerHTML = tierLegend();
+document.getElementById('map-legend').innerHTML = mapLegend();
+
+const TIERLBL = { target: 'Target', deep: 'Deep', verify: 'Verify', caution: 'Caution' };
+const byMi = (a, b) => (miIn(a, 'boston') ?? 999) - (miIn(b, 'boston') ?? 999);
+const miCell = r => miIn(r, 'boston') ?? '\u2014';
+
+document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => inMetro(r, 'boston'))
+  .sort(byMi)
+  .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
+   <td>${r.div}</td><td class="num">${miCell(r)}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
+
+initMap('boston');
+initTable();
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philadelphia — fourteen schools within 20 miles</title>
+<meta name="description" content="Every college within 20 miles of Philadelphia City Hall with men's cross country, men's outdoor track and a computer science degree. Fourteen schools, four target tier, and the first email is not the Ivy.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">20 mile radius · all divisions · new in this pass</p>
+  <h1>Philadelphia</h1>
+  <p class="lede">
+    Fourteen schools and <strong>four of them target tier</strong>, the best hit rate of any metro in this pass &mdash; and the one to email first is not the Ivy. <strong>La Salle</strong> is Division 1 in the Atlantic 10, 6.9 miles from City Hall, admits <strong>97%</strong> of applicants, costs <strong>$19,409</strong>, and he lands as their seventh man nine seconds inside it. Penn, Haverford and Swarthmore are the other three targets and between them admit 5%, 12% and 7%. The two names most people would start with are both off the board: <strong>Villanova is cut</strong> on the measurement and <strong>Temple</strong> runs cross country with no men's track.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="k-label">Schools inside 20 mi</div><div class="k-value" id="k-n">&mdash;</div><div class="k-sub">3 D1, 3 D2, 8 D3</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">&mdash;</div><div class="k-sub">La Salle, Penn, Haverford, Swarthmore</div></div>
+    <div class="kpi"><div class="k-label">He would be their #1 at</div><div class="k-value" id="k-lead">&mdash;</div><div class="k-sub">Half the list</div></div>
+    <div class="kpi"><div class="k-label">Median net price</div><div class="k-value">$27,316</div><div class="k-sub">Cheapest of the three big Northeast metros</div></div>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">La Salle is the most unusual row in this pass</span>
+    <p>A Division 1 program in the Atlantic 10 that admits <b>97%</b> of applicants, 6.9 miles from City Hall, at an average net price of <b>$19,409</b> &mdash; and on the running it is a genuine fit rather than a consolation: across the A10 championship and the Division 1 Mid-Atlantic regional he lands as their <b>7th man, nine seconds inside</b> their scoring seven, 79 seconds behind their #1. That combination &mdash; Division 1, open admissions, sub-$20,000 and a real slot &mdash; does not appear anywhere else on this board.</p>
+    <p>Two things to check before ranking it. Its computer science share is <b>3.5%</b> of degrees, which is thin, so ask what the actual course catalogue and faculty look like; and it reports <b>no SAT range</b> at all, which usually means test-optional admissions with a small reporting sample rather than anything sinister.</p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">Villanova and Temple, the two obvious names, are both unavailable</span>
+    <p><strong>Villanova</strong> is cut, and not narrowly: their championship seven spans <b>68 seconds</b> and he arrives <b>73 seconds outside the back of it</b>, 141 behind their #1. A program that has won national titles in this event; there is no soft back end to slot into.</p>
+    <p><strong>Temple</strong> is the more frustrating row. On the running it is a <em>target</em> &mdash; their 6th or 7th man, 64 seconds behind their #1 and 31 inside their seventh across the American championship and the Division 1 regional &mdash; but its athletics site lists men's cross country, women's cross country and <b>women's</b> track and field. Men's track and field is gone, which matches the sports Temple cut in 2013. It is on the no-track list below rather than in the table, and it is the first row to reopen if cross country alone ever becomes acceptable.</p>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">What is not on this page yet</span>
+    <p>Every tier on this page comes from <a href="methodology.html#tier-ladder">the published ladder</a> run over 2025 championship results &mdash; conference, regional and national meets only. Three things the older metro pages have and this one does not, yet: <b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; <b>no coach names, emails or Instagram handles</b>; and <b>no meet maps</b>. The one screen that is complete is the both-sports rule &mdash; men's outdoor track sponsorship was checked school by school against the sport list each athletics site publishes itself, because TFRRS cannot answer it.</p>
+  </div>
+
+
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every school in this metro, plotted against the 20-mile radius</div>
+    <p class="chart-sub">Fourteen pins, tightly packed along the Main Line and the Delaware corridor. The four targets are spread right across the ring &mdash; Penn at 1.9 miles, La Salle at 6.9, Haverford at 10.4 and Swarthmore at 16.3 &mdash; so no single part of this metro is the answer.</p>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools that are off the board (cut, no men's track, no men's program)</label>
+      <span class="count" id="map-count"></span>
+    </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations. The dashed circle is a straight-line 20-mile
+      radius from City Hall, while the table's "Mi" column is driving distance &mdash; so a school
+      right on the line can plot just outside it. Filters below drive this map too.
+    </p>
+  </div>
+
+  <h2>The ones worth real effort</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>La Salle</strong> &mdash; D1 Atlantic 10, 6.9 mi, <b>97%</b> admit,
+        <b>$19,409</b>, and he is their <strong>7th man, 9 seconds inside</strong> the seven. The
+        single most actionable row in this pass. Division 1 means equivalency-share athletic money
+        exists; ask what a partial share looks like and what the CS department actually offers.</li>
+      <li><strong>Penn</strong> &mdash; 1.9 miles from City Hall, Ivy League, <b>7.3%</b> CS,
+        <b>$28,699</b> on need-based aid, <b>5%</b> admit. He is their <strong>5th man</strong>,
+        seven seconds inside their seven &mdash; a stronger slot than La Salle's, behind a much
+        harder door. No athletic scholarships in the Ivy League.</li>
+      <li><strong>Haverford</strong> and <strong>Swarthmore</strong> &mdash; the Centennial
+        Conference pair, 10.4 and 16.3 miles out, <b>9.5%</b> and <b>11.4%</b> CS, <b>$25,314</b>
+        and <b>$23,149</b>, admitting <b>12%</b> and <b>7%</b>. Haverford is the better running fit
+        of the two: their <strong>4th man</strong>, 45 seconds inside their seven. Both are Division
+        3, so admissions and merit aid are the only levers.</li>
+    </ol>
+    <p>
+      <strong>Three more with an asterisk.</strong> <strong>Saint Joseph's</strong> is the closest
+      call on the entire board &mdash; <b>one second</b> outside their seventh man, which is
+      <em>deep</em> by a rounding error, at a 89% admit rate and $29,689. <strong>Penn State
+      Abington</strong> has the highest CS share on the page at <b>17.6%</b> and admits 97%, but he
+      would arrive 13 seconds ahead of their #1. And <strong>Thomas Jefferson</strong> and
+      <strong>Rosemont</strong> sit at <em>Verify</em> meaning unmeasured, not borderline: Jefferson's
+      only 2025 championship was the Division 2 national meet with a single individual qualifier, and
+      Rosemont's most recent men's cross country roster is 2024 with no 2025 schedule and no
+      appearance at its conference championship. Confirm Rosemont still fields a team before
+      anything else.
+    </p>  </div>
+
+  <h2>Full list</h2>
+  <div id="legend-slot"></div>
+  <div class="controls">
+    <label for="f-tier">Fit</label>
+    <select id="f-tier"><option value="all">All</option><option value="target">Target</option><option value="deep">Deep</option><option value="verify">Verify</option><option value="caution">Caution</option></select>
+    <input type="search" id="f-q" placeholder="Search school, city, conference" aria-label="Search schools">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="table-scroll">
+    <table id="master">
+      <caption>Miles are approximate driving distance from City Hall. Click any school for its full page.
+        <em>His slot in their 7</em> comes from 2025 championship cross country results;
+        <em>vs their 7th</em> is negative when he is inside the seven, and blank where a team never
+        finished seven runners. Click a header to sort.</caption>
+      <thead></thead><tbody></tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px">
+    <strong>Three Division 2 programs are the only partial-athletic-money doors inside 20 miles</strong> &mdash; Thomas Jefferson, Chestnut Hill and Holy Family &mdash; and <strong>Holy Family is also the cheapest row on the page at $13,143</strong>, though he would arrive 338 seconds ahead of their #1. Three Division 1 programs (Penn, La Salle, Saint Joseph's) have equivalency shares and academic aid; the eight Division 3 programs have neither by rule. The metro median is <b>$27,316</b>, and the practical ladder among the fits is <strong>La Salle at $19,409</strong>, <strong>Swarthmore at $23,149</strong>, <strong>Haverford at $25,314</strong> and <strong>Penn at $28,699</strong>. <strong>Rutgers&ndash;Camden</strong> is the one public in range and the only row where the residency premium applies &mdash; its $38,257 already includes it.
+  </p>
+
+  <h2>Cut as walk-on</h2>
+  <p class="prose">One school, and the measurement is not close. Click through for the full page: the championship seven that decided it is there, timed runner by runner.</p>
+  <div class="table-scroll">
+    <table id="removed"><thead><tr><th scope="col">School</th><th scope="col">Division</th>
+      <th scope="col" class="num">Mi</th><th scope="col">Why it was cut</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2 id="notrack">Cross country but no men's track</h2>
+  <p class="prose">Two schools here sponsor men's cross country and no men's <em>outdoor track</em>. One of them, Temple, would otherwise be a target-tier Division 1 row 2.3 miles from City Hall &mdash; which makes this rule the most expensive one on the page. Sponsorship was checked against the sport list each athletics site publishes itself.
+    <a href="methodology.html#both-sports">The rule, written out</a>.</p>
+  <div class="table-scroll">
+    <table id="notrack-tbl"><thead><tr><th scope="col">School</th><th scope="col">Division</th>
+      <th scope="col" class="num">Mi</th><th scope="col">Tier it held on cross country</th>
+      <th scope="col">What it does and does not sponsor</th></tr></thead><tbody></tbody></table>
+  </div>
+
+
+  <div class="prose">
+    <p><a href="methodology.html">Methodology and caveats &rarr;</a></p>
+  </div>
+
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('philadelphia');
+filters.metro = 'philadelphia';
+
+const mine = SCHOOLS.filter(s => inMetro(s, 'philadelphia'));
+document.getElementById('k-n').textContent = mine.length;
+document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
+document.getElementById('k-lead').textContent = mine.filter(s => s.xc && s.xc.slot <= 1.5).length;
+document.getElementById('legend-slot').innerHTML = tierLegend();
+document.getElementById('map-legend').innerHTML = mapLegend();
+
+const TIERLBL = { target: 'Target', deep: 'Deep', verify: 'Verify', caution: 'Caution' };
+const byMi = (a, b) => (miIn(a, 'philadelphia') ?? 999) - (miIn(b, 'philadelphia') ?? 999);
+const miCell = r => miIn(r, 'philadelphia') ?? '\u2014';
+
+document.querySelector('#removed tbody').innerHTML = REMOVED.filter(r => inMetro(r, 'philadelphia'))
+  .sort(byMi)
+  .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
+   <td>${r.div}</td><td class="num">${miCell(r)}</td>
+   <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
+
+document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => inMetro(r, 'philadelphia'))
+  .sort(byMi)
+  .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
+   <td>${r.div}</td><td class="num">${miCell(r)}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
+
+initMap('philadelphia');
+initTable();
+</script>
+</body>
+</html>

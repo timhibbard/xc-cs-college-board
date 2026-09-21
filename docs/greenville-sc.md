@@ -1,7 +1,20 @@
 # College Search — Greenville SC (300 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-09-20 (v14 — a new 15:40 5K cross country PR, and
-the whole board re-anchored on it)
+XC/Track + Computer Science. Last updated 2026-09-20 (v15 — eight new metros elsewhere on the board,
+and a recheck that added five rows to this ring)
+
+> **The board grew by eight metros and this ring gained five rows.** A federal candidate sweep run for
+> Boston, Philadelphia, Washington, Baltimore, Pittsburgh, Buffalo, Hampton Roads and Newark also passed
+> over the Carolinas and Georgia, and it found five colleges inside 300 driving miles of Greenville that
+> this document had never listed: **Carolina University** (175 mi, NAIA, Winston-Salem) joins the board
+> at *Verify* — its own site publishes a men's cross country roster and schedule and TFRRS holds no
+> result to measure it with — and four fail a rule rather than a time. **Greensboro College**,
+> **William Peace** and **Shaw** sponsor cross country and no men's outdoor track, and **Life
+> University** sponsors neither. **No tier in this ring changed and no time moved.** What did change is
+> this ring's share of the whole: it holds 25 of the board's 47 targets now rather than 25 of 33,
+> because the eight new metros brought fourteen targets of their own — MIT, Harvard, Tufts, Penn,
+> Haverford, Swarthmore, Carnegie Mellon and seven more. Greenville is still the deepest single ring on
+> the board; it is no longer most of the board.
 
 > **He has run 15:40 for 5K cross country**, and the whole board is re-anchored on it. The 8K comes
 > down 24 seconds to **25:36** and the 10K 31 seconds to **32:40**; at this mark the board's own
@@ -837,7 +850,7 @@ are not cuts.
 
 ## 6. Tiering
 
-### The board as it stands now, all divisions, at the 15:40 anchor (84 schools)
+### The board as it stands now, all divisions, at the 15:40 anchor (85 schools)
 
 **Target — clean development band, concentrate effort here (25).** Nearest first: Anderson (SC)
 (29 mi) · Clemson (30) · UNC Asheville (64) · Queens (Charlotte) (104) · UNC Charlotte (108) ·
@@ -850,7 +863,7 @@ Fayetteville State (265) · Samford (296)
 **Deep — just outside the travel squad (5).** Nearest first: Furman (7) · Appalachian State (131) ·
 Wingate (133) · Georgia Tech (143) · Tennessee (169)
 
-**Verify — unmeasured (1).** Shorter (204).
+**Verify — unmeasured (2).** Shorter (204) · Carolina University (175).
 
 **Caution — he arrives at or ahead of their #1 (53).** Everything else, including five of the eight
 schools inside 35 miles: North Greenville (19) · Southern Wesleyan (27) · USC Upstate (32) ·
@@ -860,11 +873,13 @@ Furman, at 7 miles, at Deep. The full list is in the tables in §4.
 **Cut on results or on level (7).** Georgia (101) · Wake Forest (177) · UNC Chapel Hill (237) ·
 Duke (239) · NC State (260) · Virginia Tech (264) · Eastern Kentucky (292)
 
-**Twenty-five targets out of 84**, against six of 28 in New York and two of 11 in Chicago: this ring
-holds **25 of the 33 target-tier schools on the entire board**. The 15:40 mark moved five rows here —
+**Twenty-five targets out of 85**, against six of 29 in New York and two of 11 in Chicago: this ring
+holds **25 of the 47 target-tier schools on the entire board** — a share that fell from three-quarters
+to just over half when the eight-metro sweep added fourteen targets in the Northeast, without a single
+row here changing. The 15:40 mark moved five rows here —
 Charleston Southern, Clemson and Lee University up to Target, Berry College and UNC Pembroke back to
 Caution — and brought Furman, Wingate and Tennessee back off the cut list at Deep. The tier ladder in
-`../methodology.html#tier-ladder` disagrees with four of the 84 (Montreat, Oglethorpe, UNC Charlotte
+`../methodology.html#tier-ladder` disagrees with four of the 85 (Montreat, Oglethorpe, UNC Charlotte
 and Furman), which the methodology page lists rather than resolves.
 
 ### The Division-1-only board, as that rule left it (31 schools) — reversed
@@ -1182,7 +1197,7 @@ $37,702 at Caution, is off the board entirely for having no men's track (§2h).
 ### 8a. School size and town size
 
 Two figures now sit beside the money on every school page, and as two extra columns in the master
-table on the website — **undergraduate enrollment** (federal, present for all 84) and **town
+table on the website — **undergraduate enrollment** (federal, present for all 85) and **town
 population** (U.S. Census ACS 2024 5-year, table B01003, for the place the campus actually sits in).
 They are collected for this ring only; how big New York and Chicago are is not a question worth a
 column.
