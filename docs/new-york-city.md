@@ -666,16 +666,17 @@ to **[John Kolibab](mailto:jkolibab@stevens.edu)**.
 ## 8. NYC-specific considerations
 
 **Cost of living is the dominant variable, and the residency correction compresses the spread.** On
-his residency, average net price runs from **≈$10,934 at Hunter** to **$44,338 at Fordham** — the
+his residency, average net price runs from **≈$10,934 at Hunter** to **$52,659 at Pratt Institute** — the
 Merchant Marine Academy is cheaper than any of them at $6,174, but it carries a service obligation and
 no computer science degree, which is why it is not in this comparison — then
-Stevens $41,346, Felician $40,045, Stony Brook ≈$40,594, Rutgers–Newark ≈$39,215 and NYU $37,050 at
-the top, with NJIT ≈$34,194 no longer in the middle at all. Seven CUNY campuses sit between ≈$10,900
+Fordham $44,338, Stevens $41,346, Stony Brook ≈$40,594, Felician $40,045, Rutgers–Newark ≈$39,215 and
+NYU $37,050, with NJIT ≈$34,194 no longer in the middle at all. Seven CUNY campuses sit between ≈$10,900
 and ≈$13,700, and they are now the only genuinely cheap options here: **the median net price in this
-metro moves from $19,244 to $22,969** once every public is put on the rate he would pay, the largest
-shift of any metro on the board. The two most expensive schools in v4, Yeshiva ($49,965) and Sarah Lawrence
-($41,437), are off the board under the both-sports rule (§2h), which is the one respect in which that
-rule made this page cheaper. The remaining top-to-bottom gap is still a six-figure difference over
+metro moves from $19,703 to $24,347** once every public is put on the rate he would pay, the
+second-largest shift of any metro on the board behind Baltimore's +$6,537. The two most expensive schools
+in v4, Yeshiva ($49,965) and Sarah Lawrence ($41,437), are off the board under the both-sports rule
+(§2h) — though Pratt, which the sweep added afterwards, is dearer than either of them, so this metro no
+longer has a cheaper ceiling than v4 had. The remaining top-to-bottom gap is still a six-figure difference over
 four years and no partial athletic scholarship in men's distance running comes close to closing it.
 Three caveats, pulling in different directions: every figure is an average across all students after
 grants, not a quote for one applicant; the public figures carry an estimated premium that a

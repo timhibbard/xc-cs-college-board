@@ -106,8 +106,36 @@ const METROS = [
     dom.window.close();
   }
 
-  ok('rows total', SCHOOLS.length, 120);
-  ok('off-board rows', REMOVED.length + NO_TRACK.length + NO_PROGRAM.length, 41);
+  /* These two were literal 120 and 41 for a long time, which is exactly the thing the header
+     above says this file does not do: the board grew to 185 rows and 55 off-board ones and the
+     two assertions just failed on every run until they became noise you learned to scroll past.
+     Comparing SCHOOLS.length to itself would pass forever and check nothing, so the useful
+     version reads the totals README.md publishes in prose and holds them against the data. That
+     is the drift that actually happens here — the data file gets a row and the sentences that
+     count it are updated by hand, one file at a time, until one of them is missed. */
+  const readme = fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8');
+  const byDiv = d => SCHOOLS.filter(s => s.div === d).length;
+  // The small divisions are spelled as words in that sentence; everything else is digits.
+  const WORD = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
+  const num = t => (/^\d+$/.test(t) ? Number(t) : WORD[t.toLowerCase()]);
+  const head = readme.match(
+    /(\d+) schools on it — (\d+) D1, (\d+) D2, (\d+) D3, (\w+) NAIA and (\w+) USCAA —\s*plus (\d+) cut as walk-on, (\d+) with cross country but no men's track, and (\d+) with no men's program/);
+  if (!head) {
+    fails.push('README.md: the published board totals sentence no longer parses — check tools/render-check.js');
+  } else {
+    ok('README board total', SCHOOLS.length, num(head[1]));
+    ok('README D1 total', byDiv('D1'), num(head[2]));
+    ok('README D2 total', byDiv('D2'), num(head[3]));
+    ok('README D3 total', byDiv('D3'), num(head[4]));
+    ok('README NAIA total', byDiv('NAIA'), num(head[5]));
+    ok('README USCAA total', byDiv('USCAA'), num(head[6]));
+    ok('README cut-as-walk-on total', REMOVED.length, num(head[7]));
+    ok('README no-men\'s-track total', NO_TRACK.length, num(head[8]));
+    ok('README no-men\'s-program total', NO_PROGRAM.length, num(head[9]));
+  }
+  // A truncated or half-parsed data.js is the one failure the derived checks above cannot see,
+  // because every expectation would shrink with it. A floor catches that and nothing else.
+  if (SCHOOLS.length < 150) fails.push(`SCHOOLS is ${SCHOOLS.length} rows — data.js looks truncated`);
 
   for (const c of checks) {
     console.log(`${c.pass ? 'ok  ' : 'FAIL'}  ${c.name}: ${c.got}${c.pass ? '' : ' (want ' + c.want + ')'}`);
