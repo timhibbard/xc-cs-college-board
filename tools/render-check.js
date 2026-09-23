@@ -137,6 +137,25 @@ const METROS = [
   // because every expectation would shrink with it. A floor catches that and nothing else.
   if (SCHOOLS.length < 150) fails.push(`SCHOOLS is ${SCHOOLS.length} rows — data.js looks truncated`);
 
+  /* The coach column is the one every page now claims is complete, in prose, on index.html and
+     in §6 of the methodology. So hold both halves of that claim against the data: every row with
+     a men's program carries a block, and the number §6 publishes is the number of blocks on file.
+     A row added without a coach is not a harness failure in itself — it is a sentence that has
+     become false, which is the same drift the README totals above are here to catch. */
+  const coachRows = [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM].filter(s => s.coach);
+  const uncoached = [...SCHOOLS, ...REMOVED, ...NO_TRACK].filter(s => !s.coach).map(s => s.name);
+  if (uncoached.length) {
+    fails.push(`${uncoached.length} row(s) with a men's program carry no coach block, which index.html ` +
+      `and methodology.html §6 both say is impossible: ${uncoached.join(', ')}`);
+  }
+  // coach.src is the point of the block: without it the name rests on nothing a reader can check.
+  const noSrc = coachRows.filter(s => !s.coach.src).map(s => s.name);
+  if (noSrc.length) fails.push(`coach block with no src: ${noSrc.join(', ')}`);
+  const meth = fs.readFileSync(path.join(ROOT, 'methodology.html'), 'utf8');
+  const cm = meth.match(/Each of the (\d+) school pages that has a coach/);
+  if (!cm) fails.push('methodology.html: the published coach-page count no longer parses — check tools/render-check.js');
+  else ok('methodology coach-block total', coachRows.length, Number(cm[1]));
+
   for (const c of checks) {
     console.log(`${c.pass ? 'ok  ' : 'FAIL'}  ${c.name}: ${c.got}${c.pass ? '' : ' (want ' + c.want + ')'}`);
   }
