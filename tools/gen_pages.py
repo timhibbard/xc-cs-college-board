@@ -8,6 +8,12 @@ in assets/data.js, checked against metro_digest.py.
 
 Off-board sections are emitted only where that metro actually has such rows, because an
 empty table with a heading reads as a data error.
+
+This script overwrites those eight files, so every hand edit to one of them has to be made
+here too or it is silently reverted on the next run. The check is cheap: run it and
+`git diff -- '*.html'` must be empty. It was not, twice - the tier-vs-unmeasured prose in
+buffalo.html and pittsburgh.html and the k-lead tile on washington.html had all moved on in
+the pages alone - which is how the drift was found rather than shipped.
 """
 import io
 import json
@@ -52,7 +58,7 @@ HEAD = """<!DOCTYPE html>
     {lede}
   </p>
 
-  <div class="kpi-row">
+{prekpi}  <div class="kpi-row">
 {kpis}  </div>
 
 {callouts}
@@ -90,7 +96,8 @@ HEAD = """<!DOCTYPE html>
       <caption>Miles are approximate driving distance from {centre}. Click any school for its full page.
         <em>His slot in their 7</em> comes from 2025 championship cross country results;
         <em>vs their 7th</em> is negative when he is inside the seven, and blank where a team never
-        finished seven runners. Click a header to sort.</caption>
+        finished seven runners. Every school page also carries the coach's name, title, office phone and
+        email, read off that school's own staff directory. Click a header to sort.</caption>
       <thead></thead><tbody></tbody>
     </table>
   </div>
@@ -183,12 +190,15 @@ document.querySelector('#removed tbody').innerHTML = REMOVED.filter(r => inMetro
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
 """
 
+# The tier cell goes through app.js's noAggTag() rather than a local `r.xc ? '' : '(unmeasured)'`,
+# because a row with no aggregate is not necessarily unmeasured: it can be a short championship
+# field, which is a measurement of thinness, or a tier read off a 5000 mark.
 NOTRACK_JS = """
 document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => inMetro(r, '%s'))
   .sort(byMi)
   .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
    <td>${r.div}</td><td class="num">${miCell(r)}</td>
-   <td>${TIERLBL[r.tier] ?? '\\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td>${TIERLBL[r.tier] ?? '\\u2014'}${noAggTag(r)}</td>
    <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
 """
 
@@ -214,15 +224,19 @@ CHART_SEC = """
   </div>
 """
 
-# The disclosure every new page carries. The board's older pages have coach contacts, track
-# marks and a 1500 panel; these rows do not yet, and a page that quietly omitted that would
-# read as though the data were complete.
+# The disclosure every new page carries. The board's older pages have track marks, Instagram
+# handles and a 1500 panel; these rows do not yet, and a page that quietly omitted that would
+# read as though the data were complete. The coach block used to be on this list and is not
+# any more (#1) — this string and the pages have to be edited together, because a page edited
+# by hand alone is reverted the next time this script runs.
 GAPS_NEW = (
     'Every tier on this page comes from <a href="methodology.html#tier-ladder">the published '
     'ladder</a> run over 2025 championship results &mdash; conference, regional and national '
-    'meets only. Three things the older metro pages have and this one does not, yet: '
+    'meets only. The <b>coach column is filled in now</b> &mdash; every school below has a name, '
+    'title, office phone and email read off its own staff directory. Three things the older '
+    'metro pages still have and this one does not: '
     '<b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; '
-    '<b>no coach names, emails or Instagram handles</b>; and <b>no meet maps</b>. '
+    '<b>no Instagram handles</b>; and <b>no meet maps</b>. '
     'The one screen that is complete is the both-sports rule &mdash; men\'s outdoor track '
     'sponsorship was checked school by school against the sport list each athletics site '
     'publishes itself, because TFRRS cannot answer it.')
@@ -247,7 +261,7 @@ def build(spec):
 
     html = HEAD.format(
         title=spec['title'], desc=spec['desc'], eyebrow=spec['eyebrow'], h1=M['label'],
-        lede=spec['lede'], kpis=''.join(spec['kpis']),
+        lede=spec['lede'], kpis=''.join(spec['kpis']), prekpi=spec.get('prekpi', ''),
         callouts=''.join(spec['callouts']) + callout('What is not on this page yet', GAPS_NEW, cls=''),
         rmi=M['radiusMi'], centre=M.get('centerLabel', M['label']), mapsub=spec['mapsub'],
         chart=CHART_SEC.format(sub=spec['chartsub']) if spec.get('chartsub') else '',
@@ -474,9 +488,20 @@ SPECS.append(dict(
          "<strong>American</strong> and <strong>George Mason</strong> &mdash; at $41,943 and $42,383, "
          "which is $12,000 above the metro median. This is the metro where the board's rules cost the "
          "most.",
+    # Washington is the one page whose third tile was ever written by hand, so it carries the warning
+    # about why that tile cannot lose its id. Every other page gets the k-lead tile from kpi() and
+    # needs no note; this one keeps the note in the output because the page itself is what gets edited.
+    prekpi="""  <!-- The third tile must keep id="k-lead": the inline script at the bottom writes to it, and because
+       every table on this page is built by that same script, a missing id throws and takes the master
+       table, the map and all three off-board tables down with it. This page shipped that way once —
+       the tile had been swapped for a hardcoded "Off the board / 4" and the script line left behind,
+       so the page rendered two KPIs and nothing else. Off-board counts belong in a k-sub, not in a
+       tile of their own. -->
+""",
     kpis=[kpi('Available inside 20 mi', None, '3 D1, 1 D2, 3 D3', 'k-n'),
           kpi('Target tier', None, 'American and George Mason', 'k-t'),
-          kpi('Off the board', '4', 'Georgetown, GWU, Washington Adventist, Maryland'),
+          kpi('He would be their #1 at', None, 'Howard and Bowie State &mdash; plus four off the '
+              'board: Georgetown, GWU, Washington Adventist, Maryland', 'k-lead'),
           kpi('Median net price', '$30,018', 'And the two targets are both above $41,000')],
     callouts=[
         callout('Four of the eleven are unavailable, each for a different reason',
@@ -499,7 +524,15 @@ SPECS.append(dict(
                 'and hard-of-hearing students. On the running there is nothing to measure: seven '
                 'races on file across 2025 and 2026, <b>never more than four finishers</b>, and no '
                 'championship in either season. <em>Verify</em> here means unmeasured, not '
-                'borderline.'),
+                'borderline.',
+                '<strong>Marymount is the row to contrast it with.</strong> It also has no averageable '
+                'result &mdash; two men at the 2025 Atlantic East championship and one at the Division '
+                '3 South regional, both short of the five finishers this board needs before it will '
+                'average a race &mdash; but a conference championship is the meet a program brings '
+                'everyone to, so a field of two there is a measurement of how thin the squad is rather '
+                'than an absence of evidence. He would arrive <b>346 seconds ahead of their #1</b> at '
+                'that championship. That row reads <em>Caution</em>, and Gallaudet, which entered no '
+                'championship at all, does not.'),
     ],
     mapsub='Eleven pins including the four off-board ones, and they ring the District tightly '
            '&mdash; six of them inside five miles of the centre. George Mason at 19.8 miles is '
@@ -652,8 +685,8 @@ SPECS.append(dict(
                 'men. Five of sixteen in Boston, three of fourteen in Philadelphia, four of four in '
                 'Hampton Roads. In Pittsburgh it is <b>none of the five</b> measured programs '
                 '&mdash; every one of them finished a full scoring seven in a championship &mdash; '
-                'and he would lead only Point Park. Two of the seven rows are unmeasured rather than '
-                'thin.',
+                'and he would lead only Point Park. Of the other two rows, <b>one is unmeasured and '
+                'one is measured thin</b>.',
                 'That matters more than any individual row here, because depth is the thing a '
                 'recruit cannot fix by arriving. A metro where the sevenths are real is a metro '
                 'where the tier means what it says.'),
@@ -691,9 +724,13 @@ SPECS.append(dict(
       <strong>Three more to know.</strong> <strong>Point Park</strong> is the metro's only Division 2
       program, so it is the only partial-athletic-money door in range; it admits <b>97%</b>, costs
       <b>$25,942</b>, and he would arrive 120 seconds ahead of their #1. <strong>Carlow</strong> and
-      <strong>Chatham</strong> are both <em>Verify</em> meaning unmeasured: Carlow finished one man
-      at the AMCC championship and two at the USCAA national meet in the same season, and Chatham's
-      entire 2025 record is one invitational with two finishers.
+      <strong>Chatham</strong> read the same on the table and are not the same finding. Carlow is
+      <em>Caution</em>: it finished one man at the AMCC championship and two at the USCAA national meet
+      in the same season, and eight races are on file across two seasons whose fullest fielded six &mdash;
+      a conference championship is the race a program brings everyone to, so that is a measurement of its
+      depth, and he would arrive <b>785 seconds ahead of their #1</b> there. Chatham is the genuinely
+      <em>Verify</em> one: its entire 2025 record is one invitational with two finishers, so there is
+      nothing to measure rather than something measured and thin.
     </p>""",
     money="<strong>Pittsburgh has the widest price spread of any metro in this pass and the two ends "
           "are both Division 1.</strong> <strong>Pitt at $49,938</strong> is the most expensive row; "
@@ -719,8 +756,8 @@ SPECS.append(dict(
          "price, and one clear answer: <strong>University at Buffalo</strong>, Division 1 in the "
          "Mid-American, where he lands <strong>two seconds inside their seventh man</strong>. The "
          "metro's other real fit is unavailable &mdash; <strong>Canisius</strong> is a target on the "
-         "running and sponsors no track at all &mdash; and two of the remaining rows are unmeasured "
-         "rather than thin. Small, cheap, and thinner than it looks.",
+         "running and sponsors no track at all &mdash; and of the remaining rows one is unmeasured and "
+         "one is measured thin. Small, cheap, and thinner than it looks.",
     kpis=[kpi('Schools inside 20 mi', None, '1 D1, 2 D2, 2 D3, 1 USCAA', 'k-n'),
           kpi('Target tier', None, 'University at Buffalo alone', 'k-t'),
           kpi('He would be their #1 at', None, 'Three of the six', 'k-lead'),
@@ -736,14 +773,20 @@ SPECS.append(dict(
                 'So it sits on the no-track table below rather than at the top of the list. It is '
                 'the first row on this whole board to reopen if running cross country only ever '
                 'becomes acceptable.'),
-        callout('Two of the six rows are unmeasured, not thin',
-                '<strong>Bryant &amp; Stratton</strong> is a USCAA college rather than an NCAA or '
+        callout('One of the six rows is unmeasured, and one is measured thin',
+                '<strong>Bryant &amp; Stratton</strong> is the unmeasured one: a USCAA college rather '
+                'than an NCAA or '
                 'NAIA one, 0.6 miles from the centre, and the entire men\'s cross country record on '
                 'file is <b>two men in one 2026 invitational</b>. At <b>$14,135</b> it is the '
                 'cheapest row on the page, and the federal file reports no admit rate and no SAT '
                 'range for it at all.',
-                "<strong>Hilbert</strong> finished two men at the 2025 AMCC championship and two at "
-                "the Division 3 Niagara regional, and its athletics site is a further worry: the "
+                "<strong>Hilbert</strong> is the other, and it is a different thing: it finished two "
+                "men at the 2025 AMCC championship and two at the Division 3 Niagara regional. A "
+                "conference championship is the race a program brings everyone to, so two men there is "
+                "a measurement of its depth rather than a gap in the evidence &mdash; he would arrive "
+                "<b>209 seconds ahead of their #1</b> at that championship and 106 ahead at the "
+                "regional, which is why this row reads <em>Caution</em> and not <em>Verify</em>. Its "
+                "athletics site is a further worry: the "
                 "navigation lists neither cross country nor track among its sports, and the most "
                 "recent schedules it publishes are <b>fall 2025</b> for cross country and "
                 "<b>spring 2025</b> for men's outdoor track. Confirm both sports still exist before "
@@ -849,104 +892,9 @@ SPECS.append(dict(
           "&mdash; and the metro median is <b>$22,621</b>.",
 ))
 
-# ------------------------------------------------------------------ Newark
-SPECS.append(dict(
-    id='newark',
-    title='Newark — thirteen New Jersey schools, read from the right centre',
-    desc="Every college within 20 driving miles of downtown Newark with men's cross country, men's "
-         "outdoor track and a computer science degree. Ten available, and NJIT has the highest "
-         "computer science share on the board.",
-    eyebrow='20 mile radius · New Jersey side · all divisions',
-    lede="Thirteen rows, and <strong>twelve of them also appear on the New York page</strong> &mdash; "
-         "buried in that list at 3 to 22 miles from Midtown, which is the wrong way to look at them. "
-         "From downtown Newark they are 0.5 to 19.5 miles out. <strong>NJIT</strong> is the "
-         "headline: <strong>33% of its degrees are in computer science</strong>, the highest share "
-         "anywhere on this board, Division 1 in America East, 0.8 miles from the centre, and he "
-         "lands as their <strong>3rd man</strong>. Seton Hall is the second target. Then it thins "
-         "fast &mdash; he would be the #1 man at <strong>eight of the ten</strong> &mdash; and three "
-         "NJAC publics in range sponsor no men's cross country at all.",
-    kpis=[kpi('Available inside 20 mi', None, '4 D1, 2 D2, 4 D3', 'k-n'),
-          kpi('Target tier', None, 'NJIT and Seton Hall', 'k-t'),
-          kpi('He would be their #1 at', None, 'Eight of the ten', 'k-lead'),
-          kpi('Median net price', '$28,068', 'Saint Peter’s is $12,199 of it')],
-    callouts=[
-        callout('Why this page exists when New York already carried these rows',
-                'Twelve of these thirteen rows are inside 20 driving miles of downtown Newark '
-                '<em>and</em> carried on <a href="new-york.html">the New York page</a> &mdash; the '
-                'overlap is deliberate. What changes is the number in front of them. '
-                '<strong>Rutgers&ndash;Newark</strong> reads as 13 miles from Midtown and '
-                '<b>half a mile</b> from downtown Newark; <strong>Kean</strong> reads as 20 and '
-                '<b>6.9</b>; <strong>NJIT</strong> as 12 and <b>0.8</b>. A page anchored on Midtown '
-                'ranks them as outliers, and a page anchored on Newark ranks them as a cluster.',
-                'Each row calls home whichever centre is actually nearer, which is what the Overview '
-                'and its own school page name. Three of the twelve &mdash; Saint Peter\'s, Stevens '
-                'Institute and Fairleigh Dickinson &mdash; are nearer Midtown and call New York '
-                'home; the rest call Newark home. <strong>Drew</strong> at 16.2 miles is on this '
-                'page only.'),
-        callout('NJIT and Seton Hall',
-                '<strong>NJIT</strong> is the strongest computer science row on the entire board by '
-                'share of degrees &mdash; <b>33%</b> &mdash; and it is not a trade-off row: Division '
-                '1 in America East, <b>65%</b> admit, <b>$34,194</b> on his residency as a New '
-                'Jersey public, and on the running their <b>3rd or 4th man</b>, 125 seconds inside '
-                'their scoring seven and 26 behind their #1. The one caution is that a 125-second '
-                'margin inside a seven means their back end is soft, so read it as "he would score '
-                'immediately", not "he would be pushed".',
-                '<strong>Seton Hall</strong> is the tighter squad: Big East Division 1, 4.2 miles, '
-                '<b>73%</b> admit, <b>$31,446</b>, and he lands as their <b>4th or 5th man</b>, 47 '
-                'seconds inside their seven and 44 behind their #1. A <b>2.4%</b> CS share is the '
-                'reason to ask hard questions about the department.'),
-        callout('Three New Jersey publics in range sponsor no men’s cross country',
-                '<strong>NJCU</strong> (3.3 miles), <strong>Montclair State</strong> (13.6) and '
-                '<strong>William Paterson</strong> (19.5) are all NJAC members and none of them '
-                'fields a men\'s cross country team: NJCU and William Paterson sponsor women\'s '
-                'cross country and men\'s outdoor track, Montclair State sponsors men\'s track and '
-                'not cross country. That is three of the conference\'s local footprint gone, and it '
-                'is why the NJAC rows that do exist here &mdash; Rutgers&ndash;Newark and Kean '
-                '&mdash; are so thin.'),
-    ],
-    mapsub='Thirteen pins filling the Newark, Jersey City and Passaic corridor. The circle reaches '
-           'across the Hudson into Manhattan and Staten Island, but the rule for this page is the '
-           'New Jersey side only &mdash; anything across the river is on the New York page, which '
-           'already carries it.',
-    chartsub='These rows predate this pass, so unlike the other new metro pages they carry 2026 '
-             'outdoor track marks and this chart works. Read it second: it compares him to one '
-             'athlete per team, which is exactly the mistake that produced this board\'s Loyola '
-             'error. Where a cross country result exists, the table below supersedes it.',
-    worth="""    <ol>
-      <li><strong>NJIT</strong> &mdash; D1 America East, 0.8 miles from downtown, <b>33%</b> CS
-        &mdash; the highest share on the board &mdash; <b>65%</b> admit, <b>$34,194</b> on his
-        residency, and their <strong>3rd or 4th man</strong>. If one row in the New York area is
-        worth a first email, this is it.</li>
-      <li><strong>Seton Hall</strong> &mdash; D1 Big East, 4.2 miles, <b>73%</b> admit,
-        <b>$31,446</b>, their <strong>4th or 5th man</strong> and 47 seconds inside their seven. The
-        better <em>squad</em> of the two targets; the weaker computer science department at
-        <b>2.4%</b>.</li>
-      <li><strong>Stevens Institute</strong> &mdash; D3 MAC, <b>21.2%</b> CS, <b>48%</b> admit, and
-        <b>$41,346</b>, the most expensive row on the page. Caution tier: he would arrive 45 seconds
-        ahead of their #1. It calls New York home at 3 miles from Midtown, and it is on this page
-        because Hoboken is 10 miles from Newark.</li>
-    </ol>
-    <p>
-      <strong>And the money row.</strong> <strong>Saint Peter's</strong> is Division 1 in the MAAC at
-      <b>$12,199</b> &mdash; the cheapest row anywhere in the New York area and a third of what
-      Stevens costs &mdash; with a <b>90%</b> admit rate and <b>6.9%</b> CS. He would arrive 31
-      seconds ahead of their #1, so it is caution tier, but Division 1 money at that price is worth
-      an email regardless of the tier.
-    </p>""",
-    money="<strong>Four Division 1 programs, two Division 2 and four Division 3, which is the most "
-          "balanced money picture in this pass.</strong> The Division 1 four (NJIT, Seton Hall, Saint "
-          "Peter's, Fairleigh Dickinson) have equivalency shares and academic aid; Felician and "
-          "Caldwell are the Division 2 partial-aid doors; the four Division 3 programs have neither "
-          "by rule. <strong>NJIT, Rutgers&ndash;Newark and Kean are New Jersey publics</strong>, so "
-          "their figures carry the non-resident premium this board adds by hand "
-          "(<a href=\"methodology.html#residency\">how that works</a>) and all three could waive it. "
-          "The spread is wide: <strong>Saint Peter's at $12,199</strong> and <strong>Fairleigh "
-          "Dickinson at $15,404</strong> at one end, <strong>Stevens at $41,346</strong> and "
-          "<strong>Felician at $40,045</strong> at the other, around a <b>$28,068</b> median.",
-    noxc="Three New Jersey publics inside 20 miles field no men's cross country team, which is a "
-         "quarter of the rows in range. All three are NJAC members; all three sponsor other running "
-         "programs, which is why they turn up in searches at all.",
-))
+# Newark had a spec here until the overlap with New York proved near-total (58e0737): the page
+# was deleted, the ring became a second mileage reading inside new-york.html, and the metro left
+# METROS — so the spec could only ever crash at b['METROS'][m]. Removed rather than left to rot.
 
 for s in SPECS:
     build(s)

@@ -26,9 +26,11 @@ school that turned up to its conference meet with two men gets no `xc` block at 
 for a while those rows kept whatever tier they were seeded with, which was `verify`. On this
 site *Verify* means **unmeasured**, and that is the wrong word for them: a conference or
 regional championship is the race a program brings everyone to, so a field of two there is a
-measurement of how thin the squad is rather than an absence of evidence. Five rows were
-mislabelled that way — Carlow, Marymount, Hilbert, Greensboro College and William Peace, all
-now `caution` / `tierSrc: 'hand'`.
+measurement of how thin the squad is rather than an absence of evidence. Six rows were
+mislabelled that way — Carlow, Marymount, Hilbert, Greensboro College, William Peace and
+**Shorter**, all now `caution` / `tierSrc: 'hand'`. Shorter is the odd one out: its short
+championship field is from 2024 and nothing has been added since, so the row is caution for the
+squad it last fielded and its note says plainly that the program appears to have stopped racing.
 
 **The level decides this, not the field size.** A *national* championship is the exception:
 only individual qualifiers go, so Thomas Jefferson's single finisher there says nothing about
@@ -75,10 +77,17 @@ they run from a clean clone.
 | `apply_aggs.py` | `.work/xcagg.json` | rewrites each school's `xc` block in `assets/data.js` |
 | `apply_races.py` | `.work/xcraces_new.js` | splices the rebuilt races into `assets/detail.js`, preserving `@@KEEP@@` blocks |
 
-`slugmap.json` is the explicit school-name → TFRRS-slug map. It is the most valuable
-file in here and the reason #7 (Shorter was never measured) is a one-line fix rather
-than an investigation. **Explicit only — no fuzzy matching.** Fuzzy matching produced
-confident false positives once already.
+`slugmap.json` is the explicit school-name → TFRRS-slug map, and the most valuable file
+in here. **Explicit only — no fuzzy matching.** Fuzzy matching produced confident false
+positives once already.
+
+Its failure mode is silence, which #7 demonstrated: **Shorter had no key**, so every pass
+skipped it and the row sat at *Verify* — unmeasured — for want of a result that was on file
+the whole time. Adding the key was one line; the fix was not. The line bought an
+investigation rather than replacing one, because what TFRRS then returned was a program that
+has not posted a men's cross country result since October 2024. A missing key looks exactly
+like a program that never raced, so when a row has no result, check this file before
+believing it.
 
 ## Deliberately not moved
 

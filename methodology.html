@@ -409,8 +409,11 @@
         rather than one or two per school: <strong>904 races, a median of six per school</strong>.
         Where those exist they supersede the track marks entirely.
         Where they do not, the school sits in <em>Verify</em> and its tier should be read as a
-        placeholder; only <strong>Shorter</strong> (on the board, D2) and <strong>Calumet
-        College</strong> (removed under the both-sports rule) are left in that state.
+        placeholder; of those 150 only <strong>Calumet College</strong> (removed under the both-sports
+        rule) is left in that state. <strong>Shorter</strong> (on the board, D2) is the other of the two
+        with no averageable race, and it is a different finding: it holds no 2025 result because it has
+        stopped racing, and the three-man championship field it last posted in 2024 is a measurement of
+        the squad rather than an absence of one, so that row reads <em>Caution</em> set by hand.
       </li>
     </ol>
   </div>
@@ -715,16 +718,16 @@
     "borderline" with "unknown" and made the tier unreadable — a school could sit in <em>Verify</em>
     either because the data said something ambiguous or because there was no data at all. That band is
     retired; borderline measured schools land in <em>Caution</em> or <em>Target</em> on the ladder
-    above, and <em>Verify</em> is a to-do list. It currently holds <strong>seven rows</strong>, six of
-    them turned up by the eight-metro sweep: <strong>Shorter</strong> and <strong>Carolina
-    University</strong> in the Greenville ring, then Thomas Jefferson, Rosemont, Gallaudet, Chatham and
+    above, and <em>Verify</em> is a to-do list. It currently holds <strong>six rows on the board</strong>,
+    every one of them turned up by the eight-metro sweep: <strong>Carolina University</strong> at the edge
+    of the Greenville ring, then Thomas Jefferson, Rosemont, Gallaudet, Chatham and
     Bryant &amp; Stratton. <strong>Calumet College</strong> left the tier by
     leaving the board &mdash; it failed the both-sports rule &mdash; rather than by being measured.
-    <strong>Marymount, Carlow and Hilbert left it by being read correctly</strong>, and they are the
-    reason "no result exists" needs saying carefully: each of the three has a 2025 championship result,
-    just not one the five-finisher rule will average, and a conference field of two is a thin program
-    measured rather than a program unmeasured (<a href="#ladder-generated">the three the ladder could not
-    run on</a>). <strong>Thomas Jefferson</strong> is the row that keeps the tier honest in the other
+    <strong>Marymount, Carlow, Hilbert and Shorter left it by being read correctly</strong>, and they are
+    the reason "no result exists" needs saying carefully: each of the four has a championship result,
+    just not one the five-finisher rule will average, and a conference field of two or three is a thin
+    program measured rather than a program unmeasured (<a href="#ladder-generated">the three the ladder
+    could not run on</a>, and <a href="#shorter">Shorter, which the name map had been hiding</a>). <strong>Thomas Jefferson</strong> is the row that keeps the tier honest in the other
     direction: its lone short championship is the Division 2 <em>national</em> meet, which only individual
     qualifiers enter, so one finisher there measures nothing about the squad and <em>Verify</em> is
     right.
@@ -778,6 +781,37 @@
     also why that page was the one the sweep produced that could be folded back in. The both-sports
     rule was checked for each of them against the sport list the school's own athletics site publishes,
     because no public dataset answers that question; it removed eight, four of them Division 1.
+  </p>
+
+  <h3 id="shorter">Shorter: the one row that was unmeasured because of a missing key in a name map</h3>
+  <p class="prose">
+    Every other <em>Verify</em> row on this site is unmeasured because the result does not exist.
+    <strong>Shorter was unmeasured because this repo never asked for it.</strong> The results fetch
+    reads TFRRS by team slug, and the slug for each school lives in
+    <code>tools/slugmap.json</code>; Shorter had no entry, so it was skipped in every pass from the
+    first one onward and fell to <em>Verify</em> for want of a result that was on file the whole time.
+    That is the failure mode of a hand-maintained lookup table, and it is why the file is checked
+    against the board rather than trusted: a missing key looks exactly like a program that never raced.
+  </p>
+  <p class="prose">
+    Adding the key was one line. What it found was not a measurement of a thin squad but
+    <strong>a program that has stopped racing</strong>. TFRRS holds no men's cross country result for
+    Shorter after <b>26 October 2024</b>, when three men finished the Conference Carolinas championship
+    in 26:33.6, 28:14.5 and 29:39.0 &mdash; at his 25:36 8K projection he would have arrived as their
+    <strong>#1 by 58 seconds</strong>, which is the thin-program signal rather than a good one. Its only
+    entry of the 2025 season was the Willie Laster Invitational on 19 September, where it entered three
+    men and <strong>none of them started</strong>, and it has no entry at all in the 2026 season. Its own
+    athletics site still lists men's cross country and men's track, and the most recent roster and
+    schedule it publishes are both 2025.
+  </p>
+  <p class="prose">
+    So the row reads <em>Caution</em> with <code>tierSrc: 'hand'</code>, on the same reasoning as
+    Carlow, Marymount and Hilbert above: a three-man conference championship field is a measurement of
+    the squad, not an absence of evidence. <strong>No aggregate was written for it</strong> and no race
+    was added to <code>XCRACES</code>, deliberately &mdash; every aggregate on this board is anchored on
+    the 2025 and 2026 seasons, and dropping a 2024 race into that set would corrupt the averages, the
+    race counts and the ladder to make one row look measured. The evidence sits in the row's own note
+    instead, which is how <a href="#both-sports">Calumet College</a> is handled too.
   </p>
 
   <h3>Course difficulty, and why only two corrections were applied</h3>
@@ -1295,7 +1329,7 @@
   <h2>6a. Known gaps in this data</h2>
   <div class="prose">
     <ol>
-      <li><strong>175 of the 185 schools on the board have a cross country result</strong> — down from 93 unmeasured, which was the largest gap on this site for most of its life. All 12 schools on the cut list rest on a 2025 championship result too. <strong>Seven rows are still open</strong>, and the eight-metro sweep is why: it added six of them (Thomas Jefferson, Rosemont, Gallaudet, Chatham, Bryant &amp; Stratton and Carolina University), most being small privates whose TFRRS page holds no 2025 championship. Three more used to be counted here &mdash; <strong>Marymount, Carlow and Hilbert</strong> &mdash; and they were miscounted rather than unmeasured: each ran a 2025 conference championship with one or two men, which is too short a field to average but is itself a measurement of the squad, so all three now read <em>Caution</em> (<a href="#ladder-generated">the three the ladder could not run on</a>). <strong>Shorter</strong> is the seventh and the oldest, and it may be unmeasurable rather than unmeasured, because it entered three men at its only 2025 meet and all three did not start. Two other rows that were open have since left the board for reasons unconnected to measurement: <strong>Calumet College</strong> failed the both-sports rule (§6b) and <strong>South Carolina</strong> turned out to sponsor no men's cross country at all.</li>
+      <li><strong>175 of the 185 schools on the board have a cross country result</strong> — down from 93 unmeasured, which was the largest gap on this site for most of its life. All 12 schools on the cut list rest on a 2025 championship result too. <strong>Six rows are still open</strong>, and the eight-metro sweep is why: it added every one of them (Thomas Jefferson, Rosemont, Gallaudet, Chatham, Bryant &amp; Stratton and Carolina University), most being small privates whose TFRRS page holds no 2025 championship. Four more used to be counted here &mdash; <strong>Marymount, Carlow, Hilbert and Shorter</strong> &mdash; and they were miscounted rather than unmeasured: each ran a conference championship with one to three men, which is too short a field to average but is itself a measurement of the squad, so all four now read <em>Caution</em> (<a href="#ladder-generated">the three the ladder could not run on</a>, and <a href="#shorter">Shorter, whose result the name map had been hiding</a>). Shorter was the oldest row on that list and is the one that turned out to be <em>unmeasurable</em> rather than unmeasured: its last result is from October 2024, and it entered three men at its only 2025 meet who all did not start. Two other rows that were open have since left the board for reasons unconnected to measurement: <strong>Calumet College</strong> failed the both-sports rule (§6b) and <strong>South Carolina</strong> turned out to sponsor no men's cross country at all.</li>
       <li><strong>Depth is measured, but the tier still comes from championship races only.</strong> 303 of the 904 races on file are conference championships, NCAA regionals or national championships, because those are the ones where a program fields its actual seven &mdash; and §3a measures what the alternative would cost: the invitationals run a median 14.5 seconds kinder. The consequence is that the median school's tier rests on <strong>two</strong> scoring-five championship races, <strong>49 of the 148 rest on one or none</strong>, and the course is usually uncorrected. 40 of the measured programs have a further problem on top of that: no 7th man to compare against at all.</li>
       <li><strong>How the candidate lists were built, and why the earlier version of this claim was false.</strong> An earlier README said this board listed <em>every</em> school inside each radius that sponsors men's cross country. It did not. The lists were originally assembled from general knowledge and then verified individually, which validates what is present and says nothing about what is missing — and about 45 schools were missing from Greenville alone, including one 25 driving miles from home. The lists are now built the other way round: <strong>conference by conference, from each conference's own men's-sponsored-sports table</strong>. That sweep covered every NCAA D1, D2 and D3 conference with a member inside a ring, and all of it is on the board: a Division-1-only rule was applied and then reversed (§6c). The guarantee is materially stronger than the old one, but it inherits the conferences' errors — a stale sponsored-sports table is wrong in both directions, and each school's sponsorship was <em>not</em> re-confirmed on the school's own athletics site.</li>
       <li><strong>NAIA and NCCAA coverage is incomplete and known to be — and with the Division 1 rule reversed (§6c) this is a live gap again.</strong> The sweep was built from NCAA conference sponsored-sports tables, so the four NAIA rows on this site are only the non-NCAA programs it happened to run into. At least these NAIA and NCCAA programs in the Greenville footprint were never checked — Toccoa Falls, Truett McConnell, Brenau, Columbia International, Columbia College SC, Milligan, Johnson University, Reinhardt, Voorhees, Tennessee Wesleyan, Morris College, Bryan College, Bluefield University, Point University, Life University, Spartanburg Methodist and Warren Wilson. NAIA allows 12 scholarships for men's XC and track and has looser eligibility rules, so this gap sits in exactly the place where money is easiest to find. It is the largest known hole in the candidate list.</li>
