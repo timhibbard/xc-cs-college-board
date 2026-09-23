@@ -26,9 +26,11 @@ the pass carry four things the new ones still do not: **the program's Instagram*
 coach this program — **its 2026 conference-championship 1500 field** with his projected 4:01 dropped
 into it, and a map of every meet the program attended last season. **The 76 rows the new metros added
 have none of those four things yet**, which is the largest open gap in this repo; each new metro page
-says so in its own words. Seven rows sit at *Verify*, which means **unmeasured, not borderline** — three
-former Verify rows (Carlow, Marymount, Hilbert) moved to *caution* once it was clear that a two-man
-conference championship field is a measurement of a thin program rather than an absence of evidence.
+says so in its own words. Six rows sit at *Verify*, which means **unmeasured, not borderline** — four
+former Verify rows (Carlow, Marymount, Hilbert, Shorter) moved to *caution* once it was clear that a
+short conference championship field is a measurement of a thin program rather than an absence of
+evidence. Shorter's is the starkest of the four: three men at the 2024 Conference Carolinas
+championship and **no men's cross country result since**.
 
 **The Greenville ring is 300 driving miles**, widened from 250. That pass turned up eight Division 1
 programs new to the board: Auburn, Samford and Radford joined it, NC State, Virginia Tech and Eastern
@@ -193,11 +195,11 @@ The divisional shape of the rings is completely different and worth reading befo
 Greenville is 33 D1, 39 D2, 11 D3 and two NAIA; New York is 10 D1, 7 D2 and 12 D3; Boston is 12 D3,
 3 D1 and one D2; Chicago is 3 D1, one D2, 6 D3 and one NAIA; Pittsburgh and Washington are each 3 D1
 and 3 D3. **Boston and Chicago are Division 3 cities** for men's distance running, and ten of New
-York's no-men's-track removals are D3 CUNY and small-private programs. The seven unmeasured rows are
-all in the new metros or at the edge of the Greenville ring: Shorter, Carolina University, Thomas
-Jefferson, Rosemont, Gallaudet, Chatham and Bryant & Stratton. **Marymount, Carlow and Hilbert used to
-be on that list and are not unmeasured**: each turned up to a conference championship with one or two
-men, which is too short a field to average but is itself the measurement — they are *caution*.
+York's no-men's-track removals are D3 CUNY and small-private programs. The six unmeasured rows are
+five in the new metros — Thomas Jefferson, Rosemont, Gallaudet, Chatham and Bryant & Stratton — plus
+**Carolina University** at the edge of the Greenville ring. **Marymount, Carlow, Hilbert and Shorter
+used to be on that list and are not unmeasured**: each turned up to a conference championship with one
+to three men, which is too short a field to average but is itself the measurement — they are *caution*.
 
 The New York rule is a shape, not a circle: 20 driving miles from Midtown **plus all of Nassau and
 Suffolk County** regardless of distance, because Long Island is a commutable corridor while
@@ -488,15 +490,19 @@ page, tenths and all, parsed at render time; `null` means no data was found. `ti
 `target`, `deep`, `verify`, or `caution`, and `tierSrc` records where it came from: cross country
 results read race by race (`xc`, 122 rows), the published tier ladder applied to championship
 aggregates alone (`ladder`, 59 rows), a hand tier where the ladder had nothing to run on (`hand`,
-three rows — Carlow, Marymount and Hilbert, each measured at a conference championship it could not
-field five men for), or track marks with no cross country to read (`5000`, one row). Changing a value updates the tables,
-the chart, the maps, the KPI tiles and the school page with no other edits.
+four rows — Carlow, Marymount, Hilbert and Shorter, each measured at a conference championship it
+could not field five men for), or track marks with no cross country to read (`5000`, one row).
+Changing a value updates the tables, the chart, the maps, the KPI tiles and the school page with no
+other edits.
 
 A team that never finished seven carries `v7: null` plus `short: true` and `maxfin: N` — the most
 runners they ever got to a finish line. `nraces` counts only races with five or more finishers,
 so a school whose every race was short averages over zero races and the page says exactly that
 instead of printing a number. `coach.src` is required: it is the page the rest of the block was read
-off, and it is what makes a stale name recoverable.
+off, and it is what makes a stale name recoverable. The optional `tierTag` overrides the one-line
+"where this tier came from" note under the badge on a school page, for a row whose provenance none of
+the derived tests can see; **Shorter** is the only row that uses it, because its championship field is
+from 2024 and no race of its own is stored, so every test would otherwise land on "unmeasured".
 
 `ATHLETE` in the same file holds his projections, including `proj1600`/`proj1500`: the 1500 is the
 projected 4:18 1600 converted at the textbook Riegel exponent (4:01), which is the one conversion on

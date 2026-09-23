@@ -65,6 +65,10 @@ function head() {
     <h1>${S.name}</h1>
     <p class="lede">${S.city ?? ''}${S.div ? ' · ' + S.div : ''}${S.conf ? ' ' + S.conf : ''}${S.mi != null ? ' · ' + S.mi + ' mi from ' + m.label.replace(' SC', '') : ''}</p>
     <p class="badge-row">${tierLine}${IS_NOTRACK ? `<span class="src-tag">cross country only &mdash; the tier below is the cross country measurement, not a recommendation</span>`
+      /* A row whose tier rests on something none of the branches below can see writes its own tag.
+         Shorter is the case it exists for: its championship field is on file for 2024 and no race of
+         its own is stored, so every test below falls through to "unmeasured", which its badge is not. */
+      : S.tierTag ? `<span class="src-tag">${S.tierTag}</span>`
       : S.xc ? `<span class="src-tag">tier from cross country results</span>`
       : IS_CUT || IS_NOXC ? ''
       : S.b5000 != null ? `<span class="src-tag">tier from one outdoor 5000 mark &mdash; no cross country data</span>`

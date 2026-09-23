@@ -106,6 +106,24 @@ const METROS = [
     dom.window.close();
   }
 
+  /* The line under the badge says where the tier came from, and it is chosen by a fall-through in
+     school.js rather than stored. A row with no aggregate and no stored races falls all the way to
+     "unmeasured", which is right for a Verify row and a contradiction of its own badge on any other.
+     Shorter is why: its championship field is on file for 2024, the row reads Caution by hand, and
+     the page called it unmeasured until it was given a tierTag. These are the only rows that can
+     reach that branch, so they are the only ones worth rendering for it. */
+  const noEvidence = [...SCHOOLS, ...REMOVED, ...NO_TRACK].filter(
+    s => !s.xc && s.b5000 == null && !(XCRACES[s.name] || []).length);
+  for (const s of noEvidence) {
+    const dom = await render('school.html', '?s=' + s.slug);
+    const tag = (dom.window.document.querySelector('.badge-row .src-tag') || {}).textContent || '';
+    if (/^\s*unmeasured/.test(tag) && s.tier !== 'verify') {
+      fails.push(`school.html?s=${s.slug}: badge says ${s.tier} and the line under it says ` +
+        `"unmeasured" — give the row a tierTag saying what the tier does rest on`);
+    }
+    dom.window.close();
+  }
+
   /* These two were literal 120 and 41 for a long time, which is exactly the thing the header
      above says this file does not do: the board grew to 185 rows and 55 off-board ones and the
      two assertions just failed on every run until they became noise you learned to scroll past.
