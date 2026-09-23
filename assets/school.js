@@ -198,7 +198,12 @@ function academics() {
 /* Coaches are public professionals listed on their own employer's staff directory,
    so they are named here — unlike the athletes in XCRACES, who are not. Everything
    in this block was read off the page linked as the source in August 2026; staffs
-   turn over, so the link matters more than the name. */
+   turn over, so the link matters more than the name.
+
+   Prefer the staff directory to a sport's own coaches page when they disagree. Radford's
+   /sports/mens-cross-country/coaches is a 2017 archive that still names a staff nine years
+   gone, and it renders like any current page &mdash; so a row sourced there would have sent
+   mail to two people who left before this athlete was in middle school. */
 function coachSection() {
   const c = S.coach;
   if (!c) return `
@@ -213,6 +218,11 @@ function coachSection() {
     ['Email', c.email ? `<a href="mailto:${c.email}">${c.email}</a>` : null,
       c.email ? (vacant
         ? 'a department address rather than a coach&rsquo;s — he can still write today; NCAA contact rules limit when <em>coaches</em> may initiate, not when a recruit may'
+        /* emailDept is the case the vacant branch above does not cover: the directory names a
+           head coach but publishes no address for them, only a program inbox. Worth saying so,
+           because a mail to a shared inbox needs the coach named in the first line to get read. */
+        : c.emailDept
+        ? `a <b>program</b> address rather than ${c.name ? `${c.name}&rsquo;s` : 'the coach&rsquo;s'} own — the directory publishes no individual address here, so open the mail by naming the coach above. He can still write today; NCAA contact rules limit when <em>coaches</em> may initiate, not when a recruit may`
         : 'he can email this address today — NCAA contact rules limit when <em>coaches</em> may initiate, not when a recruit may')
         : `no address is published on the staff directory — use ${c.phone ? 'the phone number below or ' : ''}the team's online recruit form`],
     ['Phone', c.phone ? `<a href="tel:${c.phone.replace(/[^0-9]/g, '')}">${c.phone}</a>` : null, c.phone ? 'office line' : ''],
@@ -236,8 +246,9 @@ function coachSection() {
      because a name a recruit half-remembers from last season should not just vanish. */
   if (c.prev) rows.push(['Recently changed', `${c.prev} &rarr; <strong>${c.name}</strong>`,
     `the staff page named ${c.prev} when this board was built and names ${c.name} now, so the
-     season measured below was coached by someone else. Read the results as the program&rsquo;s,
-     not the new coach&rsquo;s &mdash; and expect a new coach to be recruiting harder than a settled one`]);
+     season measured below was not run by the person he would be writing to. Read the results as
+     the program&rsquo;s, not the new coach&rsquo;s &mdash; and expect a new coach to be recruiting
+     harder than a settled one`]);
   return `
     <h2>Who to email</h2>
     <div class="table-scroll">
@@ -249,7 +260,7 @@ function coachSection() {
     </div>
     <p class="map-note">
       Read from <a href="${c.src}" rel="noopener">the school's own staff directory</a> in August 2026 and
-      <b>re-checked against it in September 2026</b>, when five names across the board turned out to have
+      <b>re-checked against it in September 2026</b>, when eight names across the board turned out to have
       changed. Coaching staffs turn over between seasons, so check the link before writing &mdash; and if
       the title above names a different sport or an interim, that is what the directory said.
     </p>`;
