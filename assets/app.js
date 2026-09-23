@@ -6,6 +6,20 @@
   if (saved) document.documentElement.setAttribute('data-theme', saved);
 })();
 
+/* The button carries both icons and CSS shows one, because which theme is live is not a
+   fact JavaScript owns: it can come from data-theme *or* from the OS preference when
+   nothing is stamped. Rather than duplicate that two-branch test here, styles.css sets
+   --icon-moon / --icon-sun inside the same three blocks that define the palette, so a
+   new way of turning dark mode on can only ever get the icon right. Each icon shows the
+   theme the click switches *to*: a moon while the page is light. */
+const ICON_MOON = `<svg class="ico ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>`;
+const ICON_SUN = `<svg class="ico ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M4.2 12H2M22 12h-2.2
+  M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>`;
+
 function initChrome(current) {
   /* One link per metro, straight off METROS in its declared order, so adding a ring means
      adding a page and a METROS entry and nothing else. `nav` is the short label where the
@@ -22,7 +36,9 @@ function initChrome(current) {
         ${metroLinks}
         <a href="methodology.html"${current === 'method' ? ' aria-current="page"' : ''}>Methodology</a>
       </nav>
-      <button id="theme" type="button" aria-label="Toggle color theme">Theme</button>
+      <button id="theme" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
+        ${ICON_MOON}${ICON_SUN}
+      </button>
     </div></header>`;
   document.body.insertAdjacentHTML('afterbegin', nav);
 
@@ -35,12 +51,17 @@ function initChrome(current) {
     </div></footer>`;
   document.body.insertAdjacentHTML('beforeend', foot);
 
-  document.getElementById('theme').addEventListener('click', () => {
-    const isDark = getComputedStyle(document.documentElement)
-      .getPropertyValue('--page').trim() === '#0d0d0d';
-    const next = isDark ? 'light' : 'dark';
+  /* aria-pressed carries the state the icon carries visually, since the button's label
+     stays put. isDarkNow() is the one dark test in this file, and it reads the live value
+     of --page, so it answers for the OS preference as well as for a stamped data-theme. */
+  const btn = document.getElementById('theme');
+  const stamp = () => btn.setAttribute('aria-pressed', String(isDarkNow()));
+  stamp();
+  btn.addEventListener('click', () => {
+    const next = isDarkNow() ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
+    stamp();
     if (window.renderChart) window.renderChart();
   });
 }

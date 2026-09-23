@@ -269,8 +269,8 @@
     </table>
   </div>
 
-  <h2>Read the metro write-ups</h2>
-  <div class="kpi-row">
+  <h2 id="write-ups">Read the metro write-ups</h2>
+  <div class="kpi-row cards">
     <a class="kpi linkcard" href="greenville.html">
       <div class="k-label">Greenville SC · 300 mi</div>
       <div class="k-value" id="k-m-greenville">—</div>
@@ -279,7 +279,11 @@
     <a class="kpi linkcard" href="new-york.html">
       <div class="k-label">New York City · 20 mi + Long Island</div>
       <div class="k-value" id="k-m-nyc">—</div>
-      <div class="k-sub">Six targets &mdash; NYU, Columbia, Fordham, NJIT and Seton Hall all within 18 miles of midtown, plus Stony Brook out on the Island. Five are Division 1 and NYU is the D3 exception. The cheapest net prices on the whole board are here, in CUNY: Hunter at $2,984. The both-sports rule cost this metro ten schools. Cost of living is still the real variable. The retired Newark page folded in here: <a href="new-york.html#newjersey">the New Jersey cluster</a> is read from downtown Newark, where NJIT is 0.8 miles out rather than 12, and its 33% computer science share is the highest on the board.</div>
+      <!-- No links inside a k-sub here: the card itself is an <a>, and HTML forbids nesting
+           one anchor in another, so the parser closed the card early and rendered the rest of
+           this paragraph as its own borderless box beside it. The New Jersey cluster's deep
+           link lives on new-york.html, one click further in. -->
+      <div class="k-sub">Six targets &mdash; NYU, Columbia, Fordham, NJIT and Seton Hall inside 18 miles of midtown, plus Stony Brook out on the Island. The cheapest net prices on the whole board are here, in CUNY: Hunter at $2,984. The both-sports rule cost this metro ten schools, and the retired Newark page is folded in.</div>
     </a>
     <a class="kpi linkcard" href="boston.html">
       <div class="k-label">Boston · 20 mi</div>
