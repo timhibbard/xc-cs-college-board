@@ -17,10 +17,16 @@
     Eleven schools sit inside 20 miles of downtown Washington and <strong>only seven of them are available to him</strong>. Georgetown is cut on the measurement. George Washington and Washington Adventist sponsor cross country and no men's track. Maryland sponsors men's track and <em>not</em> men's cross country. What survives is two genuine targets &mdash; <strong>American</strong> and <strong>George Mason</strong> &mdash; at $41,943 and $42,383, which is $12,000 above the metro median. This is the metro where the board's rules cost the most.
   </p>
 
+  <!-- The third tile must keep id="k-lead": the inline script at the bottom writes to it, and because
+       every table on this page is built by that same script, a missing id throws and takes the master
+       table, the map and all three off-board tables down with it. This page shipped that way once —
+       the tile had been swapped for a hardcoded "Off the board / 4" and the script line left behind,
+       so the page rendered two KPIs and nothing else. Off-board counts belong in a k-sub, not in a
+       tile of their own. -->
   <div class="kpi-row">
     <div class="kpi"><div class="k-label">Available inside 20 mi</div><div class="k-value" id="k-n">&mdash;</div><div class="k-sub">3 D1, 1 D2, 3 D3</div></div>
     <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">&mdash;</div><div class="k-sub">American and George Mason</div></div>
-    <div class="kpi"><div class="k-label">Off the board</div><div class="k-value">4</div><div class="k-sub">Georgetown, GWU, Washington Adventist, Maryland</div></div>
+    <div class="kpi"><div class="k-label">He would be their #1 at</div><div class="k-value" id="k-lead">&mdash;</div><div class="k-sub">Howard and Bowie State &mdash; plus four off the board: Georgetown, GWU, Washington Adventist, Maryland</div></div>
     <div class="kpi"><div class="k-label">Median net price</div><div class="k-value">$30,018</div><div class="k-sub">And the two targets are both above $41,000</div></div>
   </div>
 
