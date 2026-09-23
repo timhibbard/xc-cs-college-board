@@ -18,12 +18,14 @@ Division-1-only rule was tried on this board and **reversed**; the write-up of i
 made and undone rather than deleted, because the reason it failed is the useful part — it removed 96 rows,
 nine of them at target tier, seven of those in the Greenville ring. All 226 rows that have a men's
 program carry federal cost and admissions data and a detail page, and **175 of the 185 on the board rest
-on a real 2025 cross country result**. The 150 rows that predate the eight-metro pass also carry **the
-name and contact details of the coach who would recruit him**, **the program's Instagram** (147 of the
+on a real 2025 cross country result**. **All 226 also carry the name and contact details of the coach
+who would recruit him**, read off that school's own staff directory and linked to it — the 76 rows the
+eight-metro pass added were the last gap in that column and are now filled. The 150 rows that predate
+the pass carry four things the new ones still do not: **the program's Instagram** (147 of the
 150), **the coach's own Instagram on 17 rows** — recorded only where the account's own bio says they
 coach this program — **its 2026 conference-championship 1500 field** with his projected 4:01 dropped
 into it, and a map of every meet the program attended last season. **The 76 rows the new metros added
-have none of those five things yet**, which is the largest open gap in this repo; each new metro page
+have none of those four things yet**, which is the largest open gap in this repo; each new metro page
 says so in its own words. Seven rows sit at *Verify*, which means **unmeasured, not borderline** — three
 former Verify rows (Carlow, Marymount, Hilbert) moved to *caution* once it was clear that a two-man
 conference championship field is a measurement of a thin program rather than an absence of evidence.
@@ -240,7 +242,9 @@ Two things about those 62 rows matter more than the count, and every new page sa
   seven surviving pages has a 5000m column. **Newark** was the exception — its rows were already on the New
   York page with marks, so it carried a gap chart — and that is the same fact that made it the one page of
   the eight that could be folded back in. Drew, the one row it did not share, had no marks either, which
-  is why the New York gap chart lost nothing when it left. No coach names, no program Instagram, no 2026 conference 1500 field, no meet map. The
+  is why the New York gap chart lost nothing when it left. No program Instagram, no 2026 conference 1500
+  field, no meet map — the coach names were the fourth item on that list until every one of the 76 was
+  read off its school's staff directory. The
   both-sports check was done school by school against the sport list each athletics site publishes
   itself, because TFRRS cannot answer that question.
 
@@ -391,8 +395,11 @@ department pages). Every school page links the exact directory its entry came fr
 publish no email at all (Fayetteville State and West Georgia) and say so rather than guessing at an
 address pattern. Sidearm splits addresses across two JavaScript variables that are joined in the
 browser, so a naive fetch reports them as missing; reassembling those is the difference between full
-coverage and about half. **This is the fastest-decaying data on the site** — staffs turn over yearly
-and these were read in August 2026, so the link matters more than the name.
+coverage and about half. **This is the fastest-decaying data on the site** — staffs turn over yearly,
+the rows that predate the eight-metro sweep were read in August 2026 and re-checked in September (eight
+names had already changed), and the sweep's own 76 rows were read in September 2026. So the link matters
+more than the name. Where a directory names no head coach, or only an interim or an assistant, the
+`title` field says that rather than promoting whoever was listed.
 
 **Individual athletes are not named anywhere.** Race tables show times in finishing order as
 "Their #1 … Their #7", and the 1500 tables the same way. The times are what the comparison needs; the
@@ -410,7 +417,7 @@ greenville.html     per-metro write-up + filtered table, chart, and radius map
 new-york.html
 chicago.html
 boston.html         the seven metros added in the 2026 sweep; same shape, ladder-derived
-philadelphia.html   tiers, no coach block and no meet map yet, and each page says so
+philadelphia.html   tiers, coach blocks now filled in, no meet map yet, and each page says so
 washington.html
 baltimore.html
 pittsburgh.html

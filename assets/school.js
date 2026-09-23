@@ -197,8 +197,9 @@ function academics() {
 
 /* Coaches are public professionals listed on their own employer's staff directory,
    so they are named here — unlike the athletes in XCRACES, who are not. Everything
-   in this block was read off the page linked as the source in August 2026; staffs
-   turn over, so the link matters more than the name.
+   in this block was read off the page linked as the source: the rows that predate the
+   eight-metro sweep in August 2026 and re-checked in September, the 76 rows the sweep
+   added in September 2026. Staffs turn over, so the link matters more than the name.
 
    Prefer the staff directory to a sport's own coaches page when they disagree. Radford's
    /sports/mens-cross-country/coaches is a 2017 archive that still names a staff nine years
@@ -259,9 +260,10 @@ function coachSection() {
       </tbody></table>
     </div>
     <p class="map-note">
-      Read from <a href="${c.src}" rel="noopener">the school's own staff directory</a> in August 2026 and
-      <b>re-checked against it in September 2026</b>, when eight names across the board turned out to have
-      changed. Coaching staffs turn over between seasons, so check the link before writing &mdash; and if
+      Read from <a href="${c.src}" rel="noopener">the school's own staff directory</a> and last checked
+      against it in <b>September 2026</b> &mdash; when eight of the names already on the board turned out
+      to have changed in about a month, which is the measured decay rate of this block and the reason the
+      link is here. Coaching staffs turn over between seasons, so check the link before writing &mdash; and if
       the title above names a different sport or an interim, that is what the directory said.
     </p>`;
 }

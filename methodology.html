@@ -771,7 +771,8 @@
   </p>
   <p class="prose">
     What those rows do <em>not</em> have is stated with the same emphasis: <strong>no track marks, no
-    coach block, no program Instagram, no 2026 conference 1500 field and no meet map.</strong> Seven of
+    program Instagram, no 2026 conference 1500 field and no meet map.</strong> The coach block was the
+    fifth item on that list until all 76 were read, one staff directory at a time (&sect;6). Seven of
     the eight pages therefore have no 5000m column and no gap chart. Newark used to be the exception,
     because nine of its ten rows were already carried on the New York page with marks &mdash; which is
     also why that page was the one the sweep produced that could be folded back in. The both-sports
@@ -1159,30 +1160,40 @@
     </p>
   </div>
 
-  <h3>The coach on every school page</h3>
+  <h3 id="coach-source">The coach on every school page</h3>
   <p class="prose">
-    Each of the 151 school pages that has a coach ends with a <em>Who to email</em> block: the name of the coach who
+    Each of the 227 school pages that has a coach ends with a <em>Who to email</em> block: the name of the coach who
     would actually recruit a distance runner there, the title the school gives them, an office phone,
     and an email address. It is read off <strong>the employing school's own athletics staff
     directory</strong> and nowhere else — three platforms cover almost all of them
     (<em>Sidearm Sports</em> at <code>/sports/&lt;sport&gt;/coaches</code> or
     <code>/staff-directory</code>, <em>PrestoSports</em> at
     <code>/information/directory/index</code>, and a handful of hand-built department pages) — and each
-    page links the exact directory it came from.
+    page links the exact directory it came from. <strong>That is now every row on the site that has a
+    men's program &mdash; all 226 &mdash; plus South Carolina, which sponsors men's track and no men's
+    cross country.</strong> The last 76 of them, everything the eight-metro sweep added, were read in
+    September 2026; 225 of the 227 publish an email and 147 publish a direct office phone.
   </p>
   <div class="prose">
-    <p>Four things about this data specifically:</p>
+    <p>Seven things about this data specifically:</p>
     <ul>
       <li><strong>Coaches are named; athletes are not.</strong> That is not an inconsistency. A head coach is a public professional whose employer publishes their name, title and work email in order to be contacted. The runners in a race result are mostly 18-to-22-year-olds who published nothing, and their times are all this comparison needs (§3a).</li>
       <li><strong>Who counts as "the coach" varies by division.</strong> At a large D1 program the right contact is the <em>distance</em> or <em>cross country</em> coach, not the director of track and field; at a small D3 or NAIA school one person often holds cross country, indoor and outdoor, sometimes alongside another sport. The title is printed verbatim rather than normalised, because the title is the signal about how much attention the event group gets.</li>
-      <li><strong>Two schools publish no email at all</strong> — Fayetteville State and West Georgia. Their pages say so and point at the phone number or the team's own recruit form instead. Nothing was guessed from a first-initial-plus-surname pattern; a wrong address is worse than a missing one.</li>
+      <li><strong>Two schools publish no email at all</strong> — Fayetteville State and West Georgia. Their pages say so and point at the phone number or the team's own recruit form instead. Nothing was guessed from a first-initial-plus-surname pattern; a wrong address is worse than a missing one. Two more name a head coach but publish only a <em>program</em> inbox for them — <strong>Tufts</strong> (<em>xctf@tufts.edu</em>) and <strong>John Jay</strong> — and their pages say that too, because a mail to a shared inbox needs the coach named in the first line to get read.</li>
       <li><strong>Sidearm obfuscates addresses in the page source</strong>, splitting them across two JavaScript variables that are concatenated in the browser, so an address that looks absent to a naive fetch is usually present. Reassembling those is the difference between the coverage above and roughly half of it.</li>
+      <li><strong>The title carries the bad news.</strong> Where the directory does not simply name a men's cross country head coach, the <code>title</code> field says what it does say instead of promoting whoever was listed. <strong>East Tennessee State</strong> is the pattern — an assistant, with the head job listed vacant — and the sweep found six more of them: <strong>Marymount</strong>, where the only two names under cross country are graduate assistants and no head is listed; <strong>Rosemont</strong>, which lists a men's and women's track and field staff and no cross country coach at all; <strong>Temple</strong>, where an assistant is the only coach the directory attaches to men's cross country; <strong>Carolina University</strong>, which names a track and field head and no cross country head; and <strong>Lesley</strong> and <strong>Greensboro</strong>, both <em>interim</em>. At the large programs the same field names the person who was <em>not</em> recorded and why — Harvard's director of track and field above its distance coach, Northeastern's endowed head above its distance lead, Saint Joseph's recruiting coordinator beside its head — because which of two names to write to is exactly the thing a recruit cannot tell from the outside.</li>
+      <li><strong>An extension is not a phone number.</strong> <strong>Villanova</strong> and <strong>Morgan State</strong> publish bare four-digit extensions with no prefix anywhere on the page, so those rows carry no phone rather than a composed one. <strong>George Washington</strong> looks identical and is not: its column header reads <em>Phone (202)</em>, which is the prefix, published.</li>
+      <li><strong>The staff directory wins when it disagrees with the sport's own coaches page</strong>, for the reason Radford gives: its <code>/sports/mens-cross-country/coaches</code> is a 2017 archive that still names a staff nine years gone and renders exactly like a current page, so a row sourced there would have sent mail to two people who left before this athlete was in middle school. Two rows of the 76 go the other way and say why in the title. <strong>Hilbert</strong>'s directory omits cross country entirely, so its source is the sport's own coaches page; <strong>Carlow</strong>'s coaches page names the coach but publishes no address, so its source is the directory. A search snippet naming a different head coach was not enough to move a row either: <strong>Chatham</strong> came up that way and the live directory's name was kept.</li>
     </ul>
     <p>
       <strong>This data decays faster than anything else on the site, and there is now a measured rate
-      for it.</strong> These were read in <strong>August 2026</strong> and every one of the 150 was
+      for it.</strong> The first 151 were read in <strong>August 2026</strong> and every one of the 150
+      with a men's program was
       re-checked against the same directories in <strong>September 2026</strong>: <strong>five names had
-      already changed</strong> in about a month (see below). The link matters more than the name: if the
+      already changed</strong> in about a month (see below), and three more turned up on a second look at
+      the pages themselves. The 76 rows the eight-metro sweep added were read in September 2026 and have
+      not yet had a re-check, which means the youngest column on this site is also the one with no decay
+      measurement of its own. The link matters more than the name: if the
       name is stale, the directory behind it is not.
     </p>
   </div>
@@ -1191,8 +1202,8 @@
   <h3 id="coach-recheck">Every coach name re-checked &mdash; five had already left</h3>
   <p class="prose">
     The staff directories had to be fetched again to look for coaches' Instagram accounts, which made a
-    second check almost free: does the page still name the coach this site names? Each of the 150 pages was
-    re-read and searched for the recorded name. <strong>141 confirmed on the live page. Five had
+    second check almost free: does the page still name the coach this site names? Each of the 150 pages
+    that carried a coach at the time was re-read and searched for the recorded name. <strong>141 confirmed on the live page. Five had
     changed.</strong> Three more &mdash; Newberry, Dominican University and Clark Atlanta &mdash; looked
     like misses but were the fetch's fault rather than the data's: those sites return no per-sport coaches
     page, and all three coaches were confirmed on the department staff directory instead. One row,
@@ -1228,7 +1239,7 @@
     </p>
   </div>
 
-  <h3 id="coach-ig">The coach's own Instagram &mdash; 17 of 150, and why that number is honest</h3>
+  <h3 id="coach-ig">The coach's own Instagram &mdash; 17 of the 150 searched, and why that number is honest</h3>
   <p class="prose">
     The program handles elsewhere on this site are read off school pages (&sect;6a). A coach's personal
     account is never on those pages: all 150 staff directories were scanned for one and <strong>not a single
