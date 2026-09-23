@@ -118,8 +118,11 @@
       <a href="new-york.html#radius">it stayed on that page's cut list</a> rather than become the only
       row on the board outside its own ring. Sixty-two of those rows went onto the board, two were cut on
       the measurement, twelve sponsor no men's track and three field no men's cross country. The list
-      is now <strong>240 rows, 185 of them on the board</strong>. Those sixty-two arrived tiered by
-      <a href="methodology.html#tier-ladder">the published ladder</a> rather than by hand, and without
+      is now <strong>240 rows, 185 of them on the board</strong>. Fifty-nine of those sixty-two arrived
+      tiered by <a href="methodology.html#tier-ladder">the published ladder</a> rather than by hand &mdash;
+      the other three are hand-tiered because they fielded too few men at a championship for the ladder to
+      have anything to average, which is a
+      <a href="methodology.html#ladder-generated">measurement of a thin program, not a gap</a> &mdash; and without
       coach contacts, track marks or a 1500 field &mdash; the same gap the Greenville additions had
       when they arrived, stated rather than hidden.
     </p>
@@ -460,7 +463,7 @@
   <h2>What to do next</h2>
   <div class="prose">
     <ol>
-      <li><strong>Start with the 47 target-tier schools, in order of distance.</strong> The measurement job is all but done: 175 of the 185 schools on the board and every school on the cut list has a 2025 championship result behind its tier. The ten still at <span class="badge verify"><span class="g" aria-hidden="true">◆</span>Verify</span> — <em>unmeasured, not borderline</em> — are <strong>Shorter</strong> and nine rows from the new metros that posted no championship result to read, several of which may not still field a team; each one says which on its page. The nearest target is <strong>Anderson (SC) at 29 miles</strong>, and the nearest Division 1 target is UNC Asheville at 64.</li>
+      <li><strong>Start with the 47 target-tier schools, in order of distance.</strong> The measurement job is all but done: 175 of the 185 schools on the board and every school on the cut list has a 2025 championship result behind its tier. The seven still at <span class="badge verify"><span class="g" aria-hidden="true">◆</span>Verify</span> — <em>unmeasured, not borderline</em> — are <strong>Shorter</strong> and six rows from the new metros that posted no championship result to read, several of which may not still field a team; each one says which on its page. Three others — Carlow, Marymount and Hilbert — left that list without a single new result being collected: a two-man conference championship field cannot be averaged but is still a measurement, so they read <em>caution</em>. The nearest target is <strong>Anderson (SC) at 29 miles</strong>, and the nearest Division 1 target is UNC Asheville at 64.</li>
       <li><strong>Email the coaches, then follow the programs.</strong> The 123 rows that predate the eight-metro sweep each carry the coach's name, title, office phone and email, read off the school's own staff directory, plus the program's Instagram — the team's own cross country / track account at 96 of them, the athletics department's at the 25 that link none of their own, and nothing at the two whose sites link none at all (<strong>Hunter College</strong> and <strong>Dominican University</strong>). <strong>The 63 rows the new metros added have no coach contact yet</strong>, which is the largest open gap on this site. He can contact any coach in any division at any time; the NCAA restrictions only limit when <em>coaches</em> may initiate. One school on the board publishes no address (<strong>West Georgia</strong>) and eighteen publish no direct phone — use the recruit form there.</li>
       <li><strong>Confirm the CS degree</strong> at every school marked <span class="cs-no">Confirm</span> — a BA in applied AI is not a BS in computer science. Eleven schools on the board grant no computer science degree at all, and one of those is target-tier on running: <strong>Queens (Charlotte)</strong>. That is the hard failure — the running fits and the degree does not exist. <strong>Emory &amp; Henry</strong> was the second until the §3b arithmetic was corrected and it fell back to Caution, which settles its CS question by making it moot again.</li>
       <li><strong>Ask the thin-squad schools how many men are coming back.</strong> A 2025 result showing four or five finishers is one season of evidence, not a verdict; the coach knows whether the roster is rebuilding or collapsing.</li>
@@ -507,7 +510,7 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.map(r => `<tr>
   <td><a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a></td>
   <td>${metroLabel(r)}</td>
   <td>${r.div}</td>
-  <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+  <td>${TIERLBL[r.tier] ?? '\u2014'}${noAggTag(r)}</td>
   <td class="rownote" style="max-width:60ch">${r.why}</td></tr>`).join('');
 
 const npFind = n => (NO_PROGRAM.find(x => x.name === n) || {why: ''}).why;

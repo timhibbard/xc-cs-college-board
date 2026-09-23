@@ -641,9 +641,9 @@
   <div class="prose">
     <ul>
       <li><strong>Short races store what actually happened.</strong> A race with fewer than seven finishers records how many there were and reports <strong>his projection minus their <em>last</em> finisher</strong> in place of vs-7th. The school page says which it is, race by race, and <em>vs their 7th</em> is left blank in every table rather than filled with a substitute.</li>
-      <li><strong>Fewer than five finishers is not a team result.</strong> Five is the minimum to score, so those races are excluded from the averaged slot, gap and spread entirely — 36 of the 303 championship races on file. They still appear on the school page, because "they entered three men and finished three" is the finding. No invitational or 2026 race on file is that short, which is itself a sign of what a championship entry means: teams turn up to their conference meet with whoever is left.</li>
-      <li><strong>Five schools never finished five:</strong> Roosevelt, Benedict, John Jay, Mount Saint Vincent and York College (CUNY). Being the fastest man on a squad of four is the outcome this board exists to avoid, so all five sit at <em>Caution</em> regardless of how the times read.</li>
-      <li><strong>One- and two-finisher races are read as individual qualifiers, not teams.</strong> All 19 of them are an NCAA regional (9) or a national championship (10) — meets where a program that did not qualify as a team may still send one or two runners. They are labelled with that level on the school page and carry no team inference at all.</li>
+      <li><strong>Fewer than five finishers is not a team result.</strong> Five is the minimum to score, so those races are excluded from the averaged slot, gap and spread entirely — <strong>58 of the 447 championship races on file</strong>. They still appear on the school page, because "they entered three men and finished three" is the finding. No invitational or 2026 race on file is that short, which is itself a sign of what a championship entry means: teams turn up to their conference meet with whoever is left.</li>
+      <li><strong>Ten schools never finished five:</strong> Roosevelt, Benedict, John Jay, Mount Saint Vincent, York College (CUNY), Marymount, Carlow, Hilbert, Greensboro College and William Peace &mdash; the last two off the board on the both-sports rule, but carrying a published cross country tier all the same. Being the fastest man on a squad of four is the outcome this board exists to avoid, so all ten sit at <em>Caution</em> regardless of how the times read &mdash; the last five only after <a href="#ladder-generated">a correction</a>, because with no aggregate to average they had fallen through to <em>Verify</em>, which would have called a measured thin squad an unmeasured one.</li>
+      <li><strong>Most one- and two-finisher races are read as individual qualifiers, not teams &mdash; but the level decides that, not the field size.</strong> There are <strong>36</strong> of them and 32 are an NCAA regional (14) or a national championship (18), meets a program that did not qualify as a team may still send one or two runners to; those are labelled with their level on the school page and carry no team inference at all. The other <strong>four are conference championships</strong> (Marymount, Carlow, Hilbert and Greensboro College), and there the inference runs the opposite way: a conference meet is the race a program brings everyone to, so turning up with one or two men <em>is</em> the measurement of its depth. Those rows are still excluded from the averages, because two men cannot be averaged into a team result, but they are tiered on the finding rather than parked at <em>Verify</em>.</li>
     </ul>
   </div>
   <p class="prose">
@@ -663,11 +663,11 @@
     Worth being exact about now that every school has been re-averaged over its whole championship
     season instead of one or two races. <strong>The tiers are assigned by hand</strong>, and the ladder
     is the rule they almost always follow &mdash; and after the eight-metro sweep it is also the rule that
-    <em>generated</em> 62 of them, which is stated in its own subsection below because it is a different
+    <em>generated</em> 59 of them, which is stated in its own subsection below because it is a different
     claim. Of the <strong>185 schools on the board</strong>, <strong>126</strong> have a 7th
     man at a championship; another <strong>46</strong> have a championship race of five or more finishers
-    but no 7th man, where the last-finisher clause runs instead, for <strong>173</strong> the
-    ladder can decide at all. <strong>Five of those 173 disagree with it</strong>, and all five are
+    but no 7th man, where the last-finisher clause runs instead, for <strong>172</strong> the
+    ladder can decide at all. <strong>Five of those 172 disagree with it</strong>, and all five are
     hand-tiered rows from the original three metros. The figure published at
     the 15:55 anchor was six of 87, and it was wrong twice over: the honest count then was
     <strong>eight of 116</strong>, because the script that produced this list read the stored aggregates,
@@ -696,12 +696,15 @@
     </ul>
   </div>
   <p class="prose">
-    <strong>49</strong> schools have a tier but never finished seven at a championship. For 46 of them the
+    <strong>52</strong> schools have a tier but never finished seven at a championship. For 46 of them the
     last-finisher clause has something to run on &mdash; a championship race with five finishers or more
-    &mdash; and those 46 are inside the 173 above; the remaining three &mdash; Roosevelt, Benedict and York
-    College (CUNY) &mdash; entered fewer than five men at every
-    championship they ran, which is not a team result and is treated as one of the five-finisher exclusions
-    below rather than as a measurement. <strong>Wagner</strong> (slot 2.0, no 7th man, a 329-second spread)
+    &mdash; and those 46 are inside the 172 above; the remaining six &mdash; Roosevelt, Benedict, York
+    College (CUNY), Marymount, Carlow and Hilbert &mdash; entered fewer than five men at every
+    championship they ran, so there is no team result to average and they fall outside the ladder
+    entirely. They are held at <em>Caution</em> regardless of times, because a field of one to four at the
+    meet a program brings everyone to is itself the measurement: <code>tools/ladder.py</code> prints all
+    six rather than skipping them, which is how the last three were found still sitting at
+    <em>Verify</em>. <strong>Wagner</strong> (slot 2.0, no 7th man, a 329-second spread)
     and <strong>Oglethorpe</strong> (slot 3.0, 382 seconds) are the two that matter here, and both sit at
     <em>Caution</em> on Montreat's reasoning &mdash; with the 2026 season making the point twice over, since
     he would open this year as the #1 man at each of them.
@@ -712,22 +715,45 @@
     "borderline" with "unknown" and made the tier unreadable — a school could sit in <em>Verify</em>
     either because the data said something ambiguous or because there was no data at all. That band is
     retired; borderline measured schools land in <em>Caution</em> or <em>Target</em> on the ladder
-    above, and <em>Verify</em> is a to-do list. It currently holds <strong>ten rows</strong>, nine of
+    above, and <em>Verify</em> is a to-do list. It currently holds <strong>seven rows</strong>, six of
     them turned up by the eight-metro sweep: <strong>Shorter</strong> and <strong>Carolina
-    University</strong> in the Greenville ring, then Thomas Jefferson, Rosemont, Gallaudet, Marymount,
-    Carlow, Chatham, Bryant &amp; Stratton and Hilbert. <strong>Calumet College</strong> left the tier by
+    University</strong> in the Greenville ring, then Thomas Jefferson, Rosemont, Gallaudet, Chatham and
+    Bryant &amp; Stratton. <strong>Calumet College</strong> left the tier by
     leaving the board &mdash; it failed the both-sports rule &mdash; rather than by being measured.
+    <strong>Marymount, Carlow and Hilbert left it by being read correctly</strong>, and they are the
+    reason "no result exists" needs saying carefully: each of the three has a 2025 championship result,
+    just not one the five-finisher rule will average, and a conference field of two is a thin program
+    measured rather than a program unmeasured (<a href="#ladder-generated">the three the ladder could not
+    run on</a>). <strong>Thomas Jefferson</strong> is the row that keeps the tier honest in the other
+    direction: its lone short championship is the Division 2 <em>national</em> meet, which only individual
+    qualifiers enter, so one finisher there measures nothing about the squad and <em>Verify</em> is
+    right.
   </p>
 
-  <h3 id="ladder-generated">The 62 rows the ladder <em>did</em> generate</h3>
+  <h3 id="ladder-generated">The 59 rows the ladder <em>did</em> generate, and the three it could not</h3>
   <p class="prose">
     The eight-metro sweep &mdash; Boston, Philadelphia, Washington, Baltimore, Pittsburgh, Buffalo,
     Hampton Roads and Newark &mdash; added <strong>62 schools in one pass</strong>, and their tiers were
     <strong>not assigned by hand</strong>. The ladder above was run over each school's championship
     aggregate and its output was taken as the tier, unedited: <strong>14 targets, six at <em>deep</em>,
-    34 at <em>caution</em> and nine at <em>Verify</em></strong> for want of any result. Each carries
+    33 at <em>caution</em> and six at <em>Verify</em></strong> for want of any result. Those 59 carry
     <code>tierSrc: 'ladder'</code> so the two populations can never be confused, and every one of the
-    pages says so in its own opening callout. <strong>Newark is no longer one of them:</strong> the page
+    pages says so in its own opening callout.
+  </p>
+  <p class="prose">
+    <strong>Three of the 62 are hand-tiered, and the reason is a limit of the ladder rather than a
+    judgement about the schools.</strong> <strong>Carlow</strong>, <strong>Marymount</strong> and
+    <strong>Hilbert</strong> each turned up to a conference championship and did not get five men to the
+    finish, so there was no team result to average and the ladder had nothing to run on. They fell through
+    to <em>Verify</em>, which on this site means <em>unmeasured</em> &mdash; and that was the wrong word for
+    them, because a conference or regional championship is the race a program brings everyone to, so a
+    field of two there is a measurement of its depth and not an absence of one. He would arrive 785, 346
+    and 209 seconds ahead of their respective #1s. All three are <code>tierSrc: 'hand'</code> at
+    <em>caution</em> now, and <code>ladder.py</code> prints every row in this position rather than skipping
+    it. <strong>Thomas Jefferson is the row that shows why the distinction is not simply about field
+    size:</strong> its one short championship is the Division 2 <em>national</em> meet, where only
+    individual qualifiers run, so a lone finisher there says nothing about how many men the program can
+    field &mdash; that row is still <em>Verify</em>, correctly. <strong>Newark is no longer one of them:</strong> the page
     the sweep built has since been retired into <a href="new-york.html#newjersey">New York</a>, because
     twelve of its thirteen rows were already carried there. The rows and their tiers are untouched by
     that &mdash; seven pages carry them now instead of eight.
@@ -1258,7 +1284,7 @@
   <h2>6a. Known gaps in this data</h2>
   <div class="prose">
     <ol>
-      <li><strong>175 of the 185 schools on the board have a cross country result</strong> — down from 93 unmeasured, which was the largest gap on this site for most of its life. All 12 schools on the cut list rest on a 2025 championship result too. <strong>Ten rows are still open</strong>, and the eight-metro sweep is why: it added nine of them (Thomas Jefferson, Rosemont, Gallaudet, Marymount, Carlow, Chatham, Bryant &amp; Stratton, Hilbert and Carolina University), most being small privates whose TFRRS page holds no 2025 championship. <strong>Shorter</strong> is the tenth and the oldest, and it may be unmeasurable rather than unmeasured, because it entered three men at its only 2025 meet and all three did not start. Two other rows that were open have since left the board for reasons unconnected to measurement: <strong>Calumet College</strong> failed the both-sports rule (§6b) and <strong>South Carolina</strong> turned out to sponsor no men's cross country at all.</li>
+      <li><strong>175 of the 185 schools on the board have a cross country result</strong> — down from 93 unmeasured, which was the largest gap on this site for most of its life. All 12 schools on the cut list rest on a 2025 championship result too. <strong>Seven rows are still open</strong>, and the eight-metro sweep is why: it added six of them (Thomas Jefferson, Rosemont, Gallaudet, Chatham, Bryant &amp; Stratton and Carolina University), most being small privates whose TFRRS page holds no 2025 championship. Three more used to be counted here &mdash; <strong>Marymount, Carlow and Hilbert</strong> &mdash; and they were miscounted rather than unmeasured: each ran a 2025 conference championship with one or two men, which is too short a field to average but is itself a measurement of the squad, so all three now read <em>Caution</em> (<a href="#ladder-generated">the three the ladder could not run on</a>). <strong>Shorter</strong> is the seventh and the oldest, and it may be unmeasurable rather than unmeasured, because it entered three men at its only 2025 meet and all three did not start. Two other rows that were open have since left the board for reasons unconnected to measurement: <strong>Calumet College</strong> failed the both-sports rule (§6b) and <strong>South Carolina</strong> turned out to sponsor no men's cross country at all.</li>
       <li><strong>Depth is measured, but the tier still comes from championship races only.</strong> 303 of the 904 races on file are conference championships, NCAA regionals or national championships, because those are the ones where a program fields its actual seven &mdash; and §3a measures what the alternative would cost: the invitationals run a median 14.5 seconds kinder. The consequence is that the median school's tier rests on <strong>two</strong> scoring-five championship races, <strong>49 of the 148 rest on one or none</strong>, and the course is usually uncorrected. 40 of the measured programs have a further problem on top of that: no 7th man to compare against at all.</li>
       <li><strong>How the candidate lists were built, and why the earlier version of this claim was false.</strong> An earlier README said this board listed <em>every</em> school inside each radius that sponsors men's cross country. It did not. The lists were originally assembled from general knowledge and then verified individually, which validates what is present and says nothing about what is missing — and about 45 schools were missing from Greenville alone, including one 25 driving miles from home. The lists are now built the other way round: <strong>conference by conference, from each conference's own men's-sponsored-sports table</strong>. That sweep covered every NCAA D1, D2 and D3 conference with a member inside a ring, and all of it is on the board: a Division-1-only rule was applied and then reversed (§6c). The guarantee is materially stronger than the old one, but it inherits the conferences' errors — a stale sponsored-sports table is wrong in both directions, and each school's sponsorship was <em>not</em> re-confirmed on the school's own athletics site.</li>
       <li><strong>NAIA and NCCAA coverage is incomplete and known to be — and with the Division 1 rule reversed (§6c) this is a live gap again.</strong> The sweep was built from NCAA conference sponsored-sports tables, so the four NAIA rows on this site are only the non-NCAA programs it happened to run into. At least these NAIA and NCCAA programs in the Greenville footprint were never checked — Toccoa Falls, Truett McConnell, Brenau, Columbia International, Columbia College SC, Milligan, Johnson University, Reinhardt, Voorhees, Tennessee Wesleyan, Morris College, Bryan College, Bluefield University, Point University, Life University, Spartanburg Methodist and Warren Wilson. NAIA allows 12 scholarships for men's XC and track and has looser eligibility rules, so this gap sits in exactly the place where money is easiest to find. It is the largest known hole in the candidate list.</li>
@@ -1402,8 +1428,8 @@
     First, a uniform list: 44 programs that can all offer athletic aid, all measured against the same
     kind of championship, is easier to reason about than 185 across five divisions. Second,
     <strong>squad depth</strong>: the D1-only board had no program below five finishers, where the full
-    board has three that could not field the scoring five at all (Roosevelt, Benedict, York College
-    (CUNY) &mdash; §5). Third, and this one was an illusion: the median team's fastest 1500 improved from
+    board has six that could not field the scoring five at all (Roosevelt, Benedict, York College
+    (CUNY), Marymount, Carlow and Hilbert &mdash; §5). Third, and this one was an illusion: the median team's fastest 1500 improved from
     4:01.1 to 3:49.7 and the number of programs where he would arrive as their #1 fell from 57 in 114 to
     8 in 44. That is not the board getting better, it is the sample being selected for programs that
     recruit milers &mdash; the same error as judging a program on one fast 5000, one level up.

@@ -661,7 +661,7 @@ const TIERLBL = { target: 'Target', deep: 'Deep', verify: 'Verify', caution: 'Ca
 document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK
   .filter(r => inMetro(r, 'greenville'))
   .map(r => `<tr><td><a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a></td>
-   <td>${r.div}</td><td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td>${r.div}</td><td>${TIERLBL[r.tier] ?? '\u2014'}${noAggTag(r)}</td>
    <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
 
 document.querySelector('#noxc-tbl tbody').innerHTML = NO_PROGRAM

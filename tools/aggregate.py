@@ -44,13 +44,31 @@ def summarise(rs):
 
 def agg(slug):
     allr=BT.get(slug,[])
+    # Five finishers is the floor for a comparable race: below that there is no scoring five,
+    # so "his slot in their 7" has nothing to be a slot in. DO NOT lower this globally to pick
+    # up thin schools. cmpable filters races before they are averaged, so a lower floor would
+    # also pull 1-4 finisher championship races into the aggregates of healthy programs, moving
+    # their g1 and spread and shifting tiers across the whole board. The floor is right.
     cmpable=[r for r in allr if r['g1'] is not None and r['nfin']>=5]
     ch=[r for r in cmpable if r['level'] in CHAMP]
     iv=[r for r in cmpable if r['level'] not in CHAMP]
     out={'races_all':len(allr),'races_cmp':len(cmpable)}
     out['xc']=summarise(ch); out['xcInv']=summarise(iv)
     if not cmpable:
+        # What the floor costs, and the reason `unmeasured` is not the same as "no data": a school
+        # can land here having been measured at a championship and found to field one or two men.
+        # That is the strongest evidence of a thin program there is, and it used to be reported as
+        # an absence of evidence, because no xc block meant ladder.py skipped the row and it kept
+        # the Verify it was seeded with. Carlow, Marymount and Hilbert sat at Verify that way while
+        # their own notes recorded 1-2 finishers at a conference championship; they are hand-tiered
+        # Caution now. So: check `maxfin` and the championship levels in XCRACES before treating an
+        # unmeasured row as unknown. A conference championship is the race a program brings everyone
+        # to, so a short field there is a measurement. A *national* championship is not - only
+        # individual qualifiers go, which is why Thomas Jefferson's single finisher there is
+        # genuinely no evidence about depth and that row is still Verify.
         out['unmeasured']=True; out['maxfin']=max([r['nfin'] for r in allr],default=0)
+        out['champ_levels']=sorted({r['level'] for r in allr if r['level'] in CHAMP})
+        out['champ_maxfin']=max([r['nfin'] for r in allr if r['level'] in CHAMP],default=0)
     # squad shape: deepest championship race, else deepest race of any kind
     pool=ch or cmpable or allr
     if pool:

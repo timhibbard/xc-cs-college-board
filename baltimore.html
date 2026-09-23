@@ -144,7 +144,7 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => in
   .sort(byMi)
   .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
    <td>${r.div}</td><td class="num">${miCell(r)}</td>
-   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${noAggTag(r)}</td>
    <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
 
 initMap('baltimore');

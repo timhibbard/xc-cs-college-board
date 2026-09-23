@@ -15,6 +15,19 @@ const IS_NOTRACK = !!(S && NO_TRACK.includes(S));
 const IS_NOXC = !!(S && NO_PROGRAM.includes(S));
 const IS_CUT = !!(S && !SCHOOLS.includes(S) && !IS_NOTRACK && !IS_NOXC);
 
+/* A school can have no `xc` aggregate for two opposite reasons and this page must never
+   confuse them. Either nothing is on file, which is unmeasured — or it turned up to a
+   championship and did not get five men to the finish, which aggregate.py cannot average
+   but which is a measurement of a thin program rather than an absence of one.
+   The distinction that matters is *which* championship. A conference or regional meet is
+   the race a program brings everyone to, so a field of two there is evidence. A national
+   championship is not: only individual qualifiers go, so a lone finisher says nothing about
+   depth, which is why Thomas Jefferson is still Verify while Carlow, Marymount and Hilbert
+   are Caution. Any page that reads "Verify means unmeasured" has to check this first. */
+const DEPTH_CHAMP = ['conference', 'area championship', 'NCAA regional'];
+const SHORT_DEPTH = !S || S.xc ? [] : (XCRACES[S.name] || [])
+  .filter(r => DEPTH_CHAMP.includes(r.level) && (r.nfin ?? r.runners.length) < 5);
+
 const usd = (n) => n == null ? null : '$' + n.toLocaleString('en-US');
 const SEASONS = {
   x: { key: 'x', label: 'Cross country', glyph: 'X', long: 'cross country' },
@@ -55,6 +68,13 @@ function head() {
       : S.xc ? `<span class="src-tag">tier from cross country results</span>`
       : IS_CUT || IS_NOXC ? ''
       : S.b5000 != null ? `<span class="src-tag">tier from one outdoor 5000 mark &mdash; no cross country data</span>`
+      /* Measured at a championship, just not deeply enough to average. Saying "no championship
+         result" here would be false, and "unmeasured" would throw away the finding. The number
+         is the deepest *conference or regional* field on purpose, which can be smaller than the
+         one the callout below quotes: Carlow got two men to a national championship and one to
+         its conference meet, and it is the conference meet that measures the squad. */
+      : SHORT_DEPTH.length ? `<span class="src-tag">tier from a championship field too short to score &mdash;
+          ${nOf(Math.max(...SHORT_DEPTH.map(r => r.nfin ?? r.runners.length)), 'finisher')} at their deepest conference or regional</span>`
       /* Neither a championship aggregate nor a track mark: Verify here means unmeasured,
          and saying "tier from a 5000 mark" would invent a measurement that does not exist. */
       : `<span class="src-tag">unmeasured &mdash; no championship result and no track mark on file</span>`}</p>
@@ -259,6 +279,18 @@ const XP = { '8K': ATHLETE.proj8k, '10K': ATHLETE.proj10k, '5K': ATHLETE.proj5kx
 const XPL = { '8K': ATHLETE.proj8kLabel, '10K': ATHLETE.proj10kLabel, '5K': ATHLETE.proj5kxcLabel };
 const nOf = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
 
+/* Seconds he would arrive in front of their #1 at the fullest of the short conference or
+   regional fields, in 8K-equivalent seconds. Recomputed from the raw times because these are
+   exactly the schools that have no stored `xc` aggregate to read a gap out of - same derivation
+   tools/ladder.py prints for them, so the two should always agree. */
+function shortDepthLead() {
+  const rs = SHORT_DEPTH.filter(r => XP[r.dist] && r.runners.length);
+  if (!rs.length) return null;
+  const fin = r => r.nfin ?? r.runners.length;
+  const r = rs.reduce((a, b) => (fin(b) > fin(a) ? b : a));
+  return Math.round(((r.runners[0] + (r.corr || 0)) - XP[r.dist]) * (XP['8K'] / XP[r.dist]));
+}
+
 function xcSection() {
   const races = (typeof XCRACES !== 'undefined' && XCRACES[S.name]) || [];
   /* No results and no team are different findings, and only one of them is worth
@@ -317,9 +349,23 @@ function xcSection() {
       <p>The ${ch.length === 1 ? 'race above is' : 'races above are'} real and ${ch.length === 1 ? 'it is' : 'they are'}
       all this team has on file, and the most it got to a championship finish line is
       <strong>${Math.max(...ch.map(r => r.nfin ?? r.runners.length))}</strong>
-      ${Math.max(...ch.map(r => r.nfin ?? r.runners.length)) === 1 ? 'runner' : 'runners'}. That is why the
-      tier here reads <b>Verify</b>: unmeasured rather than borderline. Ask the coach how many men are on
-      the roster for the coming season before anything else on this page matters.</p></div>` : `
+      ${Math.max(...ch.map(r => r.nfin ?? r.runners.length)) === 1 ? 'runner' : 'runners'}.
+      ${SHORT_DEPTH.length
+        ? `That is the tier: <b>${TIERS[S.tier].label}</b>. A conference or regional championship is the
+           race a program brings everyone to, so a field this short there is a measurement of its depth and
+           not a gap in the evidence${(() => {
+             const lead = shortDepthLead();
+             return lead == null ? '' : lead > 0
+               ? ` &mdash; he would arrive <strong>${lead} seconds in front of their #1</strong> there, which on
+                   this board is the definition of a thin program`
+               : ` &mdash; and he would arrive ${-lead} seconds behind their #1 there, so the thinness is in the
+                   number of men rather than in their speed`;
+           })()}. Still worth asking the coach how many men are on the roster for
+           the coming season, but as a question about recovery rather than an unknown.`
+        : `That race is the <em>national</em> championship, where only individual qualifiers run, so it says
+           nothing about how many men this program can field. That is why the tier here reads
+           <b>${TIERS[S.tier].label}</b>: unmeasured rather than borderline. Ask the coach how many men
+           are on the roster for the coming season before anything else on this page matters.`}</p></div>` : `
     <div class="callout"><span class="c-title">No championship result on file</span>
       <p>Everything below is an invitational, where a team often rests its front and its #1 is not
       racing flat out. The tier here is softer evidence than it looks.</p></div>`}

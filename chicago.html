@@ -361,7 +361,7 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK
   .sort((a, b) => (miIn(a, 'chicago') ?? 999) - (miIn(b, 'chicago') ?? 999))
   .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
    <td>${r.div}</td><td class="num">${miIn(r, 'chicago') ?? '\u2014'}</td>
-   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${noAggTag(r)}</td>
    <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
 
 document.querySelector('#noxc-tbl tbody').innerHTML = NO_PROGRAM

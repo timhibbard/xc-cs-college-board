@@ -14,7 +14,7 @@
   <p class="eyebrow">20 mile radius · all divisions · new in this pass</p>
   <h1>Buffalo</h1>
   <p class="lede">
-    Six schools, the <strong>cheapest metro on this board</strong> at a $21,449 median net price, and one clear answer: <strong>University at Buffalo</strong>, Division 1 in the Mid-American, where he lands <strong>two seconds inside their seventh man</strong>. The metro's other real fit is unavailable &mdash; <strong>Canisius</strong> is a target on the running and sponsors no track at all &mdash; and two of the remaining rows are unmeasured rather than thin. Small, cheap, and thinner than it looks.
+    Six schools, the <strong>cheapest metro on this board</strong> at a $21,449 median net price, and one clear answer: <strong>University at Buffalo</strong>, Division 1 in the Mid-American, where he lands <strong>two seconds inside their seventh man</strong>. The metro's other real fit is unavailable &mdash; <strong>Canisius</strong> is a target on the running and sponsors no track at all &mdash; and of the remaining rows one is unmeasured and one is measured thin. Small, cheap, and thinner than it looks.
   </p>
 
   <div class="kpi-row">
@@ -31,9 +31,9 @@
   </div>
 
   <div class="callout crit">
-    <span class="c-title">Two of the six rows are unmeasured, not thin</span>
-    <p><strong>Bryant &amp; Stratton</strong> is a USCAA college rather than an NCAA or NAIA one, 0.6 miles from the centre, and the entire men's cross country record on file is <b>two men in one 2026 invitational</b>. At <b>$14,135</b> it is the cheapest row on the page, and the federal file reports no admit rate and no SAT range for it at all.</p>
-    <p><strong>Hilbert</strong> finished two men at the 2025 AMCC championship and two at the Division 3 Niagara regional, and its athletics site is a further worry: the navigation lists neither cross country nor track among its sports, and the most recent schedules it publishes are <b>fall 2025</b> for cross country and <b>spring 2025</b> for men's outdoor track. Confirm both sports still exist before spending time on it.</p>
+    <span class="c-title">One of the six rows is unmeasured, and one is measured thin</span>
+    <p><strong>Bryant &amp; Stratton</strong> is the unmeasured one: a USCAA college rather than an NCAA or NAIA one, 0.6 miles from the centre, and the entire men's cross country record on file is <b>two men in one 2026 invitational</b>. At <b>$14,135</b> it is the cheapest row on the page, and the federal file reports no admit rate and no SAT range for it at all.</p>
+    <p><strong>Hilbert</strong> is the other, and it is a different thing: it finished two men at the 2025 AMCC championship and two at the Division 3 Niagara regional. A conference championship is the race a program brings everyone to, so two men there is a measurement of its depth rather than a gap in the evidence &mdash; he would arrive <b>209 seconds ahead of their #1</b> at that championship and 106 ahead at the regional, which is why this row reads <em>Caution</em> and not <em>Verify</em>. Its athletics site is a further worry: the navigation lists neither cross country nor track among its sports, and the most recent schedules it publishes are <b>fall 2025</b> for cross country and <b>spring 2025</b> for men's outdoor track. Confirm both sports still exist before spending time on it.</p>
   </div>
 
   <div class="callout">
@@ -136,7 +136,7 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => in
   .sort(byMi)
   .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
    <td>${r.div}</td><td class="num">${miCell(r)}</td>
-   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${noAggTag(r)}</td>
    <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
 
 initMap('buffalo');

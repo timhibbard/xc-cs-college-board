@@ -40,6 +40,7 @@
   <div class="callout crit">
     <span class="c-title">Gallaudet is the cheapest row in range, and unmeasured</span>
     <p><b>$15,845</b> average net price, 3 miles from the centre, <b>4.6%</b> computer science, and the only university in the world designed from the ground up for deaf and hard-of-hearing students. On the running there is nothing to measure: seven races on file across 2025 and 2026, <b>never more than four finishers</b>, and no championship in either season. <em>Verify</em> here means unmeasured, not borderline.</p>
+    <p><strong>Marymount is the row to contrast it with.</strong> It also has no averageable result &mdash; two men at the 2025 Atlantic East championship and one at the Division 3 South regional, both short of the five finishers this board needs before it will average a race &mdash; but a conference championship is the meet a program brings everyone to, so a field of two there is a measurement of how thin the squad is rather than an absence of evidence. He would arrive <b>346 seconds ahead of their #1</b> at that championship. That row reads <em>Caution</em>, and Gallaudet, which entered no championship at all, does not.</p>
   </div>
 
   <div class="callout">
@@ -173,7 +174,7 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => in
   .sort(byMi)
   .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
    <td>${r.div}</td><td class="num">${miCell(r)}</td>
-   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${noAggTag(r)}</td>
    <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
 
 document.querySelector('#noxc-tbl tbody').innerHTML = NO_PROGRAM.filter(r => inMetro(r, 'washington'))

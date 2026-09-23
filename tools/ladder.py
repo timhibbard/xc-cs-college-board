@@ -58,6 +58,29 @@ def ladder(x):
     return 'caution' if x['slot'] <= 2 else 'target'
 
 
+def short_champ(races):
+    """Championship races too short for the ladder, which are evidence and not a gap.
+
+    agg() needs five finishers before it will average a race, so a school that turned up
+    to its conference championship with one or two men returns None above and drops out of
+    the run entirely - and used to drop out silently, keeping whatever tier it was seeded
+    with. Three rows sat at Verify that way with their own notes recording 1-2 finishers at
+    a conference meet. A short field at a *conference* championship is a measurement of
+    depth, because that is the race a program brings everyone to. A short field at a
+    national championship is not, because only individual qualifiers go.
+    """
+    out = []
+    for r in races:
+        if r['level'] not in CHAMP or r['dist'] not in P:
+            continue
+        n = r.get('nfin') or len(r['runners'])
+        if n >= 5 or not r['runners']:
+            continue
+        gap = (P[r['dist']] - (r['runners'][0] + (r.get('corr') or 0))) * EQ[r['dist']]
+        out.append((r['level'], r['date'], n, round(-gap, 1)))
+    return out
+
+
 rows, run, seven = [], 0, 0
 for s in b['SCHOOLS']:
     if not s.get('tier'):
@@ -79,3 +102,33 @@ print('schools the ladder can run on: %d  (%d on a 7th man, %d on the last finis
 print('disagreements:', len(rows))
 for r in sorted(rows, key=lambda r: (r[1], r[0])):
     print('  %-24s hand %-8s ladder %-8s v7 %8s vlast %9s slot %5s races %s' % r)
+
+# This sweep runs over every row that carries a tier, not just the board. A board-only
+# version of it missed Greensboro College and William Peace: both are off the board on the
+# both-sports rule, both still publish "the tier it held on cross country" on a metro page,
+# and both were labelled Verify on a one- and a three-man conference championship. A tier
+# that says "unmeasured" about a measured squad is wrong wherever it is printed.
+OFF = {r['name'] for r in b['REMOVED'] + b['NO_TRACK']}
+shortonly = []
+for s in b['SCHOOLS'] + b['REMOVED'] + b['NO_TRACK']:
+    if not s.get('tier') or agg(b['XCRACES'].get(s['name'], [])):
+        continue
+    sc = short_champ(b['XCRACES'].get(s['name'], []))
+    if sc:
+        shortonly.append((s['name'], s['tier'], sc))
+
+print('\nno ladder, but measured at a championship too short to average: %d' % len(shortonly))
+print('  a conference or regional field under five men is evidence of a thin program, not a')
+print('  gap in the evidence - these should not sit at Verify. A national championship field')
+print('  is the exception: only individual qualifiers go, so a lone finisher there says nothing.')
+DEPTH = ('conference', 'area championship', 'NCAA regional')
+for name, tier, sc in sorted(shortonly):
+    # Only a short field at a depth race is grounds for complaint. A row whose only short
+    # championship is the national meet is correctly left at Verify, so saying nothing about
+    # it is the point - a check that flags the one row already decided teaches you to ignore it.
+    flag = ('   <-- still Verify on a short depth race, check this'
+            if tier == 'verify' and any(l in DEPTH for l, _, _, _ in sc) else '')
+    print('  %-24s hand %-8s%s%s' % (name, tier, ' (off the board)' if name in OFF else '', flag))
+    for level, date, n, ahead in sc:
+        print('      %s  %-22s %d finisher%s, he is %+.1fs on their #1'
+              % (date, level, n, '' if n == 1 else 's', ahead))

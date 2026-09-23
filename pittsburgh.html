@@ -26,7 +26,7 @@
 
   <div class="callout crit">
     <span class="c-title">Why Pittsburgh reads differently from everywhere else in this pass</span>
-    <p>The single most common finding on this board is a program that cannot field seven men. Five of sixteen in Boston, three of fourteen in Philadelphia, four of four in Hampton Roads. In Pittsburgh it is <b>none of the five</b> measured programs &mdash; every one of them finished a full scoring seven in a championship &mdash; and he would lead only Point Park. Two of the seven rows are unmeasured rather than thin.</p>
+    <p>The single most common finding on this board is a program that cannot field seven men. Five of sixteen in Boston, three of fourteen in Philadelphia, four of four in Hampton Roads. In Pittsburgh it is <b>none of the five</b> measured programs &mdash; every one of them finished a full scoring seven in a championship &mdash; and he would lead only Point Park. Of the other two rows, <b>one is unmeasured and one is measured thin</b>.</p>
     <p>That matters more than any individual row here, because depth is the thing a recruit cannot fix by arriving. A metro where the sevenths are real is a metro where the tier means what it says.</p>
   </div>
 
@@ -81,9 +81,13 @@
       <strong>Three more to know.</strong> <strong>Point Park</strong> is the metro's only Division 2
       program, so it is the only partial-athletic-money door in range; it admits <b>97%</b>, costs
       <b>$25,942</b>, and he would arrive 120 seconds ahead of their #1. <strong>Carlow</strong> and
-      <strong>Chatham</strong> are both <em>Verify</em> meaning unmeasured: Carlow finished one man
-      at the AMCC championship and two at the USCAA national meet in the same season, and Chatham's
-      entire 2025 record is one invitational with two finishers.
+      <strong>Chatham</strong> read the same on the table and are not the same finding. Carlow is
+      <em>Caution</em>: it finished one man at the AMCC championship and two at the USCAA national meet
+      in the same season, and eight races are on file across two seasons whose fullest fielded six &mdash;
+      a conference championship is the race a program brings everyone to, so that is a measurement of its
+      depth, and he would arrive <b>785 seconds ahead of their #1</b> there. Chatham is the genuinely
+      <em>Verify</em> one: its entire 2025 record is one invitational with two finishers, so there is
+      nothing to measure rather than something measured and thin.
     </p>  </div>
 
   <h2>Full list</h2>
@@ -146,7 +150,7 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => in
   .sort(byMi)
   .map(r => `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
    <td>${r.div}</td><td class="num">${miCell(r)}</td>
-   <td>${TIERLBL[r.tier] ?? '\u2014'}${r.xc ? '' : ' <span class="nodata">(unmeasured)</span>'}</td>
+   <td>${TIERLBL[r.tier] ?? '\u2014'}${noAggTag(r)}</td>
    <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
 
 initMap('pittsburgh');

@@ -24,7 +24,9 @@ name and contact details of the coach who would recruit him**, **the program's I
 coach this program — **its 2026 conference-championship 1500 field** with his projected 4:01 dropped
 into it, and a map of every meet the program attended last season. **The 76 rows the new metros added
 have none of those five things yet**, which is the largest open gap in this repo; each new metro page
-says so in its own words. Ten rows sit at *Verify*, which means **unmeasured, not borderline**.
+says so in its own words. Seven rows sit at *Verify*, which means **unmeasured, not borderline** — three
+former Verify rows (Carlow, Marymount, Hilbert) moved to *caution* once it was clear that a two-man
+conference championship field is a measurement of a thin program rather than an absence of evidence.
 
 **The Greenville ring is 300 driving miles**, widened from 250. That pass turned up eight Division 1
 programs new to the board: Auburn, Samford and Radford joined it, NC State, Virginia Tech and Eastern
@@ -67,8 +69,10 @@ pass, which is a reminder that the rule keeps biting at the top of the division 
 Measuring all of them produced one finding that changed the method: **57 of the 212 measured
 programs never finished seven runners in any 2025 championship race**, so there is no 7th man to
 compare against. Those schools are compared to the team's *last* finisher instead and say so, and
-the five that could not finish the scoring five — Roosevelt, Benedict, John Jay, Mount Saint Vincent
-and York College (CUNY) — are held at *Caution* regardless of times. On the board itself the count is
+the ten that could not finish the scoring five — Roosevelt, Benedict, John Jay, Mount Saint Vincent,
+York College (CUNY), Marymount, Carlow, Hilbert, Greensboro College and William Peace — are held at
+*Caution* regardless of times, because a short field at the meet a program brings everyone to is a
+measurement of depth and not a missing one. On the board itself the count is
 **49 of 185**, and the new metros made it worse rather than better: all four Hampton Roads programs
 and five of Boston's sixteen never finished seven, while Pittsburgh is the one metro where every
 measured program did. It is not a small-college
@@ -187,9 +191,11 @@ The divisional shape of the rings is completely different and worth reading befo
 Greenville is 33 D1, 39 D2, 11 D3 and two NAIA; New York is 10 D1, 7 D2 and 12 D3; Boston is 12 D3,
 3 D1 and one D2; Chicago is 3 D1, one D2, 6 D3 and one NAIA; Pittsburgh and Washington are each 3 D1
 and 3 D3. **Boston and Chicago are Division 3 cities** for men's distance running, and ten of New
-York's no-men's-track removals are D3 CUNY and small-private programs. The ten unmeasured rows are
+York's no-men's-track removals are D3 CUNY and small-private programs. The seven unmeasured rows are
 all in the new metros or at the edge of the Greenville ring: Shorter, Carolina University, Thomas
-Jefferson, Rosemont, Gallaudet, Marymount, Carlow, Chatham, Bryant & Stratton and Hilbert.
+Jefferson, Rosemont, Gallaudet, Chatham and Bryant & Stratton. **Marymount, Carlow and Hilbert used to
+be on that list and are not unmeasured**: each turned up to a conference championship with one or two
+men, which is too short a field to average but is itself the measurement — they are *caution*.
 
 The New York rule is a shape, not a circle: 20 driving miles from Midtown **plus all of Nassau and
 Suffolk County** regardless of distance, because Long Island is a commutable corridor while
@@ -217,15 +223,19 @@ rings were measuring nearly the same schools.
 **62 went onto the board** — 34 Division 3, 18 Division 1, eight D2, one NAIA and one USCAA — as **14
 targets** (MIT, Harvard, Tufts, Penn, La Salle, Haverford, Swarthmore, American, George Mason, UMBC,
 Duquesne, Carnegie Mellon, University at Buffalo, Norfolk State), **six at deep** (Northeastern, Boston
-College, Saint Joseph's, Johns Hopkins, Pittsburgh, Robert Morris), 33 at caution and nine unmeasured.
+College, Saint Joseph's, Johns Hopkins, Pittsburgh, Robert Morris), 36 at caution and six unmeasured.
 **Villanova and Georgetown are cut on level.** Eight fail the both-sports rule, four of them Division 1.
 **Maryland**, a flagship public 9 miles from downtown Washington, sponsors no men's cross country at all.
 
 Two things about those 62 rows matter more than the count, and every new page says both in its own words:
 
-- **Their tiers come from the published ladder and nothing else** — `tierSrc: 'ladder'`. The same
-  championship-only aggregates, the same ≥5-finisher and ≥7-finisher rules, the same 45-second line. No
-  row was moved by judgement, and Furman stays the only school on this board placed against its ladder.
+- **Fifty-nine of the 62 tiers come from the published ladder and nothing else** — `tierSrc: 'ladder'`.
+  The same championship-only aggregates, the same ≥5-finisher and ≥7-finisher rules, the same 45-second
+  line. No row was moved by judgement, and Furman stays the only school on this board placed *against*
+  its ladder. The other three — **Carlow, Marymount and Hilbert**, `tierSrc: 'hand'` — are rows the
+  ladder could not run on at all, because the ≥5-finisher rule left their only championship races
+  unaveraged. They are at *caution* rather than *Verify* because a one- or two-man field at a conference
+  championship is a measurement of depth, not a missing measurement.
 - **They are thinner than the original 150.** No track marks were collected for any of them, so none of the
   seven surviving pages has a 5000m column. **Newark** was the exception — its rows were already on the New
   York page with marks, so it carried a gap chart — and that is the same fact that made it the one page of
@@ -470,8 +480,9 @@ why and lists the two flat-rate exceptions.
 page, tenths and all, parsed at render time; `null` means no data was found. `tier` is
 `target`, `deep`, `verify`, or `caution`, and `tierSrc` records where it came from: cross country
 results read race by race (`xc`, 122 rows), the published tier ladder applied to championship
-aggregates alone (`ladder`, the 62 rows the eight-metro sweep added), or track marks with no cross
-country to read (`5000`, one row). Changing a value updates the tables,
+aggregates alone (`ladder`, 59 rows), a hand tier where the ladder had nothing to run on (`hand`,
+three rows — Carlow, Marymount and Hilbert, each measured at a conference championship it could not
+field five men for), or track marks with no cross country to read (`5000`, one row). Changing a value updates the tables,
 the chart, the maps, the KPI tiles and the school page with no other edits.
 
 A team that never finished seven carries `v7: null` plus `short: true` and `maxfin: N` — the most

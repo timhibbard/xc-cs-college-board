@@ -122,6 +122,20 @@ function v7Txt(s) {
     : `<span class="gap-neg">+${s.xc.v7.toFixed(0)}s</span>`;
 }
 
+/* The off-board tables print a tier with no `xc` aggregate behind it, and "unmeasured" is
+   only one of the reasons a row can be in that state. Greensboro College and William Peace
+   are Caution on a one- and a three-man conference championship: too short to average, but
+   the measurement itself rather than the absence of one, so printing "(unmeasured)" beside
+   the word Caution contradicted the row. Metro pages do not load detail.js, so this cannot
+   look at XCRACES - the tier is the tell instead, because Verify now means unmeasured and
+   nothing else (methodology.html #ladder-generated). */
+function noAggTag(r) {
+  if (r.xc) return '';
+  if (r.b5000 != null) return ' <span class="nodata">(from a 5000 mark)</span>';
+  if (r.tier === 'verify') return ' <span class="nodata">(unmeasured)</span>';
+  return ' <span class="nodata">(short championship field)</span>';
+}
+
 function badge(tier) {
   const t = TIERS[tier];
   return `<span class="badge ${tier}" title="${t.desc}"><span class="g" aria-hidden="true">${t.glyph}</span>${t.label}</span>`;
