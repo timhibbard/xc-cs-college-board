@@ -1,7 +1,7 @@
 # XC / Track + Computer Science — College Recruiting Board
 
 A research board for a high school distance runner who wants to run cross country and
-track in college while studying computer science. It covers eleven metro areas, lists the
+track in college while studying computer science. It covers ten metro areas, lists the
 colleges inside each radius that sponsor **both** men's cross country and men's outdoor track, and
 ranks them by the one question that predicts whether a distance runner actually develops:
 
@@ -395,11 +395,11 @@ publishes their name and work email in order to be contacted.
 ## Structure
 
 ```
-index.html          overview: KPIs, eleven metro cards, filterable table of every school, gap chart
+index.html          overview: KPIs, ten metro cards, filterable table of every school, gap chart
 greenville.html     per-metro write-up + filtered table, chart, and radius map
 new-york.html
 chicago.html
-boston.html         the eight metros added in the 2026 sweep; same shape, ladder-derived
+boston.html         the seven metros added in the 2026 sweep; same shape, ladder-derived
 philadelphia.html   tiers, no coach block and no meet map yet, and each page says so
 washington.html
 baltimore.html
@@ -414,6 +414,9 @@ assets/school.js    the school detail template + its per-season meet map
 assets/app.js       table sort/filter, gap chart, Leaflet metro maps, theme toggle
 assets/styles.css   light/dark tokens, accessible tier and season palettes
 docs/*.md           long-form research documents for the three original metros
+tools/              the scripts that build the board, and the checks that verify a page
+                    renders — see tools/README.md for the pipeline order and the one
+                    trap (the stored xc aggregate has no vlast) worth knowing first
 ```
 
 Every school name in every table and every map popup links to `school.html?s=<slug>`, which
