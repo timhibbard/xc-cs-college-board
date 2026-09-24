@@ -28,12 +28,16 @@ function initChrome(current) {
     `<a href="${m.page}"${current === id ? ' aria-current="page"' : ''}>${m.nav ?? m.label}</a>`
   ).join('\n        ');
 
+  /* One link that is not a metro, so it is written out rather than derived: north-carolina.html
+     re-reads the Greenville ring's North Carolina rows by the state's own metros. It has no
+     METROS entry because it is not a search — no centre, no radius, and no row calls it home. */
   const nav = `
     <header class="site"><div class="wrap">
       <a class="brand" href="index.html">Recruiting Board <span class="pill">XC / TF + CS</span></a>
       <nav class="site">
         <a href="index.html"${current === 'index' ? ' aria-current="page"' : ''}>Overview</a>
         ${metroLinks}
+        <a href="north-carolina.html"${current === 'north-carolina' ? ' aria-current="page"' : ''}>North Carolina</a>
         <a href="methodology.html"${current === 'method' ? ' aria-current="page"' : ''}>Methodology</a>
       </nav>
       <button id="theme" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
@@ -167,31 +171,60 @@ function tierLegend() {
     `<span class="legend-item">${badge(k)} <span>${t.desc}</span></span>`).join('')}</div>`;
 }
 
-/* ---------- master table ---------- */
+/* ---------- master table ----------
+
+   Each column owns its own cell, so a table can be built from any subset of them in any
+   order and the header can never disagree with the body. It used to emit the header from
+   this list and the cells from a separate template, which drifted the moment a column
+   became conditional: the Div column drops off a single-division board's header and the
+   template kept writing the cell, shifting every value in the row one column left. */
+const numCell = (n) => n == null ? '<span class="nodata">&mdash;</span>' : n.toLocaleString('en-US');
+
 const COLS = [
-  { key: 'name',   label: 'School',   sort: (a, b) => a.name.localeCompare(b.name) },
-  { key: 'metro',  label: 'Metro',    sort: (a, b) => metroLabel(a).localeCompare(metroLabel(b)) },
+  { key: 'name',   label: 'School',   sort: (a, b) => a.name.localeCompare(b.name),
+    cell: s => `<td class="c-name"><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span>${igLink(s)}${coachIgLink(s)}</td>` },
+  { key: 'metro',  label: 'Metro',    sort: (a, b) => metroLabel(a).localeCompare(metroLabel(b)),
+    cell: s => `<td>${metroLabel(s)}</td>` },
   { key: 'mi',     label: 'Mi',       num: true,
-    sort: (a, b) => miIn(a, filters.metro) - miIn(b, filters.metro) },
-  { key: 'div',    label: 'Div',      sort: (a, b) => a.div.localeCompare(b.div) },
-  { key: 'conf',   label: 'Conference', sort: (a, b) => a.conf.localeCompare(b.conf) },
-  { key: 'cs',     label: 'CS',       sort: (a, b) => a.cs.localeCompare(b.cs) },
-  { key: 'sat',    label: 'SAT',      sort: (a, b) => a.sat.localeCompare(b.sat) },
-  { key: 'accept', label: 'Admit',    num: true, sort: (a, b) => parseInt(a.accept.replace(/\D/g, '')) - parseInt(b.accept.replace(/\D/g, '')) },
-  { key: 'net',    label: 'Net cost',    num: true, sort: (a, b) => (netFor(a) ?? 1e9) - (netFor(b) ?? 1e9) },
-  { key: 'b5000',  label: 'Team best 5K', num: true, sort: (a, b) => (a.b5000 ?? 1e9) - (b.b5000 ?? 1e9) },
-  { key: 'slot',   label: 'His slot in their 7', num: true, sort: (a, b) => (a.xc?.slot ?? 1e9) - (b.xc?.slot ?? 1e9) },
-  { key: 'v7',     label: 'vs their 7th', num: true, sort: (a, b) => (a.xc?.v7 ?? 1e9) - (b.xc?.v7 ?? 1e9) },
-  { key: 'tier',   label: 'Fit',      sort: (a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier) },
+    sort: (a, b) => miIn(a, filters.metro) - miIn(b, filters.metro),
+    cell: s => `<td class="num">${miIn(s, filters.metro)}</td>` },
+  { key: 'div',    label: 'Div',      sort: (a, b) => a.div.localeCompare(b.div),
+    cell: s => `<td>${s.div}</td>` },
+  { key: 'conf',   label: 'Conference', sort: (a, b) => a.conf.localeCompare(b.conf),
+    cell: s => `<td class="c-conf">${s.conf}</td>` },
+  { key: 'cs',     label: 'CS',       sort: (a, b) => a.cs.localeCompare(b.cs),
+    cell: s => `<td class="${s.cs === 'verified' ? 'cs-ok' : 'cs-no'}">${s.cs === 'verified' ? 'Verified' : s.cs === 'none' ? 'None' : 'Confirm'}</td>` },
+  { key: 'sat',    label: 'SAT',      sort: (a, b) => a.sat.localeCompare(b.sat),
+    cell: s => `<td class="time c-sat">${s.sat}</td>` },
+  { key: 'accept', label: 'Admit',    num: true, sort: (a, b) => parseInt(a.accept.replace(/\D/g, '')) - parseInt(b.accept.replace(/\D/g, '')),
+    cell: s => `<td class="num">${s.accept}</td>` },
+  { key: 'net',    label: 'Net cost',    num: true, sort: (a, b) => (netFor(a) ?? 1e9) - (netFor(b) ?? 1e9),
+    cell: s => `<td class="num money">${netCell(s)}</td>` },
+  { key: 'b5000',  label: 'Team best 5K', num: true, sort: (a, b) => (a.b5000 ?? 1e9) - (b.b5000 ?? 1e9),
+    cell: s => `<td class="num time">${fmtTime(s.b5000) ?? '<span class="nodata">&mdash;</span>'}</td>` },
+  { key: 'slot',   label: 'His slot in their 7', num: true, sort: (a, b) => (a.xc?.slot ?? 1e9) - (b.xc?.slot ?? 1e9),
+    cell: s => `<td class="num">${s.xc ? '#' + s.xc.slot : '<span class="nodata">&mdash;</span>'}</td>` },
+  { key: 'v7',     label: 'vs their 7th', num: true, sort: (a, b) => (a.xc?.v7 ?? 1e9) - (b.xc?.v7 ?? 1e9),
+    cell: s => `<td class="num">${v7Txt(s)}</td>` },
+  { key: 'tier',   label: 'Fit',      sort: (a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier),
+    cell: s => `<td>${badge(s.tier)}</td>` },
 ];
 
-/* Two columns that only make sense on the Greenville page: the question "how big is
-   the town" has an obvious answer in New York and Chicago. greenville.html asks for
-   them with initTable({ size: true }). Undergraduate count is federal; town
-   population is ACS — see TOWNPOP in data.js for the caveats. */
+/* Notes is last on every table and sorts by nothing, so it is not a COLS entry — an
+   unsortable column in that list would need a guard in every function that reads it. */
+const NOTE_COL = { key: 'note', label: 'Notes',
+  cell: s => `<td class="rownote"><div class="notebox">${s.note ?? ''}</div></td>` };
+
+/* Two columns for the pages where the ring is wide enough that "how big is the town"
+   has no obvious answer — Greenville's 300 miles reaches from Charlotte to towns of six
+   hundred people, and so does the North Carolina page cut out of it. New York and
+   Chicago do not need them. Asked for with initTable({ size: true }). Undergraduate
+   count is federal; town population is ACS — see TOWNPOP in data.js for the caveats. */
 const SIZE_COLS = [
-  { key: 'ug',  label: 'Students', num: true, sort: (a, b) => (a.cost?.size ?? 1e9) - (b.cost?.size ?? 1e9) },
-  { key: 'pop', label: 'Town',     num: true, sort: (a, b) => (TOWNPOP[a.city] ?? 1e9) - (TOWNPOP[b.city] ?? 1e9) },
+  { key: 'ug',  label: 'Students', num: true, sort: (a, b) => (a.cost?.size ?? 1e9) - (b.cost?.size ?? 1e9),
+    cell: s => `<td class="num c-size">${numCell(s.cost?.size)}</td>` },
+  { key: 'pop', label: 'Town',     num: true, sort: (a, b) => (TOWNPOP[a.city] ?? 1e9) - (TOWNPOP[b.city] ?? 1e9),
+    cell: s => `<td class="num c-size">${numCell(TOWNPOP[s.city])}</td>` },
 ];
 
 let sortKey = 'tier', sortDir = 1, filters = { metro: 'all', div: 'all', tier: 'all', q: '' };
@@ -201,18 +234,30 @@ let sortKey = 'tier', sortDir = 1, filters = { metro: 'all', div: 'all', tier: '
    drop cells out of every row while leaving the header cell standing. */
 let showMetroCol = true, showSizeCols = false;
 
-function activeCols() {
-  let cols = showMetroCol ? COLS : COLS.filter(c => c.key !== 'metro');
+/* The column set for a table, Notes included. Pure, so a page that builds its own tables
+   (north-carolina.html builds one per region) gets exactly the columns the master table
+   would have given it. */
+function colsFor({ metro = true, size = false } = {}) {
+  let cols = metro ? COLS : COLS.filter(c => c.key !== 'metro');
   /* Same reason the metro column drops on a single-metro page: if every row on the board
      were one division, a Div column would read the same on every row. All four divisions
      are live, so it stays — D2 is where partial athletic aid actually is. */
   if (new Set(SCHOOLS.map(s => s.div)).size < 2) cols = cols.filter(c => c.key !== 'div');
-  if (showSizeCols) {
+  if (size) {
     const at = cols.findIndex(c => c.key === 'net') + 1;
     cols = cols.slice(0, at).concat(SIZE_COLS, cols.slice(at));
   }
-  return cols;
+  return cols.concat(NOTE_COL);
 }
+
+const activeCols = () => colsFor({ metro: showMetroCol, size: showSizeCols });
+
+const headHTML = (cols) => '<tr>' + cols.map(c => c.sort
+  ? `<th data-key="${c.key}" class="sortable${c.num ? ' num' : ''}" scope="col">${c.label}<span class="arrow">▲</span></th>`
+  : `<th scope="col">${c.label}</th>`).join('') + '</tr>';
+
+const rowsHTML = (rows, cols) =>
+  rows.map(s => `<tr>${cols.map(c => c.cell(s)).join('')}</tr>`).join('');
 
 function visible() {
   return SCHOOLS.filter(s =>
@@ -226,29 +271,9 @@ function visible() {
   });
 }
 
-const numCell = (n) => n == null ? '<span class="nodata">&mdash;</span>' : n.toLocaleString('en-US');
-
 function renderTable() {
   const rows = visible();
-  const tb = document.querySelector('#master tbody');
-  tb.innerHTML = rows.map(s => `<tr>
-      <td class="c-name"><a class="school" href="${link(s)}">${s.name}</a><span class="city">${s.city}</span>${igLink(s)}${coachIgLink(s)}</td>
-      ${showMetroCol ? `<td>${metroLabel(s)}</td>` : ''}
-      <td class="num">${miIn(s, filters.metro)}</td>
-      <td>${s.div}</td>
-      <td class="c-conf">${s.conf}</td>
-      <td class="${s.cs === 'verified' ? 'cs-ok' : 'cs-no'}">${s.cs === 'verified' ? 'Verified' : s.cs === 'none' ? 'None' : 'Confirm'}</td>
-      <td class="time c-sat">${s.sat}</td>
-      <td class="num">${s.accept}</td>
-      <td class="num money">${netCell(s)}</td>
-      ${showSizeCols ? `<td class="num c-size">${numCell(s.cost?.size)}</td>
-      <td class="num c-size">${numCell(TOWNPOP[s.city])}</td>` : ''}
-      <td class="num time">${fmtTime(s.b5000) ?? '<span class="nodata">&mdash;</span>'}</td>
-      <td class="num">${s.xc ? '#' + s.xc.slot : '<span class="nodata">&mdash;</span>'}</td>
-      <td class="num">${v7Txt(s)}</td>
-      <td>${badge(s.tier)}</td>
-      <td class="rownote"><div class="notebox">${s.note ?? ''}</div></td>
-    </tr>`).join('');
+  document.querySelector('#master tbody').innerHTML = rowsHTML(rows, activeCols());
 
   const pool = SCHOOLS.filter(s => inMetro(s, filters.metro)).length;
   document.querySelector('#count').textContent = `${rows.length} of ${pool} schools`;
@@ -271,10 +296,7 @@ function initTable(opts = {}) {
   showMetroCol = filters.metro === 'all';   /* a constant column is noise */
   showSizeCols = !!opts.size;
 
-  const head = activeCols().map(c =>
-    `<th data-key="${c.key}" class="sortable${c.num ? ' num' : ''}" scope="col">${c.label}<span class="arrow">▲</span></th>`
-  ).join('') + '<th scope="col">Notes</th>';
-  document.querySelector('#master thead').innerHTML = `<tr>${head}</tr>`;
+  document.querySelector('#master thead').innerHTML = headHTML(activeCols());
 
   document.querySelectorAll('#master thead th[data-key]').forEach(th => {
     th.addEventListener('click', () => {
@@ -429,10 +451,17 @@ function circleRing([lat, lon], miles, n = 144) {
   return out;
 }
 
-function initMap(metro) {
+/* `metro` is the ring the mileage is measured from, which is not always the set of pins to
+   draw: north-carolina.html regroups the Greenville ring's North Carolina rows, so it passes
+   `{ pick, ring: false }` — its own membership test, and no circle, because the page is a
+   second reading of a search rather than a search with a centre of its own. Drawing
+   Greenville's 300-mile ring there would assert a rule the page does not use. */
+function initMap(metro, opts = {}) {
   const host = document.getElementById('map');
   if (!host || typeof L === 'undefined') return;
   const M = METROS[metro];
+  const pick = opts.pick ?? (s => inMetro(s, metro));
+  const drawRing = opts.ring !== false;
 
   const map = L.map(host, { scrollWheelZoom: false, zoomControl: true })
     .setView(M.center, M.zoom);
@@ -447,30 +476,34 @@ function initMap(metro) {
      plus all of Nassau and Suffolk), draw the rule itself — one path, two rings, wound the
      same way and filled nonzero so the overlap is a union rather than a double-shaded wedge
      or, under Leaflet's default evenodd, a hole. */
-  const ring = M.alsoInRange
-    ? L.polygon([circleRing(M.center, M.radiusMi), M.alsoInRange.poly], {
-        className: 'radius-ring', interactive: false, fillRule: 'nonzero', smoothFactor: 0,
-      }).addTo(map)
-    : L.circle(M.center, {
-        radius: M.radiusMi * 1609.34, className: 'radius-ring', interactive: false,
-      }).addTo(map);
+  let bounds = null;
+  if (drawRing) {
+    const ring = M.alsoInRange
+      ? L.polygon([circleRing(M.center, M.radiusMi), M.alsoInRange.poly], {
+          className: 'radius-ring', interactive: false, fillRule: 'nonzero', smoothFactor: 0,
+        }).addTo(map)
+      : L.circle(M.center, {
+          radius: M.radiusMi * 1609.34, className: 'radius-ring', interactive: false,
+        }).addTo(map);
 
-  L.marker(M.center, {
-    icon: L.divIcon({ className: 'pin-wrap', html: '<span class="pin pin-center" aria-hidden="true">◎</span>', iconSize: [22, 22], iconAnchor: [11, 11] }),
-    keyboard: false,
-  }).addTo(map).bindPopup(
-    `<b>${M.centerLabel ?? M.label}</b><br>Center of the ${M.radiusMi} mile radius` +
-    (M.alsoInRange ? `<br>${M.alsoInRange.note}` : '') +
-    (M.ruleNote ? `<br>${M.ruleNote}` : '')
-  );
+    L.marker(M.center, {
+      icon: L.divIcon({ className: 'pin-wrap', html: '<span class="pin pin-center" aria-hidden="true">◎</span>', iconSize: [22, 22], iconAnchor: [11, 11] }),
+      keyboard: false,
+    }).addTo(map).bindPopup(
+      `<b>${M.centerLabel ?? M.label}</b><br>Center of the ${M.radiusMi} mile radius` +
+      (M.alsoInRange ? `<br>${M.alsoInRange.note}` : '') +
+      (M.ruleNote ? `<br>${M.ruleNote}` : '')
+    );
 
-  /* Fit the shape AND every pin, not just the shape: Long Island runs well past the circle,
-     and several Greenville pins sit on estimated mileage that can land outside the ring. */
-  const bounds = ring.getBounds();
+    /* Fit the shape AND every pin, not just the shape: Long Island runs well past the circle,
+       and several Greenville pins sit on estimated mileage that can land outside the ring. */
+    bounds = ring.getBounds();
+  }
+  /* With no shape to fit, the pins are the whole extent. */
   [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM]
-    .filter(s => inMetro(s, metro) && s.lat != null)
-    .forEach(s => bounds.extend([s.lat, s.lon]));
-  map.fitBounds(bounds, { padding: [12, 12] });
+    .filter(s => pick(s) && s.lat != null)
+    .forEach(s => { bounds = bounds ? bounds.extend([s.lat, s.lon]) : L.latLngBounds([[s.lat, s.lon]]); });
+  if (bounds) map.fitBounds(bounds, { padding: [12, 12] });
 
   const layer = L.layerGroup().addTo(map);
   const showCut = document.getElementById('map-showcut');
@@ -478,15 +511,14 @@ function initMap(metro) {
   window.renderMap = function () {
     layer.clearLayers();
 
-    const kept = visible().filter(s => inMetro(s, metro))
-      .map(s => ({ ...s, kind: s.tier }));
+    const kept = visible().filter(pick).map(s => ({ ...s, kind: s.tier }));
 
     let extra = [];
     if (showCut && showCut.checked) {
       extra = [
-        ...REMOVED.filter(r => inMetro(r, metro)).map(r => ({ ...r, kind: 'cut' })),
-        ...NO_TRACK.filter(r => inMetro(r, metro)).map(r => ({ ...r, kind: 'notrack' })),
-        ...NO_PROGRAM.filter(r => inMetro(r, metro)).map(r => ({ ...r, kind: 'none' })),
+        ...REMOVED.filter(pick).map(r => ({ ...r, kind: 'cut' })),
+        ...NO_TRACK.filter(pick).map(r => ({ ...r, kind: 'notrack' })),
+        ...NO_PROGRAM.filter(pick).map(r => ({ ...r, kind: 'none' })),
       ];
     }
     const GLYPH = { cut: '✕', notrack: '⊗', none: '⊘' };
@@ -553,13 +585,15 @@ function initMap(metro) {
   window.renderMap();
 }
 
-function mapLegend() {
+/* `center: false` for a map with no radius drawn on it — a legend entry for a pin the map
+   does not carry is worse than a missing one. */
+function mapLegend({ center = true } = {}) {
   const item = (cls, glyph, label) =>
     `<span class="legend-item"><span class="pin pin-${cls}" aria-hidden="true">${glyph}</span> <span>${label}</span></span>`;
   return `<div class="legend">
     ${Object.entries(TIERS).map(([k, t]) => item(k, t.glyph, t.label)).join('')}
     ${item('cut', '✕', 'Cut on roster times')}
     ${item('none', '⊘', 'No men’s cross country')}
-    ${item('center', '◎', 'Search center')}
+    ${center ? item('center', '◎', 'Search center') : ''}
   </div>`;
 }

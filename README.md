@@ -9,20 +9,20 @@ ranks them by the one question that predicts whether a distance runner actually 
 
 **Live site:** https://timhibbard.github.io/xc-cs-college-board/
 
-**The board covers every division: 185 schools on it — 64 D1, 55 D2, 62 D3, three NAIA and one USCAA —
-plus 12 cut as walk-on, 29 with cross country but no men's track, and 14 with no men's program to
+**The board covers every division: 186 schools on it — 64 D1, 55 D2, 63 D3, three NAIA and one USCAA —
+plus 12 cut as walk-on, 29 with cross country but no men's track, and 16 with no men's program to
 join.** Eight metros were added in one pass (Boston, Philadelphia, Washington, Baltimore,
 Pittsburgh, Buffalo, Hampton Roads and Newark), which found **81 colleges this board held no row for**
 and put 62 of them on it; Newark has since been folded into New York, leaving **ten metros**. A
 Division-1-only rule was tried on this board and **reversed**; the write-up of it is kept as a decision
 made and undone rather than deleted, because the reason it failed is the useful part — it removed 96 rows,
-nine of them at target tier, seven of those in the Greenville ring. All 226 rows that have a men's
-program carry federal cost and admissions data and a detail page, and **175 of the 185 on the board rest
+nine of them at target tier, seven of those in the Greenville ring. All 227 rows that have a men's
+program carry federal cost and admissions data and a detail page, and **175 of the 186 on the board rest
 on a real 2025 cross country result**. **All 226 also carry the name and contact details of the coach
 who would recruit him**, read off that school's own staff directory and linked to it — the 76 rows the
-eight-metro pass added were the last gap in that column and are now filled. **222 of the 226 also
+eight-metro pass added were the last gap in that column and are now filled. **223 of the 227 also
 carry the program's Instagram**, read off that school's own men's cross country page rather than
-searched for by name — 169 the team's own account, 53 the athletics department's where the school
+searched for by name — 170 the team's own account, 53 the athletics department's where the school
 links none of its own, and four schools link no Instagram anywhere on their own pages, which their
 pages say. **The 76 rows the new metros added now carry everything the rows that predate the pass
 carry**: the coach block came first, then the Instagram column, then their 2026 outdoor track marks and
@@ -81,19 +81,19 @@ the ten that could not finish the scoring five — Roosevelt, Benedict, John Jay
 York College (CUNY), Marymount, Carlow, Hilbert, Greensboro College and William Peace — are held at
 *Caution* regardless of times, because a short field at the meet a program brings everyone to is a
 measurement of depth and not a missing one. On the board itself the count is
-**49 of 185**, and the new metros made it worse rather than better: all four Hampton Roads programs
+**49 of 186**, and the new metros made it worse rather than better: all four Hampton Roads programs
 and five of Boston's sixteen never finished seven, while Pittsburgh is the one metro where every
 measured program did. It is not a small-college
 problem with a divisional fix — five of the 22 in Greenville are Division 1 — which is one of the
 reasons the Division 1 rule did not survive.
 
-The 1500 data says the same thing a second way: at **83 of the 185 programs that raced a 1500 in
+The 1500 data says the same thing a second way: at **84 of the 186 programs that raced a 1500 in
 2026** his projected 4:01 would be their fastest man in the event, and the median program's best 1500
-went 3:58.3. In the other direction he would have made the conference final at **165 of the 194 rows
-with a 1500 on file** and scored — top eight — at **110**. The divisional split is stark, and it cuts the other
+went 3:58.3. In the other direction he would have made the conference final at **166 of the 195 rows
+with a 1500 on file** and scored — top eight — at **111**. The divisional split is stark, and it cuts the other
 way from the tier ladder: across the 75 Division 1 rows with a 1500 on file the median best 1500 is **3:47.9**, he makes the
 final at 46 of them and scores at 17. Read against 152 rows that actually entered somebody in the event at
-their conference meet, he makes 126 finals and scores in 85 — **42 programs entered nobody in the 1500 at
+their conference meet, he makes 126 finals and scores in 85 — **43 programs entered nobody in the 1500 at
 all**, which is a fact about how the event is used rather than about him.
 
 That median was **4:01.1 until #5 was closed**, and the reason it moved two seconds is worth more
@@ -530,7 +530,7 @@ instead of printing a number. `coach.src` is required: it is the page the rest o
 off, and it is what makes a stale name recoverable. `ig` is the program's Instagram handle in the
 casing the school publishes, and `igDept: true` marks it as the athletics department's account rather
 than the team's — the tables render that one with a degree sign, because "they publish nothing for
-the distance squad" is an answer rather than a hole. 222 of the 226 rows carry one; a row with **no**
+the distance squad" is an answer rather than a hole. 223 of the 227 rows carry one; a row with **no**
 `ig` means the school's own pages link none, which is a finding and is said as one on its page. The optional `tierTag` overrides the one-line
 "where this tier came from" note under the badge on a school page, for a row whose provenance none of
 the derived tests can see; **Shorter** is the only row that uses it, because its championship field is
@@ -543,8 +543,8 @@ a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS populatio
 not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
-as raw seconds, in order — 1,330 races across 219 schools; a short race also carries `nfin` and
-`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 194 schools where one
+as raw seconds, in order — 1,339 races across 220 schools; a short race also carries `nfin` and
+`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 195 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
 postseason rounds `post`, read from 59 conference championship result pages plus seven postseason
 pages; every row that has a `b1500` now has a field to drop it into, which is what #5 closed and #3
@@ -555,7 +555,7 @@ town it named), `MEETS` (1,027 meets keyed by their own TFRRS id, because two di
 name; each carries date, season and a `VENUES` index — the season letter read off the events the meet's
 own page links, not off its date, for every one of the 503 track meets dated before April, which is what
 #4 and #21 closed), and `SCHED` (school name → the meet ids its
-own TFRRS results page shows it at, in date order — 4,832 appearances across 225 of the 226 schools with
+own TFRRS results page shows it at, in date order — 4,853 appearances across 226 of the 227 schools with
 a page; Calumet College is the one exception and has no result on file for the season).
 
 `NO_TRACK` in `assets/data.js` holds all **29** schools removed under the both-sports rule — seven of
