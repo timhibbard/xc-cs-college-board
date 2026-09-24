@@ -20,12 +20,15 @@ nine of them at target tier, seven of those in the Greenville ring. All 226 rows
 program carry federal cost and admissions data and a detail page, and **175 of the 185 on the board rest
 on a real 2025 cross country result**. **All 226 also carry the name and contact details of the coach
 who would recruit him**, read off that school's own staff directory and linked to it — the 76 rows the
-eight-metro pass added were the last gap in that column and are now filled. The 150 rows that predate
-the pass carry four things the new ones still do not: **the program's Instagram** (147 of the
-150), **the coach's own Instagram on 17 rows** — recorded only where the account's own bio says they
-coach this program — **its 2026 conference-championship 1500 field** with his projected 4:01 dropped
-into it, and a map of every meet the program attended last season. **The 76 rows the new metros added
-have none of those four things yet**, which is the largest open gap in this repo; each new metro page
+eight-metro pass added were the last gap in that column and are now filled. **221 of the 226 also
+carry the program's Instagram**, read off that school's own men's cross country page rather than
+searched for by name — 168 the team's own account, 53 the athletics department's where the school
+links none of its own, and five schools link no Instagram anywhere on their own pages, which their
+pages say. The 150 rows that predate the pass carry three things the new ones still do not: **the
+coach's own Instagram on 17 rows** — recorded only where the account's own bio says they coach this
+program — **its 2026 conference-championship 1500 field** with his projected 4:01 dropped into it,
+and a map of every meet the program attended last season. **The 76 rows the new metros added
+have none of those three things yet**, which is the largest open gap in this repo; each new metro page
 says so in its own words. Six rows sit at *Verify*, which means **unmeasured, not borderline** — four
 former Verify rows (Carlow, Marymount, Hilbert, Shorter) moved to *caution* once it was clear that a
 short conference championship field is a measurement of a thin program rather than an absence of
@@ -244,9 +247,11 @@ Two things about those 62 rows matter more than the count, and every new page sa
   seven surviving pages has a 5000m column. **Newark** was the exception — its rows were already on the New
   York page with marks, so it carried a gap chart — and that is the same fact that made it the one page of
   the eight that could be folded back in. Drew, the one row it did not share, had no marks either, which
-  is why the New York gap chart lost nothing when it left. No program Instagram, no 2026 conference 1500
-  field, no meet map — the coach names were the fourth item on that list until every one of the 76 was
-  read off its school's staff directory. The
+  is why the New York gap chart lost nothing when it left. No 2026 conference 1500 field and no meet
+  map — the coach names were on that list until every one of the 76 was read off its school's staff
+  directory, and the program Instagram was on it until every one was read off its school's own men's
+  cross country page: 53 program accounts, 21 department fallbacks, and two schools (George Mason and
+  Emerson) that link no Instagram at all. The
   both-sports check was done school by school against the sport list each athletics site publishes
   itself, because TFRRS cannot answer that question.
 
@@ -419,7 +424,7 @@ greenville.html     per-metro write-up + filtered table, chart, and radius map
 new-york.html
 chicago.html
 boston.html         the seven metros added in the 2026 sweep; same shape, ladder-derived
-philadelphia.html   tiers, coach blocks now filled in, no meet map yet, and each page says so
+philadelphia.html   tiers, coach and Instagram columns filled in, no meet map yet, and each says so
 washington.html
 baltimore.html
 pittsburgh.html
@@ -499,7 +504,11 @@ A team that never finished seven carries `v7: null` plus `short: true` and `maxf
 runners they ever got to a finish line. `nraces` counts only races with five or more finishers,
 so a school whose every race was short averages over zero races and the page says exactly that
 instead of printing a number. `coach.src` is required: it is the page the rest of the block was read
-off, and it is what makes a stale name recoverable. The optional `tierTag` overrides the one-line
+off, and it is what makes a stale name recoverable. `ig` is the program's Instagram handle in the
+casing the school publishes, and `igDept: true` marks it as the athletics department's account rather
+than the team's — the tables render that one with a degree sign, because "they publish nothing for
+the distance squad" is an answer rather than a hole. 221 of the 226 rows carry one; a row with **no**
+`ig` means the school's own pages link none, which is a finding and is said as one on its page. The optional `tierTag` overrides the one-line
 "where this tier came from" note under the badge on a school page, for a row whose provenance none of
 the derived tests can see; **Shorter** is the only row that uses it, because its championship field is
 from 2024 and no race of its own is stored, so every test would otherwise land on "unmeasured".
