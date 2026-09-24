@@ -45,7 +45,7 @@ tiers across the whole board.
 
 | Script | What it does |
 | --- | --- |
-| `render-check.js` | Renders three metro pages and every school page with jsdom, and asserts row counts derived from `assets/data.js` plus the totals README.md and methodology.html publish in prose — the board totals, the coach-block count, the Instagram coverage and the 1500 fields. The 1500 block asserts the promise #5 closed on (every row with a `b1500` has a `T1500` to drop his projection into, keyed by **slug** — the one thing issue #5 itself got wrong) rather than only a count, and holds `dslot` against `d15` wherever the seven-man cap does not hide a faster man. Needs `jsdom`: `npm install --no-save jsdom`, or point `NODE_PATH` at an install that has it. |
+| `render-check.js` | Renders three metro pages and every school page with jsdom, and asserts row counts derived from `assets/data.js` plus the totals README.md and methodology.html publish in prose — the board totals, the coach-block count, the Instagram coverage, the 1500 fields and the schedule totals (meets, venues, appearances and the precision split, in all three files that publish them). It also holds every venue inside a bounding box for the state its own string names — a wrong state is a wrong pin however sure the geocoder was, and that check found five. The 1500 block asserts the promise #5 closed on (every row with a `b1500` has a `T1500` to drop his projection into, keyed by **slug** — the one thing issue #5 itself got wrong) rather than only a count, and holds `dslot` against `d15` wherever the seven-man cap does not hide a faster man. Needs `jsdom`: `npm install --no-save jsdom`, or point `NODE_PATH` at an install that has it. |
 | `page-check.js` | Renders all 13 site pages, reporting uncaught JS errors, dead relative links and broken in-page anchors. This is what caught the `washington.html` failure, where a missing `id="k-lead"` threw and took the master table, the map and three off-board tables down with it. |
 | `page-debug.js` | `node tools/page-debug.js washington.html` — runs one page's inline script against a stub DOM and prints what each element received. Faster than jsdom and it names the throwing line, so it is the right first stop when `page-check.js` reports a page. |
 | `metro_digest.py` | `python3 tools/metro_digest.py washington` — the per-metro fact sheet. Everything a metro page's prose claims has to come from a row on that page, and this prints those rows with the aggregates a lede needs. Use it to check a page's numbers rather than counting by hand. |
@@ -175,6 +175,43 @@ are rounded rather than truncated for a different reason: they were entered by h
 `render-check.js` caught in the rows #5 added: the emitter ranked him inside the published seven and
 capped six rows at 8, where Virginia Tech's thirteen men under 4:01 put him 14th. `d15` is capped at
 the fastest seven; `nath` and `dslot` are not.
+
+## Reading a team's schedule and placing its meets, for the next sweep
+
+Scratch again, and again worth writing down because four of these produce plausible data rather
+than an error.
+
+1. **A team page's LATEST RESULTS table holds both sports, and the cross country links have an
+   extra path segment.** `/teams/xc/<slug>.html` lists track meets as `/results/<id>` and cross
+   country meets as `/results/xc/<id>`, in one table, capped at 50 rows. A link regex of
+   `/results/(\d+)` matches the track ones only, and the page then looks like a program that ran no
+   cross country at all. Key the meets as `xc-<id>` / `tf-<id>` and keep them apart, because the two
+   id spaces overlap.
+2. **A meet's season comes off the events it held, not its date.** Some events are only indoors (60
+   metres, the weight throw, the mile, the distance medley) and some only outdoors (the 110 hurdles,
+   the javelin, the steeplechase, the 1500), and the meet page links a result per event, so the two
+   lists decide it. No date rule works: a warm-weather program holds outdoor meets in December, and
+   the seasons overlap for a week in March. This corrected four meets already on file that a date
+   rule had filed as indoor. And read the events out of the **results hrefs**
+   (`/results/<mid>/<eid>/<Meet_Name>/Mens-1500-Meters`), not the page's headings — a meet page's
+   only `<h3>` is its own title.
+3. **Validate the parse against the rows already on file before splicing anything.** The 76 rows this
+   pass added name 248 meets the board already held; reproducing all 248 on date, name and venue
+   string is what proves the parser, and it is free. Every venue string that *is* new can then be
+   audited on its own.
+4. **TFRRS prints a venue three different ways, and one of them is a postal address.** Track pages
+   print `Facility - City, ST`; cross country pages print `Stanley Park 577 Western Avenue
+   Westfield, MA 01085`, sometimes with a four-digit ZIP (the leading zero dropped), sometimes with a
+   ZIP from another state, and occasionally with a county, a street or a campus where the town goes.
+   Learn town names from the lines that state one unambiguously, then fall back to the ZIP's town —
+   but only when the line's tail actually matches it.
+5. **Check the geocoder's answer against the state the venue names, twice.** Ask Nominatim for a
+   town *and* require the result's `ISO3166-2-lvl4` to be that state: `University Park, PA` ranks
+   Penn State first and a hamlet outside Huntsville, Alabama second, and a place-type filter alone
+   takes the hamlet — 700 miles out, flagged as a town centroid, invisible unless you look at the
+   map of that one school. Then assert it again over the whole table afterwards:
+   `render-check.js` now holds every venue inside a generous bounding box for its own state, which is
+   how four older rows placed from a wrong-state ZIP were found.
 
 ## Deliberately not moved
 

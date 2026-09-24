@@ -224,24 +224,26 @@ CHART_SEC = """
   </div>
 """
 
-# The disclosure every new page carries. The board's older pages had three things these rows
-# did not, and a page that quietly omitted that would read as though the data were complete.
-# The coach block came off this list first (#1), then the Instagram column (#2), and now the
-# track marks and the 1500 field (#3) — one item left. This string and the pages have to be
-# edited together, because a page edited by hand alone is reverted the next time this runs.
+# The disclosure every new page carries. It began as a list of what these rows were missing
+# next to the board's older pages: the coach block came off it first (#1), then the Instagram
+# column (#2), then the track marks and the 1500 field (#3), and now the meet map (#4), which
+# was the last one. The note stays because a reader is entitled to know where each column came
+# from; it just no longer names a gap. This string and the pages have to be edited together,
+# because a page edited by hand alone is reverted the next time this runs.
 GAPS_NEW = (
     'Every tier on this page comes from <a href="methodology.html#tier-ladder">the published '
     'ladder</a> run over 2025 championship results &mdash; conference, regional and national '
-    'meets only. <b>Three columns are filled in now:</b> every school below carries a coach '
-    '&mdash; name, title, office phone and email read off its own staff directory; the '
-    '<b>program\'s Instagram</b>, read off that school\'s own men\'s cross country page, with a '
-    'degree sign where the school links only its athletics department\'s account; and its '
-    '<b>2026 outdoor track marks</b>, so the 5000m gap chart above is here and each school page '
-    'now opens its 2026 conference 1500 field with his projected 4:01 dropped into it on time. '
-    'One thing the older metro pages still have and this one does not: <b>no meet maps</b>, so '
-    'where these teams actually race is not on the page yet. '
-    'The one screen that is complete is the both-sports rule &mdash; men\'s outdoor track '
-    'sponsorship was checked school by school against the sport list each athletics site '
+    'meets only. <b>These rows now carry everything the board\'s older metro pages carry:</b> '
+    'a coach &mdash; name, title, office phone and email read off the school\'s own staff '
+    'directory; the <b>program\'s Instagram</b>, read off that school\'s own men\'s cross '
+    'country page, with a degree sign where the school links only its athletics department\'s '
+    'account; its <b>2026 outdoor track marks</b>, so the 5000m gap chart above is here and each '
+    'school page opens its 2026 conference 1500 field with his projected 4:01 dropped into it on '
+    'time; and a <b>meet map</b> on every school page, so where each of these teams actually '
+    'races &mdash; every meet on its own 2025-26 results feed, pinned and dated &mdash; is on '
+    'the page. '
+    'The one screen that took no scraping at all is the both-sports rule &mdash; men\'s outdoor '
+    'track sponsorship was checked school by school against the sport list each athletics site '
     'publishes itself, because TFRRS cannot answer it.')
 
 
@@ -265,7 +267,7 @@ def build(spec):
     html = HEAD.format(
         title=spec['title'], desc=spec['desc'], eyebrow=spec['eyebrow'], h1=M['label'],
         lede=spec['lede'], kpis=''.join(spec['kpis']), prekpi=spec.get('prekpi', ''),
-        callouts=''.join(spec['callouts']) + callout('What is not on this page yet', GAPS_NEW, cls=''),
+        callouts=''.join(spec['callouts']) + callout('Where this page&rsquo;s columns come from', GAPS_NEW, cls=''),
         rmi=M['radiusMi'], centre=M.get('centerLabel', M['label']), mapsub=spec['mapsub'],
         chart=CHART_SEC.format(sub=spec['chartsub']) if spec.get('chartsub') else '',
         worth=spec['worth'], money=spec['money'], offboard=sec.getvalue(),

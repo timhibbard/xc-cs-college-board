@@ -29,8 +29,9 @@ vm.createContext(ctx);
 vm.runInContext(
   fs.readFileSync(path.join(ROOT, 'assets/data.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(ROOT, 'assets/detail.js'), 'utf8') +
-  ';__out={SCHOOLS,REMOVED,NO_TRACK,NO_PROGRAM,XCRACES,T1500,ATHLETE};', ctx);
-const { SCHOOLS, REMOVED, NO_TRACK, NO_PROGRAM, XCRACES, T1500, ATHLETE } = ctx.__out;
+  ';__out={SCHOOLS,REMOVED,NO_TRACK,NO_PROGRAM,XCRACES,T1500,ATHLETE,MEETS,VENUES,SCHED};', ctx);
+const { SCHOOLS, REMOVED, NO_TRACK, NO_PROGRAM, XCRACES, T1500, ATHLETE,
+        MEETS, VENUES, SCHED } = ctx.__out;
 
 const fails = [];
 const checks = [];
@@ -257,6 +258,94 @@ const METROS = [
     const nobody = Object.values(T1500).filter(T => !T.cm.theirs.length).length;
     ok('index entered-nobody count', nobody, Number(im15[1]));
     ok('index entered-nobody denominator', t15n, Number(im15[2]));
+  }
+
+  /* The schedule totals, in the three files that publish them. Every one of these moves whenever a
+     pass adds a metro or a season, and none of them is derivable by a reader, so each is parsed back
+     out of the prose and compared against the tables it describes. */
+  const n = s => Number(s.replace(/,/g, ''));
+  const meetIds = Object.keys(MEETS);
+  const placed = meetIds.filter(k => MEETS[k].v != null).length;
+  const withSched = everyRow.filter(s => SCHED[s.name]);
+  const appearances = withSched.reduce((a, s) => a + SCHED[s.name].length, 0);
+  /* README counts over the 226 rows with a men's program, methodology over all 240 with a page, and
+     the two differ by exactly South Carolina — a row with 22 track meets and no cross country team. */
+  const boardRows = [...SCHOOLS, ...REMOVED, ...NO_TRACK].filter(s => SCHED[s.name]);
+  const boardApp = boardRows.reduce((a, s) => a + SCHED[s.name].length, 0);
+  const prec = { r: 0, z: 0, c: 0 };
+  VENUES.forEach(v => prec[v.src]++);
+
+  const rv = readme.match(/`VENUES` \(([\d,]+) places/);
+  const rmt = readme.match(/`MEETS` \(([\d,]+) meets keyed/);
+  const ra = readme.match(/([\d,]+) appearances across (\d+) of the (\d+) schools with\s*\n?a page/);
+  if (!rv || !rmt || !ra) fails.push('README.md: the schedule totals no longer parse — check tools/render-check.js');
+  else {
+    ok('README venue total', VENUES.length, n(rv[1]));
+    ok('README meet total', meetIds.length, n(rmt[1]));
+    ok('README appearance total', boardApp, n(ra[1]));
+    ok('README rows with a schedule', boardRows.length, Number(ra[2]));
+    ok('README page total', SCHOOLS.length + REMOVED.length + NO_TRACK.length, Number(ra[3]));
+  }
+  const mm = meth.match(/cover (\d+) of the (\d+) rows with a page/);
+  const mt = meth.match(/holds <strong>([\d,]+) distinct meets and ([\d,]+) school-meet appearances<\/strong>, of which <strong>([\d,]+) \(/);
+  const mv = meth.match(/Of the (\d+) distinct venues, <strong>(\d+) resolved to the facility itself, (\d+) only\s*\n?\s*to the ZIP the results page printed, and (\d+) only/);
+  if (!mm || !mt || !mv) fails.push('methodology.html §6a: the schedule totals no longer parse — check tools/render-check.js');
+  else {
+    ok('methodology rows with a schedule', withSched.length, Number(mm[1]));
+    ok('methodology page total', everyRow.length, Number(mm[2]));
+    ok('methodology meet total', meetIds.length, n(mt[1]));
+    ok('methodology appearance total', appearances, n(mt[2]));
+    ok('methodology placed meets', placed, n(mt[3]));
+    ok('methodology venue total', VENUES.length, Number(mv[1]));
+    ok('methodology venues by facility', prec.r, Number(mv[2]));
+    ok('methodology venues by ZIP', prec.z, Number(mv[3]));
+    ok('methodology venues by town', prec.c, Number(mv[4]));
+  }
+  const det = fs.readFileSync(path.join(ROOT, 'assets/detail.js'), 'utf8');
+  const dm = det.match(/([\d,]+) of ([\d,]+) meets are\s*\n?\s*placed/);
+  if (!dm) fails.push('assets/detail.js: the placed-meet count no longer parses — check tools/render-check.js');
+  else {
+    ok('detail.js placed meets', placed, n(dm[1]));
+    ok('detail.js meet total', meetIds.length, n(dm[2]));
+  }
+  /* Every id a schedule names has to exist, or a school page drops a meet silently. */
+  const orphan = withSched.flatMap(s => SCHED[s.name].filter(k => !MEETS[k]));
+  if (orphan.length) fails.push(`SCHED names ${orphan.length} meet id(s) MEETS does not hold: ${orphan.slice(0, 5)}`);
+
+  /* Every venue names its own state, so a pin that lands outside that state is wrong however
+     confident the geocoder was. This is not hypothetical: "University Park, PA" ranks Penn State
+     first and a hamlet of the same name in Huntsville, Alabama second, and the pass that placed
+     the Ashenfelter track took the hamlet — 700 miles out, flagged as a town centroid, and
+     invisible on a map zoomed to one school. The boxes are generous on purpose; they catch a
+     wrong state, not a wrong street. */
+  const BBOX = {
+    AL: [30.1, 35.1, -88.5, -84.8], AK: [51.2, 71.5, -180, -129.9], AZ: [31.3, 37.1, -114.9, -109.0],
+    AR: [32.9, 36.6, -94.7, -89.6], CA: [32.5, 42.1, -124.5, -114.1], CO: [36.9, 41.1, -109.1, -102.0],
+    CT: [40.9, 42.1, -73.8, -71.7], DE: [38.4, 39.9, -75.8, -74.9], DC: [38.7, 39.1, -77.2, -76.8],
+    FL: [24.4, 31.1, -87.7, -79.9], GA: [30.3, 35.1, -85.7, -80.7], HI: [18.8, 22.3, -160.3, -154.7],
+    ID: [41.9, 49.1, -117.3, -110.9], IL: [36.9, 42.6, -91.6, -87.4], IN: [37.7, 41.8, -88.1, -84.7],
+    IA: [40.3, 43.6, -96.7, -90.1], KS: [36.9, 40.1, -102.1, -94.5], KY: [36.4, 39.2, -89.6, -81.9],
+    LA: [28.8, 33.1, -94.1, -88.7], ME: [42.9, 47.5, -71.2, -66.9], MD: [37.8, 39.8, -79.5, -75.0],
+    MA: [41.1, 42.9, -73.6, -69.8], MI: [41.6, 48.4, -90.5, -82.1], MN: [43.4, 49.5, -97.3, -89.4],
+    MS: [30.1, 35.1, -91.7, -88.0], MO: [35.9, 40.7, -95.9, -88.9], MT: [44.3, 49.1, -116.1, -104.0],
+    NE: [39.9, 43.1, -104.1, -95.2], NV: [35.0, 42.1, -120.1, -114.0], NH: [42.6, 45.4, -72.6, -70.5],
+    NJ: [38.9, 41.4, -75.6, -73.8], NM: [31.3, 37.1, -109.1, -103.0], NY: [40.4, 45.1, -79.8, -71.8],
+    NC: [33.7, 36.7, -84.4, -75.4], ND: [45.9, 49.1, -104.1, -96.5], OH: [38.3, 42.1, -84.9, -80.4],
+    OK: [33.6, 37.1, -103.1, -94.4], OR: [41.9, 46.4, -124.7, -116.4], PA: [39.6, 42.4, -80.6, -74.6],
+    RI: [41.1, 42.1, -71.9, -71.0], SC: [32.0, 35.3, -83.4, -78.4], SD: [42.4, 46.0, -104.1, -96.4],
+    TN: [34.9, 36.8, -90.4, -81.6], TX: [25.8, 36.6, -106.7, -93.4], UT: [36.9, 42.1, -114.1, -108.9],
+    VT: [42.7, 45.1, -73.5, -71.4], VA: [36.5, 39.5, -83.7, -75.1], WA: [45.5, 49.1, -124.8, -116.9],
+    WV: [37.1, 40.7, -82.7, -77.6], WI: [42.4, 47.4, -92.9, -86.7], WY: [40.9, 45.1, -111.1, -104.0],
+  };
+  const stray = VENUES.filter(v => {
+    const st = (v.v.match(/ ([A-Z]{2})$/) || [])[1];
+    const b = BBOX[st];
+    if (!b) return true;
+    return !(v.lat >= b[0] && v.lat <= b[1] && v.lon >= b[2] && v.lon <= b[3]);
+  });
+  if (stray.length) {
+    fails.push(`${stray.length} venue(s) placed outside the state they name: ` +
+      stray.map(v => `${v.v} at ${v.lat},${v.lon}`).join(' | '));
   }
 
   /* And it has to reach the page. Every meet on file is one card, so the count is the check: the
