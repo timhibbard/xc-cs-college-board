@@ -187,14 +187,32 @@ than an error.
    `/results/(\d+)` matches the track ones only, and the page then looks like a program that ran no
    cross country at all. Key the meets as `xc-<id>` / `tf-<id>` and keep them apart, because the two
    id spaces overlap.
-2. **A meet's season comes off the events it held, not its date.** Some events are only indoors (60
-   metres, the weight throw, the mile, the distance medley) and some only outdoors (the 110 hurdles,
-   the javelin, the steeplechase, the 1500), and the meet page links a result per event, so the two
-   lists decide it. No date rule works: a warm-weather program holds outdoor meets in December, and
-   the seasons overlap for a week in March. This corrected four meets already on file that a date
-   rule had filed as indoor. And read the events out of the **results hrefs**
-   (`/results/<mid>/<eid>/<Meet_Name>/Mens-1500-Meters`), not the page's headings — a meet page's
-   only `<h3>` is its own title.
+2. **A meet's season comes off the events it held, not its date.** The meet page links a result per
+   event, and some events exist in one season only, so the list decides it. No date rule works: a
+   warm-weather program holds outdoor meets in December, and the seasons overlap for a week in March —
+   of the fourteen letters this corrected, twelve sit in a five-day window either side of 13 March and
+   the other two are a November meet that is outdoor and a December meet that is indoor. Read the
+   events out of the **results hrefs** (`/results/<mid>/<eid>/<Meet_Name>/Mens-1500-Meters`), not the
+   page's headings — a meet page's only `<h3>` is its own title.
+
+   **Derive the event vocabulary; do not write one down.** The hand-written list used for the 76-row
+   sweep was wrong four ways at once, and every one of them yields a plausible letter rather than an
+   error. `'500-Meters'` is a substring of `'1500-Meters'`, so a substring test saw an indoor 500 at
+   every outdoor meet that ran a 1500. `Heptathlon` is the men's *indoor* multi and the women's
+   *outdoor* one, so a gender-blind test points both ways at once — match the whole `Mens-`/`Womens-`
+   slug. Three of its indoor markers are contested outdoors (the mile, the distance medley, the
+   4×800 at relay meets) and its outdoor 1500 is contested indoors at eight meets in this corpus.
+   And the weight throw and the **discus** are not the safe anchors they look like: a fall throws
+   series runs the weight throw next to the hammer, and Youngstown State's field house has a discus
+   ring, which is the one page in 606 where an indoor 60 and a discus sit together.
+
+   What works is a contingency table. Cross-tabulate every event slug on every cached page against
+   the two anchors that cannot be faked — a 60/55 (no outdoor meet contests them) and a javelin or
+   hammer (no arena does) — and keep a marker only if it never once lands on the wrong side. That
+   leaves 60/55 and their hurdles, the 500, 600 and 1000 indoors; the 100, high hurdles, 400 hurdles,
+   4×100, 10,000 and steeplechase, plus the javelin and hammer, outdoors; and the multis by gender.
+   Report a page that links no marker rather than guessing: one meet in 503 does, and its letter came
+   from the venue being a banked indoor track.
 3. **Validate the parse against the rows already on file before splicing anything.** The 76 rows this
    pass added name 248 meets the board already held; reproducing all 248 on date, name and venue
    string is what proves the parser, and it is free. Every venue string that *is* new can then be

@@ -553,7 +553,8 @@ schedule, which is three tables so that no fact is stated twice: `VENUES` (592 p
 once, with `src` giving the precision — `r` the facility, `z` the ZIP the results page printed, `c` the
 town it named), `MEETS` (1,027 meets keyed by their own TFRRS id, because two different meets can share a
 name; each carries date, season and a `VENUES` index — the season letter read off the events the meet's
-own page links, not off its date, which is what #4 closed), and `SCHED` (school name → the meet ids its
+own page links, not off its date, for every one of the 503 track meets dated before April, which is what
+#4 and #21 closed), and `SCHED` (school name → the meet ids its
 own TFRRS results page shows it at, in date order — 4,832 appearances across 225 of the 226 schools with
 a page; Calumet College is the one exception and has no result on file for the season).
 
