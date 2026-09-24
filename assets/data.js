@@ -106,8 +106,8 @@ const COURSE_NOTES = {
    caveats worth carrying:
      - Augusta GA, Macon GA and Athens GA are consolidated city-county governments,
        so the figure is county-wide and reads larger than the campus surroundings.
-     - Buies Creek, Cullowhee, Tigerville and Emory VA are census-designated places
-       rather than incorporated towns — the boundary is a statistical convenience.
+     - Buies Creek, Cullowhee, Tigerville, Swannanoa and Emory VA are census-designated
+       places rather than incorporated towns — the boundary is a statistical convenience.
      - A small place inside a large metro understates the setting: Morrow GA at 6,364
        is Atlanta. Read this column next to the Mi column, never alone. */
 const TOWNPOP = {
@@ -166,6 +166,7 @@ const TOWNPOP = {
   "Kennesaw GA": 34605,
   "Knoxville TN": 195185,
   "LaGrange GA": 32078,
+  "Laurinburg NC": 15087,
   "Lookout Mtn GA": 1721,
   "Macon GA": 156578,
   "Mars Hill NC": 3025,
@@ -185,6 +186,7 @@ const TOWNPOP = {
   "Salisbury NC": 35825,
   "Savannah GA": 147898,
   "Spartanburg SC": 38910,
+  "Swannanoa NC": 6901,
   "Tigerville SC": 1880,
   "Wingate NC": 4425,
   "Winston-Salem NC": 252037,
@@ -559,6 +561,7 @@ const SCHOOLS = [
     shape: { date: "2025-10-31", meet: "2025 Big South Cross Country Championship", dist: "8K", n: 6, ret: 6, g1ret: -122, fr: 1, so: 3, jr: 2, sr: 0 },
     coach: { name: "Greg Thiel", title: "Head Coach Track & Field/Cross Country", email: "gthiel@gardner-webb.edu", phone: null, src: "https://gwusports.com/sports/cross-country/coaches" },
     ig: "gwu_trackandfield_xc",
+    note: "At the 2025 Big South championship Gardner-Webb finished <b>six</b> runners, 27:38 to 43:44 &mdash; a <b>966 second spread, the widest of the 83 Division 1 programs measured on this board</b> &mdash; so there is no scoring seven to slot into and he would have arrived as their <b>#1 by two minutes</b>. Their invitational six weeks earlier reads the same way. Division 1 at 62 miles with a verified CS degree and a 77% admit rate, and no distance squad behind the front two: all six of those men return, so the question for the coach is who else is signing.",
   },
   { name: "Presbyterian", slug: "presbyterian", city: "Clinton SC", metro: "greenville", mi: 45,
     lat: 34.472, lon: -81.866, div: "D1", conf: "Big South",
@@ -1178,7 +1181,7 @@ const SCHOOLS = [
     shape: { date: "2025-11-07", meet: "Appalachian Athletic Conference Cross Country Championships", dist: "8K", n: 7, ret: 6, g1ret: 58.5, fr: 1, so: 1, jr: 4, sr: 1, mfr: 2 },
     coach: { name: "Rylan Hincher", title: "Interim Director of XC/Track & Field, Head Coach", email: "rylan.hincher@montreat.edu", phone: "828-419-2286", src: "https://montreatcavaliers.com/sports/mxc/coaches", prev: "Jacob Simms" },
     ig: "montreatxctf",
-    note: "First measurement, from the 2025 NAIA Cross Country Championships (21st, 490 pts): <b>they never finished seven runners</b> (best was 6), so there is no scoring seven to slot into. He would have been their #3, 49 seconds behind their #1. Depth is the problem here, not his fitness.",
+    note: "Measured on two championships: the 2025 Appalachian Athletic Conference meet (2nd) and the 2025 NAIA Cross Country Championships (21st, 490 pts). <b>His 3rd man at both</b>, 49 seconds behind their #1 and 85 inside their scoring seven at the conference meet, where their seven spanned 144 seconds &mdash; the healthy shape this board looks for. The caution is the other race: <b>at nationals they finished six</b>, so the deeper of the two fields is the one that came up short, and depth rather than his fitness is the question to ask the coach.",
   },
   { name: "Morehouse", slug: "morehouse", city: "Atlanta GA", metro: "greenville", mi: 147,
     lat: 33.745982, lon: -84.414917, div: "D2", conf: "SIAC",
@@ -1314,6 +1317,18 @@ const SCHOOLS = [
     coach: { name: "Andrew Howard", title: "Head Track and Field and Cross Country Coach", email: "andrewhoward@uvawise.edu", phone: "276-376-3479", src: "https://www.uvawisecavs.com/sports/mens-cross-country/coaches" , ig: "coachandrewhoward", igSrc: "bio: “track and field and XC coach … at UVA Wise”" },
     ig: "uvawisexctf",
     note: "First measurement, from the 2025 South Atlantic Conference XC Championship (5th, 163 pts) and the 2025 NCAA Division II Southeast Region Cross Country Championships (15th, 420 pts): <b>1st man</b>, 25 seconds ahead of their #1 &mdash; and they finished only 6 runners in both races, not seven. <b>Back in Caution</b> &mdash; the 96 second course correction had been double counted on their conference race. The depth problem is real regardless: no scoring seven and a 209 second spread.",
+  },
+  { name: "Warren Wilson", slug: "warren-wilson", city: "Swannanoa NC", metro: "greenville", mi: 64,
+    lat: 35.613448, lon: -82.440678, div: "D3", conf: "Coast-to-Coast",
+    cs: "none", csSrc: "fed", csShare: 0, sat: "not reported", satSrc: "none", accept: "71%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 41500, rb: 13050, sticker: 54550, net: 21249, size: 707, ipeds: 199865 },
+    b1500: "4:26.5", b5000: null, tier: "caution", tierSrc: "hand",
+    xc: null,
+    xcInv: { slot: 1, g1: -229.5, spread: 654.7, nraces: 4, short: true, maxfin: 5 },
+    xc26: { slot: 1, g1: -332.3, spread: 777.1, eq: true, nraces: 3, short: true, maxfin: 6, date: "2026-09-19" },
+    coach: { name: "Chris Stroup", title: "Men & Women's Cross Country / Track & Field Coach", email: "cstroup@warren-wilson.edu", phone: "828-771-2014", src: "https://warrenwilsonowls.com/sports/mens-cross-country/coaches" },
+    ig: "wwcxc",
+    note: "The closest school on this page &mdash; 64 miles, an hour and a quarter &mdash; and the thinnest. <b>Caution, by hand rather than by ladder</b>: across nine races on file over two seasons Warren Wilson has <b>never finished more than six men</b>, and its only 2025 championship was the NCAA Division III South Region, where <b>two</b> men finished and he would have been <b>296 seconds ahead of their #1</b>. A championship field of two is a measurement of the squad, not a gap in the evidence, so this row does not sit at Verify (<a href=\"methodology.html#tier-ladder\">the rule</a>). He projects 230 seconds ahead of their #1 across the 2025 invitationals and 332 ahead across fall 2026. Their Coast-to-Coast conference championship was held at Baylands Park in Sunnyvale, California, and Warren Wilson does not appear on that page at all, while fellow east-coast member Regent travelled and placed 5th. Academically it offers <b>Data Science but no computer science major</b>, and the federal file reports no CS degrees at all.",
   },
   { name: "Young Harris", slug: "young-harris", city: "Young Harris GA", metro: "greenville", mi: 107,
     lat: 34.933523, lon: -83.84587, div: "D2", conf: "Conference Carolinas",
@@ -3115,6 +3130,14 @@ const NO_PROGRAM = [
     cost: { own: "private", resid: "out", tuition: 15036, rb: 14850, sticker: 29886, net: 29791, size: 893, ipeds: 140252 },
     why: "NAIA, 149 miles inside the Greenville ring, and it sponsors <b>women’s</b> cross country only. Its athletics site lists men’s track and field and no men’s cross country page at all; the most recent men’s cross country roster it publishes is <b>2023</b>. Worth a look as a track-only NAIA program if that trade is acceptable — NAIA allows 12 scholarships across men’s cross country and track.",
   },
+  { name: "St. Andrews", city: "Laurinburg NC", metro: "greenville", mi: 196,
+    lat: 34.740716, lon: -79.481437, div: "NAIA", conf: "Appalachian Athletic",
+    why: "NAIA in the Appalachian Athletic Conference, and it sponsors <b>neither</b> men’s cross country nor track of any kind: its athletics site (<code>sauknights.com</code>) lists 17 sports and the distance events are not among them for either gender. Listed rather than omitted because it is a small private college inside the ring with an equestrian programme people have heard of, so its absence would otherwise read as an oversight.",
+  },
+  { name: "Saint Augustine’s", city: "Raleigh NC", metro: "greenville", mi: 264,
+    lat: 35.788114, lon: -78.618866, div: "D2",
+    why: "Historically a distance power — its sprinters and its cross country teams won national titles — and there is nothing left to join. It has <b>no conference</b> after the CIAA suspended its membership, its athletics domain no longer resolves at all, the federal file reports <b>172 undergraduates</b>, and in April 2026 it filed for Chapter 11 in the Eastern District of North Carolina and <b>stopped its legal fight for accreditation</b>, which it had been operating under a preliminary injunction to keep. Listed because it is the one NC name on this page whose past would otherwise put it near the top of a search.",
+  },
 ];
 
 const METROS = {
@@ -3169,3 +3192,50 @@ const METROS = {
    ranks the nine by it. Not a METROS entry — there is no newark.html, no nav link and no
    `metro: "newark"` row left. */
 const NEWARK_CENTER = { label: 'downtown Newark', center: [40.7357, -74.1724] };
+
+/* ---------- North Carolina, grouped by the state's own metros ----------
+
+   Every North Carolina row on this site arrived through the Greenville ring, so all 40 carry
+   `metro: "greenville"` and nothing else. north-carolina.html is a second reading of those
+   same rows rather than a new search, which is why the grouping lives here as a name list
+   instead of a `metro` value: no row's home page changes, no mileage is recomputed, and the
+   Mi column still means driving miles from home.
+
+   A radius would not work for this state anyway. North Carolina is polycentric and its
+   colleges sit between the cities rather than in them — Wingate is 28 miles from Charlotte,
+   Elon 20 from Greensboro, Campbell 35 from Raleigh — so `piedmont` is an honest bucket for
+   the schools in the open country between Charlotte and the Triad (Hickory, Salisbury,
+   Misenheimer) rather than a forced assignment to one or the other. Membership is by campus
+   town and by road, judged one row at a time.
+
+   The groups run west to east, and they have to name **every** NC row the site holds — on the
+   board, cut, no men's track, no men's program alike. render-check.js asserts that both ways:
+   a row missing from here would silently vanish off the page, and a name here matching no row
+   would be a typo nothing else could see. */
+const NC_REGIONS = [
+  { id: 'west', label: 'Asheville and the mountains',
+    sub: 'Inside 81 miles — the closest cluster on the whole board, and the thinnest.',
+    names: ['Brevard College', 'UNC Asheville', 'Warren Wilson', 'Montreat', 'Mars Hill',
+      'Western Carolina'] },
+  { id: 'high-country', label: 'The High Country',
+    sub: 'Boone and Banner Elk, over the Blue Ridge at 3,300 feet — altitude is the reason to take this pair on its own.',
+    names: ['Lees-McRae', 'Appalachian State'] },
+  { id: 'charlotte', label: 'Charlotte',
+    sub: 'The state’s largest metro, and the only group where every fit is reachable in under two hours.',
+    names: ['Gardner-Webb', 'Belmont Abbey', 'Johnson C. Smith', 'Queens (Charlotte)',
+      'UNC Charlotte', 'Davidson', 'Wingate'] },
+  { id: 'piedmont', label: 'The Piedmont in between',
+    sub: 'Hickory, Salisbury and Misenheimer — small-town colleges in the open country between Charlotte and the Triad, belonging to neither.',
+    names: ['Lenoir-Rhyne', 'Pfeiffer', 'Livingstone', 'Catawba'] },
+  { id: 'triad', label: 'The Triad',
+    sub: 'Greensboro, Winston-Salem and High Point, plus Elon and Winston-Salem’s western edge — nine rows, the largest group and the most mixed.',
+    names: ['Carolina University', 'Winston-Salem State', 'High Point', 'Wake Forest',
+      'UNC Greensboro', 'Greensboro College', 'NC A&T', 'Guilford', 'Elon'] },
+  { id: 'sandhills', label: 'The Sandhills and Fayetteville',
+    sub: 'Laurinburg, Pembroke and Fayetteville — the cheapest corner of the state and the one with the fewest programs left.',
+    names: ['St. Andrews', 'UNC Pembroke', 'Methodist', 'Fayetteville State'] },
+  { id: 'triangle', label: 'The Triangle',
+    sub: 'Raleigh, Durham, Chapel Hill and Buies Creek — the deepest academic group and the furthest from home.',
+    names: ['UNC Chapel Hill', 'Duke', 'NC Central', 'Campbell', 'NC State', 'William Peace',
+      'Shaw', 'Saint Augustine’s'] },
+];

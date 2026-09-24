@@ -29,9 +29,9 @@ vm.createContext(ctx);
 vm.runInContext(
   fs.readFileSync(path.join(ROOT, 'assets/data.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(ROOT, 'assets/detail.js'), 'utf8') +
-  ';__out={SCHOOLS,REMOVED,NO_TRACK,NO_PROGRAM,XCRACES,T1500,ATHLETE,MEETS,VENUES,SCHED};', ctx);
+  ';__out={SCHOOLS,REMOVED,NO_TRACK,NO_PROGRAM,XCRACES,T1500,ATHLETE,MEETS,VENUES,SCHED,NC_REGIONS};', ctx);
 const { SCHOOLS, REMOVED, NO_TRACK, NO_PROGRAM, XCRACES, T1500, ATHLETE,
-        MEETS, VENUES, SCHED } = ctx.__out;
+        MEETS, VENUES, SCHED, NC_REGIONS } = ctx.__out;
 
 const fails = [];
 const checks = [];
@@ -91,6 +91,54 @@ const METROS = [
       (Array.isArray(s.metro) ? s.metro : [s.metro]).includes(metro)).length;
     ok(`${file} board rows`, rows.length, want);
     dom.window.close();
+  }
+
+  /* north-carolina.html is the one page whose grouping is data the board holds rather than a
+     radius it can recompute, so the grouping is checked both ways: every NC row belongs to
+     exactly one NC_REGIONS group, and every name a group lists is a row that exists. A name
+     misspelled in NC_REGIONS renders a short table and no error, and a row added to data.js with
+     a North Carolina city silently disappears from this page, which is the failure that matters. */
+  {
+    const isNC = s => / NC$/.test(s.city);
+    const ncRows = [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM].filter(isNC);
+    const seen = new Map();
+    for (const r of NC_REGIONS) for (const n of r.names) seen.set(n, (seen.get(n) || 0) + 1);
+    const dup = [...seen].filter(([, c]) => c > 1).map(([n]) => n);
+    if (dup.length) fails.push(`NC_REGIONS lists a school in two groups: ${dup.join(', ')}`);
+    const names = new Set(ncRows.map(s => s.name));
+    const orphanRow = ncRows.filter(s => !seen.has(s.name)).map(s => s.name);
+    if (orphanRow.length) {
+      fails.push(`North Carolina row in no NC_REGIONS group, so north-carolina.html drops it: ` +
+        orphanRow.join(', '));
+    }
+    const orphanName = [...seen.keys()].filter(n => !names.has(n));
+    if (orphanName.length) fails.push(`NC_REGIONS names no row on the board: ${orphanName.join(', ')}`);
+
+    const dom = await render('north-carolina.html');
+    const doc = dom.window.document;
+    const tables = doc.querySelectorAll('table[data-region]');
+    ok('north-carolina region tables', tables.length, NC_REGIONS.length);
+    let grouped = 0;
+    for (const r of NC_REGIONS) {
+      const tbl = doc.querySelector(`table[data-region="${r.id}"]`);
+      if (!tbl) { fails.push(`north-carolina.html: no table for region ${r.id}`); continue; }
+      const rows = tbl.querySelectorAll('tbody tr').length;
+      grouped += rows;
+      ok(`north-carolina ${r.id} rows`, rows, SCHOOLS.filter(s => r.names.includes(s.name)).length);
+    }
+    ok('north-carolina board rows grouped', grouped, SCHOOLS.filter(isNC).length);
+    for (const [sel, set] of [['#removed', REMOVED], ['#notrack-tbl', NO_TRACK], ['#noprog-tbl', NO_PROGRAM]]) {
+      ok(`north-carolina ${sel} rows`,
+        doc.querySelectorAll(`${sel} tbody tr`).length, set.filter(isNC).length);
+    }
+    dom.window.close();
+    /* The card on index.html is filled by hand, because this page has no metro id for the loop
+       that fills the other ten to count. A hand-filled number is exactly the kind that goes
+       stale, so it is held against the data here. */
+    const idxNC = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8')
+      .match(/id="k-m-north-carolina">(\d+)</);
+    if (!idxNC) fails.push('index.html: the North Carolina card no longer publishes a count');
+    else ok('index NC card', SCHOOLS.filter(isNC).length, Number(idxNC[1]));
   }
 
   // Every school page must render its own races, and the count must match.
@@ -268,7 +316,7 @@ const METROS = [
   const placed = meetIds.filter(k => MEETS[k].v != null).length;
   const withSched = everyRow.filter(s => SCHED[s.name]);
   const appearances = withSched.reduce((a, s) => a + SCHED[s.name].length, 0);
-  /* README counts over the 226 rows with a men's program, methodology over all 240 with a page, and
+  /* README counts over the 227 rows with a men's program, methodology over all 243 with a page, and
      the two differ by exactly South Carolina — a row with 22 track meets and no cross country team. */
   const boardRows = [...SCHOOLS, ...REMOVED, ...NO_TRACK].filter(s => SCHED[s.name]);
   const boardApp = boardRows.reduce((a, s) => a + SCHED[s.name].length, 0);

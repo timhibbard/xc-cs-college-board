@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>North Carolina — the board read by the state's own metros</title>
+<meta name="description" content="Every North Carolina college on this recruiting board, grouped by the state's metros rather than by distance from home: 40 rows from Brevard at 47 driving miles to Fayetteville State at 265, and the seven beyond the ring.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">Not a ring · 40 North Carolina rows · seven groups, west to east</p>
+  <h1>North Carolina</h1>
+  <p class="lede">
+    A third of this board is in one state, and until now the only way to read it as North Carolina
+    was to scroll the Greenville table and recognise the towns. This page is the same rows regrouped
+    &mdash; no new search, no new ring, and the <em>Mi</em> column still means driving miles from home
+    &mdash; arranged the way a family would actually drive them: <strong>40 rows in seven groups</strong>,
+    from Brevard at 47 miles to Fayetteville State at 265. <strong>30 are on the board</strong>
+    (11 target, 2 deep, 16 caution and one at <em>Verify</em>, which here means no result to measure at all), four are cut, four sponsor cross
+    country and no men's outdoor track, and two have no men's programme at all. Two findings are worth
+    the page on their own. <strong>The closest schools are the thinnest</strong>: seven of them sit inside
+    81 miles and exactly one is a fit, while at twelve of the 30 he would arrive as the team's #1 man.
+    And <strong>the cheapest public universities in the state are cheap by statute rather than by
+    accident</strong> &mdash; three of the four NC Promise campuses are on this page, and the plan's
+    non-resident rate goes up for anyone entering in 2026 or later, which the net-cost column here does
+    not yet know about.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="k-label">Rows in this state</div><div class="k-value" id="k-all">—</div><div class="k-sub">On the board, cut, no men's track and no men's programme together &mdash; every one inside the 300-mile Greenville ring</div></div>
+    <div class="kpi"><div class="k-label">On the board</div><div class="k-value" id="k-n">—</div><div class="k-sub">Both sports sponsored, and 28 of the 30 measured on 2025 championship cross country &mdash; Carolina University has no result at all, Warren Wilson only a two-man regional</div></div>
+    <div class="kpi"><div class="k-label">Target tier</div><div class="k-value" id="k-t">—</div><div class="k-sub">Nearest is UNC Asheville at 64 miles; three of the eleven are around Charlotte</div></div>
+    <div class="kpi"><div class="k-label">He would be their #1</div><div class="k-value" id="k-one">—</div><div class="k-sub">Of the 30 on the board &mdash; the single most common result in this state, and the thing to avoid</div></div>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">NC Promise, and the $2,000 a year the net-cost column does not know about</span>
+    <p>
+      North Carolina's public system has the <strong>widest spread of non-resident tuition premiums of
+      any state on this board</strong> &mdash; a factor of eight, from <strong>$4,000</strong> at
+      Western Carolina, Fayetteville State and UNC Pembroke to <strong>$32,209</strong> at UNC Chapel
+      Hill and $24,048 at NC State. That is not a quirk of the federal file. Those three campuses, plus
+      Elizabeth City State, are the four <strong>NC Promise</strong> institutions: the state holds
+      in-state tuition at $500 a semester there, and non-resident tuition at $2,500 &mdash; a difference
+      of exactly the $4,000 a year the board computes from IPEDS, which is as clean a cross-check as
+      this project gets.
+    </p>
+    <p>
+      <strong>The rate is changing, and it changes in the wrong direction for him.</strong> The UNC
+      System publishes that non-resident students entering an NC Promise institution
+      <strong>before 2026</strong> pay $2,500 a semester, and that <strong>beginning with students
+      entering in 2026 it is $3,500</strong> &mdash;
+      <a href="https://www.northcarolina.edu/impact/affordability-efficiency/nc-promise/" rel="noopener">the
+      plan's own page</a>. The premium in the table below is therefore an entering-2025 number, and an
+      entering-2027 freshman should add about <strong>$2,000 a year</strong> to three rows on this page:
+      <strong>Fayetteville State</strong> (about $11,892 becomes about $13,892),
+      <strong>UNC Pembroke</strong> ($14,260 → about $16,260) and <strong>Western Carolina</strong>
+      ($17,315 → about $19,315). The column is left on the federal basis rather than adjusted, because
+      every other row on this site is, and a hand-adjusted cell would be the only number here that no
+      source states.
+    </p>
+    <p>
+      Even after the rise, <strong>Fayetteville State is still the cheapest target-tier school anywhere
+      on this board</strong> &mdash; by about $74, ahead of Coastal Carolina at $13,966. That is how thin
+      the margin is, and it is worth asking the coach about directly: a non-resident tuition waiver, of
+      the kind athletic departments do hold, erases the whole premium and is the single largest lever on
+      any of these three prices. The fourth NC Promise campus, <strong>Elizabeth City State</strong>, is
+      427 driving miles away and is one of the seven schools named at the bottom of this page as outside
+      the ring.
+    </p>
+  </div>
+
+  <div class="callout crit">
+    <span class="c-title">The closest schools in the state are the thinnest, and that is the whole reading</span>
+    <p>
+      The seven nearest North Carolina rows are all inside <strong>81 miles</strong> &mdash; Brevard 47,
+      Gardner-Webb 62, UNC Asheville 64, Warren Wilson 64, Montreat 73, Mars Hill 79, Western Carolina
+      81 &mdash; and <strong>one of them is a fit</strong>. At Brevard, Gardner-Webb, Mars Hill and
+      Western Carolina he would arrive as the team's <strong>#1 man</strong>. Gardner-Webb is the sharpest
+      version: Division 1, 62 miles, a verified CS degree, a 77% admit rate, and six finishers at the
+      2025 Big South championship spanning <strong>966 seconds</strong> &mdash; the widest first-to-last
+      championship spread of the 83 Division 1 programmes measured on this board, and still only six men,
+      so there is no scoring seven to slot into at all. Warren Wilson, at the same 64 miles
+      as UNC Asheville, has <strong>never finished more than six men</strong> in nine races on file.
+    </p>
+    <p>
+      Across the 28 measured rows on the board here, <strong>13 have him arriving ahead of the team's
+      fastest runner</strong> and <strong>six never finished seven men</strong> in a championship, so
+      their slot rests on a last finisher rather than a scoring seven. Read the <em>vs their 7th</em>
+      column next to the notes and never alone: being 200 seconds inside a seven that spans 400 is a
+      measurement of a squad that has fallen apart, not of a fit.
+      <a href="methodology.html#tier-ladder">Why arriving at the front is a caution and not a win</a>.
+    </p>
+    <p>
+      <strong>Exactly three programmes in the state put their #1 where this board wants him &mdash; 40
+      to 60 seconds ahead of his projection.</strong> They are <strong>High Point</strong> (+43s),
+      <strong>Montreat</strong> (+49s) and <strong>NC Central</strong> (+50s), and the depth behind that
+      front runner separates them. High Point and Montreat each finished <strong>seven men at their
+      conference championship</strong> &mdash; he lands 62 and 85 seconds inside those scoring sevens
+      &mdash; and each came a finisher short at the next championship, High Point's regional and
+      Montreat's NAIA nationals. <strong>NC Central never reached seven in four races</strong>, so its
+      +50 is measured against a sixth man. Three rows in 40, one of them Division 1 at $38,707, one NAIA
+      in a town of 630, and one that cannot field a scoring seven: that is the honest yield of this state.
+    </p>
+  </div>
+
+  <div class="callout">
+    <span class="c-title">Two of the board's five published ladder disagreements are in this state, pointing opposite ways</span>
+    <p>
+      <strong>Montreat</strong> is <em>caution</em> by hand where the
+      <a href="methodology.html#tier-ladder">tier ladder</a> says target: he would be their 3rd man with
+      their #1 49 seconds up and 85 inside their seven, which is the healthy shape &mdash; and then they
+      took six men to the NAIA national championship, which is the warning the ladder does not read.
+      <strong>UNC Charlotte</strong> is the mirror image &mdash;
+      <em>target</em> by hand where the ladder says deep, because its two championships disagree with
+      each other: 45 seconds outside their seven at the American Conference 8K, 25 inside at the 10K
+      regional. Both rows are carried as disagreements rather than quietly resolved, and
+      <code>tools/ladder.py</code> prints them on every run.
+    </p>
+  </div>
+
+  <h2>Region by region</h2>
+  <p class="prose">
+    Seven groups, west to east, and the membership is by campus town and by road rather than by a radius
+    &mdash; 20 miles works in Boston because Boston is a point, and North Carolina is not. The schools
+    sit <em>between</em> the state's cities: Wingate is 28 miles from Charlotte, Elon 20 from Greensboro,
+    Campbell 35 from Raleigh, and Hickory, Salisbury and Misenheimer sit in open country belonging to
+    neither Charlotte nor the Triad, which the <em>Piedmont in between</em> group is honest about instead
+    of forcing. Each table below is one group, sorted by driving distance; the rows that are off the board
+    are named in their group's prose and listed in full further down with a Region column.
+    <strong>Every table here is built from the same row data as
+    <a href="greenville.html">the Greenville page</a></strong> &mdash; that page is where sorting,
+    filtering and the gap chart live, and nothing on this one restates a number it does not hold.
+  </p>
+
+  <h3 id="r-west">Asheville and the mountains</h3>
+  <p class="prose">
+    Six schools, 47 to 81 miles, and the group where proximity and fit pull hardest against each other.
+    <strong>UNC Asheville</strong> is the one fit: his 3rd man, <strong>94 seconds inside their scoring
+    seven</strong>, a 92% admit rate, Big South, mountain terrain &mdash; with two caveats. Their #1 is
+    only 21 seconds faster than he projects, which is tighter than the healthy band, and the $12,250
+    federal net price is what a North Carolinian pays; on his residency it is about
+    <strong>$29,598</strong>, so the whole question there is a waiver. <strong>Montreat</strong> is the
+    row to look at twice: NAIA, 762 undergraduates in a town of <strong>630 people</strong>, and a
+    <strong>13.9% computer science share</strong>, second in the state only to UNC Charlotte's &mdash;
+    his 3rd man at both championships with their #1 49 seconds up, and caution only because the second of
+    those, the NAIA national meet, was six men deep.
+    <strong>Warren Wilson</strong> at 64 miles is the closest row here and the thinnest on the page: nine
+    races on file, never more than six finishers, two men at its 2025 regional, and Data Science but no
+    computer science major. Brevard, Mars Hill and Western Carolina all put him at the front of the squad.
+  </p>
+  <div class="table-scroll">
+    <table class="board-tbl" data-region="west"><caption></caption><thead></thead><tbody></tbody></table>
+  </div>
+
+  <h3 id="r-high-country">The High Country</h3>
+  <p class="prose">
+    Two schools over the Blue Ridge, Boone and Banner Elk, and they are opposite shapes.
+    <strong>Appalachian State</strong> is one of only two <em>deep</em> rows in the state: their 7th man
+    is <strong>29 seconds faster than he projects</strong> across a conference 8K and a 10K regional, on
+    a 1&ndash;7 spread averaging <strong>63 seconds</strong> &mdash; 47 at the Sun Belt meet itself, the
+    tightest championship seven of any row still on the board here &mdash; a real pack he would train
+    with and not travel for in year one, at about $34,469 on his residency, with 19,444 undergraduates in
+    a Boone of 20,032. <strong>Lees-McRae</strong>, 10 miles away and 10 miles closer to home, is the
+    other pattern: he arrives <strong>29 seconds ahead of their #1</strong> on a 217-second spread, in a
+    town of 1,473, and the federal file reports no computer science degree. The pair is grouped on its own
+    because altitude is a real variable for a distance runner and both campuses have it.
+  </p>
+  <div class="table-scroll">
+    <table class="board-tbl" data-region="high-country"><caption></caption><thead></thead><tbody></tbody></table>
+  </div>
+
+  <h3 id="r-charlotte">Charlotte</h3>
+  <p class="prose">
+    Seven rows and three of the state's eleven fits &mdash; the biggest cluster of them anywhere on this
+    page, and all three inside 115 driving miles.
+    <strong>UNC Charlotte</strong> is the strongest row in the state on everything except the running:
+    <strong>15.2% of all degrees granted in computer science</strong>, the largest share here, 24,453
+    undergraduates, 80% admit, about $30,688 on his residency &mdash; and a target tier that is flagged
+    rather than defended, because its 8K and its 10K disagree. <strong>Queens (Charlotte)</strong> earns
+    the tier cleanly on running &mdash; 4th man, 46 seconds inside a seven spanning just
+    <strong>56 seconds</strong>, with their #1 only 11 seconds ahead of him &mdash; on the single
+    championship they ran as a team; they sent one runner to the regional, which is not a team result and
+    is left out. What it also reports is <strong>no computer science degree</strong>, and at 1,211
+    undergraduates that is worth one email to the admissions office before it is treated as a rule-out.
+    <strong>Davidson</strong> is the highest-value application on the page: a <strong>13% admit
+    rate</strong> that a coach's support genuinely moves, their 4th man, and <strong>$17,379</strong>
+    &mdash; cheaper than nine of the twelve North Carolina public campuses on this page once the
+    non-resident premium is applied. Behind them, Gardner-Webb (62 miles) and Belmont Abbey (90) both
+    have him leading the squad, Johnson C. Smith finished five men, and Wingate is <em>deep</em> with no
+    CS degree reported.
+  </p>
+  <div class="table-scroll">
+    <table class="board-tbl" data-region="charlotte"><caption></caption><thead></thead><tbody></tbody></table>
+  </div>
+
+  <h3 id="r-piedmont">The Piedmont in between</h3>
+  <p class="prose">
+    Hickory, Misenheimer and Salisbury &mdash; four colleges in the farmland between Charlotte and the
+    Triad, close to each other and in neither metro. Two are fits. <strong>Pfeiffer</strong> is the
+    one row on the page where the college and its town are the same size: <strong>655 undergraduates in a
+    village of 659</strong>, a 96% admit rate, $19,076, and on the running his 5th man at both championships, 66
+    seconds inside their seven with their #1 38 seconds ahead. <strong>Catawba</strong> is the best
+    fit-and-price pairing in the state that is not also a 13% admit rate: 4th-to-5th man,
+    <strong>105 seconds inside their seven</strong> measured twice, $17,879, a 75% admit
+    rate and a verified CS degree &mdash; and Division 2, where partial athletic money is easiest to
+    find. The other two are the warning that comes with a small squad: at <strong>Livingstone</strong>
+    he would be their #1 by 136 seconds, and <strong>Lenoir-Rhyne</strong> was withdrawn from an earlier
+    version's top picks when its scoring six at the D2 regional turned out to span
+    <strong>326 seconds</strong>. With 655 and 1,235 undergraduates, Pfeiffer and Catawba are also where
+    the lab-conflict question bites hardest: ask both how a required CS course is scheduled against
+    afternoon practice.
+  </p>
+  <div class="table-scroll">
+    <table class="board-tbl" data-region="piedmont"><caption></caption><thead></thead><tbody></tbody></table>
+  </div>
+
+  <h3 id="r-triad">The Triad</h3>
+  <p class="prose">
+    Nine rows, the largest group and the most mixed: three fits, one cut, two programmes with no men's
+    outdoor track, and the state's only row with no result at all. <strong>High Point</strong> is the answer to the
+    question this board actually asks &mdash; their 6th man at the Big South championship and 7th at the
+    regional, on a seven spanning 96 seconds at the conference meet, and their #1
+    <strong>43 seconds</strong> ahead of his projection, which is the middle of the healthy band. It is one
+    of the most consistent reads anywhere here, and it costs <strong>$38,707</strong>.
+    <strong>UNC Greensboro</strong> is the depth option at <strong>157 seconds inside their seven</strong>,
+    second in the state only to Fayetteville State's 189, with $27,316 the argument it loses;
+    <strong>Elon</strong> averages to a 4th-to-5th-man fit at 206 miles and <strong>$41,555</strong>, the
+    dearest of the state's eleven fits &mdash; and that average is 7th man at the CAA championship and 2nd
+    at the regional, which is a genuine disagreement rather than a settled placing. Then the off-board half:
+    <strong>Wake Forest</strong> is the most decisive cut on the board (137 seconds outside their scoring
+    seven in <em>both</em> championships, 218 behind their #1, on a seven that spans 81 seconds &mdash;
+    there is no soft back end to land in), Winston-Salem State and Greensboro College sponsor no men's outdoor
+    track, and <strong>Carolina University</strong> &mdash; NAIA, 460 undergraduates &mdash; publishes a
+    men's cross country roster and schedule and has <em>no result on TFRRS to measure</em>, which is what
+    <em>Verify</em> means on this board: unmeasured rather than borderline.
+  </p>
+  <div class="table-scroll">
+    <table class="board-tbl" data-region="triad"><caption></caption><thead></thead><tbody></tbody></table>
+  </div>
+
+  <h3 id="r-sandhills">The Sandhills and Fayetteville</h3>
+  <p class="prose">
+    The cheapest corner of the state and the emptiest. <strong>Fayetteville State</strong> is the
+    cheapest target-tier school anywhere on this board at about <strong>$11,892</strong> &mdash; their
+    4th-to-5th man on the team that <em>won</em> the 2025 CIAA championship, 189 seconds inside their
+    seven, with their #1 93 seconds up &mdash; and the NC Promise rise above applies to it. Their staff
+    directory publishes neither an email address nor a direct line for the coach, so contact there means
+    the department's main number. <strong>UNC Pembroke</strong> is caution for the reason that is
+    easiest to miss on a spreadsheet: at about $14,260 with a 93% admit rate it looks like the value of
+    the state, and it won Conference Carolinas with a seven he would have led &mdash; he arrives
+    <strong>one second ahead of their #1</strong>. <strong>Methodist</strong>
+    finished five men at its conference meet and entered one runner at the regional, and
+    <strong>St. Andrews</strong>, in Laurinburg, sponsors neither cross country nor track for either
+    gender &mdash; it is listed only because a small private college with a well-known equestrian
+    programme would otherwise look like an oversight.
+  </p>
+  <div class="table-scroll">
+    <table class="board-tbl" data-region="sandhills"><caption></caption><thead></thead><tbody></tbody></table>
+  </div>
+
+  <h3 id="r-triangle">The Triangle</h3>
+  <p class="prose">
+    The deepest academics in the state and the least available running. Eight rows, and
+    <strong>six of them are off the board</strong>: Duke, UNC Chapel Hill and NC State are cut on
+    measurement &mdash; 72, 68 and 63 seconds outside their scoring sevens, all three past the board's
+    45-second line &mdash; William Peace and Shaw sponsor cross country and no men's outdoor track, and
+    Saint Augustine's has no programme, no conference and, since April 2026, a Chapter 11 filing. Two rows
+    are live. <strong>Campbell</strong> is a fit at 244 miles: their 3rd man at the CAA championship, 103
+    seconds inside their seven, their #1 38 seconds ahead, an 87% admit rate and $24,516, in a Buies Creek
+    of 3,746 people &mdash; and they took a single runner to the regional, so the fit rests on one race.
+    <strong>NC Central</strong> is caution on a field of six &mdash; he would have been their #2 with
+    their #1 50 seconds up, which is the right shape on a
+    squad that could not field seven. This group is also the furthest from home in the state, and the
+    thing that makes it thin is not the ACC: it is that the other five Raleigh and Durham programmes
+    either dropped men's track or stopped.
+  </p>
+  <div class="table-scroll">
+    <table class="board-tbl" data-region="triangle"><caption></caption><thead></thead><tbody></tbody></table>
+  </div>
+
+  <h2>Where they are</h2>
+  <div class="map-card">
+    <div class="chart-title">Every North Carolina row on the board, and every one off it</div>
+    <p class="chart-sub">
+      <strong>No radius is drawn on this map</strong>, because this page is not a search: these rows
+      were found by a 300-mile ring centred on Greenville, South Carolina, and drawing that ring here
+      would assert a rule the page does not use. What the shape of the pins shows instead is the state's
+      own geography &mdash; a dense western cluster inside 81 miles, the Charlotte and Triad groups in
+      the middle, and the Triangle strung along the eastern edge of the ring, where almost everything is
+      cut or unavailable. The empty quarter to the east is real and it is measured at the bottom of this
+      page.
+    </p>
+    <div class="map-bar">
+      <label><input type="checkbox" id="map-showcut" checked> Show schools that are off the board (cut, no men's track, no men's programme)</label>
+      <span class="count" id="map-count"></span>
+    </div>
+    <div id="map"></div>
+    <div id="map-legend"></div>
+    <p class="map-note">
+      Pins are approximate main-campus locations, nudged apart where schools share a town &mdash;
+      Greensboro and Raleigh have four each, Charlotte and Winston-Salem three. The <em>Mi</em> column in
+      every table above is real driving
+      distance from home, returned by OSRM driving directions and rounded to the mile, so it does not
+      correspond to how far apart two pins look.
+    </p>
+  </div>
+
+  <h2>Cut as walk-on</h2>
+  <p class="prose">
+    Four North Carolina rows are cut, all four are ACC, and three of them are in the Triangle.
+    <strong>Not one of them is cut on reputation</strong> &mdash; every margin below is transcribed from
+    the 2025 ACC championship and the NCAA Southeast Region: <strong>Wake Forest</strong> 137 seconds
+    outside their scoring seven in both races, <strong>Duke</strong> 72, <strong>UNC Chapel Hill</strong>
+    68 and <strong>NC State</strong> 63, against a cut line of 45. NC State is the closest to that line of
+    the three schools the widening from 250 to 300 miles added, and the interesting row is UNC Chapel
+    Hill: its two races
+    <em>disagree</em> &mdash; 96 seconds outside their seventh at the conference meet, and only 17 at a
+    regional where their 5th through 7th ran 31:23, 31:43 and 32:29. The average decides it, and 68 is
+    past the line. Where a cut is close, the two races are named rather than the average alone.
+  </p>
+  <div class="table-scroll">
+    <table id="removed"><thead><tr><th scope="col">School</th><th scope="col">Region</th>
+      <th scope="col">Division</th><th scope="col">Why it was cut</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2 id="notrack">Cross country but no men's track</h2>
+  <p class="prose">
+    Four schools here sponsor men's cross country and no men's <strong>outdoor track</strong>, so they
+    cannot give him both sports and are off the board however the running reads.
+    <strong>Two of them are the state's CIAA cluster</strong>: of the six North Carolina rows in or
+    lately in that conference &mdash; Fayetteville State, Johnson C. Smith and Livingstone on the board,
+    Winston-Salem State and Shaw here, Saint Augustine's with nothing left &mdash; only three can
+    actually offer him both sports. Each of the four was checked against the school's own sport list and
+    published track roster, and then against TFRRS for its men at their conference indoor and outdoor
+    championships, where a sponsored programme has to appear. All four keep their cross country numbers
+    on their own pages, because the numbers are true and the rule is what removed them.
+    <a href="methodology.html#both-sports">The rule, written out</a>.
+  </p>
+  <div class="table-scroll">
+    <table id="notrack-tbl"><thead><tr><th scope="col">School</th><th scope="col">Region</th>
+      <th scope="col">Division</th><th scope="col">Tier on cross country</th>
+      <th scope="col">What it does and does not sponsor</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2 id="noprogram">No men's programme at all</h2>
+  <p class="prose">
+    The issue that asked for this page counted <strong>37</strong> North Carolina rows and named three
+    schools inside the existing ring that the conference-table sweep had never checked, because none of
+    them is in an NCAA conference table that sweep read. Checking all three is what makes it 40 &mdash;
+    and <strong>two of the three turned out to have nothing to join</strong>. Only Warren Wilson, at 64
+    miles, is a men's cross country programme, and it is the thinnest row on this page.
+  </p>
+  <div class="table-scroll">
+    <table id="noprog-tbl"><thead><tr><th scope="col">School</th><th scope="col">Region</th>
+      <th scope="col">Division</th><th scope="col" class="num">Mi</th>
+      <th scope="col">What is there</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <h2>Seven more, and the ring stays at 300</h2>
+  <p class="prose">
+    The eastern third of the state is outside the search, and this is the measurement rather than an
+    apology for it. Seven North Carolina colleges that sponsor men's cross country sit beyond 300
+    driving miles, and <strong>UNC Wilmington misses by five</strong>. The figures below are driving
+    routes from the same home coordinate and the same router that produced every <b>Mi</b> above
+    &mdash; that router puts Johnson C. Smith at 101 and UNC Greensboro at 189, which is exactly what
+    those two rows say, so these seven are comparable to the board even though nothing else about them
+    has been read.
+  </p>
+  <div class="table-scroll">
+    <table><caption>Not on the board and not measured: no championship results, cost, admissions or coach
+      have been read for any of these. The ring was widened from 250 to 300 once already; the case for
+      widening it again is this table and nothing else.</caption>
+      <thead><tr><th scope="col">School</th><th scope="col">Town</th>
+        <th scope="col" class="num">Driving miles</th><th scope="col">Note</th></tr></thead>
+      <tbody>
+        <tr><td>UNC Wilmington</td><td>Wilmington NC</td><td class="num">305</td><td class="rownote">Division 1, Coastal Athletic &mdash; five miles outside the ring, and the only one of the seven that a rounding argument could reach.</td></tr>
+        <tr><td>Barton</td><td>Wilson NC</td><td class="num">312</td><td class="rownote">Division 2, Conference Carolinas &mdash; the same conference as UNC Pembroke, Belmont Abbey and Lees-McRae above.</td></tr>
+        <tr><td>Mount Olive</td><td>Mount Olive NC</td><td class="num">315</td><td class="rownote">Division 2, Conference Carolinas.</td></tr>
+        <tr><td>NC Wesleyan</td><td>Rocky Mount NC</td><td class="num">320</td><td class="rownote">Division 3, USA South &mdash; the conference that already supplies five rows on this page.</td></tr>
+        <tr><td>East Carolina</td><td>Greenville NC</td><td class="num">346</td><td class="rownote">Division 1, American Conference &mdash; the same league as UNC Charlotte, and the largest programme outside the ring.</td></tr>
+        <tr><td>Chowan</td><td>Murfreesboro NC</td><td class="num">358</td><td class="rownote">Division 2, Conference Carolinas.</td></tr>
+        <tr><td>Elizabeth City State</td><td>Elizabeth City NC</td><td class="num">427</td><td class="rownote">Division 2, CIAA &mdash; and <b>the fourth NC Promise campus</b>, so the cheapest tuition in the state is also the furthest away.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">
+    Adding them would mean a ring of 430 miles, which reaches most of Virginia, Georgia and Tennessee as
+    well and is a different board rather than a longer one. <strong>The decision on this page is to keep
+    the ring at 300 and name the gap</strong>: seven schools, one of them five miles out, and one of them
+    the cheapest public tuition in North Carolina.
+  </p>
+
+  <h2>What to do with this page</h2>
+  <div class="prose">
+    <p>
+      <strong>Four emails, in this order.</strong> <strong>High Point</strong>, because its front runner
+      sits where this board wants him on both championships it ran, and the question there is only money
+      &mdash; ask what academic aid stacks with a partial track offer at $38,707.
+      <strong>Catawba</strong> and <strong>Pfeiffer</strong>, because they are fits under $20,000 at small
+      colleges of 1,235 and 655, where the binding question is the CS timetable rather than the running:
+      ask how a required course is scheduled against afternoon practice. And
+      <strong>Fayetteville State</strong>, through the department's main number rather than by email,
+      because it is the cheapest target anywhere on this board, the margin over the next one is about $74,
+      and a non-resident tuition waiver would settle it outright. <strong>Davidson</strong> is the fifth
+      and it is a different kind of letter: at a 13% admit rate the coach's support is the whole lever.
+    </p>
+    <p>
+      <strong>Two questions that are specific to this state.</strong> Ask every NC Promise coach which
+      entering year's non-resident rate applies to a 2027 freshman, because the plan's own page says it
+      changes with the entering class. And ask the western programmes &mdash; Brevard, Mars Hill, Warren
+      Wilson, Montreat, Lees-McRae &mdash; how many men will be on the roster in the fall, because at
+      every one of them the measurement says he arrives at or near the front, and being a team's #1 as a
+      freshman is workable only if the coach is building a class around him.
+      <a href="methodology.html#tier-ladder">How these tiers are assigned →</a>
+      &nbsp;·&nbsp; <a href="greenville.html">The full 300-mile ring these rows came from →</a>
+    </p>
+  </div>
+
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('north-carolina');
+/* Every row here arrived through the Greenville ring and none has a `miBy`, so this keeps the
+   Mi column meaning what it means everywhere else on the site: driving miles from home. */
+filters.metro = 'greenville';
+
+const isNC = (s) => / NC$/.test(s.city);
+const REGION = {};
+NC_REGIONS.forEach(r => r.names.forEach(n => REGION[n] = r.label));
+const regionOf = (s) => REGION[s.name] ?? '<span class="nodata">&mdash;</span>';
+
+const mine = SCHOOLS.filter(isNC);
+document.getElementById('k-n').textContent = mine.length;
+document.getElementById('k-t').textContent = mine.filter(s => s.tier === 'target').length;
+document.getElementById('k-one').textContent = mine.filter(s => s.xc && s.xc.slot === 1).length;
+document.getElementById('k-all').textContent =
+  [SCHOOLS, REMOVED, NO_TRACK, NO_PROGRAM].reduce((a, set) => a + set.filter(isNC).length, 0);
+
+/* The same columns the master table would show, minus the sorts: these seven tables are static,
+   sorted by distance, and a header styled as clickable that does nothing is worse than a plain
+   one. Sorting and filtering live on greenville.html, which holds all of these rows. */
+const cols = colsFor({ metro: false, size: true }).map(c => ({ ...c, sort: undefined }));
+
+document.querySelectorAll('table[data-region]').forEach(tbl => {
+  const reg = NC_REGIONS.find(r => r.id === tbl.dataset.region);
+  const rows = SCHOOLS.filter(s => reg.names.includes(s.name)).sort((a, b) => a.mi - b.mi);
+  const off = reg.names.length - rows.length;
+  tbl.querySelector('caption').innerHTML = `${reg.sub} <b>${rows.length} on the board</b>` +
+    (off ? `, ${off} off it and listed further down` : '');
+  tbl.querySelector('thead').innerHTML = headHTML(cols);
+  tbl.querySelector('tbody').innerHTML = rowsHTML(rows, cols);
+});
+
+document.getElementById('map-legend').innerHTML = mapLegend({ center: false });
+
+const byMi = (a, b) => (a.mi ?? 999) - (b.mi ?? 999);
+document.querySelector('#removed tbody').innerHTML = REMOVED.filter(isNC).sort(byMi).map(r =>
+  `<tr><td><a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a></td>
+   <td>${regionOf(r)}</td><td>${r.div}</td>
+   <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
+
+const TIERLBL = { target: 'Target', deep: 'Deep', verify: 'Verify', caution: 'Caution' };
+document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(isNC).sort(byMi).map(r =>
+  `<tr><td><a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a></td>
+   <td>${regionOf(r)}</td><td>${r.div}</td><td>${TIERLBL[r.tier] ?? '—'}${noAggTag(r)}</td>
+   <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
+
+document.querySelector('#noprog-tbl tbody').innerHTML = NO_PROGRAM.filter(isNC).sort(byMi).map(r =>
+  `<tr><td>${r.slug ? `<a class="school" href="school.html?s=${encodeURIComponent(r.slug)}">${r.name}</a>` : r.name}</td>
+   <td>${regionOf(r)}</td><td>${r.div ?? '—'}</td><td class="num">${r.mi ?? '—'}</td>
+   <td class="rownote" style="max-width:64ch">${r.why}</td></tr>`).join('');
+
+/* No ring: the pins are the extent, and `pick` replaces the metro test so the Greenville ring's
+   other 55 schools stay off this map. */
+initMap('greenville', { pick: isNC, ring: false });
+</script>
+</body>
+</html>

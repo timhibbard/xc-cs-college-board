@@ -328,26 +328,32 @@ a.ig.cig .who { font-variant: small-caps; letter-spacing: .02em; }
    auto-layout a max-width alone is only a hint, so a table wider than its scroll container
    gets this column squeezed to a few characters. The height is three line-heights exactly,
    and the cell's own padding stays on the cell: a scroll container paints its overflow into
-   its own bottom padding, so padding on the box itself would leak a sliced fourth line. */
-#master .rownote { min-width: 40ch; max-width: 40ch; }
-#master .notebox {
+   its own bottom padding, so padding on the box itself would leak a sliced fourth line.
+
+   These are about the shape of a board row rather than about the one sortable table, so they
+   match `.board-tbl` as well: north-carolina.html prints the same cells in seven smaller
+   tables, and without them each note stretched its row to twenty lines. The sticky header and
+   scroll snapping below stay on #master alone — a short table inside a card does not need
+   either, and a sticky header on one detaches and lands over its own first rows. */
+:is(#master, .board-tbl) .rownote { min-width: 40ch; max-width: 40ch; }
+:is(#master, .board-tbl) .notebox {
   height: calc(1.55em * 3); overflow-y: auto;
   /* A styled scrollbar is the affordance that there is more note to read: naming a colour
      makes the browser draw a real one instead of the overlay bar that only appears mid-scroll.
      The pseudo-elements are the same thing for engines that ignore the standard properties. */
   scrollbar-width: thin; scrollbar-color: var(--baseline) transparent;
 }
-#master .notebox::-webkit-scrollbar { width: 7px; }
-#master .notebox::-webkit-scrollbar-thumb { background: var(--baseline); border-radius: 4px; }
-#master .notebox::-webkit-scrollbar-track { background: transparent; }
+:is(#master, .board-tbl) .notebox::-webkit-scrollbar { width: 7px; }
+:is(#master, .board-tbl) .notebox::-webkit-scrollbar-thumb { background: var(--baseline); border-radius: 4px; }
+:is(#master, .board-tbl) .notebox::-webkit-scrollbar-track { background: transparent; }
 /* With the note fixed, these three are what's left that can wrap past three lines: a long
    school name over a long city, a spelled-out conference, and an SAT range broken across
    two lines. Give them room and every row in the table is the same height. */
-#master .c-name { min-width: 22ch; }
-#master .c-conf { min-width: 17ch; }
-#master .c-sat { white-space: nowrap; }
+:is(#master, .board-tbl) .c-name { min-width: 22ch; }
+:is(#master, .board-tbl) .c-conf { min-width: 17ch; }
+:is(#master, .board-tbl) .c-sat { white-space: nowrap; }
 /* Six-figure town populations must not break across the thousands separator. */
-#master .c-size { white-space: nowrap; }
+:is(#master, .board-tbl) .c-size { white-space: nowrap; }
 .gap-pos { color: var(--div-blue); font-weight: 620; }
 .gap-neg { color: var(--div-red); font-weight: 620; }
 
@@ -467,7 +473,7 @@ footer.site p { font-size: 13px; color: var(--muted); }
   /* a capped scrollport, or a capped note, would print as much as fits and silently
      drop the rest */
   .table-scroll:has(#master) { max-height: none; }
-  #master .notebox { height: auto; overflow: visible; }
+  :is(#master, .board-tbl) .notebox { height: auto; overflow: visible; }
   /* A folded block prints as its summary and drops the races inside it, which on
      paper reads as if they were never collected. */
   details.more > summary { display: none; }
