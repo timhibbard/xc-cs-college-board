@@ -24,12 +24,13 @@ eight-metro pass added were the last gap in that column and are now filled. **22
 carry the program's Instagram**, read off that school's own men's cross country page rather than
 searched for by name — 169 the team's own account, 53 the athletics department's where the school
 links none of its own, and four schools link no Instagram anywhere on their own pages, which their
-pages say. The 150 rows that predate the pass carry three things the new ones still do not: **the
-coach's own Instagram on 17 rows** — recorded only where the account's own bio says they coach this
-program — **its 2026 conference-championship 1500 field** with his projected 4:01 dropped into it,
-and a map of every meet the program attended last season. **The 76 rows the new metros added
-have none of those three things yet**, which is the largest open gap in this repo; each new metro page
-says so in its own words. Six rows sit at *Verify*, which means **unmeasured, not borderline** — four
+pages say. **The 76 rows the new metros added now carry everything the rows that predate the pass
+carry**: the coach block came first, then the Instagram column, then their 2026 outdoor track marks and
+a conference-championship 1500 field for each of the 60 that raced one, and last a **map of every meet
+the program attended this season** — 315 meets and 173 venues this board had never seen, read off those
+programs' own results feeds. The one column that is still uneven is **the coach's own Instagram, on 17
+rows**, recorded only where the account's own bio says they coach this program; that was never a sweep
+and is not presented as one. Six rows sit at *Verify*, which means **unmeasured, not borderline** — four
 former Verify rows (Carlow, Marymount, Hilbert, Shorter) moved to *caution* once it was clear that a
 short conference championship field is a measurement of a thin program rather than an absence of
 evidence. Shorter's is the starkest of the four: three men at the 2024 Conference Carolinas
@@ -446,7 +447,7 @@ greenville.html     per-metro write-up + filtered table, chart, and radius map
 new-york.html
 chicago.html
 boston.html         the seven metros added in the 2026 sweep; same shape, ladder-derived
-philadelphia.html   tiers, coach and Instagram columns filled in, no meet map yet, and each says so
+philadelphia.html   tiers, coach, Instagram, track marks and meet maps all filled in now
 washington.html
 baltimore.html
 pittsburgh.html
@@ -548,12 +549,13 @@ was found — the program's season depth chart `d15`, its conference-championshi
 postseason rounds `post`, read from 59 conference championship result pages plus seven postseason
 pages; every row that has a `b1500` now has a field to drop it into, which is what #5 closed and #3
 extended to the eight new metros), and the 2025–26
-schedule, which is three tables so that no fact is stated twice: `VENUES` (419 places, each geocoded
+schedule, which is three tables so that no fact is stated twice: `VENUES` (592 places, each geocoded
 once, with `src` giving the precision — `r` the facility, `z` the ZIP the results page printed, `c` the
-town it named), `MEETS` (712 meets keyed by their own TFRRS id, because two different meets can share a
-name; each carries date, season and a `VENUES` index), and `SCHED` (school name → the meet ids its own
-TFRRS results page shows it at, in date order — 3,241 appearances across 150 of the 226 schools with a
-page).
+town it named), `MEETS` (1,027 meets keyed by their own TFRRS id, because two different meets can share a
+name; each carries date, season and a `VENUES` index — the season letter read off the events the meet's
+own page links, not off its date, which is what #4 closed), and `SCHED` (school name → the meet ids its
+own TFRRS results page shows it at, in date order — 4,832 appearances across 225 of the 226 schools with
+a page; Calumet College is the one exception and has no result on file for the season).
 
 `NO_TRACK` in `assets/data.js` holds all **29** schools removed under the both-sports rule — seven of
 them Division 1 (Mercer, Tennessee Tech, Jacksonville State, Temple, Canisius, Loyola Maryland and
