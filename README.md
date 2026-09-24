@@ -86,13 +86,13 @@ measured program did. It is not a small-college
 problem with a divisional fix — five of the 22 in Greenville are Division 1 — which is one of the
 reasons the Division 1 rule did not survive.
 
-The 1500 data says the same thing a second way: at **57 of the 128 programs that raced a 1500 in
+The 1500 data says the same thing a second way: at **83 of the 185 programs that raced a 1500 in
 2026** his projected 4:01 would be their fastest man in the event, and the median program's best 1500
-went 3:58.8. In the other direction he would have made the conference final at **109 of the 134 rows
-with a 1500 on file** and scored — top eight — at **65**. The divisional split is stark, and it cuts the other
-way from the tier ladder: across the 57 Division 1 rows with a 1500 on file the median best 1500 is **3:48.2**, he makes the
-final at 32 of them and scores at 9. Read against 105 rows that actually entered somebody in the event at
-their conference meet, he makes 83 finals and scores in 51 — **29 programs entered nobody in the 1500 at
+went 3:58.3. In the other direction he would have made the conference final at **165 of the 194 rows
+with a 1500 on file** and scored — top eight — at **110**. The divisional split is stark, and it cuts the other
+way from the tier ladder: across the 75 Division 1 rows with a 1500 on file the median best 1500 is **3:47.9**, he makes the
+final at 46 of them and scores at 17. Read against 152 rows that actually entered somebody in the event at
+their conference meet, he makes 126 finals and scores in 85 — **42 programs entered nobody in the 1500 at
 all**, which is a fact about how the event is used rather than about him.
 
 That median was **4:01.1 until #5 was closed**, and the reason it moved two seconds is worth more
@@ -104,6 +104,17 @@ comparison. Filling it made the board less flattering to him, which is the direc
 fix should be expected to run. South Carolina was the last of them and the one the query nearly
 missed: it sits in `NO_PROGRAM` because it sponsors no men's cross country, so every 1500 pass had
 skipped a real SEC track program whose best man ran 3:35.07.
+
+**#3 then filled the eight new metros**, which is 60 more fields and 58 more rows carrying a `b1500`
+and a `b5000`, and the median moved only half a second further — the share of rosters he would lead
+went 45% to 45%. The interesting part of that pass is not the count but the filter. The decathlon runs
+a 1500 that TFRRS files as a second "1500 Meters" event at the same meet, and #5 had separated it from
+the open race by shape: fastest winning time, scored round. That is right at a championship and wrong
+at an invitational, which scores nothing. The exact test is the meet's own event list — a meet page
+links every event the meet actually held, and the decathlon's internal 1500 is never one of them —
+and applying it dropped **51 marks at 29 events across the 157 meets these rows raced**, every one of
+them at a meet whose page also lists a decathlon. It also corrected a row already published: Shorter's
+only two 1500 marks are both decathlon legs, so the program did not race an open 1500 in 2026 at all.
 
 An earlier version of this file claimed the board listed *every* college inside each radius that
 sponsors men's cross country. **That was false**, and the correction is the second largest change
@@ -532,10 +543,11 @@ not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
 as raw seconds, in order — 1,330 races across 219 schools; a short race also carries `nfin` and
-`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 134 schools where one
+`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 194 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
-postseason rounds `post`, read from 40 conference championship result pages plus six postseason
-pages; every row that has a `b1500` now has a field to drop it into, which is what #5 closed), and the 2025–26
+postseason rounds `post`, read from 59 conference championship result pages plus seven postseason
+pages; every row that has a `b1500` now has a field to drop it into, which is what #5 closed and #3
+extended to the eight new metros), and the 2025–26
 schedule, which is three tables so that no fact is stated twice: `VENUES` (419 places, each geocoded
 once, with `src` giving the precision — `r` the facility, `z` the ZIP the results page printed, `c` the
 town it named), `MEETS` (712 meets keyed by their own TFRRS id, because two different meets can share a

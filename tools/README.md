@@ -136,10 +136,27 @@ approach is wrong four separate ways. All four produce a plausible number rather
 4. **The decathlon 1500 is a separate event id at the same meet.** At the D1 outdoor championships
    the open 1500 is `6005721` and the decathlon's is `6005746`, both honestly labelled "1500
    Meters". Merging them inflates every field and drops multi-eventers into teams' entrant lists; it
-   also makes a program look like it reached a national final in the event. Keep only the 1500 page
-   with the fastest winning time at each meet, and apply the same filter to the depth charts: a mark
-   at a cached meet that does not appear in that meet's open 1500 is a decathlon leg. Three of the
-   fourteen rows #5 added arrived carrying them.
+   also makes a program look like it reached a national final in the event. Three of the fourteen rows
+   #5 added arrived carrying them.
+
+   **Ask the meet page which events the meet held — do not compare the two races.** The meet page at
+   `/results/<mid>` links every event it ran, as `/results/<mid>/<eid>/<Meet_Name>/Mens-1500-Meters`,
+   and the decathlon's internal 1500 is never in that list: the decathlon is listed as the decathlon.
+   So the test is `eid not in <the meet's 1500 list>`, which needs no times at all. Proven on Ivy
+   96712 (open `6000114` listed, dec `6000159` absent, `Mens-Decathlon` = `6000121`) and on Berry
+   Field Day 95109 (open `5923306` listed, `5923350` absent).
+
+   The rule #5 used instead — keep the 1500 page with the fastest winning time, or the one with a
+   scored (`SC`) round — **is only true at championships.** An invitational that scores nothing has an
+   unscored open 1500 too, and at a small April meet a good decathlete can beat the open field. #3
+   applied the exact test to 157 meets and dropped 51 marks at 29 events; all 29 of those meets do
+   list a decathlon, which is the check that it is not eating real races. It also found that
+   **Shorter's only two 1500 marks are both decathlon legs**, so a row already on the site had a
+   one-man depth chart that should have been empty.
+
+   Sanity check the whole filter cheaply: print every dropped mark with its meet, then confirm each
+   dropped event's meet page also links a `Mens-Decathlon`. A drop at a meet with no multi-event is a
+   bug in the event-list regex, not a decathlon.
 
 **Depth charts come from `all_performances/<tfslug>.html?list_hnd=5771&season_hnd=730`** (2026
 outdoor; the same parameters work for every division), not from `top_performances`, which looks
@@ -147,6 +164,12 @@ right and **silently omits men** — it dropped one of ETSU's eleven and one of 
 fourteen. Both pages are div grids (`performance-list-row`, fields tagged `data-label="Time"`), not
 `<table>`s, so the results-page parser does not work on them; and `all_performances` lists every
 performance, so dedupe to one best per athlete id before counting.
+
+**Truncate `b1500` with `floor(round(s * 10, 6)) / 10`, not `int(s * 10)`.** `281.2 - 240` is
+`41.199999999999996` in binary, so the bare version writes the tenth *below* the one on the results
+page. It did that to four of the 134 rows #5 added before the round() was put in, and the four look
+like ordinary marks — nothing about the output says it happened. (Auburn, Samford and Virginia Tech
+are rounded rather than truncated for a different reason: they were entered by hand.)
 
 **`dslot` is his rank on the whole squad, not inside the seven `d15` publishes.** That is the bug
 `render-check.js` caught in the rows #5 added: the emitter ranked him inside the published seven and
