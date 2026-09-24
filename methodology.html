@@ -774,8 +774,9 @@
   </p>
   <p class="prose">
     What those rows do <em>not</em> have is stated with the same emphasis: <strong>no track marks, no
-    program Instagram, no 2026 conference 1500 field and no meet map.</strong> The coach block was the
-    fifth item on that list until all 76 were read, one staff directory at a time (&sect;6). Seven of
+    2026 conference 1500 field and no meet map.</strong> The coach block was on that list until all 76
+    were read, one staff directory at a time (&sect;6), and the program's Instagram was on it until all
+    76 were read again, one men's cross country page at a time (<a href="#program-ig">&sect;6</a>). Seven of
     the eight pages therefore have no 5000m column and no gap chart. Newark used to be the exception,
     because nine of its ten rows were already carried on the New York page with marks &mdash; which is
     also why that page was the one the sweep produced that could be folded back in. The both-sports
@@ -1326,6 +1327,78 @@
     </p>
   </div>
 
+  <h3 id="program-ig">The program's Instagram on the last 76 rows &mdash; read off the sport page, never searched for</h3>
+  <p class="prose">
+    The 76 rows the eight-metro sweep added were the last rows on this site with an empty Instagram
+    cell, and an empty cell there meant &ldquo;not looked up&rdquo; rather than &ldquo;none exists&rdquo;
+    &mdash; the only to-do left masquerading as a finding. All 76 have now been read the same way the
+    first 150 were: <strong>off the school's own men's cross country page, never by searching Instagram
+    for the school's name.</strong> A name search is what produces confident nonsense &mdash; on a
+    <em>Wingate</em> or a <em>Manhattan</em> it returns accounts with no connection to the team &mdash;
+    and it is not used here at all. <strong>53 of the 76 have a program account, 21 link only their
+    athletics department's, and two link no Instagram account anywhere on their own pages.</strong>
+  </p>
+  <div class="prose">
+    <p>
+      What made this readable rather than a guess is that athletics sites say which sport owns a handle,
+      in one of three shapes. In order of how directly they say it:
+    </p>
+    <ul>
+      <li><strong>The sport record &mdash; 37 rows.</strong> A Sidearm page publishes the record for the
+        sport it is about, and that record has an <code>instagram</code> field. The men's cross country
+        page's own record naming <em>@stevensontfxc</em> is the sport itself saying so, and it is the
+        strongest evidence available short of asking the coach.</li>
+      <li><strong>The link's own label &mdash; 9 rows.</strong> Both platforms label social links for
+        screen readers: <code>aria-label=&quot;Men's Cross Country Instagram&quot;</code>. That is how
+        Carnegie Mellon's <em>@carnegiemellon_xctf</em> and Hampton's <em>@hupirates_track</em> were read.</li>
+      <li><strong>The sport navigation block &mdash; 6 rows.</strong> Where neither of those exists, each
+        sport's social links still sit inside that sport's own block of the navigation, so the nearest
+        sport title above a handle names its owner. PrestoSports makes this easier by serving one page
+        per sport: a handle in the navigation of <code>/sports/mxc/</code> is the men's cross country
+        account, which is how La Roche's <em>@lru_xc</em> and Moody Bible's <em>@archerscrosscountry</em>
+        were read.</li>
+      <li><strong>The page's own copy &mdash; 1 row.</strong> Boston College links no handle at all, but a
+        video on its men's cross country page carries the team's description of itself: &ldquo;Follow us
+        on social for all things Boston College Track and Field&rdquo;, and then the account,
+        <em>@BCXC_TF</em>. It is the weakest of the four and it is still the program naming its own
+        account on its own page.</li>
+    </ul>
+    <p>
+      <strong>Counting how often a handle appears would have got this wrong, and Arcadia is the proof.</strong>
+      On Arcadia's men's cross country page <em>@arcadia_tf</em> appears twelve times and
+      <em>@Arcadia_XC</em> six &mdash; and the twelve belong to men's indoor track. The frequent handle is
+      usually the one the site templates into every sport's page; the correct one is whichever block says
+      cross country. <strong>Babson is the case that decided the rule's edge:</strong> its men's cross
+      country record names the department account, <em>@BabsonAthletics</em>, while its men's track and
+      field block links <em>@BabsonXCTrack</em>. That is an account of the program's own, so the row
+      carries it and is not counted as a fallback.
+    </p>
+    <p>
+      <strong>The 21 fallbacks are a finding, not a shortfall.</strong> At every one of them the entire
+      athletics site links exactly one Instagram account &mdash; the department's &mdash; and eleven go
+      further and publish an <em>empty</em> instagram field on the men's cross country record itself,
+      which is a school stating that the sport has no account rather than a page that failed to load.
+      Those rows carry the department handle with a degree sign, and the school page says what that
+      means: no public window on the distance squad, and a fair thing to ask the coach about.
+      Rutgers&ndash;Camden is the only one whose site links two accounts, a department handle in the
+      navigation and a second in a rotating promo; the navigation one is kept. <strong>Pittsburgh's took
+      a browser to see at all</strong> &mdash; its site renders the icon with JavaScript and points it at
+      a click-tracking redirect rather than at Instagram, so <em>@pitt_athletics</em> is invisible to a
+      plain fetch and appeared only in a rendered copy of the page.
+    </p>
+    <p>
+      <strong>Two schools link none, and their pages now say exactly that.</strong> <strong>George
+      Mason</strong> publishes Instagram accounts for ten of its sports and leaves the cross country
+      slot deliberately blank &mdash; the navigation entry is there with no address behind it.
+      <strong>Emerson</strong> links not one Instagram account anywhere on its athletics site: its
+      homepage has an Instagram feed section whose account is configured as an empty string, so the
+      section renders nothing. Both were checked with a rendered copy of the page as well as a fetched
+      one, because Pittsburgh had just shown what JavaScript can hide. With those two recorded, an empty
+      Instagram cell on this site now means the same thing everywhere: <strong>the school's own pages
+      link none.</strong>
+    </p>
+  </div>
+
   <h2>6a. Known gaps in this data</h2>
   <div class="prose">
     <ol>
@@ -1338,9 +1411,9 @@
       <li><strong>Only two of roughly fifty championship courses have a difficulty correction.</strong> The championship races on file span <strong>62</strong> distinct conference, regional and national meets &mdash; 194 counting the invitationals &mdash; and exactly two, the South Atlantic and CCIW championships, had enough teams racing both a conference meet and a regional to isolate the course from the team (§3a). Everywhere else the raw time is used. That is the largest remaining source of error on the board, and it is worst for schools whose only result came from a single uncorrected course: those could move a tier once a second race exists.</li>
       <li><strong>Meet schedules cover 150 of the 240 rows with a page, and the venue is read off each meet's own results page.</strong> <strong>The 76 rows the eight-metro sweep added have no schedule at all</strong>, which is the largest single gap on this site now: their pages carry a tier and a cost and no map. An earlier version of this board had schedules for eleven schools only, and could not place 21% of even those, because it guessed a venue from the host named in the meet title — which fails on exactly the meets that matter most, the conference and NCAA championships whose host rotates every year. Every meet page is now fetched directly, so a rotating championship is placed where it was actually held this season. The sweep covers <strong>712 distinct meets and 3,241 school-meet appearances</strong>, of which <strong>3,221 (99.4%) are placed</strong>. The gap is two meets — LIU's Fall Festival and the St. Joseph's Invitational — whose pages print no venue line at all. Among the original 161 rows the eleven with no schedule are the eleven that field no men's cross country team &mdash; where the absence is the finding, not a gap. <strong>Calumet College</strong> is the twelfth school with no usable schedule: its TFRRS page holds no result after 2024, which is consistent with its removal under the both-sports rule (§6b), and its page says so instead of showing an empty map. <strong>South Carolina is the instructive one.</strong> It has a schedule, and every meet on it is a track meet: 22 outdoor and indoor meets in 2026 and not one cross country race, which is the same conclusion its empty TFRRS cross country page reaches by a different route.</li>
       <li><strong>Venue coordinates carry three precision levels, and most are town-level.</strong> TFRRS prints a venue as free text, sometimes with a facility and ZIP and sometimes with neither. Of the 419 distinct venues, <strong>76 resolved to the facility itself, 112 only to the ZIP the results page printed, and 231 only to the town it named</strong> — so the majority of pins are a town centroid, which is right for judging travel and wrong for finding the start line. The looser two levels are labelled <em>ZIP area</em> and <em>town</em> on the map and in the table. Geocoding is OpenStreetMap's Nominatim. Eleven venue strings it could not resolve were placed by hand, most of them because TFRRS misspells the town (Bourbannais, Genev, Athen) and two because the place is not a town at all (West Point, Mississippi State); a further dozen had the town silently glued to the end of the facility name and were relabelled by hand. Two TFRRS venue records also contained wrong postal codes (a New Hampshire fairground coded to Massachusetts, an Indiana course coded to Missouri); both were corrected.</li>
-      <li><strong>Instagram handles cover 147 of the 226 schools with a men's program &mdash; 121 of the 185 on the board</strong>, and the denominator is the whole story: none of the 76 rows the eight-metro sweep added was looked up, so on those pages an empty Instagram cell means "not yet read," which is the one place on this site where an empty cell is a to-do rather than a finding. Of the 150 rows that were looked up, 147 have one. Each was read off the school's own men's cross country page: the sport record its athletics site publishes for that sport, or the cross country entry in its sport navigation. None was searched for by name, because a name search on a school like <em>Wingate</em> or <em>Manhattan</em> returns accounts that have nothing to do with the team. Preference is the <strong>program</strong> account (the men's cross country / track and field team), and where a school links no cross country or track account of its own the fallback is the <strong>athletics department's</strong> &mdash; the university's, at North Park &mdash; marked with a degree sign in the tables so it reads as what it is. <strong>Twenty-five schools on the board</strong> fall back that way: five in Division 1 (the College of Charleston, SC State, West Georgia, Western Carolina, Samford), thirteen in Division 2 (Emmanuel GA, Emory &amp; Henry, Fort Valley State, Francis Marion, Johnson C. Smith, Lenoir-Rhyne, Lincoln Memorial, Mars Hill, Newberry, Savannah State, Shorter, St. Thomas Aquinas, the College of Staten Island) and seven in Division 3 (Illinois Tech, Kean, LaGrange, Lehman, Medgar Evers, Methodist, North Park). No school needed a coach's personal account for this column: the coaches' own accounts are a
+      <li><strong>Instagram handles cover 221 of the 226 schools with a men's program &mdash; 182 of the 185 on the board</strong>, and this column is no longer a gap: the 76 rows the eight-metro sweep added were the last that had not been looked up, and all 76 have now been read (<a href="#program-ig">&sect;6</a>). Each was read off the school's own men's cross country page: the sport record its athletics site publishes for that sport, the label on the link itself, or the cross country entry in its sport navigation. None was searched for by name, because a name search on a school like <em>Wingate</em> or <em>Manhattan</em> returns accounts that have nothing to do with the team. Preference is the <strong>program</strong> account (the men's cross country / track and field team), and where a school links no cross country or track account of its own the fallback is the <strong>athletics department's</strong> &mdash; the university's, at North Park &mdash; marked with a degree sign in the tables so it reads as what it is. <strong>Forty-two schools on the board</strong> fall back that way: seven in Division 1 (the College of Charleston, Morgan State, Pittsburgh, SC State, West Georgia, Western Carolina, Samford), fourteen in Division 2 (Bowie State, Emmanuel GA, Emory &amp; Henry, Fort Valley State, Francis Marion, Johnson C. Smith, Lenoir-Rhyne, Lincoln Memorial, Mars Hill, Newberry, Savannah State, Shorter, St. Thomas Aquinas, the College of Staten Island), nineteen in Division 3 (Carlow, Gallaudet, Hilbert, Illinois Tech, Kean, LaGrange, Lasell, Lehman, Medgar Evers, Methodist, North Park, Penn State Abington, Regent, Regis, Rosemont, Rutgers&ndash;Camden, Suffolk, Tufts, UMass Boston), one in the NAIA (Carolina University) and one in the USCAA (Bryant &amp; Stratton). No school needed a coach's personal account for this column: the coaches' own accounts are a
       separate layer, searched separately and verified to a different standard (&sect;6 above), and they
-      cover 17 of the 150. <strong>Reading the men's page, rather than counting Instagram links across a whole athletics site, is what makes this reliable at the schools that run separate men's and women's accounts</strong> &mdash; it is the difference between <em>@elmhurstu_xctf</em> and <em>@elmhurst_xctf</em> at Elmhurst, between <em>@Valkyriesxctrack</em> and <em>@Valkyriesxctf</em> at Converse, and between <em>@landerxc</em> and <em>@landerxctf</em> at Lander, and it moved Queens (Charlotte) to <em>@Queens_trackandfield</em> and upgraded Appalachian State from the department account to <em>@appstate_tf_xc</em>. Where a school runs separate cross country and track accounts &mdash; UNC Charlotte, Gardner-Webb, Campbell, Charleston Southern, LIU &mdash; the cross country one is used, which is why Charleston Southern's reads <em>@csudistance</em> rather than the track account. Eastern Kentucky is the one school whose two signals disagree: its cross country navigation links <em>@eku_xctf</em> while the sport record names <em>@ekudistance</em>, and the navigation handle is kept. <strong>Three schools link no Instagram anywhere on their own pages</strong> &mdash; Hunter College and Dominican University on the board, Baruch College on the no-track list &mdash; and their pages say exactly that, so on those 150 rows an empty Instagram cell means "the school's own pages link none" rather than "not looked up" &mdash; the reverse of what it means on the 76 rows the sweep added. Ten of the eleven schools with no men's cross country team have no page here at all; the exception is <strong>South Carolina</strong>, which sponsors men's <em>track</em> and lists a combined track and cross country account, so its page carries it. All twelve schools on the cut list and sixteen of the seventeen no-track removals that predate the sweep keep theirs as well.</li>
+      cover 17 of the 150 rows that predate the sweep. <strong>Reading the men's page, rather than counting Instagram links across a whole athletics site, is what makes this reliable at the schools that run separate men's and women's accounts</strong> &mdash; it is the difference between <em>@elmhurstu_xctf</em> and <em>@elmhurst_xctf</em> at Elmhurst, between <em>@Valkyriesxctrack</em> and <em>@Valkyriesxctf</em> at Converse, and between <em>@landerxc</em> and <em>@landerxctf</em> at Lander, and it moved Queens (Charlotte) to <em>@Queens_trackandfield</em> and upgraded Appalachian State from the department account to <em>@appstate_tf_xc</em>. Where a school runs separate cross country and track accounts &mdash; UNC Charlotte, Gardner-Webb, Campbell, Charleston Southern, LIU &mdash; the cross country one is used, which is why Charleston Southern's reads <em>@csudistance</em> rather than the track account. Eastern Kentucky is the one school whose two signals disagree: its cross country navigation links <em>@eku_xctf</em> while the sport record names <em>@ekudistance</em>, and the navigation handle is kept. <strong>Five schools link no Instagram anywhere on their own pages</strong> &mdash; Hunter College, Dominican University and George Mason on the board, Baruch College and Emerson on the no-track list &mdash; and their pages say exactly that, so an empty Instagram cell now means the same thing on every row of this site: <em>the school's own pages link none</em>. Ten of the eleven schools with no men's cross country team have no page here at all; the exception is <strong>South Carolina</strong>, which sponsors men's <em>track</em> and lists a combined track and cross country account, so its page carries it. All twelve schools on the cut list keep theirs as well, and so do twenty-seven of the twenty-nine no-track removals &mdash; the two exceptions being Baruch College and Emerson, the two that link none.</li>
       <li><strong>Piedmont University's CS program is still unconfirmed</strong> — federal data codes the degree but reports roughly zero graduates, and the school's own site was unreachable. It is the last open lookup on the board.</li>
       <li><strong>Fourteen schools were removed because they field no men's cross country team, and one of those is also closing.</strong> Georgia State, NYIT, Montclair State, William Paterson and North Georgia were all carrying a <em>Verify</em> tier, which is precisely how that tier fails: it reads as a program awaiting measurement rather than one that does not exist. <strong>St. John's</strong> and <strong>South Carolina</strong> were sitting on the cut list, cut on reputation for times that were never going to exist; both sponsor women's cross country only. Northwestern is another. The 300-mile Greenville sweep then added two more: <strong>UAB</strong> came into range at 294 miles and sponsors no men's cross country, and <strong>Georgia Southern</strong> at 198 miles was inside even the old ring and sponsors none either &mdash; both have an empty TFRRS men's cross country page and women's distance programs only. Trinity Christian College announced on 4 November 2025 that it will close after the 2025&ndash;26 academic year. Three more have since joined, one of them the loudest yet: <strong>Maryland</strong>, a flagship Division 1 public 9 miles from downtown Washington, sponsors no men's cross country at all &mdash; with <strong>New Jersey City University</strong> from the same sweep and <strong>Life University</strong> from a recheck of the Greenville ring. All fourteen are tabled on their metro pages and kept on the maps rather than deleted, so the corrections stay visible. Fourteen errors of this kind have now surfaced; assume there are others.</li>
     </ol>

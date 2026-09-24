@@ -45,7 +45,7 @@ tiers across the whole board.
 
 | Script | What it does |
 | --- | --- |
-| `render-check.js` | Renders three metro pages and every school page with jsdom, and asserts row counts derived from `assets/data.js` plus the totals README.md publishes in prose. Needs `jsdom`: `npm install --no-save jsdom`, or point `NODE_PATH` at an install that has it. |
+| `render-check.js` | Renders three metro pages and every school page with jsdom, and asserts row counts derived from `assets/data.js` plus the totals README.md and methodology.html publish in prose — the board totals, the coach-block count and the Instagram coverage. Needs `jsdom`: `npm install --no-save jsdom`, or point `NODE_PATH` at an install that has it. |
 | `page-check.js` | Renders all 13 site pages, reporting uncaught JS errors, dead relative links and broken in-page anchors. This is what caught the `washington.html` failure, where a missing `id="k-lead"` threw and took the master table, the map and three off-board tables down with it. |
 | `page-debug.js` | `node tools/page-debug.js washington.html` — runs one page's inline script against a stub DOM and prints what each element received. Faster than jsdom and it names the throwing line, so it is the right first stop when `page-check.js` reports a page. |
 | `metro_digest.py` | `python3 tools/metro_digest.py washington` — the per-metro fact sheet. Everything a metro page's prose claims has to come from a row on that page, and this prints those rows with the aggregates a lede needs. Use it to check a page's numbers rather than counting by hand. |
@@ -88,6 +88,36 @@ investigation rather than replacing one, because what TFRRS then returned was a 
 has not posted a men's cross country result since October 2024. A missing key looks exactly
 like a program that never raced, so when a row has no result, check this file before
 believing it.
+
+## Reading a program's Instagram, for the next sweep
+
+Not a script in here — the fetch pass that filled this column was scratch, like the coach pass
+before it — but the rule it found is worth keeping, because the obvious approach is wrong.
+**Do not count how often a handle appears on a sport page.** Arcadia's men's cross country page
+links `arcadia_tf` twelve times and `Arcadia_XC` six, and the twelve are men's *indoor track*: the
+frequent handle is the one the site templates into every sport. Ask the page which sport owns the
+link instead, in this order:
+
+1. **The sport record.** A Sidearm sport page carries `window.associated_sport`, a JSON object for
+   the sport the page is about, with an `instagram` field. Read it and you are done — and an
+   *empty* field there is evidence too: it is the school saying the sport has no account.
+2. **The link's label.** Both platforms write `aria-label="Men's Cross Country Instagram"` (Presto
+   uses a colon: `Cross Country: Instagram`).
+3. **The sport navigation block.** Sidearm ships the whole sport menu as JSON, where each sport's
+   social links follow that sport's own `title`/`short_name` — so the nearest sport title *above* a
+   handle names its owner. Beware the short titles (`M-TF`, `MXC`) and the schedule widgets, whose
+   titles (`2026 Men's Cross Country Schedule`) sit between the two and must be skipped.
+   PrestoSports needs none of this: it serves one page per sport, so a handle in the navigation of
+   `/sports/mxc/` is the men's cross country account.
+
+Two failure modes to expect. A handful of athletics homepages serve an **interstitial** — a
+"Gameday" or ticket-drive splash with no sport navigation in it — so fetch the sport path directly
+(`/sports/mens-cross-country`, `/sports/mxc/index`) rather than crawling from the homepage. And one
+site, Pittsburgh's, renders its social icons with JavaScript *and* points them at a click-tracking
+redirect (`/api/v2/promotions/247/click?redirect=…instagram.com/pitt_athletics/`), so the handle is
+invisible to `curl` and to a URL-decoded grep alike: it took a headless-Chrome `--dump-dom` plus
+`urllib.parse.unquote` to see. Where a rendered copy also shows nothing, that is the finding —
+George Mason and Emerson link no Instagram at all, and their pages say so.
 
 ## Deliberately not moved
 

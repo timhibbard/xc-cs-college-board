@@ -174,6 +174,28 @@ const METROS = [
   if (!cm) fails.push('methodology.html: the published coach-page count no longer parses — check tools/render-check.js');
   else ok('methodology coach-block total', coachRows.length, Number(cm[1]));
 
+  /* The Instagram column is the second one the site now claims in prose is finished, so hold it the
+     same way. The claim has a shape worth keeping honest: a row with no handle means the school's own
+     pages link none, and that only stays true while every row that was never looked up has been. */
+  const igRows = [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM].filter(s => s.ig);
+  const im = meth.match(/Instagram handles cover (\d+) of the (\d+) schools with a men's program &mdash; (\d+) of the (\d+) on the board/);
+  if (!im) {
+    fails.push('methodology.html: the published Instagram coverage sentence no longer parses — check tools/render-check.js');
+  } else {
+    const withProgram = [...SCHOOLS, ...REMOVED, ...NO_TRACK];
+    ok('methodology Instagram total', withProgram.filter(s => s.ig).length, Number(im[1]));
+    ok('methodology Instagram denominator', withProgram.length, Number(im[2]));
+    ok('methodology Instagram on the board', SCHOOLS.filter(s => s.ig).length, Number(im[3]));
+    ok('methodology Instagram board denominator', SCHOOLS.length, Number(im[4]));
+  }
+  // igDept without ig would render a degree sign on nothing; a handle stored as a URL or with an @
+  // would render a dead link, because app.js and school.js both interpolate it straight into a path.
+  const badIg = igRows.filter(s => !/^[A-Za-z0-9_.]{2,30}$/.test(s.ig)).map(s => `${s.name}: ${s.ig}`);
+  if (badIg.length) fails.push(`ig is a bare handle, not a URL: ${badIg.join(', ')}`);
+  const orphanDept = [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM]
+    .filter(s => s.igDept && !s.ig).map(s => s.name);
+  if (orphanDept.length) fails.push(`igDept with no ig: ${orphanDept.join(', ')}`);
+
   for (const c of checks) {
     console.log(`${c.pass ? 'ok  ' : 'FAIL'}  ${c.name}: ${c.got}${c.pass ? '' : ' (want ' + c.want + ')'}`);
   }

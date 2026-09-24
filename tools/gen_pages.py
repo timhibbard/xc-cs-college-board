@@ -224,19 +224,21 @@ CHART_SEC = """
   </div>
 """
 
-# The disclosure every new page carries. The board's older pages have track marks, Instagram
-# handles and a 1500 panel; these rows do not yet, and a page that quietly omitted that would
-# read as though the data were complete. The coach block used to be on this list and is not
-# any more (#1) — this string and the pages have to be edited together, because a page edited
-# by hand alone is reverted the next time this script runs.
+# The disclosure every new page carries. The board's older pages have track marks and a 1500
+# panel; these rows do not yet, and a page that quietly omitted that would read as though the
+# data were complete. The coach block used to be on this list (#1) and the Instagram column
+# used to be on it too (#2) — this string and the pages have to be edited together, because a
+# page edited by hand alone is reverted the next time this script runs.
 GAPS_NEW = (
     'Every tier on this page comes from <a href="methodology.html#tier-ladder">the published '
     'ladder</a> run over 2025 championship results &mdash; conference, regional and national '
-    'meets only. The <b>coach column is filled in now</b> &mdash; every school below has a name, '
-    'title, office phone and email read off its own staff directory. Three things the older '
-    'metro pages still have and this one does not: '
+    'meets only. <b>Two columns are filled in now:</b> every school below carries a coach '
+    '&mdash; name, title, office phone and email read off its own staff directory &mdash; and '
+    'the <b>program\'s Instagram</b>, read off that school\'s own men\'s cross country page, '
+    'with a degree sign where the school links only its athletics department\'s account. Two '
+    'things the older metro pages still have and this one does not: '
     '<b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; '
-    '<b>no Instagram handles</b>; and <b>no meet maps</b>. '
+    'and <b>no meet maps</b>. '
     'The one screen that is complete is the both-sports rule &mdash; men\'s outdoor track '
     'sponsorship was checked school by school against the sport list each athletics site '
     'publishes itself, because TFRRS cannot answer it.')
