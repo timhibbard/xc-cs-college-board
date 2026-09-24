@@ -20,10 +20,10 @@ nine of them at target tier, seven of those in the Greenville ring. All 226 rows
 program carry federal cost and admissions data and a detail page, and **175 of the 185 on the board rest
 on a real 2025 cross country result**. **All 226 also carry the name and contact details of the coach
 who would recruit him**, read off that school's own staff directory and linked to it — the 76 rows the
-eight-metro pass added were the last gap in that column and are now filled. **221 of the 226 also
+eight-metro pass added were the last gap in that column and are now filled. **222 of the 226 also
 carry the program's Instagram**, read off that school's own men's cross country page rather than
-searched for by name — 168 the team's own account, 53 the athletics department's where the school
-links none of its own, and five schools link no Instagram anywhere on their own pages, which their
+searched for by name — 169 the team's own account, 53 the athletics department's where the school
+links none of its own, and four schools link no Instagram anywhere on their own pages, which their
 pages say. The 150 rows that predate the pass carry three things the new ones still do not: **the
 coach's own Instagram on 17 rows** — recorded only where the account's own bio says they coach this
 program — **its 2026 conference-championship 1500 field** with his projected 4:01 dropped into it,
@@ -86,14 +86,24 @@ measured program did. It is not a small-college
 problem with a divisional fix — five of the 22 in Greenville are Division 1 — which is one of the
 reasons the Division 1 rule did not survive.
 
-The 1500 data says the same thing a second way: at **57 of the 114 programs that raced a 1500 in
+The 1500 data says the same thing a second way: at **57 of the 128 programs that raced a 1500 in
 2026** his projected 4:01 would be their fastest man in the event, and the median program's best 1500
-went 4:01.1. In the other direction he would have made the conference final at **105 of the 120 rows
-with a 1500 on file** and scored — top eight — at **64**. The divisional split is stark, and it cuts the other
-way from the tier ladder: across the 44 Division 1 rows with a 1500 on file the median best 1500 is **3:49.7**, he makes the
-final at 29 of them and scores at 8. Read against 91 rows that actually entered somebody in the event at
-their conference meet, he makes 79 finals and scores in 50 — **29 programs entered nobody in the 1500 at
+went 3:58.8. In the other direction he would have made the conference final at **109 of the 134 rows
+with a 1500 on file** and scored — top eight — at **65**. The divisional split is stark, and it cuts the other
+way from the tier ladder: across the 57 Division 1 rows with a 1500 on file the median best 1500 is **3:48.2**, he makes the
+final at 32 of them and scores at 9. Read against 105 rows that actually entered somebody in the event at
+their conference meet, he makes 83 finals and scores in 51 — **29 programs entered nobody in the 1500 at
 all**, which is a fact about how the event is used rather than about him.
+
+That median was **4:01.1 until #5 was closed**, and the reason it moved two seconds is worth more
+than the number: the fourteen rows missing a conference field were not a random fourteen. They were
+Furman, Wake Forest, Virginia Tech, Duke, NC State, UNC Chapel Hill, Tennessee, Georgia, South
+Carolina, Iona, Hofstra, Loyola Chicago, Eastern Kentucky and Wingate — programs with a fast 1500 on
+file and no field to drop him into, so the gap was quietly filtering out the strongest half of the
+comparison. Filling it made the board less flattering to him, which is the direction a missing-data
+fix should be expected to run. South Carolina was the last of them and the one the query nearly
+missed: it sits in `NO_PROGRAM` because it sponsors no men's cross country, so every 1500 pass had
+skipped a real SEC track program whose best man ran 3:35.07.
 
 An earlier version of this file claimed the board listed *every* college inside each radius that
 sponsors men's cross country. **That was false**, and the correction is the second largest change
@@ -370,7 +380,8 @@ points or more, and 9 acceptance rates by 15 points or more.**
 first read, and five had already changed** — Young Harris, Savannah State, Clayton State, Montreat and
 Yeshiva, four of the five replacements carrying an *interim* title. 141 names confirmed on the live page,
 three apparent misses that were the fetch's fault and confirmed correct elsewhere, and one row (Baruch)
-whose site would not answer at all. That is a ~3%-per-month decay rate on the most actionable column on
+whose site would not answer at all — since retried and confirmed (#8): that site is not broken, it has
+moved, and an expired certificate on the old domain was hiding the redirect to the live one. That is a ~3%-per-month decay rate on the most actionable column on
 the site, which is why every school page links the directory it was read from. The Young Harris change
 was found the long way round: a coach handle matched the name perfectly and had to be rejected because
 the bio placed him at Evansville — and it was right, and this board was a season out of date.
@@ -507,7 +518,7 @@ instead of printing a number. `coach.src` is required: it is the page the rest o
 off, and it is what makes a stale name recoverable. `ig` is the program's Instagram handle in the
 casing the school publishes, and `igDept: true` marks it as the athletics department's account rather
 than the team's — the tables render that one with a degree sign, because "they publish nothing for
-the distance squad" is an answer rather than a hole. 221 of the 226 rows carry one; a row with **no**
+the distance squad" is an answer rather than a hole. 222 of the 226 rows carry one; a row with **no**
 `ig` means the school's own pages link none, which is a finding and is said as one on its page. The optional `tierTag` overrides the one-line
 "where this tier came from" note under the badge on a school page, for a row whose provenance none of
 the derived tests can see; **Shorter** is the only row that uses it, because its championship field is
@@ -521,10 +532,10 @@ not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
 as raw seconds, in order — 1,330 races across 219 schools; a short race also carries `nfin` and
-`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 120 schools where one
+`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 134 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
-postseason rounds `post`, read from 40 conference championship result pages plus four postseason
-pages; Furman, Tennessee and Wingate came back onto the board without one), and the 2025–26
+postseason rounds `post`, read from 40 conference championship result pages plus six postseason
+pages; every row that has a `b1500` now has a field to drop it into, which is what #5 closed), and the 2025–26
 schedule, which is three tables so that no fact is stated twice: `VENUES` (419 places, each geocoded
 once, with `src` giving the precision — `r` the facility, `z` the ZIP the results page printed, `c` the
 town it named), `MEETS` (712 meets keyed by their own TFRRS id, because two different meets can share a

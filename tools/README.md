@@ -45,7 +45,7 @@ tiers across the whole board.
 
 | Script | What it does |
 | --- | --- |
-| `render-check.js` | Renders three metro pages and every school page with jsdom, and asserts row counts derived from `assets/data.js` plus the totals README.md and methodology.html publish in prose — the board totals, the coach-block count and the Instagram coverage. Needs `jsdom`: `npm install --no-save jsdom`, or point `NODE_PATH` at an install that has it. |
+| `render-check.js` | Renders three metro pages and every school page with jsdom, and asserts row counts derived from `assets/data.js` plus the totals README.md and methodology.html publish in prose — the board totals, the coach-block count, the Instagram coverage and the 1500 fields. The 1500 block asserts the promise #5 closed on (every row with a `b1500` has a `T1500` to drop his projection into, keyed by **slug** — the one thing issue #5 itself got wrong) rather than only a count, and holds `dslot` against `d15` wherever the seven-man cap does not hide a faster man. Needs `jsdom`: `npm install --no-save jsdom`, or point `NODE_PATH` at an install that has it. |
 | `page-check.js` | Renders all 13 site pages, reporting uncaught JS errors, dead relative links and broken in-page anchors. This is what caught the `washington.html` failure, where a missing `id="k-lead"` threw and took the master table, the map and three off-board tables down with it. |
 | `page-debug.js` | `node tools/page-debug.js washington.html` — runs one page's inline script against a stub DOM and prints what each element received. Faster than jsdom and it names the throwing line, so it is the right first stop when `page-check.js` reports a page. |
 | `metro_digest.py` | `python3 tools/metro_digest.py washington` — the per-metro fact sheet. Everything a metro page's prose claims has to come from a row on that page, and this prints those rows with the aggregates a lede needs. Use it to check a page's numbers rather than counting by hand. |
@@ -118,6 +118,40 @@ redirect (`/api/v2/promotions/247/click?redirect=…instagram.com/pitt_athletics
 invisible to `curl` and to a URL-decoded grep alike: it took a headless-Chrome `--dump-dom` plus
 `urllib.parse.unquote` to see. Where a rendered copy also shows nothing, that is the finding —
 George Mason and Emerson link no Instagram at all, and their pages say so.
+
+## Reading a 1500 field, for the next sweep
+
+Also scratch rather than a script in here, and the reason to write it down is that the obvious
+approach is wrong four separate ways. All four produce a plausible number rather than an error.
+
+1. **A results page's round table carries several `TIME` columns, and the page's own CSS hides all
+   but one** — `.round_1_<meetid>_65 { display: none !important; }`. The hidden ones hold other
+   marks entirely, so reading the first `TIME` column returns a time that is not the 1500. Collect
+   the hidden class names from the stylesheet first and keep the one visible `round_*` column.
+2. **`heat_*` tables are the prelim runners re-grouped by heat, not extra runners.** Counting them
+   doubles the field. A table with more than one visible `round_*` column is one of these.
+3. **The final is the round table with an `SC` (score) column**, not the last table on the page. A
+   meet with no prelims has exactly one round table, and then `n` and `fn` are equal — the Southern
+   Conference at 14 is the shape to expect, not a parse failure.
+4. **The decathlon 1500 is a separate event id at the same meet.** At the D1 outdoor championships
+   the open 1500 is `6005721` and the decathlon's is `6005746`, both honestly labelled "1500
+   Meters". Merging them inflates every field and drops multi-eventers into teams' entrant lists; it
+   also makes a program look like it reached a national final in the event. Keep only the 1500 page
+   with the fastest winning time at each meet, and apply the same filter to the depth charts: a mark
+   at a cached meet that does not appear in that meet's open 1500 is a decathlon leg. Three of the
+   fourteen rows #5 added arrived carrying them.
+
+**Depth charts come from `all_performances/<tfslug>.html?list_hnd=5771&season_hnd=730`** (2026
+outdoor; the same parameters work for every division), not from `top_performances`, which looks
+right and **silently omits men** — it dropped one of ETSU's eleven and one of West Georgia's
+fourteen. Both pages are div grids (`performance-list-row`, fields tagged `data-label="Time"`), not
+`<table>`s, so the results-page parser does not work on them; and `all_performances` lists every
+performance, so dedupe to one best per athlete id before counting.
+
+**`dslot` is his rank on the whole squad, not inside the seven `d15` publishes.** That is the bug
+`render-check.js` caught in the rows #5 added: the emitter ranked him inside the published seven and
+capped six rows at 8, where Virginia Tech's thirteen men under 4:01 put him 14th. `d15` is capped at
+the fastest seven; `nath` and `dslot` are not.
 
 ## Deliberately not moved
 
