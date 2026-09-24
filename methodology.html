@@ -1575,16 +1575,20 @@
   <p class="prose">
     §1b converts his 1600 to a <strong>4:01</strong> 1500 and compares it to each team's single fastest
     1500 runner. That is a floor with all the weaknesses of any one-athlete number. This section is what
-    replaced it: for <strong>all 134 schools with a 2026 field on file</strong>, the entire 1500 field at that program's
+    replaced it: for <strong>all 194 schools with a 2026 field on file</strong>, the entire 1500 field at that program's
     <strong>2026 outdoor conference championship</strong>, with his projection dropped into it on time,
-    plus the program's own 1500 depth chart for the season. <strong>40 conference championship result
-    pages</strong>, one per conference, were read, plus six postseason result pages carrying twenty
-    programs' runners. The last fourteen of those rows were added when <strong>#5</strong> was closed:
-    every school on the board that has a 1500 mark on file now has a field to drop him into, and
+    plus the program's own 1500 depth chart for the season. <strong>59 conference championship result
+    pages</strong>, one per conference, were read, plus seven postseason result pages carrying 33
+    programs' runners. The last fourteen rows of the original pass were added when <strong>#5</strong> was
+    closed: every school on the board that has a 1500 mark on file now has a field to drop him into, and
     <code>tools/render-check.js</code> asserts it, because the fourteen that were missing had been the
     fourteen with the fastest 1500s &mdash; a gap that quietly flattered him. The last of them was
     <strong>South Carolina</strong>, which sits in the no-men's-program list because it sponsors no men's
     cross country: the 1500 passes had skipped an SEC <em>track</em> program whose best man ran 3:35.07.
+    <strong>#3</strong> then did the same for the eight new metros &mdash; 60 more fields, read from 37
+    conference meets, 19 of which no earlier pass had needed &mdash; which leaves <strong>Carlow and
+    Hilbert</strong> as the only rows on the board with no section at all, because neither posted an
+    outdoor track result in 2026.
   </p>
   <p class="prose">Four numbers come out of it, and they answer different questions:</p>
   <div class="prose">
@@ -1618,7 +1622,7 @@
     <p>
       The same caution applies in the other direction. A program that enters nobody in its conference
       1500 is not weak at it by that fact alone &mdash; it may simply race the 800 and the 5000 &mdash;
-      but 29 of the 134 did exactly that, and six of those ran no 1500 anywhere all season. Each card says
+      but 42 of the 194 did exactly that, and nine of those ran no 1500 anywhere all season. Each card says
       so plainly and suggests the question rather than assigning a verdict.
     </p>
   </div>
@@ -1627,10 +1631,10 @@
     has a real qualifying round above the conference meet &mdash; the NCAA East and West First Rounds
     &mdash; so a runner can appear there. Divisions 2 and 3 have no regional round in outdoor track at
     all: the conference meet feeds the national championship on descending-order marks, so a fast time
-    anywhere counts and there is no round to miss. The NAIA is the same. <strong>Twenty of the 134
+    anywhere counts and there is no round to miss. The NAIA is the same. <strong>33 of the 194
     programs</strong> had a 1500 runner in a postseason round of any kind, which is the honest scale of
-    the thing: getting past the conference meet in this event is rare &mdash; and ten of those twenty
-    arrived with the fourteen rows #5 added, which is what the missing fields were hiding.
+    the thing: getting past the conference meet in this event is rare &mdash; and ten of those arrived
+    with the fourteen rows #5 added, which is what the missing fields were hiding.
   </p>
   <div class="callout">
     <span class="c-title">The decathlon's 1500 is excluded, and it was not excluded at first</span>
@@ -1644,14 +1648,27 @@
       second day, and the Big South field read as 28 men rather than 21.
     </p>
     <p>
-      The rule now is: at each meet, keep only the 1500 page with the fastest winning time; any other
+      The first rule was: at each meet, keep only the 1500 page with the fastest winning time; any other
       1500 page at that meet is the multi-event round. That removed <strong>23 pages</strong>, cut the
       postseason cards from fifteen to nine of the programs then on file, and moved four programs into the "entered nobody" column
       because their only entrants had been decathletes. It changed no placing &mdash; every decathlon
       1500 on file was slower than 4:01, so his rank was never affected, only the size of the field he
-      was ranked in. Season depth charts are filtered the same way wherever the meet is one of the 46 in
-      the cache; a stray decathlon mark from an ordinary April invitational may still sit at the bottom of
-      a program's depth count, which affects <em>how many men ran the event</em> and not his slot.
+      was ranked in.
+    </p>
+    <p>
+      <strong>That rule is right at a championship and wrong at an invitational</strong>, which is what
+      #3 found when it applied the same filter to 157 meets instead of 46: a meet that scores nothing has
+      an <em>unscored</em> open 1500 too, and "fastest winner" cannot separate two races when the field
+      that showed up to the open 1500 at a small April invitational is slower than a good decathlete.
+      The exact test is the <strong>meet's own event list</strong>: a TFRRS meet page links every event
+      the meet actually held, and the decathlon's internal 1500 is never one of them &mdash; the
+      decathlon is listed as the decathlon. So a 1500 mark whose event id is missing from its meet's
+      published 1500 list is a decathlon leg, with no reference to how fast anybody ran. Applying it to
+      the eight new metros dropped <strong>51 marks at 29 events</strong>, and every one of those 29
+      meets does list a decathlon &mdash; the check that the test is not throwing away real races.
+      It also corrected a row already on the board: <strong>Shorter</strong>'s only two 1500 marks, at
+      Berry Field Day and at its own conference meet, are both decathlon legs, so the program raced no
+      open 1500 in 2026 and its depth chart is empty rather than one man deep.
     </p>
     <p>
       The trap does not stay caught by itself. Three of the fourteen rows #5 added arrived carrying

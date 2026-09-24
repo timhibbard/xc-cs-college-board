@@ -224,21 +224,22 @@ CHART_SEC = """
   </div>
 """
 
-# The disclosure every new page carries. The board's older pages have track marks and a 1500
-# panel; these rows do not yet, and a page that quietly omitted that would read as though the
-# data were complete. The coach block used to be on this list (#1) and the Instagram column
-# used to be on it too (#2) — this string and the pages have to be edited together, because a
-# page edited by hand alone is reverted the next time this script runs.
+# The disclosure every new page carries. The board's older pages had three things these rows
+# did not, and a page that quietly omitted that would read as though the data were complete.
+# The coach block came off this list first (#1), then the Instagram column (#2), and now the
+# track marks and the 1500 field (#3) — one item left. This string and the pages have to be
+# edited together, because a page edited by hand alone is reverted the next time this runs.
 GAPS_NEW = (
     'Every tier on this page comes from <a href="methodology.html#tier-ladder">the published '
     'ladder</a> run over 2025 championship results &mdash; conference, regional and national '
-    'meets only. <b>Two columns are filled in now:</b> every school below carries a coach '
-    '&mdash; name, title, office phone and email read off its own staff directory &mdash; and '
-    'the <b>program\'s Instagram</b>, read off that school\'s own men\'s cross country page, '
-    'with a degree sign where the school links only its athletics department\'s account. Two '
-    'things the older metro pages still have and this one does not: '
-    '<b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; '
-    'and <b>no meet maps</b>. '
+    'meets only. <b>Three columns are filled in now:</b> every school below carries a coach '
+    '&mdash; name, title, office phone and email read off its own staff directory; the '
+    '<b>program\'s Instagram</b>, read off that school\'s own men\'s cross country page, with a '
+    'degree sign where the school links only its athletics department\'s account; and its '
+    '<b>2026 outdoor track marks</b>, so the 5000m gap chart above is here and each school page '
+    'now opens its 2026 conference 1500 field with his projected 4:01 dropped into it on time. '
+    'One thing the older metro pages still have and this one does not: <b>no meet maps</b>, so '
+    'where these teams actually race is not on the page yet. '
     'The one screen that is complete is the both-sports rule &mdash; men\'s outdoor track '
     'sponsorship was checked school by school against the sport list each athletics site '
     'publishes itself, because TFRRS cannot answer it.')
@@ -335,6 +336,12 @@ SPECS.append(dict(
     mapsub='Sixteen pins, almost all of them inside the city and along the Green Line corridor, '
            'and the three that matter most &mdash; MIT, Harvard and Tufts &mdash; sit within six '
            'miles of the centre. Distance is not the constraint in Boston; admissions is.',
+    chartsub='Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he '
+             'would arrive faster than anyone on the roster. Boston\'s shape is the whole metro in one '
+             'picture &mdash; <b>Boston College at 13:36 and Harvard at 13:38</b> are a minute and three '
+             'quarters ahead of him, and six of the fourteen bars run the other way. UMass Boston and '
+             'Regis ran no 5000 outdoors in 2026, so they have no bar; both have a 1500 on their school '
+             'pages.',
     worth="""    <ol>
       <li><strong>MIT</strong> &mdash; 2.2 miles out, D3 NEWMAC, and the best CS row on the board at
         <b>35.2%</b> of degrees. He is their <strong>6th man</strong>, 22 seconds inside a seven that
@@ -430,6 +437,11 @@ SPECS.append(dict(
            'targets are spread right across the ring &mdash; Penn at 1.9 miles, La Salle at 6.9, '
            'Haverford at 10.4 and Swarthmore at 16.3 &mdash; so no single part of this metro is the '
            'answer.',
+    chartsub='Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he '
+             'would arrive faster than anyone on the roster. <b>Saint Joseph\'s, Penn and La Salle</b> are '
+             'all inside 14:12 and more than a minute ahead of him; Arcadia at 15:28 is the closest bar on '
+             'the chart, eight seconds the wrong side of the line. Rosemont, Chestnut Hill and Holy Family '
+             'ran no 5000 outdoors in 2026, so they have no bar.',
     worth="""    <ol>
       <li><strong>La Salle</strong> &mdash; D1 Atlantic 10, 6.9 mi, <b>97%</b> admit,
         <b>$19,409</b>, and he is their <strong>7th man, 9 seconds inside</strong> the seven. The
@@ -539,6 +551,11 @@ SPECS.append(dict(
     mapsub='Eleven pins including the four off-board ones, and they ring the District tightly '
            '&mdash; six of them inside five miles of the centre. George Mason at 19.8 miles is '
            'right on the line, so the pin can plot just outside the circle.',
+    chartsub='Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he '
+             'would arrive faster than anyone on the roster. <b>George Mason at 14:00</b> is the only '
+             'program here more than a minute ahead of him, and <b>Gallaudet at 15:17</b> is three seconds '
+             '&mdash; the narrowest gap on any page of this board. Bowie State has no 2026 outdoor track '
+             'mark at all.',
     worth="""    <ol>
       <li><strong>American</strong> &mdash; D1 Patriot League, 4.5 miles out, <b>62%</b> admit, and
         on the running he is their <strong>5th or 6th man</strong>, 41 seconds inside their seven and
@@ -627,6 +644,11 @@ SPECS.append(dict(
     ],
     mapsub='Six pins, four of them inside five miles of the Inner Harbour. UMBC at 8 miles and '
            'Stevenson at 18.8 are the two that sit out in the county.',
+    chartsub='Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he '
+             'would arrive faster than anyone on the roster. Baltimore has no middle: <b>Johns Hopkins at '
+             '14:01 and UMBC at 14:22</b> against <b>Stevenson at 17:26 and Goucher at 18:10</b>, which is '
+             'two and three minutes the other way. Coppin State and Morgan State ran no 5000 outdoors in '
+             '2026, so they have no bar; both have a 1500 on their school pages.',
     worth="""    <ol>
       <li><strong>UMBC</strong> &mdash; D1 America East, 8 miles, <b>26.8%</b> CS, <b>72%</b> admit,
         <b>$34,486</b> on his residency, and his <strong>6th man</strong> slot is 41 seconds inside
@@ -706,6 +728,11 @@ SPECS.append(dict(
     ],
     mapsub='Seven pins and six of them within four miles of the Point &mdash; the tightest cluster '
            'on this board. Robert Morris at 17.9 miles is the only one out of the city.',
+    chartsub='Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he '
+             'would arrive faster than anyone on the roster. <b>Pittsburgh is the only metro on this board '
+             'with no red bar at all</b> &mdash; every one of the five programs with a 2026 5000 on file '
+             'has a faster man than he projects, from Pittsburgh\'s 14:06 to Point Park\'s 14:57. Carlow and '
+             'Chatham have no 5000 on file, and Carlow has no 2026 outdoor track mark at all.',
     worth="""    <ol>
       <li><strong>Carnegie Mellon</strong> &mdash; D3 UAA, 3.7 miles, <b>18.2%</b> CS, <b>12%</b>
         admit, <b>$31,944</b>, and he lands as their <strong>3rd or 4th man</strong>, 51 seconds
@@ -796,6 +823,11 @@ SPECS.append(dict(
     ],
     mapsub='Six pins, five of them within six miles of downtown. University at Buffalo plots at 11.1 '
            'miles on its north campus, which is where the running program is.',
+    chartsub='Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he '
+             'would arrive faster than anyone on the roster. The line runs through the middle of this '
+             'metro: <b>University at Buffalo at 14:37 and Buffalo State at 15:11</b> are ahead of him, '
+             '<b>Daemen at 15:22</b> is two seconds behind, and D\'Youville at 16:52 is a minute and a half '
+             'behind. Bryant &amp; Stratton and Hilbert ran no 5000 outdoors in 2026, so they have no bar.',
     worth="""    <ol>
       <li><strong>University at Buffalo</strong> &mdash; D1 Mid-American, 11.1 miles, <b>7.9%</b>
         CS, <b>74%</b> admit, <b>$41,595</b> on his residency as a New York public, and he lands
@@ -866,6 +898,11 @@ SPECS.append(dict(
            'are one metro on paper and three drives in practice. The 20-mile circle crosses open '
            'water, so driving distance and the pin positions disagree more here than anywhere else '
            'on the board.',
+    chartsub='Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he '
+             'would arrive faster than anyone on the roster. Three bars, and they say what the table says: '
+             '<b>Norfolk State at 14:34</b> is 46 seconds ahead of him and the other two are a minute or '
+             'more behind. Regent ran no 5000 outdoors in 2026, so it has no bar; its 1500 is on its '
+             'school page.',
     worth="""    <ol>
       <li><strong>Norfolk State</strong> &mdash; D1 MEAC, 1.9 miles, <b>88%</b> admit,
         <b>$26,784</b>, <b>4.8%</b> CS. The only target here, measured on a last finisher rather

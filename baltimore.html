@@ -38,7 +38,7 @@
 
   <div class="callout">
     <span class="c-title">What is not on this page yet</span>
-    <p>Every tier on this page comes from <a href="methodology.html#tier-ladder">the published ladder</a> run over 2025 championship results &mdash; conference, regional and national meets only. <b>Two columns are filled in now:</b> every school below carries a coach &mdash; name, title, office phone and email read off its own staff directory &mdash; and the <b>program's Instagram</b>, read off that school's own men's cross country page, with a degree sign where the school links only its athletics department's account. Two things the older metro pages still have and this one does not: <b>no track marks</b>, so there is no 5000m gap chart and no 1500 field here; and <b>no meet maps</b>. The one screen that is complete is the both-sports rule &mdash; men's outdoor track sponsorship was checked school by school against the sport list each athletics site publishes itself, because TFRRS cannot answer it.</p>
+    <p>Every tier on this page comes from <a href="methodology.html#tier-ladder">the published ladder</a> run over 2025 championship results &mdash; conference, regional and national meets only. <b>Three columns are filled in now:</b> every school below carries a coach &mdash; name, title, office phone and email read off its own staff directory; the <b>program's Instagram</b>, read off that school's own men's cross country page, with a degree sign where the school links only its athletics department's account; and its <b>2026 outdoor track marks</b>, so the 5000m gap chart above is here and each school page now opens its 2026 conference 1500 field with his projected 4:01 dropped into it on time. One thing the older metro pages still have and this one does not: <b>no meet maps</b>, so where these teams actually race is not on the page yet. The one screen that is complete is the both-sports rule &mdash; men's outdoor track sponsorship was checked school by school against the sport list each athletics site publishes itself, because TFRRS cannot answer it.</p>
   </div>
 
 
@@ -57,6 +57,18 @@
       radius from downtown Baltimore, while the table's "Mi" column is driving distance &mdash; so a school
       right on the line can plot just outside it. Filters below drive this map too.
     </p>
+  </div>
+
+  <h2>Gap to each team's #1 &mdash; the weaker of the two signals</h2>
+  <div class="chart-card">
+    <div class="chart-title">Projected 15:20 5000m vs. each team's fastest 5000m runner</div>
+    <p class="chart-sub">Blue to the right: their #1 is faster, so there is room to develop. Red to the left: he would arrive faster than anyone on the roster. Baltimore has no middle: <b>Johns Hopkins at 14:01 and UMBC at 14:22</b> against <b>Stevenson at 17:26 and Goucher at 18:10</b>, which is two and three minutes the other way. Coppin State and Morgan State ran no 5000 outdoors in 2026, so they have no bar; both have a 1500 on their school pages.</p>
+    <div class="legend">
+      <span class="legend-item"><span class="swatch pos"></span><span>Their #1 is faster &mdash; healthy gap</span></span>
+      <span class="legend-item"><span class="swatch neg"></span><span>He is faster than their #1 &mdash; thin squad</span></span>
+    </div>
+    <svg id="gapchart" role="img" aria-label="Gap between a projected 15:20 5000m and each team's fastest 5000m runner"></svg>
+    <p class="chart-sub" id="chart-count" style="margin-top:8px"></p>
   </div>
 
   <h2>The ones worth real effort</h2>
@@ -150,6 +162,7 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => in
 
 initMap('baltimore');
 initTable();
+initChart();
 </script>
 </body>
 </html>
