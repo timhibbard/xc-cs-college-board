@@ -29,8 +29,8 @@ vm.createContext(ctx);
 vm.runInContext(
   fs.readFileSync(path.join(ROOT, 'assets/data.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(ROOT, 'assets/detail.js'), 'utf8') +
-  ';__out={SCHOOLS,REMOVED,NO_TRACK,NO_PROGRAM,XCRACES};', ctx);
-const { SCHOOLS, REMOVED, NO_TRACK, NO_PROGRAM, XCRACES } = ctx.__out;
+  ';__out={SCHOOLS,REMOVED,NO_TRACK,NO_PROGRAM,XCRACES,T1500,ATHLETE};', ctx);
+const { SCHOOLS, REMOVED, NO_TRACK, NO_PROGRAM, XCRACES, T1500, ATHLETE } = ctx.__out;
 
 const fails = [];
 const checks = [];
@@ -196,6 +196,82 @@ const METROS = [
     .filter(s => s.igDept && !s.ig).map(s => s.name);
   if (orphanDept.length) fails.push(`igDept with no ig: ${orphanDept.join(', ')}`);
 
+  /* The 1500 is the third finished column, and #5 closed it on a specific promise: every row with a
+     b1500 has a conference field to drop his projection into. That promise is the whole reason the
+     medians on index.html and in README moved — the thirteen rows that were missing a field were the
+     thirteen with the fastest 1500s, plus South Carolina, which no query had looked at because it is
+     in NO_PROGRAM (men's track, no men's cross country). So assert the promise itself rather than a
+     count: a new row with a fast 1500 and no field would put the board back where it was. */
+  const everyRow = [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM];
+  const noField = everyRow.filter(s => s.b1500 != null && !T1500[s.slug]).map(s => s.name);
+  if (noField.length) {
+    fails.push(`${noField.length} row(s) have a b1500 and no T1500 field to drop his projection ` +
+      `into, which #5 closed and README and methodology.html §7 both state: ${noField.join(', ')}`);
+  }
+  // T1500 is keyed by slug, not name — the one thing issue #5 itself got wrong. A key that matches
+  // no row renders nowhere and is invisible to every other check here.
+  const orphan15 = Object.keys(T1500).filter(k => !everyRow.some(s => s.slug === k));
+  if (orphan15.length) fails.push(`T1500 key matching no row's slug: ${orphan15.join(', ')}`);
+  /* dslot is where his projection lands on the program's whole depth chart — nath men, not the seven
+     d15 publishes — so it can exceed 8 and usually does at a program that runs milers. The first
+     version of this check read it off d15 and reported twelve failures, six of them real: the rows #5
+     added had dslot capped at 8 because the emitter ranked him inside the published seven instead of
+     inside the squad. d15 still pins the number whenever the cap hides nobody faster than he is, which
+     is the case the emitter got wrong and the only case worth asserting. */
+  const P15 = ATHLETE.proj1500;
+  for (const [k, T] of Object.entries(T1500)) {
+    const d = T.d15 || [];
+    if (d.length > 7) fails.push(`T1500.${k}: d15 has ${d.length} marks, capped at 7`);
+    if (d.some((t, i) => i && t < d[i - 1])) fails.push(`T1500.${k}: d15 is not sorted`);
+    const under = d.filter(t => t < P15).length;
+    if (!d.length) {
+      if (T.dslot != null) fails.push(`T1500.${k}: dslot is ${T.dslot} with nobody on the depth chart`);
+    } else if (under < d.length) {
+      // Sorted, so every man past the cap is slower than the slowest published one, hence slower
+      // than him: the chart ends here as far as his placing is concerned.
+      if (T.dslot !== under + 1) fails.push(`T1500.${k}: dslot is ${T.dslot}, d15 puts him at ${under + 1}`);
+    } else if (!(T.dslot >= d.length + 1 && T.dslot <= (T.nath || d.length) + 1)) {
+      fails.push(`T1500.${k}: dslot is ${T.dslot}, and all ${d.length} published men beat his ` +
+        `projection with ${T.nath} on the chart — it has to fall between ${d.length + 1} and ${(T.nath || d.length) + 1}`);
+    }
+    if (T.nath != null && d.length && T.nath < d.length) {
+      fails.push(`T1500.${k}: nath is ${T.nath} with ${d.length} marks on the depth chart`);
+    }
+    if (!T.cm || !T.cm.url) fails.push(`T1500.${k}: no conference field`);
+  }
+  // The published count, in both files that publish it.
+  const t15n = Object.keys(T1500).length;
+  const rm = readme.match(/the 2026 outdoor 1500 for the (\d+) schools where one/);
+  if (!rm) fails.push('README.md: the published T1500 count no longer parses — check tools/render-check.js');
+  else ok('README T1500 total', t15n, Number(rm[1]));
+  const m7 = meth.match(/for <strong>all (\d+) schools with a 2026 field on file<\/strong>/);
+  if (!m7) fails.push('methodology.html §7: the published T1500 count no longer parses — check tools/render-check.js');
+  else ok('methodology T1500 total', t15n, Number(m7[1]));
+  /* index.html leads the 1500 callout with the programs that entered nobody. It is the figure most
+     likely to go stale, because adding a field moves the denominator and not the numerator. */
+  const idx = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  const im15 = idx.match(/<strong>(\d+) of the (\d+) with a 1500 on file entered nobody/);
+  if (!im15) {
+    fails.push('index.html: the entered-nobody sentence no longer parses — check tools/render-check.js');
+  } else {
+    const nobody = Object.values(T1500).filter(T => !T.cm.theirs.length).length;
+    ok('index entered-nobody count', nobody, Number(im15[1]));
+    ok('index entered-nobody denominator', t15n, Number(im15[2]));
+  }
+
+  /* And it has to reach the page. Every meet on file is one card, so the count is the check: the
+     conference field plus any postseason rounds. This also covers the rows the loop above skips —
+     South Carolina has no cross country result at all and still has a 1500 section. */
+  for (const s of everyRow.filter(s => T1500[s.slug])) {
+    const dom = await render('school.html', '?s=' + s.slug);
+    const cards = dom.window.document.querySelectorAll('div.race[data-kind="t1500"]');
+    const want = 1 + (T1500[s.slug].post || []).length;
+    if (cards.length !== want) {
+      fails.push(`school.html?s=${s.slug}: ${cards.length} 1500 cards, ${want} meets on file`);
+    }
+    dom.window.close();
+  }
+
   for (const c of checks) {
     console.log(`${c.pass ? 'ok  ' : 'FAIL'}  ${c.name}: ${c.got}${c.pass ? '' : ' (want ' + c.want + ')'}`);
   }
@@ -205,6 +281,7 @@ const METROS = [
     server.close();
     process.exit(1);
   }
-  console.log(`\nall clear — ${checks.length} counts, ${sample.length} school pages rendered`);
+  console.log(`\nall clear — ${checks.length} counts, ${sample.length} school pages rendered, ` +
+    `${Object.keys(T1500).length} 1500 fields`);
   server.close();
 })().catch(e => { console.error(e); server.close(); process.exit(1); });

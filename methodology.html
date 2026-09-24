@@ -1242,9 +1242,17 @@
     changed.</strong> Three more &mdash; Newberry, Dominican University and Clark Atlanta &mdash; looked
     like misses but were the fetch's fault rather than the data's: those sites return no per-sport coaches
     page, and all three coaches were confirmed on the department staff directory instead. One row,
-    <strong>Baruch College</strong>, could not be re-checked at all: its athletics site presents a broken
-    TLS certificate chain and then times out, so its coach is the single name here still resting on the
-    August read.
+    <strong>Baruch College</strong>, could not be re-checked at the time: its athletics site presented a broken
+    TLS certificate chain and then timed out, so its coach was the single name here resting on the
+    August read. <strong>That has since been closed (#8), and the diagnosis was wrong.</strong>
+    <code>baruchathletics.com</code> is not a broken site but a moved one: it serves an expired
+    <code>*.hostingplatform.com</code> certificate &mdash; which is what a strict fetch reports and stops
+    at &mdash; and behind that it redirects to <code>athletics.baruch.cuny.edu</code>, which is live and
+    healthy. The 2026 men's cross country staff page there confirms Angeoline Piguave-Cowan as head coach
+    with the same phone and email, and names Victor Carrano as the assistant. The lesson is about the
+    fetch rather than the school: <strong>a TLS failure is a reason to look for the new address, not
+    evidence that a program's pages are gone</strong>, and it cost this row a coach re-check and an
+    Instagram handle for a version.
   </p>
   <div class="prose">
     <p>The five changes, each read off the school's own 2026 staff page:</p>
@@ -1411,9 +1419,9 @@
       <li><strong>Only two of roughly fifty championship courses have a difficulty correction.</strong> The championship races on file span <strong>62</strong> distinct conference, regional and national meets &mdash; 194 counting the invitationals &mdash; and exactly two, the South Atlantic and CCIW championships, had enough teams racing both a conference meet and a regional to isolate the course from the team (§3a). Everywhere else the raw time is used. That is the largest remaining source of error on the board, and it is worst for schools whose only result came from a single uncorrected course: those could move a tier once a second race exists.</li>
       <li><strong>Meet schedules cover 150 of the 240 rows with a page, and the venue is read off each meet's own results page.</strong> <strong>The 76 rows the eight-metro sweep added have no schedule at all</strong>, which is the largest single gap on this site now: their pages carry a tier and a cost and no map. An earlier version of this board had schedules for eleven schools only, and could not place 21% of even those, because it guessed a venue from the host named in the meet title — which fails on exactly the meets that matter most, the conference and NCAA championships whose host rotates every year. Every meet page is now fetched directly, so a rotating championship is placed where it was actually held this season. The sweep covers <strong>712 distinct meets and 3,241 school-meet appearances</strong>, of which <strong>3,221 (99.4%) are placed</strong>. The gap is two meets — LIU's Fall Festival and the St. Joseph's Invitational — whose pages print no venue line at all. Among the original 161 rows the eleven with no schedule are the eleven that field no men's cross country team &mdash; where the absence is the finding, not a gap. <strong>Calumet College</strong> is the twelfth school with no usable schedule: its TFRRS page holds no result after 2024, which is consistent with its removal under the both-sports rule (§6b), and its page says so instead of showing an empty map. <strong>South Carolina is the instructive one.</strong> It has a schedule, and every meet on it is a track meet: 22 outdoor and indoor meets in 2026 and not one cross country race, which is the same conclusion its empty TFRRS cross country page reaches by a different route.</li>
       <li><strong>Venue coordinates carry three precision levels, and most are town-level.</strong> TFRRS prints a venue as free text, sometimes with a facility and ZIP and sometimes with neither. Of the 419 distinct venues, <strong>76 resolved to the facility itself, 112 only to the ZIP the results page printed, and 231 only to the town it named</strong> — so the majority of pins are a town centroid, which is right for judging travel and wrong for finding the start line. The looser two levels are labelled <em>ZIP area</em> and <em>town</em> on the map and in the table. Geocoding is OpenStreetMap's Nominatim. Eleven venue strings it could not resolve were placed by hand, most of them because TFRRS misspells the town (Bourbannais, Genev, Athen) and two because the place is not a town at all (West Point, Mississippi State); a further dozen had the town silently glued to the end of the facility name and were relabelled by hand. Two TFRRS venue records also contained wrong postal codes (a New Hampshire fairground coded to Massachusetts, an Indiana course coded to Missouri); both were corrected.</li>
-      <li><strong>Instagram handles cover 221 of the 226 schools with a men's program &mdash; 182 of the 185 on the board</strong>, and this column is no longer a gap: the 76 rows the eight-metro sweep added were the last that had not been looked up, and all 76 have now been read (<a href="#program-ig">&sect;6</a>). Each was read off the school's own men's cross country page: the sport record its athletics site publishes for that sport, the label on the link itself, or the cross country entry in its sport navigation. None was searched for by name, because a name search on a school like <em>Wingate</em> or <em>Manhattan</em> returns accounts that have nothing to do with the team. Preference is the <strong>program</strong> account (the men's cross country / track and field team), and where a school links no cross country or track account of its own the fallback is the <strong>athletics department's</strong> &mdash; the university's, at North Park &mdash; marked with a degree sign in the tables so it reads as what it is. <strong>Forty-two schools on the board</strong> fall back that way: seven in Division 1 (the College of Charleston, Morgan State, Pittsburgh, SC State, West Georgia, Western Carolina, Samford), fourteen in Division 2 (Bowie State, Emmanuel GA, Emory &amp; Henry, Fort Valley State, Francis Marion, Johnson C. Smith, Lenoir-Rhyne, Lincoln Memorial, Mars Hill, Newberry, Savannah State, Shorter, St. Thomas Aquinas, the College of Staten Island), nineteen in Division 3 (Carlow, Gallaudet, Hilbert, Illinois Tech, Kean, LaGrange, Lasell, Lehman, Medgar Evers, Methodist, North Park, Penn State Abington, Regent, Regis, Rosemont, Rutgers&ndash;Camden, Suffolk, Tufts, UMass Boston), one in the NAIA (Carolina University) and one in the USCAA (Bryant &amp; Stratton). No school needed a coach's personal account for this column: the coaches' own accounts are a
+      <li><strong>Instagram handles cover 222 of the 226 schools with a men's program &mdash; 182 of the 185 on the board</strong>, and this column is no longer a gap: the 76 rows the eight-metro sweep added were the last that had not been looked up, and all 76 have now been read (<a href="#program-ig">&sect;6</a>). Each was read off the school's own men's cross country page: the sport record its athletics site publishes for that sport, the label on the link itself, or the cross country entry in its sport navigation. None was searched for by name, because a name search on a school like <em>Wingate</em> or <em>Manhattan</em> returns accounts that have nothing to do with the team. Preference is the <strong>program</strong> account (the men's cross country / track and field team), and where a school links no cross country or track account of its own the fallback is the <strong>athletics department's</strong> &mdash; the university's, at North Park &mdash; marked with a degree sign in the tables so it reads as what it is. <strong>Forty-two schools on the board</strong> fall back that way: seven in Division 1 (the College of Charleston, Morgan State, Pittsburgh, SC State, West Georgia, Western Carolina, Samford), fourteen in Division 2 (Bowie State, Emmanuel GA, Emory &amp; Henry, Fort Valley State, Francis Marion, Johnson C. Smith, Lenoir-Rhyne, Lincoln Memorial, Mars Hill, Newberry, Savannah State, Shorter, St. Thomas Aquinas, the College of Staten Island), nineteen in Division 3 (Carlow, Gallaudet, Hilbert, Illinois Tech, Kean, LaGrange, Lasell, Lehman, Medgar Evers, Methodist, North Park, Penn State Abington, Regent, Regis, Rosemont, Rutgers&ndash;Camden, Suffolk, Tufts, UMass Boston), one in the NAIA (Carolina University) and one in the USCAA (Bryant &amp; Stratton). No school needed a coach's personal account for this column: the coaches' own accounts are a
       separate layer, searched separately and verified to a different standard (&sect;6 above), and they
-      cover 17 of the 150 rows that predate the sweep. <strong>Reading the men's page, rather than counting Instagram links across a whole athletics site, is what makes this reliable at the schools that run separate men's and women's accounts</strong> &mdash; it is the difference between <em>@elmhurstu_xctf</em> and <em>@elmhurst_xctf</em> at Elmhurst, between <em>@Valkyriesxctrack</em> and <em>@Valkyriesxctf</em> at Converse, and between <em>@landerxc</em> and <em>@landerxctf</em> at Lander, and it moved Queens (Charlotte) to <em>@Queens_trackandfield</em> and upgraded Appalachian State from the department account to <em>@appstate_tf_xc</em>. Where a school runs separate cross country and track accounts &mdash; UNC Charlotte, Gardner-Webb, Campbell, Charleston Southern, LIU &mdash; the cross country one is used, which is why Charleston Southern's reads <em>@csudistance</em> rather than the track account. Eastern Kentucky is the one school whose two signals disagree: its cross country navigation links <em>@eku_xctf</em> while the sport record names <em>@ekudistance</em>, and the navigation handle is kept. <strong>Five schools link no Instagram anywhere on their own pages</strong> &mdash; Hunter College, Dominican University and George Mason on the board, Baruch College and Emerson on the no-track list &mdash; and their pages say exactly that, so an empty Instagram cell now means the same thing on every row of this site: <em>the school's own pages link none</em>. Ten of the eleven schools with no men's cross country team have no page here at all; the exception is <strong>South Carolina</strong>, which sponsors men's <em>track</em> and lists a combined track and cross country account, so its page carries it. All twelve schools on the cut list keep theirs as well, and so do twenty-seven of the twenty-nine no-track removals &mdash; the two exceptions being Baruch College and Emerson, the two that link none.</li>
+      cover 17 of the 150 rows that predate the sweep. <strong>Reading the men's page, rather than counting Instagram links across a whole athletics site, is what makes this reliable at the schools that run separate men's and women's accounts</strong> &mdash; it is the difference between <em>@elmhurstu_xctf</em> and <em>@elmhurst_xctf</em> at Elmhurst, between <em>@Valkyriesxctrack</em> and <em>@Valkyriesxctf</em> at Converse, and between <em>@landerxc</em> and <em>@landerxctf</em> at Lander, and it moved Queens (Charlotte) to <em>@Queens_trackandfield</em> and upgraded Appalachian State from the department account to <em>@appstate_tf_xc</em>. Where a school runs separate cross country and track accounts &mdash; UNC Charlotte, Gardner-Webb, Campbell, Charleston Southern, LIU &mdash; the cross country one is used, which is why Charleston Southern's reads <em>@csudistance</em> rather than the track account. Eastern Kentucky is the one school whose two signals disagree: its cross country navigation links <em>@eku_xctf</em> while the sport record names <em>@ekudistance</em>, and the navigation handle is kept. <strong>Four schools link no Instagram anywhere on their own pages</strong> &mdash; Hunter College, Dominican University and George Mason on the board, Emerson on the no-track list &mdash; and their pages say exactly that, so an empty Instagram cell now means the same thing on every row of this site: <em>the school's own pages link none</em>. Ten of the eleven schools with no men's cross country team have no page here at all; the exception is <strong>South Carolina</strong>, which sponsors men's <em>track</em> and lists a combined track and cross country account, so its page carries it. All twelve schools on the cut list keep theirs as well, and so do twenty-eight of the twenty-nine no-track removals &mdash; the exception being Emerson, the one that links none. <strong>Baruch College was in that sentence until #8 was retried</strong>: its handle was missing because its athletics domain was unreachable, not because its pages link nothing, and the sport record on the domain it had moved to names <em>@BaruchCrossCountry</em>.</li>
       <li><strong>Piedmont University's CS program is still unconfirmed</strong> — federal data codes the degree but reports roughly zero graduates, and the school's own site was unreachable. It is the last open lookup on the board.</li>
       <li><strong>Fourteen schools were removed because they field no men's cross country team, and one of those is also closing.</strong> Georgia State, NYIT, Montclair State, William Paterson and North Georgia were all carrying a <em>Verify</em> tier, which is precisely how that tier fails: it reads as a program awaiting measurement rather than one that does not exist. <strong>St. John's</strong> and <strong>South Carolina</strong> were sitting on the cut list, cut on reputation for times that were never going to exist; both sponsor women's cross country only. Northwestern is another. The 300-mile Greenville sweep then added two more: <strong>UAB</strong> came into range at 294 miles and sponsors no men's cross country, and <strong>Georgia Southern</strong> at 198 miles was inside even the old ring and sponsors none either &mdash; both have an empty TFRRS men's cross country page and women's distance programs only. Trinity Christian College announced on 4 November 2025 that it will close after the 2025&ndash;26 academic year. Three more have since joined, one of them the loudest yet: <strong>Maryland</strong>, a flagship Division 1 public 9 miles from downtown Washington, sponsors no men's cross country at all &mdash; with <strong>New Jersey City University</strong> from the same sweep and <strong>Life University</strong> from a recheck of the Greenville ring. All fourteen are tabled on their metro pages and kept on the maps rather than deleted, so the corrections stay visible. Fourteen errors of this kind have now surfaced; assume there are others.</li>
     </ol>
@@ -1548,8 +1556,8 @@
     <strong>squad depth</strong>: the D1-only board had no program below five finishers, where the full
     board has six that could not field the scoring five at all (Roosevelt, Benedict, York College
     (CUNY), Marymount, Carlow and Hilbert &mdash; §5). Third, and this one was an illusion: the median team's fastest 1500 improved from
-    4:01.1 to 3:49.7 and the number of programs where he would arrive as their #1 fell from 57 in 114 to
-    8 in 44. That is not the board getting better, it is the sample being selected for programs that
+    3:58.8 to 3:48.2 and the number of programs where he would arrive as their #1 fell from 57 in 128 to
+    8 in 57. That is not the board getting better, it is the sample being selected for programs that
     recruit milers &mdash; the same error as judging a program on one fast 5000, one level up.
   </p>
   <p class="prose">
@@ -1567,11 +1575,16 @@
   <p class="prose">
     §1b converts his 1600 to a <strong>4:01</strong> 1500 and compares it to each team's single fastest
     1500 runner. That is a floor with all the weaknesses of any one-athlete number. This section is what
-    replaced it: for <strong>all 120 schools with a 2026 field on file</strong>, the entire 1500 field at that program's
+    replaced it: for <strong>all 134 schools with a 2026 field on file</strong>, the entire 1500 field at that program's
     <strong>2026 outdoor conference championship</strong>, with his projection dropped into it on time,
     plus the program's own 1500 depth chart for the season. <strong>40 conference championship result
-    pages</strong>, one per conference, were read, plus four postseason result pages carrying ten
-    programs' runners.
+    pages</strong>, one per conference, were read, plus six postseason result pages carrying twenty
+    programs' runners. The last fourteen of those rows were added when <strong>#5</strong> was closed:
+    every school on the board that has a 1500 mark on file now has a field to drop him into, and
+    <code>tools/render-check.js</code> asserts it, because the fourteen that were missing had been the
+    fourteen with the fastest 1500s &mdash; a gap that quietly flattered him. The last of them was
+    <strong>South Carolina</strong>, which sits in the no-men's-program list because it sponsors no men's
+    cross country: the 1500 passes had skipped an SEC <em>track</em> program whose best man ran 3:35.07.
   </p>
   <p class="prose">Four numbers come out of it, and they answer different questions:</p>
   <div class="prose">
@@ -1605,7 +1618,7 @@
     <p>
       The same caution applies in the other direction. A program that enters nobody in its conference
       1500 is not weak at it by that fact alone &mdash; it may simply race the 800 and the 5000 &mdash;
-      but 29 of the 120 did exactly that, and six of those ran no 1500 anywhere all season. Each card says
+      but 29 of the 134 did exactly that, and six of those ran no 1500 anywhere all season. Each card says
       so plainly and suggests the question rather than assigning a verdict.
     </p>
   </div>
@@ -1614,9 +1627,10 @@
     has a real qualifying round above the conference meet &mdash; the NCAA East and West First Rounds
     &mdash; so a runner can appear there. Divisions 2 and 3 have no regional round in outdoor track at
     all: the conference meet feeds the national championship on descending-order marks, so a fast time
-    anywhere counts and there is no round to miss. The NAIA is the same. <strong>Ten of the 120
+    anywhere counts and there is no round to miss. The NAIA is the same. <strong>Twenty of the 134
     programs</strong> had a 1500 runner in a postseason round of any kind, which is the honest scale of
-    the thing: getting past the conference meet in this event is rare.
+    the thing: getting past the conference meet in this event is rare &mdash; and ten of those twenty
+    arrived with the fourteen rows #5 added, which is what the missing fields were hiding.
   </p>
   <div class="callout">
     <span class="c-title">The decathlon's 1500 is excluded, and it was not excluded at first</span>
@@ -1635,9 +1649,17 @@
       postseason cards from fifteen to nine of the programs then on file, and moved four programs into the "entered nobody" column
       because their only entrants had been decathletes. It changed no placing &mdash; every decathlon
       1500 on file was slower than 4:01, so his rank was never affected, only the size of the field he
-      was ranked in. Season depth charts are filtered the same way wherever the meet is one of the 39 in
+      was ranked in. Season depth charts are filtered the same way wherever the meet is one of the 46 in
       the cache; a stray decathlon mark from an ordinary April invitational may still sit at the bottom of
       a program's depth count, which affects <em>how many men ran the event</em> and not his slot.
+    </p>
+    <p>
+      The trap does not stay caught by itself. Three of the fourteen rows #5 added arrived carrying
+      decathlon marks &mdash; Duke had three decathletes in its depth count and Virginia Tech one, both
+      from the ACC meet, and Georgia's man at the national championships was a decathlete running 4:07.25
+      on his second day, which is also why he briefly appeared to have reached a national final. Applying
+      the rule dropped Duke from 13 men to 12 and Virginia Tech from 14 to 13, and moved Georgia's fourth
+      man to the 4:07.64 he ran at an uncached April invitational. As predicted, it moved no slot.
     </p>
   </div>
   <p class="prose">

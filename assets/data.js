@@ -2774,7 +2774,14 @@ const NO_TRACK = [
     xcInv: { slot: 1, g1: -397, v7: -699, spread: 302, nraces: 4 },
     xc26: { slot: 1, g1: -275.2, v7: -655.8, spread: 380.6, eq: true, nraces: 2, date: "2026-09-19" },
     shape: { date: "2025-11-08", meet: "2025 DIII North XC Championship", dist: "8K", n: 7, ret: 5, g1ret: -434.9, fr: 3, so: 2, jr: 0, sr: 2, mso: 3 },
-    coach: { name: "Angeoline Piguave-Cowan", title: "Head Coach", email: "Angeoline.Piguave-Cowan@baruch.cuny.edu", phone: "646-312-5070", src: "https://www.baruchathletics.com/sports/mens-cross-country/coaches" },
+    /* The row that could not be re-checked (#8): baruchathletics.com serves an expired
+       *.hostingplatform.com certificate and then times out. It is not a broken site — it is a moved
+       one, redirecting to athletics.baruch.cuny.edu, where the 2026 men's cross country staff page
+       confirms this name, title, phone and email, and names Victor Carrano as the assistant. */
+    coach: { name: "Angeoline Piguave-Cowan", title: "Head Coach", email: "Angeoline.Piguave-Cowan@baruch.cuny.edu", phone: "646-312-5070", src: "https://athletics.baruch.cuny.edu/sports/mens-cross-country/coaches" },
+    // Same move: the sport record on the new domain names a cross country account, so Baruch is not
+    // one of the schools that link none. window.associated_sport.instagram = "BaruchCrossCountry".
+    ig: "BaruchCrossCountry",
     note: "First measurement, from the 2025 DIII North XC Championship (4th, 96 pts): <b>he would arrive as their #1</b>, 175 seconds ahead of their fastest 2025 runner. Thin rather than a bad fit — there would be nobody to train with, which is the whole argument of this board.",
     why: "CUNYAC cross country only: men’s and women’s cross country in a 25-sport list, no track and field, no 2026 outdoor marks on TFRRS.",
   },
