@@ -194,7 +194,534 @@ const TOWNPOP = {
   "Young Harris GA": 1252,
 };
 
-const SCHOOLS = [
+/* Campus setting: what it is like to live here without a car.
+
+   **This is one axis of the two this column was designed around.** The errands axis is
+   here; the training axis -- nearest park and its acreage, soft-surface mileage, the
+   largest *connected* network of it, signalised crossings per mile, campus acreage and
+   the nearest track -- is issue #24 and is not in this file yet. Nothing below says
+   anything about whether he can run here, and a high `walk` in particular is a claim
+   about groceries and not about a six-mile easy day. Read it as half a picture.
+
+   Keyed by the row's own `name`. Fields:
+
+     loc, locCode   the federal locale, IPEDS HD2023 `LOCALE`. This is the density answer
+                    and the only one that covers all 243 rows: 11/12/13 city large,
+                    midsize and small, 21/22/23 suburb, 31/32/33 town, 41/42/43 rural.
+     town*          the row's own Census place or minor civil division -- its name, its
+                    land area in square miles, and how far the campus sits from its
+                    centre. `townMi` is distance to the town centre and is NOT the Mi
+                    column, which measures to the metro centre from home.
+     walk, bike     Walk Score and Bike Score, scraped from the public page in `ws` and
+                    attributed there. Third-party numbers, reproduced with their source.
+     tscore         Transit Score, **and its absence is not a zero**. Walk Score prints
+                    one only where the city publishes a feed it has ingested, so 121 of
+                    243 rows have none -- including Columbia, which has the 1 train at
+                    the door. Where this is null the rail and bus lists are the answer
+                    and this field should not be rendered at all.
+     rail*, bus*    nearest named line and how many were listed, from the same page.
+                    `railN: 0` with `busN: 0` is a real finding rather than a gap in the
+                    read -- Covenant College on Lookout Mountain has neither. The named
+                    lines themselves are in SETLINES in detail.js.
+     lvl, off       how well the page's answer matches this campus, and the whole
+                    accuracy of the column. `address` (230 rows) is the campus's own
+                    street address; `approx` (12) is a nearby street, `off` miles from
+                    the coordinate this board holds, because that site's geocoder would
+                    not take the exact address; `town` (1, Erskine) is the town's own
+                    page, because it put all three address forms 78 miles away. Nothing
+                    was stored at all unless the coordinate in the page's own map tiles
+                    landed within 1.5 miles of this board's coordinate -- asked about a
+                    bare lat/lng that site once answered about a village in Maharashtra,
+                    and a wrong address still returns a page with somebody else's scores.
+     ws             the page every number on the row came from. */
+const SETTING = {
+  "Adelphi":
+    { loc: "Suburb: Large", locCode: 21, town: "Garden City village", townMi: 0.4, townSqMi: 5.3, walk: 54, bike: 39, tscore: 28, railN: 5, railMi: 0.5, busN: 2, busMi: 1.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1-south-ave-garden-city-ny" },
+  "Allen University":
+    { loc: "City: Midsize", locCode: 12, town: "Columbia city", townMi: 6.8, townSqMi: 138.3, walk: 74, bike: 54, tscore: 43, railN: 0, railMi: null, busN: 5, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1530-harden-street-columbia-sc" },
+  "American":
+    { loc: "City: Large", locCode: 11, town: "Washington city", townMi: 4.5, townSqMi: 61.1, walk: 72, bike: 55, tscore: 46, railN: 2, railMi: 1.0, busN: 3, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/4400-massachusetts-ave-nw-washington-dc" },
+  "Anderson (SC)":
+    { loc: "City: Small", locCode: 13, town: "Anderson city", townMi: 1.1, townSqMi: 16.0, walk: 67, bike: 43, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/north-mcduffie-street-anderson-sc" },
+  "Appalachian State":
+    { loc: "Town: Distant", locCode: 32, town: "Boone town", townMi: 1.1, townSqMi: 6.4, walk: 74, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/rivers-st-boone-nc" },
+  "Arcadia":
+    { loc: "Suburb: Large", locCode: 21, town: "Glenside CDP", townMi: 1.0, townSqMi: 1.3, walk: 30, bike: null, tscore: null, railN: 2, railMi: 0.9, busN: 4, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/450-s-easton-rd-glenside-pa" },
+  "Auburn":
+    { loc: "City: Small", locCode: 13, town: "Auburn city", townMi: 0.4, townSqMi: 62.5, walk: 36, bike: null, tscore: null, railN: 0, railMi: null, busN: 1, busMi: 0.4, lvl: "approx", off: 0.9, ws: "https://www.walkscore.com/score/south-donahue-drive-auburn-al" },
+  "Augusta University":
+    { loc: "City: Midsize", locCode: 12, town: "Augusta-Richmond County consolidated government (balance)", townMi: 8.7, townSqMi: 302.3, walk: 56, bike: 55, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1120-15th-st-augusta-ga" },
+  "Babson":
+    { loc: "Suburb: Large", locCode: 21, town: "Wellesley CDP", townMi: 1.1, townSqMi: 10.0, walk: 28, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/babson-college-drive-wellesley-ma" },
+  "Baruch College":
+    { loc: "City: Large", locCode: 11, town: "New York city", townMi: 5.8, townSqMi: 300.5, walk: 100, bike: 92, tscore: 100, railN: 10, railMi: 0.2, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/one-bernard-baruch-way-55-lexington-ave-at-24th-st-new-york-ny" },
+  "Belmont Abbey":
+    { loc: "Suburb: Midsize", locCode: 22, town: "Belmont city", townMi: 2.7, townSqMi: 12.2, walk: 29, bike: 25, tscore: null, railN: 0, railMi: null, busN: 1, busMi: 0.8, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/100-belmont-mt-holly-road-belmont-nc" },
+  "Benedict":
+    { loc: "City: Midsize", locCode: 12, town: "Columbia city", townMi: 6.8, townSqMi: 138.3, walk: 70, bike: 46, tscore: 41, railN: 0, railMi: null, busN: 5, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1600-harden-street-columbia-sc" },
+  "Bentley":
+    { loc: "City: Small", locCode: 13, town: "Waltham city", townMi: 1.0, townSqMi: 12.7, walk: 49, bike: 23, tscore: 33, railN: 1, railMi: 1.2, busN: 2, busMi: 0.0, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/175-forest-st-waltham-ma" },
+  "Berry College":
+    { loc: "Suburb: Small", locCode: 23, town: "Rome city", townMi: 1.2, townSqMi: 31.8, walk: 16, bike: 61, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/2277-martha-berry-hwy-nw-mount-berry-ga" },
+  "Bluefield State":
+    { loc: "Town: Distant", locCode: 32, town: "Bluefield city", townMi: 1.5, townSqMi: 9.0, walk: 32, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/219-rock-street-bluefield-wv" },
+  "Boston College":
+    { loc: "City: Small", locCode: 13, town: "Newton city", townMi: 2.0, townSqMi: 17.8, walk: 64, bike: 52, tscore: 50, railN: 3, railMi: 0.3, busN: 10, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/140-commonwealth-avenue-chestnut-hill-ma" },
+  "Bowie State":
+    { loc: "Suburb: Large", locCode: 21, town: "Bowie city", townMi: 4.5, townSqMi: 20.4, walk: 3, bike: 27, tscore: null, railN: 1, railMi: 0.2, busN: 1, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/14000-jericho-park-rd-bowie-md" },
+  "Brandeis":
+    { loc: "City: Small", locCode: 13, town: "Waltham city", townMi: 1.8, townSqMi: 12.7, walk: 41, bike: 25, tscore: 38, railN: 2, railMi: 0.2, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/415-south-st-waltham-ma" },
+  "Brevard College":
+    { loc: "Town: Distant", locCode: 32, town: "Brevard city", townMi: 0.8, townSqMi: 5.4, walk: 73, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/one-brevard-college-drive-brevard-nc" },
+  "Brooklyn College":
+    { loc: "City: Large", locCode: 11, town: "Brooklyn borough", townMi: 0.2, townSqMi: 69.4, walk: 84, bike: 71, tscore: 100, railN: 4, railMi: 0.3, busN: 7, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2900-bedford-ave-brooklyn-ny" },
+  "Bryant & Stratton":
+    { loc: "City: Large", locCode: 11, town: "Buffalo city", townMi: 0.6, townSqMi: 40.4, walk: 92, bike: 83, tscore: 63, railN: 1, railMi: 0.7, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/110-broadway-2nd-floor-buffalo-ny" },
+  "Buffalo State":
+    { loc: "City: Large", locCode: 11, town: "Buffalo city", townMi: 3.1, townSqMi: 40.4, walk: 51, bike: 77, tscore: 48, railN: 0, railMi: null, busN: 6, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1300-elmwood-ave-buffalo-ny" },
+  "Caldwell":
+    { loc: "Suburb: Large", locCode: 21, town: "Caldwell borough", townMi: 0.5, townSqMi: 1.2, walk: 37, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/120-bloomfield-avenue-caldwell-nj" },
+  "Calumet College":
+    { loc: "Suburb: Large", locCode: 21, town: "Whiting city", townMi: 0.7, townSqMi: 1.8, walk: 88, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/119th-street-whiting-in" },
+  "Campbell":
+    { loc: "Town: Fringe", locCode: 31, town: "Buies Creek CDP", townMi: 0.3, townSqMi: 3.0, walk: 35, bike: 52, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/143-main-street-buies-creek-nc" },
+  "Canisius":
+    { loc: "City: Large", locCode: 11, town: "Buffalo city", townMi: 2.3, townSqMi: 40.4, walk: 63, bike: 60, tscore: 45, railN: 0, railMi: null, busN: 6, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/2001-main-street-buffalo-ny" },
+  "Carlow":
+    { loc: "City: Large", locCode: 11, town: "Pittsburgh city", townMi: 0.6, townSqMi: 55.4, walk: 87, bike: 46, tscore: 71, railN: 0, railMi: null, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/3333-fifth-ave-pittsburgh-pa" },
+  "Carnegie Mellon":
+    { loc: "City: Large", locCode: 11, town: "Pittsburgh city", townMi: 1.8, townSqMi: 55.4, walk: 72, bike: 78, tscore: 67, railN: 0, railMi: null, busN: 10, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/5000-forbes-avenue-pittsburgh-pa" },
+  "Carolina University":
+    { loc: "City: Large", locCode: 11, town: "Winston-Salem city", townMi: 1.2, townSqMi: 133.6, walk: 73, bike: 67, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.8, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/420-s-broad-st-winston-salem-nc" },
+  "Carson-Newman":
+    { loc: "Suburb: Small", locCode: 23, town: "Jefferson City city", townMi: 0.6, townSqMi: 7.0, walk: 73, bike: 42, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1646-s-russell-ave-jefferson-city-tn" },
+  "Catawba":
+    { loc: "Suburb: Large", locCode: 21, town: "Salisbury city", townMi: 1.6, townSqMi: 22.9, walk: 21, bike: 24, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/annandale-avenue-salisbury-nc" },
+  "Catholic":
+    { loc: "City: Large", locCode: 11, town: "Washington city", townMi: 2.3, townSqMi: 61.1, walk: 88, bike: 88, tscore: 69, railN: 3, railMi: 0.2, busN: 6, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/alumni-lane-washington-dc" },
+  "CCNY":
+    { loc: "City: Large", locCode: 11, town: "New York city", townMi: 10.9, townSqMi: 300.5, walk: 93, bike: 67, tscore: 100, railN: 7, railMi: 0.1, busN: 6, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/160-convent-ave-new-york-ny" },
+  "Charleston Southern":
+    { loc: "City: Midsize", locCode: 12, town: "Charleston city", townMi: 12.2, townSqMi: 115.1, walk: 17, bike: 31, tscore: 26, railN: 0, railMi: null, busN: 1, busMi: 0.5, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/state-road-s-10-2261-charleston-sc" },
+  "Chatham":
+    { loc: "City: Large", locCode: 11, town: "Pittsburgh city", townMi: 2.7, townSqMi: 55.4, walk: 68, bike: 80, tscore: 56, railN: 0, railMi: null, busN: 7, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/woodland-road-office-of-institutional-research-pittsburgh-pa" },
+  "Chattanooga":
+    { loc: "City: Midsize", locCode: 12, town: "Chattanooga city", townMi: 3.2, townSqMi: 142.4, walk: 81, bike: 81, tscore: 44, railN: 0, railMi: null, busN: 4, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/615-mccallie-ave-chattanooga-tn" },
+  "Chestnut Hill":
+    { loc: "City: Large", locCode: 11, town: "Philadelphia city", townMi: 7.4, townSqMi: 134.4, walk: 4, bike: 35, tscore: 39, railN: 2, railMi: 1.1, busN: 3, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/9601-germantown-ave-philadelphia-pa" },
+  "Chicago State":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 9.2, townSqMi: 227.7, walk: 22, bike: 41, tscore: 68, railN: 2, railMi: 0.7, busN: 7, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/campus-life-lane-chicago-il" },
+  "Claflin":
+    { loc: "Town: Distant", locCode: 32, town: "Orangeburg city", townMi: 0.8, townSqMi: 9.0, walk: 63, bike: 39, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/400-magnolia-street-orangeburg-sc" },
+  "Clark Atlanta":
+    { loc: "City: Large", locCode: 11, town: "Atlanta city", townMi: 1.2, townSqMi: 135.3, walk: 63, bike: 61, tscore: 53, railN: 6, railMi: 0.7, busN: 3, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/223-james-p-brawley-drive-sw-atlanta-ga" },
+  "Clayton State":
+    { loc: "Suburb: Large", locCode: 21, town: "Morrow city", townMi: 1.2, townSqMi: 3.5, walk: 35, bike: null, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2000-clayton-state-boulevard-morrow-ga" },
+  "Clemson":
+    { loc: "Suburb: Midsize", locCode: 22, town: "Clemson city", townMi: 1.6, townSqMi: 7.9, walk: 39, bike: 39, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.2, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/south-palmetto-boulevard-clemson-sc" },
+  "Coastal Carolina":
+    { loc: "City: Small", locCode: 13, town: "Conway city", townMi: 3.8, townSqMi: 24.7, walk: 38, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/103-tom-trout-drive-conway-sc" },
+  "Coker":
+    { loc: "Town: Distant", locCode: 32, town: "Hartsville city", townMi: 1.1, townSqMi: 6.0, walk: 67, bike: 47, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/300-e-college-ave-hartsville-sc" },
+  "College of Charleston":
+    { loc: "City: Midsize", locCode: 12, town: "Charleston city", townMi: 3.6, townSqMi: 115.1, walk: 97, bike: 75, tscore: 48, railN: 0, railMi: null, busN: 9, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/66-george-st-charleston-sc" },
+  "College of Staten Island":
+    { loc: "City: Large", locCode: 11, town: "Staten Island borough", townMi: 2.8, townSqMi: 57.5, walk: 82, bike: 45, tscore: 59, railN: 0, railMi: null, busN: 10, busMi: 0.0, lvl: "approx", off: 0.9, ws: "https://www.walkscore.com/score/victory-blvd-staten-island-ny" },
+  "Columbia":
+    { loc: "City: Large", locCode: 11, town: "New York city", townMi: 10.1, townSqMi: 300.5, walk: 97, bike: null, tscore: null, railN: 3, railMi: 0.0, busN: 0, busMi: null, lvl: "address", ws: "https://www.walkscore.com/score/west-116-st-and-broadway-new-york-ny" },
+  "Concordia Chicago":
+    { loc: "Suburb: Large", locCode: 21, town: "River Forest village", townMi: 0.4, townSqMi: 2.5, walk: 51, bike: 51, tscore: null, railN: 2, railMi: 0.9, busN: 3, busMi: 0.3, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/augusta-river-forest-il" },
+  "Converse":
+    { loc: "City: Small", locCode: 13, town: "Spartanburg city", townMi: 0.8, townSqMi: 20.3, walk: 64, bike: 44, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/580-e-main-st-spartanburg-sc" },
+  "Coppin State":
+    { loc: "City: Large", locCode: 11, town: "Baltimore city", townMi: 2.7, townSqMi: 80.9, walk: 76, bike: 46, tscore: 81, railN: 2, railMi: 0.6, busN: 4, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2500-west-north-avenue-baltimore-md" },
+  "Covenant College":
+    { loc: "Suburb: Large", locCode: 21, town: "Lookout Mountain city", townMi: 0.8, townSqMi: 2.6, walk: 0, bike: 9, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/14049-scenic-highway-lookout-mountain-ga" },
+  "Curry":
+    { loc: "Suburb: Large", locCode: 21, town: "Milton CDP", townMi: 1.8, townSqMi: 13.0, walk: 13, bike: 38, tscore: 25, railN: 3, railMi: 1.1, busN: 3, busMi: 0.2, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/1071-blue-hill-ave-milton-ma" },
+  "Daemen":
+    { loc: "Suburb: Large", locCode: 21, town: "Amherst town", townMi: 3.5, townSqMi: 53.2, walk: 30, bike: null, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.5, lvl: "approx", off: 0.5, ws: "https://www.walkscore.com/score/getzville-road-amherst-ny" },
+  "Davidson":
+    { loc: "Suburb: Large", locCode: 21, town: "Davidson town", townMi: 2.1, townSqMi: 6.5, walk: 79, bike: 71, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/405-n-main-street-davidson-nc" },
+  "DePaul":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 6.3, townSqMi: 227.7, walk: 96, bike: 85, tscore: 83, railN: 5, railMi: 0.1, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2250-n-sheffield-ave-chicago-il" },
+  "Dominican University":
+    { loc: "Suburb: Large", locCode: 21, town: "River Forest village", townMi: 0.1, townSqMi: 2.5, walk: 41, bike: 51, tscore: null, railN: 3, railMi: 0.6, busN: 2, busMi: 0.4, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/chicago-avenue-river-forest-il" },
+  "Duke":
+    { loc: "City: Large", locCode: 11, town: "Durham city", townMi: 2.7, townSqMi: 116.8, walk: 48, bike: 56, tscore: 70, railN: 0, railMi: null, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/103-allen-bldg-durham-nc" },
+  "Duquesne":
+    { loc: "City: Large", locCode: 11, town: "Pittsburgh city", townMi: 1.0, townSqMi: 55.4, walk: 86, bike: 61, tscore: 87, railN: 0, railMi: null, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/supple-circle-pittsburgh-pa" },
+  "D’Youville":
+    { loc: "City: Large", locCode: 11, town: "Buffalo city", townMi: 1.7, townSqMi: 40.4, walk: 84, bike: 79, tscore: 47, railN: 0, railMi: null, busN: 5, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/320-porter-ave-buffalo-ny" },
+  "Eastern":
+    { loc: "Suburb: Large", locCode: 21, town: "Radnor township", townMi: 1.9, townSqMi: 13.8, walk: 21, bike: 23, tscore: null, railN: 2, railMi: 0.5, busN: 1, busMi: 0.6, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1300-eagle-rd-saint-davids-pa" },
+  "Eastern Kentucky":
+    { loc: "Town: Distant", locCode: 32, town: "Richmond city", townMi: 0.5, townSqMi: 21.8, walk: 19, bike: 36, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/van-hoose-drive-richmond-ky" },
+  "Elmhurst University":
+    { loc: "Suburb: Large", locCode: 21, town: "Elmhurst city", townMi: 0.3, townSqMi: 10.2, walk: 76, bike: 49, tscore: 37, railN: 1, railMi: 0.5, busN: 2, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/elmwood-terrace-elmhurst-il" },
+  "Elon":
+    { loc: "Suburb: Midsize", locCode: 22, town: "Elon town", townMi: 0.3, townSqMi: 4.2, walk: 50, bike: 50, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/100-campus-drive-elon-nc" },
+  "Emerson":
+    { loc: "City: Large", locCode: 11, town: "Boston city", townMi: 2.6, townSqMi: 48.3, walk: 99, bike: 75, tscore: 100, railN: 10, railMi: 0.2, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/120-boylston-street-boston-ma" },
+  "Emmanuel":
+    { loc: "City: Large", locCode: 11, town: "Boston city", townMi: 4.4, townSqMi: 48.3, walk: 92, bike: 90, tscore: 93, railN: 4, railMi: 0.3, busN: 10, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/400-the-fenway-boston-ma" },
+  "Emmanuel (GA)":
+    { loc: "Rural: Distant", locCode: 42, town: "Franklin Springs city", townMi: 0.1, townSqMi: 2.2, walk: 17, bike: 15, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/181-spring-st-franklin-springs-ga" },
+  "Emory":
+    { loc: "City: Large", locCode: 11, town: "Atlanta city", townMi: 5.9, townSqMi: 135.3, walk: 75, bike: 41, tscore: 35, railN: 0, railMi: null, busN: 3, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/201-dowman-drive-atlanta-ga" },
+  "Emory & Henry":
+    { loc: "Rural: Fringe", locCode: 41, town: "Emory CDP", townMi: 0.5, townSqMi: 4.1, walk: 14, bike: 9, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/30461-garnand-drive-emory-va" },
+  "Erskine":
+    { loc: "Rural: Distant", locCode: 42, town: "Due West town", townMi: 0.2, townSqMi: 1.6, walk: 32, bike: 44, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "town", off: 0.2, ws: "https://www.walkscore.com/score/due-west-sc" },
+  "ETSU":
+    { loc: "City: Small", locCode: 13, town: "Johnson City city", townMi: 2.8, townSqMi: 43.5, walk: 63, bike: 40, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/1276-gilbreath-drive-johnson-city-tn" },
+  "Fairleigh Dickinson":
+    { loc: "Suburb: Large", locCode: 21, town: "Teaneck township", townMi: 0.3, townSqMi: 6.0, walk: 54, bike: 56, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/colonial-court-teaneck-nj" },
+  "Farmingdale State":
+    { loc: "Suburb: Large", locCode: 21, town: "Farmingdale village", townMi: 1.8, townSqMi: 1.1, walk: 58, bike: 45, tscore: null, railN: 1, railMi: 1.2, busN: 7, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/broadhollow-road-farmingdale-ny" },
+  "Fayetteville State":
+    { loc: "City: Midsize", locCode: 12, town: "Fayetteville city", townMi: 4.7, townSqMi: 148.3, walk: 57, bike: 29, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/mary-t-eldridge-street-fayetteville-nc" },
+  "Felician":
+    { loc: "Suburb: Large", locCode: 21, town: "Lodi borough", townMi: 1.0, townSqMi: 2.3, walk: 58, bike: 37, tscore: 49, railN: 2, railMi: 0.6, busN: 5, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/262-s-main-st-lodi-nj" },
+  "Fordham":
+    { loc: "City: Large", locCode: 11, town: "Bronx borough", townMi: 1.9, townSqMi: 42.2, walk: 90, bike: 55, tscore: 100, railN: 8, railMi: 0.3, busN: 10, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/441-e-fordham-rd-bronx-ny" },
+  "Fort Valley State":
+    { loc: "Town: Fringe", locCode: 31, town: "Fort Valley city", townMi: 1.3, townSqMi: 7.5, walk: 13, bike: 42, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/1005-state-university-dr-fort-valley-ga" },
+  "Francis Marion":
+    { loc: "Rural: Fringe", locCode: 41, town: "Florence city", townMi: 8.0, townSqMi: 24.5, walk: 15, bike: 31, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/4822-east-palmetto-street-florence-sc" },
+  "Furman":
+    { loc: "Suburb: Large", locCode: 21, town: "Greenville city", townMi: 7.5, townSqMi: 30.1, walk: 3, bike: null, tscore: null, railN: 0, railMi: null, busN: 1, busMi: 1.0, lvl: "approx", off: 1, ws: "https://www.walkscore.com/score/3300-poinsett-highway-greenville-sc" },
+  "Gallaudet":
+    { loc: "City: Large", locCode: 11, town: "Washington city", townMi: 1.2, townSqMi: 61.1, walk: 78, bike: 76, tscore: 62, railN: 7, railMi: 0.6, busN: 7, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/800-florida-ave-ne-washington-dc" },
+  "Gardner-Webb":
+    { loc: "Rural: Distant", locCode: 42, town: "Boiling Springs town", townMi: 0.4, townSqMi: 4.5, walk: 33, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "approx", off: 0.8, ws: "https://www.walkscore.com/score/main-st-boiling-springs-nc" },
+  "George Mason":
+    { loc: "Suburb: Large", locCode: 21, town: "Fairfax city", townMi: 1.5, townSqMi: 6.2, walk: 56, bike: 73, tscore: null, railN: 0, railMi: null, busN: 9, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/chesapeake-river-way-fairfax-va" },
+  "George Washington":
+    { loc: "City: Large", locCode: 11, town: "Washington city", townMi: 1.7, townSqMi: 61.1, walk: 94, bike: 61, tscore: 88, railN: 7, railMi: 0.3, busN: 10, busMi: 0.0, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/1918-f-street-nw-washington-dc" },
+  "Georgetown":
+    { loc: "City: Large", locCode: 11, town: "Washington city", townMi: 3.1, townSqMi: 61.1, walk: 90, bike: 71, tscore: 70, railN: 3, railMi: 0.8, busN: 6, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/37th-and-o-st-nw-washington-dc" },
+  "Georgia":
+    { loc: "City: Midsize", locCode: 12, town: "Athens-Clarke County unified government (balance)", townMi: 0.3, townSqMi: 116.4, walk: 66, bike: 65, tscore: null, railN: 0, railMi: null, busN: 1, busMi: 0.2, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/sanford-drive-athens-ga" },
+  "Georgia College":
+    { loc: "Town: Distant", locCode: 32, town: "Milledgeville city", townMi: 0.6, townSqMi: 20.3, walk: 60, bike: 44, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/231-w-hancock-street-milledgeville-ga" },
+  "Georgia Southern":
+    { loc: "Town: Distant", locCode: 32, town: "Statesboro city", townMi: 1.3, townSqMi: 15.0, walk: 51, bike: 47, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/1332-southern-drive-statesboro-ga" },
+  "Georgia State":
+    { loc: "City: Large", locCode: 11, town: "Atlanta city", townMi: 2.2, townSqMi: 135.3, walk: 93, bike: 76, tscore: 85, railN: 6, railMi: 0.2, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/33-gilmer-st-atlanta-ga" },
+  "Georgia Tech":
+    { loc: "City: Large", locCode: 11, town: "Atlanta city", townMi: 1.7, townSqMi: 135.3, walk: 74, bike: 78, tscore: 65, railN: 6, railMi: 0.4, busN: 10, busMi: 0.1, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/225-north-ave-atlanta-ga" },
+  "Goucher":
+    { loc: "City: Small", locCode: 13, town: "Baltimore city", townMi: 7.7, townSqMi: 80.9, walk: 37, bike: 32, tscore: 60, railN: 0, railMi: null, busN: 8, busMi: 0.4, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/1021-dulaney-valley-rd-baltimore-md" },
+  "Greensboro College":
+    { loc: "City: Large", locCode: 11, town: "Greensboro city", townMi: 2.1, townSqMi: 133.9, walk: 84, bike: null, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/815-w-market-st-greensboro-nc" },
+  "Guilford":
+    { loc: "City: Large", locCode: 11, town: "Greensboro city", townMi: 3.9, townSqMi: 133.9, walk: 21, bike: 25, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/arcadia-drive-greensboro-nc" },
+  "Hampton":
+    { loc: "Suburb: Large", locCode: 21, town: "Hampton city", townMi: 3.0, townSqMi: 51.5, walk: 39, bike: 44, tscore: 42, railN: 0, railMi: null, busN: 9, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/200-william-r-harvey-way-hampton-va" },
+  "Harvard":
+    { loc: "City: Midsize", locCode: 12, town: "Cambridge city", townMi: 0.1, townSqMi: 6.4, walk: 98, bike: 98, tscore: 80, railN: 6, railMi: 0.0, busN: 10, busMi: 0.0, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/massachusetts-hall-cambridge-ma" },
+  "Haverford":
+    { loc: "Suburb: Large", locCode: 21, town: "Haverford township", townMi: 1.5, townSqMi: 9.9, walk: 58, bike: 52, tscore: null, railN: 2, railMi: 0.5, busN: 3, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/coursey-road-haverford-pa" },
+  "High Point":
+    { loc: "City: Midsize", locCode: 12, town: "High Point city", townMi: 1.4, townSqMi: 57.3, walk: 58, bike: 53, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.5, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/panther-drive-high-point-nc" },
+  "Hilbert":
+    { loc: "Suburb: Large", locCode: 21, town: "Hamburg village", townMi: 2.3, townSqMi: 2.5, walk: 6, bike: 29, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/5200-s-park-ave-hamburg-ny" },
+  "Hofstra":
+    { loc: "Suburb: Large", locCode: 21, town: "Hempstead village", townMi: 1.2, townSqMi: 3.7, walk: 47, bike: 73, tscore: 41, railN: 1, railMi: 1.4, busN: 5, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/hofstra-university-hempstead-ny" },
+  "Holy Family":
+    { loc: "City: Large", locCode: 11, town: "Philadelphia city", townMi: 8.5, townSqMi: 134.4, walk: 59, bike: 51, tscore: 50, railN: 1, railMi: 0.5, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/9801-frankford-avenue-philadelphia-pa" },
+  "Howard":
+    { loc: "City: Large", locCode: 11, town: "Washington city", townMi: 1.3, townSqMi: 61.1, walk: 74, bike: 72, tscore: 75, railN: 5, railMi: 0.6, busN: 6, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/2400-sixth-st-nw-washington-dc" },
+  "Hunter College":
+    { loc: "City: Large", locCode: 11, town: "New York city", townMi: 7.4, townSqMi: 300.5, walk: 97, bike: 79, tscore: 100, railN: 8, railMi: 0.1, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/695-park-ave-new-york-ny" },
+  "Illinois Tech":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 3.0, townSqMi: 227.7, walk: 71, bike: 86, tscore: 79, railN: 5, railMi: 0.3, busN: 6, busMi: 0.0, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/10-west-35th-street-chicago-il" },
+  "Iona":
+    { loc: "Suburb: Large", locCode: 21, town: "New Rochelle city", townMi: 0.6, townSqMi: 10.3, walk: 85, bike: 50, tscore: 40, railN: 2, railMi: 0.9, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/mount-joy-place-new-rochelle-ny" },
+  "Jacksonville State":
+    { loc: "Suburb: Small", locCode: 23, town: "Jacksonville city", townMi: 1.0, townSqMi: 10.9, walk: 46, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/street-avenue-jacksonville-al" },
+  "John Jay":
+    { loc: "City: Large", locCode: 11, town: "New York city", townMi: 7.9, townSqMi: 300.5, walk: 97, bike: 79, tscore: 100, railN: 10, railMi: 0.4, busN: 4, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/524-w-59th-st-new-york-ny" },
+  "Johns Hopkins":
+    { loc: "City: Large", locCode: 11, town: "Baltimore city", townMi: 2.1, townSqMi: 80.9, walk: 87, bike: 77, tscore: 66, railN: 1, railMi: 1.1, busN: 5, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/3400-n-charles-st-baltimore-md" },
+  "Johnson C. Smith":
+    { loc: "City: Large", locCode: 11, town: "Charlotte city", townMi: 2.8, townSqMi: 310.8, walk: 33, bike: 39, tscore: 52, railN: 2, railMi: 0.1, busN: 4, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/100-beatties-ford-road-charlotte-nc" },
+  "Kean University":
+    { loc: "Suburb: Large", locCode: 21, town: "Union CDP", townMi: 2.0, townSqMi: 0.3, walk: 53, bike: 43, tscore: null, railN: 3, railMi: 0.6, busN: 3, busMi: 0.3, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/1000-morris-avenue-union-nj" },
+  "Kennesaw State":
+    { loc: "Suburb: Large", locCode: 21, town: "Kennesaw city", townMi: 2.1, townSqMi: 9.8, walk: 40, bike: 25, tscore: null, railN: 0, railMi: null, busN: 7, busMi: 0.2, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/chastain-rd-kennesaw-ga" },
+  "King University":
+    { loc: "City: Small", locCode: 13, town: "Bristol city", townMi: 2.4, townSqMi: 32.7, walk: 49, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/dale-street-bristol-tn" },
+  "La Roche":
+    { loc: "Suburb: Large", locCode: 21, town: "Pittsburgh city", townMi: 9.1, townSqMi: 55.4, walk: 32, bike: null, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/9000-babcock-blvd-pittsburgh-pa" },
+  "La Salle":
+    { loc: "City: Large", locCode: 11, town: "Philadelphia city", townMi: 2.2, townSqMi: 134.4, walk: 84, bike: 58, tscore: 74, railN: 7, railMi: 0.4, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1900-w-olney-ave-philadelphia-pa" },
+  "LaGrange":
+    { loc: "Town: Distant", locCode: 32, town: "LaGrange city", townMi: 0.8, townSqMi: 42.3, walk: 68, bike: 28, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/601-broad-street-lagrange-ga" },
+  "Lander":
+    { loc: "Town: Distant", locCode: 32, town: "Greenwood city", townMi: 0.5, townSqMi: 16.7, walk: 70, bike: 47, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/mill-avenue-greenwood-sc" },
+  "Lasell":
+    { loc: "City: Small", locCode: 13, town: "Newton city", townMi: 1.9, townSqMi: 17.8, walk: 54, bike: 53, tscore: 50, railN: 2, railMi: 0.4, busN: 10, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1844-commonwealth-avenue-newton-ma" },
+  "Lee University":
+    { loc: "City: Small", locCode: 13, town: "Cleveland city", townMi: 1.0, townSqMi: 31.1, walk: 69, bike: 54, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/1120-n-ocoee-st-cleveland-tn" },
+  "Lees-McRae":
+    { loc: "Rural: Distant", locCode: 42, town: "Banner Elk town", townMi: 0.4, townSqMi: 1.9, walk: 40, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/191-main-street-banner-elk-nc" },
+  "Lehman College":
+    { loc: "City: Large", locCode: 11, town: "Bronx borough", townMi: 2.8, townSqMi: 42.2, walk: 78, bike: 73, tscore: 100, railN: 6, railMi: 0.2, busN: 10, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/250-bedford-park-blvd-west-bronx-ny" },
+  "Lenoir-Rhyne":
+    { loc: "City: Small", locCode: 13, town: "Hickory city", townMi: 0.2, townSqMi: 31.9, walk: 22, bike: 20, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/c-avenue-southeast-hickory-nc" },
+  "Lesley":
+    { loc: "City: Midsize", locCode: 12, town: "Cambridge city", townMi: 0.3, townSqMi: 6.4, walk: 90, bike: null, tscore: null, railN: 2, railMi: 0.5, busN: 10, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/29-everett-st-cambridge-ma" },
+  "Life University":
+    { loc: "City: Small", locCode: 13, town: "Marietta city", townMi: 2.1, townSqMi: 23.5, walk: 23, bike: 22, tscore: 34, railN: 0, railMi: null, busN: 3, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1269-barclay-circle-marietta-ga" },
+  "Lincoln Memorial":
+    { loc: "Town: Distant", locCode: 32, town: "Harrogate city", townMi: 0.8, townSqMi: 7.3, walk: 36, bike: 28, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/6965-cumberland-gap-parkway-harrogate-tn" },
+  "LIU":
+    { loc: "Suburb: Large", locCode: 21, town: "Brookville village", townMi: 23.0, townSqMi: 3.9, walk: 99, bike: 92, tscore: 100, railN: 10, railMi: 0.1, busN: 8, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1-university-plaza-brooklyn-ny" },
+  "Livingstone":
+    { loc: "Suburb: Large", locCode: 21, town: "Salisbury city", townMi: 0.5, townSqMi: 22.9, walk: 59, bike: 45, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/w-monroe-st-salisbury-nc" },
+  "Loyola Chicago":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 11.4, townSqMi: 227.7, walk: 88, bike: 74, tscore: 71, railN: 2, railMi: 0.3, busN: 5, busMi: 0.0, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/1032-w-sheridan-rd-chicago-il" },
+  "Loyola Maryland":
+    { loc: "City: Large", locCode: 11, town: "Baltimore city", townMi: 3.3, townSqMi: 80.9, walk: 48, bike: 37, tscore: 53, railN: 1, railMi: 1.4, busN: 2, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/4501-n-charles-st-baltimore-md" },
+  "Manhattan":
+    { loc: "City: Large", locCode: 11, town: "Bronx borough", townMi: 3.8, townSqMi: 42.2, walk: 90, bike: 58, tscore: 88, railN: 5, railMi: 0.1, busN: 10, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/4513-manhattan-college-parkway-riverdale-ny" },
+  "Mars Hill":
+    { loc: "Rural: Fringe", locCode: 41, town: "Mars Hill town", townMi: 0.2, townSqMi: 2.1, walk: 33, bike: 15, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/100-athletic-st-mars-hill-nc" },
+  "Maryland":
+    { loc: "Suburb: Large", locCode: 21, town: "College Park city", townMi: 0.7, townSqMi: 5.6, walk: 63, bike: 89, tscore: 47, railN: 2, railMi: 0.5, busN: 6, busMi: 0.1, lvl: "approx", off: 0.7, ws: "https://www.walkscore.com/score/campus-drive-college-park-md" },
+  "Marymount":
+    { loc: "City: Midsize", locCode: 12, town: "Arlington CDP", townMi: 2.4, townSqMi: 26.0, walk: 50, bike: 54, tscore: 43, railN: 0, railMi: null, busN: 2, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2807-n-glebe-rd-arlington-va" },
+  "Maryville College":
+    { loc: "Suburb: Large", locCode: 21, town: "Maryville city", townMi: 0.9, townSqMi: 17.7, walk: 40, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/502-e-lamar-alexander-pkwy-maryville-tn" },
+  "Medgar Evers":
+    { loc: "City: Large", locCode: 11, town: "Brooklyn borough", townMi: 2.2, townSqMi: 69.4, walk: 88, bike: 83, tscore: 100, railN: 6, railMi: 0.3, busN: 4, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/1650-bedford-ave-brooklyn-ny" },
+  "Mercer":
+    { loc: "City: Midsize", locCode: 12, town: "Macon-Bibb County", townMi: 3.0, townSqMi: 249.4, walk: 48, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/1501-mercer-university-drive-macon-ga" },
+  "Merchant Marine Acad.":
+    { loc: "Suburb: Large", locCode: 21, town: "Kings Point village", townMi: 1.3, townSqMi: 3.4, walk: 10, bike: 27, tscore: null, railN: 0, railMi: null, busN: 1, busMi: 0.2, lvl: "address", off: 0.5, ws: "https://www.walkscore.com/score/steppingstone-lane-kings-point-ny" },
+  "Methodist":
+    { loc: "City: Midsize", locCode: 12, town: "Fayetteville city", townMi: 6.7, townSqMi: 148.3, walk: 59, bike: 42, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/ramsey-st-fayetteville-nc" },
+  "MIT":
+    { loc: "City: Midsize", locCode: 12, town: "Cambridge city", townMi: 1.7, townSqMi: 6.4, walk: 94, bike: 99, tscore: 66, railN: 6, railMi: 0.4, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/77-massachusetts-avenue-cambridge-ma" },
+  "Molloy":
+    { loc: "Suburb: Large", locCode: 21, town: "Rockville Centre village", townMi: 0.3, townSqMi: 3.3, walk: 94, bike: null, tscore: null, railN: 2, railMi: 0.3, busN: 5, busMi: 0.2, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/grand-avenue-rockville-centre-ny" },
+  "Montclair State":
+    { loc: "Suburb: Large", locCode: 21, town: "Montclair township", townMi: 2.6, townSqMi: 6.2, walk: 38, bike: null, tscore: null, railN: 1, railMi: 0.2, busN: 4, busMi: 0.0, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/1-normal-avenue-montclair-nj" },
+  "Montreat":
+    { loc: "Suburb: Large", locCode: 21, town: "Montreat town", townMi: 0.1, townSqMi: 2.7, walk: 17, bike: 4, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/310-gaither-circle-montreat-nc" },
+  "Moody Bible":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 5.0, townSqMi: 227.7, walk: 99, bike: 87, tscore: 93, railN: 7, railMi: 0.2, busN: 5, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/820-n-lasalle-blvd-chicago-il" },
+  "Morehouse":
+    { loc: "City: Large", locCode: 11, town: "Atlanta city", townMi: 1.3, townSqMi: 135.3, walk: 77, bike: 62, tscore: 49, railN: 4, railMi: 0.7, busN: 3, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/830-westview-dr-sw-atlanta-ga" },
+  "Morgan State":
+    { loc: "City: Large", locCode: 11, town: "Baltimore city", townMi: 3.3, townSqMi: 80.9, walk: 62, bike: 41, tscore: 59, railN: 0, railMi: null, busN: 6, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1700-east-cold-spring-lane-baltimore-md" },
+  "Mount Saint Vincent":
+    { loc: "City: Large", locCode: 11, town: "Bronx borough", townMi: 5.0, townSqMi: 42.2, walk: 68, bike: 33, tscore: 66, railN: 1, railMi: 0.7, busN: 7, busMi: 0.2, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/6301-riverdale-avenue-bronx-ny" },
+  "NC A&T":
+    { loc: "City: Large", locCode: 11, town: "Greensboro city", townMi: 3.2, townSqMi: 133.9, walk: 73, bike: 47, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.4, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1601-e-market-st-greensboro-nc" },
+  "NC Central":
+    { loc: "City: Large", locCode: 11, town: "Durham city", townMi: 0.3, townSqMi: 116.8, walk: 50, bike: 33, tscore: 43, railN: 0, railMi: null, busN: 4, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1801-fayetteville-street-durham-nc" },
+  "NC State":
+    { loc: "City: Large", locCode: 11, town: "Raleigh city", townMi: 4.0, townSqMi: 149.4, walk: 45, bike: 58, tscore: 45, railN: 0, railMi: null, busN: 7, busMi: 0.2, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/varsity-drive-raleigh-nc" },
+  "Newberry":
+    { loc: "Town: Distant", locCode: 32, town: "Newberry city", townMi: 1.1, townSqMi: 9.0, walk: 31, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2100-college-st-newberry-sc" },
+  "NJCU":
+    { loc: "City: Large", locCode: 11, town: "Jersey City city", townMi: 1.2, townSqMi: 14.7, walk: 73, bike: 56, tscore: 73, railN: 1, railMi: 0.3, busN: 3, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/2039-kennedy-blvd-jersey-city-nj" },
+  "NJIT":
+    { loc: "City: Large", locCode: 11, town: "Newark city", townMi: 1.3, townSqMi: 24.1, walk: 91, bike: 66, tscore: 91, railN: 4, railMi: 0.1, busN: 10, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/tiernan-alley-newark-nj" },
+  "Norfolk State":
+    { loc: "City: Midsize", locCode: 12, town: "Norfolk city", townMi: 5.2, townSqMi: 53.3, walk: 45, bike: 47, tscore: 60, railN: 2, railMi: 0.4, busN: 5, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/700-park-avenue-norfolk-va" },
+  "North Georgia":
+    { loc: "Town: Distant", locCode: 32, town: "Dahlonega city", townMi: 0.3, townSqMi: 8.8, walk: 76, bike: 38, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/82-college-circle-dahlonega-ga" },
+  "North Greenville":
+    { loc: "Rural: Fringe", locCode: 41, town: "Tigerville CDP", townMi: 0.1, townSqMi: 1.3, walk: 9, bike: 11, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/mountain-view-road-tigerville-sc" },
+  "North Park University":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 9.7, townSqMi: 227.7, walk: 84, bike: 82, tscore: 62, railN: 1, railMi: 0.5, busN: 3, busMi: 0.1, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/3225-w-foster-ave-chicago-il" },
+  "Northeastern":
+    { loc: "City: Large", locCode: 11, town: "Boston city", townMi: 3.6, townSqMi: 48.3, walk: 96, bike: 90, tscore: 100, railN: 8, railMi: 0.0, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/360-huntington-ave-boston-ma" },
+  "Northwestern":
+    { loc: "City: Small", locCode: 13, town: "Evanston city", townMi: 1.2, townSqMi: 7.8, walk: 96, bike: 92, tscore: 61, railN: 2, railMi: 0.2, busN: 8, busMi: 0.1, lvl: "address", off: 0.5, ws: "https://www.walkscore.com/score/633-clark-st-evanston-il" },
+  "NYIT":
+    { loc: "Rural: Fringe", locCode: 41, town: "Old Westbury village", townMi: 1.6, townSqMi: 8.6, walk: 27, bike: null, tscore: null, railN: 1, railMi: 0.6, busN: 2, busMi: 0.4, lvl: "approx", off: 0.8, ws: "https://www.walkscore.com/score/northern-blvd-old-westbury-ny" },
+  "NYU":
+    { loc: "City: Large", locCode: 11, town: "New York city", townMi: 5.5, townSqMi: 300.5, walk: 99, bike: 95, tscore: 100, railN: 9, railMi: 0.2, busN: 10, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/70-washington-sq-south-new-york-ny" },
+  "Oglethorpe":
+    { loc: "Suburb: Large", locCode: 21, town: "Atlanta city", townMi: 9.3, townSqMi: 135.3, walk: 62, bike: 35, tscore: 32, railN: 1, railMi: 1.1, busN: 5, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/4484-peachtree-road-ne-atlanta-ga" },
+  "Penn":
+    { loc: "City: Large", locCode: 11, town: "Philadelphia city", townMi: 5.2, townSqMi: 134.4, walk: 88, bike: 88, tscore: 96, railN: 9, railMi: 0.2, busN: 7, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/34th-and-spruce-street-philadelphia-pa" },
+  "Penn State Abington":
+    { loc: "Suburb: Large", locCode: 21, town: "Abington township", townMi: 0.3, townSqMi: 15.5, walk: 15, bike: 11, tscore: null, railN: 2, railMi: 0.5, busN: 1, busMi: 0.5, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1600-woodland-road-abington-pa" },
+  "Penn State Brandywine":
+    { loc: "Suburb: Large", locCode: 21, town: "Media borough", townMi: 3.3, townSqMi: 0.8, walk: 0, bike: 11, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/nittany-drive-media-pa" },
+  "Pfeiffer":
+    { loc: "Rural: Fringe", locCode: 41, town: "Misenheimer village", townMi: 0.6, townSqMi: 1.6, walk: 7, bike: 22, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/us-highway-52-misenheimer-nc" },
+  "Piedmont University":
+    { loc: "Town: Distant", locCode: 32, town: "Demorest city", townMi: 0.2, townSqMi: 2.2, walk: 33, bike: 17, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/footpath-from-conservatory-of-music-to-student-commons-demorest-ga" },
+  "Pittsburgh":
+    { loc: "City: Large", locCode: 11, town: "Pittsburgh city", townMi: 1.2, townSqMi: 55.4, walk: 93, bike: 75, tscore: 70, railN: 0, railMi: null, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/4200-fifth-avenue-pittsburgh-pa" },
+  "Point Park":
+    { loc: "City: Large", locCode: 11, town: "Pittsburgh city", townMi: 1.4, townSqMi: 55.4, walk: 99, bike: 83, tscore: 93, railN: 0, railMi: null, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/201-wood-st-pittsburgh-pa" },
+  "Pratt Institute":
+    { loc: "City: Large", locCode: 11, town: "Brooklyn borough", townMi: 4.0, townSqMi: 69.4, walk: 96, bike: 98, tscore: 100, railN: 10, railMi: 0.2, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/200-willoughby-ave-brooklyn-ny" },
+  "Presbyterian":
+    { loc: "Town: Distant", locCode: 32, town: "Clinton city", townMi: 0.3, townSqMi: 10.4, walk: 45, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", ws: "https://www.walkscore.com/score/east-florida-street-clinton-sc" },
+  "Queens (Charlotte)":
+    { loc: "City: Large", locCode: 11, town: "Charlotte city", townMi: 1.4, townSqMi: 310.8, walk: 70, bike: 49, tscore: 31, railN: 0, railMi: null, busN: 3, busMi: 0.0, lvl: "approx", off: 1.1, ws: "https://www.walkscore.com/score/selwyn-ave-charlotte-nc" },
+  "Queens College (CUNY)":
+    { loc: "City: Large", locCode: 11, town: "Queens borough", townMi: 5.8, townSqMi: 108.7, walk: 46, bike: 52, tscore: 72, railN: 0, railMi: null, busN: 5, busMi: 0.2, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/65-30-kissena-blvd-queens-ny" },
+  "Radford":
+    { loc: "Town: Fringe", locCode: 31, town: "Radford city", townMi: 1.3, townSqMi: 9.7, walk: 56, bike: 62, tscore: null, railN: 0, railMi: null, busN: 10, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/801-east-main-st-radford-va" },
+  "Regent":
+    { loc: "City: Large", locCode: 11, town: "Virginia Beach city", townMi: 9.3, townSqMi: 244.7, walk: 28, bike: 44, tscore: 24, railN: 0, railMi: null, busN: 7, busMi: 0.4, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/1000-regent-university-dr-virginia-beach-va" },
+  "Regis":
+    { loc: "Suburb: Large", locCode: 21, town: "Weston town", townMi: 0.7, townSqMi: 16.8, walk: 5, bike: 18, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/235-wellesley-st-weston-ma" },
+  "Robert Morris":
+    { loc: "Suburb: Large", locCode: 21, town: "Moon township", townMi: 0.7, townSqMi: 23.9, walk: 47, bike: null, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/6001-university-boulevard-moon-township-pa" },
+  "Roosevelt":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 4.1, townSqMi: 227.7, walk: 99, bike: 82, tscore: 100, railN: 9, railMi: 0.1, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/430-s-michigan-ave-chicago-il" },
+  "Rosemont":
+    { loc: "Suburb: Large", locCode: 21, town: "Rosemont CDP", townMi: 0.2, townSqMi: 0.8, walk: 55, bike: 26, tscore: null, railN: 2, railMi: 0.4, busN: 2, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1400-montgomery-ave-rosemont-pa" },
+  "Rutgers–Camden":
+    { loc: "City: Small", locCode: 13, town: "Camden city", townMi: 1.1, townSqMi: 8.9, walk: 79, bike: 61, tscore: 69, railN: 4, railMi: 0.1, busN: 10, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/406-penn-street-camden-nj" },
+  "Rutgers–Newark":
+    { loc: "City: Large", locCode: 11, town: "Newark city", townMi: 1.0, townSqMi: 24.1, walk: 98, bike: 68, tscore: 96, railN: 6, railMi: 0.1, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/249-university-avenue-blumenthal-hall-newark-nj" },
+  "Saint Augustine’s":
+    { loc: "City: Large", locCode: 11, town: "Raleigh city", townMi: 3.3, townSqMi: 149.4, walk: 57, bike: 74, tscore: 51, railN: 0, railMi: null, busN: 2, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/1315-oakwood-avenue-raleigh-nc" },
+  "Saint Joseph’s":
+    { loc: "City: Large", locCode: 11, town: "Philadelphia city", townMi: 5.7, townSqMi: 134.4, walk: 41, bike: null, tscore: null, railN: 3, railMi: 0.7, busN: 6, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/5600-city-avenue-philadelphia-pa" },
+  "Saint Peter's":
+    { loc: "City: Large", locCode: 11, town: "Jersey City city", townMi: 1.2, townSqMi: 14.7, walk: 97, bike: 69, tscore: 76, railN: 1, railMi: 1.1, busN: 6, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2641-kennedy-blvd-jersey-city-nj" },
+  "Saint Xavier":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 9.1, townSqMi: 227.7, walk: 37, bike: 45, tscore: 43, railN: 0, railMi: null, busN: 2, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/3700-w-103rd-st-chicago-il" },
+  "Samford":
+    { loc: "Suburb: Large", locCode: 21, town: "Birmingham city", townMi: 4.2, townSqMi: 147.1, walk: 41, bike: null, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.9, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/800-lakeshore-drive-birmingham-al" },
+  "Sarah Lawrence":
+    { loc: "Suburb: Large", locCode: 21, town: "Bronxville village", townMi: 0.9, townSqMi: 1.0, walk: 59, bike: 31, tscore: 52, railN: 1, railMi: 0.5, busN: 4, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/one-meadway-bronxville-ny" },
+  "Savannah State":
+    { loc: "City: Midsize", locCode: 12, town: "Savannah city", townMi: 7.8, townSqMi: 108.9, walk: 27, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/3219-college-street-savannah-ga" },
+  "SC State":
+    { loc: "Town: Distant", locCode: 32, town: "Orangeburg city", townMi: 1.1, townSqMi: 9.0, walk: 40, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/lance-street-orangeburg-sc" },
+  "Seton Hall":
+    { loc: "Suburb: Large", locCode: 21, town: "South Orange Village township", townMi: 0.9, townSqMi: 2.8, walk: 78, bike: 47, tscore: null, railN: 2, railMi: 0.8, busN: 5, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/400-s-orange-ave-south-orange-nj" },
+  "Shaw":
+    { loc: "City: Large", locCode: 11, town: "Raleigh city", townMi: 4.2, townSqMi: 149.4, walk: 84, bike: 76, tscore: 72, railN: 0, railMi: null, busN: 8, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/118-east-south-street-raleigh-nc" },
+  "Shorter":
+    { loc: "City: Small", locCode: 13, town: "Rome city", townMi: 0.8, townSqMi: 31.8, walk: 25, bike: 25, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/315-shorter-ave-rome-ga" },
+  "South Carolina":
+    { loc: "City: Midsize", locCode: 12, town: "Columbia city", townMi: 7.6, townSqMi: 138.3, walk: 84, bike: 53, tscore: 56, railN: 0, railMi: null, busN: 10, busMi: 0.0, lvl: "approx", off: 0.6, ws: "https://www.walkscore.com/score/columbia-campus-columbia-sc" },
+  "Southern Wesleyan":
+    { loc: "Suburb: Midsize", locCode: 22, town: "Central town", townMi: 0.8, townSqMi: 3.3, walk: 3, bike: 11, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/907-wesleyan-drive-central-sc" },
+  "St. Andrews":
+    { loc: "Town: Distant", locCode: 32, town: "Laurinburg city", townMi: 1.5, townSqMi: 12.5, walk: 36, bike: 46, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.5, ws: "https://www.walkscore.com/score/dogwood-mile-laurinburg-nc" },
+  "St. John’s":
+    { loc: "City: Large", locCode: 11, town: "Queens borough", townMi: 5.3, townSqMi: 108.7, walk: 79, bike: 46, tscore: 68, railN: 7, railMi: 0.8, busN: 10, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/8000-utopia-pky-queens-ny" },
+  "St. Joseph's Long Island":
+    { loc: "City: Large", locCode: 11, town: "Brooklyn borough", townMi: 49.5, townSqMi: 69.4, walk: 62, bike: 44, tscore: null, railN: 1, railMi: 1.0, busN: 4, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/155-w-roe-blvd-patchogue-ny" },
+  "St. Joseph's Univ NY":
+    { loc: "City: Large", locCode: 11, town: "Brooklyn borough", townMi: 3.7, townSqMi: 69.4, walk: 96, bike: 98, tscore: 100, railN: 10, railMi: 0.2, busN: 3, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/clinton-ave-brooklyn-ny" },
+  "St. Thomas Aquinas":
+    { loc: "Suburb: Large", locCode: 21, town: "Sparkill CDP", townMi: 0.3, townSqMi: 0.5, walk: 58, bike: 36, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/route-340-sparkill-ny" },
+  "Stevens Institute":
+    { loc: "Suburb: Large", locCode: 21, town: "Hoboken city", townMi: 0.2, townSqMi: 1.2, walk: 97, bike: 68, tscore: 64, railN: 10, railMi: 0.7, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/castle-point-on-hudson-hoboken-nj" },
+  "Stevenson":
+    { loc: "Suburb: Large", locCode: 21, town: "Owings Mills CDP", townMi: 1.3, townSqMi: 9.5, walk: 43, bike: 15, tscore: 22, railN: 1, railMi: 1.3, busN: 3, busMi: 0.5, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/campus-circle-owings-mills-md" },
+  "Stony Brook":
+    { loc: "Suburb: Large", locCode: 21, town: "Stony Brook CDP", townMi: 0.6, townSqMi: 5.8, walk: 34, bike: null, tscore: null, railN: 1, railMi: 0.6, busN: 5, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/310-administration-building-stony-brook-ny" },
+  "Suffolk":
+    { loc: "City: Large", locCode: 11, town: "Boston city", townMi: 2.6, townSqMi: 48.3, walk: 99, bike: 81, tscore: 100, railN: 10, railMi: 0.3, busN: 10, busMi: 0.0, lvl: "approx", off: 0.8, ws: "https://www.walkscore.com/score/tremont-st-boston-ma" },
+  "SUNY Maritime":
+    { loc: "City: Large", locCode: 11, town: "Bronx borough", townMi: 4.2, townSqMi: 42.2, walk: 14, bike: 29, tscore: 41, railN: 0, railMi: null, busN: 7, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/6-pennyfield-avenue-throggs-neck-ny" },
+  "SUNY Old Westbury":
+    { loc: "Suburb: Large", locCode: 21, town: "Old Westbury village", townMi: 1.6, townSqMi: 8.6, walk: 8, bike: 23, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/223-store-hill-rd-old-westbury-ny" },
+  "Swarthmore":
+    { loc: "Suburb: Large", locCode: 21, town: "Swarthmore borough", townMi: 0.4, townSqMi: 1.4, walk: 67, bike: 42, tscore: null, railN: 2, railMi: 0.3, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/500-college-ave-swarthmore-pa" },
+  "Temple":
+    { loc: "City: Large", locCode: 11, town: "Philadelphia city", townMi: 2.3, townSqMi: 134.4, walk: 93, bike: 75, tscore: 85, railN: 10, railMi: 0.2, busN: 5, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1801-north-broad-street-philadelphia-pa" },
+  "Tennessee":
+    { loc: "City: Midsize", locCode: 12, town: "Knoxville city", townMi: 1.6, townSqMi: 98.7, walk: 60, bike: 30, tscore: 41, railN: 0, railMi: null, busN: 5, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/andy-holt-tower-knoxville-tn" },
+  "Tennessee Tech":
+    { loc: "Town: Remote", locCode: 33, town: "Cookeville city", townMi: 2.0, townSqMi: 35.8, walk: 74, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1-william-l-jones-drive-cookeville-tn" },
+  "The Citadel":
+    { loc: "City: Midsize", locCode: 12, town: "Charleston city", townMi: 2.3, townSqMi: 115.1, walk: 51, bike: 73, tscore: 33, railN: 0, railMi: null, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/171-moultrie-st-charleston-sc" },
+  "Thomas Jefferson":
+    { loc: "City: Large", locCode: 11, town: "Philadelphia city", townMi: 4.4, townSqMi: 134.4, walk: 99, bike: 89, tscore: 100, railN: 10, railMi: 0.1, busN: 10, busMi: 0.0, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/1020-walnut-street-philadelphia-pa" },
+  "Trinity Christian":
+    { loc: "Suburb: Large", locCode: 21, town: "Palos Heights city", townMi: 0.0, townSqMi: 3.8, walk: 73, bike: null, tscore: null, railN: 1, railMi: 1.3, busN: 1, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/south-71st-court-palos-heights-il" },
+  "Tufts":
+    { loc: "Suburb: Large", locCode: 21, town: "Medford city", townMi: 1.2, townSqMi: 8.1, walk: 82, bike: 59, tscore: 66, railN: 5, railMi: 0.2, busN: 10, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/boston-avenue-medford-ma" },
+  "Tusculum":
+    { loc: "Town: Distant", locCode: 32, town: "Greeneville town", townMi: 3.3, townSqMi: 17.0, walk: 29, bike: 34, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/60-shiloh-road-greeneville-tn" },
+  "UAB":
+    { loc: "City: Midsize", locCode: 12, town: "Birmingham city", townMi: 1.8, townSqMi: 147.1, walk: 78, bike: 51, tscore: 36, railN: 0, railMi: null, busN: 3, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/university-boulevard-birmingham-al" },
+  "UIC":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 3.0, townSqMi: 227.7, walk: 91, bike: 93, tscore: 83, railN: 10, railMi: 0.1, busN: 5, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/601-s-morgan-chicago-il" },
+  "UMass Boston":
+    { loc: "City: Large", locCode: 11, town: "Boston city", townMi: 2.0, townSqMi: 48.3, walk: 32, bike: 63, tscore: 54, railN: 4, railMi: 0.7, busN: 10, busMi: 0.2, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/100-morrissey-boulevard-boston-ma" },
+  "UMBC":
+    { loc: "Suburb: Large", locCode: 21, town: "Baltimore city", townMi: 6.2, townSqMi: 80.9, walk: 29, bike: 23, tscore: 50, railN: 0, railMi: null, busN: 3, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/hilltop-circle-baltimore-md" },
+  "UNC Asheville":
+    { loc: "City: Small", locCode: 13, town: "Asheville city", townMi: 3.3, townSqMi: 45.5, walk: 41, bike: 47, tscore: 28, railN: 0, railMi: null, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/one-university-heights-asheville-nc" },
+  "UNC Chapel Hill":
+    { loc: "City: Small", locCode: 13, town: "Chapel Hill town", townMi: 1.3, townSqMi: 21.7, walk: 69, bike: 71, tscore: 61, railN: 0, railMi: null, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/east-cameron-avenue-chapel-hill-nc" },
+  "UNC Charlotte":
+    { loc: "City: Large", locCode: 11, town: "Charlotte city", townMi: 8.7, townSqMi: 310.8, walk: 66, bike: 55, tscore: 29, railN: 1, railMi: 0.9, busN: 6, busMi: 0.1, lvl: "approx", off: 0.5, ws: "https://www.walkscore.com/score/university-city-blvd-charlotte-nc" },
+  "UNC Greensboro":
+    { loc: "City: Large", locCode: 11, town: "Greensboro city", townMi: 2.0, townSqMi: 133.9, walk: 75, bike: 70, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.4, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/1400-spring-garden-st-greensboro-nc" },
+  "UNC Pembroke":
+    { loc: "Town: Distant", locCode: 32, town: "Pembroke town", townMi: 0.9, townSqMi: 3.2, walk: 32, bike: 45, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/one-university-drive-pembroke-nc" },
+  "University at Buffalo":
+    { loc: "Suburb: Large", locCode: 21, town: "Buffalo city", townMi: 8.3, townSqMi: 40.4, walk: 60, bike: 49, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/capen-hall-buffalo-ny" },
+  "University of Chicago":
+    { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 5.5, townSqMi: 227.7, walk: 66, bike: 85, tscore: 65, railN: 2, railMi: 0.6, busN: 6, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/5801-s-ellis-ave-chicago-il" },
+  "USC Aiken":
+    { loc: "Suburb: Large", locCode: 21, town: "Aiken city", townMi: 3.8, townSqMi: 21.6, walk: 37, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/471-university-pkwy-aiken-sc" },
+  "USC Upstate":
+    { loc: "Suburb: Midsize", locCode: 22, town: "Spartanburg city", townMi: 3.4, townSqMi: 20.3, walk: 7, bike: 33, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/landers-road-spartanburg-sc" },
+  "UVA Wise":
+    { loc: "Town: Distant", locCode: 32, town: "Wise town", townMi: 1.3, townSqMi: 3.0, walk: 56, bike: 24, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "approx", off: 1, ws: "https://www.walkscore.com/score/college-avenue-wise-va" },
+  "Villanova":
+    { loc: "Suburb: Large", locCode: 21, town: "Villanova CDP", townMi: 0.3, townSqMi: 2.1, walk: 44, bike: null, tscore: null, railN: 2, railMi: 0.2, busN: 2, busMi: 0.1, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/800-lancaster-avenue-villanova-pa" },
+  "Virginia Tech":
+    { loc: "City: Small", locCode: 13, town: "Blacksburg town", townMi: 0.3, townSqMi: 19.8, walk: 65, bike: 88, tscore: 56, railN: 0, railMi: null, busN: 10, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/210-burruss-hall-800-drillfield-dr-blacksburg-va" },
+  "Virginia Wesleyan":
+    { loc: "City: Large", locCode: 11, town: "Virginia Beach city", townMi: 10.6, townSqMi: 244.7, walk: 16, bike: 31, tscore: 29, railN: 0, railMi: null, busN: 2, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/5817-wesleyan-drive-virginia-beach-va" },
+  "Wagner":
+    { loc: "City: Large", locCode: 11, town: "Staten Island borough", townMi: 4.5, townSqMi: 57.5, walk: 54, bike: 26, tscore: null, railN: 1, railMi: 0.9, busN: 10, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/one-campus-rd-staten-island-ny" },
+  "Wake Forest":
+    { loc: "City: Large", locCode: 11, town: "Winston-Salem city", townMi: 2.3, townSqMi: 133.6, walk: 34, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/eure-drive-winston-salem-nc" },
+  "Warren Wilson":
+    { loc: "Rural: Fringe", locCode: 41, town: "Swannanoa CDP", townMi: 3.1, townSqMi: 6.4, walk: 13, bike: 4, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/701-warren-wilson-rd-swannanoa-nc" },
+  "Washington Adventist":
+    { loc: "Suburb: Large", locCode: 21, town: "Takoma Park city", townMi: 0.4, townSqMi: 2.1, walk: 46, bike: 65, tscore: 55, railN: 2, railMi: 1.2, busN: 5, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/7600-flower-ave-takoma-park-md" },
+  "Wentworth":
+    { loc: "City: Large", locCode: 11, town: "Boston city", townMi: 3.9, townSqMi: 48.3, walk: 92, bike: 86, tscore: 96, railN: 5, railMi: 0.0, busN: 10, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/550-huntington-ave-boston-ma" },
+  "West Georgia":
+    { loc: "Town: Distant", locCode: 32, town: "Carrollton city", townMi: 1.0, townSqMi: 22.8, walk: 47, bike: 37, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/1601-maple-st-carrollton-ga" },
+  "Western Carolina":
+    { loc: "Town: Distant", locCode: 32, town: "Cullowhee CDP", townMi: 0.1, townSqMi: 3.8, walk: 36, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/highway-107-cullowhee-nc" },
+  "Widener":
+    { loc: "Suburb: Large", locCode: 21, town: "Chester city", townMi: 1.4, townSqMi: 4.8, walk: 64, bike: 46, tscore: 48, railN: 1, railMi: 0.8, busN: 2, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/one-university-place-chester-pa" },
+  "William Paterson":
+    { loc: "Suburb: Large", locCode: 21, town: "Wayne township", townMi: 0.3, townSqMi: 23.7, walk: 22, bike: 28, tscore: null, railN: 0, railMi: null, busN: 3, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/king-court-wayne-nj" },
+  "William Peace":
+    { loc: "City: Large", locCode: 11, town: "Raleigh city", townMi: 3.0, townSqMi: 149.4, walk: 83, bike: 72, tscore: 54, railN: 0, railMi: null, busN: 7, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/15-e-peace-st-raleigh-nc" },
+  "Wingate":
+    { loc: "Suburb: Large", locCode: 21, town: "Wingate town", townMi: 1.9, townSqMi: 2.3, walk: 0, bike: 15, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.5, ws: "https://www.walkscore.com/score/leon-drive-wingate-nc" },
+  "Winston-Salem State":
+    { loc: "City: Large", locCode: 11, town: "Winston-Salem city", townMi: 2.2, townSqMi: 133.6, walk: 24, bike: null, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.5, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/601-s-martin-luther-king-jr-dr-winston-salem-nc" },
+  "Winthrop":
+    { loc: "City: Small", locCode: 13, town: "Rock Hill city", townMi: 0.8, townSqMi: 44.3, walk: 64, bike: 49, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.3, ws: "https://www.walkscore.com/score/701-oakland-ave-rock-hill-sc" },
+  "Wofford":
+    { loc: "City: Small", locCode: 13, town: "Spartanburg city", townMi: 0.9, townSqMi: 20.3, walk: 52, bike: 44, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/429-n-church-st-spartanburg-sc" },
+  "Yeshiva University":
+    { loc: "City: Large", locCode: 11, town: "New York city", townMi: 13.0, townSqMi: 300.5, walk: 93, bike: 77, tscore: 100, railN: 5, railMi: 0.2, busN: 7, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/500-w-185th-st-new-york-ny" },
+  "York College (CUNY)":
+    { loc: "City: Large", locCode: 11, town: "Queens borough", townMi: 4.0, townSqMi: 108.7, walk: 96, bike: 52, tscore: 100, railN: 10, railMi: 0.3, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/94-20-guy-r-brewer-blvd-jamaica-ny" },
+  "Young Harris":
+    { loc: "Rural: Remote", locCode: 43, town: "Young Harris city", townMi: 0.1, townSqMi: 0.9, walk: 32, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/college-street-young-harris-ga" },
+};const SCHOOLS = [
   { name: "DePaul", slug: "depaul", city: "Lincoln Park", metro: "chicago", mi: 4.1,
     lat: 41.925, lon: -87.655, div: "D1", conf: "Big East",
     cs: "verified", csSrc: "fed", csShare: 10.7, sat: "1140–1330", satSrc: "fed", accept: "76%", acceptSrc: "fed",

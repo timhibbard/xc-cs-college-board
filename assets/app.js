@@ -227,17 +227,37 @@ const SIZE_COLS = [
     cell: s => `<td class="num c-size">${numCell(TOWNPOP[s.city])}</td>` },
 ];
 
+/* The errands half of the campus-setting column (#13), asked for with initTable({ walk: true }).
+   Opt-in rather than part of COLS because it is only half of what that column is meant to say:
+   the training axis — park acreage, soft surface, how much of it connects, crossings per mile —
+   is #24 and is not collected yet. A single sortable Walk column invites the reading that a 96
+   is a better place to be a distance runner than a 12, which is exactly the inference this board
+   has no evidence for. So it lives on the master table, where the caption can say what it does
+   not mean, and the school page carries the full picture with its caveats.
+
+   Locale rides alongside deliberately. Walk Score describes a few blocks; the federal locale
+   describes the place — and the two disagree often enough to be worth seeing together, because a
+   walkable pocket inside a rural locale is a different proposition from a walkable city. */
+const WALK_COLS = [
+  { key: 'walk', label: 'Walk', num: true,
+    sort: (a, b) => (SETTING[a.name]?.walk ?? -1) - (SETTING[b.name]?.walk ?? -1),
+    cell: s => `<td class="num">${numCell(SETTING[s.name]?.walk)}</td>` },
+  { key: 'loc', label: 'Locale',
+    sort: (a, b) => (SETTING[a.name]?.locCode ?? 99) - (SETTING[b.name]?.locCode ?? 99),
+    cell: s => `<td class="c-loc">${SETTING[s.name]?.loc ?? '<span class="nodata">&mdash;</span>'}</td>` },
+];
+
 let sortKey = 'tier', sortDir = 1, filters = { metro: 'all', div: 'all', tier: 'all', q: '' };
 
 /* Which columns this page shows. Frozen at initTable() time rather than read live off
    `filters`, because the header is built once — deriving it from the metro filter would
    drop cells out of every row while leaving the header cell standing. */
-let showMetroCol = true, showSizeCols = false;
+let showMetroCol = true, showSizeCols = false, showWalkCols = false;
 
 /* The column set for a table, Notes included. Pure, so a page that builds its own tables
    (north-carolina.html builds one per region) gets exactly the columns the master table
    would have given it. */
-function colsFor({ metro = true, size = false } = {}) {
+function colsFor({ metro = true, size = false, walk = false } = {}) {
   let cols = metro ? COLS : COLS.filter(c => c.key !== 'metro');
   /* Same reason the metro column drops on a single-metro page: if every row on the board
      were one division, a Div column would read the same on every row. All four divisions
@@ -247,10 +267,16 @@ function colsFor({ metro = true, size = false } = {}) {
     const at = cols.findIndex(c => c.key === 'net') + 1;
     cols = cols.slice(0, at).concat(SIZE_COLS, cols.slice(at));
   }
+  /* Straight after Mi: both answer "where is this place", and the Walk column is meaningless
+     without the distance beside it -- a 96 twelve hundred miles away is not an option. */
+  if (walk) {
+    const at = cols.findIndex(c => c.key === 'mi') + 1;
+    cols = cols.slice(0, at).concat(WALK_COLS, cols.slice(at));
+  }
   return cols.concat(NOTE_COL);
 }
 
-const activeCols = () => colsFor({ metro: showMetroCol, size: showSizeCols });
+const activeCols = () => colsFor({ metro: showMetroCol, size: showSizeCols, walk: showWalkCols });
 
 const headHTML = (cols) => '<tr>' + cols.map(c => c.sort
   ? `<th data-key="${c.key}" class="sortable${c.num ? ' num' : ''}" scope="col">${c.label}<span class="arrow">▲</span></th>`
@@ -295,6 +321,7 @@ function renderTable() {
 function initTable(opts = {}) {
   showMetroCol = filters.metro === 'all';   /* a constant column is noise */
   showSizeCols = !!opts.size;
+  showWalkCols = !!opts.walk;
 
   document.querySelector('#master thead').innerHTML = headHTML(activeCols());
 

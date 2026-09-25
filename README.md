@@ -28,9 +28,18 @@ pages say. **The 76 rows the new metros added now carry everything the rows that
 carry**: the coach block came first, then the Instagram column, then their 2026 outdoor track marks and
 a conference-championship 1500 field for each of the 60 that raced one, and last a **map of every meet
 the program attended this season** — 315 meets and 173 venues this board had never seen, read off those
-programs' own results feeds. The one column that is still uneven is **the coach's own Instagram, on 17
-rows**, recorded only where the account's own bio says they coach this program; that was never a sweep
-and is not presented as one. Five rows sit at *Verify*, which means **unmeasured, not borderline** — four
+programs' own results feeds. **All 243 rows now also carry the campus setting** — the federal locale
+classifying the address, the town the campus sits in with its land area, a Walk Score and Bike Score
+linked to the page they came from, and the **named rail and bus lines with their distances**, which are
+the real transit answer: Walk Score prints a Transit *Score* only where the city publishes a feed it has
+ingested, so 121 rows have none, and reading that number alone made 120 rows look as if they had no
+transit at all when 48 of them had named lines on the very same page. **That is one axis of two.** Whether
+he can *train* on a campus — park acreage, soft surface, how much of it connects, road crossings per mile
+— is [issue #24](https://github.com/timhibbard/xc-cs-college-board/issues/24) and is not collected yet, so
+every page that shows the errands axis says so and the school-page completeness table lists the training
+axis as missing rather than omitting it. The one column that is still uneven is **the coach's own
+Instagram, on 17 rows**, recorded only where the account's own bio says they coach this program; that was
+never a sweep and is not presented as one. Five rows sit at *Verify*, which means **unmeasured, not borderline** — four
 former Verify rows (Carlow, Marymount, Hilbert, Shorter) moved to *caution* once it was clear that a
 short conference championship field is a measurement of a thin program rather than an absence of
 evidence. Shorter's is the starkest of the four: three men at the 2024 Conference Carolinas

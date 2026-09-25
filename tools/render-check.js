@@ -29,9 +29,9 @@ vm.createContext(ctx);
 vm.runInContext(
   fs.readFileSync(path.join(ROOT, 'assets/data.js'), 'utf8') + '\n' +
   fs.readFileSync(path.join(ROOT, 'assets/detail.js'), 'utf8') +
-  ';__out={SCHOOLS,REMOVED,NO_TRACK,NO_PROGRAM,XCRACES,T1500,ATHLETE,MEETS,VENUES,SCHED,NC_REGIONS};', ctx);
+  ';__out={SCHOOLS,REMOVED,NO_TRACK,NO_PROGRAM,XCRACES,T1500,ATHLETE,MEETS,VENUES,SCHED,NC_REGIONS,SETTING,SETLINES};', ctx);
 const { SCHOOLS, REMOVED, NO_TRACK, NO_PROGRAM, XCRACES, T1500, ATHLETE,
-        MEETS, VENUES, SCHED, NC_REGIONS } = ctx.__out;
+        MEETS, VENUES, SCHED, NC_REGIONS, SETTING, SETLINES } = ctx.__out;
 
 const fails = [];
 const checks = [];
@@ -406,6 +406,118 @@ const METROS = [
     if (cards.length !== want) {
       fails.push(`school.html?s=${s.slug}: ${cards.length} 1500 cards, ${want} meets on file`);
     }
+    dom.window.close();
+  }
+
+  /* ---------- campus setting, the errands axis (#13) ----------
+
+     SETTING is keyed by name and SETLINES by slug, which is the one thing that can rot here:
+     rename a row and the setting silently belongs to nobody. Both directions are checked,
+     because a stale key is as wrong as a missing one and neither throws on its own. */
+  const everyName = new Set(everyRow.map(s => s.name));
+  ok('SETTING rows', Object.keys(SETTING).length, everyRow.length);
+  ok('SETTING rows with a Walk Score',
+    Object.values(SETTING).filter(g => g.walk != null).length, everyRow.length);
+  for (const name of Object.keys(SETTING)) {
+    if (!everyName.has(name)) fails.push(`SETTING has "${name}", which is not a row on the board`);
+  }
+  for (const s of everyRow) {
+    if (!SETTING[s.name]) fails.push(`${s.name}: no SETTING entry — run tools/apply_setting.py`);
+  }
+  const bySlug = new Map(everyRow.filter(s => s.slug).map(s => [s.slug, s]));
+  for (const slug of Object.keys(SETLINES)) {
+    if (!bySlug.has(slug)) fails.push(`SETLINES has "${slug}", which is not a row's slug`);
+  }
+  /* The counts in data.js and the lists in detail.js come off the same page in the same pass,
+     so a disagreement means one of the two files was written by an older run. This is the check
+     that catches a half-applied splice, which is the failure apply_setting.py can produce. */
+  for (const s of everyRow) {
+    const g = SETTING[s.name], L = (s.slug && SETLINES[s.slug]) || {};
+    if (!g) continue;
+    if (g.walk != null && (g.walk < 0 || g.walk > 100)) {
+      fails.push(`${s.name}: Walk Score ${g.walk} is outside 0-100`);
+    }
+    if (!['address', 'approx', 'town'].includes(g.lvl)) {
+      fails.push(`${s.name}: setting lvl "${g.lvl}" is not address, approx or town`);
+    }
+    if (!/^https:\/\/www\.walkscore\.com\/score\//.test(g.ws || '')) {
+      fails.push(`${s.name}: setting has no walkscore.com source url`);
+    }
+    if (!s.slug) continue;
+    const rail = (L.rail || []).length, bus = (L.bus || []).length;
+    if (rail !== g.railN || bus !== g.busN) {
+      fails.push(`${s.name}: SETTING says ${g.railN} rail / ${g.busN} bus, SETLINES holds ` +
+        `${rail} / ${bus} — data.js and detail.js were written by different runs`);
+    }
+  }
+
+  /* One page rendered per level, because the caveat sentence is chosen by that field and the
+     two rarer branches are exactly the ones nobody would notice were broken: 230 rows read
+     "address" and the other two branches cover 13 between them. */
+  for (const lvl of ['address', 'approx', 'town']) {
+    const s = everyRow.find(r => r.slug && SETTING[r.name] && SETTING[r.name].lvl === lvl);
+    if (!s) { fails.push(`no row with setting lvl "${lvl}" to render`); continue; }
+    const dom = await render('school.html', '?s=' + s.slug);
+    const doc = dom.window.document;
+    const h2 = [...doc.querySelectorAll('h2')].map(h => h.textContent.trim());
+    if (!h2.includes('Setting')) fails.push(`school.html?s=${s.slug}: no Setting section`);
+    const txt = doc.body.textContent;
+    if (!txt.includes('walkscore.com')) {
+      fails.push(`school.html?s=${s.slug}: Setting section does not attribute Walk Score`);
+    }
+    /* The promise the whole section is built on: it must say it is only the errands half. */
+    if (!/one axis of two/i.test(txt)) {
+      fails.push(`school.html?s=${s.slug}: Setting section does not say it is one axis of two`);
+    }
+    dom.window.close();
+  }
+
+  /* A template hole that reads a missing field prints the word "undefined" into the prose and
+     nothing throws, which is how "scored on the campus's own street address, undefined mi from
+     the coordinate this board holds" reached a rendered page. Two rows had no map-tile
+     coordinate to measure and every other row had one, so the branch was invisible in testing.
+     Sweeping the rows most likely to have a hole is cheap; sweeping all 180 is not. */
+  const holey = [
+    ...everyRow.filter(s => s.slug && SETTING[s.name] && SETTING[s.name].off == null),
+    ...everyRow.filter(s => s.slug && SETTING[s.name] && SETTING[s.name].bike == null).slice(0, 3),
+    ...everyRow.filter(s => s.slug && SETTING[s.name] && SETTING[s.name].town == null).slice(0, 3),
+  ];
+  for (const s of holey) {
+    const dom = await render('school.html', '?s=' + s.slug);
+    const txt = dom.window.document.body.textContent;
+    for (const bad of ['undefined', 'NaN', 'null']) {
+      if (txt.includes(bad)) fails.push(`school.html?s=${s.slug}: the word "${bad}" is in the rendered page`);
+    }
+    dom.window.close();
+  }
+
+  /* An absent Transit Score must never render as a zero or a dash — it means the city
+     publishes no feed that site has ingested, and 121 rows are in that state. */
+  const noFeed = everyRow.find(s => s.slug && SETTING[s.name] && SETTING[s.name].tscore == null
+    && SETTING[s.name].busN > 0);
+  if (!noFeed) {
+    fails.push('no row with a bus line and no Transit Score to render — that combination is the ' +
+      'one the section exists to state honestly');
+  } else {
+    const dom = await render('school.html', '?s=' + noFeed.slug);
+    if (!dom.window.document.body.textContent.includes('no feed published')) {
+      fails.push(`school.html?s=${noFeed.slug}: missing Transit Score does not read ` +
+        `"no feed published"`);
+    }
+    dom.window.close();
+  }
+
+  /* The master table's two opt-in columns. Header and cell count must move together: the
+     comment on SIZE_COLS in app.js records a bug where they did not. */
+  {
+    const dom = await render('index.html', '');
+    const doc = dom.window.document;
+    const heads = [...doc.querySelectorAll('#master thead th')].map(th => th.textContent.replace('▲', '').trim());
+    ok('index Walk column present', heads.includes('Walk'), true);
+    ok('index Locale column present', heads.includes('Locale'), true);
+    const firstRow = doc.querySelector('#master tbody tr');
+    ok('index master cells match its header',
+      firstRow ? firstRow.children.length : 0, heads.length);
     dom.window.close();
   }
 

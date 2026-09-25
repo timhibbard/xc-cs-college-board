@@ -9888,3 +9888,345 @@ const T1500 = {
       theirs: [249.03], nfinal: 1, slot: 1 },
   },
 };
+
+/* The named rail and bus lines near each campus, from the same Walk Score page the
+   SETTING row in data.js cites, as [name, miles] nearest first.
+
+   These exist because reading the Transit *Score* alone was wrong for half the board:
+   that number is printed only on one of the two page shapes, so 120 rows read as "no
+   transit feed" while their pages plainly listed the lines. Of those 120, 48 had named
+   rail or bus -- Columbia with the 1 train at 0.0 miles, Bowie State with the MARC Penn
+   Line at 0.2. So the lines are the primary answer here and the score is the summary.
+
+   Distances are that site's, to the address in `SETTING[...].ws`, and a 0.0 means under
+   a twentieth of a mile rather than exactly zero. Names are kept verbatim: the proxy
+   sometimes repeats a badge label, so "Orange Line" can arrive with a letter stuck to
+   it, and only exact repeats of the same line were dropped. A row absent from here
+   either has no page or had neither rail nor bus listed -- SETTING carries railN and
+   busN so the school page can tell those two apart. */
+const SETLINES = {
+  "adelphi":
+    { rail: [["Hempstead Branch", 0.5], ["Ronkonkoma Branch", 1.0], ["Port Jefferson Branch", 1.0], ["Montauk Branch", 1.4], ["Oyster Bay Branch", 1.4]], bus: [["n40/41 Freeport -- Mineola", 1.0], ["n6 Hempstead -- Jamaica", 1.2]] },
+  "allen-university":
+    { bus: [["701 701 - Forest", 0.0], ["501 501 - Two Notch", 0.0], ["22 22 - Harden", 0.0], ["42 42 - Millwood", 0.0], ["12 12 - Edgewood", 0.0]] },
+  "american":
+    { rail: [["Red Metrorail Red Line", 1.0], ["RD Red", 1.1]], bus: [["C81 MILITARY RD", 0.2], ["D90 MASSACHUSETTS AV-TENLEYTOWN", 0.2], ["D96 MASSACHUSETTS AV-BETHESDA", 0.3]] },
+  "arcadia":
+    { rail: [["Warminster Line Warminster Line", 0.9], ["Lansdale/Doylestown Line Lansdale/Doylestown Line", 0.9]], bus: [["22 Warminster & Willow Grove to OTC", 0.2], ["77 Roosevelt-St Vincent to ChestntHill", 0.2], ["18 Fox Chase to Cedarbrook Plaza", 0.6], ["80 Express Horsham to Olney TC", 0.7]] },
+  "auburn":
+    { bus: [["Groome Transportation Auburn", 0.4]] },
+  "baruch-college":
+    { rail: [["4 Lexington Avenue Express", 0.2], ["6 Lexington Avenue Local", 0.2], ["N Broadway Express", 0.3], ["R Broadway Local", 0.3], ["Q Broadway Express", 0.5], ["5 Lexington Avenue Express", 0.5], ["PATH Journal Square - 33rd Street", 0.5], ["PATH Hoboken - 33rd Street", 0.5], ["PATH World Trade Center - 33rd Street", 0.5], ["PATH Journal Square - 33rd Street (via Hoboken)", 0.5]], bus: [["M103 East Harlem - City Hall", 0.0], ["M102 Harlem - East Village", 0.0], ["M101 East Village - Fort George", 0.0], ["SIM11 New Dorp - Midtown Manhattan Express", 0.1], ["SIM6 Eltingville - Midtown Manhattan Express", 0.1], ["ShortLine Hudson Eastside Manhattan Commuter Service", 0.1], ["QM68 Floral Park - Midtown Express", 0.1], ["QM63 Rosedale - Midtown Express", 0.1], ["QM64 Elmont - Midtown Express", 0.1], ["SIM3 Pt. Richmond - Midtown Manhattan Express", 0.1]] },
+  "belmont-abbey":
+    { bus: [["85x Gastonia Express", 0.8]] },
+  "benedict":
+    { bus: [["701 701 - Forest", 0.1], ["501 501 - Two Notch", 0.1], ["22 22 - Harden", 0.2], ["12 12 - Edgewood", 0.2], ["42 42 - Millwood", 0.2]] },
+  "bentley":
+    { rail: [["Fitchburg Line", 1.2]], bus: [["554 Waverley Square - Newton Corner", 0.0], ["70 Market Place Drive or Waltham Center - University Park", 0.6]] },
+  "boston-college":
+    { rail: [["B Green Line B", 0.3], ["C Green Line C", 1.0], ["D Green Line D", 1.1]], bus: [["Green Line B Shuttle Boston College - Babcock Street", 0.3], ["Green Line B Shuttle Boston College - Kenmore", 0.3], ["Green Line B Shuttle Boston College - Blandford Street", 0.3], ["Green Line B Shuttle Boston College - Washington Street", 0.3], ["Green Line B Shuttle Boston College - Packard's Corner", 0.3], ["86 Harvard Square - Reservoir Station", 0.8], ["60 Chestnut Hill - Kenmore Station", 0.9], ["Green Line D Shuttle Riverside - Fenway", 0.9], ["Green Line D Shuttle Newton Highlands - Fenway", 0.9], ["Green Line D Shuttle Riverside - Brookline Village", 0.9]] },
+  "bowie-state":
+    { rail: [["MARC PENN - WASHINGTON", 0.2]], bus: [["P24 GOOD LUCK RD", 0.1]] },
+  "brandeis":
+    { rail: [["Fitchburg Line", 0.2], ["Framingham/Worcester Line", 1.4]], bus: [["553 Roberts - Newton Corner", 0.1], ["Fitchburg Line Shuttle Littleton/Route 495 - Alewife (Local)", 0.2], ["70 Market Place Drive or Waltham Center - University Park", 0.5]] },
+  "brooklyn-college":
+    { rail: [["5 Lexington Avenue Express", 0.3], ["2 7 Avenue Express", 0.3], ["Q Broadway Express", 0.5], ["B 6 Avenue Express", 0.6]], bus: [["B11 Sunset Park - Midwood", 0.1], ["B6 Bath Beach - East New York", 0.1], ["B49 Manhattan Beach - Bedford-Stuyvesant", 0.3], ["B44-SBS Sheepshead Bay - Williamsburg", 0.3], ["B44 Sheepshead Bay - Williamsburg", 0.3], ["B41 Kings Plaza - Downtown Brooklyn", 0.3], ["Q35 Rockaway Park - Midwood / Brooklyn Coll.", 0.3]] },
+  "bryant-stratton":
+    { rail: [["VIA Rail Toronto - New York", 0.7]], bus: [["4 4 - BROADWAY", 0.1], ["19 19 - BAILEY", 0.1], ["111 111 - SOUTH MICHIGAN", 0.1], ["6 6 - SYCAMORE", 0.1], ["14 14 - ABBOTT", 0.1], ["8 8 - MAIN", 0.1], ["16 16 - SOUTH PARK", 0.1], ["24 24 - GENESEE", 0.1], ["42 42 - LACKAWANNA", 0.1], ["106 106 - SOUTH-SUBURBAN", 0.2]] },
+  "buffalo-state":
+    { bus: [["3 3 - GRANT", 0.2], ["32 32 - AMHERST", 0.3], ["20 20 - ELMWOOD", 0.4], ["101 101 - NORTH-SOUTH", 0.4], ["102 102 - BAILEY EAST", 0.4], ["5 5 - NIAGARA-KENMORE", 0.4]] },
+  "canisius":
+    { bus: [["8 8 - MAIN", 0.1], ["104 104 - SOUTH-CENTRAL", 0.1], ["19 19 - BAILEY", 0.1], ["18 18 - JEFFERSON", 0.1], ["26 26 - DELAVAN", 0.1], ["101 101 - NORTH-SOUTH", 0.2]] },
+  "carlow":
+    { bus: [["28X AIRPORT FLYER", 0.1], ["83 BEDFORD HILL", 0.1], ["61C MCKEESPORT-HOMESTEAD", 0.1], ["71D HAMILTON SHORT", 0.1], ["69 TRAFFORD", 0.1], ["71C POINT BREEZE SHORT", 0.1], ["61B BRADDOCK-SWISSVALE", 0.1], ["71B HIGHLAND PARK", 0.1], ["81 OAK HILL", 0.1], ["71A NEGLEY SHORT", 0.1]] },
+  "carnegie-mellon":
+    { bus: [["61C MCKEESPORT-HOMESTEAD", 0.1], ["69 TRAFFORD", 0.1], ["61B BRADDOCK-SWISSVALE", 0.1], ["61A NORTH BRADDOCK", 0.1], ["67 MONROEVILLE", 0.1], ["61D MURRAY SHORT", 0.1], ["28X AIRPORT FLYER", 0.1], ["58 GREENFIELD", 0.1], ["71D HAMILTON SHORT", 0.3], ["71B HIGHLAND PARK", 0.3]] },
+  "carolina-university":
+    { bus: [["1 Winston Salem Express", 0.8], ["17 Kernersville Express", 0.8]] },
+  "catholic":
+    { rail: [["RD Red", 0.2], ["Red Metrorail Red Line", 0.2], ["GR Green", 1.3]], bus: [["C63 DEANWOOD-WASH HOSPITAL CTR", 0.1], ["C61 BROOKLAND-TENLEYTOWN", 0.1], ["D30 N CAPITOL ST", 0.1], ["D34 W HYATTSVILLE-EDGEWOOD-METRO CTR", 0.1], ["P33 QUEENS CHAPEL RD", 0.2], ["D74 RHODE ISLAND AV-FOGGY BOTTOM", 0.2]] },
+  "ccny":
+    { rail: [["C 8 Avenue Local", 0.1], ["A 8 Avenue Express", 0.1], ["B 6 Avenue Express", 0.1], ["1 Broadway - 7 Avenue Local", 0.3], ["D 6 Avenue Express", 0.5], ["3 7 Avenue Express", 0.6], ["2 7 Avenue Express", 0.6]], bus: [["M3 Fort George - East Village", 0.1], ["M100 Inwood - Harlem", 0.1], ["Bx33 Port Morris - Harlem", 0.2], ["M101 East Village - Fort George", 0.2], ["M11 Riverbank Park & Harlem - West Village", 0.2], ["M10 Harlem - Columbus Circle", 0.2]] },
+  "charleston-southern":
+    { bus: [["10 Rivers Avenue", 0.5]] },
+  "chatham":
+    { bus: [["64 LAWRENCEVILLE - WATERFRONT", 0.1], ["69 TRAFFORD", 0.3], ["67 MONROEVILLE", 0.3], ["74 HOMEWOOD-SQUIRREL HILL", 0.3], ["28X AIRPORT FLYER", 0.3], ["71B HIGHLAND PARK", 0.3], ["71D HAMILTON", 0.3]] },
+  "chattanooga":
+    { bus: [["4 Eastgate/Hamilton Pl", 0.1], ["16 Northgate Mall", 0.2], ["10A Avondale", 0.2], ["10G 10G", 0.2]] },
+  "chestnut-hill":
+    { rail: [["Chestnut Hill East Line Chestnut Hill East Line", 1.1], ["Chestnut Hill West Line Chestnut Hill West Line", 1.2]], bus: [["97 Chestnut Hill to Norristown TC", 0.2], ["L Erdenheim/PlymouthMtngMall to Olney", 0.2], ["94 Montgomery Mall to Chestnut Hill", 0.7]] },
+  "chicago-state":
+    { rail: [["ME Metra Electric", 0.7], ["Red Line", 1.0]], bus: [["4 Cottage Grove", 0.1], ["115 Pullman/115th", 0.1], ["N5 South Shore Night Bus", 0.3], ["95 95th", 0.3], ["100 Jeffery Manor Express", 0.3], ["X4 Cottage Grove Express", 0.3], ["111 111th/King Drive", 0.4]] },
+  "clark-atlanta":
+    { rail: [["GREEN GREEN", 0.7], ["BLUE BLUE", 0.7], ["GOLD GOLD", 0.8], ["RED RED", 0.8], ["A Line King Historic District - Centennial Olympic Park", 1.5], ["ATLSC Atlanta Streetcar", 1.5]], bus: [["813 Atlanta University Center", 0.1], ["1 Marietta Blvd/Joseph E Lowery Blvd", 0.3], ["68 Benjamin E Mays Drive", 0.3]] },
+  "clayton-state":
+    { bus: [["193 Morrow / Jonesboro", 0.3], ["195 Forest Parkway", 1.1]] },
+  "clemson":
+    { bus: [["View/Pier", 0.2], ["Pendleton Route", 0.3], ["Red Route", 0.4], ["Seneca Express", 0.5]] },
+  "college-of-charleston":
+    { bus: [["210 CofC / Aquarium - DASH Shuttle", 0.1], ["211 Meeting/King - DASH", 0.2], ["XP2 Mt. Pleasant - West Ashley", 0.2], ["XP3 Dorchester Rd / Summerville", 0.2], ["XP1 James Island - North Charleston", 0.2], ["31 Folly Road", 0.2], ["213 Lockwood/Calhoun - DASH", 0.2], ["33 St. Andrews/Ashley River Rd", 0.2], ["20 King Street / Meeting", 0.3]] },
+  "college-of-staten-island":
+    { bus: [["S92 St. George - Travis LTD", 0.0], ["S93 College of Staten Island - Bay Ridge LTD", 0.0], ["S62 St. George - Travis", 0.0], ["S57 Port Richmond - New Dorp", 0.3], ["SIM3 Pt. Richmond - Midtown Manhattan Express", 0.3], ["SIM3C Pt. Richmond - Manhattan Express", 0.3], ["SIM34 Mariners Harbor - Lower Manhattan Express", 0.3], ["S91 St. George - Staten Island Mall LTD", 0.3], ["S61 St. George - Staten Island Mall", 0.3], ["SIM2 Tottenville - Lower Manhattan Express", 0.3]] },
+  "columbia":
+    { rail: [["1 Broadway - 7 Avenue Local", 0.0], ["B 6 Avenue Express", 0.5], ["C 8 Avenue Local", 0.5]] },
+  "concordia-chicago":
+    { rail: [["Green Line", 0.9], ["UP-W Union Pacific West", 0.9]], bus: [["90 Harlem", 0.3], ["318 West North Avenue", 0.3], ["307 Harlem", 0.3]] },
+  "coppin-state":
+    { rail: [["METRO SUBWAYLINK METRO SUBWAYLINK", 0.6], ["MARC PENN - WASHINGTON", 1.2]], bus: [["29 MONDAWMIN - BROOKLYN", 0.0], ["79 MONDAWMIN - CMS", 0.0], ["CityLink GOLD WALBROOK JUNCTION - CANTON", 0.1], ["26 BROOKLYN - MONDAWMIN", 0.2]] },
+  "curry":
+    { rail: [["Providence/Stoughton Line", 1.1], ["Franklin/Foxboro Line", 1.1], ["Fairmount Line", 1.1]], bus: [["716 Canton Village Shoppes - Mattapan Station", 0.2], ["24 Wakefield Avenue & Truman Parkway - Ashmont Station", 0.9], ["32 Wolcott or Cleary Square - Forest Hills Station", 1.0]] },
+  "daemen":
+    { bus: [["49 49 - EAST AMHERST", 0.5], ["47 47 - WEHRLE", 0.6], ["48 48 - WILLIAMSVILLE", 0.6], ["44 44 - LOCKPORT", 0.6]] },
+  "davidson":
+    { bus: [["290 Davidson Shuttle", 0.0], ["97 Village Rider-Cornelius", 0.0], ["99 Village Rider-Huntersville", 0.0], ["77x North Mecklenburg Express", 0.1]] },
+  "depaul":
+    { rail: [["Brown Line", 0.1], ["Purple Line", 0.1], ["Red Line", 0.1], ["UP-N Union Pacific North", 0.8], ["UP-NW Union Pacific Northwest", 0.8]], bus: [["37 Sedgwick", 0.1], ["74 Fullerton", 0.2], ["8 Halsted", 0.3]] },
+  "dominican-university":
+    { rail: [["UP-W Union Pacific West", 0.6], ["Green Line", 1.0], ["Blue Line", 1.4]], bus: [["313 St. Charles Rd.", 0.4], ["309 Lake Street", 0.4]] },
+  "duke":
+    { bus: [["C Swift", 0.0], ["SWS Swift Avenue Shuttle", 0.0], ["C1 East-West", 0.0], ["CSW Smith Warehouse", 0.0], ["CSF C1-Swift Weekend", 0.0], ["6 Duke/VA - Duke Regional Hospital - Danube Lane", 0.1], ["H5 Broad-Erwin", 0.1], ["PR1 Bassett-Research", 0.2], ["LL LaSalle Loop", 0.2], ["LNC Lancaster Commons", 0.2]] },
+  "duquesne":
+    { bus: [["53L HOMESTEAD PARK LIMITED", 0.1], ["52L HOMEVILLE LIMITED", 0.1], ["58 GREENFIELD", 0.1], ["57 HAZELWOOD", 0.1], ["56 LINCOLN PLACE", 0.1], ["61C MCKEESPORT-HOMESTEAD", 0.1], ["61B BRADDOCK-SWISSVALE", 0.1], ["71B HIGHLAND PARK", 0.1], ["61A NORTH BRADDOCK", 0.1], ["BLUE", 0.2]] },
+  "dyouville":
+    { bus: [["22 22 - PORTER-BEST", 0.1], ["3 3 - GRANT", 0.1], ["101 101 - NORTH-SOUTH", 0.1], ["5 5 - NIAGARA-KENMORE", 0.1], ["40 40 - BUFFALO-NIAGARA FALLS", 0.2]] },
+  "eastern":
+    { rail: [["Paoli/Thorndale Line Paoli/Thorndale Line", 0.5], ["NHSL Norristown TC to 69th St TC", 1.1]], bus: [["106 Paoli to 69th St TC", 0.6]] },
+  "elmhurst-university":
+    { rail: [["UP-W Union Pacific West", 0.5]], bus: [["332 River Road - York Road", 0.1], ["313 St. Charles Rd.", 0.2]] },
+  "emerson":
+    { rail: [["Orange Line", 0.2], ["E Green Line E", 0.3], ["B Green Line B", 0.3], ["D Green Line D", 0.3], ["C Green Line C", 0.3], ["Red Line", 0.3], ["Providence/Stoughton Line", 0.5], ["Kingston Line", 0.5], ["Fall River/New Bedford Line", 0.5], ["Greenbush Line", 0.5]], bus: [["43 Ruggles Station - Park Street Station", 0.1], ["57 Watertown Yard - Kenmore Station", 0.1], ["39 Forest Hills Station - Back Bay Station", 0.1], ["504 Watertown Yard - Federal Street & Franklin Street", 0.1], ["501 Brighton Center - Federal Street & Franklin Street", 0.1], ["SL5 Nubian Station - Temple Place", 0.1], ["Green Line E Shuttle Heath Street - Park Street", 0.1], ["15 Fields Corner Station - Ruggles Station", 0.1], ["Green Line Shuttle Boston University East - Park Street", 0.1], ["SL4 Nubian Station - South Station", 0.2]] },
+  "emmanuel":
+    { rail: [["D Green Line D", 0.3], ["C Green Line C", 0.4], ["E Green Line E", 0.4], ["Framingham/Worcester Line", 0.5]], bus: [["65 Brighton Center - Kenmore Station", 0.1], ["60 Chestnut Hill - Kenmore Station", 0.1], ["9 City Point - Copley Square", 0.1], ["CT2 Sullivan Square Station - Ruggles Station", 0.1], ["8 Harbor Point - Kenmore Station", 0.1], ["47 Central Square, Cambridge - Broadway Station", 0.1], ["85 Spring Hill - Kendall/MIT Station", 0.1], ["19 Fields Corner Station - Kenmore or Ruggles Station", 0.1], ["CT3 Beth Israel Deaconess Hospital - Andrew Station", 0.1], ["57 Watertown Yard - Kenmore Station", 0.2]] },
+  "emory":
+    { bus: [["36 N Decatur Road / Virginia Highland", 0.1], ["6 Clifton Road / Emory", 0.1], ["110 Indian Trail P&r - Emory", 0.3]] },
+  "fairleigh-dickinson":
+    { bus: [["167", 0.1], ["171", 0.2], ["165", 0.2], ["Rockland Coaches 11A", 0.4]] },
+  "farmingdale-state":
+    { rail: [["Ronkonkoma Branch", 1.2]], bus: [["S31 Copiague - Northwest Babylon", 0.1], ["S1 Amityville RR - Halesite", 0.1], ["n70 Hempstead -- Farmingdale St Coll", 0.1], ["1 Amityville Long Island Railroad Station to Halesite", 0.2], ["2B Farmingdale State College - Bay Shore", 0.2], ["S110 Suffolk Clipper", 0.2], ["12 East Farmingdale to Wyandanch to Bay Shore", 0.4]] },
+  "felician":
+    { rail: [["Main/Bergen County Line", 0.6], ["Port Jervis Line", 0.6]], bus: [["780", 0.2], ["161", 0.2], ["160", 0.3], ["709", 0.3], ["707", 0.4]] },
+  "fordham":
+    { rail: [["New Canaan", 0.3], ["Harlem", 0.3], ["New Haven", 0.3], ["D 6 Avenue Express", 0.5], ["B 6 Avenue Express", 0.5], ["4 Lexington Avenue Express", 0.7], ["5 Lexington Avenue Express", 1.0], ["2 7 Avenue Express", 1.0]], bus: [["60 60 -BRONX-NEW ROCHELLE-WHITE PLAINS", 0.2], ["61 61 -BRONX-NEW ROCHELLE-PORT CHESTER", 0.2], ["62 62 -BRONX-NEW ROCHELLE-WHITE PLAINS", 0.2], ["Bx22 Bedford Park - Castle Hill", 0.2], ["Bx17 Fordham Plaza - Port Morris", 0.2], ["Bx12 Pelham Bay - Inwood", 0.2], ["Bx9 Riverdale - West Farms Sq", 0.2], ["Bx41 Williamsbridge - The Hub", 0.2], ["Bx19 NY Botanical Garden - Riverbank Park", 0.3], ["Bx15 Fordham Plaza - The Hub", 0.3]] },
+  "furman":
+    { bus: [["3 Poinsett Hwy / Rutherford Rd", 1.0]] },
+  "gallaudet":
+    { rail: [["Red Metrorail Red Line", 0.6], ["RD Red", 0.6], ["Fredericksburg Line", 0.9], ["Manassas Line", 0.9], ["MARC BRUNSWICK - WASHINGTON", 0.9], ["MARC CAMDEN - WASHINGTON", 0.9], ["MARC PENN - WASHINGTON", 0.9]], bus: [["D36 K ST-IVY CITY", 0.3], ["C71 18 ST", 0.3], ["C57 U ST-CAPITOL HTS", 0.3], ["C53 U ST-CONGRESS HTS", 0.3], ["D8", 0.4], ["D3", 0.4], ["D4", 0.4]] },
+  "george-mason":
+    { bus: [["Gold 1", 0.1], ["Green 1", 0.1], ["Green 2", 0.1], ["Gold 2", 0.1], ["F23 LITTLE RIVER TPK-GEORGE MASON", 0.2], ["F29 BRADDOCK RD", 0.2], ["F50 WASHINGTON BLVD", 0.2], ["306 GMU - Pentagon", 0.2], ["610 GMU - Centreville", 0.2]] },
+  "george-washington":
+    { rail: [["SV Silver", 0.3], ["OR Orange", 0.3], ["BL Blue", 0.3], ["Orange Metrorail Orange Line", 0.4], ["Blue Metrorail Blue Line", 0.4], ["Silver Metrorail Silver Line", 0.4], ["RD Red", 0.5]], bus: [["699 Monument Dr - DOWNTOWN D.C.", 0.0], ["D96 MASSACHUSETTS AV-BETHESDA", 0.0], ["F19 MT VERNON ESTATE EXP", 0.0], ["A49 COLUMBIA PIKE-METRO CENTER", 0.0], ["715 CHARLOTTE HALL/WALDORF - DC", 0.1], ["810 PINDELL - WASHINGTON DC", 0.1], ["820 NORTH BEACH/PG EQUESTRIAN CTR - DC", 0.1], ["840 ST LEONARD / PRINCE FREDERICK - DC", 0.1], ["830 SUNDERLAND / DUNKIRK - DC", 0.1], ["335 CLARKSVILLE & COLUMBIA - DC", 0.1]] },
+  "georgetown":
+    { rail: [["Blue Metrorail Blue Line", 0.8], ["Orange Metrorail Orange Line", 0.8], ["Silver Metrorail Silver Line", 0.8]], bus: [["G2 P STREET-LEDROIT PARK", 0.0], ["G2", 0.0], ["D2 GLOVER PARK-DUPONT CIRCLE", 0.3], ["D6 SIBLEY HOSP STADIUM-ARMORY", 0.3], ["RS-DP Dupont Circle Rosslyn", 0.3], ["38B BALLSTON-FARRAGUT SQUARE", 0.3]] },
+  "georgia":
+    { bus: [["Groome Transportation Athens", 0.2]] },
+  "georgia-tech":
+    { rail: [["GOLD GOLD", 0.4], ["RED RED", 0.4], ["A Line King Historic District - Centennial Olympic Park", 0.9], ["ATLSC Atlanta Streetcar", 1.0], ["GREEN GREEN", 1.2], ["BLUE BLUE", 1.2]], bus: [["51 Joseph E Boone Boulevard", 0.1], ["50 Donald Lee Hollowell Parkway", 0.1], ["441 Jonesboro - Downtown/Midtown", 0.4], ["431 BrandsMart/Stockbridge - MT", 0.4], ["453 Newnan/Union City - DT/MT", 0.4], ["400 Cumming - Downtown", 0.4], ["423 E Conyer/W Conyer/Panola - MT", 0.4], ["463 W Douglas/Douglas MMTC - DT/MT", 0.4], ["440 Hampton/Jonesboro - DT/MT", 0.4], ["416 Dacula - Downtown", 0.4]] },
+  "goucher":
+    { bus: [["CityLink GREEN DOWNTOWN - TOWSON", 0.4], ["36 TOWSON TOWN CENTER - FOX RIDGE", 0.4], ["51 TOWSON - DOWNTOWN", 0.4], ["93 TOWSON - HUNT VALLEY", 0.4], ["CityLink RED DOWNTOWN - TOWSON/LUTHERVILLE", 0.4], ["52 GREENMOUNT NORTH - STELLA MARIS", 0.5], ["53 STATE CENTER - TOWSON", 0.5], ["83S Northern Maryland Express", 0.5]] },
+  "greensboro-college":
+    { bus: [["2 Greensboro Express", 0.2], ["10 Randolph Express", 0.2], ["9 Davidson County Greensboro Express", 0.4], ["4 Alamance Burlington Express", 0.7]] },
+  "hampton":
+    { bus: [["117 PHOEBUS", 0.3], ["403 BUCKROE SHOPPING CENTER - NEWPORT NEWS SHIPYARD", 0.4], ["961 MAX - NORFOLK TO NNTC", 0.4], ["120 MALLORY", 0.6], ["120 MALLORY STREET", 0.7], ["110 THOMAS NELSON COMMUNITY COLLEGE", 0.8], ["101 KECOUGHTAN", 0.8], ["118 MAGRUDER BOULEVARD", 0.8], ["403 BUCKROE SHOPPING CENTER", 0.8]] },
+  "harvard":
+    { rail: [["Red Line", 0.0], ["Fitchburg Line", 1.0], ["E Green Line E", 1.3], ["D Green Line D", 1.3], ["B Green Line B", 1.4], ["C Green Line C", 1.4]], bus: [["71 Watertown Square - Harvard Station", 0.0], ["78 Arlmont Village - Harvard Station", 0.0], ["74 Belmont Center - Harvard via Concord Avenue", 0.0], ["77 Arlington Heights - Harvard Station", 0.0], ["96 Medford Square - Harvard Station", 0.0], ["66 Harvard Square - Nubian Station", 0.0], ["73 Waverley Square - Harvard Station", 0.0], ["109 Linden Square - Harvard Square via Sullivan", 0.0], ["75 Belmont Center - Harvard via Huron Avenue", 0.0], ["86 Harvard Square - Reservoir Station", 0.0]] },
+  "haverford":
+    { rail: [["Paoli/Thorndale Line Paoli/Thorndale Line", 0.5], ["NHSL Norristown TC to 69th St TC", 0.6]], bus: [["103 Ardmore to 69th St TC", 0.3], ["106 Paoli to 69th St TC", 0.4], ["105 Rosemont to 69th St TC", 0.4]] },
+  "high-point":
+    { bus: [["3 High Point Express", 0.5], ["9 Davidson County Greensboro Express", 0.9]] },
+  "hofstra":
+    { rail: [["Hempstead Branch", 1.4]], bus: [["n70 Hempstead -- Farmingdale St Coll", 0.1], ["n72 Hempstead -- Farmingdale Rt 110", 0.1], ["n71 Hempstead -- Sunrise Mall", 0.1], ["n16X Hempstead -- NCC EXPRESS via Oak St", 0.3], ["n43 Roosevelt Field -- Freeport", 0.3]] },
+  "holy-family":
+    { rail: [["Trenton Line Trenton Line", 0.5]], bus: [["84 Bustleton-CoLine&Phila Mills to FTC", 0.1], ["66 Frankfd TC to Frankford-Knights", 0.1], ["19 Torresdale Station to FTC", 0.1]] },
+  "howard":
+    { rail: [["GR Green", 0.6], ["Yellow Metrorail Yellow Line", 0.6], ["Green Metrorail Green Line", 0.6], ["YL Yellow", 1.1], ["RD Red", 1.3]], bus: [["D40 7 ST-GEORGIA AV", 0.2], ["D4X 7 ST-GEORGIA AV LIMITED", 0.2], ["C91 LEDROIT PARK-GEORGETOWN", 0.2], ["C63 DEANWOOD-WASH HOSPITAL CTR", 0.4], ["D44 11 ST", 0.4], ["C61 BROOKLAND-TENLEYTOWN", 0.4]] },
+  "hunter-college":
+    { rail: [["4 Lexington Avenue Express", 0.1], ["6 Lexington Avenue Local", 0.1], ["F Queens Blvd Express/ 6 Av Local", 0.3], ["Q Broadway Express", 0.3], ["R Broadway Local", 0.3], ["N Broadway Local", 0.3], ["N Broadway Express", 0.4], ["5 Lexington Avenue Express", 0.4]], bus: [["ShortLine Hudson Eastside Manhattan Commuter Service", 0.1], ["M98 Washington Heights - Upper East Side LTD", 0.1], ["M103 East Harlem - City Hall", 0.1], ["M102 Harlem - East Village", 0.1], ["M101 East Village - Fort George", 0.1], ["M66 East Side - Lincoln Center", 0.1], ["28 28 - BxM4C", 0.1], ["M4 The Cloisters - 32 St", 0.1], ["M3 Fort George - East Village", 0.1], ["M72 East Side - West Side", 0.1]] },
+  "illinois-tech":
+    { rail: [["Green Line", 0.3], ["RI Rock Island", 0.4], ["Red Line", 0.5], ["ME Metra Electric", 0.8], ["Orange Line", 1.3]], bus: [["29 State", 0.0], ["31 31st", 0.0], ["1 Bronzeville/Union Station", 0.1], ["4 Cottage Grove", 0.1], ["X4 Cottage Grove Express", 0.2], ["24 Wentworth", 0.2]] },
+  "iona":
+    { rail: [["New Canaan", 0.9], ["New Haven", 0.9]], bus: [["0045 45-EASTCHES-NEW ROCHELLE-PELHAM BAY", 0.1], ["0061 61 -BRONX-NEW ROCHELLE-PORT CHESTER", 0.3], ["0030 30 -YONKERS-BRONXVILLE-NEW ROCHELLE", 0.3]] },
+  "john-jay":
+    { rail: [["2 7 Avenue Express", 0.4], ["1 Broadway - 7 Avenue Local", 0.4], ["D 6 Avenue Express", 0.5], ["C 8 Avenue Local", 0.5], ["A 8 Avenue Express", 0.5], ["B 6 Avenue Express", 0.5], ["E 8 Avenue Local", 0.6], ["3 7 Avenue Express", 0.7], ["N Broadway Express", 0.7], ["Q Broadway Express", 0.7]], bus: [["M57 East Side - West Side", 0.1], ["M12 Midtown West - West Village", 0.1], ["M31 Yorkville - Clinton", 0.1], ["M11 Riverbank Park & Harlem - West Village", 0.1]] },
+  "johns-hopkins":
+    { rail: [["LIGHT RAILLINK LIGHT RAILLINK", 1.1]], bus: [["51 TOWSON - DOWNTOWN", 0.1], ["95 DOWNTOWN - ROLAND PARK", 0.1], ["CityLink SILVER CURTIS BAY - HOPKINS/MORGAN", 0.1], ["22 MONDAWMIN - BAYVIEW", 0.2], ["Purple", 0.2]] },
+  "johnson-c-smith":
+    { rail: [["510 CityLYNX Gold Line", 0.1], ["501 Light Rail - Lynx Blue Line", 1.5]], bus: [["33 Bus Bridge", 0.1], ["7 Beatties Ford", 0.1], ["1 Mt. Holly Road", 0.2], ["26 Oaklawn Avenue", 0.6]] },
+  "kean-university":
+    { rail: [["Raritan Valley Line", 0.6], ["Northeast Corridor", 1.1], ["North Jersey Coast Line", 1.1]], bus: [["113", 0.3], ["52", 0.3], ["26", 0.3]] },
+  "kennesaw-state":
+    { bus: [["Groome Transportation Chattanooga to/from ATL", 0.2], ["45 KSU-Kennesaw - MTC via US 41", 0.5], ["40 KSU-Kennesaw - MTC via Marietta", 0.5], ["480 Acworth/Town Center - Downtown", 0.7], ["483 Woodstock/Town Center - Midtown", 0.7], ["RAPID Arts Station/KSU-Kennesaw Rapid", 0.7], ["100 Civic Center Station/Busbee P&R", 0.7]] },
+  "la-roche":
+    { bus: [["12 MCKNIGHT", 0.2], ["O5 THOMPSON RUN FLYER", 0.3], ["P13 MOUNT ROYAL FLYER", 0.3], ["2 MOUNT ROYAL", 0.3]] },
+  "la-salle":
+    { rail: [["Chestnut Hill East Line Chestnut Hill East Line", 0.4], ["BSL NRG Station to Fern Rock TC", 0.6], ["Warminster Line Warminster Line", 1.1], ["Lansdale/Doylestown Line Lansdale/Doylestown Line", 1.1], ["West Trenton Line West Trenton Line", 1.1], ["Fox Chase Line Fox Chase Line", 1.2], ["Chestnut Hill West Line Chestnut Hill West Line", 1.5]], bus: [["18 Fox Chase to Cedarbrook Plaza", 0.1], ["26 FTC to Chelten Av Station", 0.1], ["J Chelten-Wisshkn to Richmond-Orthodx", 0.2]] },
+  "lasell":
+    { rail: [["Framingham/Worcester Line", 0.4], ["D Green Line D", 0.5]], bus: [["505 Waltham Center - Federal Street & Franklin Street", 0.2], ["558 Riverside Station - Newton Corner", 0.4], ["Green Line D Shuttle Riverside - Brookline Hills", 0.5], ["Green Line D Shuttle Woodland - Copley via Riverside (Expres", 0.6], ["Green Line D Shuttle Riverside - Kenmore via Saint Mary's St", 0.6], ["Green Line D Shuttle Riverside - Fenway", 0.6], ["Green Line D Shuttle Riverside - Newton Highlands", 0.6], ["Green Line D Shuttle Riverside - Copley via Woodland (Expres", 0.6], ["Green Line D Shuttle Riverside - Copley (Express)", 0.6], ["Green Line D Shuttle Riverside - Kenmore (Shuttle)", 0.6]] },
+  "lehman-college":
+    { rail: [["4 Lexington Avenue Express", 0.2], ["B 6 Avenue Express", 0.3], ["D 6 Avenue Express", 0.3], ["1 Broadway - 7 Avenue Local", 0.7], ["Harlem", 0.8], ["Hudson", 0.9]], bus: [["Bx22 Bedford Park - Castle Hill", 0.1], ["Bx26 Co-op City Section 5 - Bedford Park", 0.1], ["Bx25 Co-op City Bay Plaza - Bedford Park", 0.1], ["Bx10 Riverdale - Norwood", 0.1], ["Bx38 Co-op City Bay Plaza - Norwood", 0.1], ["Bx28 Co-op City Section 5 - Fordham Center", 0.1], ["4 4 - THE BRONX-YONKERS", 0.1], ["21 21 - THE BRONX-WHITE PLAINS", 0.1], ["20 20 - THE BRONX-WHITE PLAINS", 0.1], ["BxM4 Woodlawn - Midtown", 0.3]] },
+  "lesley":
+    { rail: [["Red Line", 0.5], ["Fitchburg Line", 0.6]], bus: [["77", 0.2], ["83", 0.2], ["96", 0.2], ["74", 0.2], ["72", 0.2], ["71", 0.2], ["75", 0.2], ["78", 0.2], ["72/75", 0.2], ["73", 0.2]] },
+  "life-university":
+    { bus: [["10 Arts Center Station/Marietta TC", 0.3], ["50 CTC - MTC via Powers Ferry", 0.6], ["RAPID Arts Station/KSU-Kennesaw Rapid", 0.6]] },
+  "liu":
+    { rail: [["B 6 Avenue Express", 0.1], ["Q Broadway Express", 0.1], ["N Broadway Express", 0.1], ["D 6 Avenue Express", 0.1], ["R Broadway Local", 0.1], ["3 7 Avenue Express", 0.2], ["4 Lexington Avenue Express", 0.2], ["5 Lexington Avenue Express", 0.2], ["2 7 Avenue Express", 0.2], ["G Brooklyn-Queens Crosstown", 0.3]], bus: [["B38 Ridgewood - Downtown Brooklyn", 0.1], ["B25 Dwntn Bklyn & DUMBO - Broadway Junction", 0.2], ["B26 Downtown Brooklyn - Ridgewood", 0.2], ["B52 Downtown Brooklyn - Ridgewood", 0.2], ["B54 Downtown Brooklyn - Ridgewood", 0.2], ["B67 Brooklyn Navy Yard - Kensington", 0.2], ["B41 Kings Plaza - Downtown Brooklyn", 0.2], ["B45 Downtown Brooklyn - Crown Heights", 0.2]] },
+  "loyola-chicago":
+    { rail: [["Red Line", 0.3], ["UP-N Union Pacific North", 1.1]], bus: [["147 Outer DuSable Lake Shore Express", 0.0], ["136 Sheridan/LaSalle Express", 0.0], ["151 Sheridan", 0.0], ["36 Broadway", 0.2], ["155 Devon", 0.2]] },
+  "loyola-maryland":
+    { rail: [["LIGHT RAILLINK LIGHT RAILLINK", 1.4]], bus: [["28 MORAVIA - ROGERS AVE METRO", 0.1], ["51 TOWSON - DOWNTOWN", 0.1]] },
+  "manhattan":
+    { rail: [["1 Broadway - 7 Avenue Local", 0.1], ["4 Lexington Avenue Express", 1.1], ["Hudson", 1.2], ["B 6 Avenue Express", 1.4], ["D 6 Avenue Express", 1.4]], bus: [["3 3 - THE BRONX-WHITE PLAINS", 0.1], ["2 2 - THE BRONX-TUDOR WOODS", 0.1], ["1 1 - COLLEGE-TARRYTOWN-WHITE PLAINS", 0.1], ["Bx9 Riverdale - West Farms Sq", 0.2], ["BX09 Broadway - Southern Blvd", 0.3], ["Bx3 Riverdale - George Washington Bridge", 0.4], ["Bx7 Riverdale - Washington Heights", 0.4], ["BxM2 Riverdale - West Midtown", 0.4], ["BxM1 Riverdale - East Midtown", 0.4], ["BxM18 Riverdale - Downtown", 0.4]] },
+  "maryland":
+    { rail: [["GR Green", 0.5], ["MARC CAMDEN - WASHINGTON", 0.5]], bus: [["M42 RANDOLPH RD-COLLEGE PARK", 0.1], ["P10 BALTIMORE AV", 0.1], ["P31 NEW CARROLLTON-TAKOMA LANGLEY", 0.1], ["M44 RANDOLPH RD-HYATTSVILLE CROSSING", 0.3], ["P1X BALTIMORE AV LIMITED", 0.3], ["P32 GREENBELT-FORT TOTTEN", 0.4]] },
+  "marymount":
+    { bus: [["72 Rock Spring-Ballston-Shirlingtn", 0.1], ["A70 GLEBE RD", 0.1]] },
+  "medgar-evers":
+    { rail: [["S Franklin Avenue Shuttle", 0.3], ["3 7 Avenue Express", 0.3], ["4 Lexington Avenue Express", 0.3], ["2 7 Avenue Express", 0.3], ["5 Lexington Avenue Express", 0.3], ["B 6 Avenue Express", 0.4]], bus: [["B49 Manhattan Beach - Bedford-Stuyvesant", 0.1], ["B48 Lefferts Gardens - Greenpoint", 0.1], ["B43 Greenpoint - Lefferts Gardens", 0.2], ["B44-SBS Sheepshead Bay - Williamsburg", 0.3]] },
+  "merchant-marine-acad":
+    { bus: [["n58 Great Neck -- Kings Point", 0.2]] },
+  "mit":
+    { rail: [["Red Line", 0.4], ["B Green Line B", 0.8], ["C Green Line C", 0.9], ["D Green Line D", 0.9], ["Framingham/Worcester Line", 0.9], ["E Green Line E", 1.1]], bus: [["1 Harvard Square - Nubian Station", 0.0], ["CT2 Sullivan Square Station - Ruggles Station", 0.1], ["85 Spring Hill - Kendall/MIT Station", 0.1], ["68 Harvard Square - Kendall/MIT Station", 0.3], ["64 Oak Square - University Park or Kendall/MIT Station", 0.3], ["70 Market Place Drive or Waltham Center - University Park", 0.4], ["Red Line Shuttle Alewife - Kendall/MIT", 0.4], ["Red Line Shuttle JFK/UMass - Kendall/MIT (Shuttle)", 0.4], ["Red Line Shuttle Kendall/MIT - Broadway via Downtown Crossin", 0.4], ["Red Line Shuttle Alewife - Park Street", 0.4]] },
+  "molloy":
+    { rail: [["Babylon", 0.3], ["Long Beach", 1.4]], bus: [["n16 Hempstead-Rockville Centre", 0.2], ["n15 Long Beach- Roosevelt Field", 0.3], ["MMCS Mercy Medical Shuttle", 0.3], ["n4 Freeport- Jamaica", 0.3], ["n4X Freeport-Jamaica Express", 0.3]] },
+  "moody-bible":
+    { rail: [["Brown Line", 0.2], ["Purple Line", 0.2], ["Red Line", 0.3], ["Green Line", 0.9], ["Blue Line", 0.9], ["Orange Line", 0.9], ["Pink Line", 0.9]], bus: [["156 LaSalle", 0.0], ["66 Chicago", 0.1], ["22 Clark", 0.1], ["37 Sedgwick", 0.2], ["70 Division", 0.2]] },
+  "morehouse":
+    { rail: [["GOLD GOLD", 0.7], ["RED RED", 0.7], ["GREEN GREEN", 0.7], ["BLUE BLUE", 0.7]], bus: [["1 Marietta Blvd/Joseph E Lowery Blvd", 0.2], ["68 Benjamin E Mays Drive", 0.2], ["813 Atlanta University Center", 0.2]] },
+  "morgan-state":
+    { bus: [["28 MORAVIA - ROGERS AVE METRO", 0.1], ["CityLink SILVER CURTIS BAY - HOPKINS/MORGAN", 0.2], ["54 STATE CENTER - CARNEY/HILLENDALE", 0.3], ["CityLink GREEN DOWNTOWN - TOWSON", 0.4], ["104 CROMWELL BRIDGE - HARBOR EAST", 0.4], ["103 DOWNTOWN - CROMWELL BRIDGE", 0.4]] },
+  "mount-saint-vincent":
+    { rail: [["Hudson", 0.7]], bus: [["Bx10 Riverdale - Norwood", 0.2], ["Bx7 Riverdale - Washington Heights", 0.2], ["8 8 - MT ST VINCENT-YONKERS-TUCKAHOE", 0.2], ["32 32 - YONKERS LOOP", 0.3], ["2 2 - THE BRONX-TUDOR WOODS", 0.5], ["1 1 - COLLEGE-TARRYTOWN-WHITE PLAINS", 0.5], ["3 3 - THE BRONX-WHITE PLAINS", 0.5]] },
+  "nc-aandt":
+    { bus: [["4 Alamance Burlington Express", 0.4], ["2 Greensboro Express", 0.9], ["10 Randolph Express", 0.9], ["9 Davidson County Greensboro Express", 0.9]] },
+  "nc-central":
+    { bus: [["12 E. Main St NCCU Southpoint", 0.1], ["12B E. Main St NCCU Durham Station", 0.1], ["8 Lawson St NCCU Durham Tech", 0.2], ["5 Fayetteville St NCCU Southpoint", 0.2]] },
+  "nc-state":
+    { bus: [["12 Method", 0.2], ["7 Wolflink Shuttle", 0.3], ["11 Avent Ferry", 0.3], ["11L Buck Jones Connector", 0.3], ["4 Centennial Express", 0.4], ["2 Spring Hill", 0.4], ["305 Holly Springs - Apex - Raleigh", 0.4]] },
+  "njcu":
+    { rail: [["Hudson-Bergen Light Rail", 0.3]], bus: [["10", 0.1], ["119", 0.1], ["8", 0.2]] },
+  "njit":
+    { rail: [["Newark Light Rail", 0.1], ["Morris & Essex Line", 0.6], ["Montclair-Boonton Line", 0.6], ["Gladstone Branch", 0.6]], bus: [["73", 0.2], ["79", 0.2], ["71", 0.2], ["34", 0.2], ["21", 0.2], ["24", 0.2], ["44", 0.2], ["29", 0.2], ["41", 0.2], ["108", 0.2]] },
+  "norfolk-state":
+    { rail: [["800 LIGHT RAIL TIDE", 0.4], ["800 LRT TIDE MAIN LINE", 0.4]], bus: [["9 SEWELLS POINT ROAD", 0.2], ["009 SEWELLS POINT ROAD", 0.2], ["20 VIRGINIA BEACH BLVD", 0.3], ["020 VIRGINIA BEACH BLVD", 0.3], ["018 BALLENTINE BLVD", 0.3]] },
+  "north-park-university":
+    { rail: [["Brown Line", 0.5]], bus: [["92 Foster", 0.1], ["93 California/Dodge", 0.1], ["82 Kimball/Homan", 0.1]] },
+  "northeastern":
+    { rail: [["E Green Line E", 0.0], ["Providence/Stoughton Line", 0.2], ["Franklin/Foxboro Line", 0.2], ["Orange Line", 0.2], ["Needham Line", 0.2], ["B Green Line B", 0.6], ["D Green Line D", 0.6], ["C Green Line C", 0.6]], bus: [["39 Forest Hills Station - Back Bay Station", 0.0], ["Green Line E Shuttle Heath Street - Park Street", 0.0], ["Green Line E Shuttle Heath Street - Prudential", 0.0], ["9 City Point - Copley Square", 0.1], ["Orange Line Shuttle Jackson Square - Copley", 0.2], ["45 Franklin Park - Ruggles Station", 0.2], ["23 Ashmont Station - Ruggles Station via Washington Street", 0.2], ["Orange Line Shuttle Forest Hills - Back Bay via Ruggles Busw", 0.2], ["28 Mattapan Station - Ruggles Station", 0.2], ["CT2 Sullivan Square Station - Ruggles Station", 0.2]] },
+  "nyu":
+    { rail: [["N Broadway Express", 0.2], ["R Broadway Local", 0.2], ["B 6 Avenue Express", 0.3], ["D 6 Avenue Express", 0.3], ["F Queens Blvd Express/ 6 Av Local", 0.3], ["A 8 Avenue Express", 0.3], ["E 8 Avenue Local", 0.3], ["C 8 Avenue Local", 0.3], ["M QNS BLVD-6th AVE/ Myrtle Local", 0.3]], bus: [["ShortLine Hudson 300 - NYC - Middletown", 0.2], ["ShortLine Hudson 500 - Monroe - Chester - Goshen", 0.2], ["ShortLine Hudson 700 - Newburgh - Poughkeepsie", 0.2], ["ShortLine Hudson 800 - Pennsylvania", 0.2], ["ShortLine Hudson 200 - Northern District Nanuet", 0.2], ["M55 W 44 St - South Ferry", 0.2], ["M3 Fort George - East Village", 0.2], ["M1 Harlem - East Village", 0.2], ["M2 Washington Heights - East Village", 0.2], ["M8 West Village - East Village", 0.2]] },
+  "oglethorpe":
+    { rail: [["GOLD GOLD", 1.1]], bus: [["25 Peachtree Boulevard", 0.1], ["110 Peachtree Road / Buckhead", 1.1], ["47 I-85 Access Road", 1.1], ["8 North Druid Hills Road", 1.1], ["825 Johnson Ferry Road", 1.2]] },
+  "penn":
+    { rail: [["Airport Line Airport Line", 0.2], ["Wilmington/Newark Line Wilmington/Newark Line", 0.2], ["Media/Elwyn Line Media/Elwyn Line", 0.2], ["11 13th-Market to Darby Trans Cntr", 0.2], ["36 13th-Market to 80th-Eastwick", 0.2], ["13 13th-Market to Yeadon-Darby TC", 0.2], ["34 13th-Market to 61st-Baltimore", 0.2], ["10 13th-Market to 63rd-Malvern", 0.3], ["MFL Frankford TC to 69th St TC", 0.4]], bus: [["LUCYGO Gold Loop through University City", 0.0], ["30 Amtrak 30th St Sta to 69th St TC", 0.0], ["42 Penns Landing to Wycombe or61stPine", 0.0], ["49 33rd-Dauphin to 29th-Snyder", 0.0], ["40 2nd-Lombard to Conshohocken-Monumnt", 0.0], ["LUCYGR Green Loop through University City", 0.0], ["21 Penns Landing to 69th St TC", 0.2]] },
+  "penn-state-abington":
+    { rail: [["West Trenton Line West Trenton Line", 0.5], ["Warminster Line Warminster Line", 1.3]], bus: [["55 Willow Grove & Doylestown to OTC", 0.5]] },
+  "penn-state-brandywine":
+    { bus: [["114 Wawa Railroad Station to Darby TC", 0.2], ["111 Chadds Ford to 69th St TC", 0.2], ["117 Penn State U to I-95 Industrial Pk", 0.2], ["110 Penn State U to 69th St TC", 0.2]] },
+  "pittsburgh":
+    { bus: [["P3 EAST BUSWAY-OAKLAND", 0.1], ["28X AIRPORT FLYER", 0.1], ["61C MCKEESPORT-HOMESTEAD", 0.1], ["58 GREENFIELD", 0.1], ["71D HAMILTON SHORT", 0.1], ["69 TRAFFORD", 0.1], ["71C POINT BREEZE SHORT", 0.1], ["61B BRADDOCK-SWISSVALE", 0.1], ["71B HIGHLAND PARK", 0.1], ["75 ELLSWORTH", 0.1]] },
+  "point-park":
+    { bus: [["58 GREENFIELD", 0.0], ["57 HAZELWOOD", 0.0], ["53L HOMESTEAD PARK LIMITED", 0.0], ["52L HOMEVILLE LIMITED", 0.0], ["56 LINCOLN PLACE", 0.0], ["Y47 CURRY FLYER", 0.0], ["51 CARRICK", 0.0], ["51L CARRICK LIMITED", 0.0], ["Y1 LARGE FLYER", 0.0], ["44 KNOXVILLE", 0.0]] },
+  "pratt-institute":
+    { rail: [["G Brooklyn-Queens Crosstown", 0.2], ["C 8 Avenue Local", 0.6], ["A 8 Avenue Express", 0.6], ["S Franklin Avenue Shuttle", 0.8], ["Port Jefferson Branch", 0.9], ["Hempstead Branch", 0.9], ["Babylon Branch", 0.9], ["City Terminal Zone", 0.9], ["Ronkonkoma Branch", 0.9], ["Long Beach Branch", 0.9]], bus: [["B38 Ridgewood - Downtown Brooklyn", 0.1], ["B48 Lefferts Gardens - Greenpoint", 0.2], ["B54 Downtown Brooklyn - Ridgewood", 0.2]] },
+  "queens-charlotte":
+    { bus: [["20 Sharon Road", 0.0], ["30 Woodlawn/Scaleybark/Crosstown", 0.3], ["19 Park Road", 0.6]] },
+  "queens-college-cuny":
+    { bus: [["Q20 College Point - Jamaica", 0.2], ["Q44-SBS Bronx Zoo - Jamaica", 0.2], ["Q88 Elmhurst - Queens Village", 0.2], ["Q25 College Point - Jamaica", 0.4], ["Q17 Flushing - Jamaica", 0.4]] },
+  "radford":
+    { bus: [["40 NRV Connect", 0.1], ["41 NRV Connect", 0.1], ["20 New River Rapid", 0.1], ["10 University Express", 0.1], ["40 NRV Connect Late Night", 0.1], ["11 University Express", 0.1], ["60 South Beech Express", 0.1], ["25 New River Rapid", 0.1], ["10 University Express Sunday", 0.1], ["15 University Express", 0.1]] },
+  "regent":
+    { bus: [["12 INDIAN RIVER ROAD", 0.4], ["012 INDIAN RIVER ROAD", 0.4], ["922 MAX GREENBRIAR/INDIAN RIVER/NAVAL STATION NORFOLK", 0.9], ["967 MAX VIRGINIA BEACH-NEWPORT NEWS EXPRESS", 0.9], ["967 MAX - NNTC TO INDIAN RIVER PARK & RIDE", 0.9], ["972 MAX - TCC to NN SHIPYARD", 0.9], ["024 KEMPSVILLE ROAD", 0.9]] },
+  "robert-morris":
+    { bus: [["21 CORAOPOLIS", 0.3], ["G3 MOON FLYER", 1.3]] },
+  "roosevelt":
+    { rail: [["ME Metra Electric", 0.1], ["Purple Line", 0.2], ["Orange Line", 0.2], ["Brown Line", 0.2], ["Pink Line", 0.2], ["Red Line", 0.2], ["Green Line", 0.2], ["Blue Line", 0.3], ["RI Rock Island", 0.4]], bus: [["147 Outer DuSable Lake Shore Express", 0.0], ["26 South Shore Express", 0.0], ["J14 Jeffery Jump", 0.0], ["4 Cottage Grove", 0.0], ["143 Stockton/Michigan Express", 0.0], ["X4 Cottage Grove Express", 0.0], ["7 Harrison", 0.0], ["126 Jackson", 0.0], ["1 Bronzeville/Union Station", 0.0], ["3 King Drive", 0.0]] },
+  "rosemont":
+    { rail: [["Paoli/Thorndale Line Paoli/Thorndale Line", 0.4], ["NHSL Norristown TC to 69th St TC", 0.5]], bus: [["106 Paoli to 69th St TC", 0.3], ["105 Rosemont to 69th St TC", 0.4]] },
+  "rutgers-camden":
+    { rail: [["Riverline Light Rail", 0.1], ["PATCO Eastbound to Lindenwold", 0.2], ["PATCO Westbound to Philadelphia", 0.2], ["MFL Frankford TC to 69th St TC", 1.2]], bus: [["452", 0.1], ["453", 0.1], ["410", 0.2], ["315", 0.2], ["404", 0.2], ["412", 0.2], ["551", 0.2], ["402", 0.2], ["400", 0.2], ["409", 0.2]] },
+  "rutgers-newark":
+    { rail: [["Newark Light Rail", 0.1], ["Montclair-Boonton Line", 0.6], ["Morris & Essex Line", 0.6], ["Gladstone Branch", 0.6], ["PATH Newark - World Trade Center", 0.7], ["PATH Newark - Harrison Shuttle Train", 0.7]], bus: [["79", 0.0], ["71", 0.0], ["73", 0.0], ["78", 0.1], ["41", 0.1], ["29", 0.1], ["44", 0.1], ["11", 0.1], ["72", 0.1], ["28", 0.1]] },
+  "saint-josephs":
+    { rail: [["Paoli/Thorndale Line Paoli/Thorndale Line", 0.7], ["Cynwyd Line Cynwyd Line", 0.7], ["10 13th-Market to 63rd-Malvern", 0.9]], bus: [["65 Germantown-Chelten to 69th St TC", 0.0], ["52 49th-Wdland to 54th-City/50th-PrkSd", 0.2], ["G Overbk/LankMC to ColCom/FdDstCtr", 0.2], ["44 5th-Market to Ardmore", 0.2], ["1 Parx Casino to 54th-City", 0.2], ["46 58th-Baltimore to 63rd-Malvern", 0.9]] },
+  "saint-peter-s":
+    { rail: [["Hudson-Bergen Light Rail", 1.1]], bus: [["80", 0.1], ["9", 0.1], ["10", 0.1], ["119", 0.1], ["8", 0.1], ["87", 0.1]] },
+  "saint-xavier":
+    { bus: [["103 West 103rd", 0.2], ["53A South Pulaski", 0.3]] },
+  "samford":
+    { bus: [["90 Magic City Connector", 0.9], ["31 Highway 31 South", 0.9]] },
+  "sarah-lawrence":
+    { rail: [["Harlem", 0.5]], bus: [["26 26 - THE BRONX-YONKERS", 0.1], ["30 30 -YONKERS-BRONXVILLE-NEW ROCHELLE", 0.4], ["52 52 - MT VERNON-THE BRONX-BRONXVILLE", 0.4], ["25 25 - THE BRONX-YONKERS", 0.5]] },
+  "seton-hall":
+    { rail: [["Gladstone Branch", 0.8], ["Morris & Essex Line", 0.8]], bus: [["31", 0.1], ["1", 0.4], ["107", 0.4], ["361", 0.4], ["37", 0.4]] },
+  "shaw":
+    { bus: [["21 Caraleigh", 0.1], ["19 Apollo Heights", 0.1], ["11 Avent Ferry", 0.1], ["r-line Free Downtown Circulator", 0.1], ["102 Raleigh-Garner", 0.1], ["5 Biltmore Hills", 0.1], ["22 State Street", 0.1], ["13 Chavis Heights", 0.2]] },
+  "south-carolina":
+    { bus: [["92 92x - 12th Street Extension Express", 0.0], ["61 61 - Shop", 0.0], ["44 44X - Lower Richland Express", 0.0], ["93 93x - I-26 Express", 0.0], ["4 4 - Soda Cap Connector Orbit", 0.0], ["91 91 - Springdale/Cayce", 0.0], ["1 1 - Soda Cap Connector", 0.0], ["401 401 - Devine", 0.0], ["42 42 - Millwood", 0.0], ["21 21 - Rosewood", 0.0]] },
+  "st-joseph-s-long-island":
+    { rail: [["Montauk Branch", 1.0]], bus: [["S63 Patchogue RR - Smith Haven Mall", 0.2], ["X-495 Long Island", 0.2], ["Suffern - Patchogue", 0.2], ["7A Patchogue RR - Ronkonkoma RR", 0.5]] },
+  "st-joseph-s-univ-ny":
+    { rail: [["G Brooklyn-Queens Crosstown", 0.2], ["C 8 Avenue Local", 0.4], ["A 8 Avenue Express", 0.4], ["City Terminal Zone", 0.6], ["West Hempstead Branch", 0.6], ["Long Beach Branch", 0.6], ["Ronkonkoma Branch", 0.6], ["Hempstead Branch", 0.6], ["Babylon Branch", 0.6], ["Far Rockaway Branch", 0.6]], bus: [["B69 Downtown Brooklyn - Kensington", 0.1], ["B38 Ridgewood - Downtown Brooklyn", 0.1], ["B54 Downtown Brooklyn - Ridgewood", 0.2]] },
+  "st-thomas-aquinas":
+    { bus: [["Rockland Coaches 9/9A", 0.1], ["Rockland Coaches 20", 1.3]] },
+  "stevens-institute":
+    { rail: [["Hudson-Bergen Light Rail", 0.7], ["PATH Journal Square - 33rd Street (via Hoboken)", 0.8], ["PATH Hoboken - World Trade Center", 0.8], ["PATH Hoboken - 33rd Street", 0.8], ["Raritan Valley Line", 0.8], ["North Jersey Coast Line", 0.8], ["Montclair-Boonton Line", 0.8], ["Main/Bergen County Line", 0.8], ["Port Jervis Line", 0.8], ["Gladstone Branch", 0.8]], bus: [["22", 0.1], ["126", 0.1], ["89", 0.1]] },
+  "stevenson":
+    { rail: [["METRO SUBWAYLINK METRO SUBWAYLINK", 1.3]], bus: [["87 GLYNDON - OWINGS MILLS", 0.5], ["92 GLEN - BAAS & TALMUDICAL", 0.7], ["89 ROGERS AVE - OWINGS MILLS", 0.8]] },
+  "stony-brook":
+    { rail: [["Port Jefferson Branch", 0.6]], bus: [["51 Patchogue Long Island Railroad Station to Ronkonkoma Long", 0.1], ["S60 Smith Haven Mall - Gordon Heights", 0.2], ["3D Brentwood RR - Story Brook RR", 0.2], ["S69 Night Loop - Smith Haven Mall", 0.3], ["S76 Stony Brook RR - Port Jefferson Station", 0.6]] },
+  "suffolk":
+    { rail: [["Orange Line", 0.3], ["E Green Line E", 0.3], ["B Green Line B", 0.3], ["D Green Line D", 0.3], ["C Green Line C", 0.3], ["Providence/Stoughton Line", 0.3], ["Franklin/Foxboro Line", 0.3], ["Needham Line", 0.4], ["Foxboro Event Service", 0.4], ["Framingham/Worcester Line", 0.4]], bus: [["9 City Point - Copley Square", 0.0], ["43 Ruggles Station - Park Street Station", 0.1], ["10 City Point - Arlington Station", 0.1], ["Commuter", 0.2], ["SL5 Nubian Station - Temple Place", 0.2], ["SL4 Nubian Station - South Station", 0.2], ["15 Fields Corner Station - Ruggles Station", 0.2], ["11 City Point - Chauncy Street & Summer Street", 0.2], ["57 Watertown Yard - Kenmore Station", 0.3], ["501 Brighton Center - Federal Street & Franklin Street", 0.3]] },
+  "suny-maritime":
+    { bus: [["Bx40 Throgs Neck - River Park Towers", 0.3], ["Bx8 Williamsbridge - Locust Point", 0.5], ["QM32 Bay Terrace - Midtown Express", 0.9], ["QM2 Bay Terrace - Midtown Express", 0.9], ["BxM9 Throgs Neck - Midtown Express", 0.9], ["Q15 Flushing - Beechhurst", 0.9], ["Q61 Beechhurst - Flushing", 0.9]] },
+  "swarthmore":
+    { rail: [["Media/Elwyn Line Media/Elwyn Line", 0.3], ["101 Media to 69th St TC", 0.7]], bus: [["109 Chester TC to 69th St TC", 0.1], ["110 Penn State U to 69th St TC", 0.5], ["107 Lawrence Park to 69th St TC", 0.6]] },
+  "temple":
+    { rail: [["BSL NRG Station to Fern Rock TC", 0.2], ["Trenton Line Trenton Line", 0.5], ["Paoli/Thorndale Line Paoli/Thorndale Line", 0.5], ["Wilmington/Newark Line Wilmington/Newark Line", 0.5], ["Chestnut Hill West Line Chestnut Hill West Line", 0.5], ["West Trenton Line West Trenton Line", 0.5], ["Media/Elwyn Line Media/Elwyn Line", 0.5], ["Lansdale/Doylestown Line Lansdale/Doylestown Line", 0.5], ["Fox Chase Line Fox Chase Line", 0.5], ["Chestnut Hill East Line Chestnut Hill East Line", 0.5]], bus: [["4 Broad-Pattison to Fern Rock TC", 0.0], ["16 City Hall to Cheltenham-Ogontz", 0.0], ["2 20-Johnston to Pulaski-Hntg Park", 0.1], ["BSO Midnight-5am Service (Bus) for BSL", 0.2], ["3 33rd-Cecil B. Moore to FTC", 0.2]] },
+  "tennessee":
+    { bus: [["81 81 Orange Line Trolley (WKD)", 0.1], ["44 44 University Park", 0.2], ["10 10 Sequoyah Hills", 0.4], ["17 17 Sutherland/Bearden", 0.4], ["45 45 Vestal", 0.4]] },
+  "the-citadel":
+    { bus: [["102 North Neck", 0.1], ["213 Lockwood/Calhoun - DASH", 0.4], ["203 Medical Shuttle", 0.4]] },
+  "thomas-jefferson":
+    { rail: [["PATCO Eastbound to Lindenwold", 0.1], ["PATCO Westbound to Philadelphia", 0.1], ["MFL Frankford TC to 69th St TC", 0.2], ["Chestnut Hill West Line Chestnut Hill West Line", 0.3], ["Wilmington/Newark Line Wilmington/Newark Line", 0.3], ["Chestnut Hill East Line Chestnut Hill East Line", 0.3], ["Airport Line Airport Line", 0.3], ["Trenton Line Trenton Line", 0.3], ["Warminster Line Warminster Line", 0.3], ["West Trenton Line West Trenton Line", 0.3]], bus: [["45 Broad & Oregon to Noble & 12th", 0.0], ["23 11th Market to Chestnut Hill", 0.0], ["21 Penns Landing to 69th St TC", 0.0], ["12 Columbus-Dock to 50th-Woodland", 0.0], ["9 4th-Walnut to Andorra", 0.0], ["42 Penns Landing to Wycombe or61stPine", 0.0], ["38 5th-Market to Wissahickon TC", 0.1], ["47M Whitmn Plz to 7th-Spg Grd via 9thSt", 0.1], ["61 9th-Market to Manayunk", 0.1], ["62 9th-Market to Andorra", 0.1]] },
+  "tufts":
+    { rail: [["E Green Line E", 0.2], ["B Green Line B", 0.2], ["C Green Line C", 0.2], ["Red Line", 1.0], ["Lowell Line", 1.1]], bus: [["96 Medford Square - Harvard Station", 0.1], ["80 Arlington Center - Lechmere Station", 0.1], ["94 Medford Square - Davis Station", 0.1], ["101 Malden Center Station - Sullivan Square Station via Wint", 0.2], ["Green Line E Shuttle North Station - Medford/Tufts (Shuttle)", 0.3], ["Green Line E Shuttle Medford/Tufts - East Somerville", 0.3], ["Green Line E Shuttle Medford/Tufts - North Station", 0.3], ["Green Line Shuttle Medford/Tufts - Government Center via Uni", 0.3], ["Green Line E Shuttle Government Center - Medford/Tufts (Shut", 0.3], ["Red Line Shuttle Alewife - Kendall/MIT", 1.0]] },
+  "uic":
+    { rail: [["Blue Line", 0.1], ["MD-N Milwaukee North", 0.7], ["HC Heritage Corridor", 0.7], ["BNSF Burlington Northern", 0.7], ["NCS North Central Service", 0.7], ["SWS Southwest Service", 0.7], ["MD-W Milwaukee West", 0.7], ["UP-N Union Pacific North", 0.8], ["UP-W Union Pacific West", 0.8], ["UP-NW Union Pacific Northwest", 0.8]], bus: [["755 Plainfield IMD West Loop Express", 0.1], ["7 Harrison", 0.1], ["60 Blue Island/26th", 0.1], ["8 Halsted", 0.2], ["126 Jackson", 0.2]] },
+  "umass-boston":
+    { rail: [["Fall River/New Bedford Line", 0.7], ["Greenbush Line", 0.7], ["Kingston Line", 0.7], ["Red Line", 0.7]], bus: [["8 Harbor Point - Kenmore Station", 0.2], ["16 Forest Hills Station - Andrew Station or Harbor Point", 0.2], ["Red Line Shuttle JFK/UMass - Broadway", 0.7], ["Red Line Shuttle Harvard - JFK/UMass via State Street", 0.7], ["Red Line Shuttle Ashmont - JFK/UMass", 0.7], ["Red Line Shuttle North Quincy - Broadway (Shuttle)", 0.7], ["Red Line Shuttle Harvard - JFK/UMass via Congress Street", 0.7], ["Red Line Shuttle Kendall/MIT - JFK/UMass", 0.7], ["Red Line Shuttle JFK/UMass - Park Street via Post Office", 0.7], ["Red Line Shuttle Ashmont - JFK/UMass (Shuttle)", 0.7]] },
+  "umbc":
+    { bus: [["37 OLD COURT - UMBC", 0.1], ["76 CCBC - DOWNTOWN", 0.1], ["CityLink YELLOW MONDAWMIN - UMBC/PATAPSCO", 0.3]] },
+  "unc-asheville":
+    { bus: [["N1 North 1", 0.1], ["N2 North 2", 0.1], ["N4 North 4", 0.5]] },
+  "unc-chapel-hill":
+    { bus: [["RU Campus Reverse Shuttle", 0.1], ["CL Sage / Old Oxford Rd / UNC Hospitals", 0.2], ["D UNC Hospitals / Franklin St / Old Durham Rd", 0.2], ["F Colony Woods / Franklin St / McDougle School", 0.2], ["Safe Ride G Franklin Street / Glen Lennox / Meadowmont", 0.2], ["Safe Ride T Franklin Street / MLK, Jr. Blvd / Timberlyne", 0.2], ["Safe Ride J Franklin Street / Carrboro / Rock Creek", 0.2], ["U Campus Shuttle", 0.2], ["NU RR Lot / UNC Hospitals", 0.2], ["405 Durham-Chapel Hill-Carrboro", 0.2]] },
+  "unc-charlotte":
+    { rail: [["501 Light Rail - Lynx Blue Line", 0.9]], bus: [["29 UNCC/JW Clay", 0.1], ["22 Graham Street", 0.9], ["33 Bus Bridge", 0.9], ["47x Huntersville Greenhouse Express", 1.0], ["59 North Meck Connector", 1.0], ["CCX Concord Charlotte Express", 1.0]] },
+  "unc-greensboro":
+    { bus: [["10 Randolph Express", 0.4], ["9 Davidson County Greensboro Express", 0.4], ["2 Greensboro Express", 0.8], ["4 Alamance Burlington Express", 1.3]] },
+  "university-at-buffalo":
+    { bus: [["44 44 - LOCKPORT", 0.1], ["35 35 - SHERIDAN", 0.1]] },
+  "university-of-chicago":
+    { rail: [["ME Metra Electric", 0.6], ["Green Line", 0.7]], bus: [["172 U. of Chicago/Kenwood", 0.0], ["171 U. of Chicago/Hyde Park", 0.0], ["192 University of Chicago Hospitals Express", 0.1], ["2 Hyde Park Express", 0.3], ["4 Cottage Grove", 0.3], ["X4 Cottage Grove Express", 0.3]] },
+  "villanova":
+    { rail: [["NHSL Norristown TC to 69th St TC", 0.2], ["Paoli/Thorndale Line Paoli/Thorndale Line", 0.3]], bus: [["106 Paoli to 69th St TC", 0.1], ["105 Rosemont to 69th St TC", 0.7]] },
+  "virginia-tech":
+    { bus: [["HXP Hokie Express", 0.2], ["CAS Campus Shuttle", 0.2], ["BMR Beamer Way", 0.2], ["SMS South Main Southpark", 0.2], ["SME South Main Ellett", 0.2], ["SMA South Main Airport", 0.2], ["NMG North Main Givens", 0.2], ["CRC Corporate Research Center", 0.2], ["TCR Toms Creek Road", 0.2], ["TCP Toms Creek via Progress", 0.2]] },
+  "virginia-wesleyan":
+    { bus: [["027 NORTHAMPTON BLVD", 0.3], ["27 NORTHAMPTON BLVD", 0.5]] },
+  "wagner":
+    { rail: [["SIR Staten Island Railway", 0.9]], bus: [["S66 St. George - Port Richmond", 0.2], ["S53 Port Richmond - Bay Ridge", 0.3], ["SIM35 Port Richmond - Lower Manhattan Express", 0.3], ["S93 College of Staten Island - Bay Ridge LTD", 0.3], ["SIM33C Mariners Harbor - Greenwich Village Express", 0.3], ["SIM3C Pt. Richmond - Manhattan Express", 0.3], ["S76 St. George - Oakwood", 0.3], ["S74 St. George - Bricktown Mall", 0.3], ["S86 St. George - Oakwood LTD", 0.4], ["S84 St. George - Bricktown Mall LTD", 0.4]] },
+  "washington-adventist":
+    { rail: [["Red Metrorail Red Line", 1.2], ["RD Red", 1.2]], bus: [["13 13-Silver Spring-Takoma", 0.1], ["25 25-Takoma Station-Takoma Langley", 0.1], ["12 12-Silver Spring-Takoma", 0.1], ["18 18-Silver Spring -Takoma Langley", 0.1], ["17 17-Silver Spring-Takoma Langley", 0.1]] },
+  "wentworth":
+    { rail: [["E Green Line E", 0.0], ["Providence/Stoughton Line", 0.3], ["Orange Line", 0.3], ["Needham Line", 0.3], ["Franklin/Foxboro Line", 0.3]], bus: [["85 Spring Hill - Kendall/MIT Station", 0.0], ["39 Forest Hills Station - Back Bay Station", 0.0], ["28 Mattapan Station - Ruggles Station", 0.0], ["CT2 Sullivan Square Station - Ruggles Station", 0.0], ["8 Harbor Point - Kenmore Station", 0.0], ["47 Central Square, Cambridge - Broadway Station", 0.0], ["19 Fields Corner Station - Kenmore or Ruggles Station", 0.0], ["22 Ashmont Station - Ruggles Station via Talbot Ave", 0.0], ["9 City Point - Copley Square", 0.0], ["CT3 Beth Israel Deaconess Hospital - Andrew Station", 0.0]] },
+  "widener":
+    { rail: [["Wilmington/Newark Line Wilmington/Newark Line", 0.8]], bus: [["113 Northtowne Plaza to 69th St TC", 0.1], ["109 Chester TC to 69th St TC", 0.2]] },
+  "william-peace":
+    { bus: [["3 Glascock", 0.1], ["31 New Hope Commons", 0.1], ["1 Capital Blvd", 0.1], ["r-line Free Downtown Circulator", 0.1], ["12 Method", 0.1], ["2 Falls of Neuse", 0.1], ["26c CAT - Early Morning East", 0.2]] },
+  "winston-salem-state":
+    { bus: [["1 Winston Salem Express", 0.5], ["17 Kernersville Express", 0.9]] },
+  "yeshiva-university":
+    { rail: [["1 Broadway - 7 Avenue Local", 0.2], ["A 8 Avenue Express", 0.4], ["Hudson", 0.6], ["C 8 Avenue Local", 0.8], ["4 Lexington Avenue Express", 0.9]], bus: [["M101 East Village - Fort George", 0.0], ["M3 Fort George - East Village", 0.1], ["Bx11 George Washington Bridge - Parkchester", 0.2], ["Bx3 Riverdale - George Washington Bridge", 0.2], ["Bx13 George Washington Bridge - Bronx Terminal Market", 0.2], ["Bx36 Soundview - George Washington Bridge", 0.2], ["Bx35 George Washington Bridge-West Farms Road", 0.2]] },
+  "york-college-cuny":
+    { rail: [["E 8 Avenue Local", 0.3], ["J Nassau St Local", 0.3], ["F Queens Blvd Express/ 6 Av Local", 0.6], ["Montauk Branch", 0.7], ["Belmont Park", 0.7], ["City Terminal Zone", 0.7], ["West Hempstead Branch", 0.7], ["Long Beach Branch", 0.7], ["Ronkonkoma Branch", 0.7], ["Oyster Bay Branch", 0.7]], bus: [["Q112 Jamaica - Ozone Park", 0.1], ["X64 Cambria Heights - Midtown Manhattan Express", 0.1], ["Q114 Jamaica - Far Rockaway Limited", 0.1], ["Q111 Jamaica - Rosedale", 0.1], ["Q24 Broadway Junction - Jamaica", 0.1], ["Q20A College Point - Jamaica", 0.1], ["Q20B College Point - Jamaica", 0.1], ["Q113 Jamaica - Far Rockaway Limited", 0.1], ["Q85 Rosedale or Green Acres Shopping Mall - Jamaica", 0.2], ["Q83 Cambria Heights - Jamaica", 0.2]] },
+};

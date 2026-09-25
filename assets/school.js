@@ -176,6 +176,119 @@ function cost() {
     </p>`;
 }
 
+/* ---------- setting ---------- */
+
+/* Walk Score's own published bands, so the number carries the word that site puts on it
+   rather than one of ours. Bike Score has its own scale and is left as a number. */
+function walkBand(n) {
+  return n >= 90 ? 'Walker’s Paradise' : n >= 70 ? 'Very Walkable'
+    : n >= 50 ? 'Somewhat Walkable' : n >= 25 ? 'Car-Dependent'
+      : 'Car-Dependent (almost all errands require a car)';
+}
+
+/* A line list, nearest first, with the count so "one bus" and "nine buses" do not read
+   alike. Names are that site's verbatim, which is why a few carry a repeated route
+   number — see SETLINES in detail.js. */
+function lineList(lines) {
+  return lines.map(([name, mi]) =>
+    `<li>${name} <span class="rownote">${mi === 0 ? 'under 0.05' : mi} mi</span></li>`).join('');
+}
+
+function setting() {
+  const g = typeof SETTING === 'undefined' ? null : SETTING[S.name];
+  if (!g) return '';
+  const L = (typeof SETLINES !== 'undefined' && SETLINES[S.slug]) || {};
+  /* An absent Transit Score is not a zero, and this is the trap that made half the board
+     read as having no transit at all. Walk Score prints that number only where the city
+     publishes a feed it has ingested, so the named lines below are the real answer and
+     the score is only shown where it exists. */
+  /* Each row names its own blank, because they do not mean the same thing: no Transit Score
+     is "the city publishes no feed this site has ingested", while no Bike Score (41 rows) is
+     simply that this site did not publish one for the address. A single shared blank string
+     printed "Bike Score: no feed published", which invents a transit feed for a bicycle. */
+  const blank = (s) => `<span class="nodata">${s}</span>`;
+  const rows = [
+    ['Federal locale', g.loc ?? blank('no federal locale on file'),
+      `IPEDS <code>LOCALE</code> ${g.locCode} — the census classification of the campus address itself,
+       and the only density measure that covers every row on this board`],
+    ['Its Census place', g.town ?? blank('no Census place matched'),
+      g.town == null ? 'the federal address is in no Census place or minor civil division this pass could match'
+        : `${g.townSqMi} square miles of land, and the campus sits ${g.townMi} mi from its
+       centre. This is the town the campus is <em>in</em>, not the metro it is near — read it against the
+       ${S.mi} miles in the header, which measures to the metro centre from home`],
+    ['Walk Score', g.walk == null ? blank('not published') : `${g.walk} — ${walkBand(g.walk)}`,
+      'errands on foot from the address below, scored 0–100 by Walk Score'],
+    ['Bike Score', g.bike == null ? blank('not published') : String(g.bike),
+      g.bike == null ? 'Walk Score publishes no Bike Score for this address' : 'same source, its own 0–100 scale'],
+    ['Transit Score', g.tscore == null ? blank('no feed published') : String(g.tscore),
+      g.tscore == null ? 'Walk Score scores transit only where the city publishes a feed it has ingested. '
+        + (L.rail || L.bus ? 'The lines below are listed on the same page regardless, and they are the answer here.'
+          : 'No rail or bus was listed either.')
+        : 'same source, its own 0–100 scale'],
+    ['Nearest rail', g.railN ? `${g.railMi === 0 ? 'under 0.05' : g.railMi} mi` : blank('none listed'),
+      g.railN ? `${g.railN} line${g.railN === 1 ? '' : 's'} listed` : 'no rail line on the page for this address'],
+    ['Nearest bus', g.busN ? `${g.busMi === 0 ? 'under 0.05' : g.busMi} mi` : blank('none listed'),
+      g.busN ? `${g.busN} route${g.busN === 1 ? '' : 's'} listed` : 'no bus route on the page for this address'],
+  ];
+  return `
+    <h2>Setting</h2>
+    <div class="kpi-row">
+      <div class="kpi"><div class="k-label">Walk Score</div><div class="k-value">${g.walk ?? '—'}</div>
+        <div class="k-sub">${g.walk == null ? 'not published' : walkBand(g.walk)}</div></div>
+      <div class="kpi"><div class="k-label">Locale</div><div class="k-value" style="font-size:22px">${g.loc ?? '—'}</div>
+        <div class="k-sub">federal classification</div></div>
+      <div class="kpi"><div class="k-label">Transit</div>
+        <div class="k-value" style="font-size:22px">${g.railN || g.busN
+          ? `${g.railN} rail · ${g.busN} bus` : 'none listed'}</div>
+        <div class="k-sub">${g.railN || g.busN ? 'named lines near the address' : 'no rail and no bus on the page'}</div></div>
+      <div class="kpi"><div class="k-label">Bike Score</div><div class="k-value">${g.bike ?? '—'}</div>
+        <div class="k-sub">${g.bike == null ? 'not published' : 'same source'}</div></div>
+    </div>
+    <div class="table-scroll">
+      <table><tbody>
+        ${rows.map(([k, v, n]) => `<tr><th scope="row">${k}</th>
+          <td>${v}</td><td class="rownote">${n}</td></tr>`).join('')}
+      </tbody></table>
+    </div>
+    ${(L.rail || L.bus) ? `
+    <div class="linecols">
+      ${L.rail ? `<div><h3>Rail, nearest first</h3><ul class="lines">${lineList(L.rail)}</ul></div>` : ''}
+      ${L.bus ? `<div><h3>Bus, nearest first</h3><ul class="lines">${lineList(L.bus)}</ul></div>` : ''}
+    </div>` : ''}
+    <p class="map-note">
+      <strong>Walk Score, Bike Score and the line lists are
+      <a href="${g.ws}" rel="nofollow noopener" target="_blank">this page on walkscore.com</a></strong> —
+      a third-party score, reproduced with its source rather than recomputed here.
+      ${g.lvl === 'address' ? (g.off == null
+        /* Two rows, Columbia and Presbyterian, whose page printed no map tile for the coordinate
+           test to read. They were accepted on the weaker check — the page named the right town and
+           state — and saying so is the point: the strong test is what the rest of this column
+           rests on, and a row it could not run on should not pretend otherwise. */
+        ? `It is scored on the campus’s own street address. That page printed no map tile, so the
+          coordinate test below could not run on it and it was accepted on the weaker check that the
+          page named the right town and state.`
+        : g.off < 0.05
+          ? `It is scored on the campus’s own street address, which sits on the coordinate this board
+            holds to the precision either of them is stated in.`
+          : `It is scored on the campus’s own street address, ${g.off} mi from the
+        coordinate this board holds.`)
+      : g.lvl === 'approx' ? `<strong>Scored on a nearby street, not the exact address</strong> — that site’s
+        geocoder would not take the campus address, and the page it did answer sits ${g.off} mi from the
+        coordinate this board holds. Read it as the neighbourhood rather than the doorstep.`
+      : `<strong>Scored on the town’s own page, not an address</strong> — that site’s geocoder put every form
+        of the campus address in the wrong place entirely, so this is ${g.town} as a whole.`}
+      ${g.off == null ? `On every other row nothing was stored unless that page’s own map-tile coordinate
+      landed near this board’s coordinate, because a wrong address still returns a page with somebody
+      else’s scores on it.`
+      : `Nothing was stored unless the coordinate in that page’s own map tiles landed near this board’s
+      coordinate: a wrong address still returns a page, with somebody else’s scores on it.`}
+      <strong>This is one axis of two.</strong> It answers whether he can do errands without a car and says
+      nothing about whether he can <em>train</em> here — park acreage, soft surface, how much of it connects,
+      and road crossings per mile are <a href="https://github.com/timhibbard/xc-cs-college-board/issues/24">still
+      being collected</a>. A Walker’s Paradise can be a miserable place to run six miles.
+    </p>`;
+}
+
 /* ---------- academics ---------- */
 function academics() {
   const csTxt = S.cs === 'verified'
@@ -1066,6 +1179,16 @@ function completeness() {
         ? `every 2025–26 meet on their own TFRRS results page — ${SCHED[S.name].length} appearances`
         : 'their TFRRS results page holds nothing inside the 2025–26 season'],
     ['Coach name and contact', !!(S.coach && S.coach.name), S.coach && S.coach.email ? 'name, title and email off the school\'s staff directory' : 'no email published — phone or recruit form only'],
+    ['Setting — errands axis', !!(typeof SETTING !== 'undefined' && SETTING[S.name]),
+      (typeof SETTING !== 'undefined' && SETTING[S.name])
+        ? `federal locale, its own town, and a Walk Score scored on ${SETTING[S.name].lvl === 'address'
+          ? 'the campus address' : SETTING[S.name].lvl === 'approx' ? 'a nearby street' : 'the town itself'}`
+        : 'not collected'],
+    /* Deliberately listed as missing rather than omitted: the column was designed as two
+       axes and only one is here, so a page that showed just the errands half without
+       saying so would overstate what is known. */
+    ['Setting — training axis', false,
+      'nearest park and its acreage, soft surface, how much of it connects, crossings per mile and the nearest track — still being collected'],
   ];
   return `
     <h2>What is verified here, and what is not</h2>
@@ -1083,7 +1206,7 @@ if (!S) {
   notFound();
 } else {
   document.getElementById('body').innerHTML =
-    head() + cost() + academics() + xcSection() + trackMarks() + fifteen() + meetSection() + coachSection() + completeness() + `
+    head() + cost() + setting() + academics() + xcSection() + trackMarks() + fifteen() + meetSection() + coachSection() + completeness() + `
     <hr>
     <p class="prose"><a href="${METROS[homeMetro(S)].page}">&larr; Back to ${METROS[homeMetro(S)].label}</a>
       &nbsp;·&nbsp; <a href="index.html">All ${SCHOOLS.length} schools on the board</a></p>`;
