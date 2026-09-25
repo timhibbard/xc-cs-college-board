@@ -2523,11 +2523,11 @@ const SCHOOLS = [
     lat: 36.087962, lon: -80.250153, div: "NAIA", conf: "Continental",
     cs: "thin", csSrc: "fed", csShare: 0.0, sat: "not reported", satSrc: "none", accept: "40%", acceptSrc: "fed",
     cost: { own: "private", resid: "out", tuition: 17575, rb: 12400, sticker: 29975, net: 20828, size: 460, ipeds: 489937 },
-    b1500: "4:26.1", b5000: 1010, tier: "verify", tierSrc: "ladder",
+    b1500: "4:26.1", b5000: 1010, tier: "caution", tierSrc: "hand",
     xc: null,
     coach: { name: "Caleb Thornburg", title: "Head Track and Field Coach — the only coach the directory lists under cross country and track, and it names no cross country head", email: "thornburgc@carolinau.edu", phone: "336-422-9104", src: "https://cubruins.com/staff-directory" },
     ig: "cubruins", igDept: true,
-    note: "NAIA, and the only evidence of a men’s cross country program is the school’s own site, which publishes a roster and a schedule for it. TFRRS holds no result to measure, so <b>Verify</b> here means unmeasured rather than borderline.",
+    note: "NAIA, and the only evidence of a men’s cross country program is the school’s own site, which publishes a roster and a schedule for it. TFRRS holds no cross country result at all, so there is no championship field to measure. Caution rather than verify, and the tier rests on track marks instead: their fastest 1500 is 4:26.1 and their fastest 5000 is 16:50, so he would arrive <b>25 seconds ahead of their best 1500 and 70 seconds ahead of their best 5000</b>. Two marks from different distances, agreeing, and arriving ahead of a team’s #1 is what a thin programme looks like on this board. A roster count from Thornburg is still the one thing that could move this row — but it would have to contradict both marks.",
   },
 ];
 

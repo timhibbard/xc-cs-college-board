@@ -30,11 +30,14 @@ a conference-championship 1500 field for each of the 60 that raced one, and last
 the program attended this season** — 315 meets and 173 venues this board had never seen, read off those
 programs' own results feeds. The one column that is still uneven is **the coach's own Instagram, on 17
 rows**, recorded only where the account's own bio says they coach this program; that was never a sweep
-and is not presented as one. Six rows sit at *Verify*, which means **unmeasured, not borderline** — four
+and is not presented as one. Five rows sit at *Verify*, which means **unmeasured, not borderline** — four
 former Verify rows (Carlow, Marymount, Hilbert, Shorter) moved to *caution* once it was clear that a
 short conference championship field is a measurement of a thin program rather than an absence of
 evidence. Shorter's is the starkest of the four: three men at the 2024 Conference Carolinas
-championship and **no men's cross country result since**.
+championship and **no men's cross country result since**. A fifth, **Carolina University**, left for a
+different reason: it has no cross country result at all, so its *track* marks do the measuring — he would
+arrive 25 seconds ahead of its fastest 1500 and 70 ahead of its fastest 5000, and two distances agreeing
+is a finding rather than an absence. It was the last *Verify* row outside the new metros.
 
 **The Greenville ring is 300 driving miles**, widened from 250. That pass turned up eight Division 1
 programs new to the board: Auburn, Samford and Radford joined it, NC State, Virginia Tech and Eastern
