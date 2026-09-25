@@ -268,7 +268,13 @@
         in their 2025 championship results; <em>vs their 7th</em> is negative when he is inside the
         seven. Net cost is the federal average paid after aid. Undergraduate enrollment is on every
         school page, and the <a href="greenville.html">Greenville table</a> carries town population
-        beside it. Click any header to sort.
+        beside it. <em>Walk</em> is <a href="https://www.walkscore.com" rel="nofollow noopener">Walk
+        Score</a>'s 0&ndash;100 score for the campus's own street address, reproduced with a link to
+        its source on each school page; <em>Locale</em> is the federal census classification of that
+        same address, and it sorts most urban first. <strong>Both describe errands, not running</strong>
+        &mdash; a Walker's Paradise can be a miserable place to run six miles, and the axis that would
+        answer that (park acreage, soft surface, road crossings) is
+        <a href="methodology.html#setting">not collected yet</a>. Click any header to sort.
       </caption>
       <thead></thead>
       <tbody></tbody>
@@ -548,7 +554,7 @@ document.getElementById('np-rest').innerHTML = NO_PROGRAM
   .filter(x => x.name !== 'Northwestern')
   .map(x => `<b>${x.name}.</b> ${x.why}`).join('<br><br>');
 
-initTable();
+initTable({ walk: true });
 initChart();
 </script>
 </body>

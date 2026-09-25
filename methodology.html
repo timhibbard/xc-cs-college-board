@@ -1777,6 +1777,89 @@
     races &mdash; links no marker at all, and keeps its I on the strength of the facility.
   </p>
 
+  <h2 id="setting">9b. Campus setting &mdash; and why only half of it is here</h2>
+  <p class="prose">
+    The question behind this column was &ldquo;which of these campuses are genuinely urban,&rdquo; and the
+    honest shape of the answer is <strong>two axes, not one score</strong>. Whether he can do errands
+    without a car and whether he can <em>train</em> here are different questions, and a single
+    urban-ness number would blend them into something that answers neither. A downtown campus with a
+    96 Walk Score can be a miserable place to run six miles; a rural campus with a 6 can have forty
+    miles of trail out the back gate.
+  </p>
+  <p class="prose">
+    <strong>The errands axis is built and is on every school page and in the master table. The
+    training axis is not.</strong> Park acreage, total soft-surface mileage, the largest
+    <em>connected</em> stretch of it, signalised road crossings per mile, campus acreage and the
+    nearest running track come from OpenStreetMap, and that pass runs at about 110 seconds a row
+    &mdash; six hours for the board.
+    <a href="https://github.com/timhibbard/xc-cs-college-board/issues/24">It is issue #24</a> and 45 of
+    the 243 rows are done. Until it lands, every page that shows the errands axis says in as many
+    words that it is one axis of two, and the school-page completeness table lists the training axis
+    as <em>missing</em> rather than leaving it out &mdash; a page that showed half a design without
+    saying so would overstate what is known.
+  </p>
+  <h3 id="setting-fields">What each field is, and which are not what they look like</h3>
+  <p class="prose">
+    Three of these carry a trap, and all three had already produced a wrong answer before they were
+    caught.
+  </p>
+  <ul class="prose">
+    <li><strong>Walk Score and Bike Score are third-party numbers, reproduced with a link to the exact
+      page they came from</strong> &mdash; not recomputed here, and not averaged with anything. Every
+      school page links its own source page so the number can be checked against its source.</li>
+    <li><strong>An absent Transit Score is not a zero.</strong> That site prints one only where the
+      city publishes a transit feed it has ingested, so <strong>121 of the 243 rows have none</strong>
+      &mdash; Columbia among them, which has the 1 train at the door. Reading that score alone made
+      120 rows read as having no transit at all, and <strong>48 of those 120 turned out to have named
+      rail or bus lines on the very same page</strong>. So the <strong>named lines with their
+      distances are the primary answer here and the score is only a summary</strong>. Where the score
+      is absent the page says &ldquo;no feed published&rdquo; and lists the lines; where there are no
+      lines either, that is a fact about the place &mdash; Covenant College on Lookout Mountain has
+      neither.</li>
+    <li><strong>The federal locale is the density measure, and it is the only one that covers every
+      row.</strong> IPEDS <code>LOCALE</code> classifies the campus address twelve ways &mdash; city,
+      suburb, town and rural, each large, midsize and small, or fringe, distant and remote. Town
+      population is collected for the Greenville ring only, so it could not carry this. The locale
+      column sorts most urban first.</li>
+    <li><strong>&ldquo;Its town&rdquo; is not the Mi column.</strong> It is the Census place or minor
+      civil division the campus sits in, with its land area and how far the campus is from its centre.
+      Mi measures driving distance from home to the metro centre; this measures the campus's position
+      inside its own town. A campus 6 miles from the centre of a 227-square-mile city is a different
+      thing from one 6 miles from the centre of a 4-square-mile village.</li>
+  </ul>
+  <h3 id="setting-address">A wrong address still returns a page, with somebody else's scores on it</h3>
+  <p class="prose">
+    This is the whole accuracy of the column. That site's <code>lat/lng</code> URL form is not merely
+    imprecise &mdash; asked about MIT's own coordinate it answered about
+    <strong>a village in Maharashtra</strong>. So the address form is the only usable one, and the
+    address comes from the federal IPEDS record rather than a geocoder.
+  </p>
+  <p class="prose">
+    Nothing was stored unless <strong>the coordinate in the page's own map tiles landed near the campus
+    coordinate this board already holds</strong>. Checking the place <em>name</em> instead would have
+    been wrong in both directions and threw away ten good rows on the first pass: that site calls
+    Manhattan College's address Bronx, York College's Queens, Daemen's Buffalo rather than Amherst,
+    and Harvard's simply &ldquo;this location.&rdquo; Of the slugs tried for a row, <strong>the closest
+    accepted answer wins rather than the first</strong> &mdash; taking the first made the column depend
+    on which earlier attempt happened to fail, and two runs over the same rows disagreed on 25 of them.
+  </p>
+  <p class="prose">
+    Each row records how well its answer matches: <strong>230 rows are scored on the campus's own
+    street address</strong>; <strong>12 are a nearby street</strong>, with the distance shown, because
+    that geocoder would not take the exact address; and <strong>one &mdash; Erskine &mdash; is the
+    town's own page</strong>, because every form of its address landed 78 miles away in Cayce. Each
+    page says which of the three applies to it. Three rows needed an address by hand, each with its
+    reason recorded in the tooling: DePaul, LIU and St. Joseph's Long Island, all cases where the
+    federal address is the campus that holds the president and not the campus the team is on.
+  </p>
+  <p class="prose">
+    Two board coordinates turned out to be wrong and <strong>this check is what found them</strong>.
+    Saint Xavier's pin sat 1.6 miles from its campus, in the wrong Chicago neighbourhood; St. Joseph's
+    Long Island carried the Brooklyn coordinate of the unit ID it shares with St. Joseph's NY. Both
+    were fixed against IPEDS and OpenStreetMap, and the second one proved its own <em>Mi</em> had been
+    right all along while its pin pointed at the wrong borough.
+  </p>
+
   <h2>10. A note on the colors</h2>
   <p class="prose">
     The four fit tiers each carry a distinct shape and a text label, never color alone. That is
