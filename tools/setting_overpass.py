@@ -26,17 +26,29 @@ intermittently too busy, so every query is paced, retried, and sent with a real 
   out:  tools/.work/overpass.json   -- merged, so a re-run only fetches what is missing
   args: [n] rows this pass, or a school name to do one row
 """
-import json, math, os, subprocess, sys, time
+import json, math, os, re, subprocess, sys, time
 
 WORK = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.work')
 OUT = os.path.join(WORK, 'overpass.json')
 MIRRORS = ['https://overpass-api.de/api/interpreter',
+           'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
            'https://overpass.kumi.systems/api/interpreter']
+# Not https://overpass.osm.ch/api/interpreter, and the reason is the whole reason MIN_ROAD_MI
+# exists below. It is a Switzerland-only extract, and asked about a campus in New York it does
+# not fail -- it answers, in 1.2 seconds, with valid JSON and an empty element list. Every
+# field here would have been stored as "no park, no trail, no track, no campus polygon", which
+# is a sentence about the school rather than about the server. A mirror that is fast and
+# agreeable is the most dangerous kind.
 AGENT = 'xc-cs-college-board/1.0 (github.com/timhibbard)'
 PACE = 4.0
 RUN_MI = 2.0        # a warm-up plus a little: what he could reach on foot from the door
 CROSS_MI = 1.0
 MIN_AC = 10.0       # below this a "park" is a lawn with a bench
+# The floor that separates a real answer from an empty one, set from the 45 rows collected
+# before it existed: the lowest of them is Covenant College at 23.6, on top of a mountain.
+# A US campus with under five miles of road inside a one-mile circle is not a rural campus,
+# it is a mirror that answered about somewhere else -- or did not answer at all.
+MIN_ROAD_MI = 5.0
 M_PER_MI = 1609.34
 SOFT = ('dirt', 'ground', 'grass', 'gravel', 'fine_gravel', 'earth', 'sand', 'wood',
         'woodchips', 'compacted', 'unpaved', 'mud', 'pebblestone')
@@ -98,18 +110,36 @@ def near_m(geom, at):
     return min((haversine_m((p['lat'], p['lon']), at) for p in geom), default=None)
 
 
-def fetch(query, tries=4):
-    """Overpass answers "too busy" often enough that one attempt means nothing."""
+def fetch(query, tries=9):
+    """Overpass answers "too busy" often enough that one attempt means nothing.
+
+    The refusal to plan around is not a timeout but a 200 with an HTML body reading
+    "Dispatcher_Client::request_read_and_idx::timeout. The server is probably too busy",
+    which arrives in about seven seconds. Rotating to the next mirror on that is close to
+    useless -- when one public instance is saturated the others usually are too -- so the
+    wait is what does the work, and it climbs to minutes. This pass takes hours either way;
+    losing a row to impatience costs more than sleeping through the busy spell.
+
+    Returns (data, why) so a caller can say which of the two failures it hit, because
+    "every mirror was busy" and "a mirror answered about the wrong continent" want
+    different responses from whoever reads the log.
+    """
+    why = 'no attempt made'
     for i in range(tries):
         host = MIRRORS[i % len(MIRRORS)]
-        r = subprocess.run(['curl', '-s', '-m', '120', '-A', AGENT, host,
+        r = subprocess.run(['curl', '-s', '-m', '180', '-A', AGENT, host,
                             '--data-urlencode', 'data=' + query],
                            capture_output=True, text=True)
         try:
-            return json.loads(r.stdout)
+            return json.loads(r.stdout), None
         except Exception:
-            time.sleep(10 * (i + 1))
-    return None
+            body = ' '.join(re.sub(r'<[^>]*>', '', r.stdout).split())
+            why = ('server too busy' if 'too busy' in body
+                   else 'empty response' if not body
+                   else body[:90])
+            if i < tries - 1:
+                time.sleep(min(30 * (i + 1), 240))
+    return None, why
 
 
 def measure(el_list, at):
@@ -152,7 +182,12 @@ def measure(el_list, at):
         'netMi': round(network_mi(paths), 2),
         'crossPerMi': round(cross / (roads / M_PER_MI), 1) if roads > 500 else None,
         'roadMi': round(roads / M_PER_MI, 1),
-        'campusAc': round(max(campus)[0]) if campus else None,
+        # An area of zero is not a campus of zero acres. It is OSM holding a university *node*
+        # and no polygon to measure -- area_ac returns 0.0 for anything under four points -- and
+        # Adelphi, which has a real campus of about 75 acres, is the row that showed it. Same
+        # mistake as reading an absent Transit Score as no transit, so it gets the same answer:
+        # only a polygon with area counts, and a node means unmeasured.
+        'campusAc': round(max(a for a, _ in campus)) if any(a > 0 for a, _ in campus) else None,
         'trackMi': round(min(t for t in track if t is not None) / M_PER_MI, 2) if track else None,
     }
 
@@ -193,12 +228,21 @@ def main():
 
     for i, name in enumerate(todo, 1):
         at = (rows[name]['lat'], rows[name]['lon'])
-        data = fetch(q(*at))
+        data, why = fetch(q(*at))
         if data is None or 'elements' not in data:
-            print('%3d/%-3d %-24s overpass gave nothing' % (i, len(todo), name))
+            print('%3d/%-3d %-24s SKIPPED -- %s' % (i, len(todo), name, why))
             continue
-        have[name] = measure(data['elements'], at)
-        m = have[name]
+        m = measure(data['elements'], at)
+        # A parsed answer is not yet an answer. Storing this row would be storing a claim that
+        # the campus has no park, no trail and no track, which is what an extract of the wrong
+        # continent looks like once it has been measured. Left unstored, so the next pass asks
+        # again -- the one outcome this job must never produce is a confident empty row.
+        if (m['roadMi'] or 0) < MIN_ROAD_MI:
+            print('%3d/%-3d %-24s SKIPPED -- only %s road mi within %g mi, below the %g floor;'
+                  ' treating as a bad mirror answer rather than a rural campus'
+                  % (i, len(todo), name, m['roadMi'], CROSS_MI, MIN_ROAD_MI))
+            continue
+        have[name] = m
         print('%3d/%-3d %-24s park %-5s %-22s net %-5s soft %-5s cross/mi %-5s campus %-5s track %s'
               % (i, len(todo), name, m['parkMi'], (m['parkName'] or '')[:22], m['netMi'],
                  m['softMi'], m['crossPerMi'], m['campusAc'], m['trackMi']))
