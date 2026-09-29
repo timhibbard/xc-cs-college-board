@@ -465,9 +465,11 @@ const METROS = [
     if (!txt.includes('walkscore.com')) {
       fails.push(`school.html?s=${s.slug}: Setting section does not attribute Walk Score`);
     }
-    /* The promise the whole section is built on: it must say it is only the errands half. */
-    if (!/one axis of two/i.test(txt)) {
-      fails.push(`school.html?s=${s.slug}: Setting section does not say it is one axis of two`);
+    /* The section must name what it is about, because a Walk Score sitting on a distance
+       runner's page invites exactly one wrong reading — that a 96 is a better place to train
+       than a 12. It measures everyday living, and saying so is not optional. */
+    if (!/everyday living/i.test(txt)) {
+      fails.push(`school.html?s=${s.slug}: Setting section does not say it is about everyday living`);
     }
     dom.window.close();
   }
