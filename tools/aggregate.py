@@ -1,10 +1,21 @@
 """Aggregate per-school XC numbers and squad shape.
 
-Tier-bearing numbers come from CHAMPIONSHIP-LEVEL races only (conference, NCAA
-regional, NCAA championship), which is what the existing board used and the only
-races where teams reliably field a full varsity seven. Measured bias: championship
-races read ~10s deeper at the median than invitationals, and up to 160s for
-individual schools, so mixing them would demote healthy programs.
+Tier-bearing numbers come from CHAMPIONSHIP-LEVEL races only (conference, area
+championship, NCAA regional, national championship), which is what the existing board
+used and the only races where teams reliably field a full varsity seven. Measured bias:
+the invitationals read a median 24.8s kinder than the championships, and up to 160s for
+individual schools, so mixing them would promote thin programs.
+
+`area championship` belongs in that set and was missing from it for a long time. The
+board's own stored aggregates include those races -- of the 24 schools that have one,
+21 reproduce only if it is counted -- and methodology.html #what-counts says so
+explicitly: IC4A/ECAC, NEICAAA, the Metropolitan and DIII North championships are open
+to whoever enters from a region rather than to one league's members, so they were split
+off the `conference` label, and the section records that the split moved races *between*
+labels inside the championship group and changed no aggregate. Leaving them out here
+made this file disagree with both the data and the documentation, and re-running it
+would have silently dropped 24 races and moved tiers. ladder.py always had the right
+set; this one did not. If the two ever disagree again, ladder.py is the reference.
 
 Invitationals are kept as a separate read, and supply squad-shape data.
 """
@@ -20,7 +31,7 @@ R = str(WORK) + '/'
 BT=json.load(open(R+'byteam.json'))
 AS=json.load(open(R+'allslugs.json'))
 ORDER=['FR','SO','JR','SR']
-CHAMP={'conference','NCAA regional','national championship'}
+CHAMP={'conference','area championship','NCAA regional','national championship'}
 
 def season(d): return int(d[:4])-(1 if d[5:7]<'08' else 0)
 def retained(yrs,frm,fall):
