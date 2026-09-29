@@ -73,6 +73,7 @@ they run from a clean clone.
 | --- | --- | --- |
 | `stage1.py` | the College Scorecard institution CSV, downloaded by hand into `.work/` from <https://collegescorecard.ed.gov/data/> (~250MB unzipped) | `.work/candidates.json` — candidate schools with driving distance per metro centre, routed through OSRM (`router.project-osrm.org`) |
 | `parse_xc.py` | a saved TFRRS results page as `argv[1]` | parsed finishers for one race |
+| `xc_season.py` | `.work/board.json`, `slugmap.json` | `.work/season26.json` — every board program's own TFRRS cross country page, read for the races it has run this season, with the ones the board does not hold flagged. Discovers and compares only: it fetches no result page and computes no average, because the question it answers is *which* rows are stale. **Ask the program what it ran, do not guess which meets to read** — the hand sweep it replaces read 171 of 378 races and missed 78 of the 104 on the season's opening weekend, having enumerated meets rather than teams. Pages cached gzipped in `.work/tfrrs-teams/`, `--fresh` to re-fetch |
 | `aggregate.py` | `.work/byteam.json`, `.work/allslugs.json` | `.work/agg.json` — per-school championship aggregates and squad shape |
 | `apply_aggs.py` | `.work/xcagg.json` | rewrites each school's `xc` block in `assets/data.js` |
 | `apply_races.py` | `.work/xcraces_new.js` | splices the rebuilt races into `assets/detail.js`, preserving `@@KEEP@@` blocks |
