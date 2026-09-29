@@ -135,6 +135,7 @@
     <a href="greenville.html">the Greenville page</a></strong> &mdash; that page is where sorting,
     filtering and the gap chart live, and nothing on this one restates a number it does not hold.
   </p>
+  <p class="prose" id="setting-note"></p>
 
   <h3 id="r-west">Asheville and the mountains</h3>
   <p class="prose">
@@ -455,7 +456,11 @@ document.getElementById('k-all').textContent =
 /* The same columns the master table would show, minus the sorts: these seven tables are static,
    sorted by distance, and a header styled as clickable that does nothing is worse than a plain
    one. Sorting and filtering live on greenville.html, which holds all of these rows. */
-const cols = colsFor({ metro: false, size: true }).map(c => ({ ...c, sort: undefined }));
+const cols = colsFor({ metro: false, size: true, walk: true }).map(c => ({ ...c, sort: undefined }));
+
+/* Once above all seven tables rather than in seven captions, which carry only their region's
+   own count. Static tables, so the note does not claim the Locale column sorts. */
+document.getElementById('setting-note').innerHTML = walkNote({ sortable: false });
 
 document.querySelectorAll('table[data-region]').forEach(tbl => {
   const reg = NC_REGIONS.find(r => r.id === tbl.dataset.region);

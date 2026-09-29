@@ -161,7 +161,7 @@ document.querySelector('#notrack-tbl tbody').innerHTML = NO_TRACK.filter(r => in
    <td class="rownote" style="max-width:56ch">${r.why}</td></tr>`).join('');
 
 initMap('baltimore');
-initTable();
+initTable({ walk: true });
 initChart();
 </script>
 </body>

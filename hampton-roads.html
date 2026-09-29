@@ -141,7 +141,7 @@ const byMi = (a, b) => (miIn(a, 'hampton-roads') ?? 999) - (miIn(b, 'hampton-roa
 const miCell = r => miIn(r, 'hampton-roads') ?? '\u2014';
 
 initMap('hampton-roads');
-initTable();
+initTable({ walk: true });
 initChart();
 </script>
 </body>

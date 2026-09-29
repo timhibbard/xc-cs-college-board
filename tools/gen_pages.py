@@ -132,7 +132,7 @@ const byMi = (a, b) => (miIn(a, '{id}') ?? 999) - (miIn(b, '{id}') ?? 999);
 const miCell = r => miIn(r, '{id}') ?? '\\u2014';
 {offjs}
 initMap('{id}');
-initTable();
+initTable({{ walk: true }});
 {chartcall}</script>
 </body>
 </html>
