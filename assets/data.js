@@ -196,12 +196,10 @@ const TOWNPOP = {
 
 /* Campus setting: what it is like to live here without a car.
 
-   **This is one axis of the two this column was designed around.** The errands axis is
-   here; the training axis -- nearest park and its acreage, soft-surface mileage, the
-   largest *connected* network of it, signalised crossings per mile, campus acreage and
-   the nearest track -- is issue #24 and is not in this file yet. Nothing below says
-   anything about whether he can run here, and a high `walk` in particular is a claim
-   about groceries and not about a six-mile easy day. Read it as half a picture.
+   This is a question about everyday living, not about running. Can he reach a shop, a bus
+   and a train on foot, without a car and without waiting on somebody for a ride. A high
+   `walk` is a claim about groceries and not about a six-mile easy day; where the team runs
+   is the team's answer to give, and nothing in this file attempts it.
 
    Keyed by the row's own `name`. Fields:
 

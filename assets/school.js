@@ -282,10 +282,8 @@ function setting() {
       else’s scores on it.`
       : `Nothing was stored unless the coordinate in that page’s own map tiles landed near this board’s
       coordinate: a wrong address still returns a page, with somebody else’s scores on it.`}
-      <strong>This is one axis of two.</strong> It answers whether he can do errands without a car and says
-      nothing about whether he can <em>train</em> here — park acreage, soft surface, how much of it connects,
-      and road crossings per mile are <a href="https://github.com/timhibbard/xc-cs-college-board/issues/24">still
-      being collected</a>. A Walker’s Paradise can be a miserable place to run six miles.
+      This section is about everyday living: whether he can reach a shop, a bus and a train on foot,
+      without a car and without waiting on anyone for a ride.
     </p>`;
 }
 
@@ -1179,16 +1177,11 @@ function completeness() {
         ? `every 2025–26 meet on their own TFRRS results page — ${SCHED[S.name].length} appearances`
         : 'their TFRRS results page holds nothing inside the 2025–26 season'],
     ['Coach name and contact', !!(S.coach && S.coach.name), S.coach && S.coach.email ? 'name, title and email off the school\'s staff directory' : 'no email published — phone or recruit form only'],
-    ['Setting — errands axis', !!(typeof SETTING !== 'undefined' && SETTING[S.name]),
+    ['Setting', !!(typeof SETTING !== 'undefined' && SETTING[S.name]),
       (typeof SETTING !== 'undefined' && SETTING[S.name])
         ? `federal locale, its own town, and a Walk Score scored on ${SETTING[S.name].lvl === 'address'
           ? 'the campus address' : SETTING[S.name].lvl === 'approx' ? 'a nearby street' : 'the town itself'}`
         : 'not collected'],
-    /* Deliberately listed as missing rather than omitted: the column was designed as two
-       axes and only one is here, so a page that showed just the errands half without
-       saying so would overstate what is known. */
-    ['Setting — training axis', false,
-      'nearest park and its acreage, soft surface, how much of it connects, crossings per mile and the nearest track — still being collected'],
   ];
   return `
     <h2>What is verified here, and what is not</h2>

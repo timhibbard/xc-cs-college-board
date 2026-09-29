@@ -227,13 +227,12 @@ const SIZE_COLS = [
     cell: s => `<td class="num c-size">${numCell(TOWNPOP[s.city])}</td>` },
 ];
 
-/* The errands half of the campus-setting column (#13), asked for with initTable({ walk: true }).
-   Opt-in rather than part of COLS because it is only half of what that column is meant to say:
-   the training axis — park acreage, soft surface, how much of it connects, crossings per mile —
-   is #24 and is not collected yet. A single sortable Walk column invites the reading that a 96
-   is a better place to be a distance runner than a 12, which is exactly the inference this board
-   has no evidence for. So it lives on the master table, where the caption can say what it does
-   not mean, and the school page carries the full picture with its caveats.
+/* The campus-setting column (#13), asked for with initTable({ walk: true }).
+   Opt-in rather than part of COLS because a single sortable Walk column invites the reading that
+   a 96 is a better place to be a distance runner than a 12, which is exactly the inference this
+   board has no evidence for: these two describe everyday living without a car, and where the
+   team runs is the team's answer to give. So it lives on the master table, where the caption can
+   say what it does not mean, and the school page carries the detail with its caveats.
 
    Locale rides alongside deliberately. Walk Score describes a few blocks; the federal locale
    describes the place — and the two disagree often enough to be worth seeing together, because a
