@@ -21,7 +21,7 @@ WORK.mkdir(parents=True, exist_ok=True)
 R = str(WORK) + '/'
 b = json.load(open(R + 'board.json'))
 A = b['ATHLETE']
-P = {'5K': A['proj5kxc'], '8K': A['proj8k'], '10K': A['proj10k']}
+P = {'5K': A['proj5kxc'], '6K': A['proj6k'], '8K': A['proj8k'], '10K': A['proj10k']}
 EQ = {d: P['8K'] / P[d] for d in P}
 CHAMP = ('conference', 'area championship', 'NCAA regional', 'national championship')
 
@@ -96,7 +96,7 @@ for s in b['SCHOOLS']:
                      round(x['v7'], 1) if x['v7'] is not None else None,
                      round(x['vlast'], 1), round(x['slot'], 2), x['n']))
 
-print('anchor: 5K %d  8K %d  10K %d' % (P['5K'], P['8K'], P['10K']))
+print('anchor: 5K %d  6K %d  8K %d  10K %d' % (P['5K'], P['6K'], P['8K'], P['10K']))
 print('schools the ladder can run on: %d  (%d on a 7th man, %d on the last finisher)'
       % (run, seven, run - seven))
 print('disagreements:', len(rows))

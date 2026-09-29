@@ -401,10 +401,13 @@ const LEVEL_LABEL = {
   'NCAA regional': 'NCAA regional',
   'national championship': 'national championship', invitational: 'invitational',
 };
-/* A cross country 5K needs no projection at all: 15:55 is the mark itself, the one
-   the 8K and 10K are scaled from. Early September is full of them. */
-const XP = { '8K': ATHLETE.proj8k, '10K': ATHLETE.proj10k, '5K': ATHLETE.proj5kxc };
-const XPL = { '8K': ATHLETE.proj8kLabel, '10K': ATHLETE.proj10kLabel, '5K': ATHLETE.proj5kxcLabel };
+/* A cross country 5K needs no projection at all: 15:40 is the mark itself, the one the
+   8K and 10K are scaled from. Early September is full of them, and of 6Ks — which are
+   interpolated between the 5K and the 8K rather than measured (see data.js). A race at
+   any other distance has no entry here on purpose, and XP[dist] being undefined is how
+   every reader of this map already declines to score it. */
+const XP = { '8K': ATHLETE.proj8k, '10K': ATHLETE.proj10k, '6K': ATHLETE.proj6k, '5K': ATHLETE.proj5kxc };
+const XPL = { '8K': ATHLETE.proj8kLabel, '10K': ATHLETE.proj10kLabel, '6K': ATHLETE.proj6kLabel, '5K': ATHLETE.proj5kxcLabel };
 const nOf = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
 
 /* Seconds he would arrive in front of their #1 at the fullest of the short conference or
@@ -508,6 +511,13 @@ function raceCard(r) {
   const corr = r.corr || 0;
   const years = r.years || [];
   const runners = r.runners.map((t, i) => ({ n: `Their #${i + 1}`, y: years[i] || null, t, adj: t + corr }));
+  /* A race at a distance XP has no entry for - a 4 mile, a 5.2 mile, a 3.6K - gets a card
+     with no projection row, no slot badge and no gap, because there is nothing to put in
+     them. It is still shown: their own times and their 1-to-last spread are measured at
+     whatever distance they ran, and the spread is the one number here that never needed a
+     projection. The alternative was dropping the race, which would report a team that
+     raced as a team that did not. */
+  if (XP[r.dist] == null) return unconvertedCard(r, runners, corr);
   const me = { t: XP[r.dist], adj: XP[r.dist], me: true };
   const all = [...runners, me].sort((a, b) => a.adj - b.adj);
   const lvl = LEVEL_LABEL[r.level] ? ` · ${LEVEL_LABEL[r.level]}` : '';
@@ -547,6 +557,47 @@ function raceCard(r) {
           ${r.runners.length < 3 ? '' : `Their 1-through-${r.runners.length} spread is <strong>${r.spread.toFixed(0)}s</strong> — the most course-independent
           number here, because it compares the team only to itself.`}
           ${corr ? `<br><strong>Course correction of ${corr > 0 ? '+' : ''}${corr}s applied.</strong> ${COURSE_NOTES[r.meet] ? 'This meet ' + COURSE_NOTES[r.meet] + '.' : ''}` : ''}
+        </p>
+      </div>`;
+}
+
+/* The same card for a distance this board cannot convert. Kept separate rather than
+   threaded through raceCard with a dozen conditionals, because every line of that
+   function assumes a projection exists and the honest version of this card is mostly
+   the absence of things. Nothing here is projection-derived: their times as run, and
+   the spread, which compares the team only to itself. */
+function unconvertedCard(r, runners, corr) {
+  const lvl = LEVEL_LABEL[r.level] ? ` · ${LEVEL_LABEL[r.level]}` : '';
+  const n = r.nfin ?? r.runners.length;
+  return `
+      <div class="race" data-kind="xc">
+        <div class="race-head">
+          <div>
+            <div class="race-meet">${r.meet}</div>
+            <div class="race-meta">${r.date} · ${r.dist}${lvl}${r.place != null ? ` · finished ${r.place}${r.score != null ? ` with ${r.score} points` : ''}` : ''}${r.nfin != null ? ` · only ${nOf(r.nfin, 'finisher')}` : ''}</div>
+          </div>
+          <div class="race-slot"><span class="rs-n nodata">&mdash;</span><span class="rs-l">no projection<br>at this distance</span></div>
+        </div>
+        <div class="table-scroll">
+          <table class="race-table">
+            <thead><tr><th scope="col">Place</th><th scope="col">Runner</th><th scope="col" class="num">Time</th></tr></thead>
+            <tbody>${runners.map((x, i) => `<tr>
+              <td class="num">${i + 1}</td>
+              <td>${x.n}${x.y ? ` <span class="yr" title="class year on the results page">${x.y}</span>` : ''}</td>
+              <td class="num time">${fmtTime(x.t)}</td>
+            </tr>`).join('')}</tbody>
+          </table>
+        </div>
+        <p class="map-note">
+          <strong>This race was a ${r.dist}, and the board carries no projection for it</strong>, so his
+          slot and his gap to their #1 are not shown rather than guessed. His marks convert to a 5K, 6K,
+          8K and 10K; ${r.dist} is outside that, and
+          <a href="methodology.html#projections">a converted gap at an unmeasured distance</a> would be a
+          number with nothing behind it.
+          ${n < 5 ? `Only ${nOf(n, 'finisher')} in any case, short of the five a team score needs. ` : ''}
+          ${r.runners.length < 3 || r.spread == null ? '' : `Their 1-through-${r.runners.length} spread is
+          <strong>${r.spread.toFixed(0)}s</strong>, which needs no projection at all &mdash; it compares
+          the team only to itself, and it is the reason this race is worth showing.`}
         </p>
       </div>`;
 }

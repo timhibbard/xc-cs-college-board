@@ -556,7 +556,7 @@ a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS populatio
 not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
-as raw seconds, in order — 1,339 races across 220 schools; a short race also carries `nfin` and
+as raw seconds, in order — 1,543 races across 222 schools; a short race also carries `nfin` and
 `vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 195 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
 postseason rounds `post`, read from 59 conference championship result pages plus seven postseason
