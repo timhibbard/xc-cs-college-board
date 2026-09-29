@@ -227,12 +227,12 @@ const SIZE_COLS = [
     cell: s => `<td class="num c-size">${numCell(TOWNPOP[s.city])}</td>` },
 ];
 
-/* The campus-setting column (#13), asked for with initTable({ walk: true }).
+/* The campus-setting columns (#13), asked for with initTable({ walk: true }).
    Opt-in rather than part of COLS because a single sortable Walk column invites the reading that
    a 96 is a better place to be a distance runner than a 12, which is exactly the inference this
    board has no evidence for: these two describe everyday living without a car, and where the
-   team runs is the team's answer to give. So it lives on the master table, where the caption can
-   say what it does not mean, and the school page carries the detail with its caveats.
+   team runs is the team's answer to give. So every table that shows them also carries walkNote(),
+   which says what they do not mean, and the school page carries the detail with its caveats.
 
    Locale rides alongside deliberately. Walk Score describes a few blocks; the federal locale
    describes the place — and the two disagree often enough to be worth seeing together, because a
@@ -245,6 +245,21 @@ const WALK_COLS = [
     sort: (a, b) => (SETTING[a.name]?.locCode ?? 99) - (SETTING[b.name]?.locCode ?? 99),
     cell: s => `<td class="c-loc">${SETTING[s.name]?.loc ?? '<span class="nodata">&mdash;</span>'}</td>` },
 ];
+
+/* What the two columns mean, written once and injected wherever they appear, because eleven
+   hand-written copies would be eleven chances for one page to drop the sentence that keeps a
+   Walk Score off a distance runner's training. initTable() appends it to the master caption
+   automatically; a page building its own tables (north-carolina.html) places it itself.
+   `sortable` is false for a static table, where "sorts most urban first" would be a lie. */
+function walkNote({ sortable = true } = {}) {
+  return `<em>Walk</em> is <a href="https://www.walkscore.com" rel="nofollow noopener">Walk
+    Score</a>'s 0&ndash;100 score for the campus's own street address, reproduced with a link to
+    its source on each school page; <em>Locale</em> is the federal census classification of that
+    same address${sortable ? ', and it sorts most urban first' : ''}. <strong>Both describe
+    everyday living without a car</strong> &mdash; reaching a shop, a bus and a train on foot
+    &mdash; and <a href="methodology.html#setting">neither is a claim about where he would
+    run</a>.`;
+}
 
 let sortKey = 'tier', sortDir = 1, filters = { metro: 'all', div: 'all', tier: 'all', q: '' };
 
@@ -323,6 +338,12 @@ function initTable(opts = {}) {
   showWalkCols = !!opts.walk;
 
   document.querySelector('#master thead').innerHTML = headHTML(activeCols());
+
+  /* The caveat travels with the columns rather than with the page, so a page cannot show the
+     Walk column and forget to say what it is for. Appended, not assigned: every caption has
+     its own page-specific text to keep. */
+  const cap = showWalkCols && document.querySelector('#master caption');
+  if (cap) cap.innerHTML += ' ' + walkNote();
 
   document.querySelectorAll('#master thead th[data-key]').forEach(th => {
     th.addEventListener('click', () => {

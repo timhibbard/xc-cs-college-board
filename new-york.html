@@ -576,7 +576,7 @@ document.querySelector('#nj-tbl tbody').innerHTML = SCHOOLS
    <td>${TIERLBL[s.tier] ?? '—'}</td></tr>`).join('');
 
 initMap('nyc');
-initTable();
+initTable({ walk: true });
 initChart();
 </script>
 </body>

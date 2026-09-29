@@ -509,17 +509,35 @@ const METROS = [
     dom.window.close();
   }
 
-  /* The master table's two opt-in columns. Header and cell count must move together: the
-     comment on SIZE_COLS in app.js records a bug where they did not. */
-  {
-    const dom = await render('index.html', '');
+  /* The two opt-in setting columns, on every page that carries a board table. Header and cell
+     count must move together: the comment on SIZE_COLS in app.js records a bug where they did
+     not, and that bug shifts every value in the row one column left rather than showing a hole.
+     Checked per page and not once on index, because these eleven pages ask for the columns
+     through four different call sites and north-carolina.html builds its own headers. */
+  const BOARD_PAGES = ['index.html', 'boston.html', 'philadelphia.html', 'washington.html',
+    'baltimore.html', 'pittsburgh.html', 'buffalo.html', 'hampton-roads.html', 'chicago.html',
+    'new-york.html', 'greenville.html', 'north-carolina.html'];
+  for (const page of BOARD_PAGES) {
+    const dom = await render(page, '');
     const doc = dom.window.document;
-    const heads = [...doc.querySelectorAll('#master thead th')].map(th => th.textContent.replace('▲', '').trim());
-    ok('index Walk column present', heads.includes('Walk'), true);
-    ok('index Locale column present', heads.includes('Locale'), true);
-    const firstRow = doc.querySelector('#master tbody tr');
-    ok('index master cells match its header',
-      firstRow ? firstRow.children.length : 0, heads.length);
+    /* north-carolina.html has no #master: it is seven static tables, one per region. */
+    const tbls = doc.querySelector('#master')
+      ? [doc.querySelector('#master')] : [...doc.querySelectorAll('table[data-region]')];
+    const label = page.replace('.html', '');
+    if (!tbls.length) { fails.push(`${page}: no board table to check`); dom.window.close(); continue; }
+    let sawWalk = true, sawLoc = true, rowsSeen = 0, aligned = true;
+    for (const t of tbls) {
+      const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent.replace('▲', '').trim());
+      if (!heads.includes('Walk')) sawWalk = false;
+      if (!heads.includes('Locale')) sawLoc = false;
+      for (const tr of t.querySelectorAll('tbody tr')) {
+        rowsSeen++;
+        if (tr.children.length !== heads.length) aligned = false;
+      }
+    }
+    ok(`${label} Walk column present`, sawWalk, true);
+    ok(`${label} Locale column present`, sawLoc, true);
+    ok(`${label} every row matches its header`, aligned && rowsSeen > 0, true);
     dom.window.close();
   }
 

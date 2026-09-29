@@ -33,9 +33,12 @@ classifying the address, the town the campus sits in with its land area, a Walk 
 linked to the page they came from, and the **named rail and bus lines with their distances**, which are
 the real transit answer: Walk Score prints a Transit *Score* only where the city publishes a feed it has
 ingested, so 121 rows have none, and reading that number alone made 120 rows look as if they had no
-transit at all when 48 of them had named lines on the very same page. **That column is about everyday
-living and not about running** — whether he can reach a shop, a bus and a train on foot — and it makes no
-claim about where he would train, because the team picks the routes. The one column that is still uneven is **the coach's own
+transit at all when 48 of them had named lines on the very same page. **Those columns are about everyday
+living and not about running** — whether he can reach a shop, a bus and a train on foot — and they make no
+claim about where he would train, because the team picks the routes. They now sit on **every board table**,
+not just the front page, since the comparison that decides anything is between two schools in the same
+metro and that is where this varies most: inside Boston's twenty miles it runs from a 99 to a 5.
+The one column that is still uneven is **the coach's own
 Instagram, on 17 rows**, recorded only where the account's own bio says they coach this program; that was
 never a sweep and is not presented as one. Five rows sit at *Verify*, which means **unmeasured, not borderline** — four
 former Verify rows (Carlow, Marymount, Hilbert, Shorter) moved to *caution* once it was clear that a

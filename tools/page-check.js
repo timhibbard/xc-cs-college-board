@@ -50,8 +50,19 @@ const srv=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.spl
   const stunted=[...doc.querySelectorAll('a.linkcard')]
     .filter(c=>!(c.querySelector('.k-label')&&c.querySelector('.k-value')&&c.querySelector('.k-sub')))
     .map(c=>c.getAttribute('href'));
+  /* A Walk Score on a distance runner's board invites exactly one wrong reading - that a 96 is a
+     better place to train than a 12. walkNote() is the sentence that refuses it, and a page showing
+     the column without it would publish the wrong reading unopposed. Checked here per page because
+     the injection is what could silently break, not the wording. */
+  const walkTh=[...doc.querySelectorAll('table thead th')].some(t=>t.textContent.trim().startsWith('Walk'));
+  /* Whitespace-normalised: the note is a template literal wrapped across source lines, so the
+     phrase arrives with a newline and indentation inside it and a raw regex would miss it. */
+  const noted=/everyday living without a car/i.test(doc.body.textContent.replace(/\s+/g,' '));
+
   const out=[];
   if(errs.length)out.push(...new Set(errs));
+  /* One direction only: methodology.html explains the same thing at length and has no table. */
+  if(walkTh&&!noted)out.push('shows a Walk column but never says it is about everyday living without a car');
   if(nested.length)out.push('nested <a> inside <a>: '+[...new Set(nested)].join(', '));
   if(stunted.length)out.push('linkcard missing label/value/sub: '+stunted.join(', '));
   if(dead.length)out.push('dead links: '+[...new Set(dead)].join(', '));
