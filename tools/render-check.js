@@ -360,6 +360,99 @@ const METROS = [
   const orphan = withSched.flatMap(s => SCHED[s.name].filter(k => !MEETS[k]));
   if (orphan.length) fails.push(`SCHED names ${orphan.length} meet id(s) MEETS does not hold: ${orphan.slice(0, 5)}`);
 
+  /* The race counts, in both files that publish them. These are the numbers that had drifted
+     furthest and most quietly: a sweep adds races, the eleven sentences that count them are updated
+     by hand one file at a time, and the ones that are missed keep reading as facts. README said
+     "17 of the 228 races on file" against 1,543, and methodology said "113 of the 303 championship
+     races" against 449 — a ratio wrong enough to change the conclusion, not just the digit.
+
+     Worse than stale: the two files disagreed on what a championship IS. Two sentences said 303 and
+     one said 447, and the 303 was computed without `area championship` while the stored aggregates
+     include it — 21 of the 24 schools with such a race only reproduce if it is counted, and
+     §what-counts says in prose that the label was split off `conference` *inside* the championship
+     group. tools/aggregate.py had the narrow set too, so re-running it would have dropped 24 races
+     and moved tiers. CHAMP below is the definition the board actually uses; if a sentence disagrees
+     with it, the sentence is wrong. */
+  const CHAMP = new Set(['conference', 'area championship', 'NCAA regional', 'national championship']);
+  const XP = { '5K': 1, '6K': 1, '8K': 1, '10K': 1 };  // the distances a projection exists for
+  const races = Object.values(XCRACES).flat();
+  const nfin = r => r.nfin || r.runners.length;
+  const champ = races.filter(r => CHAMP.has(r.level));
+  const scoring = r => XP[r.dist] && nfin(r) >= 5;
+  const measured = SCHOOLS.filter(s => (XCRACES[s.name] || []).some(r => CHAMP.has(r.level) && scoring(r)));
+  const raceStats = {
+    total: races.length,
+    schools: Object.keys(XCRACES).length,
+    champ: champ.length,
+    inv: races.length - champ.length,
+    champShort7: champ.filter(r => nfin(r) < 7).length,
+    champShort5: champ.filter(r => nfin(r) < 5).length,
+    allShort5: races.filter(r => nfin(r) < 5).length,
+    scored: races.filter(r => r.score != null).length,
+    labelled: races.filter(r => r.years.length && r.years.every(Boolean)).length,
+    finishers: races.reduce((a, r) => a + r.runners.length, 0),
+    withYear: races.reduce((a, r) => a + r.years.filter(Boolean).length, 0),
+    meets: new Set(races.map(r => r.meet)).size,
+    champMeets: new Set(champ.map(r => r.meet)).size,
+    onFile: SCHOOLS.filter(s => XCRACES[s.name]).length,
+    measured: measured.length,
+    thin: measured.filter(s => XCRACES[s.name].filter(r => CHAMP.has(r.level) && scoring(r)).length <= 1).length,
+    no7: measured.filter(s => !XCRACES[s.name].some(r => CHAMP.has(r.level) && XP[r.dist] && nfin(r) >= 7)).length,
+  };
+  const RACE_CLAIMS = [
+    // [file, label, regex, ...keys of raceStats in capture-group order]
+    ['methodology.html', 'sweep', /<strong>([\d,]+) races, a median of (\w+) per school<\/strong>/, 'total'],
+    ['methodology.html', 'three-groups split',
+      /<strong>([\d,]+) races: ([\d,]+) championships, ([\d,]+) invitationals,\s*\n?\s*and ([\d,]+) from the 2026 season<\/strong>/,
+      'total', null, null, null],
+    ['methodology.html', 'class-year labels',
+      /<strong>([\d,]+) of ([\d,]+) finishers, [\d.]+%<\/strong>, with ([\d,]+) of the ([\d,]+) races fully labelled/,
+      'withYear', 'finishers', 'labelled', 'total'],
+    ['methodology.html', 'no-7th-man',
+      /<strong>(\d+) of the (\d+) measured programs never finished seven runners in any\s*\n?\s*championship race<\/strong>, and ([\d,]+) of the ([\d,]+) championship races/,
+      'no7', 'measured', 'champShort7', 'champ'],
+    ['methodology.html', 'short-of-five',
+      /entirely — <strong>(\d+) of the ([\d,]+) championship races on file<\/strong>/, 'champShort5', 'champ'],
+    ['methodology.html', 'sweep total', /The sweep to <strong>([\d,]+)<\/strong> races/, 'total'],
+    ['methodology.html', 'team scores',
+      /<strong>([\d,]+) of the ([\d,]+)<\/strong> races carry them: of\s*\n?\s*the (\d+) that do not/,
+      'scored', 'total', null],
+    ['methodology.html', '§6a championships',
+      /([\d,]+) of the ([\d,]+) races on file are conference championships, area championships/, 'champ', 'total'],
+    ['methodology.html', '§6a thin tiers',
+      /<strong>(\d+) of the (\d+) rest on one or none<\/strong>[^.]*\. (\d+) of the measured programs/,
+      'thin', 'measured', 'no7'],
+    ['methodology.html', '§6a courses',
+      /span <strong>(\d+)<\/strong> distinct conference, area, regional and national meets &mdash; ([\d,]+) counting the invitationals/,
+      'champMeets', 'meets'],
+    ['README.md', 'short-of-five',
+      /— ([\d,]+) of the ([\d,]+) championship races the\s*\n?tiers rest on, and ([\d,]+) of the ([\d,]+) races on file overall/,
+      'champShort5', 'champ', 'allShort5', 'total'],
+    ['README.md', 'courses',
+      /The ([\d,]+) races span ([\d,]+) distinct meets and exactly two/, 'total', 'meets'],
+  ];
+  const SRC = { 'README.md': readme, 'methodology.html': meth };
+  for (const [file, label, re, ...keys] of RACE_CLAIMS) {
+    const m = SRC[file].match(re);
+    if (!m) {
+      fails.push(`${file}: the ${label} race count no longer parses — check tools/render-check.js`);
+      continue;
+    }
+    // A null key is a capture this check deliberately does not own: the three-groups split is by
+    // season as well as level, and the team-score breakdown splits the unscored races by finisher
+    // count. Claiming them here would mean reimplementing two derivations for one digit each.
+    keys.forEach((k, i) => { if (k) ok(`${file} ${label} [${k}]`, raceStats[k], n(m[i + 1])); });
+  }
+  /* Of the four tiers, Verify is the only one that means "no evidence", and it is the one a sweep
+     silently falsifies: a row keeps the label after its first race lands. So no row that holds a
+     race a projection can score may sit at Verify — that is the rule §6a states in prose, and
+     Gallaudet and Thomas Jefferson both broke it until the 2026 sweep was read. */
+  const staleVerify = SCHOOLS.filter(s => s.tier === 'verify' && (XCRACES[s.name] || []).some(scoring));
+  if (staleVerify.length) {
+    fails.push(`${staleVerify.length} row(s) sit at Verify with a scoring-five race on file, which ` +
+      `methodology.html §6a says is impossible: ${staleVerify.map(s => s.name).join(', ')}`);
+  }
+
   /* Every venue names its own state, so a pin that lands outside that state is wrong however
      confident the geocoder was. This is not hypothetical: "University Park, PA" ranks Penn State
      first and a hamlet of the same name in Huntsville, Alabama second, and the pass that placed

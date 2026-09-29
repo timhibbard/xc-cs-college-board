@@ -60,7 +60,8 @@ found two schools with no men's cross country to join at all — UAB and Georgia
 15:40 the Riegel route and the board's own ratio agree on the 10K to the second. **Eight schools
 changed tier**: Charleston Southern, Clemson, Lee University, NYU, Stony Brook and the University of
 Chicago came up to *Target*, Berry College and UNC Pembroke went back to *Caution*, and the target
-band went from 29 schools to **33**. Six rows on the cut list came inside the 45-second line on their
+band went from 29 schools to **33** on the board as it then stood — it is **47 of 186** now, after the
+metro sweeps grew the board itself. Six rows on the cut list came inside the 45-second line on their
 championship average, and **three of them are now back on the board at *Deep*** — the three that clear
 the conference-8K test the cut actually rested on. **Tennessee** is 21.3 seconds outside the seven it
 ran at the SEC championship, its only full squad of the season. **Wingate** is 19.5 seconds *inside*
@@ -153,18 +154,19 @@ set by whichever athlete happened to race it, often not the athlete who leads th
 country squad. DePaul's best outdoor 5000 was 14:22 while their cross country #1 was around
 23:44 for 8K; Hofstra's was 14:32 against a 23:02 front-runner.
 
-Ranking now runs on **actual 2025 cross country results** — every finisher in a team's top
-seven, at every race on file:
+Ranking now runs on **actual cross country results** — every finisher in a team's top seven, at
+every race on file across the 2025 and 2026 seasons:
 
 | Signal | What it is |
 |---|---|
-| **slot** | where his projection would have finished inside their top seven, averaged over every race on file |
+| **slot** | where his projection would have finished inside their top seven, averaged over that team's **championship** races — the invitationals are averaged separately and shown behind a fold, because they run a median 24.8 seconds kinder |
 | **vs their 7th** | seconds between his projection and their 7th man; positive means outside the seven |
 | **1–7 spread** | seconds from their #1 to their #7 — the most course-independent number available, because it compares a team only to itself |
 
 Where a team never finished seven, **vs their 7th** is left blank rather than guessed at, and the
 comparison runs against their last finisher instead. Races with fewer than five finishers are not
-team results and are excluded from the averages entirely — 17 of the 228 races on file.
+team results and are excluded from the averages entirely — 59 of the 449 championship races the
+tiers rest on, and 83 of the 1,543 races on file overall.
 
 Four tiers follow from that: **Target** (a clean 4th–9th man fit), **Deep** (just outside the
 travel squad — a good development environment, no freshman travel), **Verify** (no cross country
@@ -183,7 +185,7 @@ final was won in 4:03.61 while a prelim went 3:47.69 — so the whole-field plac
 tactical final is flagged as one rather than read as a level.
 
 Cross country times are also **course-corrected** where at least three teams cross-check the
-same course against a calibrated one. The 228 races span roughly fifty courses and exactly two
+same course against a calibrated one. The 1,543 races span 357 distinct meets and exactly two
 cleared that bar, so most schools rest on an uncorrected time — the largest remaining source of
 error here. Getting the sign of one correction backwards briefly promoted a cut school to
 target tier, which is documented rather than quietly fixed.
@@ -200,9 +202,19 @@ all back at *Caution*.
 The check is what really failed, and it has changed. Recomputing the stored `slot`, `g1`, `v7` and
 `spread` from the stored `runners` array passed cleanly, because a pre-corrected array is
 indistinguishable from a raw one when the array is all you compare against. The invariant is now
-anchored to the **source**: every race is re-fetched from its results page and each stored number
-must reproduce from the published times. All 228 races currently do, and the same pass caught two
-regional results stored one finisher short (UNC Asheville, UNC Greensboro).
+anchored to the **source**: a race is re-fetched from its results page and each stored number must
+reproduce from the published times. That pass caught two regional results stored one finisher short
+(UNC Asheville, UNC Greensboro).
+
+**Be precise about how much of the file that covers, because it is no longer all of it.** The
+source-anchored pass ran on the file as it stood at 228 races, and the 2026 sweep wrote another 204
+straight from their fetched result pages, which is the same guarantee arrived at from the other
+direction. The remaining ~1,100 races were swept in between those two events and have only ever been
+checked the weaker way — recomputing the stored averages from the stored times, which is exactly the
+check this section says passed cleanly while the data was wrong. That audit currently runs at **0
+violations across all 1,543 races**, and it would have run at 0 then too. There is no tool in `tools/`
+that re-fetches and re-verifies the whole file today; restoring the strong invariant means writing
+one, and it is the next thing to do here rather than something already done.
 
 ## Metros
 
