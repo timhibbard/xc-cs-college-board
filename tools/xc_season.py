@@ -76,14 +76,23 @@ def parse_team(html):
 
     Read off that table rather than off every /results/ link on the page, because the page
     also lists track meets and previous seasons with no date beside them -- and an undated
-    meet cannot be placed in a season, which is the one thing this stage has to do."""
+    meet cannot be placed in a season, which is the one thing this stage has to do.
+
+    A meet that runs over more than one day is dated as a range -- "October 21-22, 2025",
+    "January 31-February 1, 2025" -- and the first day is taken. This used to be an exact
+    "Month D, YYYY" match, so every range simply failed to match and the row was dropped
+    with no warning: 4,211 rows on 215 of the 226 cached team pages, 44 of them cross country.
+    Most of the loss is track, but it cost this board the adidas XC Challenge in both
+    seasons, which is 19 races at a Cary meet that ten board programs ran in 2026. A dropped row
+    looks exactly like a program that did not race, which is the confusion this stage was
+    written to end."""
     out = []
     for tr in re.findall(r'<tr[^>]*>(.*?)</tr>', html, re.S):
         tds = re.findall(r'<td[^>]*>(.*?)</td>', tr, re.S)
         if len(tds) < 2:
             continue
-        dm = re.match(r'([A-Z][a-z]+)\s+(\d{1,2}),\s*(\d{4})$',
-                      re.sub(r'<[^>]+>', '', tds[0]).strip())
+        dm = re.match(r'([A-Z][a-z]+)\s+(\d{1,2})\s*(?:-\s*(?:[A-Z][a-z]+\s+)?\d{1,2})?,'
+                      r'\s*(\d{4})$', re.sub(r'<[^>]+>', '', tds[0]).strip())
         if not dm or dm.group(1) not in MONTHS:
             continue
         iso = '%s-%02d-%02d' % (dm.group(3), MONTHS[dm.group(1)], int(dm.group(2)))

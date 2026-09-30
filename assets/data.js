@@ -809,7 +809,7 @@ const SETTING = {
     xc: { slot: 6.5, g1: 43, v7: -62.1, spread: 73.8, eq: true, nraces: 2, short: true, maxfin: 7 },
     xcInv: { slot: 5.3, g1: 39.5, v7: -37, spread: 76.5, nraces: 3 },
     xc26: { slot: 1, g1: -7.8, v7: -160.7, spread: 152.9, eq: true, nraces: 1, date: "2026-09-04" },
-    shape: { date: "2026-09-04", meet: "Friday Night Lights Elon XC Opener", dist: "6K", n: 7, ret: 6, g1ret: -7.8, eq: true, inv: true, fr: 1, so: 4, jr: 0, sr: 1 },
+    shape: { date: "2026-09-04", meet: "Friday Night Lights Elon XC Opener", dist: "6K", n: 7, ret: 5, g1ret: -7.8, eq: true, inv: true, fr: 1, so: 4, jr: 0, sr: 1 },
     coach: { name: "Remy Tamer", title: "Director of Track & Field and Cross Country", email: "rtamer@highpoint.edu", phone: "336-841-9287", src: "https://www.highpointpanthers.com/sports/mens-cross-country/coaches" },
     ig: "hputrackxc",
     note: "Confirmed on two races: <b>6th-to-7th man</b> at both the Big South championship and the regional, with a 66 second 1&ndash;7 spread. One of the most consistent reads on the board.",

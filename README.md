@@ -166,7 +166,7 @@ every race on file across the 2025 and 2026 seasons:
 Where a team never finished seven, **vs their 7th** is left blank rather than guessed at, and the
 comparison runs against their last finisher instead. Races with fewer than five finishers are not
 team results and are excluded from the averages entirely — 59 of the 449 championship races the
-tiers rest on, and 83 of the 1,543 races on file overall.
+tiers rest on, and 84 of the 1,543 races on file overall.
 
 Four tiers follow from that: **Target** (a clean 4th–9th man fit), **Deep** (just outside the
 travel squad — a good development environment, no freshman travel), **Verify** (no cross country
@@ -206,15 +206,58 @@ anchored to the **source**: a race is re-fetched from its results page and each 
 reproduce from the published times. That pass caught two regional results stored one finisher short
 (UNC Asheville, UNC Greensboro).
 
-**Be precise about how much of the file that covers, because it is no longer all of it.** The
-source-anchored pass ran on the file as it stood at 228 races, and the 2026 sweep wrote another 204
-straight from their fetched result pages, which is the same guarantee arrived at from the other
-direction. The remaining ~1,100 races were swept in between those two events and have only ever been
-checked the weaker way — recomputing the stored averages from the stored times, which is exactly the
-check this section says passed cleanly while the data was wrong. That audit currently runs at **0
-violations across all 1,543 races**, and it would have run at 0 then too. There is no tool in `tools/`
-that re-fetches and re-verifies the whole file today; restoring the strong invariant means writing
-one, and it is the next thing to do here rather than something already done.
+**That now covers the whole file, and did not until recently.** The original source-anchored pass
+ran on the file as it stood at 228 races, and the 2026 sweep wrote another 204 straight from their
+fetched result pages; the ~1,100 races swept in between had only ever had the weaker check.
+[`tools/xc_verify.py`](tools/xc_verify.py) closes that. No result id is stored on a race — `XCRACES`
+carries a meet name and a date and nothing else — so the link back to the page is rebuilt from each
+program's own TFRRS page, whose dated results table reaches back several seasons, joined on
+(slug, date) rather than on a meet name, because names on file carry trailing spaces, year prefixes
+and host abbreviations that no normaliser gets right and a mis-joined race is verified against the
+wrong page. Every men's section of the page is then tried and it is **the file's own times that pick
+the section**, so a meet running both a varsity and an open race cannot report a false violation on
+whichever race was read from the other.
+
+**1,543 of 1,543 races now reproduce exactly** from the 390 pages behind them: times, finisher
+count, class years, team place and score, distance, the level the meet name implies, and slot, gap,
+gap-to-seventh, gap-to-last-finisher and 1–7 spread recomputed with the stored course correction
+added back.
+
+The first run said 1,380 of 1,543, and where those 163 went is the more useful half of the story.
+**Almost all of it was the checker being wrong, and three of its four mistakes were bugs in live
+collection code** rather than in the verifier:
+
+- **85 level disagreements: the classifier, not the file.** `xc_fetch.level_of()` derives a meet's
+  level from its name, and it did not know that ACC, SEC, SIAC, NEWMAC, Horizon League and 17 other
+  conferences are conferences — it called 62 real conference championships `area championship`, a
+  label this board reserves for the multi-conference meets (IC4A/ECAC, NEICAAA, the Metropolitan)
+  between a conference and an NCAA region. Worse in the other direction, it promoted 23
+  **invitationals** into the championship set on the word "conference" appearing in names like
+  "United East Conference Preview". It now reproduces all 1,543 stored labels.
+- **60 distance disagreements: a units comparison.** A board row is scored at 5K, 6K, 8K or 10K and
+  a course is whatever it measures, so the file buckets — `8000m`, `4.97 miles` and `8.057K` are all
+  `8K`. Distances are compared as lengths now. **42 races are run at a length that is not the
+  distance they are scored at**, the widest being a 3-mile course scored as a 5K, 3.4% short.
+- **14 class-year disagreements: `parse_xc` was storing tokens it had not understood.** A YEAR cell
+  reading `FRESHMAN`, `2029`, `RS/UNA`, `NA`, `?` or an empty cell surviving as `&NBSP;` passed
+  straight through. It now converts the two that can be converted — the word forms, and a graduation
+  year read against the season — and stores `null` for the rest, because `shape` counts a returning
+  man as any known year that is not `SR`, so `&NBSP;` was being counted as a sophomore who comes back.
+- **4 races with no page to check against, 3 of them a parser bug with a bigger bill.**
+  `xc_season.parse_team()` required an exact `Month D, YYYY` date, so every **multi-day** meet row
+  failed to match and was dropped in silence — 4,211 rows across the 186 cached team pages, 44 of
+  them cross country. That is why the Coach Gary Wilson Tune Up ("October 21-22, 2025") could not be
+  resolved, and it also means the season sweep never saw the **adidas XC Challenge** in either
+  season: **19 races at a Cary meet that ten board programs run are missing from this file**, which
+  is the largest known gap in it and the next thing to fix. A dropped row looks exactly like a
+  program that did not race, which is the confusion that stage was written to end.
+
+**Six rows were genuinely wrong, at two meets.** The 2026-09-18 UNG XC Invitational was **revised
+after this board read it**: LaGrange's fourth finisher came off the results, which dropped them below
+five and so out of the team scoring altogether, and every team with a man behind them moved up —
+Morehouse 6th to 5th, Clark Atlanta 9th to 8th, four scores down by 5 to 21 points. And High Point's
+2026-09-04 race carried the one `&NBSP;` year token on file, which had published that squad as six
+of seven returning when only five have a year this board can read.
 
 ## Metros
 

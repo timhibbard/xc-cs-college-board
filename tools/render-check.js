@@ -413,7 +413,14 @@ const METROS = [
       'no7', 'measured', 'champShort7', 'champ'],
     ['methodology.html', 'short-of-five',
       /entirely — <strong>(\d+) of the ([\d,]+) championship races on file<\/strong>/, 'champShort5', 'champ'],
-    ['methodology.html', 'sweep total', /The sweep to <strong>([\d,]+)<\/strong> races/, 'total'],
+    // The source-anchored invariant is a claim about every race on file, so both halves of
+    // "N of N reproduce exactly" are checked against the race count rather than each other:
+    // the failure mode worth catching is the file growing while the sentence stands still.
+    ['methodology.html', 'sweep total', /It now covers all <strong>([\d,]+)<\/strong>/, 'total'],
+    ['methodology.html', 'source-anchored',
+      /<strong>([\d,]+) of ([\d,]+) races reproduce\s*\n?\s*exactly\.<\/strong>/, 'total', 'total'],
+    ['README.md', 'source-anchored',
+      /\*\*([\d,]+) of ([\d,]+) races now reproduce exactly\*\*/, 'total', 'total'],
     ['methodology.html', 'team scores',
       /<strong>([\d,]+) of the ([\d,]+)<\/strong> races carry them: of\s*\n?\s*the (\d+) that do not/,
       'scored', 'total', null],
@@ -529,6 +536,24 @@ const METROS = [
   if (tooThin.length) {
     fails.push(`${tooThin.length} class mix(es) come off a race with fewer than five men, which is not ` +
       `a squad shape: ${tooThin.map(s => s.name).join(', ')}`);
+  }
+  /* A class year is FR, SO, JR, SR or unknown, and the third state has to be null. A YEAR cell
+     this board has not understood used to reach the file as its raw token — FRESHMAN, 2029,
+     RS/UNA, an empty cell surviving as &NBSP; — and `shape` counts a returning man as any known
+     year that is not SR, so one such token published High Point as six of seven returning when
+     only five had a year to read. parse_xc.py normalises now; this is the rule that says so. */
+  const YEARS = new Set(['FR', 'SO', 'JR', 'SR']);
+  const badYear = [];
+  for (const [name, rs] of Object.entries(XCRACES)) {
+    for (const r of rs) {
+      for (const y of r.years || []) {
+        if (y !== null && !YEARS.has(y)) badYear.push(`${name} ${r.date} ${JSON.stringify(y)}`);
+      }
+    }
+  }
+  if (badYear.length) {
+    fails.push(`${badYear.length} stored class year(s) are neither FR/SO/JR/SR nor null, and every ` +
+      `one of them counts as a returning man: ${badYear.slice(0, 6).join(', ')}`);
   }
 
   /* Every venue names its own state, so a pin that lands outside that state is wrong however
