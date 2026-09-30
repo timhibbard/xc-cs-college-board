@@ -3,10 +3,32 @@
 Returns {'dist': '8k', 'fin': [ {pl, team_slug, yr, sec}, ... ]}
 YEAR is a real column on TFRRS individual tables; we keep it and the time,
 and deliberately discard the NAME column (repo no-names rule).
+
+A YEAR cell the board does not understand becomes None, never the raw token. Meets write
+that column freely -- FRESHMAN, 2029, RS/UNA, NA, ?, an empty cell that survives as
+&NBSP; -- and passing those through has a specific cost downstream: `shape` counts a
+returning man as any known year that is not SR, so '&NBSP;' was being counted as a
+sophomore who comes back. One such token is on file today (High Point, 2026-09-04) and it
+got there through this function. The two conversions that CAN be made are made: the word
+forms, and a graduation year read against the season the race was run in.
 """
 import re, sys, json
 
-YRMAP={'FR':'FR','SO':'SO','JR':'JR','SR':'SR','FR-1':'FR','SO-2':'SO','JR-3':'JR','SR-4':'SR'}
+YRMAP = {'FR': 'FR', 'SO': 'SO', 'JR': 'JR', 'SR': 'SR',
+         'FR-1': 'FR', 'SO-2': 'SO', 'JR-3': 'JR', 'SR-4': 'SR', 'FY': 'FR',
+         'FRESHMAN': 'FR', 'FRESHMEN': 'FR', 'SOPHOMORE': 'SO',
+         'JUNIOR': 'JR', 'SENIOR': 'SR'}
+
+def _yr(raw, season):
+    """One YEAR cell -> FR/SO/JR/SR or None. `season` is the autumn the race was run in."""
+    y = YRMAP.get(raw)
+    if y:
+        return y
+    # A class of 2029 is a freshman in the 2025 season. Without a season there is nothing
+    # to read it against, so it stays unknown rather than becoming a guess.
+    if season and re.match(r'^(19|20)\d\d$', raw):
+        return {4: 'FR', 3: 'SO', 2: 'JR', 1: 'SR'}.get(int(raw) - season)
+    return None
 
 def _txt(s): return re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',s)).strip()
 
@@ -17,7 +39,7 @@ def _sec(t):
     mn=int(m.group(1) or 0)
     return round(mn*60+float(m.group(2)),1)
 
-def _rows(seg):
+def _rows(seg,season=None):
     """Parse the finisher rows out of one h3-delimited section."""
     tb=re.search(r'<tbody.*?</tbody>',seg,re.S)
     if not tb: return []
@@ -37,10 +59,10 @@ def _rows(seg):
         sec=_sec(_txt(col('TIME')))
         if sec is None: continue
         yr=_txt(col('YEAR')).upper().replace('.','')
-        fin.append({'pl':_txt(col('PL')),'team':slug,'yr':YRMAP.get(yr,yr or None),'sec':sec})
+        fin.append({'pl':_txt(col('PL')),'team':slug,'yr':_yr(yr,season),'sec':sec})
     return fin
 
-def parse(html):
+def parse(html,season=None):
     # cut the page into h3-delimited sections
     heads=[(m.start(),_txt(m.group(1))) for m in re.finditer(r'<h3[^>]*>(.*?)</h3>',html,re.S)]
     out=[]
@@ -58,7 +80,7 @@ def parse(html):
         seg=html[pos:end]
         dm=re.search(r'\b(\d+(?:\.\d+)?)\s*([kKmM](?:iles?)?)\b',title)
         dist=(dm.group(1)+dm.group(2).lower()[0]) if dm else None
-        fin=_rows(seg)
+        fin=_rows(seg,season)
         if not fin: continue
         out.append({'dist':dist,'title':title,'n':len(fin),'fin':fin})
     if not out:
@@ -70,7 +92,7 @@ def parse(html):
             dm=re.search(r'\b(8|10)(?:\.0)?\s*[kK]\b',title)
             if not dm: continue
             end=heads[i+1][0] if i+1<len(heads) else len(html)
-            sec=_rows(html[pos:end])
+            sec=_rows(html[pos:end],season)
             if sec: out.append({'dist':dm.group(1)+'k','title':title+' [unsexed 8K/10K]','n':len(sec),'fin':sec})
     return out
 

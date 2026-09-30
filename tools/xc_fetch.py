@@ -54,21 +54,47 @@ MONTHS = {m: i + 1 for i, m in enumerate(
     ['January', 'February', 'March', 'April', 'May', 'June', 'July',
      'August', 'September', 'October', 'November', 'December'])}
 
+# A meet that calls itself a preview, an invitational or a tune-up is one of those,
+# whatever else the name carries. "Tusculum XC Meet - SAC Conference Preview" and "United
+# East Conference Preview" are September races with a conference's name in them, and the
+# old classifier promoted all 23 of them into the championship set on the word
+# "conference" alone -- which would have moved them inside CHAMP and into the class-mix
+# floor pool and the ladder's depth count.
+NOT_CHAMP = re.compile(r'invit|preview|opener|tune ?up|classic|festival|challenge'
+                       r'|scrimmage|duals?\b|open\b|alumni')
+
+# Conference championships whose name does not contain the word "conference", which is
+# most of them: a conference is known by its initials and does not spell itself out. This
+# is a list rather than a pattern because the alternative is guessing, and guessing here
+# put 62 real conference championships on file as `area championship` -- a label this
+# board reserves for the multi-conference meets (IC4A/ECAC, NEICAAA, the Metropolitan,
+# DIII North, the Private Colleges) that sit between a conference and an NCAA region.
+CONF = re.compile(r'\b(a-?10|acc|amcc|america east|appalachian athletic|asun|atlantic east'
+                  r'|atlantic sun|big east|big sky|big south|big ten|big 12|c2c|caa|cacc'
+                  r'|cciw|ciaa|cne|colonial|cunyac|cusa|centennial|ecc|gliac|gnac|gsc'
+                  r'|horizon|ivy|landmark|little east|lone star|maac|mac|mac commonwealth'
+                  r'|meac|missouri valley|mountain east|mountain west|mvc|nac|nacc|ne-?10'
+                  r'|nec|nescac|newmac|njac|odac|ovc|pac|pac-?12|patriot|peach belt|psac'
+                  r'|saa|sec|siac|socon|summit|sun belt|sunbelt|sunyac|swac|uaa|wac|wcc)\b')
+
+
 # The five levels already in XCRACES. Order matters: a conference championship that also
 # says "invitational" in its name is a championship, so the specific tests run first.
 def level_of(meet):
     m = meet.lower()
     if 'ncaa' in m and 'region' in m:
         return 'NCAA regional'
-    if 'ncaa' in m and ('championship' in m or 'nationals' in m):
+    if NOT_CHAMP.search(m):
+        return 'invitational'
+    # "Championship"/"Champs", not "Champions": the Iona Br Paddy Doyle Meet of Champions
+    # is a February invitational and the only race on file that the loose test got wrong.
+    if not re.search(r'champs?\b|championship|nationals\b', m):
+        return 'invitational'
+    if re.search(r'\b(ncaa|naia|nccaa|usciaa|uscaa|njcaa)\b', m) or 'national champion' in m:
         return 'national championship'
-    if re.search(r'\b(naia|usciaa|uscaa|njcaa)\b.*champ|national champion', m):
-        return 'national championship'
-    if 'conference' in m or re.search(r'\b(ivy|patriot|colonial|big|sun belt|caa|cusa|mac|maac|meac|swac|nec|asun|a-?10|ovc|socon|peach belt|cacc|cunyac|centennial|landmark|mac commonwealth|nescac|uaa|ecc|pac)\b.*champ', m):
+    if 'conference' in m or CONF.search(m):
         return 'conference'
-    if 'championship' in m:
-        return 'area championship'
-    return 'invitational'
+    return 'area championship'
 
 
 def fetch(url, key, fresh=False):
@@ -194,7 +220,10 @@ def main():
         if src == 'net':
             fetched += 1
         pdate, venue, host = header(body)
-        secs = parse_xc.parse(body)
+        # The season is what turns a graduation year in the YEAR column into a class, so
+        # parse_xc gets it: August starts the season the autumn is named for.
+        d = pdate or w['date']
+        secs = parse_xc.parse(body, int(d[:4]) - (1 if d[5:7] < '08' else 0))
         places = team_places(body)
         lvl = level_of(w['meet'])
         got = 0
