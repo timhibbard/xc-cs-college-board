@@ -453,6 +453,84 @@ const METROS = [
       `methodology.html §6a says is impossible: ${staleVerify.map(s => s.name).join(', ')}`);
   }
 
+  /* The class mix, which is the number a sweep is likeliest to leave behind. It is read off ONE race
+     per row, so unlike an aggregate it does not change when races are added — it silently keeps
+     pointing at an older race while the file grows around it. That is exactly what happened: the 2026
+     sweep put 410 races on file and 204 of the 205 mixes went on describing a 2025 squad whose seniors
+     had graduated. The guard below is a rule rather than a count, so it survives the next sweep:
+     nothing may hold a mix from an older season than a scoring-five race it owns. */
+  const allRows = [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM];
+  const season = d => +d.slice(0, 4) - (d.slice(5, 7) < '08' ? 1 : 0);
+  const med = (a) => { const b = [...a].sort((x, y) => x - y); const h = b.length >> 1;
+    return b.length % 2 ? b[h] : (b[h - 1] + b[h]) / 2; };
+  const MON = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+    'August', 'September', 'October', 'November', 'December'];
+  const day = d => `${+d.slice(8, 10)} ${MON[+d.slice(5, 7) - 1]}`;
+  const shaped = allRows.filter(s => s.shape);
+  const races26 = races.filter(r => r.date >= '2026-07-01');
+  const both26 = allRows.filter(s => s.xc26 && s.xcInv);
+  const shapeStats = {
+    shape: shaped.length,
+    shape26: shaped.filter(s => s.shape.date >= '2026-07-01').length,
+    shapeOld: shaped.filter(s => s.shape.date < '2026-07-01').length,
+    shapeFloor: shaped.filter(s => ['mfr', 'mso', 'mjr', 'msr'].some(k => s.shape[k] != null)).length,
+    races26: races26.length,
+    inv26: races26.filter(r => r.level === 'invitational').length,
+    both26: both26.length,
+    bias26: +Math.abs(med(both26.map(s => s.xc26.g1 - s.xcInv.g1))).toFixed(1),
+    // The published date range, as prose, so "28 August and 26 September" is checked and not trusted.
+    lo26: day(races26.reduce((a, r) => r.date < a ? r.date : a, '9999')),
+    hi26: day(races26.reduce((a, r) => r.date > a ? r.date : a, '0')),
+  };
+  const SHAPE_CLAIMS = [
+    ['methodology.html', '2026 season',
+      /<strong>([\d,]+) races<\/strong>\s*\n?\s*of it, dated between <strong>([\d]+ \w+) and ([\d]+ \w+)<\/strong>\.\s*\n?\s*<strong>([\d,]+) of the ([\d,]+) are invitationals<\/strong>/,
+      'races26', 'lo26', 'hi26', 'inv26', 'races26'],
+    ['methodology.html', '2026 level bias',
+      /<strong>(\d+) schools with both<\/strong>[\s\S]*?median <strong>([\d.]+) seconds smaller<\/strong>/,
+      'both26', 'bias26'],
+    ['methodology.html', 'class-mix freshness',
+      /<strong>(\d+) rows carry a class mix and (\d+) of them now read a 2026 race<\/strong>[\s\S]*?The remaining <strong>(\d+)<\/strong>/,
+      'shape', 'shape26', 'shapeOld'],
+    ['methodology.html', 'class-mix floors', /<strong>(\d+) of the (\d+)<\/strong> carry such a floor/,
+      'shapeFloor', 'shape'],
+    ['methodology.html', '§6a class mix', /<strong>(\d+) of (\d+) now read a 2026 race<\/strong>/,
+      'shape26', 'shape'],
+  ];
+  for (const [file, label, re, ...keys] of SHAPE_CLAIMS) {
+    const m = SRC[file].match(re);
+    if (!m) {
+      fails.push(`${file}: the ${label} claim no longer parses — check tools/render-check.js`);
+      continue;
+    }
+    keys.forEach((k, i) => {
+      if (!k) return;
+      const want = shapeStats[k];
+      ok(`${file} ${label} [${k}]`, want, typeof want === 'string' ? m[i + 1] : n(m[i + 1]));
+    });
+  }
+  /* The rule itself, which no digit above covers: methodology §class-years says the most recent season
+     wins. A row whose mix predates a scoring-five race of its own is the stale state this whole pass
+     existed to clear, and it would come back on the next sweep without this line. */
+  const staleShape = shaped.filter(s => (XCRACES[s.name] || [])
+    .some(r => scoring(r) && season(r.date) > season(s.shape.date)));
+  if (staleShape.length) {
+    fails.push(`${staleShape.length} row(s) read a class mix from an older season than a scoring-five ` +
+      `race they hold, which methodology.html §class-years forbids — rerun tools/shape_apply.py: ` +
+      `${staleShape.slice(0, 6).map(s => s.name).join(', ')}`);
+  }
+  /* And the other half of the rule: a row that owns a race deep enough to read gets a mix. */
+  const missingShape = allRows.filter(s => !s.shape && (XCRACES[s.name] || []).some(scoring));
+  if (missingShape.length) {
+    fails.push(`${missingShape.length} row(s) hold a scoring-five race but carry no class mix — ` +
+      `rerun tools/shape_apply.py: ${missingShape.slice(0, 6).map(s => s.name).join(', ')}`);
+  }
+  const tooThin = shaped.filter(s => s.shape.n < 5);
+  if (tooThin.length) {
+    fails.push(`${tooThin.length} class mix(es) come off a race with fewer than five men, which is not ` +
+      `a squad shape: ${tooThin.map(s => s.name).join(', ')}`);
+  }
+
   /* Every venue names its own state, so a pin that lands outside that state is wrong however
      confident the geocoder was. This is not hypothetical: "University Park, PA" ranks Penn State
      first and a hamlet of the same name in Huntsville, Alabama second, and the pass that placed
