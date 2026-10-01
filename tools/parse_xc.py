@@ -30,6 +30,23 @@ def _yr(raw, season):
         return {4: 'FR', 3: 'SO', 2: 'JR', 1: 'SR'}.get(int(raw) - season)
     return None
 
+def _dist(m):
+    """A section title's distance -> '8k', '6.2k', '4.97m'. None if the title has no distance.
+
+    Two normalisations, both of which a downstream stage would otherwise get wrong. A meet
+    that writes "6200K" means 6,200 metres -- the CSU Buccaneer Open does, and its own
+    parenthetical says (6.2k) -- and no college race is six thousand kilometres, so a k
+    over 100 is metres. And "8.0K" is the same race as "8K": the projection table is keyed
+    by the string, so an unnormalised '8.0k' would store a full 8K race as having no
+    projection at all, which puts a null where a measurement belongs.
+    """
+    if not m:
+        return None
+    v, u = float(m.group(1)), m.group(2).lower()[0]
+    if u == 'k' and v >= 100:
+        v /= 1000
+    return '%g%s' % (v, u)
+
 def _txt(s): return re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',s)).strip()
 
 def _sec(t):
@@ -79,7 +96,7 @@ def parse(html,season=None):
         end=heads[i+1][0] if i+1<len(heads) else len(html)
         seg=html[pos:end]
         dm=re.search(r'\b(\d+(?:\.\d+)?)\s*([kKmM](?:iles?)?)\b',title)
-        dist=(dm.group(1)+dm.group(2).lower()[0]) if dm else None
+        dist=_dist(dm)
         fin=_rows(seg,season)
         if not fin: continue
         out.append({'dist':dist,'title':title,'n':len(fin),'fin':fin})

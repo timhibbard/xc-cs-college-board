@@ -159,14 +159,14 @@ every race on file across the 2025 and 2026 seasons:
 
 | Signal | What it is |
 |---|---|
-| **slot** | where his projection would have finished inside their top seven, averaged over that team's **championship** races — the invitationals are averaged separately and shown behind a fold, because they run a median 24.8 seconds kinder |
+| **slot** | where his projection would have finished inside their top seven, averaged over that team's **championship** races — the invitationals are averaged separately and shown behind a fold, because they run a median 24.1 seconds kinder |
 | **vs their 7th** | seconds between his projection and their 7th man; positive means outside the seven |
 | **1–7 spread** | seconds from their #1 to their #7 — the most course-independent number available, because it compares a team only to itself |
 
 Where a team never finished seven, **vs their 7th** is left blank rather than guessed at, and the
 comparison runs against their last finisher instead. Races with fewer than five finishers are not
 team results and are excluded from the averages entirely — 59 of the 449 championship races the
-tiers rest on, and 84 of the 1,543 races on file overall.
+tiers rest on, and 155 of the 1,745 races on file overall.
 
 Four tiers follow from that: **Target** (a clean 4th–9th man fit), **Deep** (just outside the
 travel squad — a good development environment, no freshman travel), **Verify** (no cross country
@@ -185,7 +185,7 @@ final was won in 4:03.61 while a prelim went 3:47.69 — so the whole-field plac
 tactical final is flagged as one rather than read as a level.
 
 Cross country times are also **course-corrected** where at least three teams cross-check the
-same course against a calibrated one. The 1,543 races span 357 distinct meets and exactly two
+same course against a calibrated one. The 1,745 races span 399 distinct meets and exactly two
 cleared that bar, so most schools rest on an uncorrected time — the largest remaining source of
 error here. Getting the sign of one correction backwards briefly promoted a cut school to
 target tier, which is documented rather than quietly fixed.
@@ -218,7 +218,7 @@ wrong page. Every men's section of the page is then tried and it is **the file's
 the section**, so a meet running both a varsity and an open race cannot report a false violation on
 whichever race was read from the other.
 
-**1,543 of 1,543 races now reproduce exactly** from the 390 pages behind them: times, finisher
+**1,745 of 1,745 races now reproduce exactly** from the 438 pages behind them: times, finisher
 count, class years, team place and score, distance, the level the meet name implies, and slot, gap,
 gap-to-seventh, gap-to-last-finisher and 1–7 spread recomputed with the stored course correction
 added back.
@@ -233,7 +233,7 @@ collection code** rather than in the verifier:
   label this board reserves for the multi-conference meets (IC4A/ECAC, NEICAAA, the Metropolitan)
   between a conference and an NCAA region. Worse in the other direction, it promoted 23
   **invitationals** into the championship set on the word "conference" appearing in names like
-  "United East Conference Preview". It now reproduces all 1,543 stored labels.
+  "United East Conference Preview". It now reproduces all 1,745 stored labels.
 - **60 distance disagreements: a units comparison.** A board row is scored at 5K, 6K, 8K or 10K and
   a course is whatever it measures, so the file buckets — `8000m`, `4.97 miles` and `8.057K` are all
   `8K`. Distances are compared as lengths now. **42 races are run at a length that is not the
@@ -245,12 +245,12 @@ collection code** rather than in the verifier:
   man as any known year that is not `SR`, so `&NBSP;` was being counted as a sophomore who comes back.
 - **4 races with no page to check against, 3 of them a parser bug with a bigger bill.**
   `xc_season.parse_team()` required an exact `Month D, YYYY` date, so every **multi-day** meet row
-  failed to match and was dropped in silence — 4,211 rows across the 186 cached team pages, 44 of
+  failed to match and was dropped in silence — 4,211 rows on 215 of the 226 cached team pages, 44 of
   them cross country. That is why the Coach Gary Wilson Tune Up ("October 21-22, 2025") could not be
   resolved, and it also means the season sweep never saw the **adidas XC Challenge** in either
-  season: **19 races at a Cary meet that ten board programs run are missing from this file**, which
-  is the largest known gap in it and the next thing to fix. A dropped row looks exactly like a
-  program that did not race, which is the confusion that stage was written to end.
+  season. A dropped row looks exactly like a program that did not race, which is the confusion that
+  stage was written to end. **Those races have since been read**, and the count published here was
+  wrong in a way worth keeping: see below.
 
 **Six rows were genuinely wrong, at two meets.** The 2026-09-18 UNG XC Invitational was **revised
 after this board read it**: LaGrange's fourth finisher came off the results, which dropped them below
@@ -258,6 +258,38 @@ five and so out of the team scoring altogether, and every team with a man behind
 Morehouse 6th to 5th, Clark Atlanta 9th to 8th, four scores down by 5 to 21 points. And High Point's
 2026-09-04 race carried the one `&NBSP;` year token on file, which had published that squad as six
 of seven returning when only five have a year this board can read.
+
+### The nineteen missing races were two hundred
+
+The gap above was published as a number — 19 adidas XC Challenge races at Cary — and reading them
+showed the number was an artefact of the bug it described. The 19 rows the fixed parser recovers span
+**seven seasons**; only **13** fall inside the two this file reads (6 in 2025, 7 in 2026), and four of
+the programs named alongside them — Wake Forest, NC State, Shaw, UNC Chapel Hill — are not board rows
+at all, because [`tools/slugmap.json`](tools/slugmap.json) reaches further than the board does. All 13
+are now on file.
+
+Fixing the count was not the useful part. The discovery stage could only ever ask *what has this
+program run this season*, so a gap in a past season was unreachable; `xc_season.py` now takes
+`--since`, and asking the 2025 question returned **224 unread races at 104 meets** — more than ten
+times the gap the README had named as the largest one it knew about. **202 of them are on file now**,
+195 from the 2025 September this board had only ever read the championships of. The residue is
+accounted for: 21 are squads named on a meet's own page with no finisher under them, and one was a
+race the file already held under a different date, which is its own bug — a team's results table
+dates Newberry's Wilmington Beach Blast 15 September while the page itself is headed the 12th, so
+`xc_fetch.py` now checks the page's own header date against what is on file before adding anything.
+
+Every one of the 202 is an invitational, so **no tier moved**, and `xc_apply.py` is now the stage that
+guarantees that: a championship race in a sweep aborts the run, because `xc` carries the tiers and five
+of its published blocks are hand decisions about what a thin field means. The two aggregates it does
+rewrite are gated the same way — the formula is re-derived from every block already published before a
+byte is written, 169 of 169 for `xcInv`, and a single disagreement stops the run on the grounds that
+the formula is then wrong rather than the file. The file after the sweep is **1,745 of 1,745 races
+reproducing exactly** from the 438 pages behind them.
+
+Two smaller bugs fell out of reading 104 new meets. A meet that writes its own distance as `6200K`
+means 6,200 metres, and the board was publishing the typo; and a section titled `8.0K` was storing a
+full 8K race as having no projection at all, because the projection table is keyed by the string.
+Both now normalise in `parse_xc.py`.
 
 ## Metros
 
@@ -611,7 +643,7 @@ a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS populatio
 not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
-as raw seconds, in order — 1,543 races across 222 schools; a short race also carries `nfin` and
+as raw seconds, in order — 1,745 races across 223 schools; a short race also carries `nfin` and
 `vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 195 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
 postseason rounds `post`, read from 59 conference championship result pages plus seven postseason

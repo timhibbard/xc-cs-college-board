@@ -206,7 +206,7 @@ def main():
     print('%d unread race(s) at %d meet(s); fetching %d\n'
           % (sum(len(want[k]['schools']) for k in want), len(want), len(order)))
 
-    races, failed, noproj, missing = [], [], [], []
+    races, failed, noproj, missing, dup = [], [], [], [], []
     fetched = 0
     for i, rid in enumerate(order, 1):
         w = want[rid]
@@ -229,6 +229,14 @@ def main():
         got = 0
         for name in w['schools']:
             slug = slugmap[name]
+            # The date on a team's results table is sometimes the day the result was posted
+            # rather than the day it was run: Newberry's Wilmington Beach Blast is listed
+            # 15 September and the page itself is headed the 12th. The discovery stage can
+            # only compare the date it was given, so a race already on file looks new to it
+            # and would be added twice. The page's own header is the date that settles it.
+            if (pdate or w['date']) in held.get(name, set()):
+                dup.append((name, pdate or w['date'], w['date'], w['meet']))
+                continue
             best = None
             for s in secs:
                 fin = [f for f in s['fin'] if f['team'] == slug]
@@ -278,6 +286,12 @@ def main():
                                                 Counter(d for _, d, _ in noproj).most_common()))
     # Named on the page with no finisher = an entered squad that did not start. Worth
     # printing every time: it is the one outcome that looks like a parse bug and is not.
+    # Not an error and not a race: a row the discovery stage offered under one date that the
+    # board already holds under the date the page itself gives. Printed because a silent skip
+    # here and a silent duplicate are the two ways this stage can go wrong.
+    print('  already on file under the page\'s own date: %d' % len(dup))
+    for n, pd, td, meet in dup:
+        print('      %-26s page %s, team page said %s  %s' % (n[:26], pd, td, meet[:34]))
     print('  team named on the page but with no finisher in it (DNS): %d' % len(missing))
     for n, rid, meet in missing[:20]:
         print('      %-26s %s  %s' % (n[:26], rid, meet[:44]))

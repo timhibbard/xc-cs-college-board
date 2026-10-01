@@ -25,6 +25,7 @@ usage:
   python3 tools/xc_season.py                 # cached where possible, fetch what is missing
   python3 tools/xc_season.py --fresh         # ignore the cache, re-fetch every page
   python3 tools/xc_season.py --only NAME     # one row, repeatable
+  python3 tools/xc_season.py --since 2025-07-01   # a past season, to find a gap in it
 """
 import gzip, json, os, re, subprocess, sys, time, html as htmllib
 from datetime import date
@@ -110,6 +111,14 @@ def main():
     argv = sys.argv[1:]
     fresh = '--fresh' in argv
     only = [argv[i + 1] for i, a in enumerate(argv) if a == '--only']
+    # The board holds two seasons, so "what has this program run" has to be askable about
+    # either of them. The default stays the current season -- that is the weekly question --
+    # but a gap found in a past season is unreachable without this, and the adidas XC
+    # Challenge was exactly that: a 2025 meet nine board programs ran, invisible to a
+    # discovery stage that could only ever look at 2026.
+    since = next((argv[i + 1] for i, a in enumerate(argv) if a == '--since'), SEASON_START)
+    if not re.match(r'^\d{4}-\d{2}-\d{2}$', since):
+        sys.exit('--since wants YYYY-MM-DD, got %r' % since)
 
     board = json.load(open(os.path.join(WORK, 'board.json')))
     rows = board['SCHOOLS']
@@ -122,7 +131,7 @@ def main():
                      ', '.join(sorted(set(only) - {r['name'] for r in rows})))
 
     print('season %d (races dated %s or later), today %s, %d rows\n'
-          % (SEASON, SEASON_START, TODAY.isoformat(), len(rows)))
+          % (SEASON, since, TODAY.isoformat(), len(rows)))
 
     result, nokey, failed = {}, [], []
     fetched = 0
@@ -143,7 +152,7 @@ def main():
             continue
         if src == 'net':
             fetched += 1
-        races = [x for x in parse_team(body) if x['xc'] and x['date'] >= SEASON_START]
+        races = [x for x in parse_team(body) if x['xc'] and x['date'] >= since]
         races.sort(key=lambda x: x['date'])
         have = {x.get('date') for x in held.get(name, []) if x.get('date')}
         new = [x for x in races if x['date'] not in have]
@@ -155,7 +164,8 @@ def main():
                  races[-1]['date'] if races else '          ', flag))
 
     os.makedirs(WORK, exist_ok=True)
-    json.dump({'season': SEASON, 'generated': TODAY.isoformat(), 'rows': result},
+    json.dump({'season': SEASON, 'since': since, 'generated': TODAY.isoformat(),
+               'rows': result},
               open(OUT, 'w'), indent=1, sort_keys=True)
 
     raced = {k: v for k, v in result.items() if v['races']}
@@ -163,7 +173,7 @@ def main():
     newly = {k: v['new'] for k, v in result.items() if v['new']}
     print('\n--- %s ---' % os.path.relpath(OUT, os.path.dirname(HERE)))
     print('  read              %d  (%d over the network)' % (len(result), fetched))
-    print('  raced this season %d' % len(raced))
+    print('  raced since %s   %d' % (since, len(raced)))
     print('  no race on file   %d' % len(idle))
     print('  rows with a race the board does not hold: %d, %d race(s) total'
           % (len(newly), sum(len(v) for v in newly.values())))
@@ -171,7 +181,7 @@ def main():
         for k in sorted(newly):
             print('      %-28s %s' % (k[:28], ' '.join(newly[k])))
     if idle:
-        print('  raced nothing this season (a finding about the program, not a gap):')
+        print('  raced nothing in this window (a finding about the program, not a gap):')
         for k in idle:
             print('      ' + k)
     if nokey:
