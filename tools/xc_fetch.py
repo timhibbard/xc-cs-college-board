@@ -249,6 +249,13 @@ def main():
             dist = (sec['dist'] or '').lower()
             runners = [f['sec'] for f in fin][:7]
             years = [f['yr'] for f in fin][:7]
+            # Seven is what scores and seven is what every aggregate is defined over, so the
+            # eighth man onward goes in his own array rather than lengthening this one. He is
+            # kept because the board's own reasoning needs him: the invitationals are carried
+            # on the argument that they are the evidence about a program's 5th through 9th,
+            # and for 819 races on file that evidence was read off the page and dropped.
+            tail = [f['sec'] for f in fin][7:]
+            tyears = [f['yr'] for f in fin][7:]
             proj = PROJ.get(dist)
             rec = {'school': name, 'rid': rid, 'meet': w['meet'],
                    'date': pdate or w['date'], 'dist': dist.upper(), 'level': lvl,
@@ -256,6 +263,7 @@ def main():
                    'place': places.get(slug, (None, None))[0],
                    'score': places.get(slug, (None, None))[1],
                    'nfin': len(fin), 'runners': runners, 'years': years,
+                   'tail': tail, 'tyears': tyears,
                    # One finisher is a spread of 0, which is how the 1,339 races already on
                    # file record it. school.js does not print a spread below three runners
                    # either way, but matching the convention keeps the audit at zero.
@@ -280,6 +288,8 @@ def main():
     print('  races parsed            %d' % len(races))
     print('  with a projection       %d' % sum(1 for r in races if r['slot'] is not None))
     print('  no projection for dist  %d' % len(noproj))
+    print('  deeper than seven       %d  (%d men behind a scoring seven)'
+          % (sum(1 for r in races if r['tail']), sum(len(r['tail']) for r in races)))
     if noproj:
         from collections import Counter
         print('      by distance: ' + ', '.join('%s %d' % kv for kv in

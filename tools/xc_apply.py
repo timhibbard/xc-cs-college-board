@@ -26,6 +26,11 @@ both were:
     thing that distinguishes the two readings.
   * v7 is averaged over the races that HAVE seven finishers, while g1, slot and spread
     average over all of them, so the two are not means of the same set of races.
+  * maxfin counts every man who FINISHED, not the seven who scored. That is a different
+    count from the one every other field here uses, and the file could not express it until
+    `tail` did: eight published blocks already carried the true number (UIC 14, Saint
+    Joseph's 16) and this gate was failing on all eight, because the formula capped at seven
+    and the file did not. tail_apply.py corrected the other 74 blocks in the same pass.
 If a change here drops that agreement, the formula is wrong, not the file.
 
 usage:
@@ -68,7 +73,15 @@ def race_js(r):
 
     nfin and vlast appear exactly when the team finished fewer than seven -- that is not
     a style choice, it is how the existing 446 short races are written and how school.js
-    tells a short field from a full one."""
+    tells a short field from a full one.
+
+    tail and tyears appear exactly when the team finished MORE than seven, and are the
+    other half of the same idea: runners is the scoring seven that every aggregate on this
+    board is defined over, and tail is the men behind it, who score nothing and are the
+    only evidence there is about a program's 8th through 12th. Keeping them in a separate
+    array rather than lengthening runners is deliberate -- a dozen places compute a slot,
+    a 1-to-7 spread or a gap to the 7th man off runners, and a longer runners would change
+    every one of those silently instead of adding anything."""
     n = r.get('nfin') or len(r['runners'])
     head = ('    { meet: %s, date: %s, dist: %s, level: %s, place: %s, score: %s,'
             % (json.dumps(r['meet']), json.dumps(r['date']), json.dumps(r['dist']),
@@ -79,9 +92,13 @@ def race_js(r):
     if n < 7:
         lines.append('      nfin: %d, vlast: %s,' % (n, num(r.get('vlast'))))
     lines.append('      runners: [%s],' % ', '.join(num(t) for t in r['runners']))
-    lines.append('      years: [%s] },'
+    lines.append('      years: [%s],'
                  % ', '.join(json.dumps(y) if y else 'null' for y in r['years']))
-    return '\n'.join(lines)
+    if r.get('tail'):
+        lines.append('      tail: [%s],' % ', '.join(num(t) for t in r['tail']))
+        lines.append('      tyears: [%s],'
+                     % ', '.join(json.dumps(y) if y else 'null' for y in r['tyears']))
+    return '\n'.join(lines)[:-1] + ' },'
 
 
 def parse_blocks(body):
@@ -183,14 +200,24 @@ def main():
         allraces[name] = allraces.get(name, []) + rs
 
     def fin(r):
+        """How many of this team's men scored: seven at most, because seven is what scores.
+
+        Every average below is defined over these, so this is the number that decides
+        whether a race is short and whether it has a 7th man to measure a v7 against."""
         return r.get('nfin') or len(r['runners'])
 
-    def summarise(rs, with_date=False):
-        """One aggregate block from a set of races, every component in 8K-equivalent seconds.
+    def allfin(r):
+        """How many of this team's men finished, which is a different question from fin().
 
-        maxfin saturates at seven, because that is all a stored race holds. A team that
-        finished nine is on file as its first seven and reads as seven here, which is the
-        one number in these blocks that the file cannot say more about than that."""
+        Only maxfin asks it. Until `tail` existed this could not be answered from the file
+        at all and maxfin saturated at seven -- and eight published blocks carried a truer
+        number than the formula could produce (UIC's 14, Saint Joseph's 16), written when an
+        older stage still had the full field in hand. Those eight are why the xcInv gate
+        below was failing before this was fixed: the file knew more than the formula did."""
+        return fin(r) + len(r.get('tail') or [])
+
+    def summarise(rs, with_date=False):
+        """One aggregate block from a set of races, every component in 8K-equivalent seconds."""
         if not rs:
             return None
         eqv = lambda k: [r[k] * EQ[r['dist']] for r in rs if r.get(k) is not None]
@@ -207,7 +234,7 @@ def main():
             o['eq'] = True
         if any(fin(r) < 7 for r in rs):
             o['short'] = True
-            o['maxfin'] = max(fin(r) for r in rs)
+            o['maxfin'] = max(allfin(r) for r in rs)
         return o
 
     def cmpable(races, newer, champ=None):
