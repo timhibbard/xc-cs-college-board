@@ -261,6 +261,149 @@ function walkNote({ sortable = true } = {}) {
     run</a>.`;
 }
 
+/* ---------- the urban score, and the section that orders the board by it -------
+   One number per campus, so the question "which of these could he live at without a car"
+   has an answer that sorts. Three components, equal thirds:
+
+     walk     Walk Score for the campus street address, 0-100, as published.
+     dens     the federal locale, used as ORDER ONLY: twelve codes from City: Large to
+              Rural: Remote, spread evenly across 100. IPEDS makes no claim that a large
+              city is 9 points denser than a midsize one, so this is a rank dressed as a
+              score and nothing more -- which is why it is a third and not a weighting.
+     trans    the named rail and bus lines at the address: 35 points for a rail stop and 35
+              for a bus stop, each fading to nothing at a mile and a half, plus 2 a line for
+              how many lines are actually there, capped at 100.
+
+   Equal thirds because nothing on this board justifies anything else. A weighting would be
+   a claim about how much a train matters against a shop, and the evidence for that claim is
+   one 17-year-old's preference, which he has not been asked.
+
+   Why `trans` is computed and the published Transit Score is not used. Walk Score publishes
+   a Transit Score for only 122 of the 243 rows, and an absent one is not a zero -- 48 of the
+   121 rows without a score have named rail or bus lines at the door, Columbia among them. A
+   component that read tscore would score the 1 train as no transit at all. The rail and bus
+   listings cover every row, so they are the component, and the published score is shown
+   beside it as a check rather than folded in. Over the 122 rows that have both, the computed
+   number agrees: Spearman 0.80, median gap 9 points, 91 of 122 within 15, bias +2.6.
+
+   And what this is not. It is not a ranking of the running, or of the program, or of the fit
+   -- the three tiers stay in their own column, and Pfeiffer is target tier at an urban score
+   of 8. See methodology.html#urban-score. */
+const LOCALE_RANK = [11, 12, 13, 21, 22, 23, 31, 32, 33, 41, 42, 43];
+
+/* A stop at the address is worth full marks and one a mile and a half off is worth none,
+   straight line between. No stop listed means no points, which is not the same as no stop
+   existing -- it means the page these scores came from named none. */
+const stopScore = (mi) => mi == null ? 0 : Math.max(0, 1 - mi / 1.5);
+
+function urbanScore(name) {
+  const v = SETTING[name];
+  if (!v || v.walk == null || v.locCode == null) return null;
+  const dens = Math.round(100 - LOCALE_RANK.indexOf(v.locCode) * 100 / 11);
+  const trans = Math.min(100, Math.round(
+    35 * stopScore(v.railMi) + 35 * stopScore(v.busMi) + 2 * (v.railN + v.busN)));
+  return { walk: v.walk, dens, trans, score: Math.round((v.walk + dens + trans) / 3) };
+}
+
+/* The rank is stamped once, before any header is clicked, so a school's "#4 most urban" is
+   the same number whether the reader is sorting by Walk, by Mi or by fit. Sorting a rank
+   column would otherwise renumber the rows it is meant to identify. */
+function urbanRanked(rows) {
+  return rows.map(s => ({ ...s, u: urbanScore(s.name) })).filter(s => s.u)
+    .sort((a, b) => b.u.score - a.u.score || a.name.localeCompare(b.name))
+    .map((s, i) => ({ ...s, urank: i + 1 }));
+}
+
+const uBar = (n) => `<span class="uwrap"><b>${n}</b><span class="ubar" aria-hidden="true"><i
+  style="width:${n}%"></i></span></span>`;
+
+/* Rail and bus read "3 @ 0.2 mi": the count first, because two lines at the same corner is a
+   different place from one. A row with no line listed says so in words rather than with a dash,
+   since a dash here would read as missing data when it is an answer. A stored 0 is a rounded
+   distance and not "no distance", so it reads the way the school pages read it. */
+const lineCell = (n, mi) => n === 0
+  ? '<td class="c-lines nodata">none listed</td>'
+  : `<td class="c-lines">${n} @ ${mi === 0 ? 'under 0.05' : mi ?? '?'} mi</td>`;
+
+const URBAN_COLS = [
+  { key: 'urank', label: '#', num: true, sort: (a, b) => a.urank - b.urank,
+    cell: s => `<td class="num c-rank">${s.urank}</td>` },
+  COLS.find(c => c.key === 'name'),
+  COLS.find(c => c.key === 'metro'),
+  /* Its own Mi cell rather than the master table's, which reads miles off the live metro
+     filter: this table has no filter, so borrowing that column would quietly change what the
+     distance is measured from the moment someone narrowed the table above it. Here it is
+     always miles to the row's own metro centre. */
+  { key: 'umi', label: 'Mi', num: true, sort: (a, b) => a.mi - b.mi,
+    cell: s => `<td class="num">${s.mi}</td>` },
+  { key: 'uscore', label: 'Urban', num: true, sort: (a, b) => b.u.score - a.u.score,
+    cell: s => `<td class="num c-urban">${uBar(s.u.score)}</td>` },
+  { key: 'uwalk', label: 'Walk', num: true, sort: (a, b) => b.u.walk - a.u.walk,
+    cell: s => `<td class="num">${s.u.walk}</td>` },
+  { key: 'udens', label: 'Density', num: true, sort: (a, b) => b.u.dens - a.u.dens,
+    cell: s => `<td class="num">${s.u.dens}</td>` },
+  { key: 'uloc', label: 'Locale',
+    sort: (a, b) => SETTING[a.name].locCode - SETTING[b.name].locCode,
+    cell: s => `<td class="c-loc">${SETTING[s.name].loc}</td>` },
+  { key: 'utrans', label: 'Transit', num: true, sort: (a, b) => b.u.trans - a.u.trans,
+    cell: s => `<td class="num">${s.u.trans}</td>` },
+  { key: 'urail', label: 'Rail lines', num: true,
+    sort: (a, b) => (SETTING[b.name].railN) - (SETTING[a.name].railN),
+    cell: s => lineCell(SETTING[s.name].railN, SETTING[s.name].railMi) },
+  { key: 'ubus', label: 'Bus lines', num: true,
+    sort: (a, b) => (SETTING[b.name].busN) - (SETTING[a.name].busN),
+    cell: s => lineCell(SETTING[s.name].busN, SETTING[s.name].busMi) },
+  /* Shown, never scored -- see the note above. "not published" rather than a dash for the
+     same reason the line cells spell theirs out: the absence is about Walk Score's coverage,
+     not about the campus. */
+  { key: 'utscore', label: 'Transit Score', num: true,
+    sort: (a, b) => (SETTING[b.name].tscore ?? -1) - (SETTING[a.name].tscore ?? -1),
+    cell: s => SETTING[s.name].tscore == null
+      ? '<td class="num nodata">not published</td>'
+      : `<td class="num">${SETTING[s.name].tscore}</td>` },
+  { key: 'ubike', label: 'Bike', num: true,
+    sort: (a, b) => (SETTING[b.name].bike ?? -1) - (SETTING[a.name].bike ?? -1),
+    cell: s => `<td class="num">${numCell(SETTING[s.name].bike)}</td>` },
+  COLS.find(c => c.key === 'tier'),
+];
+
+/* Its own sort state, because the two tables are on the same page and sharing `sortKey`
+   would make a click on one reorder the other into a column it does not have. */
+let uSortKey = 'urank', uSortDir = 1;
+
+function initUrban() {
+  const tbl = document.getElementById('urban-tbl');
+  if (!tbl) return;
+  const rows = urbanRanked(SCHOOLS);
+
+  tbl.querySelector('thead').innerHTML = headHTML(URBAN_COLS);
+  const draw = () => {
+    const c = URBAN_COLS.find(c => c.key === uSortKey);
+    const sorted = rows.slice().sort((a, b) => (c ? c.sort(a, b) : 0) * uSortDir);
+    tbl.querySelector('tbody').innerHTML = rowsHTML(sorted, URBAN_COLS);
+    tbl.querySelectorAll('thead th[data-key]').forEach(th => {
+      const arrow = th.querySelector('.arrow');
+      if (th.dataset.key === uSortKey) {
+        th.setAttribute('aria-sort', uSortDir === 1 ? 'ascending' : 'descending');
+        arrow.textContent = uSortDir === 1 ? '▲' : '▼';
+      } else {
+        th.removeAttribute('aria-sort');
+        arrow.textContent = '▲';
+      }
+    });
+  };
+  tbl.querySelectorAll('thead th[data-key]').forEach(th => {
+    th.addEventListener('click', () => {
+      const k = th.dataset.key;
+      if (uSortKey === k) uSortDir *= -1; else { uSortKey = k; uSortDir = 1; }
+      draw();
+    });
+  });
+  draw();
+  const n = document.getElementById('urban-count');
+  if (n) n.textContent = `${rows.length} schools scored`;
+}
+
 let sortKey = 'tier', sortDir = 1, filters = { metro: 'all', div: 'all', tier: 'all', q: '' };
 
 /* Which columns this page shows. Frozen at initTable() time rather than read live off
