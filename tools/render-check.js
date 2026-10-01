@@ -682,9 +682,10 @@ const METROS = [
     }
     /* The section must name what it is about, because a Walk Score sitting on a distance
        runner's page invites exactly one wrong reading — that a 96 is a better place to train
-       than a 12. It measures everyday living, and saying so is not optional. */
-    if (!/everyday living/i.test(txt)) {
-      fails.push(`school.html?s=${s.slug}: Setting section does not say it is about everyday living`);
+       than a 12. It measures what he can reach on foot, and saying so is not optional. */
+    if (!/what he can reach on foot/i.test(txt)) {
+      fails.push(`school.html?s=${s.slug}: Setting section does not say it is about what he ` +
+        `can reach on foot`);
     }
     dom.window.close();
   }
@@ -820,10 +821,21 @@ const METROS = [
   const AG_CNT = agreement(n => Math.min(100,
     Math.round(5 * (SETTING[n].railN + SETTING[n].busN))));
 
-  const uDom = await render('index.html');
+  /* Each claim regex pulls a published number out of a rendered page or a source file and holds
+     it against the computed one, so a figure that goes stale fails here rather than sitting on the
+     page. Declared before the first caller, because three pages' worth of them follow. */
+  const claim = (label, text, re, want) => {
+    const m = text.match(re);
+    if (!m) return fails.push(`${label}: claim no longer parses — check tools/render-check.js`);
+    const wants = Array.isArray(want) ? want : [want];
+    m.slice(1).forEach((g, i) => ok(`${label}${wants.length > 1 ? ' [' + i + ']' : ''}`,
+      Number(g), wants[i]));
+  };
+
+  const uDom = await render('urban.html');
   const uTbl = uDom.window.document.getElementById('urban-tbl');
   if (!uTbl) {
-    fails.push('index.html: the urban section renders no #urban-tbl');
+    fails.push('urban.html: the page renders no #urban-tbl');
   } else {
     const heads = [...uTbl.querySelectorAll('thead th')]
       .map(th => th.textContent.replace('▲', '').trim());
@@ -835,7 +847,48 @@ const METROS = [
        happened to be built in -- that is the one thing urbanRanked() exists to guarantee. */
     ok('urban first row is the most urban', trs[0].textContent.includes(U[0].name), true);
     ok('urban Transit Score column present', heads.includes('Transit Score'), true);
+    /* A whole page built on these two columns is the last place the caveat may be missing,
+       and the four KPI cards at the top must come off the same order as the table. */
+    const utext = uDom.window.document.body.textContent.replace(/\s+/g, ' ');
+    ok('urban page carries walkNote', utext.includes('what he can reach on foot'), true);
+    const kpi = (id) => uDom.window.document.getElementById(id).textContent;
+    ok('urban KPI count', Number(kpi('k-u-n')), SCHOOLS.length);
+    ok('urban KPI median', Number(kpi('k-u-med')),
+      U.map(r => r.u.score).sort((a, b) => a - b)[Math.floor(0.5 * (U.length - 1))]);
+    ok('urban KPI high', Number(kpi('k-u-high')), U.filter(s => s.u.score >= 70).length);
+    ok('urban KPI low', Number(kpi('k-u-low')), U.filter(s => s.u.score < 40).length);
   }
+
+  /* The nav has an Urban tab on every page, and it is the only route to it -- the front page
+     links it in prose, which a reader scrolling the table will not see. */
+  for (const page of ['index.html', 'urban.html', 'methodology.html']) {
+    const d = await render(page);
+    const tab = [...d.window.document.querySelectorAll('header.site nav a')]
+      .find(a => a.getAttribute('href') === 'urban.html');
+    ok(`${page.replace('.html', '')} has an Urban tab`, !!tab, true);
+    if (page === 'urban.html') {
+      ok('urban tab is current on its own page', tab.getAttribute('aria-current'), 'page');
+    }
+    d.window.close();
+  }
+
+  /* The pointer the front page keeps where the section used to be. Fewer numbers than the page
+     it points at, and every one of them still has to be the computed one. */
+  const iDom = await render('index.html');
+  const itxt = iDom.window.document.body.textContent.replace(/\s+/g, ' ');
+  claim('index urban pointer', itxt, /puts all (\d+) board rows in one order/, SCHOOLS.length);
+  claim('index urban medians', itxt,
+    /ring's median is (\d+) against (\d+) in Boston/,
+    ['greenville', 'boston'].map(m => medianOf(U.filter(s => inMetro(s, m)).map(s => s.u.score))));
+  if (!itxt.includes('seven of the ten most urban rows on the board are Caution tier')) {
+    fails.push('index.html: the urban pointer no longer states the seven-of-ten finding');
+  }
+  if (!iDom.window.document.getElementById('urban-tbl')) {
+    ok('index no longer builds the urban table', true, true);
+  } else {
+    fails.push('index.html: the urban table is on two pages, so one of them will go stale');
+  }
+  iDom.window.close();
 
   /* The prose. Each regex pulls the published number out of the rendered page and compares it
      to the computed one, so a figure that goes stale fails here rather than on the page. */
@@ -845,14 +898,6 @@ const METROS = [
        "0.70 ," behind; the last pass puts the punctuation back against the word. */
     .replace(/<[^>]+>/g, ' ').replace(/&mdash;|&ndash;/g, '-')
     .replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1');
-  const claim = (label, text, re, want) => {
-    const m = text.match(re);
-    if (!m) return fails.push(`${label}: claim no longer parses — check tools/render-check.js`);
-    const wants = Array.isArray(want) ? want : [want];
-    m.slice(1).forEach((g, i) => ok(`${label}${wants.length > 1 ? ' [' + i + ']' : ''}`,
-      Number(g), wants[i]));
-  };
-
   const targets = U.filter(s => s.tier === 'target');
   const topQ = U.filter(s => s.u.score >= pct(0.75));
   const noLines = U.filter(s => SETTING[s.name].railN === 0 && SETTING[s.name].busN === 0);

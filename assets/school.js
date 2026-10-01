@@ -290,8 +290,8 @@ function setting() {
       else’s scores on it.`
       : `Nothing was stored unless the coordinate in that page’s own map tiles landed near this board’s
       coordinate: a wrong address still returns a page, with somebody else’s scores on it.`}
-      This section is about everyday living: whether he can reach a shop, a bus and a train on foot,
-      without a car and without waiting on anyone for a ride.
+      This section is about what he can reach on foot: a shop, a bus, a train, a job, all
+      within walking distance and without waiting on anyone for a ride.
     </p>`;
 }
 

@@ -24,10 +24,10 @@ DATA = os.path.join(REPO, 'assets', 'data.js')
 DETAIL = os.path.join(REPO, 'assets', 'detail.js')
 
 SETTING_DOC = """
-/* Campus setting: what it is like to live here without a car.
+/* Campus setting: how much of daily life is within walking distance.
 
-   This is a question about everyday living, not about running. Can he reach a shop, a bus
-   and a train on foot, without a car and without waiting on somebody for a ride. A high
+   This is a question about everyday living, not about running. Can he reach a shop, a bus,
+   a train and a job on foot, without waiting on somebody for a ride. A high
    `walk` is a claim about groceries and not about a six-mile easy day; where the team runs
    is the team's answer to give, and nothing in this file attempts it.
 

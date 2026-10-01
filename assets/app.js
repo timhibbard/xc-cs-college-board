@@ -28,9 +28,10 @@ function initChrome(current) {
     `<a href="${m.page}"${current === id ? ' aria-current="page"' : ''}>${m.nav ?? m.label}</a>`
   ).join('\n        ');
 
-  /* One link that is not a metro, so it is written out rather than derived: north-carolina.html
-     re-reads the Greenville ring's North Carolina rows by the state's own metros. It has no
-     METROS entry because it is not a search — no centre, no radius, and no row calls it home. */
+  /* Two links that are not metros, so they are written out rather than derived.
+     north-carolina.html re-reads the Greenville ring's North Carolina rows by the state's own
+     metros; urban.html re-reads all of them by campus setting. Neither has a METROS entry
+     because neither is a search — no centre, no radius, and no row calls either one home. */
   const nav = `
     <header class="site"><div class="wrap">
       <a class="brand" href="index.html">Recruiting Board <span class="pill">XC / TF + CS</span></a>
@@ -38,6 +39,7 @@ function initChrome(current) {
         <a href="index.html"${current === 'index' ? ' aria-current="page"' : ''}>Overview</a>
         ${metroLinks}
         <a href="north-carolina.html"${current === 'north-carolina' ? ' aria-current="page"' : ''}>North Carolina</a>
+        <a href="urban.html"${current === 'urban' ? ' aria-current="page"' : ''}>Urban</a>
         <a href="methodology.html"${current === 'method' ? ' aria-current="page"' : ''}>Methodology</a>
       </nav>
       <button id="theme" type="button" aria-label="Toggle color theme" title="Toggle light / dark">
@@ -230,7 +232,7 @@ const SIZE_COLS = [
 /* The campus-setting columns (#13), asked for with initTable({ walk: true }).
    Opt-in rather than part of COLS because a single sortable Walk column invites the reading that
    a 96 is a better place to be a distance runner than a 12, which is exactly the inference this
-   board has no evidence for: these two describe everyday living without a car, and where the
+   board has no evidence for: these two describe what he can reach on foot, and where the
    team runs is the team's answer to give. So every table that shows them also carries walkNote(),
    which says what they do not mean, and the school page carries the detail with its caveats.
 
@@ -256,14 +258,13 @@ function walkNote({ sortable = true } = {}) {
     Score</a>'s 0&ndash;100 score for the campus's own street address, reproduced with a link to
     its source on each school page; <em>Locale</em> is the federal census classification of that
     same address${sortable ? ', and it sorts most urban first' : ''}. <strong>Both describe
-    everyday living without a car</strong> &mdash; reaching a shop, a bus and a train on foot
-    &mdash; and <a href="methodology.html#setting">neither is a claim about where he would
-    run</a>.`;
+    what he can reach on foot</strong> &mdash; a shop, a bus, a train, a job &mdash; and
+    <a href="methodology.html#setting">neither is a claim about where he would run</a>.`;
 }
 
-/* ---------- the urban score, and the section that orders the board by it -------
-   One number per campus, so the question "which of these could he live at without a car"
-   has an answer that sorts. Three components, equal thirds:
+/* ---------- the urban score, and the page that orders the board by it ----------
+   One number per campus, so the question "how much of daily life is within walking distance
+   here" has an answer that sorts. Three components, equal thirds:
 
      walk     Walk Score for the campus street address, 0-100, as published.
      dens     the federal locale, used as ORDER ONLY: twelve codes from City: Large to
@@ -377,6 +378,14 @@ function initUrban() {
   const rows = urbanRanked(SCHOOLS);
 
   tbl.querySelector('thead').innerHTML = headHTML(URBAN_COLS);
+
+  /* The same sentence the master table gets, appended for the same reason: this table shows a
+     Walk column and a Locale column, so it owes the reader what they are not. Written once in
+     walkNote() rather than restated in the page, because a whole page built on these two numbers
+     is the last place the caveat should be a hand copy. */
+  const cap = tbl.querySelector('caption');
+  if (cap) cap.innerHTML += ' ' + walkNote();
+
   const draw = () => {
     const c = URBAN_COLS.find(c => c.key === uSortKey);
     const sorted = rows.slice().sort((a, b) => (c ? c.sort(a, b) : 0) * uSortDir);

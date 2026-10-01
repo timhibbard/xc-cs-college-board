@@ -57,12 +57,12 @@ const srv=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.spl
   const walkTh=[...doc.querySelectorAll('table thead th')].some(t=>t.textContent.trim().startsWith('Walk'));
   /* Whitespace-normalised: the note is a template literal wrapped across source lines, so the
      phrase arrives with a newline and indentation inside it and a raw regex would miss it. */
-  const noted=/everyday living without a car/i.test(doc.body.textContent.replace(/\s+/g,' '));
+  const noted=/what he can reach on foot/i.test(doc.body.textContent.replace(/\s+/g,' '));
 
   const out=[];
   if(errs.length)out.push(...new Set(errs));
   /* One direction only: methodology.html explains the same thing at length and has no table. */
-  if(walkTh&&!noted)out.push('shows a Walk column but never says it is about everyday living without a car');
+  if(walkTh&&!noted)out.push('shows a Walk column but never says it is about what he can reach on foot');
   if(nested.length)out.push('nested <a> inside <a>: '+[...new Set(nested)].join(', '));
   if(stunted.length)out.push('linkcard missing label/value/sub: '+stunted.join(', '));
   if(dead.length)out.push('dead links: '+[...new Set(dead)].join(', '));
