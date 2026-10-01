@@ -166,7 +166,7 @@ every race on file across the 2025 and 2026 seasons:
 Where a team never finished seven, **vs their 7th** is left blank rather than guessed at, and the
 comparison runs against their last finisher instead. Races with fewer than five finishers are not
 team results and are excluded from the averages entirely — 59 of the 449 championship races the
-tiers rest on, and 155 of the 1,745 races on file overall.
+tiers rest on, and 155 of the 1,746 races on file overall.
 
 Four tiers follow from that: **Target** (a clean 4th–9th man fit), **Deep** (just outside the
 travel squad — a good development environment, no freshman travel), **Verify** (no cross country
@@ -185,7 +185,7 @@ final was won in 4:03.61 while a prelim went 3:47.69 — so the whole-field plac
 tactical final is flagged as one rather than read as a level.
 
 Cross country times are also **course-corrected** where at least three teams cross-check the
-same course against a calibrated one. The 1,745 races span 399 distinct meets and exactly two
+same course against a calibrated one. The 1,746 races span 400 distinct meets and exactly two
 cleared that bar, so most schools rest on an uncorrected time — the largest remaining source of
 error here. Getting the sign of one correction backwards briefly promoted a cut school to
 target tier, which is documented rather than quietly fixed.
@@ -218,7 +218,7 @@ wrong page. Every men's section of the page is then tried and it is **the file's
 the section**, so a meet running both a varsity and an open race cannot report a false violation on
 whichever race was read from the other.
 
-**1,745 of 1,745 races now reproduce exactly** from the 438 pages behind them: times, finisher
+**1,746 of 1,746 races now reproduce exactly** from the 439 pages behind them: times, finisher
 count, class years, team place and score, distance, the level the meet name implies, and slot, gap,
 gap-to-seventh, gap-to-last-finisher and 1–7 spread recomputed with the stored course correction
 added back.
@@ -233,7 +233,7 @@ collection code** rather than in the verifier:
   label this board reserves for the multi-conference meets (IC4A/ECAC, NEICAAA, the Metropolitan)
   between a conference and an NCAA region. Worse in the other direction, it promoted 23
   **invitationals** into the championship set on the word "conference" appearing in names like
-  "United East Conference Preview". It now reproduces all 1,745 stored labels.
+  "United East Conference Preview". It now reproduces all 1,746 stored labels.
 - **60 distance disagreements: a units comparison.** A board row is scored at 5K, 6K, 8K or 10K and
   a course is whatever it measures, so the file buckets — `8000m`, `4.97 miles` and `8.057K` are all
   `8K`. Distances are compared as lengths now. **42 races are run at a length that is not the
@@ -283,8 +283,8 @@ guarantees that: a championship race in a sweep aborts the run, because `xc` car
 of its published blocks are hand decisions about what a thin field means. The two aggregates it does
 rewrite are gated the same way — the formula is re-derived from every block already published before a
 byte is written, 169 of 169 for `xcInv`, and a single disagreement stops the run on the grounds that
-the formula is then wrong rather than the file. The file after the sweep is **1,745 of 1,745 races
-reproducing exactly** from the 438 pages behind them.
+the formula is then wrong rather than the file. The file after the sweep is **1,746 of 1,746 races
+reproducing exactly** from the 439 pages behind them.
 
 Two smaller bugs fell out of reading 104 new meets. A meet that writes its own distance as `6200K`
 means 6,200 metres, and the board was publishing the typo; and a section titled `8.0K` was storing a
@@ -297,8 +297,8 @@ A race is stored as a team's first seven, because seven is what scores and every
 slot, his gap to their 7th man, the 1-to-7 spread — is defined over those seven. What that quietly
 cost: the methodology's own reason for keeping the invitational races is that they are where a
 program's 5th through 9th runners actually race, and the 8th and 9th man were not in the file at all.
-**819 of the 1,745 races on file put more than seven men on the line** — 1,117 hold a full seven and
-only 298 of those teams finished exactly seven — and the 3,419 men behind a scoring seven had been
+**819 of the 1,746 races on file put more than seven men on the line** — 1,118 hold a full seven and
+only 299 of those teams finished exactly seven — and the 3,419 men behind a scoring seven had been
 read off the page, checked, and dropped. The deepest field on file is **30 men** (Wingate, Converse
 Kick-Off, 19 September 2026); the deepest at a championship is 22.
 
@@ -307,19 +307,27 @@ in their own `tail` array rather than lengthening `runners`, which is the entire
 a dozen call sites take `runners[0]` as a team's #1, `runners[6]` as its 7th man and `runners.length`
 as how many finished, and a longer `runners` would have left all of them working while answering a
 different question. `xc_verify.py` now checks the tail against the page as well, so a future sweep
-that forgets it fails rather than drifts, and the file still reads **1,745 of 1,745 races reproducing
+that forgets it fails rather than drifts, and the file still reads **1,746 of 1,746 races reproducing
 exactly**. On a school page each race card gains a fold holding the men who scored nothing, and one
 sentence that could not be written before: in **75** of the 772 deep races this board can convert,
 their *8th man onward* is also faster than his projection, so the stored slot understates where he
 would have landed.
 
 It also closed the one published number that was knowably wrong. Every aggregate block carries the most
-runners the team finished in any of the races it averages, and **74 of them said seven** when the team
-had finished eight to twenty. Eight blocks were already right — UIC's 14, Saint Joseph's 16 — written
+runners the team finished in any of the races it averages, and **89 of them said seven** when the team
+had finished eight to twenty-two. Eight blocks were already right — UIC's 14, Saint Joseph's 16 — written
 by an older stage that still had the whole field in hand, and `xc_apply.py`'s own self-check was
 failing on all eight with nobody watching: the formula could count no higher than seven while the file
 knew better, so the next sweep would have aborted. The averages themselves are untouched and stay
 that way. What a race decides is settled by the men who scored; the ones behind them are evidence.
+
+Fifteen of those 89 blocks were corrected a week later, and by the next sweep rather than by the pass
+written to fix them: it read the rows on the board and nothing else, so eleven rows this file publishes
+without ranking — the walk-on cut list and the no-men's-track removals, Iona's **22** the deepest —
+went on printing the capped seven on their own pages. 47 of the 290 blocks that carry this count sit on
+rows the board does not rank, which is enough of the file for a pass to clear six-sevenths of it and
+report success. What exposed them was one unrelated new race: the aggregate stage recomputes every row
+it can, asked to rewrite ten 2025 blocks no new race had touched, and the diff was `maxfin` in all ten.
 
 ## Metros
 
@@ -674,7 +682,7 @@ a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS populatio
 not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
-as raw seconds, in order — 1,745 races across 223 schools; `runners` is the scoring seven, so a short
+as raw seconds, in order — 1,746 races across 223 schools; `runners` is the scoring seven, so a short
 race also carries `nfin` and `vlast`, the gap to their last finisher, and a race deeper than seven
 carries `tail` and `tyears`, the men behind it), `T1500` (the 2026 outdoor 1500 for the 195 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
