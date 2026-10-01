@@ -508,6 +508,51 @@ The [methodology page](https://timhibbard.github.io/xc-cs-college-board/methodol
 the full list of withdrawn claims. Every one started as a confident statement from general
 knowledge that the results data then contradicted.
 
+## Urban — the campus setting, in one order
+
+The setting data arrived one column at a time, which meant it could only be read one row at a time.
+The **Urban** section on the front page puts all 186 board rows in a single order, scored out of 100
+as the average of three equal thirds: the **Walk Score** for the campus street address; the
+**federal locale**, the twelve codes spread evenly from *City: Large* to *Rural: Remote* and used as
+an **order only**, since IPEDS makes no claim that a large city is nine points denser than a midsize
+one; and a **transit** number built from the rail and bus lines actually listed at that address — 35
+points for a rail stop and 35 for a bus stop, each fading to nothing at a mile and a half, plus two a
+line for how many there are.
+
+Equal thirds because nothing here justifies anything else: a weighting would be a claim about how
+much a train is worth against a shop, and the only evidence for it is one 17-year-old's preference,
+which has not been asked for. **The published Transit Score is shown in the table and never folded
+into the score** — it exists for only 122 of the 243 rows and an absent one is not a zero, so a
+component that read it would score Columbia, with the 1 train outside, as having no transit at all.
+Over the 122 rows that have both, the computed number agrees: **Spearman 0.80, median gap 9 points,
+91 of 122 within 15, bias +2.6.** A distance-only version agrees at 0.70 and a count-only version
+runs 17 points low, so both halves of the rule are doing work.
+
+**It is not a ranking of the running, the program or the fit**, for the same reason the columns
+behind it are not: it describes living without a car, and the coach picks the routes. Four things the
+order shows that the main table hides:
+
+- **The board is bimodal.** Scores run 8 to 100 with a median of 59, but **68 of the 186 score 70 or
+  better and 50 score under 40**. By metro that is the whole story: the Greenville ring's median is
+  **38**, against 83 in Boston, 80 in New York, 80 in Pittsburgh and 79 in Chicago.
+- **The most urban schools are mostly the ones to avoid.** Seven of the ten most urban rows are
+  Caution tier — Roosevelt, Suffolk and Thomas Jefferson all score 100 and all three are on this
+  board as warnings. Urban is a tiebreaker to apply *after* the running, not before.
+- **Thirteen of the 47 target-tier schools are in the most urban quarter anyway**, and that short
+  list is the point of the section: NYU 99, Harvard 96, Fordham 95, Penn 95, NJIT 94, MIT 93,
+  DePaul 92, La Salle 87. At the other end, Pfeiffer is target tier and the **least urban row on the
+  board at 8**.
+- **Walk Score and the locale disagree in both directions.** Chestnut Hill is *City: Large* inside
+  Philadelphia with a **Walk Score of 4**; Appalachian State is a distant mountain town and scores
+  **74**. That is why the locale is a third of the total rather than the whole of it, and why both
+  components are printed beside it.
+
+**61 of the 186 schools have no rail line and no bus line listed at their address** — which is what
+the page their scores came from named, not a survey of the town. Those rows read *none listed*, which
+is a question for the school rather than an answer about it. Every number in the two paragraphs above
+is re-derived from `SETTING` by `tools/render-check.js`, including the agreement statistics and the
+two rejected rules, so a figure that goes stale fails the check rather than sitting on the page.
+
 ## Where the data comes from
 
 **Cross country and track results:** [TFRRS](https://www.tfrrs.org) — 2025 conference and NCAA
@@ -580,7 +625,8 @@ publishes their name and work email in order to be contacted.
 ## Structure
 
 ```
-index.html          overview: KPIs, ten metro cards, filterable table of every school, gap chart
+index.html          overview: KPIs, ten metro cards, filterable table of every school, gap chart,
+                    and the urban order (#urban) — every row scored by its campus setting
 greenville.html     per-metro write-up + filtered table, chart, and radius map
 new-york.html
 chicago.html

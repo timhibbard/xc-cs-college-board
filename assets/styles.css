@@ -368,6 +368,22 @@ ul.lines .rownote { margin-left: 6px; white-space: nowrap; }
 /* "Suburb: Midsize" is the longest of the twelve federal locale labels; pinning the
    column stops it wrapping to two lines and setting the height of every row. */
 :is(#master, .board-tbl) .c-loc { white-space: nowrap; }
+
+/* ---------- urban section ----------
+   The bar is decoration for a number that is already printed beside it, so it is
+   aria-hidden and carries no color meaning: width is the whole message. Fixed width
+   rather than a flexible one, because a column that resizes with the longest value
+   makes two rows' bars incomparable, which is the one thing the bar is for. */
+#urban-tbl .c-rank { color: var(--muted); width: 3ch; }
+#urban-tbl .c-lines { white-space: nowrap; }
+#urban-tbl .c-urban { white-space: nowrap; }
+.uwrap { display: inline-flex; align-items: center; gap: 7px; }
+.uwrap b { font-weight: 620; font-variant-numeric: tabular-nums; min-width: 3ch; text-align: right; }
+/* Track --grid, fill --muted: the one pair that separates in both palettes. --baseline on
+   --neutral-mid looks right in light mode and is the same hex twice in dark, which would
+   print a bar with no visible fill on half the readers' screens. */
+.ubar { display: inline-block; width: 46px; height: 6px; border-radius: 3px; background: var(--grid); overflow: hidden; }
+.ubar i { display: block; height: 100%; background: var(--muted); }
 .gap-pos { color: var(--div-blue); font-weight: 620; }
 .gap-neg { color: var(--div-red); font-weight: 620; }
 

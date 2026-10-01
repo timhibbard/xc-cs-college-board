@@ -756,6 +756,198 @@ const METROS = [
     dom.window.close();
   }
 
+  /* ---------- the urban section on index.html -------------------------------------
+     Every number in that section's prose, against the score the page itself computes.
+     The formula is read out of assets/app.js rather than restated here: a second copy in
+     the checker would agree with itself forever while the page drifted away from both.
+     app.js stamps the theme out of localStorage at load and has no DOM in a bare vm, so it
+     gets the two stubs that reach, and nothing else in the file runs at top level. */
+  const appCtx = {
+    localStorage: { getItem: () => null, setItem: () => {} },
+    document: { documentElement: { setAttribute: () => {} } },
+    addEventListener: () => {},
+  };
+  vm.createContext(appCtx);
+  vm.runInContext(
+    fs.readFileSync(path.join(ROOT, 'assets/data.js'), 'utf8') + '\n' +
+    fs.readFileSync(path.join(ROOT, 'assets/app.js'), 'utf8') +
+    ';__out={urbanScore,urbanRanked,inMetro,stopScore};', appCtx);
+  const { urbanScore, urbanRanked, inMetro, stopScore } = appCtx.__out;
+
+  const U = urbanRanked(SCHOOLS);
+  const uBy = {};
+  U.forEach(r => { uBy[r.name] = r; });
+  const sorted = U.map(r => r.u.score).sort((a, b) => a - b);
+  const pct = (p) => sorted[Math.floor(p * (sorted.length - 1))];
+  const medianOf = (xs) => xs.slice().sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+  const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
+
+  /* Spearman on the published Transit Score, which is the whole argument for computing the
+     transit third instead of reading it. Ties get the average rank, because 100 is published
+     flat across a dozen rows and ranking them 1..12 by accident would inflate the agreement. */
+  const everySet = [...SCHOOLS, ...REMOVED, ...NO_TRACK, ...NO_PROGRAM]
+    .filter(s => SETTING[s.name] && SETTING[s.name].tscore != null);
+  const rankAvg = (xs) => {
+    const idx = xs.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0]);
+    const out = new Array(xs.length);
+    for (let i = 0; i < idx.length;) {
+      let j = i;
+      while (j + 1 < idx.length && idx[j + 1][0] === idx[i][0]) j++;
+      const avg = (i + j) / 2 + 1;
+      for (let k = i; k <= j; k++) out[idx[k][1]] = avg;
+      i = j + 1;
+    }
+    return out;
+  };
+  function agreement(transOf) {
+    const A = everySet.map(s => transOf(s.name));
+    const B = everySet.map(s => SETTING[s.name].tscore);
+    const ra = rankAvg(A), rb = rankAvg(B), ma = mean(ra), mb = mean(rb);
+    let num = 0, da = 0, db = 0;
+    for (let i = 0; i < A.length; i++) {
+      num += (ra[i] - ma) * (rb[i] - mb); da += (ra[i] - ma) ** 2; db += (rb[i] - mb) ** 2;
+    }
+    const err = A.map((a, i) => a - B[i]);
+    const abs = err.map(Math.abs).sort((a, b) => a - b);
+    return { rho: num / Math.sqrt(da * db), med: abs[Math.floor(abs.length / 2)],
+             bias: mean(err), within15: abs.filter(e => e <= 15).length };
+  }
+  const AG = agreement(n => urbanScore(n).trans);
+  /* The two one-sided rules the published one was chosen over, so the sentence that says it
+     beat them is checked against the same 122 rows rather than remembered. */
+  const AG_DIST = agreement(n => Math.min(100, Math.round(
+    50 * stopScore(SETTING[n].railMi) + 50 * stopScore(SETTING[n].busMi))));
+  const AG_CNT = agreement(n => Math.min(100,
+    Math.round(5 * (SETTING[n].railN + SETTING[n].busN))));
+
+  const uDom = await render('index.html');
+  const uTbl = uDom.window.document.getElementById('urban-tbl');
+  if (!uTbl) {
+    fails.push('index.html: the urban section renders no #urban-tbl');
+  } else {
+    const heads = [...uTbl.querySelectorAll('thead th')]
+      .map(th => th.textContent.replace('▲', '').trim());
+    const trs = [...uTbl.querySelectorAll('tbody tr')];
+    ok('urban rows', trs.length, SCHOOLS.length);
+    ok('urban every row matches its header',
+      trs.length > 0 && trs.every(tr => tr.children.length === heads.length), true);
+    /* The rank column must come out of the stamped order, not out of whatever the DOM
+       happened to be built in -- that is the one thing urbanRanked() exists to guarantee. */
+    ok('urban first row is the most urban', trs[0].textContent.includes(U[0].name), true);
+    ok('urban Transit Score column present', heads.includes('Transit Score'), true);
+  }
+
+  /* The prose. Each regex pulls the published number out of the rendered page and compares it
+     to the computed one, so a figure that goes stale fails here rather than on the page. */
+  const utxt = uDom.window.document.body.textContent.replace(/\s+/g, ' ');
+  const mtxt = fs.readFileSync(path.join(ROOT, 'methodology.html'), 'utf8')
+    /* Tags become a space, so a number wrapped in <strong> right before a comma leaves
+       "0.70 ," behind; the last pass puts the punctuation back against the word. */
+    .replace(/<[^>]+>/g, ' ').replace(/&mdash;|&ndash;/g, '-')
+    .replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1');
+  const claim = (label, text, re, want) => {
+    const m = text.match(re);
+    if (!m) return fails.push(`${label}: claim no longer parses — check tools/render-check.js`);
+    const wants = Array.isArray(want) ? want : [want];
+    m.slice(1).forEach((g, i) => ok(`${label}${wants.length > 1 ? ' [' + i + ']' : ''}`,
+      Number(g), wants[i]));
+  };
+
+  const targets = U.filter(s => s.tier === 'target');
+  const topQ = U.filter(s => s.u.score >= pct(0.75));
+  const noLines = U.filter(s => SETTING[s.name].railN === 0 && SETTING[s.name].busN === 0);
+  const BEST = ['NYU', 'Harvard', 'Fordham', 'Penn', 'NJIT', 'MIT', 'DePaul', 'La Salle'];
+
+  claim('urban range', utxt, /Scores run from (\d+) to (\d+) with a median of (\d+)/,
+    [sorted[0], sorted[sorted.length - 1], pct(0.5)]);
+  claim('urban 70-and-40 split', utxt,
+    /(\d+) of the (\d+) schools score 70 or better and (\d+) score under 40/,
+    [U.filter(s => s.u.score >= 70).length, SCHOOLS.length,
+     U.filter(s => s.u.score < 40).length]);
+  claim('urban metro medians', utxt,
+    /median is (\d+), against (\d+) in Boston, (\d+) in New York, (\d+) in Pittsburgh and (\d+) in Chicago/,
+    ['greenville', 'boston', 'nyc', 'pittsburgh', 'chicago']
+      .map(m => medianOf(U.filter(s => inMetro(s, m)).map(s => s.u.score))));
+  /* Spelled out in the prose, so this one is a presence test beside the count it claims. */
+  if (!utxt.includes('Seven of the ten most urban rows are Caution tier')) {
+    fails.push('index.html: the seven-of-ten Caution sentence no longer parses');
+  }
+  ok('urban top ten caution rows', U.slice(0, 10).filter(s => s.tier === 'caution').length, 7);
+  claim('urban targets in the top quartile', utxt,
+    /Thirteen of the (\d+) target-tier schools are in the most urban quarter/, targets.length);
+  ok('urban targets in top quartile', topQ.filter(s => s.tier === 'target').length, 13);
+  claim('urban best of both', utxt,
+    new RegExp(BEST.map(n => n.replace(/ /g, '\\s') + ' (\\d+)').join(', ')),
+    BEST.map(n => uBy[n].u.score));
+  /* The eight named are the eight best targets, not eight good ones: if a sweep moves a ninth
+     above La Salle, the list is wrong even though every number in it still checks out. */
+  ok('urban best-of-both list is the top eight targets',
+    targets.slice(0, 8).map(s => s.name).join('|'), BEST.join('|'));
+  /* Three schools are named in the prose as scoring 100 and being on the board as warnings. */
+  ok('urban the three hundreds are caution',
+    ['Roosevelt', 'Suffolk', 'Thomas Jefferson']
+      .every(n => uBy[n].u.score === 100 && uBy[n].tier === 'caution'), true);
+  ok('urban least urban board row', U[U.length - 1].name, 'Pfeiffer');
+  ok('urban Pfeiffer detail',
+    `${SETTING['Pfeiffer'].walk}/${SETTING['Pfeiffer'].townSqMi}/${SETTING['Pfeiffer'].busN}`,
+    '7/1.6/0');
+  ok('urban least urban row is target tier', U[U.length - 1].tier, 'target');
+  claim('urban Pfeiffer', utxt, /least urban row on the board at (\d+)/,
+    U[U.length - 1].u.score);
+  claim('urban no lines listed', utxt,
+    /(\d+) of the (\d+) schools have no rail line and no bus line listed/,
+    [noLines.length, SCHOOLS.length]);
+  claim('urban Chestnut Hill', utxt, /with a Walk Score of (\d+), because its own corner/,
+    SETTING['Chestnut Hill'].walk);
+  claim('urban Appalachian State', utxt, /mountains and scores (\d+), because Boone/,
+    SETTING['Appalachian State'].walk);
+
+  /* README repeats these in its own words, so it gets its own regexes rather than a shared
+     one -- a figure corrected on the page and not in the repo's front door is still wrong. */
+  const rtxt = fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8').replace(/\s+/g, ' ');
+  claim('README urban rows', rtxt, /puts all (\d+) board rows in a single order/, SCHOOLS.length);
+  claim('README urban range', rtxt, /Scores run (\d+) to (\d+) with a median of (\d+)/,
+    [sorted[0], sorted[sorted.length - 1], pct(0.5)]);
+  claim('README urban split', rtxt,
+    /\*\*(\d+) of the (\d+) score 70 or better and (\d+) score under 40\*\*/,
+    [U.filter(s => s.u.score >= 70).length, SCHOOLS.length,
+     U.filter(s => s.u.score < 40).length]);
+  claim('README urban metro medians', rtxt,
+    /\*\*(\d+)\*\*, against (\d+) in Boston, (\d+) in New York, (\d+) in Pittsburgh and (\d+) in Chicago/,
+    ['greenville', 'boston', 'nyc', 'pittsburgh', 'chicago']
+      .map(m => medianOf(U.filter(s => inMetro(s, m)).map(s => s.u.score))));
+  claim('README urban targets', rtxt,
+    /Thirteen of the (\d+) target-tier schools are in the most urban quarter/, targets.length);
+  claim('README urban best of both', rtxt,
+    new RegExp(BEST.map(n => n.replace(/ /g, '\\s') + ' (\\d+)').join(', ')),
+    BEST.map(n => uBy[n].u.score));
+  claim('README urban Pfeiffer', rtxt, /least urban row on the\s+board at (\d+)/,
+    U[U.length - 1].u.score);
+  claim('README urban tscore coverage', rtxt, /it exists for only (\d+) of the (\d+) rows/,
+    [everySet.length, everyRow.length]);
+  claim('README urban agreement', rtxt,
+    /Spearman (0\.\d\d), median gap (\d+) points, (\d+) of (\d+) within 15, bias \+(\d\.\d)/,
+    [Number(AG.rho.toFixed(2)), AG.med, AG.within15, everySet.length,
+     Number(AG.bias.toFixed(1))]);
+  claim('README urban alternatives', rtxt,
+    /distance-only version agrees at (0\.\d\d) and a count-only version runs (\d+) points low/,
+    [Number(AG_DIST.rho.toFixed(2)), Math.round(Math.abs(AG_CNT.bias))]);
+  claim('README urban no lines', rtxt,
+    /\*\*(\d+) of the (\d+) schools have no rail line and no bus line listed/,
+    [noLines.length, SCHOOLS.length]);
+
+  claim('methodology urban rows', mtxt, /puts all (\d+) board rows in one order/, SCHOOLS.length);
+  claim('methodology urban tscore coverage', mtxt,
+    /it exists for only (\d+) of the (\d+) rows/, [everySet.length, everyRow.length]);
+  claim('methodology urban agreement', mtxt,
+    /Spearman (0\.\d\d), a median gap of (\d+) points, (\d+) of the (\d+) within 15 points, and a mean bias of \+(\d\.\d)/,
+    [Number(AG.rho.toFixed(2)), AG.med, AG.within15, everySet.length,
+     Number(AG.bias.toFixed(1))]);
+  claim('methodology urban alternatives', mtxt,
+    /agrees at only (0\.\d\d), and a count-only version at 5 points a line runs (\d+) points low/,
+    [Number(AG_DIST.rho.toFixed(2)), Math.round(Math.abs(AG_CNT.bias))]);
+  uDom.window.close();
+
   for (const c of checks) {
     console.log(`${c.pass ? 'ok  ' : 'FAIL'}  ${c.name}: ${c.got}${c.pass ? '' : ' (want ' + c.want + ')'}`);
   }

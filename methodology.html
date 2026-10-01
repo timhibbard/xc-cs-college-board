@@ -1886,6 +1886,56 @@
     were fixed against IPEDS and OpenStreetMap, and the second one proved its own <em>Mi</em> had been
     right all along while its pin pointed at the wrong borough.
   </p>
+  <h3 id="urban-score">The urban score &mdash; one number, three equal thirds, and the component that is shown but not used</h3>
+  <p class="prose">
+    Those fields answered the question one column at a time, which meant the answer could only ever be
+    read one row at a time. <a href="index.html#urban">The Urban section on the front page</a> puts all
+    <strong>186 board rows in one order</strong>, and the number it sorts on is the average of three
+    components, each worth a third:
+  </p>
+  <ul class="prose">
+    <li><strong>Walk</strong> &mdash; the published Walk Score for the campus's street address, used as
+      it stands.</li>
+    <li><strong>Density</strong> &mdash; the federal locale, and <strong>used as an order only</strong>.
+      The twelve codes are spread evenly across 100, from <em>City: Large</em> at 100 to <em>Rural:
+      Remote</em> at 0. That even spacing is not a finding: IPEDS makes no claim that a large city is
+      nine points denser than a midsize one, so this is a rank wearing a number's clothes. It is a third
+      of the total rather than a weighting precisely because it cannot carry a weight.</li>
+    <li><strong>Transit</strong> &mdash; computed from the named rail and bus lines at that address:
+      <strong>35 points for a rail stop and 35 for a bus stop</strong>, each fading linearly to nothing
+      at a mile and a half, plus <strong>2 points a line</strong> for how many lines are there, capped
+      at 100. Two lines at the same corner is a different place from one, which is why the count enters
+      at all.</li>
+  </ul>
+  <p class="prose">
+    <strong>Equal thirds because nothing here justifies anything else.</strong> Any other weighting
+    would be a claim about how much a train is worth against a shop, and the only evidence for that
+    claim is one 17-year-old's preference, which has not been asked for. Three equal thirds is the
+    assumption that is easiest to see and easiest to overrule.
+  </p>
+  <p class="prose">
+    <strong>Why the published Transit Score is shown in the table and not used in the score.</strong>
+    It is the obvious component and it would have been wrong, for the reason stated above: it exists for
+    only <strong>122 of the 243 rows</strong>, and an absent one is not a zero &mdash; 48 of the rows
+    without one have named rail or bus lines at the door. A transit component that read it would have
+    scored Columbia, with the 1 train outside, as having no transit at all. The line listings cover all
+    243 rows, so they are the component, and the published score sits in its own column as a check.
+    <strong>Over the 122 rows that have both, the two agree: Spearman 0.80, a median gap of 9 points,
+    91 of the 122 within 15 points, and a mean bias of +2.6</strong> &mdash; the computed number runs
+    very slightly generous. Both halves of the rule are earning their place: a distance-only version
+    &mdash; 50 points a stop, no count term &mdash; agrees at only <strong>0.70</strong>, and a
+    count-only version at 5 points a line runs <strong>17 points low</strong>, because twelve bus
+    lines two miles away is not a bus route.
+  </p>
+  <p class="prose">
+    <strong>And what the score is not.</strong> It is not a ranking of the running, the program or the
+    fit, for the same reason the two columns it is built from are not: it describes living, and the
+    coach picks the routes. The fit tier stays in its own column beside it, and the two disagree hard
+    enough to prove the point &mdash; <strong>seven of the ten most urban rows on the board are Caution
+    tier</strong>, while <strong>Pfeiffer is target tier and the least urban row on the board at 8</strong>.
+    The rank is stamped once, before the table is sorted, so a school's position in that order does not
+    change when a reader sorts by Walk or by distance from home.
+  </p>
 
   <h2>10. A note on the colors</h2>
   <p class="prose">
