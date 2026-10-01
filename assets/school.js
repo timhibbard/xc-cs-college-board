@@ -15,6 +15,14 @@ const IS_NOTRACK = !!(S && NO_TRACK.includes(S));
 const IS_NOXC = !!(S && NO_PROGRAM.includes(S));
 const IS_CUT = !!(S && !SCHOOLS.includes(S) && !IS_NOTRACK && !IS_NOXC);
 
+/* Two different counts, and nearly every filter below wants the first one. nScore is the men
+   who scored - seven at most, because seven is what scores, and it is what `runners`, every
+   slot, every spread and every short-field test are defined over. nAll is the men who
+   finished, which for 819 races on file is more than seven and for one of them is thirty.
+   Ask nAll only where the sentence really is "how many got to the line". */
+const nScore = (r) => r.nfin ?? r.runners.length;
+const nAll = (r) => nScore(r) + (r.tail ? r.tail.length : 0);
+
 /* A school can have no `xc` aggregate for two opposite reasons and this page must never
    confuse them. Either nothing is on file, which is unmeasured — or it turned up to a
    championship and did not get five men to the finish, which aggregate.py cannot average
@@ -26,7 +34,7 @@ const IS_CUT = !!(S && !SCHOOLS.includes(S) && !IS_NOTRACK && !IS_NOXC);
    are Caution. Any page that reads "Verify means unmeasured" has to check this first. */
 const DEPTH_CHAMP = ['conference', 'area championship', 'NCAA regional'];
 const SHORT_DEPTH = !S || S.xc ? [] : (XCRACES[S.name] || [])
-  .filter(r => DEPTH_CHAMP.includes(r.level) && (r.nfin ?? r.runners.length) < 5);
+  .filter(r => DEPTH_CHAMP.includes(r.level) && nScore(r) < 5);
 
 const usd = (n) => n == null ? null : '$' + n.toLocaleString('en-US');
 const SEASONS = {
@@ -78,7 +86,7 @@ function head() {
          one the callout below quotes: Carlow got two men to a national championship and one to
          its conference meet, and it is the conference meet that measures the squad. */
       : SHORT_DEPTH.length ? `<span class="src-tag">tier from a championship field too short to score &mdash;
-          ${nOf(Math.max(...SHORT_DEPTH.map(r => r.nfin ?? r.runners.length)), 'finisher')} at their deepest conference or regional</span>`
+          ${nOf(Math.max(...SHORT_DEPTH.map(nScore)), 'finisher')} at their deepest conference or regional</span>`
       /* Neither a championship aggregate nor a track mark: Verify here means unmeasured,
          and saying "tier from a 5000 mark" would invent a measurement that does not exist. */
       : `<span class="src-tag">unmeasured &mdash; no championship result and no track mark on file</span>`}</p>
@@ -417,8 +425,7 @@ const nOf = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
 function shortDepthLead() {
   const rs = SHORT_DEPTH.filter(r => XP[r.dist] && r.runners.length);
   if (!rs.length) return null;
-  const fin = r => r.nfin ?? r.runners.length;
-  const r = rs.reduce((a, b) => (fin(b) > fin(a) ? b : a));
+  const r = rs.reduce((a, b) => (nScore(b) > nScore(a) ? b : a));
   return Math.round(((r.runners[0] + (r.corr || 0)) - XP[r.dist]) * (XP['8K'] / XP[r.dist]));
 }
 
@@ -479,8 +486,8 @@ function xcSection() {
     <div class="callout crit"><span class="c-title">Too few finishers to measure this program</span>
       <p>The ${ch.length === 1 ? 'race above is' : 'races above are'} real and ${ch.length === 1 ? 'it is' : 'they are'}
       all this team has on file, and the most it got to a championship finish line is
-      <strong>${Math.max(...ch.map(r => r.nfin ?? r.runners.length))}</strong>
-      ${Math.max(...ch.map(r => r.nfin ?? r.runners.length)) === 1 ? 'runner' : 'runners'}.
+      <strong>${Math.max(...ch.map(nAll))}</strong>
+      ${Math.max(...ch.map(nAll)) === 1 ? 'runner' : 'runners'}.
       ${SHORT_DEPTH.length
         ? `That is the tier: <b>${TIERS[S.tier].label}</b>. A conference or regional championship is the
            race a program brings everyone to, so a field this short there is a measurement of its depth and
@@ -504,6 +511,36 @@ function xcSection() {
     ${invPanel(inv)}`;
 }
 
+/* The men behind the scoring seven, folded under a race. They score nothing and are in no
+   average on this board, which is why they are not in the table above and why the slot
+   badge does not count them: a slot is a position inside the five-to-seven that decides a
+   meet. They are kept and shown because they are the answer to the question the
+   invitationals are carried for at all — where a program's 8th through 12th actually are —
+   and for 819 races on file those men were read off the page and then dropped.
+   `tail` is a separate array from `runners` for the same reason: everything above takes
+   runners[6] as their 7th man and runners.length as how many finished. */
+function tailFold(r, corr) {
+  const t = r.tail || [];
+  if (!t.length) return '';
+  const years = r.tyears || [];
+  const last = 7 + t.length;
+  return `
+        <details class="more">
+          <summary>${nOf(t.length, 'more finisher')} for this team — their #8${t.length > 1 ? ` through #${last}` : ''}, who score nothing</summary>
+          <div class="table-scroll">
+            <table class="race-table">
+              <thead><tr><th scope="col">Place</th><th scope="col">Runner</th><th scope="col" class="num">Time</th>${corr ? '<th scope="col" class="num">Course-adjusted</th>' : ''}</tr></thead>
+              <tbody>${t.map((x, i) => `<tr>
+                <td class="num">${8 + i}</td>
+                <td>Their #${8 + i}${years[i] ? ` <span class="yr" title="class year on the results page">${years[i]}</span>` : ''}</td>
+                <td class="num time">${fmtTime(x)}</td>
+                ${corr ? `<td class="num time">${fmtTime(x + corr)}</td>` : ''}
+              </tr>`).join('')}</tbody>
+            </table>
+          </div>
+        </details>`;
+}
+
 /* One race, one card: their finishers in order with his projection slotted in by
    adjusted time. Athletes are not named — their times are what the comparison needs,
    and this is a public page. The meet and date are given so any of it can be checked. */
@@ -520,6 +557,10 @@ function raceCard(r) {
   if (XP[r.dist] == null) return unconvertedCard(r, runners, corr);
   const me = { t: XP[r.dist], adj: XP[r.dist], me: true };
   const all = [...runners, me].sort((a, b) => a.adj - b.adj);
+  /* A slot is a position inside the scoring seven, so it can be flattering in a way nobody
+     could see until the 8th man was on file: a team that finished twelve may have three more
+     men ahead of his projection than the slot admits. Counted here and said out loud. */
+  const behind = (r.tail || []).filter(t => t + corr < XP[r.dist]).length;
   const lvl = LEVEL_LABEL[r.level] ? ` · ${LEVEL_LABEL[r.level]}` : '';
   return `
       <div class="race" data-kind="xc">
@@ -544,7 +585,7 @@ function raceCard(r) {
         <p class="map-note">
           ${r.v7 != null
             ? `His projection is <strong>${r.v7 <= 0 ? Math.abs(r.v7).toFixed(0) + 's inside' : r.v7.toFixed(0) + 's outside'}</strong> their 7th man, and ${Math.abs(r.g1).toFixed(0)}s ${r.g1 >= 0 ? 'behind' : 'ahead of'} their #1. `
-            : (r.nfin ?? r.runners.length) <= 2
+            : nScore(r) <= 2
             ? `<strong>Only ${r.nfin === 1 ? 'one runner' : r.nfin + ' runners'} from this team ran here &mdash; ${r.nfin === 1 ? 'an individual qualifier' : 'individual qualifiers'} rather than a team
                entry</strong>, so there is nothing to slot into. It is shown because it is part of the record:
                ${r.nfin === 1 ? 'their fastest man was' : 'their fastest men were'} ${Math.abs(r.g1).toFixed(0)}s ${r.g1 >= 0 ? 'ahead of' : 'behind'} his projection at this distance.`
@@ -552,12 +593,16 @@ function raceCard(r) {
                ${r.vlast != null ? `Against their last finisher he is
                <strong>${r.vlast <= 0 ? Math.abs(r.vlast).toFixed(0) + 's faster' : r.vlast.toFixed(0) + 's slower'}</strong>, and ` : ''}${Math.abs(r.g1).toFixed(0)}s
                ${r.g1 >= 0 ? 'behind' : 'ahead of'} their #1.
-               ${(r.nfin ?? r.runners.length) < 5 ? `Five finishers are the minimum for a team score, so this one is not a team
+               ${nScore(r) < 5 ? `Five finishers are the minimum for a team score, so this one is not a team
                result at all and does not enter the averages &mdash; it is here because it is the only evidence there is.` : ''} `}
           ${r.runners.length < 3 ? '' : `Their 1-through-${r.runners.length} spread is <strong>${r.spread.toFixed(0)}s</strong> — the most course-independent
           number here, because it compares the team only to itself.`}
+          ${behind === 0 ? '' : `<br><strong>Their 8th man onward is ahead of him here.</strong> The slot above counts
+          the seven that score, and ${behind} of the ${r.tail.length} men behind that seven also beat his projection, so
+          among everyone this team finished he would be their #${r.slot + behind} of ${7 + r.tail.length}.`}
           ${corr ? `<br><strong>Course correction of ${corr > 0 ? '+' : ''}${corr}s applied.</strong> ${COURSE_NOTES[r.meet] ? 'This meet ' + COURSE_NOTES[r.meet] + '.' : ''}` : ''}
         </p>
+        ${tailFold(r, corr)}
       </div>`;
 }
 
@@ -599,6 +644,7 @@ function unconvertedCard(r, runners, corr) {
           <strong>${r.spread.toFixed(0)}s</strong>, which needs no projection at all &mdash; it compares
           the team only to itself, and it is the reason this race is worth showing.`}
         </p>
+        ${tailFold(r, corr)}
       </div>`;
 }
 
@@ -770,7 +816,7 @@ function invPanel(races) {
    than printing a dash and leaving it to be read as missing data. */
 function aggTable(races) {
   const x = S.xc;
-  const counted = races.filter(r => (r.nfin ?? r.runners.length) >= 5).length;
+  const counted = races.filter(r => nScore(r) >= 5).length;
   const gap = (v) => v <= 0 ? '−' + Math.abs(v) + 's (inside)' : '+' + v + 's (outside)';
   const rows = [
     [counted === 0
@@ -785,8 +831,12 @@ function aggTable(races) {
     [x.short ? `Tightest front-to-back spread on file` : `Tightest 1&ndash;7 spread on file`,
       x.spread == null ? '<span class="nodata">—</span>' : x.spread + 's'],
   ];
+  /* Everyone who got to the line, not the seven who scored, so this is the one row here that
+     can read higher than seven - and when it does, the men past the seven are in the fold on
+     the race card they ran, where they can be read rather than counted. */
   if (x.maxfin != null) rows.push(['Most runners they finished in any of these races',
-    `${x.maxfin}${x.maxfin < 5 ? ' — below the five needed for a team score' : ''}`]);
+    `${x.maxfin}${x.maxfin < 5 ? ' — below the five needed for a team score'
+      : x.maxfin > 7 ? ' — more than the seven that score; the rest are under each race above' : ''}`]);
   return `
     <div class="table-scroll" style="margin-top:18px">
       <table><tbody>${rows.map(([k, v]) =>
@@ -811,7 +861,7 @@ const EQF = { '10K': 0.78, '5K': 1.63 };
 const eqPhrase = (d) => `a ${d} gap &times; ${EQF[d]}`;
 
 function distNote(races) {
-  const d = [...new Set(races.filter(r => (r.nfin ?? r.runners.length) >= 5).map(r => r.dist))];
+  const d = [...new Set(races.filter(r => nScore(r) >= 5).map(r => r.dist))];
   if (d.length < 2) return '';
   const conv = d.filter(x => EQF[x]).map(eqPhrase);
   const resid = [];
@@ -837,7 +887,7 @@ function distNote(races) {
    the school above it needs to know that. */
 function eqNote(x, races) {
   if (!x || !x.eq) return '';
-  const d = [...new Set(races.filter(r => (r.nfin ?? r.runners.length) >= 5).map(r => r.dist))];
+  const d = [...new Set(races.filter(r => nScore(r) >= 5).map(r => r.dist))];
   if (d.length !== 1 || !EQF[d[0]]) return '';
   return `<p class="map-note">Their championships were run at ${d[0]}, and he is compared against
     ${d[0] === '5K' ? `his real <strong>${XPL['5K']}</strong>, which needs no projecting`
@@ -854,7 +904,7 @@ function eqNote(x, races) {
 function shortNote(races) {
   const x = S.xc;
   if (!x.short) return '';
-  const counted = races.filter(r => (r.nfin ?? r.runners.length) >= 5).length;
+  const counted = races.filter(r => nScore(r) >= 5).length;
   if (counted === 0) return `
     <div class="callout crit"><span class="c-title">This program never finished five runners in a 2025 championship</span>
       <p>Five finishers are the minimum for a team score, and the most this team got to the line in any

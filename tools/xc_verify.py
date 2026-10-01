@@ -42,6 +42,7 @@ usage:
   python3 tools/xc_verify.py --offline  # only what is already cached, for iterating
   python3 tools/xc_verify.py --fresh    # re-fetch every page
   python3 tools/xc_verify.py --limit N  # first N meets only
+  python3 tools/xc_verify.py --emit     # also write .work/tails.json for tail_apply.py
 """
 import collections
 import datetime
@@ -224,7 +225,38 @@ def main():
                  '' if all(not seen[(n, i)]['bad'] for n, i, _ in p['races'] if (n, i) in seen)
                  else '  <-'))
 
-    report(seen, unresolved, pfail, len(races), limit)
+    report(seen, unresolved, pfail, len(races), limit, '--emit' in argv)
+
+
+def emit_tails(seen):
+    """Write the finishers behind each race's stored seven, for tail_apply.py to splice.
+
+    Only races that reproduced exactly are written. A race whose times did not match is a
+    race whose section is in doubt, and an eighth man read off a page that might be the
+    wrong page is worse than no eighth man: it would be the one number in XCRACES that no
+    check had ever agreed with."""
+    out, men, deepest = {}, 0, (0, None)
+    for (name, i), r in sorted(seen.items()):
+        if r['bad'] or 'pfin' not in r:
+            continue
+        # date and seven are the writer's guard, not data it needs: XCRACES is a positional
+        # list, so an index written here and applied after the file moved would hang one
+        # team's eighth man off another team's race. The seven that picked the section is
+        # the one thing that identifies the race beyond doubt.
+        rec = {'date': r['date'], 'seven': r['pfin'][:7],
+               'n': len(r['pfin']), 'tail': r['pfin'][7:], 'tyears': r['pyr'][7:]}
+        out.setdefault(name, {})[str(i)] = rec
+        men += len(rec['tail'])
+        if rec['n'] > deepest[0]:
+            deepest = (rec['n'], '%s, %s' % (name, r['meet'].strip()))
+    json.dump({'generated': datetime.date.today().isoformat(), 'races': out},
+              open(os.path.join(WORK, 'tails.json'), 'w'), indent=1, sort_keys=True)
+    withtail = sum(1 for v in out.values() for x in v.values() if x['tail'])
+    print('\n--- tools/.work/tails.json ---')
+    print('  races with a verified field      %d' % sum(len(v) for v in out.values()))
+    print('  of those, deeper than seven      %d' % withtail)
+    print('  men behind a stored seven        %d' % men)
+    print('  deepest field                    %d  (%s)' % deepest)
 
 
 def rank(rec):
@@ -257,6 +289,12 @@ def check(r, name, rid, secs, places, pdate, meetname, ntab, slug, PROJ):
     src = [x['sec'] for x in fin]
     rec['src_n'] = len(fin)
     rec['section'] = sec['title'][:70]
+    # The whole field this team put on the page, not just the seven the file stores. Carried
+    # on the record so --emit can write it out: the section was chosen by the file's own
+    # first seven, so an eighth man taken from it is anchored by the same match that proves
+    # the race, which is the only basis on which this board stores a number at all.
+    rec['pfin'] = src
+    rec['pyr'] = [x['yr'] for x in fin]
 
     if src[:7] != stored:
         bad.append(('times', 'stored %s vs page %s' % (stored, src[:7])))
@@ -270,6 +308,19 @@ def check(r, name, rid, secs, places, pdate, meetname, ntab, slug, PROJ):
     yrs = [x['yr'] for x in fin][:7]
     if [y or None for y in r['years'][:7]] != [y or None for y in yrs]:
         bad.append(('years', 'stored %s vs page %s' % (r['years'][:7], yrs)))
+    # The men behind the seven are held in their own array and are checked like any other
+    # number here. A tail is mandatory, not optional: if the page runs to twelve the file
+    # has to hold twelve, or the eighth man is missing from a file that claims to carry the
+    # evidence about a program's depth. That is what makes xc_fetch's tail a requirement
+    # rather than a nicety -- a sweep that forgets it fails this check on the next run.
+    tail = [round(float(t), 1) for t in (r.get('tail') or [])]
+    tyr = [y or None for y in (r.get('tyears') or [])]
+    if tail != src[7:]:
+        bad.append(('tail', 'stored %d man/men behind the seven %s, page has %d %s'
+                    % (len(tail), tail[:3], len(src[7:]), src[7:][:3])))
+    elif tyr != [x['yr'] for x in fin][7:]:
+        bad.append(('tyears', 'stored %s vs page %s'
+                    % (tyr[:5], [x['yr'] for x in fin][7:][:5])))
     # Distances are compared as lengths, not as strings. A board row is scored at one of
     # four distances and a course is whatever it measures, so the file buckets: 8,057m,
     # 4.97 miles and 8,000m are all `8K`. That bucketing is a real thing to know about --
@@ -322,14 +373,15 @@ def check(r, name, rid, secs, places, pdate, meetname, ntab, slug, PROJ):
     return rec
 
 
-def report(seen, unresolved, pfail, total, limit):
+def report(seen, unresolved, pfail, total, limit, emit=False):
     recs = list(seen.values())
     clean = [r for r in recs if not r['bad']]
     dirty = [r for r in recs if r['bad']]
     kinds = collections.Counter(k for r in dirty for k, _ in r['bad'])
     json.dump({'checked': len(recs), 'clean': len(clean),
                'unresolved': unresolved, 'page_failures': pfail,
-               'violations': [r for r in dirty]}, open(OUT, 'w'), indent=1)
+               'violations': [{k: v for k, v in r.items() if k not in ('pfin', 'pyr')}
+                              for r in dirty]}, open(OUT, 'w'), indent=1)
 
     print('\n--- %s ---' % os.path.relpath(OUT, os.path.dirname(HERE)))
     print('  races on file            %d' % total)
@@ -364,6 +416,8 @@ def report(seen, unresolved, pfail, total, limit):
         print('\n  -- no page to check against (%d) --' % len(unresolved))
         for u in unresolved[:12]:
             print('      %-24s %s  %s' % (u['school'][:24], u['date'], u['why'][:70]))
+    if emit:
+        emit_tails(seen)
 
 
 if __name__ == '__main__':

@@ -291,6 +291,36 @@ means 6,200 metres, and the board was publishing the typo; and a section titled 
 full 8K race as having no projection at all, because the projection table is keyed by the string.
 Both now normalise in `parse_xc.py`.
 
+### The 8th man was on the page and not in the file
+
+A race is stored as a team's first seven, because seven is what scores and every number here — his
+slot, his gap to their 7th man, the 1-to-7 spread — is defined over those seven. What that quietly
+cost: the methodology's own reason for keeping the invitational races is that they are where a
+program's 5th through 9th runners actually race, and the 8th and 9th man were not in the file at all.
+**819 of the 1,745 races on file put more than seven men on the line** — 1,117 hold a full seven and
+only 298 of those teams finished exactly seven — and the 3,419 men behind a scoring seven had been
+read off the page, checked, and dropped. The deepest field on file is **30 men** (Wingate, Converse
+Kick-Off, 19 September 2026); the deepest at a championship is 22.
+
+All of them are now stored, from the 438 result pages already cached, so this cost no fetch. They go
+in their own `tail` array rather than lengthening `runners`, which is the entire safety of the change:
+a dozen call sites take `runners[0]` as a team's #1, `runners[6]` as its 7th man and `runners.length`
+as how many finished, and a longer `runners` would have left all of them working while answering a
+different question. `xc_verify.py` now checks the tail against the page as well, so a future sweep
+that forgets it fails rather than drifts, and the file still reads **1,745 of 1,745 races reproducing
+exactly**. On a school page each race card gains a fold holding the men who scored nothing, and one
+sentence that could not be written before: in **75** of the 772 deep races this board can convert,
+their *8th man onward* is also faster than his projection, so the stored slot understates where he
+would have landed.
+
+It also closed the one published number that was knowably wrong. Every aggregate block carries the most
+runners the team finished in any of the races it averages, and **74 of them said seven** when the team
+had finished eight to twenty. Eight blocks were already right — UIC's 14, Saint Joseph's 16 — written
+by an older stage that still had the whole field in hand, and `xc_apply.py`'s own self-check was
+failing on all eight with nobody watching: the formula could count no higher than seven while the file
+knew better, so the next sweep would have aborted. The averages themselves are untouched and stay
+that way. What a race decides is settled by the men who scored; the ones behind them are evidence.
+
 ## Metros
 
 Every count here is the live board, all divisions.
@@ -624,7 +654,8 @@ Changing a value updates the tables, the chart, the maps, the KPI tiles and the 
 other edits.
 
 A team that never finished seven carries `v7: null` plus `short: true` and `maxfin: N` — the most
-runners they ever got to a finish line. `nraces` counts only races with five or more finishers,
+runners they ever got to a finish line, which counts everyone who finished rather than the seven who
+scored and so can read higher than seven (UNC Charlotte's 20). `nraces` counts only races with five or more finishers,
 so a school whose every race was short averages over zero races and the page says exactly that
 instead of printing a number. `coach.src` is required: it is the page the rest of the block was read
 off, and it is what makes a stale name recoverable. `ig` is the program's Instagram handle in the
@@ -643,8 +674,9 @@ a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS populatio
 not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
-as raw seconds, in order — 1,745 races across 223 schools; a short race also carries `nfin` and
-`vlast`, the gap to their last finisher), `T1500` (the 2026 outdoor 1500 for the 195 schools where one
+as raw seconds, in order — 1,745 races across 223 schools; `runners` is the scoring seven, so a short
+race also carries `nfin` and `vlast`, the gap to their last finisher, and a race deeper than seven
+carries `tail` and `tyears`, the men behind it), `T1500` (the 2026 outdoor 1500 for the 195 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
 postseason rounds `post`, read from 59 conference championship result pages plus seven postseason
 pages; every row that has a `b1500` now has a field to drop it into, which is what #5 closed and #3

@@ -376,7 +376,13 @@ const METROS = [
   const CHAMP = new Set(['conference', 'area championship', 'NCAA regional', 'national championship']);
   const XP = { '5K': 1, '6K': 1, '8K': 1, '10K': 1 };  // the distances a projection exists for
   const races = Object.values(XCRACES).flat();
+  /* The men who scored, which is what every short-field test below asks about. The men who
+     FINISHED is a different number for 819 races - `tail` carries the 8th man onward - and
+     only the finisher and class-year totals want that one. Mixing them up would report a
+     program as having never finished seven when it finished twenty. */
   const nfin = r => r.nfin || r.runners.length;
+  const nall = r => nfin(r) + (r.tail ? r.tail.length : 0);
+  const yrs = r => r.years.concat(r.tyears || []);
   const champ = races.filter(r => CHAMP.has(r.level));
   const scoring = r => XP[r.dist] && nfin(r) >= 5;
   const measured = SCHOOLS.filter(s => (XCRACES[s.name] || []).some(r => CHAMP.has(r.level) && scoring(r)));
@@ -389,9 +395,12 @@ const METROS = [
     champShort5: champ.filter(r => nfin(r) < 5).length,
     allShort5: races.filter(r => nfin(r) < 5).length,
     scored: races.filter(r => r.score != null).length,
-    labelled: races.filter(r => r.years.length && r.years.every(Boolean)).length,
-    finishers: races.reduce((a, r) => a + r.runners.length, 0),
-    withYear: races.reduce((a, r) => a + r.years.filter(Boolean).length, 0),
+    labelled: races.filter(r => yrs(r).length && yrs(r).every(Boolean)).length,
+    finishers: races.reduce((a, r) => a + nall(r), 0),
+    withYear: races.reduce((a, r) => a + yrs(r).filter(Boolean).length, 0),
+    deep: races.filter(r => r.tail && r.tail.length).length,
+    tailMen: races.reduce((a, r) => a + (r.tail ? r.tail.length : 0), 0),
+    deepest: races.reduce((a, r) => Math.max(a, nall(r)), 0),
     meets: new Set(races.map(r => r.meet)).size,
     champMeets: new Set(champ.map(r => r.meet)).size,
     onFile: SCHOOLS.filter(s => XCRACES[s.name]).length,
@@ -437,6 +446,16 @@ const METROS = [
       'champShort5', 'champ', 'allShort5', 'total'],
     ['README.md', 'courses',
       /The ([\d,]+) races span ([\d,]+) distinct meets and exactly two/, 'total', 'meets'],
+    // The tail is the one part of a race that no aggregate reads, so nothing else on this board
+    // would notice it going missing. Both halves of the claim are checked for that reason.
+    ['methodology.html', '§3a tail',
+      /<strong>([\d,]+) of the ([\d,]+) races put more than seven men on the line, and all ([\d,]+) of them/,
+      'deep', 'total', 'tailMen'],
+    ['methodology.html', '§6a tail',
+      /<strong>([\d,]+)<\/strong> went deeper &mdash; up to <strong>(\d+) men<\/strong>/, 'deep', 'deepest'],
+    ['README.md', 'tail',
+      /\*\*([\d,]+) of the ([\d,]+) races on file put more than seven men on the line\*\*[^.]*?([\d,]+) men behind a scoring seven/,
+      'deep', 'total', 'tailMen'],
   ];
   const SRC = { 'README.md': readme, 'methodology.html': meth };
   for (const [file, label, re, ...keys] of RACE_CLAIMS) {
