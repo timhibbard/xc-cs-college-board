@@ -206,13 +206,17 @@ def main():
 def maxfin_pass(board, dry):
     """Correct `maxfin` in assets/data.js wherever the tail proves it too low."""
     KEYS = ('slot', 'g1', 'v7', 'spread', 'eq', 'nraces', 'short', 'date')
+    # Every row the file publishes, not just the board: the cut list, the no-track rows and the
+    # no-program rows carry aggregates and render pages too, and ten of them (Iona, Duke, Jacksonville
+    # State and seven more) were left holding the capped 7 when this pass read SCHOOLS alone.
+    rows = [r for k in ('SCHOOLS', 'REMOVED', 'NO_TRACK', 'NO_PROGRAM') for r in board[k]]
     want = {}
-    for row in board['SCHOOLS']:
+    for row in rows:
         want[row['name']] = recompute(board['XCRACES'].get(row['name'], []), board['ATHLETE'])
 
     # ---- the gate: every other field of every block that carries a maxfin --------
     checked, bad = 0, []
-    for row in board['SCHOOLS']:
+    for row in rows:
         for key, got in want[row['name']].items():
             st = row.get(key)
             if not isinstance(st, dict) or st.get('maxfin') is None:
@@ -246,7 +250,7 @@ def maxfin_pass(board, dry):
         head, body = parts[i], parts[i + 1]
         name = body.split('"', 1)[0]
         for key, got in want.get(name, {}).items():
-            st = next((r.get(key) for r in board['SCHOOLS'] if r['name'] == name), None)
+            st = next((r.get(key) for r in rows if r['name'] == name), None)
             if not isinstance(st, dict) or st.get('maxfin') is None or got is None:
                 continue
             if got['maxfin'] == st['maxfin']:

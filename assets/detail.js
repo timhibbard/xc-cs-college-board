@@ -5521,6 +5521,10 @@ const XCRACES = {
       nfin: 5, vlast: -1511.1,
       runners: [1716.3, 1748.6, 1826.8, 3045.7, 3047.1],
       years: ["FR", "SO", "SR", "SO", "SO"] },
+    { meet: "David Mathis Invitational", date: "2026-09-26", dist: "8K", level: "invitational", place: 2, score: 35,
+      slot: 1, g1: -99.4, v7: -801, spread: 701.6, corr: 0,
+      runners: [1635.4, 1641.4, 1693.8, 1704.1, 1712.9, 1762.2, 2337],
+      years: ["SO", "FR", "SO", "SO", "JR", "SR", "SO"] },
   ],
   "Newberry": [
     { meet: "Bruins XC Night Classic 4k/6k", date: "2025-09-05", dist: "6K", level: "invitational", place: 3, score: 99,
