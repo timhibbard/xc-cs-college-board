@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban — the board ordered by what he can reach on foot</title>
+<meta name="description" content="All 186 schools on this recruiting board ranked by campus setting: Walk Score, the federal locale, and the rail and bus lines actually listed at the address, averaged as three equal thirds. A measure of everyday life on foot, not of the running.">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">Campus setting · 186 rows · one order</p>
+  <h1>Urban</h1>
+  <p class="lede">
+    The campus setting has been on this board for a version, one column at a time: a Walk Score here,
+    a federal locale there, the rail and bus lines on each school page. Read one row at a time, which
+    was the only way it could be read, it never answered the question it was collected for. This page
+    puts <strong>all 186 board rows in a single order</strong> &mdash; and then says, four times over,
+    what that order is good for and what it is not.
+  </p>
+  <p class="lede">
+    <strong>It is not a ranking of the running, the program or the fit.</strong> It answers one
+    question: <strong>how much of daily life is within walking distance</strong> &mdash; a shop, a
+    bus, a train, a job, a lab, all reachable on foot and without waiting on somebody for a ride. It
+    has nothing to say about where a team puts its tempo runs. The fit tier stays in its own column,
+    and the most useful row in the table is one where the two disagree.
+  </p>
+
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="k-label">Schools scored</div>
+      <div class="k-value" id="k-u-n">—</div>
+      <div class="k-sub">Every row on the board. All 243 rows on file carry the setting data; the 57 off the board are not ranked here.</div>
+    </div>
+    <div class="kpi">
+      <div class="k-label">Median score</div>
+      <div class="k-value" id="k-u-med">—</div>
+      <div class="k-sub">Out of 100, and not a midpoint anything clusters at &mdash; the board is bimodal</div>
+    </div>
+    <div class="kpi">
+      <div class="k-label">Scoring 70 or better</div>
+      <div class="k-value" id="k-u-high">—</div>
+      <div class="k-sub">A city campus by every one of the three measures</div>
+    </div>
+    <div class="kpi">
+      <div class="k-label">Scoring under 40</div>
+      <div class="k-value" id="k-u-low">—</div>
+      <div class="k-sub">A town or rural campus where the car is the plan</div>
+    </div>
+  </div>
+
+  <h2 id="how">How the score is built</h2>
+  <p class="prose">
+    One number per campus, out of 100, the average of three equal thirds:
+  </p>
+  <div class="table-scroll">
+    <table id="urban-formula">
+      <caption>
+        Each third is a different kind of evidence about the same address, which is why none of them
+        is allowed to speak for the other two.
+      </caption>
+      <thead>
+        <tr><th scope="col">Third</th><th scope="col">What it is</th><th scope="col">The catch</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Walk</strong></td>
+          <td>Walk Score's published 0&ndash;100 for the campus's own street address, used as it stands.</td>
+          <td>Third-party and not recomputed here. It describes a few blocks, not a town.</td>
+        </tr>
+        <tr>
+          <td><strong>Density</strong></td>
+          <td>The federal locale: twelve codes from <em>City: Large</em> down to <em>Rural: Remote</em>, spread evenly across 100.</td>
+          <td><strong>An order only.</strong> IPEDS makes no claim that a large city is nine points denser than a midsize one, so this is a rank wearing a number's clothes.</td>
+        </tr>
+        <tr>
+          <td><strong>Transit</strong></td>
+          <td>The named rail and bus lines at that address: 35 points for a rail stop and 35 for a bus stop, each fading to nothing at a mile and a half, plus two a line for how many lines there are.</td>
+          <td>Computed here from the listings, <em>not</em> read off Walk Score's Transit Score &mdash; see below.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">
+    <strong>Equal thirds because nothing on this board justifies anything else.</strong> Any other
+    weighting would be a claim about how much a train is worth against a shop, and the only evidence
+    for that claim is one 17-year-old's preference, which has not been asked for. Three equal thirds
+    is the assumption that is easiest to see and easiest to overrule.
+    <a href="methodology.html#urban-score">The formula and its checks in full</a>, and
+    <a href="methodology.html#setting">what the setting columns do and do not mean</a>.
+  </p>
+
+  <div class="callout">
+    <span class="c-title">The component that is shown here and never scored</span>
+    <p>
+      Walk Score publishes a <strong>Transit Score</strong>, and it was the obvious third. It would
+      have been wrong. That site prints one only where the city publishes a transit feed it has
+      ingested, so it exists for <strong>122 of the 243 rows</strong> and <strong>an absent one is not
+      a zero</strong> &mdash; 48 of the rows without one have named rail or bus lines at the door. A
+      component that read it would have scored Columbia, with the 1 train outside, as having no
+      transit at all. The line listings cover every row, so they are the component, and the published
+      score sits in its own column as a check.
+    </p>
+    <p>
+      Over the 122 rows that have both, the two agree: <strong>Spearman 0.80, a median gap of 9
+      points, 91 of the 122 within 15 points, and a mean bias of +2.6</strong>. Both halves of the
+      rule earn their place: a distance-only version &mdash; 50 points a stop, no count term &mdash;
+      agrees at only <strong>0.70</strong>, and a count-only version at 5 points a line runs
+      <strong>17 points low</strong>, because twelve bus lines two miles away is not a bus route.
+    </p>
+  </div>
+
+  <h2 id="findings">Four things this order shows that the main table hides</h2>
+  <div class="callout">
+    <span class="c-title">The board is bimodal, not spread</span>
+    <p>
+      Scores run from 8 to 100 with a median of 59, but the middle is thin: <strong>68 of the 186
+      schools score 70 or better and 50 score under 40</strong>. Half the board is a city campus and
+      a third of it is a small town, and there is not much in between to compromise on. By metro the
+      split is the whole story &mdash; the Greenville ring's median is <strong>38</strong>, against 83
+      in Boston, 80 in New York, 80 in Pittsburgh and 79 in Chicago. The ring is where the depth is
+      and the cities are where the walking is, and that is the trade this page exists to make legible.
+    </p>
+  </div>
+  <div class="callout crit">
+    <span class="c-title">The most urban schools are mostly the ones he should not go to</span>
+    <p>
+      Seven of the ten most urban rows are Caution tier, which is what happens when a city campus runs
+      a thin squad: Roosevelt, Suffolk and Thomas Jefferson all score 100 and all three are on this
+      board as warnings &mdash; Roosevelt finished four runners at its own conference meet.
+      <strong>Urban is not a tiebreaker to apply before the running; it is one to apply after.</strong>
+      Sort this table by <em>Fit</em> and the point makes itself.
+    </p>
+  </div>
+  <div class="callout good">
+    <span class="c-title">Thirteen of the 47 target-tier schools are in the most urban quarter anyway</span>
+    <p>
+      The short list this page exists to produce &mdash; the rows where both answers are good:
+      <strong>NYU 99, Harvard 96, Fordham 95, Penn 95, NJIT 94, MIT 93, DePaul 92, La Salle 87</strong>.
+      Every one is a school where he would land inside a scoring seven <em>and</em> could get through a
+      week on foot. At the other end, Pfeiffer is target tier and the <strong>least urban row on the
+      board at 8</strong> &mdash; a Walk Score of 7, a village of 1.6 square miles, no bus. That is not
+      an argument against Pfeiffer; it is the thing to have looked at before visiting.
+    </p>
+  </div>
+  <div class="callout">
+    <span class="c-title">Walk Score and the locale disagree in both directions, and both disagreements are real</span>
+    <p>
+      Chestnut Hill sits inside Philadelphia &mdash; <em>City: Large</em>, two rail lines, three bus
+      lines &mdash; with a <strong>Walk Score of 4</strong>, because its own corner of Germantown
+      Avenue has nothing on it. Appalachian State is a <em>distant town</em> in the mountains and
+      scores <strong>74</strong>, because Boone's downtown starts at the campus edge. One is a city
+      address with nothing in walking distance; the other is a small town that is all walking
+      distance. That is why the locale is a third of the score rather than the whole of it, and why
+      both components are printed next to the total instead of behind it.
+    </p>
+  </div>
+
+  <h2 id="table">Every school, most urban first</h2>
+  <div class="table-scroll">
+    <table id="urban-tbl" class="board-tbl">
+      <caption>
+        Click any header to re-sort. <em>#</em> is the urban rank and does not change when you sort by
+        something else, so a school keeps its position in this order while you read the table in
+        another. <em>Density</em> is the federal locale as a number, used as an order only &mdash; the
+        twelve codes are evenly spaced because nothing says a large city is a fixed distance denser
+        than a midsize one. <em>Transit</em> is computed from the rail and bus lines beside it; the
+        <em>Transit Score</em> column is Walk Score's own, shown as a check and never folded into the
+        total, because it is published for only 122 of the 243 rows on file and <strong>an absent
+        score is not a zero</strong>. <em>Mi</em> is driving miles to the row's own metro centre.
+        <em>Bike</em> is Walk Score's Bike Score where it exists.
+        <span class="count" id="urban-count"></span>
+      </caption>
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="chart-sub">
+    <strong>61 of the 186 schools have no rail line and no bus line listed at their address.</strong>
+    That is what the page those scores came from named, not a survey of the town: Appalachian State
+    has no line listed and a Walk Score of 74. Where a row says <em>none listed</em>, treat it as a
+    question for the school rather than an answer about it &mdash; and where a line is listed, the
+    school page names it and gives its distance.
+  </p>
+
+  <h2 id="next">What to do with this</h2>
+  <div class="prose">
+    <ol>
+      <li><strong>Read it after the fit, never before it.</strong> Sort by <em>Fit</em>, then by
+        <em>Urban</em> inside the target band. Thirteen rows survive both sorts, and those are the
+        visits worth the flight.</li>
+      <li><strong>Treat a low score in a city as a question, not a verdict.</strong> Chestnut Hill's 4
+        is a fact about one corner of one avenue. The locale beside it says the rest of Philadelphia
+        is ten minutes away; what it cannot say is whether the campus shuttle goes there.</li>
+      <li><strong>Treat <em>none listed</em> as a question for the coach.</strong> 61 rows have no line
+        on the page their scores came from. Some of those towns have a bus the site has never ingested,
+        and a coach who recruits out of state will know which.</li>
+      <li><strong>Ignore the three 100s.</strong> They are the most urban rows on the board and three
+        of the thinnest programs on it, which is the whole reason this page is a tab and not a tier.</li>
+    </ol>
+  </div>
+
+</main>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+initChrome('urban');
+initUrban();
+
+/* The four KPIs come off the same urbanRanked() the table does, so a figure here cannot drift
+   from the order below it. */
+const U = urbanRanked(SCHOOLS).map(s => s.u.score).sort((a, b) => a - b);
+document.getElementById('k-u-n').textContent = U.length;
+document.getElementById('k-u-med').textContent = U[Math.floor(0.5 * (U.length - 1))];
+document.getElementById('k-u-high').textContent = U.filter(x => x >= 70).length;
+document.getElementById('k-u-low').textContent = U.filter(x => x < 40).length;
+</script>
+</body>
+</html>

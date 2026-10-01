@@ -34,7 +34,7 @@ import csv, json, math, os, re, sys
 WORK = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.work')
 
 # IPEDS LOCALE. The twelve-way split is the point: "Town: Remote" and "Suburb: Large" are
-# both "not a city" and they are not the same place to spend four years without a car.
+# both "not a city" and they are not the same place to spend four years on foot.
 LOCALE = {
     11: 'City: Large',    12: 'City: Midsize',    13: 'City: Small',
     21: 'Suburb: Large',  22: 'Suburb: Midsize',  23: 'Suburb: Small',

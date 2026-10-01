@@ -511,7 +511,8 @@ knowledge that the results data then contradicted.
 ## Urban — the campus setting, in one order
 
 The setting data arrived one column at a time, which meant it could only be read one row at a time.
-The **Urban** section on the front page puts all 186 board rows in a single order, scored out of 100
+**[`urban.html`](https://timhibbard.github.io/xc-cs-college-board/urban.html)** — its own tab in the
+nav, beside North Carolina — puts all 186 board rows in a single order, scored out of 100
 as the average of three equal thirds: the **Walk Score** for the campus street address; the
 **federal locale**, the twelve codes spread evenly from *City: Large* to *Rural: Remote* and used as
 an **order only**, since IPEDS makes no claim that a large city is nine points denser than a midsize
@@ -529,7 +530,7 @@ Over the 122 rows that have both, the computed number agrees: **Spearman 0.80, m
 runs 17 points low, so both halves of the rule are doing work.
 
 **It is not a ranking of the running, the program or the fit**, for the same reason the columns
-behind it are not: it describes living without a car, and the coach picks the routes. Four things the
+behind it are not: it describes what he can reach on foot, and the coach picks the routes. Four things the
 order shows that the main table hides:
 
 - **The board is bimodal.** Scores run 8 to 100 with a median of 59, but **68 of the 186 score 70 or
@@ -625,8 +626,9 @@ publishes their name and work email in order to be contacted.
 ## Structure
 
 ```
-index.html          overview: KPIs, ten metro cards, filterable table of every school, gap chart,
-                    and the urban order (#urban) — every row scored by its campus setting
+index.html          overview: KPIs, ten metro cards, filterable table of every school, gap chart
+urban.html          the whole board ordered by campus setting — Walk Score, federal locale and
+                    the rail and bus lines at the address, as three equal thirds
 greenville.html     per-metro write-up + filtered table, chart, and radius map
 new-york.html
 chicago.html
