@@ -993,6 +993,113 @@ const METROS = [
     [Number(AG_DIST.rho.toFixed(2)), Math.round(Math.abs(AG_CNT.bias))]);
   uDom.window.close();
 
+  /* ---- the off-distance projections -------------------------------------------------
+     ATHLETE.projOff is eight numbers that decide slot, gap and v7 on 69 races, and nothing
+     on the page shows where they came from -- so this re-derives all eight from XCRACES and
+     the four anchors, by the rule tools/offdist.py documents, and holds the published table
+     against them. The metres below are deliberately a second copy of offdist.py's: these
+     two tables agreeing is the check, and a distance mistyped in one of them fails here. */
+  const METRES = {
+    '2M': 3218.7, '3.6K': 3600, '4K': 4000, '4.34K': 4340, '5K': 5000, '5.8K': 5800,
+    '3.73M': 6002.9, '6K': 6000, '6.2K': 6200, '4M': 6437.4, '7K': 7000, '7.2K': 7200,
+    '7.7K': 7700, '8K': 8000, '5.2M': 8368.6, '10K': 10000,
+  };
+  const STD = ['5K', '6K', '8K', '10K'];
+  const ANC = { '5K': ATHLETE.proj5kxc, '6K': ATHLETE.proj6k,
+                '8K': ATHLETE.proj8k, '10K': ATHLETE.proj10k };
+  const interp = (m, using = STD) => {
+    const pts = using.map(d => [METRES[d], ANC[d]]).sort((a, b) => a[0] - b[0]);
+    for (let i = 0; i < pts.length - 1; i++) {
+      const [m0, t0] = pts[i], [m1, t1] = pts[i + 1];
+      if (m >= m0 && m <= m1) return t0 + (t1 - t0) * (m - m0) / (m1 - m0);
+    }
+    return null;
+  };
+  // The gate offdist.py runs, run again here: the 5K-8K line read at 6,000 m has to land
+  // within two seconds of the published 6K and on the slow side of it.
+  const sixGap = ANC['6K'] - interp(6000, ['5K', '8K', '10K']);
+  ok('offdist 6K gate within 2s and conservative', sixGap >= 0 && sixGap <= 2, true);
+
+  const offRaces = [];
+  Object.entries(XCRACES).forEach(([school, rs]) => rs.forEach(r => {
+    if (!STD.includes(r.dist)) offRaces.push({ school, ...r });
+  }));
+  const unknownDist = [...new Set(offRaces.map(r => r.dist))].filter(d => !(d in METRES));
+  if (unknownDist.length) {
+    fails.push(`off-distance with no metres in render-check or offdist.py: ${unknownDist.join(', ')}`);
+  }
+  // The measurement: one team, one season, its own nth man here against its nth man at 8K.
+  // `season()` is the one declared further up -- August starts the autumn it is named for.
+  const ratios = {};
+  Object.values(XCRACES).forEach(rs => {
+    const by = {};
+    rs.forEach(r => { (by[season(r.date)] = by[season(r.date)] || []).push(r); });
+    Object.values(by).forEach(g => {
+      const refs = g.filter(r => r.dist === '8K');
+      g.filter(r => !STD.includes(r.dist)).forEach(o => refs.forEach(s => {
+        const n = Math.min(o.runners.length, s.runners.length);
+        for (let i = 0; i < n; i++) {
+          (ratios[o.dist] = ratios[o.dist] || []).push(s.runners[i] / o.runners[i]);
+        }
+      }));
+    });
+  });
+  const median = a => {
+    const s = [...a].sort((x, y) => x - y);
+    return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2;
+  };
+  const wantOff = {};
+  [...new Set(offRaces.map(r => r.dist))].forEach(d => {
+    const line = interp(METRES[d]);
+    if (line === null) return;            // under 5K: no projection, by the rule
+    const rs = ratios[d];
+    const meas = rs && rs.length ? ANC['8K'] / median(rs) : null;
+    wantOff[d] = Math.round(meas === null ? line : Math.max(line, meas));
+  });
+  ok('offdist published table matches the data',
+    JSON.stringify(Object.entries(ATHLETE.projOff).sort()),
+    JSON.stringify(Object.entries(wantOff).sort()));
+
+  /* And the races themselves: every off-distance race either carries the three fields the
+     table implies, or carries nulls because it is shorter than 5K. A projection that drifts
+     from its own factor is the failure this catches -- it is what a hand edit to detail.js
+     or a half-finished offdist.py run would leave behind. */
+  const bad = [];
+  let projected = 0, nulled = 0;
+  offRaces.forEach(r => {
+    const p = ATHLETE.projOff[r.dist];
+    const t = r.runners;
+    if (p === undefined) {
+      nulled++;
+      if (r.slot !== null || r.g1 !== null || r.v7 !== null) {
+        bad.push(`${r.school} ${r.date} ${r.dist}: under 5K but carries slot/g1/v7`);
+      }
+      return;
+    }
+    projected++;
+    const g1 = Math.round((p - t[0]) * 10) / 10;
+    const v7 = t.length >= 7 ? Math.round((p - t[6]) * 10) / 10 : null;
+    const slot = t.filter(x => x < p).length + 1;
+    if (r.slot !== slot || r.g1 !== g1 || r.v7 !== v7) {
+      bad.push(`${r.school} ${r.date} ${r.dist}: stored ${r.slot}/${r.g1}/${r.v7}, ` +
+        `the ${p}s factor gives ${slot}/${g1}/${v7}`);
+    }
+  });
+  if (bad.length) {
+    fails.push(`${bad.length} off-distance race(s) disagree with ATHLETE.projOff: ` +
+      bad.slice(0, 6).join('; '));
+  }
+  ok('offdist races projected', projected, offRaces.length - nulled);
+
+  claim('methodology offdist counts', mtxt,
+    /gives (\d+) of those (\d+) races a projection/, [projected, offRaces.length]);
+  claim('methodology offdist nulls', mtxt,
+    /The remaining (\d+) races get nothing/, nulled);
+  claim('methodology offdist distances', mtxt,
+    /factors for (\d+) distances/, Object.keys(ATHLETE.projOff).length);
+  claim('README offdist', rtxt,
+    /\*\*(\d+) of the (\d+) races run at a distance that is not/, [projected, offRaces.length]);
+
   for (const c of checks) {
     console.log(`${c.pass ? 'ok  ' : 'FAIL'}  ${c.name}: ${c.got}${c.pass ? '' : ' (want ' + c.want + ')'}`);
   }

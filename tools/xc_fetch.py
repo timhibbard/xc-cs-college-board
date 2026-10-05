@@ -21,11 +21,16 @@ falls *between* the 5K and 8K anchors, so it is interpolated off the line those 
 already draw rather than extrapolated past them. assets/data.js carries the derivation
 and, more usefully, the reason the obvious measurement was rejected.
 
-Everything else stays unprojected. A 4M, 5.2M, 4K, 3.6K, 7.7K, 7K or 4.34K race gets its
-spread, place and score -- all projection-free -- and a null slot/g1/v7 with `noproj`
-naming the distance. Inventing a factor for those would put a number on the board that
-no measurement supports, and every one of this board's worst bugs has been a plausible
-number standing where an absence belonged.
+The off-distances are projected too, from ATHLETE.projOff: 4M, 5.2M, 7K, 6.2K, 7.2K, 7.7K,
+3.73M and 5.8K each fall between two anchors, so each takes the slower of the line between
+them and a measurement off the file's own slot pairs. tools/offdist.py derives that table
+and documents why the slower of the two is the only safe choice.
+
+What still stays unprojected is a race SHORTER than 5K -- 2M, 3.6K, 4K, 4.34K. It gets its
+spread, place and score, all projection-free, and a null slot/g1/v7 with `noproj` naming the
+distance. There is nothing to interpolate between below his own shortest mark, so the only
+route left is extrapolating past his evidence, and every one of this board's worst bugs has
+been a plausible number standing where an absence belonged.
 
 A team can appear in a result page and still have no finisher in it. All three cases in
 the 2026 sweep -- North Park at the Lewis Early Bird, Morehouse at the Julius Johnson,
@@ -191,6 +196,10 @@ def main():
     ath = board['ATHLETE']
     PROJ = {'5k': ath['proj5kxc'], '6k': ath['proj6k'],
             '8k': ath['proj8k'], '10k': ath['proj10k']}
+    # The off-distances, keyed the way this stage keys them: dist comes off the section
+    # title and is lowercased, so '4M' in the published table is '4m' here. Merged rather
+    # than written out, because data.js is the one place the numbers live.
+    PROJ.update({d.lower(): t for d, t in ath['projOff'].items()})
 
     # meet -> the schools that ran it and this board has not read
     want = {}

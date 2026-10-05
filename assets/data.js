@@ -107,6 +107,26 @@ const ATHLETE = {
   /* Cross country 5Ks need no projection at all: 15:40 is the mark itself, the one
      the 8K and 10K above are scaled from. Early-season meets run a lot of them. */
   proj5kxc: 940, proj5kxcLabel: '15:40',
+  /* Projections at the distances that are not 5K, 6K, 8K or 10K -- 82 races on file, 37
+     of them at 4M. Each one is the slower of two routes: a linear interpolation in metres
+     between the two anchors above that bracket it, which is the rule that produced
+     proj6k; and his 8K projection divided by the measured ratio of a team's own nth man
+     at 8K to its nth man here, in the same season, which is the comparison the published
+     5K->8K and 8K->10K factors are measured with. The slower wins because a projection
+     on this board may be conservative and may not be optimistic. Nothing below 5K is
+     here: his 5K is the shortest mark he has run, so there is no pair of anchors to
+     interpolate between. Derived by tools/offdist.py, re-derived by render-check.
+     See methodology.html #offdist. */
+  projOff: {
+    '5.8K': 1100,
+    '3.73M': 1154,
+    '6.2K': 1189,
+    '4M': 1236,
+    '7K': 1359,
+    '7.2K': 1391,
+    '7.7K': 1502,
+    '5.2M': 1614,
+  },
 };
 
 const TIERS = {
