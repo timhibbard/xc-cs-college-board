@@ -237,10 +237,17 @@ def main():
             if (pdate or w['date']) in held.get(name, set()):
                 dup.append((name, pdate or w['date'], w['date'], w['meet']))
                 continue
+            # A varsity section always wins, however few men this team put in it, and the
+            # deepest field breaks the tie inside each kind. parse_xc now hands back the
+            # open and JV sections it used to drop, flagged, so the fallback only ever
+            # reaches a team with no finisher in any varsity men's race on the page --
+            # which until now was recorded as a DNS. Ordering it this way is what keeps
+            # every race already on file reading from the section it was read from.
             best = None
-            for s in secs:
+            for s in sorted(secs, key=lambda s: (bool(s.get('sub')), -s['n'])):
                 fin = [f for f in s['fin'] if f['team'] == slug]
-                if fin and (best is None or len(fin) > len(best[1])):
+                if fin and (best is None
+                            or (bool(s.get('sub')), -len(fin)) < (bool(best[0].get('sub')), -len(best[1]))):
                     best = (s, fin)
             if not best:
                 missing.append((name, rid, w['meet']))

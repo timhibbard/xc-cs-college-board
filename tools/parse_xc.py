@@ -33,18 +33,25 @@ def _yr(raw, season):
 def _dist(m):
     """A section title's distance -> '8k', '6.2k', '4.97m'. None if the title has no distance.
 
-    Two normalisations, both of which a downstream stage would otherwise get wrong. A meet
+    Three normalisations, each of which a downstream stage would otherwise get wrong. A meet
     that writes "6200K" means 6,200 metres -- the CSU Buccaneer Open does, and its own
     parenthetical says (6.2k) -- and no college race is six thousand kilometres, so a k
     over 100 is metres. And "8.0K" is the same race as "8K": the projection table is keyed
     by the string, so an unnormalised '8.0k' would store a full 8K race as having no
     projection at all, which puts a null where a measurement belongs.
+
+    The third is the same argument for the unit that also abbreviates miles. "8000M" is
+    8,000 metres and no college race is eight thousand miles -- Running of the Cows writes
+    its sections that way, and its own parenthetical says (8k). Four standard 8K races came
+    off that one page as dist '8000m' with slot, g1 and v7 all null, which is the exact
+    failure the 8.0K rule above was written to stop, one spelling short. The threshold
+    separates cleanly: every mile distance this board holds is under 100 -- 2M, 4M, 5.2M.
     """
     if not m:
         return None
     v, u = float(m.group(1)), m.group(2).lower()[0]
-    if u == 'k' and v >= 100:
-        v /= 1000
+    if v >= 100 and u in 'km':
+        v, u = v / 1000, 'k'
     return '%g%s' % (v, u)
 
 def _txt(s): return re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',s)).strip()
@@ -90,16 +97,22 @@ def parse(html,season=None):
         isw=re.search(r"(?<!\w)wo?men|\(W\)|\bgirls\b",title,re.I)
         ism=(re.search(r"(?<!wo)\bmen'?s?\b",title,re.I) or re.search(r"\(M\)|\bboys\b|\bIC4A\b",title,re.I))
         if isw or not ism: continue
-        # a team's JV/open/alumni squad is not its scoring seven
-        if re.search(r"\b(jv|junior varsity|freshm[ae]n|alumni|reserve|development|b race|open race)\b",title,re.I):
-            continue
+        # A team's JV/open/alumni squad is not its scoring seven -- but that is true of a
+        # *team*, not of a section, and this used to drop the section outright. At Lehigh's
+        # Paul Short the men race twice, and the Open has individual results and no team
+        # table at all: nine board programs were named on that page, had every finisher in
+        # the Open and none in the Gold, and were reported as DNS. A squad that ran only the
+        # open race is the squad the program brought that day. So the section is kept and
+        # flagged, and the caller prefers a varsity section for any team that has one --
+        # which leaves every race already on file reading from the section it always did.
+        sub=bool(re.search(r"\b(jv|junior varsity|freshm[ae]n|alumni|reserve|development|b race|open race)\b",title,re.I))
         end=heads[i+1][0] if i+1<len(heads) else len(html)
         seg=html[pos:end]
         dm=re.search(r'\b(\d+(?:\.\d+)?)\s*([kKmM](?:iles?)?)\b',title)
         dist=_dist(dm)
         fin=_rows(seg,season)
         if not fin: continue
-        out.append({'dist':dist,'title':title,'n':len(fin),'fin':fin})
+        out.append({'dist':dist,'title':title,'n':len(fin),'fin':fin,'sub':sub})
     if not out:
         # Some meets label sections by distance only. At college level men race
         # 8K/10K and women 5K/6K, so an unsexed 8K/10K section is the men's race.
@@ -110,7 +123,7 @@ def parse(html,season=None):
             if not dm: continue
             end=heads[i+1][0] if i+1<len(heads) else len(html)
             sec=_rows(html[pos:end],season)
-            if sec: out.append({'dist':dm.group(1)+'k','title':title+' [unsexed 8K/10K]','n':len(sec),'fin':sec})
+            if sec: out.append({'dist':dm.group(1)+'k','title':title+' [unsexed 8K/10K]','n':len(sec),'fin':sec,'sub':False})
     return out
 
 if __name__=='__main__':
