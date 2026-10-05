@@ -329,6 +329,31 @@ rows the board does not rank, which is enough of the file for a pass to clear si
 report success. What exposed them was one unrelated new race: the aggregate stage recomputes every row
 it can, asked to rewrite ten 2025 blocks no new race had touched, and the diff was `maxfin` in all ten.
 
+### The twelve other distances, and the nulls that were not neutral
+
+College cross country is not only run at 5K, 6K, 8K and 10K. Eighty-two races on file were run at
+twelve other distances — 4M, 5.2M, 7K, 6.2K, 7.2K, 7.7K, 3.73M, 5.8K, 4K, 3.6K, 4.34K, 2M — and every
+one held no slot, no gap and no 7th-man figure, on the argument that inventing a factor puts a
+plausible number where an absence belongs. That is the right instinct about inventing one and the
+wrong conclusion about the absence: it dropped all 82 out of every comparison the site makes, 37 of
+them at 4M alone.
+
+The rule was already on the board. The 6K anchor of 19:00 was never measured either — it is read off
+the line between the 5K and the 8K, because a 6K falls *between* two marks he has run. So each
+off-distance projection is the **slower** of that interpolation and an independent measurement, the
+latter made exactly the way the published 5K→8K and 8K→10K factors are: one team, one season, its own
+nth man here against its own nth man at 8K, as a ratio rather than a fitted exponent. The slower wins
+because a projection on this board may be conservative and may not be optimistic. The gate is the 6K
+itself with the 6K held out of its own anchors: the 5K–8K line read at 6,000 metres gives 1138.7
+seconds against the published 1140, 1.3 seconds apart and on the conservative side.
+
+**69 of the 82 races run at a distance that is not** 5K, 6K, 8K or 10K now carry a projection, at
+factors for eight distances published in `ATHLETE.projOff`. The remaining 13 — 2M, 3.6K, 4K, 4.34K —
+get nothing, because they are shorter than the shortest distance he has raced, so there is nothing to
+interpolate between and the only route left is extrapolating below his own evidence. Every one of the
+82 is an invitational, so no tier moves; `render-check.js` re-derives all eight factors from the race
+file and fails if the published table drifts from them. Derived by `tools/offdist.py`.
+
 ## Metros
 
 Every count here is the live board, all divisions.

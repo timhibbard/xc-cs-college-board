@@ -22,6 +22,11 @@ R = str(WORK) + '/'
 b = json.load(open(R + 'board.json'))
 A = b['ATHLETE']
 P = {'5K': A['proj5kxc'], '6K': A['proj6k'], '8K': A['proj8k'], '10K': A['proj10k']}
+# The off-distances are here for the race this board has not read yet, not for one it has:
+# every one of the 82 off-distance races on file is an invitational, and this tool reads
+# only the four championship levels, so adding them moves nothing today. It is in because
+# the alternative is a conference meet at 4M silently dropping out of a tier.
+P.update(A['projOff'])
 EQ = {d: P['8K'] / P[d] for d in P}
 CHAMP = ('conference', 'area championship', 'NCAA regional', 'national championship')
 

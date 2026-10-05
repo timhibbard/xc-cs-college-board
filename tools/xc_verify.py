@@ -147,6 +147,7 @@ def main():
     X = board['XCRACES']
     A = board['ATHLETE']
     PROJ = {'5K': A['proj5kxc'], '6K': A['proj6k'], '8K': A['proj8k'], '10K': A['proj10k']}
+    PROJ.update(A['projOff'])   # 4M, 7K, 5.2M and the rest -- see the note in data.js
 
     races = [(n, i, r) for n, v in X.items() for i, r in enumerate(v)]
     print('%d races across %d schools\n' % (len(races), len(X)))
