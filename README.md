@@ -621,8 +621,10 @@ is on the board, so no ranking depends on it.
 5-year estimates**, read through the Census Reporter API and matched to the exact place each campus
 sits in. Collected for the **Greenville ring only** — how big New York and Chicago are is not a
 question this board needs to answer. Undergraduate enrollment comes from the same federal record as
-the cost data. Both appear as columns on the Greenville table and as rows on every school page.
-Three figures are consolidated city-county governments (Augusta, Macon, Athens) and are therefore
+the cost data, and **186 of the 187** board rows carry it — the exception is **SCAD Atlanta**, whose
+only federal record is filed from Savannah, so its 15,243 undergraduates are the whole university
+and no source splits them by campus. Both appear as columns on the Greenville table and as rows on
+every school page. Three figures are consolidated city-county governments (Augusta, Macon, Athens) and are therefore
 county-wide; four places are census-designated rather than incorporated (Buies Creek, Cullowhee,
 Tigerville, Emory VA); and a small figure inside a large metro describes the address, not the
 setting.

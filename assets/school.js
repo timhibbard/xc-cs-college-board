@@ -147,8 +147,16 @@ function cost() {
         : ' — the number to plan against')],
     ...(prem > 0 ? [['Net price on his residency', usd(c.net + prem),
       `<strong>estimate</strong> — the federal net price above plus the ${usd(prem)} non-resident tuition premium, holding average grant aid constant. A non-resident waiver or athletic money can erase it`]] : []),
-    ['Undergraduate enrollment', c.size == null ? null : c.size.toLocaleString('en-US'),
-      'federal headcount — the number that decides whether he is one of a hundred distance runners or one of six', 'num'],
+    /* `sizeInst` is an enrollment figure that is real but is the whole institution's, which
+       is a different claim from this campus's and so gets its own label rather than the
+       campus row with a caveat bolted onto it. One row uses it: SCAD Atlanta, whose single
+       federal record is filed 230 miles away in Savannah. The reasoning, and the four
+       sources that have no campus figure, are in the comment above that row in data.js. */
+    c.size == null && c.sizeInst != null
+      ? ['Undergraduate enrollment, university-wide', c.sizeInst.toLocaleString('en-US'),
+        'federal headcount for the whole institution — <strong>not this campus</strong>, which files no enrollment of its own, and nothing published says how many of them are here', 'num']
+      : ['Undergraduate enrollment', c.size == null ? null : c.size.toLocaleString('en-US'),
+        'federal headcount — the number that decides whether he is one of a hundred distance runners or one of six', 'num'],
   ];
   /* Town population is collected for the Greenville ring only; the other two metros
      do not need a number to answer the question. */
