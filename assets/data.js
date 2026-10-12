@@ -3163,16 +3163,33 @@ const SCHOOLS = [
     ig: "cubruins", igDept: true,
     note: "NAIA, and the only evidence of a men’s cross country program is the school’s own site, which publishes a roster and a schedule for it. TFRRS holds no cross country result at all, so there is no championship field to measure. Caution rather than verify, and the tier rests on track marks instead: their fastest 1500 is 4:26.1 and their fastest 5000 is 16:50, so he would arrive <b>25 seconds ahead of their best 1500 and 70 seconds ahead of their best 5000</b>. Two marks from different distances, agreeing, and arriving ahead of a team’s #1 is what a thin programme looks like on this board. A roster count from Thornburg is still the one thing that could move this row — but it would have to contradict both marks.",
   },
+  /* The one row with a federal enrollment figure and no `cost.size`. `sizeInst` holds it
+     instead, because 15,243 is unit 140951's undergraduate headcount and 140951 is SCAD
+     entire, filed from Savannah 230 miles from this campus. Four sources were asked for an
+     Atlanta-only number and not one publishes it: IPEDS HD2023 has a single SCAD record;
+     the federal Clery survey does carry an Atlanta campus -- unit 140951003, 1600 Peachtree,
+     "a four (4) year degree location" in SCAD's own filing -- but reports enrollment only on
+     the institution header; SCAD's own Fact Book splits fall enrollment by minor, by gender,
+     by country and by major and never by location; and the SCAD Atlanta family guide 2025-26
+     gives no campus count. So the Students column reads "--" here rather than setting a
+     university-wide 15,243 beside 186 campus headcounts, where it describes a campus some
+     eight times the size of the Midtown one. The figure is not discarded: the school page
+     prints it on a row of its own, labelled university-wide.
+
+     Tuition and net price stay in `cost` unmarked. SCAD charges one tuition rate across the
+     university and the net price is an average over that same single unit, so both are
+     institution-wide AND still true of a student in Atlanta. Enrollment is the one field in
+     this block that is a property of a campus rather than of an institution. */
   { name: "SCAD Atlanta", slug: "scad-atlanta", city: "Atlanta GA", metro: "greenville", mi: 141.3,
     lat: 33.796774, lon: -84.391117, div: "NAIA", conf: "Appalachian Athletic",
     cs: "none", csSrc: "fed", csShare: 0.0, sat: "1030–1270", satSrc: "fed", accept: "83%", acceptSrc: "fed",
-    cost: { own: "private", resid: "out", tuition: 41630, rb: 18123, sticker: 59753, net: 49430, size: 15243, ipeds: 140951 },
+    cost: { own: "private", resid: "out", tuition: 41630, rb: 18123, sticker: 59753, net: 49430, sizeInst: 15243, ipeds: 140951 },
     b1500: null, b5000: null, tier: "caution", tierSrc: "ladder",
     xc: { slot: 2, g1: 13.5, v7: -114.2, spread: 127.7, nraces: 1 },
     xcInv: { slot: 1.2, g1: -3.6, v7: -261.3, spread: 210.3, eq: true, nraces: 4, short: true, maxfin: 7 },
     shape: { date: "2025-11-07", meet: "Appalachian Athletic Conference Cross Country Championships", dist: "8K", n: 7, ret: 3, g1ret: -16, fr: 2, so: 1, jr: 0, sr: 4 },
     coach: { name: "Chris Benassi", title: "Head Cross Country and Track & Field Coach — Meredith Herman assists in both sports", email: "cbenassi@scad.edu", phone: "404-253-5411", src: "https://atlanta.scadathletics.com/staff-directory" },
-    note: "First measurement, from the 2025 Appalachian Athletic Conference Cross Country Championships (3rd, 65 pts): <b>2nd man</b>, 114 seconds inside their seventh and 13 seconds behind their #1. Their seven spanned 128 seconds. They also entered four men at the NAIA Cross Country Championships, under the five-finisher floor, so that race is left out of the average. Read the class years before the gap, though: four of those seven were seniors and only three come back, and against the three he would arrive as their <b>#1 by 16 seconds</b>. <b>No computer science degree</b> — the nearest SCAD offers are interactive design and game development and user experience design, and the federal program file records no computer-science completions at all, which is the one thing that keeps an otherwise well-placed row off target. Its cost and size figures are the whole institution's: SCAD files a single federal record from Savannah and the Atlanta campus has none of its own, so the 15,243 students and the $49,430 net price describe SCAD entire rather than the Midtown campus he would live on. That campus is the compensation — Walk 64 and MARTA's Gold and Red lines half a mile up Peachtree, so the errands of a week are on foot.",
+    note: "First measurement, from the 2025 Appalachian Athletic Conference Cross Country Championships (3rd, 65 pts): <b>2nd man</b>, 114 seconds inside their seventh and 13 seconds behind their #1. Their seven spanned 128 seconds. They also entered four men at the NAIA Cross Country Championships, under the five-finisher floor, so that race is left out of the average. Read the class years before the gap, though: four of those seven were seniors and only three come back, and against the three he would arrive as their <b>#1 by 16 seconds</b>. <b>No computer science degree</b> — the nearest SCAD offers are interactive design and game development and user experience design, and the federal program file records no computer-science completions at all, which is the one thing that keeps an otherwise well-placed row off target. <b>No enrollment figure for this campus exists anywhere</b>, so the Students column is blank rather than wrong: SCAD files one federal record and files it from Savannah, and that record's 15,243 undergraduates are SCAD entire. The federal Clery survey does list an Atlanta campus at 1600 Peachtree but reports no enrollment for it, and SCAD's own Fact Book splits enrollment by major, minor, gender and country and never by location. The $41,630 tuition and $49,430 net price come from that same single record and are left as they are — SCAD charges one rate university-wide — but how many of its students are in Midtown is not published. That campus is the compensation — Walk 64 and MARTA's Gold and Red lines half a mile up Peachtree, so the errands of a week are on foot.",
   },
 ];
 

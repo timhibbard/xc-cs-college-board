@@ -1,6 +1,6 @@
 # College Search — Greenville SC (300 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-10-12 (v16 — SCAD Atlanta added, the ring's 87th row)
+XC/Track + Computer Science. Last updated 2026-10-12 (v17 — SCAD Atlanta added, the ring's 87th row, with no campus enrollment to give it)
 
 > **SCAD Atlanta joins the ring at *Caution*, and it is the clearest case yet of the CS column
 > deciding a row the running would not.** An art-and-design college 141 miles out, NAIA, in the
@@ -11,10 +11,14 @@ XC/Track + Computer Science. Last updated 2026-10-12 (v16 — SCAD Atlanta added
 > three come back, and against the three he would arrive as their **#1 by 16 seconds**, which is the
 > thin-program signal rather than the fit one. And **SCAD offers no computer science degree** — the
 > nearest are interactive design and game development and user experience design, and the federal
-> program file records no computer-science completions at all. The cost and size figures on the row
-> are the whole institution's: SCAD files one federal record from Savannah and the Atlanta campus
-> files none of its own, so the 15,243 students and the $49,430 net price describe SCAD entire rather
-> than the Midtown campus he would live on. That campus is the compensation — **Walk 64**, with
+> program file records no computer-science completions at all. **The row carries no enrollment figure,
+> because none exists for this campus:** SCAD files one federal record and files it from Savannah, so
+> that record's 15,243 undergraduates are SCAD entire. Four sources were asked — IPEDS, the federal
+> Clery survey (which does list an Atlanta campus at 1600 Peachtree, with no enrollment attached to
+> it), SCAD's own Fact Book, and the SCAD Atlanta family guide — and not one splits enrollment by
+> location, so the Students column is blank here rather than claiming a 15,243-student campus. The
+> $49,430 net price is from the same single record and is left as it is, since SCAD charges one rate
+> university-wide. That campus is the compensation — **Walk 64**, with
 > MARTA's Gold and Red lines half a mile up Peachtree. The ring is now **87 rows, 84 of them
 > measured**. **No tier in this ring changed and no time moved.**
 
