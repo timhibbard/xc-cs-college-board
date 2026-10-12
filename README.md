@@ -9,26 +9,26 @@ ranks them by the one question that predicts whether a distance runner actually 
 
 **Live site:** https://timhibbard.github.io/xc-cs-college-board/
 
-**The board covers every division: 186 schools on it — 64 D1, 55 D2, 63 D3, three NAIA and one USCAA —
+**The board covers every division: 187 schools on it — 64 D1, 55 D2, 63 D3, four NAIA and one USCAA —
 plus 12 cut as walk-on, 29 with cross country but no men's track, and 16 with no men's program to
 join.** Eight metros were added in one pass (Boston, Philadelphia, Washington, Baltimore,
 Pittsburgh, Buffalo, Hampton Roads and Newark), which found **81 colleges this board held no row for**
 and put 62 of them on it; Newark has since been folded into New York, leaving **ten metros**. A
 Division-1-only rule was tried on this board and **reversed**; the write-up of it is kept as a decision
 made and undone rather than deleted, because the reason it failed is the useful part — it removed 96 rows,
-nine of them at target tier, seven of those in the Greenville ring. All 227 rows that have a men's
-program carry federal cost and admissions data and a detail page, and **175 of the 186 on the board rest
-on a real 2025 cross country result**. **All 226 also carry the name and contact details of the coach
+nine of them at target tier, seven of those in the Greenville ring. All 228 rows that have a men's
+program carry federal cost and admissions data and a detail page, and **176 of the 187 on the board rest
+on a real 2025 cross country result**. **All 227 also carry the name and contact details of the coach
 who would recruit him**, read off that school's own staff directory and linked to it — the 76 rows the
-eight-metro pass added were the last gap in that column and are now filled. **223 of the 227 also
+eight-metro pass added were the last gap in that column and are now filled. **223 of the 228 also
 carry the program's Instagram**, read off that school's own men's cross country page rather than
 searched for by name — 170 the team's own account, 53 the athletics department's where the school
-links none of its own, and four schools link no Instagram anywhere on their own pages, which their
+links none of its own, and five schools link no Instagram anywhere on their own pages, which their
 pages say. **The 76 rows the new metros added now carry everything the rows that predate the pass
 carry**: the coach block came first, then the Instagram column, then their 2026 outdoor track marks and
 a conference-championship 1500 field for each of the 60 that raced one, and last a **map of every meet
 the program attended this season** — 315 meets and 173 venues this board had never seen, read off those
-programs' own results feeds. **All 243 rows now also carry the campus setting** — the federal locale
+programs' own results feeds. **All 244 rows now also carry the campus setting** — the federal locale
 classifying the address, the town the campus sits in with its land area, a Walk Score and Bike Score
 linked to the page they came from, and the **named rail and bus lines with their distances**, which are
 the real transit answer: Walk Score prints a Transit *Score* only where the city publishes a feed it has
@@ -60,7 +60,7 @@ found two schools with no men's cross country to join at all — UAB and Georgia
 15:40 the Riegel route and the board's own ratio agree on the 10K to the second. **Eight schools
 changed tier**: Charleston Southern, Clemson, Lee University, NYU, Stony Brook and the University of
 Chicago came up to *Target*, Berry College and UNC Pembroke went back to *Caution*, and the target
-band went from 29 schools to **33** on the board as it then stood — it is **47 of 186** now, after the
+band went from 29 schools to **33** on the board as it then stood — it is **47 of 187** now, after the
 metro sweeps grew the board itself. Six rows on the cut list came inside the 45-second line on their
 championship average, and **three of them are now back on the board at *Deep*** — the three that clear
 the conference-8K test the cut actually rested on. **Tennessee** is 21.3 seconds outside the seven it
@@ -95,7 +95,7 @@ the ten that could not finish the scoring five — Roosevelt, Benedict, John Jay
 York College (CUNY), Marymount, Carlow, Hilbert, Greensboro College and William Peace — are held at
 *Caution* regardless of times, because a short field at the meet a program brings everyone to is a
 measurement of depth and not a missing one. On the board itself the count is
-**49 of 186**, and the new metros made it worse rather than better: all four Hampton Roads programs
+**49 of 187**, and the new metros made it worse rather than better: all four Hampton Roads programs
 and five of Boston's sixteen never finished seven, while Pittsburgh is the one metro where every
 measured program did. It is not a small-college
 problem with a divisional fix — five of the 22 in Greenville are Division 1 — which is one of the
@@ -165,8 +165,8 @@ every race on file across the 2025 and 2026 seasons:
 
 Where a team never finished seven, **vs their 7th** is left blank rather than guessed at, and the
 comparison runs against their last finisher instead. Races with fewer than five finishers are not
-team results and are excluded from the averages entirely — 59 of the 449 championship races the
-tiers rest on, and 171 of the 1,843 races on file overall.
+team results and are excluded from the averages entirely — 60 of the 451 championship races the
+tiers rest on, and 172 of the 1,849 races on file overall.
 
 Four tiers follow from that: **Target** (a clean 4th–9th man fit), **Deep** (just outside the
 travel squad — a good development environment, no freshman travel), **Verify** (no cross country
@@ -185,7 +185,7 @@ final was won in 4:03.61 while a prelim went 3:47.69 — so the whole-field plac
 tactical final is flagged as one rather than read as a level.
 
 Cross country times are also **course-corrected** where at least three teams cross-check the
-same course against a calibrated one. The 1,843 races span 414 distinct meets and exactly two
+same course against a calibrated one. The 1,849 races span 415 distinct meets and exactly two
 cleared that bar, so most schools rest on an uncorrected time — the largest remaining source of
 error here. Getting the sign of one correction backwards briefly promoted a cut school to
 target tier, which is documented rather than quietly fixed.
@@ -218,7 +218,7 @@ wrong page. Every men's section of the page is then tried and it is **the file's
 the section**, so a meet running both a varsity and an open race cannot report a false violation on
 whichever race was read from the other.
 
-**1,843 of 1,843 races now reproduce exactly** from the 439 pages behind them: times, finisher
+**1,849 of 1,849 races now reproduce exactly** from the 460 pages behind them: times, finisher
 count, class years, team place and score, distance, the level the meet name implies, and slot, gap,
 gap-to-seventh, gap-to-last-finisher and 1–7 spread recomputed with the stored course correction
 added back.
@@ -233,7 +233,7 @@ collection code** rather than in the verifier:
   label this board reserves for the multi-conference meets (IC4A/ECAC, NEICAAA, the Metropolitan)
   between a conference and an NCAA region. Worse in the other direction, it promoted 23
   **invitationals** into the championship set on the word "conference" appearing in names like
-  "United East Conference Preview". It now reproduces all 1,843 stored labels.
+  "United East Conference Preview". It now reproduces all 1,849 stored labels.
 - **60 distance disagreements: a units comparison.** A board row is scored at 5K, 6K, 8K or 10K and
   a course is whatever it measures, so the file buckets — `8000m`, `4.97 miles` and `8.057K` are all
   `8K`. Distances are compared as lengths now. **42 races are run at a length that is not the
@@ -283,7 +283,7 @@ guarantees that: a championship race in a sweep aborts the run, because `xc` car
 of its published blocks are hand decisions about what a thin field means. The two aggregates it does
 rewrite are gated the same way — the formula is re-derived from every block already published before a
 byte is written, 169 of 169 for `xcInv`, and a single disagreement stops the run on the grounds that
-the formula is then wrong rather than the file. The file after the sweep is **1,843 of 1,843 races
+the formula is then wrong rather than the file. The file after the sweep is **1,849 of 1,849 races
 reproducing exactly** from the 439 pages behind them.
 
 Two smaller bugs fell out of reading 104 new meets. A meet that writes its own distance as `6200K`
@@ -297,8 +297,8 @@ A race is stored as a team's first seven, because seven is what scores and every
 slot, his gap to their 7th man, the 1-to-7 spread — is defined over those seven. What that quietly
 cost: the methodology's own reason for keeping the invitational races is that they are where a
 program's 5th through 9th runners actually race, and the 8th and 9th man were not in the file at all.
-**871 of the 1,843 races on file put more than seven men on the line** — 1,182 hold a full seven and
-only 311 of those teams finished exactly seven — and the 3,594 men behind a scoring seven had been
+**871 of the 1,849 races on file put more than seven men on the line** — 1,186 hold a full seven and
+only 315 of those teams finished exactly seven — and the 3,594 men behind a scoring seven had been
 read off the page, checked, and dropped. The deepest field on file is **30 men** (Wingate, Converse
 Kick-Off, 19 September 2026); the deepest at a championship is 22.
 
@@ -307,7 +307,7 @@ in their own `tail` array rather than lengthening `runners`, which is the entire
 a dozen call sites take `runners[0]` as a team's #1, `runners[6]` as its 7th man and `runners.length`
 as how many finished, and a longer `runners` would have left all of them working while answering a
 different question. `xc_verify.py` now checks the tail against the page as well, so a future sweep
-that forgets it fails rather than drifts, and the file still reads **1,843 of 1,843 races reproducing
+that forgets it fails rather than drifts, and the file still reads **1,849 of 1,849 races reproducing
 exactly**. On a school page each race card gains a fold holding the men who scored nothing, and one
 sentence that could not be written before: in **75** of the 772 deep races this board can convert,
 their *8th man onward* is also faster than his projection, so the stored slot understates where he
@@ -347,7 +347,7 @@ because a projection on this board may be conservative and may not be optimistic
 itself with the 6K held out of its own anchors: the 5K–8K line read at 6,000 metres gives 1138.7
 seconds against the published 1140, 1.3 seconds apart and on the conservative side.
 
-**69 of the 82 races run at a distance that is not** 5K, 6K, 8K or 10K now carry a projection, at
+**70 of the 83 races run at a distance that is not** 5K, 6K, 8K or 10K now carry a projection, at
 factors for eight distances published in `ATHLETE.projOff`. The remaining 13 — 2M, 3.6K, 4K, 4.34K —
 get nothing, because they are shorter than the shortest distance he has raced, so there is nothing to
 interpolate between and the only route left is extrapolating below his own evidence. Every one of the
@@ -360,7 +360,7 @@ Every count here is the live board, all divisions.
 
 | Metro | Radius | On the board | Measured | Target tier | No 7th man | Cut as walk-on | No men's track | No men's program | Page |
 |---|---|---|---|---|---|---|---|---|---|
-| Greenville, SC | 300 mi | 85 | 83 | 25 | 22 | 7 | 9 | 6 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
+| Greenville, SC | 300 mi | 87 | 84 | 25 | 22 | 7 | 9 | 6 | [`docs/greenville-sc.md`](docs/greenville-sc.md) |
 | New York City | 20 mi + all of Long Island | 29 | 29 | 6 | 6 | 2 | 10 | 5 | [`docs/new-york-city.md`](docs/new-york-city.md) |
 | Boston | 20 mi | 16 | 16 | 3 | 5 | 0 | 1 | 0 | [`boston.html`](boston.html) |
 | Philadelphia | 20 mi | 14 | 12 | 4 | 3 | 1 | 2 | 0 | [`philadelphia.html`](philadelphia.html) |
@@ -380,7 +380,7 @@ the one row unique to it, which turned out to sit outside the New York radius an
 The array machinery stays, because the fold was a judgement about Newark and not about the model.
 
 The divisional shape of the rings is completely different and worth reading before the tiers:
-Greenville is 33 D1, 39 D2, 11 D3 and two NAIA; New York is 10 D1, 7 D2 and 12 D3; Boston is 12 D3,
+Greenville is 33 D1, 39 D2, 12 D3 and three NAIA; New York is 10 D1, 7 D2 and 12 D3; Boston is 12 D3,
 3 D1 and one D2; Chicago is 3 D1, one D2, 6 D3 and one NAIA; Pittsburgh and Washington are each 3 D1
 and 3 D3. **Boston and Chicago are Division 3 cities** for men's distance running, and ten of New
 York's no-men's-track removals are D3 CUNY and small-private programs. The six unmeasured rows are
@@ -537,7 +537,7 @@ knowledge that the results data then contradicted.
 
 The setting data arrived one column at a time, which meant it could only be read one row at a time.
 **[`urban.html`](https://timhibbard.github.io/xc-cs-college-board/urban.html)** — its own tab in the
-nav, beside North Carolina — puts all 186 board rows in a single order, scored out of 100
+nav, beside North Carolina — puts all 187 board rows in a single order, scored out of 100
 as the average of three equal thirds: the **Walk Score** for the campus street address; the
 **federal locale**, the twelve codes spread evenly from *City: Large* to *Rural: Remote* and used as
 an **order only**, since IPEDS makes no claim that a large city is nine points denser than a midsize
@@ -548,17 +548,17 @@ line for how many there are.
 Equal thirds because nothing here justifies anything else: a weighting would be a claim about how
 much a train is worth against a shop, and the only evidence for it is one 17-year-old's preference,
 which has not been asked for. **The published Transit Score is shown in the table and never folded
-into the score** — it exists for only 122 of the 243 rows and an absent one is not a zero, so a
+into the score** — it exists for only 123 of the 244 rows and an absent one is not a zero, so a
 component that read it would score Columbia, with the 1 train outside, as having no transit at all.
-Over the 122 rows that have both, the computed number agrees: **Spearman 0.80, median gap 9 points,
-91 of 122 within 15, bias +2.6.** A distance-only version agrees at 0.70 and a count-only version
+Over the 123 rows that have both, the computed number agrees: **Spearman 0.80, median gap 9 points,
+92 of 123 within 15, bias +2.7.** A distance-only version agrees at 0.70 and a count-only version
 runs 17 points low, so both halves of the rule are doing work.
 
 **It is not a ranking of the running, the program or the fit**, for the same reason the columns
 behind it are not: it describes what he can reach on foot, and the coach picks the routes. Four things the
 order shows that the main table hides:
 
-- **The board is bimodal.** Scores run 8 to 100 with a median of 59, but **68 of the 186 score 70 or
+- **The board is bimodal.** Scores run 8 to 100 with a median of 59, but **69 of the 187 score 70 or
   better and 50 score under 40**. By metro that is the whole story: the Greenville ring's median is
   **38**, against 83 in Boston, 80 in New York, 80 in Pittsburgh and 79 in Chicago.
 - **The most urban schools are mostly the ones to avoid.** Seven of the ten most urban rows are
@@ -573,7 +573,7 @@ order shows that the main table hides:
   **74**. That is why the locale is a third of the total rather than the whole of it, and why both
   components are printed beside it.
 
-**61 of the 186 schools have no rail line and no bus line listed at their address** — which is what
+**61 of the 187 schools have no rail line and no bus line listed at their address** — which is what
 the page their scores came from named, not a survey of the town. Those rows read *none listed*, which
 is a question for the school rather than an answer about it. Every number in the two paragraphs above
 is re-derived from `SETTING` by `tools/render-check.js`, including the agreement statistics and the
@@ -742,7 +742,7 @@ instead of printing a number. `coach.src` is required: it is the page the rest o
 off, and it is what makes a stale name recoverable. `ig` is the program's Instagram handle in the
 casing the school publishes, and `igDept: true` marks it as the athletics department's account rather
 than the team's — the tables render that one with a degree sign, because "they publish nothing for
-the distance squad" is an answer rather than a hole. 223 of the 227 rows carry one; a row with **no**
+the distance squad" is an answer rather than a hole. 223 of the 228 rows carry one; a row with **no**
 `ig` means the school's own pages link none, which is a finding and is said as one on its page. The optional `tierTag` overrides the one-line
 "where this tier came from" note under the badge on a school page, for a row whose provenance none of
 the derived tests can see; **Shorter** is the only row that uses it, because its championship field is
@@ -755,7 +755,7 @@ a speed lean is an asset. `TOWNPOP` maps each `city` string to its ACS populatio
 not match shows as a missing number rather than a wrong one.
 
 `assets/detail.js` holds the per-race data behind the school pages: `XCRACES` (each race's finishers
-as raw seconds, in order — 1,843 races across 223 schools; `runners` is the scoring seven, so a short
+as raw seconds, in order — 1,849 races across 224 schools; `runners` is the scoring seven, so a short
 race also carries `nfin` and `vlast`, the gap to their last finisher, and a race deeper than seven
 carries `tail` and `tyears`, the men behind it), `T1500` (the 2026 outdoor 1500 for the 195 schools where one
 was found — the program's season depth chart `d15`, its conference-championship field `cm`, and any
@@ -768,8 +768,9 @@ town it named), `MEETS` (1,027 meets keyed by their own TFRRS id, because two di
 name; each carries date, season and a `VENUES` index — the season letter read off the events the meet's
 own page links, not off its date, for every one of the 503 track meets dated before April, which is what
 #4 and #21 closed), and `SCHED` (school name → the meet ids its
-own TFRRS results page shows it at, in date order — 4,853 appearances across 226 of the 227 schools with
-a page; Calumet College is the one exception and has no result on file for the season).
+own TFRRS results page shows it at, in date order — 4,853 appearances across 226 of the 228 schools with
+a page; Calumet College has no result on file for the season, and SCAD Atlanta's schedule has
+not been read into this layer yet).
 
 `NO_TRACK` in `assets/data.js` holds all **29** schools removed under the both-sports rule — seven of
 them Division 1 (Mercer, Tennessee Tech, Jacksonville State, Temple, Canisius, Loyola Maryland and

@@ -147,7 +147,18 @@ def splice(path, const, block, anchor=None):
     which is how every top-level object in these two files closes -- no brace counting,
     and a nested `};` in here is always indented. The doc comment immediately above the
     const is replaced with it, so editing the comment in this script is what edits the
-    comment in the file."""
+    comment in the file.
+
+    The terminator is `\\n};` and deliberately NOT `\\n};\\n`, because this function used to
+    write a file it could not then read. `block` ends at its own `};` with no trailing
+    newline, so the replace below joined it straight onto the line that followed and left
+    `};const SCHOOLS = [` in data.js -- which is valid JavaScript and renders fine, so
+    nothing noticed. The next run then looked for `\\n};\\n`, could not match that glued
+    line, ran on to the following one 3,000 lines later, and deleted SCHOOLS, REMOVED,
+    NO_TRACK, NO_PROGRAM and METROS along with the block it meant to replace. One run to
+    arm it, the next to fire. So the separator is now written explicitly, the scan tolerates
+    the glue already in the file so this heals it rather than tripping over it, and the
+    assertion below is the one that would have caught it the first time."""
     src = open(path, encoding='utf-8').read()
     decl = src.find('const %s = {' % const)
     if decl >= 0:
@@ -156,10 +167,23 @@ def splice(path, const, block, anchor=None):
         # the declaration means nothing else sits in the gap.
         if doc >= 0 and src[doc:decl].count('*/') == 1 and not src[doc:decl].strip().endswith(';'):
             start = doc
-        end = src.find('\n};\n', decl)
+        end = src.find('\n};', decl)
         if end < 0:
             sys.exit('%s: could not find the end of %s' % (path, const))
-        return path, src[:start] + block + src[end + len('\n};\n'):], 'replaced'
+        rest = src[end + len('\n};'):]
+        out = src[:start] + block + ('' if rest.startswith('\n') else '\n') + rest
+        # Replacing one top-level const with one top-level const cannot change WHICH ones
+        # the file declares. This is the whole guard: the bug above was a deletion of five
+        # other arrays, invisible in a line count and loud here. It compares names and not
+        # a count, and it reads a glued `};const SCHOOLS` as a declaration -- otherwise
+        # healing the glue looks exactly like adding a const, which is the one shape this
+        # check has to tell apart from losing five.
+        names = lambda s: set(re.findall(r'(?:^|\n|\};)const (\w+)\s*=', s))
+        lost = names(src) - names(out)
+        if lost:
+            sys.exit('%s: replacing %s would delete %s -- refusing'
+                     % (path, const, ', '.join(sorted(lost))))
+        return path, out, 'replaced'
     if anchor:
         at = src.find(anchor)
         if at < 0:

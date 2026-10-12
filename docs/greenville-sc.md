@@ -1,7 +1,22 @@
 # College Search — Greenville SC (300 mile radius)
 
-XC/Track + Computer Science. Last updated 2026-09-20 (v15 — eight new metros elsewhere on the board,
-and a recheck that added five rows to this ring)
+XC/Track + Computer Science. Last updated 2026-10-12 (v16 — SCAD Atlanta added, the ring's 87th row)
+
+> **SCAD Atlanta joins the ring at *Caution*, and it is the clearest case yet of the CS column
+> deciding a row the running would not.** An art-and-design college 141 miles out, NAIA, in the
+> Appalachian Athletic Conference. At the 2025 AAC championship (3rd, 65 points) he would have been
+> their **2nd man**, 114 seconds inside their seventh and 13 seconds behind their #1, across a seven
+> that spanned 128 seconds — a gap that would read as a fit anywhere else on this list. Two things
+> hold it down. **Read the class years before the gap:** four of those seven were seniors and only
+> three come back, and against the three he would arrive as their **#1 by 16 seconds**, which is the
+> thin-program signal rather than the fit one. And **SCAD offers no computer science degree** — the
+> nearest are interactive design and game development and user experience design, and the federal
+> program file records no computer-science completions at all. The cost and size figures on the row
+> are the whole institution's: SCAD files one federal record from Savannah and the Atlanta campus
+> files none of its own, so the 15,243 students and the $49,430 net price describe SCAD entire rather
+> than the Midtown campus he would live on. That campus is the compensation — **Walk 64**, with
+> MARTA's Gold and Red lines half a mile up Peachtree. The ring is now **87 rows, 84 of them
+> measured**. **No tier in this ring changed and no time moved.**
 
 > **The board grew by eight metros and this ring gained five rows.** A federal candidate sweep run for
 > Boston, Philadelphia, Washington, Baltimore, Pittsburgh, Buffalo, Hampton Roads and Newark also passed
