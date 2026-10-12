@@ -12108,6 +12108,34 @@ const XCRACES = {
       runners: [2315.4, 2722.7],
       years: ["FR", "FR"] },
   ],
+  "SCAD Atlanta": [
+    { meet: "Kennesaw State Stan Sims Cross Country Opener", date: "2025-08-29", dist: "4M", level: "invitational", place: 4, score: 95,
+      slot: 2, g1: 20.4, v7: -341.3, spread: 361.7, corr: 0,
+      runners: [1215.6, 1250.1, 1273, 1281.3, 1348.9, 1427.7, 1577.3],
+      years: ["SO", "SR", "SR", "SR", "FR", "SO", "FR"] },
+    { meet: "Southern Showcase (University/College)", date: "2025-09-12", dist: "8K", level: "invitational", place: 36, score: 1049,
+      slot: 1, g1: -23.4, v7: -160.6, spread: 137.2, corr: 0,
+      runners: [1559.4, 1564.2, 1574.1, 1600.7, 1624.3, 1639.6, 1696.6],
+      years: ["SR", "SR", "SO", "SR", "FR", "FR", "SR"] },
+    { meet: "Louisville Classic", date: "2025-10-04", dist: "8K", level: "invitational", place: 15, score: 479,
+      slot: 1, g1: -11.8, v7: -199.2, spread: 187.4, corr: 0,
+      runners: [1547.8, 1557.3, 1595.6, 1603.2, 1623.6, 1664.6, 1735.2],
+      years: ["SO", "SR", "SR", "SR", "FR", "FR", "SR"] },
+    { meet: "NAIA Great Lakes Challenge", date: "2025-10-25", dist: "8K", level: "invitational", place: 23, score: 560,
+      slot: 1, g1: -4.7, v7: null, spread: 67, corr: 0,
+      nfin: 6, vlast: -71.7,
+      runners: [1540.7, 1558.7, 1562, 1564.5, 1565.4, 1607.7],
+      years: ["SR", "SR", "SO", "SR", "FR", "FR"] },
+    { meet: "Appalachian Athletic Conference Cross Country Championships", date: "2025-11-07", dist: "8K", level: "conference", place: 3, score: 65,
+      slot: 2, g1: 13.5, v7: -114.2, spread: 127.7, corr: 0,
+      runners: [1522.5, 1552, 1553.5, 1557, 1584.8, 1635.2, 1650.2],
+      years: ["SR", "SO", "SR", "SR", "FR", "SR", "FR"] },
+    { meet: "NAIA Cross Country Championships", date: "2025-11-21", dist: "8K", level: "national championship", place: null, score: null,
+      slot: 1, g1: -15.1, v7: null, spread: 51.7, corr: 0,
+      nfin: 4, vlast: -66.8,
+      runners: [1551.1, 1563.5, 1589.5, 1602.8],
+      years: ["SR", "SR", "SO", "SR"] },
+  ],
 };
 
 /* Where his projected 1500 would have finished in May.
@@ -14134,6 +14162,8 @@ const SETLINES = {
     { bus: [["90 Magic City Connector", 0.9], ["31 Highway 31 South", 0.9]] },
   "sarah-lawrence":
     { rail: [["Harlem", 0.5]], bus: [["26 26 - THE BRONX-YONKERS", 0.1], ["30 30 -YONKERS-BRONXVILLE-NEW ROCHELLE", 0.4], ["52 52 - MT VERNON-THE BRONX-BRONXVILLE", 0.4], ["25 25 - THE BRONX-YONKERS", 0.5]] },
+  "scad-atlanta":
+    { rail: [["GOLD GOLD", 0.5], ["RED RED", 0.5]], bus: [["110 Peachtree Road / Buckhead", 0.1], ["484 Hickory Grove - Midtown", 0.4], ["483 Woodstock/Town Center - Midtown", 0.4], ["37 Defoors Ferry Road", 0.4], ["94 Northside Drive", 0.4], ["40 Peachtree Street / Downtown", 0.5], ["27 Cheshire Bridge Road", 0.5]] },
   "seton-hall":
     { rail: [["Gladstone Branch", 0.8], ["Morris & Essex Line", 0.8]], bus: [["31", 0.1], ["1", 0.4], ["107", 0.4], ["361", 0.4], ["37", 0.4]] },
   "shaw":

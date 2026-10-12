@@ -650,6 +650,8 @@ const SETTING = {
     { loc: "City: Midsize", locCode: 12, town: "Savannah city", townMi: 7.8, townSqMi: 108.9, walk: 27, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/3219-college-street-savannah-ga" },
   "SC State":
     { loc: "Town: Distant", locCode: 32, town: "Orangeburg city", townMi: 1.1, townSqMi: 9.0, walk: 40, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/lance-street-orangeburg-sc" },
+  "SCAD Atlanta":
+    { loc: "City: Large", locCode: 11, town: "Atlanta city", townMi: 3.0, townSqMi: 135.3, walk: 64, bike: 64, tscore: 59, railN: 2, railMi: 0.5, busN: 7, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/1600-peachtree-st-ne-atlanta-ga" },
   "Seton Hall":
     { loc: "Suburb: Large", locCode: 21, town: "South Orange Village township", townMi: 0.9, townSqMi: 2.8, walk: 78, bike: 47, tscore: null, railN: 2, railMi: 0.8, busN: 5, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/400-s-orange-ave-south-orange-nj" },
   "Shaw":
@@ -768,7 +770,8 @@ const SETTING = {
     { loc: "City: Large", locCode: 11, town: "Queens borough", townMi: 4.0, townSqMi: 108.7, walk: 96, bike: 52, tscore: 100, railN: 10, railMi: 0.3, busN: 10, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/94-20-guy-r-brewer-blvd-jamaica-ny" },
   "Young Harris":
     { loc: "Rural: Remote", locCode: 43, town: "Young Harris city", townMi: 0.1, townSqMi: 0.9, walk: 32, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/college-street-young-harris-ga" },
-};const SCHOOLS = [
+};
+const SCHOOLS = [
   { name: "DePaul", slug: "depaul", city: "Lincoln Park", metro: "chicago", mi: 4.1,
     lat: 41.925, lon: -87.655, div: "D1", conf: "Big East",
     cs: "verified", csSrc: "fed", csShare: 10.7, sat: "1140–1330", satSrc: "fed", accept: "76%", acceptSrc: "fed",
@@ -3159,6 +3162,17 @@ const SETTING = {
     coach: { name: "Caleb Thornburg", title: "Head Track and Field Coach — the only coach the directory lists under cross country and track, and it names no cross country head", email: "thornburgc@carolinau.edu", phone: "336-422-9104", src: "https://cubruins.com/staff-directory" },
     ig: "cubruins", igDept: true,
     note: "NAIA, and the only evidence of a men’s cross country program is the school’s own site, which publishes a roster and a schedule for it. TFRRS holds no cross country result at all, so there is no championship field to measure. Caution rather than verify, and the tier rests on track marks instead: their fastest 1500 is 4:26.1 and their fastest 5000 is 16:50, so he would arrive <b>25 seconds ahead of their best 1500 and 70 seconds ahead of their best 5000</b>. Two marks from different distances, agreeing, and arriving ahead of a team’s #1 is what a thin programme looks like on this board. A roster count from Thornburg is still the one thing that could move this row — but it would have to contradict both marks.",
+  },
+  { name: "SCAD Atlanta", slug: "scad-atlanta", city: "Atlanta GA", metro: "greenville", mi: 141.3,
+    lat: 33.796774, lon: -84.391117, div: "NAIA", conf: "Appalachian Athletic",
+    cs: "none", csSrc: "fed", csShare: 0.0, sat: "1030–1270", satSrc: "fed", accept: "83%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 41630, rb: 18123, sticker: 59753, net: 49430, size: 15243, ipeds: 140951 },
+    b1500: null, b5000: null, tier: "caution", tierSrc: "ladder",
+    xc: { slot: 2, g1: 13.5, v7: -114.2, spread: 127.7, nraces: 1 },
+    xcInv: { slot: 1.2, g1: -3.6, v7: -261.3, spread: 210.3, eq: true, nraces: 4, short: true, maxfin: 7 },
+    shape: { date: "2025-11-07", meet: "Appalachian Athletic Conference Cross Country Championships", dist: "8K", n: 7, ret: 3, g1ret: -16, fr: 2, so: 1, jr: 0, sr: 4 },
+    coach: { name: "Chris Benassi", title: "Head Cross Country and Track & Field Coach — Meredith Herman assists in both sports", email: "cbenassi@scad.edu", phone: "404-253-5411", src: "https://atlanta.scadathletics.com/staff-directory" },
+    note: "First measurement, from the 2025 Appalachian Athletic Conference Cross Country Championships (3rd, 65 pts): <b>2nd man</b>, 114 seconds inside their seventh and 13 seconds behind their #1. Their seven spanned 128 seconds. They also entered four men at the NAIA Cross Country Championships, under the five-finisher floor, so that race is left out of the average. Read the class years before the gap, though: four of those seven were seniors and only three come back, and against the three he would arrive as their <b>#1 by 16 seconds</b>. <b>No computer science degree</b> — the nearest SCAD offers are interactive design and game development and user experience design, and the federal program file records no computer-science completions at all, which is the one thing that keeps an otherwise well-placed row off target. Its cost and size figures are the whole institution's: SCAD files a single federal record from Savannah and the Atlanta campus has none of its own, so the 15,243 students and the $49,430 net price describe SCAD entire rather than the Midtown campus he would live on. That campus is the compensation — Walk 64 and MARTA's Gold and Red lines half a mile up Peachtree, so the errands of a week are on foot.",
   },
 ];
 

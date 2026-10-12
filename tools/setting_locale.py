@@ -110,6 +110,32 @@ CITY_BY_HAND = {
 }
 
 
+# A campus that is not in the city its institution files under. SCAD is one federal
+# institution headquartered in Savannah (140951) and the row on this board is its Atlanta
+# campus, so every field above would have been read 230 miles from the campus it describes:
+# the locale would be Savannah's, and townMi would measure the Atlanta coordinate against
+# the Savannah centroid and report a quarter of the state. There is no separate unit ID to
+# join to -- the branch files no IPEDS record of its own -- so the override is the only
+# honest route, and it is kept to the two things that are the *place's* and not the
+# institution's.
+#
+# `locale` is still a federal classification and not a judgement of mine: LOCALE describes
+# the place, and every Atlanta institution in HD2023 carries 11 -- Georgia Tech 139755,
+# Emory 139658, Morehouse 140553, Clark Atlanta 138947 -- so a campus 1.4 miles from
+# Georgia Tech reads 11 for the same reason they do. `addr` is SCAD's own published campus
+# address, which is what the Walk Score pass has to ask about; asking it about Bull Street
+# would answer confidently about the wrong city.
+BRANCH = {
+    'SCAD Atlanta': {
+        'localeCode': 11,
+        'city': 'Atlanta', 'state': 'GA',
+        'addr': {'street': '1600 Peachtree St NE', 'city': 'Atlanta',
+                 'state': 'GA', 'zip': '30309'},
+        'why': 'Atlanta campus of 140951, which files from Savannah',
+    },
+}
+
+
 def load_gaz(path, places=None, fill_only=False):
     """Keyed on (state, lowercased name), the legal type stripped. Where a state has two
     entries of the same name -- a city and a CDP of the same name happens -- the larger by
@@ -194,7 +220,10 @@ def main():
         elif rec is None:
             no_match.append('%s (%s)' % (r['name'], uid))
 
+        br = BRANCH.get(r['name'])
         code = int(rec['LOCALE']) if rec and rec['LOCALE'].strip().lstrip('-').isdigit() else None
+        if br:
+            code = br['localeCode']
         if rec is not None and code not in LOCALE:
             no_locale.append(r['name'])
 
@@ -206,7 +235,8 @@ def main():
             'locale': LOCALE.get(code),
             'localeCode': code,
         }
-        town = find_town(places, rec['STABBR'], rec['CITY']) if rec is not None else None
+        town = (find_town(places, br['state'], br['city']) if br
+                else find_town(places, rec['STABBR'], rec['CITY']) if rec is not None else None)
         if town:
             entry['townMi'] = round(haversine_mi((r['lat'], r['lon']), (town[0], town[1])), 1)
             entry['townSqMi'] = round(town[2], 1)
@@ -220,6 +250,9 @@ def main():
             entry['addr'] = {'street': rec['ADDR'].strip(), 'city': rec['CITY'].strip(),
                              'state': rec['STABBR'].strip(), 'zip': rec['ZIP'].strip()[:5]}
             entry['hdName'] = rec['INSTNM'].strip()
+        if br:
+            entry['addr'] = dict(br['addr'])
+            entry['branch'] = br['why']
         out[r['name']] = entry
 
     json.dump(out, open(os.path.join(WORK, 'setting1.json'), 'w'), indent=1, sort_keys=True)
