@@ -121,7 +121,7 @@ const ATHLETE = {
     '5.8K': 1100,
     '3.73M': 1154,
     '6.2K': 1189,
-    '4M': 1236,
+    '4M': 1234,
     '7K': 1359,
     '7.2K': 1391,
     '7.7K': 1502,
@@ -296,6 +296,8 @@ const SETTING = {
     { loc: "Suburb: Large", locCode: 21, town: "Glenside CDP", townMi: 1.0, townSqMi: 1.3, walk: 30, bike: null, tscore: null, railN: 2, railMi: 0.9, busN: 4, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/450-s-easton-rd-glenside-pa" },
   "Auburn":
     { loc: "City: Small", locCode: 13, town: "Auburn city", townMi: 0.4, townSqMi: 62.5, walk: 36, bike: null, tscore: null, railN: 0, railMi: null, busN: 1, busMi: 0.4, lvl: "approx", off: 0.9, ws: "https://www.walkscore.com/score/south-donahue-drive-auburn-al" },
+  "Augsburg":
+    { loc: "City: Large", locCode: 11, town: "Minneapolis city", townMi: 1.4, townSqMi: 54.0, walk: 83, bike: 95, tscore: 71, railN: 3, railMi: 0.3, busN: 6, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2211-riverside-ave-minneapolis-mn" },
   "Augusta University":
     { loc: "City: Midsize", locCode: 12, town: "Augusta-Richmond County consolidated government (balance)", townMi: 8.7, townSqMi: 302.3, walk: 56, bike: 55, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1120-15th-st-augusta-ga" },
   "Babson":
@@ -310,6 +312,8 @@ const SETTING = {
     { loc: "City: Small", locCode: 13, town: "Waltham city", townMi: 1.0, townSqMi: 12.7, walk: 49, bike: 23, tscore: 33, railN: 1, railMi: 1.2, busN: 2, busMi: 0.0, lvl: "address", off: 0.0, ws: "https://www.walkscore.com/score/175-forest-st-waltham-ma" },
   "Berry College":
     { loc: "Suburb: Small", locCode: 23, town: "Rome city", townMi: 1.2, townSqMi: 31.8, walk: 16, bike: 61, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/2277-martha-berry-hwy-nw-mount-berry-ga" },
+  "Bethel":
+    { loc: "Suburb: Large", locCode: 21, town: "St. Paul city", townMi: 8.0, townSqMi: 52.0, walk: 29, bike: 15, tscore: null, railN: 0, railMi: null, busN: 2, busMi: 0.7, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/3900-bethel-dr-saint-paul-mn" },
   "Bluefield State":
     { loc: "Town: Distant", locCode: 32, town: "Bluefield city", townMi: 1.5, townSqMi: 9.0, walk: 32, bike: null, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/219-rock-street-bluefield-wv" },
   "Boston College":
@@ -378,6 +382,8 @@ const SETTING = {
     { loc: "City: Large", locCode: 11, town: "New York city", townMi: 10.1, townSqMi: 300.5, walk: 97, bike: null, tscore: null, railN: 3, railMi: 0.0, busN: 0, busMi: null, lvl: "address", ws: "https://www.walkscore.com/score/west-116-st-and-broadway-new-york-ny" },
   "Concordia Chicago":
     { loc: "Suburb: Large", locCode: 21, town: "River Forest village", townMi: 0.4, townSqMi: 2.5, walk: 51, bike: 51, tscore: null, railN: 2, railMi: 0.9, busN: 3, busMi: 0.3, lvl: "address", off: 0.4, ws: "https://www.walkscore.com/score/augusta-river-forest-il" },
+  "Concordia-St Paul":
+    { loc: "City: Large", locCode: 11, town: "St. Paul city", townMi: 2.5, townSqMi: 52.0, walk: 74, bike: 75, tscore: null, railN: 1, railMi: 0.5, busN: 3, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1282-concordia-ave-saint-paul-mn" },
   "Converse":
     { loc: "City: Small", locCode: 13, town: "Spartanburg city", townMi: 0.8, townSqMi: 20.3, walk: 64, bike: 44, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/580-e-main-st-spartanburg-sc" },
   "Coppin State":
@@ -464,6 +470,8 @@ const SETTING = {
     { loc: "City: Large", locCode: 11, town: "Greensboro city", townMi: 2.1, townSqMi: 133.9, walk: 84, bike: null, tscore: null, railN: 0, railMi: null, busN: 4, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/815-w-market-st-greensboro-nc" },
   "Guilford":
     { loc: "City: Large", locCode: 11, town: "Greensboro city", townMi: 3.9, townSqMi: 133.9, walk: 21, bike: 25, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/arcadia-drive-greensboro-nc" },
+  "Hamline":
+    { loc: "City: Large", locCode: 11, town: "St. Paul city", townMi: 3.2, townSqMi: 52.0, walk: 76, bike: 85, tscore: null, railN: 1, railMi: 0.7, busN: 3, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1536-hewitt-avenue-saint-paul-mn" },
   "Hampton":
     { loc: "Suburb: Large", locCode: 21, town: "Hampton city", townMi: 3.0, townSqMi: 51.5, walk: 39, bike: 44, tscore: 42, railN: 0, railMi: null, busN: 9, busMi: 0.3, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/200-william-r-harvey-way-hampton-va" },
   "Harvard":
@@ -532,6 +540,8 @@ const SETTING = {
     { loc: "City: Large", locCode: 11, town: "Chicago city", townMi: 11.4, townSqMi: 227.7, walk: 88, bike: 74, tscore: 71, railN: 2, railMi: 0.3, busN: 5, busMi: 0.0, lvl: "address", off: 0.2, ws: "https://www.walkscore.com/score/1032-w-sheridan-rd-chicago-il" },
   "Loyola Maryland":
     { loc: "City: Large", locCode: 11, town: "Baltimore city", townMi: 3.3, townSqMi: 80.9, walk: 48, bike: 37, tscore: 53, railN: 1, railMi: 1.4, busN: 2, busMi: 0.1, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/4501-n-charles-st-baltimore-md" },
+  "Macalester":
+    { loc: "City: Large", locCode: 11, town: "St. Paul city", townMi: 3.2, townSqMi: 52.0, walk: 87, bike: 78, tscore: null, railN: 1, railMi: 1.1, busN: 7, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/1600-grand-ave-saint-paul-mn" },
   "Manhattan":
     { loc: "City: Large", locCode: 11, town: "Bronx borough", townMi: 3.8, townSqMi: 42.2, walk: 90, bike: 58, tscore: 88, railN: 5, railMi: 0.1, busN: 10, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/4513-manhattan-college-parkway-riverdale-ny" },
   "Mars Hill":
@@ -550,6 +560,8 @@ const SETTING = {
     { loc: "Suburb: Large", locCode: 21, town: "Kings Point village", townMi: 1.3, townSqMi: 3.4, walk: 10, bike: 27, tscore: null, railN: 0, railMi: null, busN: 1, busMi: 0.2, lvl: "address", off: 0.5, ws: "https://www.walkscore.com/score/steppingstone-lane-kings-point-ny" },
   "Methodist":
     { loc: "City: Midsize", locCode: 12, town: "Fayetteville city", townMi: 6.7, townSqMi: 148.3, walk: 59, bike: 42, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/ramsey-st-fayetteville-nc" },
+  "Minnesota":
+    { loc: "City: Large", locCode: 11, town: "Minneapolis city", townMi: 1.7, townSqMi: 54.0, walk: 76, bike: null, tscore: null, railN: 2, railMi: 0.1, busN: 10, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/church-street-se-minneapolis-mn" },
   "MIT":
     { loc: "City: Midsize", locCode: 12, town: "Cambridge city", townMi: 1.7, townSqMi: 6.4, walk: 94, bike: 99, tscore: 66, railN: 6, railMi: 0.4, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/77-massachusetts-avenue-cambridge-ma" },
   "Molloy":
@@ -580,6 +592,8 @@ const SETTING = {
     { loc: "City: Large", locCode: 11, town: "Newark city", townMi: 1.3, townSqMi: 24.1, walk: 91, bike: 66, tscore: 91, railN: 4, railMi: 0.1, busN: 10, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/tiernan-alley-newark-nj" },
   "Norfolk State":
     { loc: "City: Midsize", locCode: 12, town: "Norfolk city", townMi: 5.2, townSqMi: 53.3, walk: 45, bike: 47, tscore: 60, railN: 2, railMi: 0.4, busN: 5, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/700-park-avenue-norfolk-va" },
+  "North Central":
+    { loc: "City: Large", locCode: 11, town: "Minneapolis city", townMi: 0.5, townSqMi: 54.0, walk: 84, bike: 98, tscore: 82, railN: 2, railMi: 0.4, busN: 10, busMi: 0.1, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/910-elliot-ave-minneapolis-mn" },
   "North Georgia":
     { loc: "Town: Distant", locCode: 32, town: "Dahlonega city", townMi: 0.3, townSqMi: 8.8, walk: 76, bike: 38, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/82-college-circle-dahlonega-ga" },
   "North Greenville":
@@ -590,6 +604,8 @@ const SETTING = {
     { loc: "City: Large", locCode: 11, town: "Boston city", townMi: 3.6, townSqMi: 48.3, walk: 96, bike: 90, tscore: 100, railN: 8, railMi: 0.0, busN: 10, busMi: 0.0, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/360-huntington-ave-boston-ma" },
   "Northwestern":
     { loc: "City: Small", locCode: 13, town: "Evanston city", townMi: 1.2, townSqMi: 7.8, walk: 96, bike: 92, tscore: 61, railN: 2, railMi: 0.2, busN: 8, busMi: 0.1, lvl: "address", off: 0.5, ws: "https://www.walkscore.com/score/633-clark-st-evanston-il" },
+  "Northwestern-St Paul":
+    { loc: "Suburb: Large", locCode: 21, town: "St. Paul city", townMi: 6.6, townSqMi: 52.0, walk: 31, bike: 31, tscore: 20, railN: 0, railMi: null, busN: 2, busMi: 0.2, lvl: "address", off: 0, ws: "https://www.walkscore.com/score/3003-snelling-ave-n-saint-paul-mn" },
   "NYIT":
     { loc: "Rural: Fringe", locCode: 41, town: "Old Westbury village", townMi: 1.6, townSqMi: 8.6, walk: 27, bike: null, tscore: null, railN: 1, railMi: 0.6, busN: 2, busMi: 0.4, lvl: "approx", off: 0.8, ws: "https://www.walkscore.com/score/northern-blvd-old-westbury-ny" },
   "NYU":
@@ -662,6 +678,10 @@ const SETTING = {
     { loc: "City: Midsize", locCode: 12, town: "Columbia city", townMi: 7.6, townSqMi: 138.3, walk: 84, bike: 53, tscore: 56, railN: 0, railMi: null, busN: 10, busMi: 0.0, lvl: "approx", off: 0.6, ws: "https://www.walkscore.com/score/columbia-campus-columbia-sc" },
   "Southern Wesleyan":
     { loc: "Suburb: Midsize", locCode: 22, town: "Central town", townMi: 0.8, townSqMi: 3.3, walk: 3, bike: 11, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/907-wesleyan-drive-central-sc" },
+  "St Catherine":
+    { loc: "City: Large", locCode: 11, town: "St. Paul city", townMi: 4.2, townSqMi: 52.0, walk: 57, bike: 66, tscore: null, railN: 0, railMi: null, busN: 5, busMi: 0.2, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2004-randolph-ave-saint-paul-mn" },
+  "St Thomas":
+    { loc: "City: Large", locCode: 11, town: "St. Paul city", townMi: 4.2, townSqMi: 52.0, walk: 73, bike: 90, tscore: null, railN: 1, railMi: 1.0, busN: 6, busMi: 0.0, lvl: "address", off: 0.1, ws: "https://www.walkscore.com/score/2115-summit-ave-saint-paul-mn" },
   "St. Andrews":
     { loc: "Town: Distant", locCode: 32, town: "Laurinburg city", townMi: 1.5, townSqMi: 12.5, walk: 36, bike: 46, tscore: null, railN: 0, railMi: null, busN: 0, busMi: null, lvl: "address", off: 0.5, ws: "https://www.walkscore.com/score/dogwood-mile-laurinburg-nc" },
   "St. John’s":
@@ -1369,7 +1389,7 @@ const SCHOOLS = [
     b1500: "3:51.4", b5000: 856, tier: "target", tierSrc: "xc",
     xc: { slot: 6.7, g1: 49.7, v7: -12.2, spread: 61.9, nraces: 3 },
     xcInv: { slot: 4.8, g1: 13.4, v7: -51.8, spread: 65.2, eq: true, nraces: 6 },
-    xc26: { slot: 3.8, g1: 27.9, v7: -44.2, spread: 59.3, eq: true, nraces: 4, short: true, maxfin: 37, date: "2026-10-03" },
+    xc26: { slot: 3.8, g1: 27.9, v7: -44.2, spread: 59.3, eq: true, nraces: 4, short: true, maxfin: 27, date: "2026-10-03" },
     shape: { date: "2026-10-03", meet: "Brissman-Lundeen Invitational", dist: "8K", n: 7, ret: 4, g1ret: -49.4, inv: true, fr: 3, so: 1, jr: 0, sr: 3, mso: 2, mjr: 3 },
     coach: { name: "Chris Hall", title: "Head Cross Country Coach / Head Track & Field Coach", email: "hallc@uchicago.edu", phone: "773-702-4640", src: "https://athletics.uchicago.edu/sports/mens-cross-country/coaches" , ig: "cc_hall65", igSrc: "bio: “Head Track & Field and Cross Country Coach at The University of Chicago”" },
     ig: "uchicagoxc",
@@ -1727,7 +1747,7 @@ const SCHOOLS = [
     b1500: "4:10.7", b5000: 963, tier: "caution", tierSrc: "xc",
     xc: { slot: 1, g1: -136.4, v7: -473.1, spread: 336.7, nraces: 1 },
     xcInv: { slot: 1, g1: -164.1, spread: 386.4, eq: true, nraces: 3, short: true, maxfin: 6 },
-    xc26: { slot: 1, g1: -227.6, v7: -609.9, spread: 293.5, eq: true, nraces: 3, short: true, maxfin: 9, date: "2026-10-02" },
+    xc26: { slot: 1, g1: -227.6, v7: -609.9, spread: 293.5, eq: true, nraces: 3, short: true, maxfin: 8, date: "2026-10-02" },
     shape: { date: "2026-10-02", meet: "Spartan Classic", dist: "8K", n: 7, ret: 6, g1ret: -273.9, inv: true, fr: 1, so: 1, jr: 4, sr: 1, mfr: 3, mso: 2 },
     coach: { name: "Justin Davis", title: "Head Track & Field/Cross Country Coach", email: "jdavis@livingstone.edu", phone: "704-216-6408", src: "https://bluebearathletics.com/sports/mens-cross-country/coaches" },
     ig: "livingstone_xctf",
@@ -1818,7 +1838,7 @@ const SCHOOLS = [
     b1500: "4:02.2", b5000: 903, tier: "caution", tierSrc: "xc",
     xc: { slot: 3, g1: 62.1, spread: 382.1, nraces: 2, short: true, maxfin: 6 },
     xcInv: { slot: 2.8, g1: 59.6, v7: -291.3, spread: 350.8, eq: true, nraces: 4 },
-    xc26: { slot: 1, g1: -163.6, v7: -350, spread: 242.5, eq: true, nraces: 3, short: true, maxfin: 9, date: "2026-10-02" },
+    xc26: { slot: 1, g1: -163.6, v7: -350, spread: 242.5, eq: true, nraces: 3, short: true, maxfin: 8, date: "2026-10-02" },
     shape: { date: "2026-10-02", meet: "Georgia Tech XC Invitational", dist: "8K", n: 7, ret: 6, g1ret: -84.8, inv: true, fr: 2, so: 3, jr: 1, sr: 1, msr: 2 },
     coach: { name: "Margaret Fox", title: "Interim Head Cross Country/Track & Field Coach", email: "mfox1@oglethorpe.edu", phone: "404-364-8410", src: "https://www.gopetrels.com/sports/mens-cross-country/coaches" },
     ig: "GoPetrelsTrack",
@@ -1971,7 +1991,7 @@ const SCHOOLS = [
     b1500: "4:18.7", b5000: 1221, tier: "caution", tierSrc: "xc",
     xc: { slot: 1, g1: -494.9, v7: -809.9, spread: 612.5, nraces: 2, short: true, maxfin: 10 },
     xcInv: { slot: 1, g1: -574.2, v7: -1107.4, spread: 795, eq: true, nraces: 7, short: true, maxfin: 8 },
-    xc26: { slot: 1, g1: -386.1, v7: -900.3, spread: 547.6, nraces: 2, short: true, maxfin: 9, date: "2026-10-04" },
+    xc26: { slot: 1, g1: -386.1, v7: -900.3, spread: 547.6, nraces: 2, short: true, maxfin: 8, date: "2026-10-04" },
     shape: { date: "2026-10-04", meet: "2026 Queensborough Cross Country Invitational", dist: "8K", n: 7, ret: 7, g1ret: -375.5, inv: true, fr: 3, so: 2, jr: 2, sr: 0 },
     coach: { name: "Joseph Benson", title: "Head Coach - Cross Country and Track & Field", email: "jbenson@ccny.cuny.edu", phone: null, src: "https://www.ccnyathletics.com/sports/mens-cross-country/coaches" , ig: "joey_benson", igSrc: "bio: “Head Coach @ccnyxctrack”" },
     ig: "ccnyxctrack",
@@ -3186,10 +3206,147 @@ const SCHOOLS = [
     cost: { own: "private", resid: "out", tuition: 41630, rb: 18123, sticker: 59753, net: 49430, sizeInst: 15243, ipeds: 140951 },
     b1500: null, b5000: null, tier: "caution", tierSrc: "ladder",
     xc: { slot: 2, g1: 13.5, v7: -114.2, spread: 127.7, nraces: 1 },
-    xcInv: { slot: 1.2, g1: -3.6, v7: -261.3, spread: 210.3, eq: true, nraces: 4, short: true, maxfin: 7 },
+    xcInv: { slot: 1, g1: -13.3, v7: -179.9, spread: 130.5, nraces: 3, short: true, maxfin: 7 },
     shape: { date: "2025-11-07", meet: "Appalachian Athletic Conference Cross Country Championships", dist: "8K", n: 7, ret: 3, g1ret: -16, fr: 2, so: 1, jr: 0, sr: 4 },
     coach: { name: "Chris Benassi", title: "Head Cross Country and Track & Field Coach — Meredith Herman assists in both sports", email: "cbenassi@scad.edu", phone: "404-253-5411", src: "https://atlanta.scadathletics.com/staff-directory" },
     note: "First measurement, from the 2025 Appalachian Athletic Conference Cross Country Championships (3rd, 65 pts): <b>2nd man</b>, 114 seconds inside their seventh and 13 seconds behind their #1. Their seven spanned 128 seconds. They also entered four men at the NAIA Cross Country Championships, under the five-finisher floor, so that race is left out of the average. Read the class years before the gap, though: four of those seven were seniors and only three come back, and against the three he would arrive as their <b>#1 by 16 seconds</b>. <b>No computer science degree</b> — the nearest SCAD offers are interactive design and game development and user experience design, and the federal program file records no computer-science completions at all, which is the one thing that keeps an otherwise well-placed row off target. <b>No enrollment figure for this campus exists anywhere</b>, so the Students column is blank rather than wrong: SCAD files one federal record and files it from Savannah, and that record's 15,243 undergraduates are SCAD entire. The federal Clery survey does list an Atlanta campus at 1600 Peachtree but reports no enrollment for it, and SCAD's own Fact Book splits enrollment by major, minor, gender and country and never by location. The $41,630 tuition and $49,430 net price come from that same single record and are left as they are — SCAD charges one rate university-wide — but how many of its students are in Midtown is not published. That campus is the compensation — Walk 64 and MARTA's Gold and Red lines half a mile up Peachtree, so the errands of a week are on foot.",
+  },
+
+  /* Minneapolis. The eleventh metro and the first in the Upper Midwest: a 20-driving-mile
+     ring from downtown Minneapolis, which is wide enough to take in the whole of Saint Paul
+     and so holds nine men's cross country programmes across three divisions and five
+     conferences -- Big Ten, Summit League, Northern Sun, MIAC and UMAC. It is the only ring
+     on this board where EVERY row is inside eleven miles of road: Boston and New York each
+     hold more programmes at that range, but both keep spreading well past it, and the whole
+     of this metro's board is the width of one commute.
+
+     Three institutions inside the ring are deliberately not rows. Metropolitan State
+     University has no intercollegiate athletics at all: the federal Equity in Athletics
+     survey, which every Title IV school with a programme must file, holds no record for
+     unit 174020, its own athletics URL is a 404, and TFRRS has no page for it under any
+     slug, men's or women's. Walden, Capella, MCAD, Dunwoody and the four seminaries are the
+     same case and are omitted for the same reason. St Catherine University is a NO_PROGRAM
+     row rather than an omission, because it does have an athletics department -- it is a
+     women's college, so there is no men's team to join. And Crown College, the one other
+     four-year Minnesota school with men's cross country in reach, misses by the ring rule
+     rather than by any judgement: 29.4 driving miles from downtown, 24.2 straight-line.
+     The nine were found the way every ring on this board now is -- conference by conference
+     off each conference's own men's-sponsored-sports table, not school by school. See
+     methodology.html §6a. */
+  { name: "North Central", slug: "north-central", city: "Minneapolis MN", metro: "minneapolis", mi: 0.9,
+    lat: 44.968625, lon: -93.261511, div: "D3", conf: "UMAC",
+    cs: "verified", csSrc: "fed", csShare: 1.5, sat: "not reported", satSrc: "none", accept: "99%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 32220, rb: 10054, sticker: 42274, net: 25817, size: 709, ipeds: 174437 },
+    b1500: "4:31.3", b5000: 1103, tier: "caution", tierSrc: "ladder",
+    xc: { slot: 1, g1: -301.8, spread: 165, nraces: 1, short: true, maxfin: 5 },
+    shape: { date: "2025-11-01", meet: "UMAC XC Championship", dist: "8K", n: 5, ret: 3, g1ret: -301.8, fr: 0, so: 2, jr: 1, sr: 2 },
+    coach: { name: "Mel Anderson", title: "Head Coach", email: "maanders@northcentral.edu", phone: "612-501-6502", src: "https://ncurams.com/sports/mens-cross-country/coaches" },
+    ig: "ncu_xctf",
+    note: "A mile from downtown Minneapolis, and the only team in this metro that does not field five men anywhere except its conference meet &mdash; the eight other races on file, across both seasons, finished between two and four men. At the 2025 UMAC championship (7th, 174 pts) their five ran 30:38&ndash;33:23 and <b>he would arrive as their #1 by five minutes</b>. 709 undergraduates, 37 men across the combined track roster, and nobody to train with.",
+  },
+  { name: "Minnesota", slug: "minnesota", city: "Minneapolis MN", metro: "minneapolis", mi: 1.6,
+    lat: 44.972851, lon: -93.235464, div: "D1", conf: "Big Ten",
+    cs: "verified", csSrc: "fed", csShare: 10.4, sat: "1300–1500", satSrc: "fed", accept: "80%", acceptSrc: "fed",
+    cost: { own: "public", resid: "out", tuition: 38362, tuiIn: 17214, tuiOut: 38362, rb: 13856, sticker: 52218, net: 16778, size: 31855, ipeds: 174066 },
+    b1500: "3:43.2", b5000: 841, tier: "deep", tierSrc: "ladder",
+    xc: { slot: 7.5, g1: 79.5, v7: 8.8, spread: 70.7, eq: true, nraces: 2 },
+    xcInv: { slot: 5.2, g1: 52.7, v7: 15.2, spread: 37.6, eq: true, nraces: 4 },
+    xc26: { slot: 8, g1: 104.8, v7: 45.3, spread: 59.5, eq: true, nraces: 4, date: "2026-10-09" },
+    shape: { date: "2026-10-09", meet: "Nuttycombe Wisconsin Invitational", dist: "8K", n: 7, ret: 6, g1ret: 126.8, inv: true, fr: 1, so: 3, jr: 2, sr: 1, mfr: 3 },
+    coach: { name: "Sarah Hopkins", title: "Cross Country Head Coach", email: "hess0125@umn.edu", phone: "612-624-2058", src: "https://gophersports.com/sports/mens-cross-country/coaches" },
+    ig: "GopherCCTF",
+    note: "Too deep to be a fit and closer than that sounds: their Big Ten seven ran 24:04&ndash;24:51 and he would be their <b>8th man, 45 seconds outside</b> &mdash; but the same squad ran the Midwest regional over 10K and there he reads <em>inside</em> their seventh by 35, which is why the season average lands nine seconds off the scoring group. 2026 has widened it rather than closed it: 105 seconds behind their #1 at Nuttycombe. Strongest computer science in the metro either way you count it (10.4% of 31,855) and the one public in the ring &mdash; which cuts the other way on price than it looks: the $16,778 federal net price is computed from in-state students, Minnesota charges non-residents $21,148 more in tuition, and his planning figure is about <b>$37,926</b>, the dearest row in the metro. It stays on the board as the thing to measure the rest against.",
+  },
+  { name: "Augsburg", slug: "augsburg", city: "Minneapolis MN", metro: "minneapolis", mi: 1.7,
+    lat: 44.966307, lon: -93.240436, div: "D3", conf: "MIAC",
+    cs: "verified", csSrc: "fed", csShare: 7.2, sat: "not reported", satSrc: "none", accept: "82%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 45452, rb: 16894, sticker: 62346, net: 23873, size: 2494, ipeds: 173045 },
+    b1500: "4:16.4", b5000: null, tier: "caution", tierSrc: "ladder",
+    xc: { slot: 2, g1: 67.8, spread: 711.4, nraces: 2, short: true, maxfin: 6 },
+    xcInv: { slot: 2, g1: 42.3, spread: 907.9, nraces: 3, short: true, maxfin: 6 },
+    xc26: { slot: 1, g1: -353.1, spread: 480, nraces: 1, short: true, maxfin: 6, date: "2026-09-04" },
+    shape: { date: "2026-09-04", meet: "UWRF River Town Twilight", dist: "8K", n: 6, ret: 6, g1ret: -353.1, inv: true, fr: 3, so: 1, jr: 2, sr: 0 },
+    coach: { name: "Nick Larson", title: "Cross Country Head Coach / Assistant Track and Field Coach", email: "nlarson@augsburg.edu", phone: "612-330-1435", src: "https://athletics.augsburg.edu/sports/mens-cross-country/coaches" },
+    ig: "augsburgxctf",
+    note: "One runner and then nothing: at the 2025 MIAC championship (9th, 273 pts) their six finishers spanned twelve minutes, 24:33 to 36:48, and he would have been 63 seconds behind the leader and <b>four minutes ahead of their second man</b>. That leader was a senior, the one man they sent to the DIII national championship; by September 2026 his projection is ahead of their new #1 by nearly six minutes. Twelve men on the cross country roster.",
+  },
+  { name: "St Thomas", slug: "st-thomas", city: "Saint Paul MN", metro: "minneapolis", mi: 5.5,
+    lat: 44.943439, lon: -93.188986, div: "D1", conf: "Summit League",
+    cs: "verified", csSrc: "fed", csShare: 4.3, sat: "1260–1423", satSrc: "fed", accept: "85%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 54398, rb: 14969, sticker: 69367, net: 29155, size: 6245, ipeds: 174914 },
+    b1500: "3:57.1", b5000: 857, tier: "target", tierSrc: "ladder",
+    xc: { slot: 4.5, g1: 36.3, v7: -24, spread: 60.3, eq: true, nraces: 2 },
+    xcInv: { slot: 3.8, g1: 16.7, v7: -60.1, spread: 76.7, nraces: 4 },
+    xc26: { slot: 7.7, g1: 77.2, v7: 13.7, spread: 63.5, eq: true, nraces: 3, date: "2026-10-02" },
+    shape: { date: "2026-10-02", meet: "Joe Piane Notre Dame Invitational", dist: "8K", n: 7, ret: 4, g1ret: 58, inv: true, fr: 0, so: 2, jr: 2, sr: 3, mfr: 1, msr: 4 },
+    coach: { name: "Pete Wareham", title: "Head Men’s XC/Track & Field Coach", email: "pjwareham@stthomas.edu", phone: "651-962-5913", src: "https://tommiesports.com/staff-directory" },
+    ig: "tommiemtfxc",
+    note: "The one target in the metro, and the only row here where he would train in the middle of the group instead of at the front: their Summit League seven ran 24:23&ndash;25:18 and he lands <b>18 seconds outside it</b>, 73 behind their #1. Their 10K regional reads the other way &mdash; he would have been their #1 there by a second &mdash; which is what pulls the season average to 36 and slot 4.5; 2026 settles it at 77 and 14, the healthy version of this gap. D1 at 4.3% CS, 101 men across the track roster, and the dearer of the two D1 stickers at $69,367.",
+  },
+  { name: "Concordia-St Paul", slug: "concordia-st-paul", city: "Saint Paul MN", metro: "minneapolis", mi: 6.6,
+    lat: 44.949759, lon: -93.154861, div: "D2", conf: "Northern Sun",
+    cs: "verified", csSrc: "fed", csShare: 3.9, sat: "not reported", satSrc: "none", accept: "79%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 25600, rb: 13932, sticker: 39532, net: 18462, size: 3018, ipeds: 173328 },
+    b1500: "4:05.2", b5000: 911, tier: "caution", tierSrc: "ladder",
+    xc: { slot: 1, g1: -21, v7: -300.7, spread: 279.7, eq: true, nraces: 1 },
+    xcInv: { slot: 1, g1: -67.4, v7: -272.5, spread: 205.1, nraces: 4 },
+    xc26: { slot: 1, g1: -100.9, v7: -205.4, spread: 125.6, eq: true, nraces: 3, short: true, maxfin: 11, date: "2026-10-10" },
+    shape: { date: "2026-09-04", meet: "Augustana Twilight", dist: "5K", n: 7, ret: 6, g1ret: -86.3, eq: true, inv: true, fr: 1, so: 3, jr: 2, sr: 1 },
+    coach: { name: "Jonathan Breitbarth", title: "Head Coach", email: "breitbarth@csp.edu", phone: "651-641-8796", src: "https://cspbears.com/sports/mens-cross-country/coaches" },
+    ig: "csptfxc",
+    note: "Their Division II regional seven ran 33:07&ndash;39:04 over 10K and <b>he would arrive as their #1</b>, 27 seconds ahead of their fastest and six minutes ahead of their seventh. 2026 widens that to a minute and forty. Cheapest sticker in the metro at $39,532 with eleven men on the cross country roster &mdash; thin rather than a bad fit.",
+  },
+  { name: "Macalester", slug: "macalester", city: "Saint Paul MN", metro: "minneapolis", mi: 6.7,
+    lat: 44.938565, lon: -93.168053, div: "D3", conf: "MIAC",
+    cs: "verified", csSrc: "fed", csShare: 7.4, sat: "1350–1510", satSrc: "fed", accept: "29%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 68104, rb: 15760, sticker: 83864, net: 32149, size: 2131, ipeds: 173902 },
+    b1500: "3:55.9", b5000: 882, tier: "caution", tierSrc: "ladder",
+    xc: { slot: 1, g1: -19, v7: -113.1, spread: 94.1, nraces: 2 },
+    xcInv: { slot: 1, g1: -60.7, v7: -120, spread: 59.3, eq: true, nraces: 6 },
+    xc26: { slot: 1, g1: -20.7, v7: -95.4, spread: 74.8, eq: true, nraces: 3, date: "2026-10-03" },
+    shape: { date: "2026-10-03", meet: "Running of the Cows", dist: "8K", n: 7, ret: 5, g1ret: -15.1, inv: true, fr: 2, so: 1, jr: 2, sr: 2, mso: 2 },
+    coach: { name: "Dan Schofer", title: "Director of Track & Field/Cross Country", email: "dschofer@macalester.edu", phone: "651-696-6167", src: "https://athletics.macalester.edu/sports/mens-cross-country/coaches" },
+    ig: "macalesterscots", igDept: true,
+    note: "The closest of the thin rows and the hardest call in the metro: their MIAC seven ran 25:53&ndash;27:26 &mdash; 93 seconds, third in the conference &mdash; and <b>he would be their #1 by 17 seconds</b>. Ahead is the wrong side, but barely, and fifteen of their men finished that race. Four Macalester men ran a faster 1500 in May than his projection, so the track group is deeper than the 8K shows. A 29% admit at an $83,864 sticker.",
+  },
+  { name: "Hamline", slug: "hamline", city: "Saint Paul MN", metro: "minneapolis", mi: 6.9,
+    lat: 44.966246, lon: -93.164479, div: "D3", conf: "MIAC",
+    cs: "thin", csSrc: "fed", csShare: 0, sat: "1133–1391", satSrc: "fed", accept: "88%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 50004, rb: 12400, sticker: 62404, net: 20744, size: 1776, ipeds: 173665 },
+    b1500: "4:19.7", b5000: 941, tier: "caution", tierSrc: "ladder",
+    xc: { slot: 1, g1: -155, v7: -456.4, spread: 301.4, nraces: 2 },
+    xcInv: { slot: 1, g1: -190, v7: -398, spread: 448.5, eq: true, nraces: 4, short: true, maxfin: 7 },
+    xc26: { slot: 1, g1: -171.7, v7: -588.7, spread: 359.9, eq: true, nraces: 3, short: true, maxfin: 7, date: "2026-10-03" },
+    shape: { date: "2026-10-03", meet: "Running of the Cows", dist: "8K", n: 7, ret: 6, g1ret: -192, inv: true, fr: 3, so: 3, jr: 0, sr: 1 },
+    coach: { name: "Megan Evans", title: "Head Men’s and Women’s Cross Country Coach / Assistant Track & Field Coach (Distance)", email: "mevans07@hamline.edu", phone: null, src: "https://hamlineathletics.com/sports/mens-cross-country/coaches" },
+    ig: "hamline_tf_xc",
+    note: "Their MIAC seven ran 28:08&ndash;32:40 and <b>he would arrive as their #1 by two and a half minutes</b>, with their seventh man seven minutes back. The federal program file records <b>no CS bachelor&rsquo;s degrees at all</b>, which on this board reads as not confirmed rather than absent &mdash; a degree housed under mathematics reads as zero. With the running this far off it is not the question that decides the row.",
+  },
+  { name: "Northwestern-St Paul", slug: "northwestern-st-paul", city: "Saint Paul MN", metro: "minneapolis", mi: 8.7,
+    lat: 45.033703, lon: -93.167822, div: "D3", conf: "UMAC",
+    cs: "verified", csSrc: "fed", csShare: 3.7, sat: "868–1271", satSrc: "fed", accept: "93%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 37920, rb: 11534, sticker: 49454, net: 27705, size: 1442, ipeds: 174491 },
+    b1500: "4:32.1", b5000: 997, tier: "caution", tierSrc: "ladder",
+    xc: { slot: 1, g1: -150.1, v7: -451.2, spread: 301.1, nraces: 2 },
+    xcInv: { slot: 1, g1: -306.7, v7: -499.9, spread: 228.9, nraces: 2, short: true, maxfin: 7 },
+    xc26: { slot: 1, g1: -136.4, v7: -402.9, spread: 266.5, eq: true, nraces: 4, date: "2026-10-03" },
+    shape: { date: "2026-10-03", meet: "Running of the Cows", dist: "8K", n: 7, ret: 4, g1ret: -169.1, inv: true, fr: 4, so: 0, jr: 0, sr: 3 },
+    coach: { name: "Patrick Fitzgerald", title: "Head Coach", email: "pjfitzgerald@unwsp.edu", phone: null, src: "https://unweagles.com/sports/mens-cross-country/coaches" },
+    ig: "unwcctf",
+    note: "Third at the 2025 UMAC championship on 84 points, the best team finish among the thin rows here, and it does not change the arithmetic: their seven ran 27:58&ndash;31:58 and <b>he would arrive as their #1 by two and a half minutes</b>. Seven men on the cross country roster. They do run past the conference meet &mdash; 9th at the NCCAA national championship a fortnight later.",
+  },
+  { name: "Bethel", slug: "bethel", city: "Saint Paul MN", metro: "minneapolis", mi: 10.3,
+    lat: 45.057655, lon: -93.161663, div: "D3", conf: "MIAC",
+    cs: "verified", csSrc: "fed", csShare: 1.3, sat: "1190–1300", satSrc: "fed", accept: "88%", acceptSrc: "fed",
+    cost: { own: "private", resid: "out", tuition: 44226, rb: 12170, sticker: 56396, net: 28556, size: 1871, ipeds: 173160 },
+    b1500: "3:53.4", b5000: 903, tier: "caution", tierSrc: "ladder",
+    xc: { slot: 1, g1: -11.2, v7: -207.4, spread: 196.1, nraces: 2 },
+    xcInv: { slot: 1, g1: -62, v7: -244.1, spread: 182.1, eq: true, nraces: 5 },
+    xc26: { slot: 1, g1: -28.6, v7: -143.7, spread: 115.1, eq: true, nraces: 3, date: "2026-10-03" },
+    shape: { date: "2026-10-03", meet: "Running of the Cows", dist: "8K", n: 7, ret: 5, g1ret: -19.7, inv: true, fr: 2, so: 0, jr: 3, sr: 2, mfr: 3, mso: 1 },
+    coach: { name: "Kevin Rengo", title: "Head Cross Country Coach / Assistant Track & Field Coach", email: "kevin-rengo@bethel.edu", phone: "651-638-6965", src: "https://athletics.bethel.edu/sports/mens-cross-country/coaches" },
+    ig: "bethelxctf",
+    note: "The tightest gap of the nine and still the wrong side of it: their MIAC seven ran 25:52&ndash;28:21 and <b>he would be their #1 by 16 seconds</b>, by 7 at the regional. A Bethel man ran 3:53.4 for 1500 in May, eight seconds inside his projection, so there is one runner here to train with &mdash; and a minute and a half back from him to their second man over 8K. Seventeen of them finished the MIAC race, the deepest field of the thin rows.",
   },
 ];
 
@@ -3802,6 +3959,10 @@ const NO_PROGRAM = [
     lat: 35.788114, lon: -78.618866, div: "D2",
     why: "Historically a distance power — its sprinters and its cross country teams won national titles — and there is nothing left to join. It has <b>no conference</b> after the CIAA suspended its membership, its athletics domain no longer resolves at all, the federal file reports <b>172 undergraduates</b>, and in April 2026 it filed for Chapter 11 in the Eastern District of North Carolina and <b>stopped its legal fight for accreditation</b>, which it had been operating under a preliminary injunction to keep. Listed because it is the one NC name on this page whose past would otherwise put it near the top of a search.",
   },
+  { name: "St Catherine", city: "Saint Paul MN", metro: "minneapolis", mi: 6.9,
+    lat: 44.924926, lon: -93.183761, div: "D3", conf: "MIAC",
+    why: "Seven driving miles from downtown Minneapolis, NCAA Division III, a verified computer science degree — and it is a <b>women's college</b>, so there is no men's cross country to join. This is a listing rather than an omission because the athletics department is real and full: the federal Equity in Athletics survey records it as Division III without football, TFRRS holds a women's cross country page for it, and the men's-slug equivalent returns a 404. Of its 1,645 athletics-survey enrollment, 23 are men. The distinction this page draws matters here — an institution with no athletics department at all is not listed, and St Catherine has one.",
+  },
 ];
 
 const METROS = {
@@ -3848,6 +4009,7 @@ const METROS = {
   buffalo:         { label: 'Buffalo',       radius: '20 mi', radiusMi: 20, center: [42.8864, -78.8784], centerLabel: 'downtown Buffalo',     zoom: 9, page: 'buffalo.html' },
   pittsburgh:      { label: 'Pittsburgh',    radius: '20 mi', radiusMi: 20, center: [40.4406, -79.9959], centerLabel: 'downtown Pittsburgh',  zoom: 9, page: 'pittsburgh.html' },
   chicago:         { label: 'Chicago',       radius: '20 mi', radiusMi: 20, center: [41.8781, -87.6298], zoom: 9, page: 'chicago.html' },
+  minneapolis:     { label: 'Minneapolis',   radius: '20 mi', radiusMi: 20, center: [44.9778, -93.2650], centerLabel: 'downtown Minneapolis', zoom: 9, page: 'minneapolis.html' },
 };
 
 /* The retired Newark ring's center, kept as a second measurement rather than a second page.

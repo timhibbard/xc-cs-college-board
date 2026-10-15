@@ -61,6 +61,7 @@ UNITID = {
     'North Georgia': 482680,       # University of North Georgia, Dahlonega GA
     'St. Andrews': 199698,         # St. Andrews University, Laurinburg NC
     'Saint Augustine’s': 199582,   # Raleigh NC
+    'St Catherine': 175005,        # St Catherine University, Saint Paul MN
 }
 
 
@@ -74,12 +75,23 @@ TYPES = ('city', 'town', 'village', 'borough', 'CDP', 'municipality', 'township'
          'metropolitan government', 'urban county', 'city and borough', 'unified government')
 
 
+SAINT = re.compile(r'^(?:st|ste)\.?(?=\s)', re.I)
+
+
 def city_key(usps, name):
     """For the IPEDS city field, which carries no legal type. Nothing is stripped here: half a
     dozen of these cities are named "... City" outright -- Jersey City, Johnson City, Garden
     City, Jefferson City -- and running the gazetteer's suffix stripper over them turned
-    Jersey City into Jersey and lost every one of them."""
-    return (usps.strip().upper(), name.strip().lower())
+    Jersey City into Jersey and lost every one of them.
+
+    A leading Saint is normalised, because the two files disagree about how to write it and
+    about nothing else: the Census gazetteer abbreviates ("St. Paul city", "Ste. Genevieve")
+    where IPEDS spells it out ("Saint Paul"), so six Minneapolis-metro rows matched no place
+    at all and lost their townMi. This is a spelling rule and not a judgement about which
+    settlement is meant -- it fires only on the leading word, so Saint Paul Park and South
+    St. Paul stay the separate cities they are, and no state has both spellings on file."""
+    n = SAINT.sub('saint', name.strip().lower(), count=1)
+    return (usps.strip().upper(), n)
 
 
 def place_key(usps, name):
@@ -172,12 +184,22 @@ def find_town(places, state, city):
     """Three ordered attempts, none of them fuzzy: the city as written, then the city with a
     trailing legal type removed (IPEDS writes "Moon Township" where the gazetteer writes
     "Moon township", and this order is what keeps Jersey City from becoming Jersey), then
-    the hand-checked map."""
+    the hand-checked map.
+
+    The hand map is consulted FIRST, which it was not until the leading-Saint rule above
+    went in. Eastern is why: its IPEDS city is "Saint Davids", hand-mapped to Radnor
+    township because the name is a post office inside it, and normalising the Saint made
+    the gazetteer's own "St. Davids CDP" start matching -- so a row that had been decided
+    by hand would have moved 1.1 miles and shrunk its town from 13.8 square miles to 1.5
+    without anyone choosing that. An automatic match should never quietly outrank a
+    checked one."""
+    by_hand = CITY_BY_HAND.get(city_key(state, city))
+    if by_hand and city_key(state, by_hand) in places:
+        return places[city_key(state, by_hand)]
     for key in (city_key(state, city), place_key(state, city)):
         if key in places:
             return places[key]
-    by_hand = CITY_BY_HAND.get(city_key(state, city))
-    return places.get(city_key(state, by_hand)) if by_hand else None
+    return None
 
 
 def haversine_mi(a, b):

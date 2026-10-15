@@ -919,8 +919,8 @@ const METROS = [
   }
   ok('urban top ten caution rows', U.slice(0, 10).filter(s => s.tier === 'caution').length, 7);
   claim('urban targets in the top quartile', utxt,
-    /Thirteen of the (\d+) target-tier schools are in the most urban quarter/, targets.length);
-  ok('urban targets in top quartile', topQ.filter(s => s.tier === 'target').length, 13);
+    /Eleven of the (\d+) target-tier schools are in the most urban quarter/, targets.length);
+  ok('urban targets in top quartile', topQ.filter(s => s.tier === 'target').length, 11);
   claim('urban best of both', utxt,
     new RegExp(BEST.map(n => n.replace(/ /g, '\\s') + ' (\\d+)').join(', ')),
     BEST.map(n => uBy[n].u.score));
@@ -962,7 +962,7 @@ const METROS = [
     ['greenville', 'boston', 'nyc', 'pittsburgh', 'chicago']
       .map(m => medianOf(U.filter(s => inMetro(s, m)).map(s => s.u.score))));
   claim('README urban targets', rtxt,
-    /Thirteen of the (\d+) target-tier schools are in the most urban quarter/, targets.length);
+    /Eleven of the (\d+) target-tier schools are in the most urban quarter/, targets.length);
   claim('README urban best of both', rtxt,
     new RegExp(BEST.map(n => n.replace(/ /g, '\\s') + ' (\\d+)').join(', ')),
     BEST.map(n => uBy[n].u.score));

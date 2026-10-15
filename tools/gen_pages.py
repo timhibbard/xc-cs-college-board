@@ -105,7 +105,7 @@ HEAD = """<!DOCTYPE html>
     {money}
   </p>
 
-{offboard}
+{offboard}{extra}
   <div class="prose">
     <p><a href="methodology.html">Methodology and caveats &rarr;</a></p>
   </div>
@@ -267,10 +267,13 @@ def build(spec):
     html = HEAD.format(
         title=spec['title'], desc=spec['desc'], eyebrow=spec['eyebrow'], h1=M['label'],
         lede=spec['lede'], kpis=''.join(spec['kpis']), prekpi=spec.get('prekpi', ''),
-        callouts=''.join(spec['callouts']) + callout('Where this page&rsquo;s columns come from', GAPS_NEW, cls=''),
+        callouts=''.join(spec['callouts'])
+                 + callout('Where this page&rsquo;s columns come from',
+                           spec.get('gaps', GAPS_NEW), cls=''),
         rmi=M['radiusMi'], centre=M.get('centerLabel', M['label']), mapsub=spec['mapsub'],
         chart=CHART_SEC.format(sub=spec['chartsub']) if spec.get('chartsub') else '',
         worth=spec['worth'], money=spec['money'], offboard=sec.getvalue(),
+        extra=spec.get('extra', ''),
         id=m, offjs=js.getvalue(),
         chartcall='initChart();\n' if spec.get('chartsub') else '')
     open(REPO + M['page'], 'w').write(html)
@@ -936,6 +939,214 @@ SPECS.append(dict(
 # Newark had a spec here until the overlap with New York proved near-total (58e0737): the page
 # was deleted, the ring became a second mileage reading inside new-york.html, and the metro left
 # METROS — so the spec could only ever crash at b['METROS'][m]. Removed rather than left to rot.
+
+# ------------------------------------------------------------- Minneapolis
+# The eleventh metro, and the first page here that overrides GAPS_NEW: the nine rows carry
+# every column the others do except the meet map, because the schedule layer has not been
+# read for them yet. Saying "a meet map on every school page" here would be false, and the
+# shared string is not the place to make an exception.
+SPECS.append(dict(
+    id='minneapolis',
+    title='Minneapolis — nine schools within 20 miles',
+    desc="Every college within 20 miles of downtown Minneapolis with men's cross country, "
+         "men's outdoor track and a computer science degree, in any division. Nine schools, "
+         "all of them inside eleven miles, and one of them is a fit.",
+    eyebrow='Metro 11 of 11 · 20 mile radius · all divisions · new in this pass',
+    lede='Nine schools, three divisions and five conferences &mdash; Big Ten, Summit League, '
+         'Northern Sun, MIAC and UMAC &mdash; and <strong>every one of them is inside eleven '
+         'miles of road</strong>. No other ring on this board is that compact: Boston and New '
+         'York hold more programs at that range but keep spreading past it, and here the whole '
+         'board is the width of one commute. The running is the usual story told faster. '
+         '<strong>One school is a fit</strong> &mdash; St Thomas, 5.5 miles out, where he would '
+         'be 18 seconds outside a scoring seven. <strong>One is too deep</strong> &mdash; '
+         'Minnesota. At <strong>six of the remaining seven he would arrive as the fastest man on '
+         'the roster</strong>, though the two closest of those, Bethel and Macalester, miss by '
+         'only 11 and 19 seconds averaged across their championships &mdash; one recruit either '
+         'way would flip them, and they are still on the wrong side today.',
+    kpis=[kpi('Schools inside 20 mi', None, '2 D1, 1 D2, 6 D3', 'k-n'),
+          kpi('Target tier', None, 'St Thomas, and only St Thomas', 'k-t'),
+          kpi('He would be their #1 at', None, 'Six of the nine', 'k-lead'),
+          kpi('Median net price', '$27,705',
+              'On his residency &mdash; and the one public is the dearest row here')],
+    callouts=[
+        callout('One fit, one too deep, and nothing else within two years of either',
+                '<strong>St Thomas</strong> is the row this metro rests on. Their Summit League '
+                'seven ran <b>24:23&ndash;25:18</b> and he lands <b>18 seconds outside it</b>, 73 '
+                'behind their #1 &mdash; and fall 2026 says the same thing from three more races, '
+                '77 and 14. That is the gap this board is looking for: a group he would train at '
+                'the back of rather than lead. <b>4.3%</b> of its degrees are computer science, it '
+                'admits <b>85%</b>, and at <b>$29,155</b> it is the second most expensive row '
+                'here. It moved up from Division 3 to Division 1 in 2021, which is worth a direct '
+                'question to the coach: what the distance group is being built toward, and what '
+                'scholarship money actually exists in it.',
+                '<strong>Minnesota</strong> is the near miss, and it is nearer than <em>deep</em> '
+                'sounds. Their Big Ten seven ran <b>24:04&ndash;24:51</b> &mdash; a 47-second pack '
+                '&mdash; and he would be their <b>8th man, 45 seconds outside</b>; over 10K at the '
+                'Midwest regional the same squad spread out and he reads <em>inside</em> their '
+                'seventh by 35. The season average lands nine seconds off the scoring group, and '
+                '2026 has widened it rather than closed it. It is also the strongest computer '
+                'science in the metro by both measures (<b>10.4%</b> of 31,855 undergraduates) '
+                'and, on his residency, the <em>most</em> expensive row here &mdash; see the money '
+                'note below.',
+                'The third-closest row on the running is <strong>Bethel</strong>, and he arrives '
+                'there as their #1.'),
+        callout('What caution means in this metro',
+                'Seven of the nine are <em>caution</em>, and at six of them he would be the '
+                'fastest man on the roster the day he arrived. The two that nearly are not: '
+                '<strong>Bethel</strong>, their #1 by <b>16 seconds</b> at the MIAC championship '
+                'and by 7 at the Division 3 regional, with seventeen men in that race; and '
+                '<strong>Macalester</strong>, their #1 by <b>17 seconds</b> off a seven that spans '
+                '93 seconds and finished third in the conference. Both are places where one '
+                'runner could pull him along and nobody else could.',
+                'At the other end, <strong>Hamline</strong> and <strong>Northwestern&ndash;St '
+                'Paul</strong> put seven men on the course and he would lead them by two and a '
+                'half minutes, and <strong>North Central</strong> &mdash; the closest campus to '
+                'downtown at <b>0.9 miles</b> &mdash; has never finished five men anywhere except '
+                'its conference meet: the eight other races on its file, across two seasons, got '
+                'two, three or four home. <strong>Augsburg</strong> is the one worth reading twice '
+                'rather than counting: six finishers spanning <b>twelve minutes</b>, a lone senior '
+                'at 24:33 who went to the Division 3 national championship by himself, and a 2026 '
+                'squad whose #1 is now nearly six minutes behind his projection.'),
+    ],
+    gaps='Every tier on this page comes from <a href="methodology.html#tier-ladder">the published '
+         'ladder</a> run over 2025 championship results &mdash; conference, regional and national '
+         'meets only. These nine rows carry a <b>coach</b> &mdash; name, title, office phone and '
+         'email read off the school\'s own staff directory; the <b>program\'s Instagram</b>, read '
+         'off that school\'s own men\'s cross country page, with a degree sign where the school '
+         'links only its athletics department\'s account (Macalester is the one such row here, and '
+         'its men\'s cross country sport record publishes no handle at all); their <b>2026 outdoor '
+         'track marks</b>, so the 5000m chart above is here and every school page opens its 2026 '
+         'conference 1500 field with his projected 4:01 dropped into it on time; and the '
+         '<b>campus setting</b> column, which measures what he can reach on foot in an ordinary '
+         'week and says nothing about where the team runs. <b>One column is not here yet:</b> the '
+         'meet map, so these nine school pages do not yet show where each program races. The nine '
+         'were found conference by conference, off each conference\'s own men\'s-sponsored-sports '
+         'table rather than school by school (<a href="methodology.html#known-gaps">&sect;6a</a>).',
+    mapsub='Nine pins and not one of them near the edge of the ring: three Minneapolis campuses '
+           'inside a mile and a half of each other, four more inside a three-mile square in Saint '
+           'Paul, and Bethel and Northwestern&ndash;St Paul on suburban addresses north of the '
+           'city &mdash; Bethel the furthest out at 10.3 driving miles. Four of the nine race the '
+           'same conference, the MIAC, so one championship result measures four of these rows at '
+           'once.',
+    chartsub='Blue to the right: their #1 is faster, so there is room to develop. Red to the left: '
+             'he would arrive faster than anyone on the roster. <b>Minnesota at 14:01 and St '
+             'Thomas at 14:17</b> are the two bars that run well to the right, and three of the '
+             'eight run the other way &mdash; North Central\'s by three minutes. Augsburg ran no '
+             '5000 outdoors in 2026, so it has no bar; its 1500 is on its school page.',
+    worth="""    <ol>
+      <li><strong>St Thomas</strong> &mdash; 5.5 miles out, D1 Summit League, <b>4.3%</b> CS of 6,245
+        undergraduates, <b>$29,155</b>. The only row in the metro where he would not be at or near the
+        front on arrival: <strong>18 seconds outside their seventh man</strong> at the conference
+        championship and 14 outside across three fall-2026 races. One honest caveat, and it is on the
+        page rather than buried &mdash; their 10K regional reads the other way, where he would have
+        been their #1 by a second, which is what pulls the two-race average to slot 4.5. Division 1, so
+        athletic money exists; ask what share of it the distance group sees.</li>
+      <li><strong>Minnesota</strong> &mdash; 1.6 miles, Big Ten, <b>10.4%</b> CS, and the best computer
+        science in range by a distance. <strong>8th man, 45 seconds outside</strong> a Big Ten seven
+        that packs into 47 seconds. Not reachable this year; the thing to measure the rest of the board
+        against, and the one campus here he could reach from downtown on the Green Line.</li>
+      <li><strong>Macalester</strong> and <strong>Bethel</strong> &mdash; 6.7 and 10.3 miles, both MIAC,
+        both Division 3, and the two rows where the <em>caution</em> is 19 and 11 seconds wide across
+        their championships rather than two minutes. Macalester is <b>7.4%</b> CS and a <b>29%</b> admit
+        at an <b>$83,864</b> sticker, with four men who ran a faster 1500 than his projection in May;
+        Bethel is <b>$56,396</b>, <b>88%</b> admit, and has one man &mdash; 3:53.4 for 1500 &mdash; who
+        would be ahead of him. Neither is a training group; each is one training partner.</li>
+    </ol>
+    <p>
+      <strong>And one for the money rather than the running.</strong>
+      <strong>Concordia&ndash;St Paul</strong> is the metro's only Division 2 program, so it is the only
+      place inside the ring where partial athletic aid exists outside the two Division 1 schools, and at
+      <b>$18,462</b> it is the cheapest row here by $2,282. He would arrive as their #1 by 27 seconds
+      with their seventh man six minutes back, which is the trade this ring keeps offering: the cheaper
+      the row, the thinner the squad.
+    </p>""",
+    money="<strong>Six of these nine schools cannot offer him a dollar of athletic money</strong> "
+          "&mdash; all six are Division 3, where athletic aid does not exist by rule. The doors "
+          "that are open are the two Division 1 programs, <strong>Minnesota</strong> and "
+          "<strong>St Thomas</strong>, and <strong>Concordia&ndash;St Paul</strong> in Division 2, "
+          "where aid is partial by rule. <strong>Minnesota is the only public in range, and the "
+          "residency rule turns it into the most expensive row on the page.</strong> Its "
+          "<b>$16,778</b> federal net price is computed from in-state students; Minnesota charges "
+          "non-residents <b>$21,148</b> more in tuition, so his planning figure is about "
+          "<b>$37,926</b> (<a href=\"methodology.html#residency\">how that is calculated</a>) "
+          "&mdash; $5,777 dearer than Macalester, which has the metro's highest sticker. The "
+          "cheapest rows are <strong>Concordia&ndash;St Paul at $18,462</strong>, <strong>Hamline "
+          "at $20,744</strong> and <strong>Augsburg at $23,873</strong>, and all three come back "
+          "<em>caution</em> on the running. The metro's median on his residency is <b>$27,705</b>.",
+    noxc="One school inside the ring has a real athletics department and no men's team to join: "
+         "<strong>St Catherine University</strong>, Division 3, seven driving miles out, with a "
+         "verified computer science degree &mdash; and a women's college. It is listed rather than "
+         "omitted because the department exists; the institutions inside this ring with no "
+         "athletics at all &mdash; Metropolitan State, Walden and Capella among them &mdash; are "
+         "not rows on any list here.",
+    extra="""  <h2>The 1500 in May</h2>
+  <p class="prose">
+    Every school page here carries its <strong>2026 conference-championship 1500 field</strong> with his
+    projected <strong>4:01</strong> dropped into it on time, plus that program's own 1500 depth chart for
+    the season. Nine schools share <strong>five</strong> conference finals &mdash; four of them race the
+    MIAC and two the UMAC &mdash; so the 1500 measures this metro in five races rather than nine.
+  </p>
+  <div class="prose">
+    <p>
+      <strong>His 4:01 clears the last qualifying time in all five of those finals and scores &mdash;
+      top eight &mdash; in three</strong>: 1st of seventeen in the UMAC, 7th of eighteen in the Summit
+      League, 8th of twenty-two in the Northern Sun. The two fields with the real programs in them read
+      the way a healthy gap should: <strong>11th of twenty-eight in the MIAC</strong> and
+      <strong>39th of forty-one in the Big Ten</strong> &mdash; in the race, at the back of it. The Big
+      Ten final is also the one tactical race of the five, won in 4:00.9 off a 3:43.2 prelim, and
+      Minnesota put three men in those prelims and advanced none of them. His 4:01.0 would have been
+      <em>second across the line</em> in that final, which is a fact about how the race was run and not
+      about him &mdash; and the clearest warning on this page about reading a 1500 field.
+    </p>
+    <p>
+      <strong>The thinness is in the same numbers.</strong> At five of the nine programs he would be the
+      fastest 1500 man on the roster &mdash; North Central, Augsburg, Concordia&ndash;St Paul, Hamline
+      and Northwestern&ndash;St Paul &mdash; and the metro's median team best is <strong>4:05.3</strong>
+      against his 4:01.0. <strong>Four programs have a man faster than he projects</strong>: Minnesota
+      at <b>3:43.2</b>, Bethel <b>3:53.4</b>, Macalester <b>3:55.9</b> and St Thomas <b>3:57.1</b>, and
+      that list is the running order of this page from the top. Three of the nine &mdash; St Thomas,
+      Concordia&ndash;St Paul and Hamline &mdash; <strong>entered nobody at all</strong> in their
+      conference 1500, so those three rows are a comparison against a field their own team did not
+      contest. And none of the nine took a 1500 runner past its conference meet into a postseason round,
+      which is the plainest single measure of the level here.
+      <a href="methodology.html#the-1500">How the 1500 comparison is built</a>.
+    </p>
+  </div>
+
+  <h2>Three things specific to Minneapolis</h2>
+  <div class="prose">
+    <p>
+      <strong>The public school is the expensive one, which is backwards from every other metro on
+      this board.</strong> Minnesota is the only public inside the ring, and its reported
+      <b>$16,778</b> net price is an in-state figure; on his residency the planning number is about
+      <b>$37,926</b>, the highest on this page. Every other row is a private charging one rate to
+      everyone, which means the sticker shocks are honest and the discounts are the whole question: the
+      gap between Macalester's <b>$83,864</b> sticker and its <b>$32,149</b> average net price is
+      $51,715 of institutional aid, and what share of it he would see is a conversation with a
+      financial aid office rather than a number this board can publish.
+    </p>
+    <p>
+      <strong>Winter is not a detail here, it is the season.</strong> The indoor campaign runs through a
+      Twin Cities January, and the difference between a program with a 200m banked track and one with a
+      fieldhouse straightaway is the difference between developing indoors and surviving indoors. Ask
+      each of these nine what they actually train on between December and March, and where the team runs
+      when the river road is ice.
+    </p>
+    <p>
+      <strong>Four of the nine are in Saint Paul, and the whole metro is a day of visits.</strong>
+      Macalester, Hamline, Concordia&ndash;St Paul and St Thomas sit inside a three-mile square &mdash;
+      the St Catherine campus is in the middle of them &mdash; and a visit can take in all four plus the
+      three Minneapolis campuses, which are themselves a mile and a half apart, without a long drive.
+      It also shows up in the setting column: the seven city campuses score <b>73&ndash;87</b> for what
+      he could reach on foot in an ordinary week, while <strong>Bethel</strong> (<b>29</b>) and
+      <strong>Northwestern&ndash;St Paul</strong> (<b>31</b>) are suburban campuses where a week's
+      errands need a car or a ride. That is a measure of daily life and not of running: the team picks
+      the routes, and no number on this page has an opinion about them.
+    </p>
+  </div>
+
+""",
+))
 
 for s in SPECS:
     build(s)
