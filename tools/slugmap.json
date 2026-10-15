@@ -229,5 +229,14 @@
  "Washington Adventist": "MD_college_m_Washington_Adventist",
  "Wentworth": "MA_college_m_Wentworth_Institute_of_Tech",
  "Widener": "PA_college_m_Widener",
- "William Peace": "NC_college_m_Peace"
+ "William Peace": "NC_college_m_Peace",
+ "Minnesota": "MN_college_m_Minnesota",
+ "St Thomas": "MN_college_m_St_Thomas",
+ "Concordia-St Paul": "MN_college_m_Concordia_St_Paul",
+ "Augsburg": "MN_college_m_Augsburg",
+ "Bethel": "MN_college_m_Bethel_MN",
+ "Hamline": "MN_college_m_Hamline",
+ "Macalester": "MN_college_m_Macalester",
+ "Northwestern-St Paul": "MN_college_m_Northwestern_MN",
+ "North Central": "MN_college_m_North_Central_MN"
 }

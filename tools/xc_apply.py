@@ -119,6 +119,14 @@ def main():
     new = json.load(open(WORK / 'newraces.json'))['races']
     A = board['ATHLETE']
     P = {'5K': A['proj5kxc'], '6K': A['proj6k'], '8K': A['proj8k'], '10K': A['proj10k']}
+    # ATHLETE.projOff is deliberately NOT folded in here, and the reason is worth stating
+    # because adding it looks like an obvious fix and is not. xc_fetch does use projOff, so
+    # an off-distance race carries a slot, g1 and v7 of its own on the school page. The
+    # aggregates average the four anchor distances only -- an off-distance projection is the
+    # slower of two routes rather than a measurement against a mark he has run, so it is
+    # honest per race and too soft to average into the numbers a tier sits next to. The four
+    # distances here ARE the rule, and the gate below enforces it: adding projOff to this
+    # table moves 38 published blocks, which is the test failing, not passing.
     EQ = {d: P['8K'] / P[d] for d in P}
 
     # vlast is projection-derived, so it exists only where the distance converts. Computed
